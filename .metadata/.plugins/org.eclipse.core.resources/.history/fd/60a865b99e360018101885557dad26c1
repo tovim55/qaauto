@@ -1,0 +1,43 @@
+package com.selenium;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+//import java.util.concurrent.Timeunit;
+public class test1{
+	public WebDriver driver;
+	
+	@BeforeClass
+	public void startBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C:\\automation_resources\\seleniumDrivers\\chromedriver.exe");
+		driver = new ChromeDriver();
+//		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();	
+		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://www.google.com");
+	
+	}
+	
+	@Test
+	public void getTitlePage() {
+		String title = driver.getTitle();
+		System.out.println("Page Title is: " + title);
+		Reporter.log( "Message", true );
+	}
+	
+	@AfterMethod
+	public void closePage(){
+		driver.quit();
+	}
+}

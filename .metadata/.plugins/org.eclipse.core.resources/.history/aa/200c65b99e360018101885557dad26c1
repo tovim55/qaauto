@@ -1,0 +1,96 @@
+package com.selenium;
+//	"http://test.cgateway-portal.verifone.com/"
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+
+public class WebPortal{
+	public WebDriver driver;
+//	public String browserType = "CHROME";
+	
+	@Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })
+	@BeforeClass
+	public void startBrowser(String env,String urlDev, String urlTest,
+			String urlStaging1, String urlProduction, String browserType) {
+		try {
+			driver = SeleniumUtils.setBrowser(browserType);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		System.setProperty("webdriver.chrome.driver", "C:\\automation_resources\\seleniumDrivers\\chromedriver.exe");
+//		driver = new ChromeDriver();
+////		driver.manage().window().maximize();
+//		driver.manage().deleteAllCookies();	
+//		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		System.out.println("The Automation tests runs on : " + env + "environment");
+		
+		switch (env) {
+	    case "DEV":
+	    	System.out.println("Open urlDev");
+    		driver.get(urlDev);
+			System.out.println("open url" + urlDev + "ended successfully");
+	       break;
+	   
+	    case "TEST":
+	    		System.out.println("Open urlTest");
+	    		driver.get(urlTest);
+				System.out.println("open url" + urlTest + "ended successfully");
+	        break;
+	    case "STAGING1":
+	    	System.out.println("Open urlStaging1");
+    		driver.get(urlStaging1);
+			System.out.println("open url" + urlStaging1 + "ended successfully");
+	        break;
+	        
+	    case "PRODUCTION":
+	    	System.out.println("Open urlProduction");
+    		driver.get(urlProduction);
+			System.out.println("open url" + urlProduction + "ended successfully");
+	        break;
+	  
+	    default:
+	        System.out.println("env name is not exist!!!" );
+		
+		 }
+				
+	}
+	@Test (groups = {"cgateway-portal"})
+	public void getTitlePage() throws Exception {
+	String title = driver.getTitle();
+	System.out.println("Page Title is: " + title);
+	Reporter.log( "Message", true );
+	
+	Reporter.log( "Click Login", true );
+	driver.findElement(By.cssSelector("[href=\"javascript\\:void\\(gotoSso\\(\\)\\)\"]")).click();
+	SeleniumUtils.findTextInPage(driver, "Login");
+	}
+	
+	
+	
+	@AfterMethod
+	public void closePage(){
+	Reporter.log( "Closing Web Page", true );
+//	driver.quit();
+	}
+}
+	
+
