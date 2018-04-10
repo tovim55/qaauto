@@ -1,0 +1,10 @@
+########################## Login page Test Data ##########################
+name_id = giora
+pageTitleToFind = Commerce gateway
+textToFindInWebPage = Login
+########################## Main cgateway page Object Repository ##########
+loginBtn_css = [href="javascript\:void\(gotoSso\(\)\)"]
+
+####################### Login page Object Repository #####################
+user_id = username 
+password_id = test123

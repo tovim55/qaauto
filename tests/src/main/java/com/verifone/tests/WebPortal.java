@@ -56,7 +56,7 @@ public class WebPortal{
 	@Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })
 	@BeforeTest
 	public void startBrowser(String env,String urlDev, String urlTest,
-			String urlStaging1, String urlProduction, String browserType) {
+			String urlStaging1, String urlProduction, String browserType) throws Exception {
 		// starting test		
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		try {
@@ -66,41 +66,8 @@ public class WebPortal{
 			e.printStackTrace();
 		}
 
-		System.out.println("The Automation tests runs on : " + env + " environment");
-		
-		switch (env) {
-	    case "DEV":
-	    	System.out.println("Open urlDev");
-    		driver.get(urlDev);
-			System.out.println("Open url" + urlDev + "ended successfully");
-			test.log(LogStatus.INFO, "Open " + urlDev + " in " + env + " environment");
-	        break;
-	   
-	    case "TEST":
-	    	System.out.println("Open urlTest");
-	    	driver.get(urlTest);
-			System.out.println("Open url" + urlTest + "ended successfully");
-			test.log(LogStatus.INFO, "Open " + urlTest + " in " + env + " environment");
-	        break;
-	        
-	    case "STAGING1":
-	    	System.out.println("Open urlStaging1");
-    		driver.get(urlStaging1);
-			System.out.println("Open url" + urlStaging1 + "ended successfully");
-			test.log(LogStatus.INFO, "Open " + urlStaging1 + " in " + env + " environment");
-	        break;
-	        
-	    case "PRODUCTION":
-	    	System.out.println("Open urlProduction");
-    		driver.get(urlProduction);
-			System.out.println("Open url" + urlProduction + "ended successfully");
-			test.log(LogStatus.INFO, "Open " + urlProduction + " in " + env + " environment");
-	        break;
-	  
-	    default:
-	        System.out.println("env name is not exist!!!" );
-		
-		 }
+				
+		SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, test);
 				
 	}
 	
@@ -163,7 +130,7 @@ public class WebPortal{
 //		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 	
 		test.log(LogStatus.INFO, "result.getStatus value is : " + result.getStatus());
-		switch (result.getStatus()) {
+		switch (result.getStatus()) {        
 		case ITestResult.SKIP:
 			test.log(LogStatus.SKIP, "Test SKIP");			
 			break;

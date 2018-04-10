@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
     <line>
-      <![CDATA[Commerce gateway portal]]>
+      <![CDATA[Closing Web Page]]>
+    </line>
+    <line>
+      <![CDATA[Closing Web Page]]>
     </line>
     <line>
       <![CDATA[Closing Web Page]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="6589" started-at="2018-04-09T07:17:00Z" finished-at="2018-04-09T07:17:07Z">
+  <suite name="Verifone" duration-ms="15750" started-at="2018-04-10T10:42:07Z" finished-at="2018-04-10T10:42:22Z">
     <groups>
       <group name="cgateway-portal">
-        <method signature="WebPortal.getTitlePage()[pri:0, instance:com.verifone.tests.WebPortal@12e61fe6]" name="getTitlePage" class="com.verifone.tests.WebPortal"/>
+        <method signature="LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" class="com.verifone.tests.LoginDataDriven"/>
       </group> <!-- cgateway-portal -->
     </groups>
-    <test name="Default test" duration-ms="6589" started-at="2018-04-09T07:17:00Z" finished-at="2018-04-09T07:17:07Z">
-      <class name="com.verifone.tests.WebPortal">
-        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.WebPortal@12e61fe6]" name="startBrowser" is-config="true" duration-ms="5347" started-at="2018-04-09T07:17:00Z" finished-at="2018-04-09T07:17:06Z">
+    <test name="Selenium Web Portal Automation Tests" duration-ms="15750" started-at="2018-04-10T10:42:07Z" finished-at="2018-04-10T10:42:22Z">
+      <class name="com.verifone.tests.LoginDataDriven">
+        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="startBrowser" is-config="true" duration-ms="5691" started-at="2018-04-10T10:42:07Z" finished-at="2018-04-10T10:42:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[TEST]]>
+                <![CDATA[DEV]]>
               </value>
             </param>
             <param index="1">
@@ -52,53 +55,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowser -->
-        <test-method status="FAIL" signature="getTitlePage()[pri:0, instance:com.verifone.tests.WebPortal@12e61fe6]" name="getTitlePage" duration-ms="21" started-at="2018-04-09T07:17:06Z" finished-at="2018-04-09T07:17:06Z">
-          <exception class="junit.framework.AssertionFailedError">
-            <full-stacktrace>
-              <![CDATA[junit.framework.AssertionFailedError
-at junit.framework.Assert.fail(Assert.java:55)
-at junit.framework.Assert.assertTrue(Assert.java:22)
-at junit.framework.Assert.assertTrue(Assert.java:31)
-at com.verifone.tests.WebPortal.getTitlePage(WebPortal.java:122)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- junit.framework.AssertionFailedError -->
-          <reporter-output>
-            <line>
-              <![CDATA[Commerce gateway portal]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- getTitlePage -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.WebPortal@12e61fe6]" name="closePage" is-config="true" duration-ms="1195" started-at="2018-04-09T07:17:06Z" finished-at="2018-04-09T07:17:07Z">
+        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" duration-ms="7" started-at="2018-04-10T10:42:12Z" data-provider="LogInData" finished-at="2018-04-10T10:42:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=getTitlePage status=FAILURE method=WebPortal.getTitlePage()[pri:0, instance:com.verifone.tests.WebPortal@12e61fe6] output=Commerce gateway portal]]]>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ver123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="closePage" is-config="true" duration-ms="681" started-at="2018-04-10T10:42:12Z" finished-at="2018-04-10T10:42:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginTest status=SUCCESS method=LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
@@ -108,7 +85,139 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </line>
           </reporter-output>
         </test-method> <!-- closePage -->
-      </class> <!-- com.verifone.tests.WebPortal -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="startBrowser" is-config="true" duration-ms="4246" started-at="2018-04-10T10:42:13Z" finished-at="2018-04-10T10:42:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[DEV]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[http://dev.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[http://test.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[http://Staging1.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[http://TBD.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[FF]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" duration-ms="2" started-at="2018-04-10T10:42:17Z" data-provider="LogInData" finished-at="2018-04-10T10:42:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ver1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="closePage" is-config="true" duration-ms="401" started-at="2018-04-10T10:42:17Z" finished-at="2018-04-10T10:42:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginTest status=SUCCESS method=LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Closing Web Page]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="startBrowser" is-config="true" duration-ms="4171" started-at="2018-04-10T10:42:18Z" finished-at="2018-04-10T10:42:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[DEV]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[http://dev.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[http://test.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[http://Staging1.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[http://TBD.cgateway-portal.verifone.com/]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[FF]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" duration-ms="1" started-at="2018-04-10T10:42:22Z" data-provider="LogInData" finished-at="2018-04-10T10:42:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ver12345]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="closePage" is-config="true" duration-ms="384" started-at="2018-04-10T10:42:22Z" finished-at="2018-04-10T10:42:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginTest status=SUCCESS method=LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Closing Web Page]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+      </class> <!-- com.verifone.tests.LoginDataDriven -->
+    </test> <!-- Selenium Web Portal Automation Tests -->
+  </suite> <!-- Verifone -->
 </testng-results>
