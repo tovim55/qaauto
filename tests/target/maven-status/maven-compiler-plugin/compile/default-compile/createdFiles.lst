@@ -1,1 +1,3 @@
 com\verifone\tests\WebPortal.class
+com\verifone\utils\DataDrivenUtils.class
+com\verifone\tests\LoginDataDriven.class

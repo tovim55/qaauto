@@ -13,6 +13,7 @@ import java.util.Set;
 
 //import com.gargoylesoftware.htmlunit.javascript.host.URL;
 import com.google.common.collect.Lists;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.util.Collections;
@@ -162,5 +163,58 @@ public static void findTextInPage(WebDriver driver, String textToFind) throws Ex
 		getscreenshot(driver);
 	}
 } 
+
+
+
+/**
+ * This method set env portal
+ * @author Giora Tovim
+ * @param env
+ * @param urlDev
+ * @param urlTest
+ * @param urlStaging1
+ * @param urlProduction
+ * @param test - use for ExtentTest report
+ * @throws Exception
+ */
+public static void setEnv(String env,String urlDev, String urlTest,
+		String urlStaging1, String urlProduction, ExtentTest test) throws Exception 
+{
+System.out.println("The Automation tests runs on : " + env + " environment");
+	
+switch (env) {
+case "DEV":
+	System.out.println("Open urlDev");
+	driver.get(urlDev);
+	System.out.println("Open url" + urlDev + "ended successfully");
+	test.log(LogStatus.INFO, "Open " + urlDev + " in " + env + " environment");
+    break;
+
+case "TEST":
+	System.out.println("Open urlTest");
+	driver.get(urlTest);
+	System.out.println("Open url" + urlTest + "ended successfully");
+	test.log(LogStatus.INFO, "Open " + urlTest + " in " + env + " environment");
+    break;
+    
+case "STAGING1":
+	System.out.println("Open urlStaging1");
+	driver.get(urlStaging1);
+	System.out.println("Open url" + urlStaging1 + "ended successfully");
+	test.log(LogStatus.INFO, "Open " + urlStaging1 + " in " + env + " environment");
+    break;
+    
+case "PRODUCTION":
+	System.out.println("Open urlProduction");
+	driver.get(urlProduction);
+	System.out.println("Open url" + urlProduction + "ended successfully");
+	test.log(LogStatus.INFO, "Open " + urlProduction + " in " + env + " environment");
+    break;
+
+default:
+    System.out.println("env name is not exist!!!" );
+
+ }
+}
 
 }

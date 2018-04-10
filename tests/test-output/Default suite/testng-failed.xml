@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <parameter name="urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/>
-  <parameter name="urlDev" value="http://dev.cgateway-portal.verifone.com/"/>
-  <parameter name="urlTest" value="http://test.cgateway-portal.verifone.com/"/>
-  <parameter name="env" value="TEST"/>
-  <parameter name="urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>
-  <parameter name="browserType" value="FF"/>
   <test thread-count="5" name="Default test(failed)">
     <classes>
       <class name="com.verifone.tests.WebPortal">

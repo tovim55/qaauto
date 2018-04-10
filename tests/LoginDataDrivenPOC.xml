@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Verifone">
+   <test name = "Selenium Web Portal Automation Tests">
+   	
+   	  <!--
+      env values:
+      "DEV" - development environment
+      "TEST" - Test/QA environment
+      "STAGING1" - STAGING1 environment
+      "PRODUCTION" - PRODUCTION environment ( Please do not test on PRODUCTION)
+      -->
+   	  <parameter name = "env" value="DEV"/>
+   	  <!--
+      browserType values:
+      "CHROME" - Chrome
+      "FF" - FireFox
+      "EDGE" - EDGE
+      "IE" - Internet Explorer 
+      --> 	
+      <parameter name = "browserType" value="FF"/>  
+      <parameter name = "urlDev" value="http://dev.cgateway-portal.verifone.com/"/>
+      <parameter name = "urlTest" value="http://test.cgateway-portal.verifone.com/"/>
+      <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 
+      <parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>   
+      <classes>         
+         <class name = "com.verifone.tests.LoginDataDriven"/>
+      </classes>
+      
+   </test> 
+</suite>
