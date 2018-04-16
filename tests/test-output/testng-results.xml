@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="31" passed="31">
   <reporter-output>
-    <line>
-      <![CDATA[Closing Web Page]]>
-    </line>
-    <line>
-      <![CDATA[Closing Web Page]]>
-    </line>
-    <line>
-      <![CDATA[Closing Web Page]]>
-    </line>
   </reporter-output>
-  <suite name="Verifone" duration-ms="15750" started-at="2018-04-10T10:42:07Z" finished-at="2018-04-10T10:42:22Z">
+  <suite name="Verifone" duration-ms="676277" started-at="2018-04-16T11:15:55Z" finished-at="2018-04-16T11:27:12Z">
     <groups>
       <group name="cgateway-portal">
-        <method signature="LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" class="com.verifone.tests.LoginDataDriven"/>
+        <method signature="Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" class="com.verifone.tests.Columns"/>
       </group> <!-- cgateway-portal -->
     </groups>
-    <test name="Selenium Web Portal Automation Tests" duration-ms="15750" started-at="2018-04-10T10:42:07Z" finished-at="2018-04-10T10:42:22Z">
-      <class name="com.verifone.tests.LoginDataDriven">
-        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="startBrowser" is-config="true" duration-ms="5691" started-at="2018-04-10T10:42:07Z" finished-at="2018-04-10T10:42:12Z">
+    <test name="com.verifone.tests.columns" duration-ms="676277" started-at="2018-04-16T11:15:55Z" finished-at="2018-04-16T11:27:12Z">
+      <class name="com.verifone.tests.Columns">
+        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="startBrowser" is-config="true" duration-ms="22346" started-at="2018-04-16T11:15:55Z" finished-at="2018-04-16T11:16:18Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[DEV]]>
+                <![CDATA[TEST]]>
               </value>
             </param>
             <param index="1">
@@ -48,176 +39,4967 @@
             </param>
             <param index="5">
               <value>
-                <![CDATA[FF]]>
+                <![CDATA[CHROME]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" duration-ms="7" started-at="2018-04-10T10:42:12Z" data-provider="LogInData" finished-at="2018-04-10T10:42:12Z">
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="16180" started-at="2018-04-16T11:16:18Z" data-provider="columns" finished-at="2018-04-16T11:16:34Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[admin]]>
+                <![CDATA[no]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[ver123]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="closePage" is-config="true" duration-ms="681" started-at="2018-04-10T10:42:12Z" finished-at="2018-04-10T10:42:13Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=loginTest status=SUCCESS method=LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Closing Web Page]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="startBrowser" is-config="true" duration-ms="4246" started-at="2018-04-10T10:42:13Z" finished-at="2018-04-10T10:42:17Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[DEV]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[http://dev.cgateway-portal.verifone.com/]]>
+                <![CDATA[signPackage]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[http://test.cgateway-portal.verifone.com/]]>
+                <![CDATA[Applications]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[http://Staging1.cgateway-portal.verifone.com/]]>
+                <![CDATA[columnsKendo]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[http://TBD.cgateway-portal.verifone.com/]]>
+                <![CDATA[dialogapplications]]>
               </value>
             </param>
             <param index="5">
               <value>
-                <![CDATA[FF]]>
+                <![CDATA[resetColumnsapplications]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[12]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Application ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Name]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Status]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Throttling Access]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Throttling Max Request Count]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Deleted]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[_Created Time]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[_Created By]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[Updated By]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" duration-ms="2" started-at="2018-04-10T10:42:17Z" data-provider="LogInData" finished-at="2018-04-10T10:42:17Z">
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="281" started-at="2018-04-16T11:16:34Z" finished-at="2018-04-16T11:16:34Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[admin1]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[ver1234]]>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="closePage" is-config="true" duration-ms="401" started-at="2018-04-10T10:42:17Z" finished-at="2018-04-10T10:42:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=loginTest status=SUCCESS method=LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Closing Web Page]]>
-            </line>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="startBrowser" is-config="true" duration-ms="4171" started-at="2018-04-10T10:42:18Z" finished-at="2018-04-10T10:42:22Z">
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="15380" started-at="2018-04-16T11:16:34Z" data-provider="columns" finished-at="2018-04-16T11:16:50Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[DEV]]>
+                <![CDATA[no]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[http://dev.cgateway-portal.verifone.com/]]>
+                <![CDATA[signPackage]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[http://test.cgateway-portal.verifone.com/]]>
+                <![CDATA[BlackListFilters]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[http://Staging1.cgateway-portal.verifone.com/]]>
+                <![CDATA[columnsKendo]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[http://TBD.cgateway-portal.verifone.com/]]>
+                <![CDATA[dialogfilters]]>
               </value>
             </param>
             <param index="5">
               <value>
-                <![CDATA[FF]]>
+                <![CDATA[resetColumnsfilters]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_Filter ID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Type]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Created Time]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Created By]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="loginTest" duration-ms="1" started-at="2018-04-10T10:42:22Z" data-provider="LogInData" finished-at="2018-04-10T10:42:22Z">
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="70" started-at="2018-04-16T11:16:50Z" finished-at="2018-04-16T11:16:50Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[admin2]]>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="16225" started-at="2018-04-16T11:16:50Z" data-provider="columns" finished-at="2018-04-16T11:17:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[no]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[ver12345]]>
+                <![CDATA[signPackage]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Activations]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogApplicationActivation]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsApplicationActivation]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[11]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_ID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Application ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Type]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Status]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[_Created Time]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[_Created By]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[Updated By]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[Note]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091]" name="closePage" is-config="true" duration-ms="384" started-at="2018-04-10T10:42:22Z" finished-at="2018-04-10T10:42:22Z">
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="63" started-at="2018-04-16T11:17:06Z" finished-at="2018-04-16T11:17:06Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=loginTest status=SUCCESS method=LoginDataDriven.loginTest(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.LoginDataDriven@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
-            <line>
-              <![CDATA[Closing Web Page]]>
-            </line>
           </reporter-output>
         </test-method> <!-- closePage -->
-      </class> <!-- com.verifone.tests.LoginDataDriven -->
-    </test> <!-- Selenium Web Portal Automation Tests -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="22103" started-at="2018-04-16T11:17:06Z" data-provider="columns" finished-at="2018-04-16T11:17:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Package and Sign]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[audit]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogaudit]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsaudit]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[9]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_Guid]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Archive]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[App ID]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Sponsors]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Status]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Correlation ID]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Created By]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[Created Time]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="37" started-at="2018-04-16T11:17:28Z" finished-at="2018-04-16T11:17:28Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="22136" started-at="2018-04-16T11:17:28Z" data-provider="columns" finished-at="2018-04-16T11:17:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[System configuration]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[systemParameters]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogsystemParameters]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnssystemParameters]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_ID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Name]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Shared]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Created Time]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Created By]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Updated By]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="65" started-at="2018-04-16T11:17:50Z" finished-at="2018-04-16T11:17:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21604" started-at="2018-04-16T11:17:50Z" data-provider="columns" finished-at="2018-04-16T11:18:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[System configuration]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[systemdbVersion]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogdbversionHistory]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsdbversionHistory]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Script Name]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Created Time]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="64" started-at="2018-04-16T11:18:12Z" finished-at="2018-04-16T11:18:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21806" started-at="2018-04-16T11:18:12Z" data-provider="columns" finished-at="2018-04-16T11:18:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[System configuration]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[allowedProcessingScenarios]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogallowedProcessingScenarios]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsallowedProcessingScenarios]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Type]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Name]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Scenario]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Updated By]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Created By]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Created Time]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="30" started-at="2018-04-16T11:18:34Z" finished-at="2018-04-16T11:18:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21774" started-at="2018-04-16T11:18:34Z" data-provider="columns" finished-at="2018-04-16T11:18:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[System configuration]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[oauthConfigs]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogoauthConfigs]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsoauthConfigs]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[9]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_ID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Application ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Consumer Key]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[File Name]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[_Created Time]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[_Created By]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[Updated By]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="42" started-at="2018-04-16T11:18:56Z" finished-at="2018-04-16T11:18:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="22952" started-at="2018-04-16T11:18:56Z" data-provider="columns" finished-at="2018-04-16T11:19:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[System configuration]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[encryptionConfig]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogencryptionConfig]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsencryptionConfig]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[21]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_ID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Application ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Encryption Type]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Encryption Algorithm]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[_Encryption Mode]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[_IV]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[_IV Format]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[_RSA Wrap]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[Encryption Key Alias]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[_Encryption Padding]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[_Pan Format]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[_Key Format]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[_Wrap Encryption Algorithm]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[_Provider Name]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[_Format String]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[_Decryption Key Alias]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[_Created Time]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[_Created By]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[Updated By]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="55" started-at="2018-04-16T11:19:19Z" finished-at="2018-04-16T11:19:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21669" started-at="2018-04-16T11:19:19Z" data-provider="columns" finished-at="2018-04-16T11:19:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[System configuration]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[logConfigurations]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialoglogConfigurations]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnslogConfigurations]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Application ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Version]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Type]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Severity Level]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Created Time]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Updated Time]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="39" started-at="2018-04-16T11:19:40Z" finished-at="2018-04-16T11:19:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21164" started-at="2018-04-16T11:19:40Z" data-provider="columns" finished-at="2018-04-16T11:20:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Translation]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogtranslations]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnstranslations]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="29" started-at="2018-04-16T11:20:01Z" finished-at="2018-04-16T11:20:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21300" started-at="2018-04-16T11:20:01Z" data-provider="columns" finished-at="2018-04-16T11:20:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[protocol]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogprotocol]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsprotocol]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="52" started-at="2018-04-16T11:20:23Z" finished-at="2018-04-16T11:20:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21142" started-at="2018-04-16T11:20:23Z" data-provider="columns" finished-at="2018-04-16T11:20:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[responseCodes]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogresponseCodes]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsresponseCodes]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="27" started-at="2018-04-16T11:20:44Z" finished-at="2018-04-16T11:20:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21237" started-at="2018-04-16T11:20:44Z" data-provider="columns" finished-at="2018-04-16T11:21:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[status]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogstatus]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsstatus]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="47" started-at="2018-04-16T11:21:05Z" finished-at="2018-04-16T11:21:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21063" started-at="2018-04-16T11:21:05Z" data-provider="columns" finished-at="2018-04-16T11:21:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[activationStatus]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogactivationStatus]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsactivationStatus]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="32" started-at="2018-04-16T11:21:26Z" finished-at="2018-04-16T11:21:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21139" started-at="2018-04-16T11:21:26Z" data-provider="columns" finished-at="2018-04-16T11:21:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[filterType]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogfilterType]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsfilterType]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="35" started-at="2018-04-16T11:21:48Z" finished-at="2018-04-16T11:21:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21447" started-at="2018-04-16T11:21:48Z" data-provider="columns" finished-at="2018-04-16T11:22:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[throttlingAccess]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogthrottlingAccess]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsthrottlingAccess]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="27" started-at="2018-04-16T11:22:09Z" finished-at="2018-04-16T11:22:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21876" started-at="2018-04-16T11:22:09Z" data-provider="columns" finished-at="2018-04-16T11:22:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[languages]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialoglanguages]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnslanguages]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Direction]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="32" started-at="2018-04-16T11:22:31Z" finished-at="2018-04-16T11:22:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21432" started-at="2018-04-16T11:22:31Z" data-provider="columns" finished-at="2018-04-16T11:22:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[processingCodes]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogprocessingCodes]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsprocessingCodes]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="51" started-at="2018-04-16T11:22:52Z" finished-at="2018-04-16T11:22:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21583" started-at="2018-04-16T11:22:52Z" data-provider="columns" finished-at="2018-04-16T11:23:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[processingTypes]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogprocessingTypes]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsprocessingTypes]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="23" started-at="2018-04-16T11:23:14Z" finished-at="2018-04-16T11:23:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21707" started-at="2018-04-16T11:23:14Z" data-provider="columns" finished-at="2018-04-16T11:23:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[syslogSeverityLevel]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogsyslogSeverityLevel]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnssyslogSeverityLevel]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="21" started-at="2018-04-16T11:23:36Z" finished-at="2018-04-16T11:23:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21267" started-at="2018-04-16T11:23:36Z" data-provider="columns" finished-at="2018-04-16T11:23:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[basicValues]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogbasicValues]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsbasicValues]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="52" started-at="2018-04-16T11:23:57Z" finished-at="2018-04-16T11:23:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21299" started-at="2018-04-16T11:23:57Z" data-provider="columns" finished-at="2018-04-16T11:24:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[alertComparators]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogalertComparators]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsalertComparators]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="26" started-at="2018-04-16T11:24:18Z" finished-at="2018-04-16T11:24:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21666" started-at="2018-04-16T11:24:18Z" data-provider="columns" finished-at="2018-04-16T11:24:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[os]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogos]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsos]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="50" started-at="2018-04-16T11:24:40Z" finished-at="2018-04-16T11:24:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21233" started-at="2018-04-16T11:24:40Z" data-provider="columns" finished-at="2018-04-16T11:25:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[cryptoScenarios]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogcryptoScenarios]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnscryptoScenarios]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="31" started-at="2018-04-16T11:25:01Z" finished-at="2018-04-16T11:25:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21230" started-at="2018-04-16T11:25:01Z" data-provider="columns" finished-at="2018-04-16T11:25:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[encryptionTypes]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogencryptionTypes]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsencryptionTypes]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="26" started-at="2018-04-16T11:25:23Z" finished-at="2018-04-16T11:25:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21283" started-at="2018-04-16T11:25:23Z" data-provider="columns" finished-at="2018-04-16T11:25:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[encryptionAlgorithms]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogencryptionAlgorithms]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsencryptionAlgorithms]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="22" started-at="2018-04-16T11:25:44Z" finished-at="2018-04-16T11:25:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21104" started-at="2018-04-16T11:25:44Z" data-provider="columns" finished-at="2018-04-16T11:26:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[encryptionModes]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogencryptionModes]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsencryptionModes]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="20" started-at="2018-04-16T11:26:05Z" finished-at="2018-04-16T11:26:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21545" started-at="2018-04-16T11:26:05Z" data-provider="columns" finished-at="2018-04-16T11:26:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[encryptionPaddings]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogencryptionPaddings]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsencryptionPaddings]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="22" started-at="2018-04-16T11:26:27Z" finished-at="2018-04-16T11:26:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21460" started-at="2018-04-16T11:26:27Z" data-provider="columns" finished-at="2018-04-16T11:26:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[stringEncodings]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogstringEncodings]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnsstringEncodings]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="33" started-at="2018-04-16T11:26:48Z" finished-at="2018-04-16T11:26:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="columns" duration-ms="21670" started-at="2018-04-16T11:26:48Z" data-provider="columns" finished-at="2018-04-16T11:27:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[yes]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Code Tables]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[wrapEncryptionAlgorithms]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[columnsKendo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[dialogwrapEncryptionAlgorithms]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[resetColumnswrapEncryptionAlgorithms]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[_GUID]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Code ID]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Language Code]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[Value]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- columns -->
+        <test-method status="FAIL" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage" is-config="true" duration-ms="1769" started-at="2018-04-16T11:27:10Z" finished-at="2018-04-16T11:27:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.Columns@4313f5bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.NoSuchSessionException">
+            <message>
+              <![CDATA[Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TLVYANAF1LT', ip: '10.160.12.241', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_162'
+Driver info: driver.version: RemoteWebDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TLVYANAF1LT', ip: '10.160.12.241', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_162'
+Driver info: driver.version: RemoteWebDriver
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:131)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:694)
+at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:523)
+at com.verifone.tests.Columns.closePage(Columns.java:350)
+at sun.reflect.GeneratedMethodAccessor28.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="FAIL" signature="closePage1(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.Columns@4313f5bc]" name="closePage1" is-config="true" duration-ms="0" started-at="2018-04-16T11:27:12Z" finished-at="2018-04-16T11:27:12Z">
+          <exception class="org.testng.TestNGException">
+            <message>
+              <![CDATA[
+Can inject only one of <ITestContext, XmlTest> into a @AfterTest annotated closePage1.
+For more information on native dependency injection please refer to http://testng.org/doc/documentation-main.html#native-dependency-injection]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.TestNGException: 
+Can inject only one of <ITestContext, XmlTest> into a @AfterTest annotated closePage1.
+For more information on native dependency injection please refer to http://testng.org/doc/documentation-main.html#native-dependency-injection
+at org.testng.internal.Parameters.checkParameterTypes(Parameters.java:407)
+at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:356)
+at org.testng.internal.Parameters.createParameters(Parameters.java:635)
+at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+at org.testng.TestRunner.afterRun(TestRunner.java:725)
+at org.testng.TestRunner.run(TestRunner.java:509)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.TestNGException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage1 -->
+      </class> <!-- com.verifone.tests.Columns -->
+    </test> <!-- com.verifone.tests.columns -->
   </suite> <!-- Verifone -->
 </testng-results>

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name = "Verifone">
-   <test name = "Selenium Web Portal Automation Tests">
+   <test name = "com.verifone.tests.columns">
    	
    	  <!--
       env values:
@@ -11,7 +11,7 @@
       "STAGING1" - STAGING1 environment
       "PRODUCTION" - PRODUCTION environment ( Please do not test on PRODUCTION)
       -->
-   	  <parameter name = "env" value="DEV"/>
+   	  <parameter name = "env" value="TEST"/>
    	  <!--
       browserType values:
       "CHROME" - Chrome
@@ -25,8 +25,11 @@
       <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 
       <parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>   
       <classes>
-         <class name = "com.verifone.tests.WebPortal"/>
-         <class name = "com.verifone.tests.LoginDataDriven"/>
+         <class name = "com.verifone.tests.Columns">
+         	<methods>
+         		<include name="columns" />	
+         	</methods>
+         </class>
       </classes>
       
    </test> 

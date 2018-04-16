@@ -17,8 +17,12 @@ public class DataDrivenUtils {
     private static HSSFWorkbook ExcelWBook;
     private static HSSFCell Cell;
     
-    // This method is to set the File path and to open the Excel file, Pass
-    // Excel Path and Sheet name as Arguments to this method
+ 	/**
+ 	 * This method implements Data Driven mechanism
+ 	 * @author Fred Shniper 
+ 	 * @param FulePath
+ 	 * @return SheetName
+ 	 */
      public static Object[][] getExcelData(String FilePath, String SheetName) throws Exception {
         String[][] tabArray = null;
 
@@ -61,5 +65,26 @@ public class DataDrivenUtils {
         }
         return tabArray;
     }
-     
-}
+
+ 	/**
+ 	 * This method return number of rows in csv file
+ 	 * @author Giora Tovim 
+ 	 * @param FulePath
+ 	 * @return SheetName
+ 	 */
+     public static int getRowNumberExcelData(String FilePath, String SheetName) throws Exception {
+         String[][] tabArray = null;
+         Integer totalNoOfRow = 0;
+         
+             // Access the required test data sheet
+             FileInputStream ExcelFile = new FileInputStream(FilePath);
+             ExcelWBook = new HSSFWorkbook(ExcelFile);
+             ExcelWSheet = ExcelWBook.getSheet(SheetName);
+
+             int totalNoOfCols = ExcelWSheet.getRow(0).getLastCellNum(); 
+             int totalNoOfRows = ExcelWSheet.getLastRowNum();
+             System.out.println("Number of Rows is: " + totalNoOfRows);   
+
+     return totalNoOfRows;   
+}  		
+}     
