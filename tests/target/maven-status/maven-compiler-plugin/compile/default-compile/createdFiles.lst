@@ -1,4 +1,12 @@
-com\verifone\tests\Columns.class
-com\verifone\tests\LoginDataDriven.class
-com\verifone\tests\WebPortal.class
+com\verifone\utils\ModifyXMLFile.class
+com\verifone\utils\Applications\ApplicationsPage.class
+com\verifone\utils\Applications\ErrorMsgs.class
 com\verifone\utils\DataDrivenUtils.class
+com\verifone\tests\Columns.class
+com\verifone\tests\ExtentReportsClass.class
+com\verifone\tests\LoginDataDriven.class
+com\verifone\utils\General\LoginCGPortal.class
+com\verifone\utils\testXML.class
+com\verifone\utils\VerifyXMLFile.class
+com\verifone\tests\testAppl.class
+com\verifone\tests\WebPortal.class
