@@ -74,8 +74,6 @@ public class LoginDataDriven{
 	}
 	
 
-	
-	
 	//DataProvider for login
     @DataProvider(name = "LogInData")
     public Object[][] dataSupplierLoginData() throws Exception {

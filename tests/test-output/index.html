@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Verifone">
-              <span class="suite-name border-passed">Verifone</span>
+              <span class="suite-name border-failed">Verifone</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Verifone">
-                    <span>C:\tmp\eclipse-workspace-testng-maven\eclipse-workspace-testng-maven\tests\columns.xml</span>
+                    <span>C:\tmp\eclipse-workspace-testng-maven\eclipse-workspace-testng-maven\tests\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">31 methods,   31 passed</span>
+                    <span class="method-stats">22 methods, 1 failed,   21 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Verifone" class="hide-methods failed suite-Verifone"> (hide)</a> <!-- hide-methods failed suite-Verifone -->
+                      <a href="#" panel-name="suite-Verifone" class="show-methods failed suite-Verifone"> (show)</a> <!-- show-methods failed suite-Verifone -->
+                    </span>
+                    <div class="method-list-content failed suite-Verifone">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest18, 1.1 , seleniumTest18, Active, 99, 1500, .transition, Field is Required)">testAppl(seleniumTest18, 1.1 , seleniumTest18, Active, 99, 1500, .transition, Field is Required)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Verifone -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,157 +116,107 @@
                     <div class="method-list-content passed suite-Verifone">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(no, signPackage, BlackListFilters, columnsKendo, dialogfilters, resetColumnsfilters, 5, _Filter ID, ...)">columns(no, signPackage, BlackListFilters, columnsKendo, dialogfilters, resetColumnsfilters, 5, _Filter ID, ...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest9, 1.1 , seleniumTest9Longmorethan100characters12345678901234567890123456789012345678901...)">testAppl(seleniumTest9, 1.1 , seleniumTest9Longmorethan100characters12345678901234567890123456789012345678901...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(no, signPackage, Activations, columnsKendo, dialogApplicationActivation, resetColumnsApplicationActi...)">columns(no, signPackage, Activations, columnsKendo, dialogApplicationActivation, resetColumnsApplicationActi...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest4, invalidVersion, seleniumTestName4, Active, Control, 1500, .transition, The value is n...)">testAppl(seleniumTest4, invalidVersion, seleniumTestName4, Active, Control, 1500, .transition, The value is n...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, cryptoScenarios, columnsKendo, dialogcryptoScenarios, resetColumnscryptoScenarios,...)">columns(yes, Code Tables, cryptoScenarios, columnsKendo, dialogcryptoScenarios, resetColumnscryptoScenarios,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest11, 1.1 , seleniumTest11, WrongStatus, Control, 1500, .transition, Value not exists)">testAppl(seleniumTest11, 1.1 , seleniumTest11, WrongStatus, Control, 1500, .transition, Value not exists)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(no, signPackage, Applications, columnsKendo, dialogapplications, resetColumnsapplications, 12, _GUID...)">columns(no, signPackage, Applications, columnsKendo, dialogapplications, resetColumnsapplications, 12, _GUID...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest16, 1.1 , seleniumTest16, Active, Control, String, .transition, throttlingMaxRequestCoun...)">testAppl(seleniumTest16, 1.1 , seleniumTest16, Active, Control, String, .transition, throttlingMaxRequestCoun...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, processingTypes, columnsKendo, dialogprocessingTypes, resetColumnsprocessingTypes,...)">columns(yes, Code Tables, processingTypes, columnsKendo, dialogprocessingTypes, resetColumnsprocessingTypes,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest14, 1.1 , seleniumTest14, Active, Allow, 99, .toast-message, Succeeded.)">testAppl(seleniumTest14, 1.1 , seleniumTest14, Active, Allow, 99, .toast-message, Succeeded.)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, System configuration, systemParameters, columnsKendo, dialogsystemParameters, resetColumnssyste...)">columns(yes, System configuration, systemParameters, columnsKendo, dialogsystemParameters, resetColumnssyste...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest15, 1.1 , seleniumTest15, Active, Deny, 99, .toast-message, Succeeded.)">testAppl(seleniumTest15, 1.1 , seleniumTest15, Active, Deny, 99, .toast-message, Succeeded.)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, encryptionTypes, columnsKendo, dialogencryptionTypes, resetColumnsencryptionTypes,...)">columns(yes, Code Tables, encryptionTypes, columnsKendo, dialogencryptionTypes, resetColumnsencryptionTypes,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest1, 99, seleniumTestName1, Active, Control, 1500, .transition, Field is Required)">testAppl(seleniumTest1, 99, seleniumTestName1, Active, Control, 1500, .transition, Field is Required)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, throttlingAccess, columnsKendo, dialogthrottlingAccess, resetColumnsthrottlingAcce...)">columns(yes, Code Tables, throttlingAccess, columnsKendo, dialogthrottlingAccess, resetColumnsthrottlingAcce...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest12, 1.1 , seleniumTest12, Active, Control, 1501, .transition, The value must be in the r...)">testAppl(seleniumTest12, 1.1 , seleniumTest12, Active, Control, 1501, .transition, The value must be in the r...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, encryptionAlgorithms, columnsKendo, dialogencryptionAlgorithms, resetColumnsencryp...)">columns(yes, Code Tables, encryptionAlgorithms, columnsKendo, dialogencryptionAlgorithms, resetColumnsencryp...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest7,  , seleniumTestName7, Active, Control, 1500, .transition, Field is Required)">testAppl(seleniumTest7,  , seleniumTestName7, Active, Control, 1500, .transition, Field is Required)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, System configuration, systemdbVersion, columnsKendo, dialogdbversionHistory, resetColumnsdbvers...)">columns(yes, System configuration, systemdbVersion, columnsKendo, dialogdbversionHistory, resetColumnsdbvers...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest17, 1.1 , seleniumTest17, Active, Control, 0, .transition, throttlingMaxRequestCount mus...)">testAppl(seleniumTest17, 1.1 , seleniumTest17, Active, Control, 0, .transition, throttlingMaxRequestCount mus...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, languages, columnsKendo, dialoglanguages, resetColumnslanguages, 4, _GUID, Languag...)">columns(yes, Code Tables, languages, columnsKendo, dialoglanguages, resetColumnslanguages, 4, _GUID, Languag...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest23, 1.1 , 99, Active, Control, 111, .toast-message, Succeeded.)">testAppl(seleniumTest23, 1.1 , 99, Active, Control, 111, .toast-message, Succeeded.)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, basicValues, columnsKendo, dialogbasicValues, resetColumnsbasicValues, 4, _GUID, C...)">columns(yes, Code Tables, basicValues, columnsKendo, dialogbasicValues, resetColumnsbasicValues, 4, _GUID, C...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(99, 1.1 , seleniumTestName2, Active, Control, 1500, .transition, Field is Required)">testAppl(99, 1.1 , seleniumTestName2, Active, Control, 1500, .transition, Field is Required)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, encryptionModes, columnsKendo, dialogencryptionModes, resetColumnsencryptionModes,...)">columns(yes, Code Tables, encryptionModes, columnsKendo, dialogencryptionModes, resetColumnsencryptionModes,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest5Longmorethan60characters123456789012345678901234, 1.1 , seleniumTestName5, Active, Cont...)">testAppl(seleniumTest5Longmorethan60characters123456789012345678901234, 1.1 , seleniumTestName5, Active, Cont...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, alertComparators, columnsKendo, dialogalertComparators, resetColumnsalertComparato...)">columns(yes, Code Tables, alertComparators, columnsKendo, dialogalertComparators, resetColumnsalertComparato...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest19, 1.1 , seleniumTest19, Active, WrongStatus, 1500, .transition, Value not exists)">testAppl(seleniumTest19, 1.1 , seleniumTest19, Active, WrongStatus, 1500, .transition, Value not exists)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Package and Sign, audit, columnsKendo, dialogaudit, resetColumnsaudit, 9, _Guid, Archive, App I...)">columns(yes, Package and Sign, audit, columnsKendo, dialogaudit, resetColumnsaudit, 9, _Guid, Archive, App I...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest23, 1.1 , 99, Active, Control, 2, .toast-message, Succeeded.)">testAppl(seleniumTest23, 1.1 , 99, Active, Control, 2, .toast-message, Succeeded.)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, encryptionPaddings, columnsKendo, dialogencryptionPaddings, resetColumnsencryption...)">columns(yes, Code Tables, encryptionPaddings, columnsKendo, dialogencryptionPaddings, resetColumnsencryption...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest10, 1.1 , seleniumTest10, 99, Control, 1500, .transition, Field is Required)">testAppl(seleniumTest10, 1.1 , seleniumTest10, 99, Control, 1500, .transition, Field is Required)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, wrapEncryptionAlgorithms, columnsKendo, dialogwrapEncryptionAlgorithms, resetColum...)">columns(yes, Code Tables, wrapEncryptionAlgorithms, columnsKendo, dialogwrapEncryptionAlgorithms, resetColum...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest20Longis60characters1234567890123456789012345678, 1.1 , seleniumTest20Longis100character...)">testAppl(seleniumTest20Longis60characters1234567890123456789012345678, 1.1 , seleniumTest20Longis100character...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, System configuration, encryptionConfig, columnsKendo, dialogencryptionConfig, resetColumnsencry...)">columns(yes, System configuration, encryptionConfig, columnsKendo, dialogencryptionConfig, resetColumnsencry...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl( , 1.1 , seleniumTestName6, Active, Control, 1500, .transition, Field is Required)">testAppl( , 1.1 , seleniumTestName6, Active, Control, 1500, .transition, Field is Required)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, responseCodes, columnsKendo, dialogresponseCodes, resetColumnsresponseCodes, 4, _G...)">columns(yes, Code Tables, responseCodes, columnsKendo, dialogresponseCodes, resetColumnsresponseCodes, 4, _G...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest21, 1.1 , seleniumTestName21, Disabled, Control, 1500, .toast-message, Succeeded.)">testAppl(seleniumTest21, 1.1 , seleniumTestName21, Disabled, Control, 1500, .toast-message, Succeeded.)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, syslogSeverityLevel, columnsKendo, dialogsyslogSeverityLevel, resetColumnssyslogSe...)">columns(yes, Code Tables, syslogSeverityLevel, columnsKendo, dialogsyslogSeverityLevel, resetColumnssyslogSe...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest22, 1.1 , 99, Active, Control, 1500, .toast-message, Succeeded.)">testAppl(seleniumTest22, 1.1 , 99, Active, Control, 1500, .toast-message, Succeeded.)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, status, columnsKendo, dialogstatus, resetColumnsstatus, 4, _GUID, Code ID, Languag...)">columns(yes, Code Tables, status, columnsKendo, dialogstatus, resetColumnsstatus, 4, _GUID, Code ID, Languag...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, filterType, columnsKendo, dialogfilterType, resetColumnsfilterType, 4, _GUID, Code...)">columns(yes, Code Tables, filterType, columnsKendo, dialogfilterType, resetColumnsfilterType, 4, _GUID, Code...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, protocol, columnsKendo, dialogprotocol, resetColumnsprotocol, 4, _GUID, Code ID, L...)">columns(yes, Code Tables, protocol, columnsKendo, dialogprotocol, resetColumnsprotocol, 4, _GUID, Code ID, L...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, System configuration, logConfigurations, columnsKendo, dialoglogConfigurations, resetColumnslog...)">columns(yes, System configuration, logConfigurations, columnsKendo, dialoglogConfigurations, resetColumnslog...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, activationStatus, columnsKendo, dialogactivationStatus, resetColumnsactivationStat...)">columns(yes, Code Tables, activationStatus, columnsKendo, dialogactivationStatus, resetColumnsactivationStat...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, processingCodes, columnsKendo, dialogprocessingCodes, resetColumnsprocessingCodes,...)">columns(yes, Code Tables, processingCodes, columnsKendo, dialogprocessingCodes, resetColumnsprocessingCodes,...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, System configuration, allowedProcessingScenarios, columnsKendo, dialogallowedProcessingScenario...)">columns(yes, System configuration, allowedProcessingScenarios, columnsKendo, dialogallowedProcessingScenario...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, System configuration, oauthConfigs, columnsKendo, dialogoauthConfigs, resetColumnsoauthConfigs,...)">columns(yes, System configuration, oauthConfigs, columnsKendo, dialogoauthConfigs, resetColumnsoauthConfigs,...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, os, columnsKendo, dialogos, resetColumnsos, 4, _GUID, Code ID, Language Code, Valu...)">columns(yes, Code Tables, os, columnsKendo, dialogos, resetColumnsos, 4, _GUID, Code ID, Language Code, Valu...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, Translation, columnsKendo, dialogtranslations, resetColumnstranslations, 4, _GUID,...)">columns(yes, Code Tables, Translation, columnsKendo, dialogtranslations, resetColumnstranslations, 4, _GUID,...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.Columns" hash-for-method="columns(yes, Code Tables, stringEncodings, columnsKendo, dialogstringEncodings, resetColumnsstringEncodings,...)">columns(yes, Code Tables, stringEncodings, columnsKendo, dialogstringEncodings, resetColumnsstringEncodings,...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.testAppl" hash-for-method="testAppl(seleniumTest13, 1.1 , seleniumTest13, Active, Control, 99, .transition, Field is Required)">testAppl(seleniumTest13, 1.1 , seleniumTest13, Active, Control, 99, .transition, Field is Required)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Verifone -->
@@ -267,258 +231,199 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Verifone" class="panel Verifone">
-          <div class="suite-Verifone-class-passed">
+          <div class="suite-Verifone-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.verifone.tests.Columns</span>
+              <img src="failed.png"/>
+              <span class="class-name">com.verifone.tests.testAppl</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(no, signPackage, BlackListFilters, columnsKendo, dialogfilters, resetColumnsfilters, 5, _Filter ID, ...)">
-                  </a> <!-- columns(no, signPackage, BlackListFilters, columnsKendo, dialogfilters, resetColumnsfilters, 5, _Filter ID, ...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(no, signPackage, BlackListFilters, columnsKendo, dialogfilters, resetColumnsfilters, 5, _Filter ID, Type, Value, Created Time, Created By, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest18, 1.1 , seleniumTest18, Active, 99, 1500, .transition, Field is Required)">
+                  </a> <!-- testAppl(seleniumTest18, 1.1 , seleniumTest18, Active, 99, 1500, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest18, 1.1 , seleniumTest18, Active, 99, 1500, .transition, Field is Required)</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [Field is Required] but found [Error message not found!]
+	at com.verifone.tests.testAppl.testAppl(testAppl.java:283)
+... Removed 31 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Verifone-class-failed -->
+          <div class="suite-Verifone-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.verifone.tests.testAppl</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testAppl(seleniumTest9, 1.1 , seleniumTest9Longmorethan100characters12345678901234567890123456789012345678901...)">
+                  </a> <!-- testAppl(seleniumTest9, 1.1 , seleniumTest9Longmorethan100characters12345678901234567890123456789012345678901...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest9, 1.1 , seleniumTest9Longmorethan100characters123456789012345678901234567890123456789012345678901234567890123, Active, Control, 1500, .transition, name should contain no more than 100 characters)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(no, signPackage, Activations, columnsKendo, dialogApplicationActivation, resetColumnsApplicationActi...)">
-                  </a> <!-- columns(no, signPackage, Activations, columnsKendo, dialogApplicationActivation, resetColumnsApplicationActi...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(no, signPackage, Activations, columnsKendo, dialogApplicationActivation, resetColumnsApplicationActivation, 11, _ID, Application ID, Version, Type, Value, Status, _Created Time, _Created By, Updated Time, Updated By, Note, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest4, invalidVersion, seleniumTestName4, Active, Control, 1500, .transition, The value is n...)">
+                  </a> <!-- testAppl(seleniumTest4, invalidVersion, seleniumTestName4, Active, Control, 1500, .transition, The value is n...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest4, invalidVersion, seleniumTestName4, Active, Control, 1500, .transition, The value is not valid)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, cryptoScenarios, columnsKendo, dialogcryptoScenarios, resetColumnscryptoScenarios,...)">
-                  </a> <!-- columns(yes, Code Tables, cryptoScenarios, columnsKendo, dialogcryptoScenarios, resetColumnscryptoScenarios,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, cryptoScenarios, columnsKendo, dialogcryptoScenarios, resetColumnscryptoScenarios, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest11, 1.1 , seleniumTest11, WrongStatus, Control, 1500, .transition, Value not exists)">
+                  </a> <!-- testAppl(seleniumTest11, 1.1 , seleniumTest11, WrongStatus, Control, 1500, .transition, Value not exists) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest11, 1.1 , seleniumTest11, WrongStatus, Control, 1500, .transition, Value not exists)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(no, signPackage, Applications, columnsKendo, dialogapplications, resetColumnsapplications, 12, _GUID...)">
-                  </a> <!-- columns(no, signPackage, Applications, columnsKendo, dialogapplications, resetColumnsapplications, 12, _GUID...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(no, signPackage, Applications, columnsKendo, dialogapplications, resetColumnsapplications, 12, _GUID, Application ID, Name, Version, Status, Throttling Access, Throttling Max Request Count, Deleted, _Created Time, _Created By, Updated Time, Updated By, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest16, 1.1 , seleniumTest16, Active, Control, String, .transition, throttlingMaxRequestCoun...)">
+                  </a> <!-- testAppl(seleniumTest16, 1.1 , seleniumTest16, Active, Control, String, .transition, throttlingMaxRequestCoun...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest16, 1.1 , seleniumTest16, Active, Control, String, .transition, throttlingMaxRequestCount must be greater than 0
+The value must be in the range 1 - 1500)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, processingTypes, columnsKendo, dialogprocessingTypes, resetColumnsprocessingTypes,...)">
-                  </a> <!-- columns(yes, Code Tables, processingTypes, columnsKendo, dialogprocessingTypes, resetColumnsprocessingTypes,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, processingTypes, columnsKendo, dialogprocessingTypes, resetColumnsprocessingTypes, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest14, 1.1 , seleniumTest14, Active, Allow, 99, .toast-message, Succeeded.)">
+                  </a> <!-- testAppl(seleniumTest14, 1.1 , seleniumTest14, Active, Allow, 99, .toast-message, Succeeded.) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest14, 1.1 , seleniumTest14, Active, Allow, 99, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, System configuration, systemParameters, columnsKendo, dialogsystemParameters, resetColumnssyste...)">
-                  </a> <!-- columns(yes, System configuration, systemParameters, columnsKendo, dialogsystemParameters, resetColumnssyste...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, System configuration, systemParameters, columnsKendo, dialogsystemParameters, resetColumnssystemParameters, 8, _ID, Name, Value, Shared, Created Time, Created By, Updated Time, Updated By, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest15, 1.1 , seleniumTest15, Active, Deny, 99, .toast-message, Succeeded.)">
+                  </a> <!-- testAppl(seleniumTest15, 1.1 , seleniumTest15, Active, Deny, 99, .toast-message, Succeeded.) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest15, 1.1 , seleniumTest15, Active, Deny, 99, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, encryptionTypes, columnsKendo, dialogencryptionTypes, resetColumnsencryptionTypes,...)">
-                  </a> <!-- columns(yes, Code Tables, encryptionTypes, columnsKendo, dialogencryptionTypes, resetColumnsencryptionTypes,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, encryptionTypes, columnsKendo, dialogencryptionTypes, resetColumnsencryptionTypes, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest1, 99, seleniumTestName1, Active, Control, 1500, .transition, Field is Required)">
+                  </a> <!-- testAppl(seleniumTest1, 99, seleniumTestName1, Active, Control, 1500, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest1, 99, seleniumTestName1, Active, Control, 1500, .transition, Field is Required)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, throttlingAccess, columnsKendo, dialogthrottlingAccess, resetColumnsthrottlingAcce...)">
-                  </a> <!-- columns(yes, Code Tables, throttlingAccess, columnsKendo, dialogthrottlingAccess, resetColumnsthrottlingAcce...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, throttlingAccess, columnsKendo, dialogthrottlingAccess, resetColumnsthrottlingAccess, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest12, 1.1 , seleniumTest12, Active, Control, 1501, .transition, The value must be in the r...)">
+                  </a> <!-- testAppl(seleniumTest12, 1.1 , seleniumTest12, Active, Control, 1501, .transition, The value must be in the r...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest12, 1.1 , seleniumTest12, Active, Control, 1501, .transition, The value must be in the range 1 - 1500)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, encryptionAlgorithms, columnsKendo, dialogencryptionAlgorithms, resetColumnsencryp...)">
-                  </a> <!-- columns(yes, Code Tables, encryptionAlgorithms, columnsKendo, dialogencryptionAlgorithms, resetColumnsencryp...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, encryptionAlgorithms, columnsKendo, dialogencryptionAlgorithms, resetColumnsencryptionAlgorithms, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest7,  , seleniumTestName7, Active, Control, 1500, .transition, Field is Required)">
+                  </a> <!-- testAppl(seleniumTest7,  , seleniumTestName7, Active, Control, 1500, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest7,  , seleniumTestName7, Active, Control, 1500, .transition, Field is Required)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, System configuration, systemdbVersion, columnsKendo, dialogdbversionHistory, resetColumnsdbvers...)">
-                  </a> <!-- columns(yes, System configuration, systemdbVersion, columnsKendo, dialogdbversionHistory, resetColumnsdbvers...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, System configuration, systemdbVersion, columnsKendo, dialogdbversionHistory, resetColumnsdbversionHistory, 4, GUID, Version, Script Name, Created Time, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest17, 1.1 , seleniumTest17, Active, Control, 0, .transition, throttlingMaxRequestCount mus...)">
+                  </a> <!-- testAppl(seleniumTest17, 1.1 , seleniumTest17, Active, Control, 0, .transition, throttlingMaxRequestCount mus...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest17, 1.1 , seleniumTest17, Active, Control, 0, .transition, throttlingMaxRequestCount must be greater than 0)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, languages, columnsKendo, dialoglanguages, resetColumnslanguages, 4, _GUID, Languag...)">
-                  </a> <!-- columns(yes, Code Tables, languages, columnsKendo, dialoglanguages, resetColumnslanguages, 4, _GUID, Languag...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, languages, columnsKendo, dialoglanguages, resetColumnslanguages, 4, _GUID, Language Code, Value, Direction, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest23, 1.1 , 99, Active, Control, 111, .toast-message, Succeeded.)">
+                  </a> <!-- testAppl(seleniumTest23, 1.1 , 99, Active, Control, 111, .toast-message, Succeeded.) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest23, 1.1 , 99, Active, Control, 111, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, basicValues, columnsKendo, dialogbasicValues, resetColumnsbasicValues, 4, _GUID, C...)">
-                  </a> <!-- columns(yes, Code Tables, basicValues, columnsKendo, dialogbasicValues, resetColumnsbasicValues, 4, _GUID, C...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, basicValues, columnsKendo, dialogbasicValues, resetColumnsbasicValues, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(99, 1.1 , seleniumTestName2, Active, Control, 1500, .transition, Field is Required)">
+                  </a> <!-- testAppl(99, 1.1 , seleniumTestName2, Active, Control, 1500, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(99, 1.1 , seleniumTestName2, Active, Control, 1500, .transition, Field is Required)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, encryptionModes, columnsKendo, dialogencryptionModes, resetColumnsencryptionModes,...)">
-                  </a> <!-- columns(yes, Code Tables, encryptionModes, columnsKendo, dialogencryptionModes, resetColumnsencryptionModes,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, encryptionModes, columnsKendo, dialogencryptionModes, resetColumnsencryptionModes, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest5Longmorethan60characters123456789012345678901234, 1.1 , seleniumTestName5, Active, Cont...)">
+                  </a> <!-- testAppl(seleniumTest5Longmorethan60characters123456789012345678901234, 1.1 , seleniumTestName5, Active, Cont...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest5Longmorethan60characters123456789012345678901234, 1.1 , seleniumTestName5, Active, Control, 1500, .transition, appID should contain no more than 60 characters)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, alertComparators, columnsKendo, dialogalertComparators, resetColumnsalertComparato...)">
-                  </a> <!-- columns(yes, Code Tables, alertComparators, columnsKendo, dialogalertComparators, resetColumnsalertComparato...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, alertComparators, columnsKendo, dialogalertComparators, resetColumnsalertComparators, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest19, 1.1 , seleniumTest19, Active, WrongStatus, 1500, .transition, Value not exists)">
+                  </a> <!-- testAppl(seleniumTest19, 1.1 , seleniumTest19, Active, WrongStatus, 1500, .transition, Value not exists) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest19, 1.1 , seleniumTest19, Active, WrongStatus, 1500, .transition, Value not exists)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Package and Sign, audit, columnsKendo, dialogaudit, resetColumnsaudit, 9, _Guid, Archive, App I...)">
-                  </a> <!-- columns(yes, Package and Sign, audit, columnsKendo, dialogaudit, resetColumnsaudit, 9, _Guid, Archive, App I...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Package and Sign, audit, columnsKendo, dialogaudit, resetColumnsaudit, 9, _Guid, Archive, App ID, Version, Sponsors, Status, Correlation ID, Created By, Created Time, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest23, 1.1 , 99, Active, Control, 2, .toast-message, Succeeded.)">
+                  </a> <!-- testAppl(seleniumTest23, 1.1 , 99, Active, Control, 2, .toast-message, Succeeded.) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest23, 1.1 , 99, Active, Control, 2, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, encryptionPaddings, columnsKendo, dialogencryptionPaddings, resetColumnsencryption...)">
-                  </a> <!-- columns(yes, Code Tables, encryptionPaddings, columnsKendo, dialogencryptionPaddings, resetColumnsencryption...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, encryptionPaddings, columnsKendo, dialogencryptionPaddings, resetColumnsencryptionPaddings, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest10, 1.1 , seleniumTest10, 99, Control, 1500, .transition, Field is Required)">
+                  </a> <!-- testAppl(seleniumTest10, 1.1 , seleniumTest10, 99, Control, 1500, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest10, 1.1 , seleniumTest10, 99, Control, 1500, .transition, Field is Required)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, wrapEncryptionAlgorithms, columnsKendo, dialogwrapEncryptionAlgorithms, resetColum...)">
-                  </a> <!-- columns(yes, Code Tables, wrapEncryptionAlgorithms, columnsKendo, dialogwrapEncryptionAlgorithms, resetColum...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, wrapEncryptionAlgorithms, columnsKendo, dialogwrapEncryptionAlgorithms, resetColumnswrapEncryptionAlgorithms, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest20Longis60characters1234567890123456789012345678, 1.1 , seleniumTest20Longis100character...)">
+                  </a> <!-- testAppl(seleniumTest20Longis60characters1234567890123456789012345678, 1.1 , seleniumTest20Longis100character...) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest20Longis60characters1234567890123456789012345678, 1.1 , seleniumTest20Longis100characters1234567890123456789012345678901234567890123456789012345678901234567, Active, Control, 1, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, System configuration, encryptionConfig, columnsKendo, dialogencryptionConfig, resetColumnsencry...)">
-                  </a> <!-- columns(yes, System configuration, encryptionConfig, columnsKendo, dialogencryptionConfig, resetColumnsencry...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, System configuration, encryptionConfig, columnsKendo, dialogencryptionConfig, resetColumnsencryptionConfig, 21, _ID, Application ID, Version, Encryption Type, Encryption Algorithm, _Encryption Mode, _IV, _IV Format, _RSA Wrap, Encryption Key Alias, _Encryption Padding, _Pan Format, _Key Format, _Wrap Encryption Algorithm, _Provider Name, _Format String, _Decryption Key Alias, _Created Time, _Created By, Updated Time, Updated By)</span>
+                  <a name="testAppl( , 1.1 , seleniumTestName6, Active, Control, 1500, .transition, Field is Required)">
+                  </a> <!-- testAppl( , 1.1 , seleniumTestName6, Active, Control, 1500, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">( , 1.1 , seleniumTestName6, Active, Control, 1500, .transition, Field is Required)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, responseCodes, columnsKendo, dialogresponseCodes, resetColumnsresponseCodes, 4, _G...)">
-                  </a> <!-- columns(yes, Code Tables, responseCodes, columnsKendo, dialogresponseCodes, resetColumnsresponseCodes, 4, _G...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, responseCodes, columnsKendo, dialogresponseCodes, resetColumnsresponseCodes, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest21, 1.1 , seleniumTestName21, Disabled, Control, 1500, .toast-message, Succeeded.)">
+                  </a> <!-- testAppl(seleniumTest21, 1.1 , seleniumTestName21, Disabled, Control, 1500, .toast-message, Succeeded.) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest21, 1.1 , seleniumTestName21, Disabled, Control, 1500, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, syslogSeverityLevel, columnsKendo, dialogsyslogSeverityLevel, resetColumnssyslogSe...)">
-                  </a> <!-- columns(yes, Code Tables, syslogSeverityLevel, columnsKendo, dialogsyslogSeverityLevel, resetColumnssyslogSe...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, syslogSeverityLevel, columnsKendo, dialogsyslogSeverityLevel, resetColumnssyslogSeverityLevel, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest22, 1.1 , 99, Active, Control, 1500, .toast-message, Succeeded.)">
+                  </a> <!-- testAppl(seleniumTest22, 1.1 , 99, Active, Control, 1500, .toast-message, Succeeded.) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest22, 1.1 , 99, Active, Control, 1500, .toast-message, Succeeded.)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="columns(yes, Code Tables, status, columnsKendo, dialogstatus, resetColumnsstatus, 4, _GUID, Code ID, Languag...)">
-                  </a> <!-- columns(yes, Code Tables, status, columnsKendo, dialogstatus, resetColumnsstatus, 4, _GUID, Code ID, Languag...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, status, columnsKendo, dialogstatus, resetColumnsstatus, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, filterType, columnsKendo, dialogfilterType, resetColumnsfilterType, 4, _GUID, Code...)">
-                  </a> <!-- columns(yes, Code Tables, filterType, columnsKendo, dialogfilterType, resetColumnsfilterType, 4, _GUID, Code...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, filterType, columnsKendo, dialogfilterType, resetColumnsfilterType, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, protocol, columnsKendo, dialogprotocol, resetColumnsprotocol, 4, _GUID, Code ID, L...)">
-                  </a> <!-- columns(yes, Code Tables, protocol, columnsKendo, dialogprotocol, resetColumnsprotocol, 4, _GUID, Code ID, L...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, protocol, columnsKendo, dialogprotocol, resetColumnsprotocol, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, System configuration, logConfigurations, columnsKendo, dialoglogConfigurations, resetColumnslog...)">
-                  </a> <!-- columns(yes, System configuration, logConfigurations, columnsKendo, dialoglogConfigurations, resetColumnslog...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, System configuration, logConfigurations, columnsKendo, dialoglogConfigurations, resetColumnslogConfigurations, 8, _GUID, Application ID, Version, Type, Value, Severity Level, Created Time, Updated Time, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, activationStatus, columnsKendo, dialogactivationStatus, resetColumnsactivationStat...)">
-                  </a> <!-- columns(yes, Code Tables, activationStatus, columnsKendo, dialogactivationStatus, resetColumnsactivationStat...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, activationStatus, columnsKendo, dialogactivationStatus, resetColumnsactivationStatus, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, processingCodes, columnsKendo, dialogprocessingCodes, resetColumnsprocessingCodes,...)">
-                  </a> <!-- columns(yes, Code Tables, processingCodes, columnsKendo, dialogprocessingCodes, resetColumnsprocessingCodes,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, processingCodes, columnsKendo, dialogprocessingCodes, resetColumnsprocessingCodes, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, System configuration, allowedProcessingScenarios, columnsKendo, dialogallowedProcessingScenario...)">
-                  </a> <!-- columns(yes, System configuration, allowedProcessingScenarios, columnsKendo, dialogallowedProcessingScenario...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, System configuration, allowedProcessingScenarios, columnsKendo, dialogallowedProcessingScenarios, resetColumnsallowedProcessingScenarios, 8, GUID, Type, Name, Scenario, Updated Time, Updated By, Created By, Created Time, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, System configuration, oauthConfigs, columnsKendo, dialogoauthConfigs, resetColumnsoauthConfigs,...)">
-                  </a> <!-- columns(yes, System configuration, oauthConfigs, columnsKendo, dialogoauthConfigs, resetColumnsoauthConfigs,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, System configuration, oauthConfigs, columnsKendo, dialogoauthConfigs, resetColumnsoauthConfigs, 9, _ID, Application ID, Version, Consumer Key, File Name, _Created Time, _Created By, Updated Time, Updated By, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, os, columnsKendo, dialogos, resetColumnsos, 4, _GUID, Code ID, Language Code, Valu...)">
-                  </a> <!-- columns(yes, Code Tables, os, columnsKendo, dialogos, resetColumnsos, 4, _GUID, Code ID, Language Code, Valu...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, os, columnsKendo, dialogos, resetColumnsos, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, Translation, columnsKendo, dialogtranslations, resetColumnstranslations, 4, _GUID,...)">
-                  </a> <!-- columns(yes, Code Tables, Translation, columnsKendo, dialogtranslations, resetColumnstranslations, 4, _GUID,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, Translation, columnsKendo, dialogtranslations, resetColumnstranslations, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="columns(yes, Code Tables, stringEncodings, columnsKendo, dialogstringEncodings, resetColumnsstringEncodings,...)">
-                  </a> <!-- columns(yes, Code Tables, stringEncodings, columnsKendo, dialogstringEncodings, resetColumnsstringEncodings,...) -->
-                  <span class="method-name">columns</span>
-                  <span class="parameters">(yes, Code Tables, stringEncodings, columnsKendo, dialogstringEncodings, resetColumnsstringEncodings, 4, _GUID, Code ID, Language Code, Value, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99)</span>
+                  <a name="testAppl(seleniumTest13, 1.1 , seleniumTest13, Active, Control, 99, .transition, Field is Required)">
+                  </a> <!-- testAppl(seleniumTest13, 1.1 , seleniumTest13, Active, Control, 99, .transition, Field is Required) -->
+                  <span class="method-name">testAppl</span>
+                  <span class="parameters">(seleniumTest13, 1.1 , seleniumTest13, Active, Control, 99, .transition, Field is Required)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -526,28 +431,24 @@
         </div> <!-- panel Verifone -->
         <div panel-name="test-xml-Verifone" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\tmp\eclipse-workspace-testng-maven\eclipse-workspace-testng-maven\tests\columns.xml</span>
+            <span class="header-content">C:\tmp\eclipse-workspace-testng-maven\eclipse-workspace-testng-maven\tests\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Verifone&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;com.verifone.tests.columns&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Selenium Web Portal Automation Tests&quot;&gt;
     &lt;parameter name=&quot;urlStaging1&quot; value=&quot;http://Staging1.cgateway-portal.verifone.com/&quot;/&gt;
     &lt;parameter name=&quot;urlDev&quot; value=&quot;http://dev.cgateway-portal.verifone.com/&quot;/&gt;
     &lt;parameter name=&quot;urlTest&quot; value=&quot;http://test.cgateway-portal.verifone.com/&quot;/&gt;
-    &lt;parameter name=&quot;env&quot; value=&quot;TEST&quot;/&gt;
+    &lt;parameter name=&quot;env&quot; value=&quot;DEV&quot;/&gt;
     &lt;parameter name=&quot;browserType&quot; value=&quot;CHROME&quot;/&gt;
     &lt;parameter name=&quot;urlProduction&quot; value=&quot;http://TBD.cgateway-portal.verifone.com/&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.verifone.tests.Columns&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;columns&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.verifone.tests.Columns --&gt;
+      &lt;class name=&quot;com.verifone.tests.testAppl&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- com.verifone.tests.columns --&gt;
+  &lt;/test&gt; &lt;!-- Selenium Web Portal Automation Tests --&gt;
 &lt;/suite&gt; &lt;!-- Verifone --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -559,7 +460,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">com.verifone.tests.columns (1 class)</span>
+                <span class="test-name">Selenium Web Portal Automation Tests (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -573,7 +474,7 @@
               <span class="test-group-name">cgateway-portal</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">columns</span>
+                <span class="method-in-group-name">testAppl</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -593,136 +494,100 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(31);
+data.addRows(22);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'columns')
-data.setCell(0, 2, 'com.verifone.tests.Columns')
-data.setCell(0, 3, 22952);
+data.setCell(0, 1, 'testAppl')
+data.setCell(0, 2, 'com.verifone.tests.testAppl')
+data.setCell(0, 3, 78316);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'columns')
-data.setCell(1, 2, 'com.verifone.tests.Columns')
-data.setCell(1, 3, 22136);
+data.setCell(1, 1, 'testAppl')
+data.setCell(1, 2, 'com.verifone.tests.testAppl')
+data.setCell(1, 3, 29877);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'columns')
-data.setCell(2, 2, 'com.verifone.tests.Columns')
-data.setCell(2, 3, 22103);
+data.setCell(2, 1, 'testAppl')
+data.setCell(2, 2, 'com.verifone.tests.testAppl')
+data.setCell(2, 3, 29865);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'columns')
-data.setCell(3, 2, 'com.verifone.tests.Columns')
-data.setCell(3, 3, 21876);
+data.setCell(3, 1, 'testAppl')
+data.setCell(3, 2, 'com.verifone.tests.testAppl')
+data.setCell(3, 3, 28875);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'columns')
-data.setCell(4, 2, 'com.verifone.tests.Columns')
-data.setCell(4, 3, 21806);
+data.setCell(4, 1, 'testAppl')
+data.setCell(4, 2, 'com.verifone.tests.testAppl')
+data.setCell(4, 3, 28817);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'columns')
-data.setCell(5, 2, 'com.verifone.tests.Columns')
-data.setCell(5, 3, 21774);
+data.setCell(5, 1, 'testAppl')
+data.setCell(5, 2, 'com.verifone.tests.testAppl')
+data.setCell(5, 3, 28627);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'columns')
-data.setCell(6, 2, 'com.verifone.tests.Columns')
-data.setCell(6, 3, 21707);
+data.setCell(6, 1, 'testAppl')
+data.setCell(6, 2, 'com.verifone.tests.testAppl')
+data.setCell(6, 3, 28421);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'columns')
-data.setCell(7, 2, 'com.verifone.tests.Columns')
-data.setCell(7, 3, 21670);
+data.setCell(7, 1, 'testAppl')
+data.setCell(7, 2, 'com.verifone.tests.testAppl')
+data.setCell(7, 3, 25447);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'columns')
-data.setCell(8, 2, 'com.verifone.tests.Columns')
-data.setCell(8, 3, 21669);
+data.setCell(8, 1, 'testAppl')
+data.setCell(8, 2, 'com.verifone.tests.testAppl')
+data.setCell(8, 3, 20632);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'columns')
-data.setCell(9, 2, 'com.verifone.tests.Columns')
-data.setCell(9, 3, 21666);
+data.setCell(9, 1, 'testAppl')
+data.setCell(9, 2, 'com.verifone.tests.testAppl')
+data.setCell(9, 3, 15784);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'columns')
-data.setCell(10, 2, 'com.verifone.tests.Columns')
-data.setCell(10, 3, 21604);
+data.setCell(10, 1, 'testAppl')
+data.setCell(10, 2, 'com.verifone.tests.testAppl')
+data.setCell(10, 3, 15690);
 data.setCell(11, 0, 11)
-data.setCell(11, 1, 'columns')
-data.setCell(11, 2, 'com.verifone.tests.Columns')
-data.setCell(11, 3, 21583);
+data.setCell(11, 1, 'testAppl')
+data.setCell(11, 2, 'com.verifone.tests.testAppl')
+data.setCell(11, 3, 15534);
 data.setCell(12, 0, 12)
-data.setCell(12, 1, 'columns')
-data.setCell(12, 2, 'com.verifone.tests.Columns')
-data.setCell(12, 3, 21545);
+data.setCell(12, 1, 'testAppl')
+data.setCell(12, 2, 'com.verifone.tests.testAppl')
+data.setCell(12, 3, 15521);
 data.setCell(13, 0, 13)
-data.setCell(13, 1, 'columns')
-data.setCell(13, 2, 'com.verifone.tests.Columns')
-data.setCell(13, 3, 21460);
+data.setCell(13, 1, 'testAppl')
+data.setCell(13, 2, 'com.verifone.tests.testAppl')
+data.setCell(13, 3, 15497);
 data.setCell(14, 0, 14)
-data.setCell(14, 1, 'columns')
-data.setCell(14, 2, 'com.verifone.tests.Columns')
-data.setCell(14, 3, 21447);
+data.setCell(14, 1, 'testAppl')
+data.setCell(14, 2, 'com.verifone.tests.testAppl')
+data.setCell(14, 3, 15480);
 data.setCell(15, 0, 15)
-data.setCell(15, 1, 'columns')
-data.setCell(15, 2, 'com.verifone.tests.Columns')
-data.setCell(15, 3, 21432);
+data.setCell(15, 1, 'testAppl')
+data.setCell(15, 2, 'com.verifone.tests.testAppl')
+data.setCell(15, 3, 14647);
 data.setCell(16, 0, 16)
-data.setCell(16, 1, 'columns')
-data.setCell(16, 2, 'com.verifone.tests.Columns')
-data.setCell(16, 3, 21300);
+data.setCell(16, 1, 'testAppl')
+data.setCell(16, 2, 'com.verifone.tests.testAppl')
+data.setCell(16, 3, 13059);
 data.setCell(17, 0, 17)
-data.setCell(17, 1, 'columns')
-data.setCell(17, 2, 'com.verifone.tests.Columns')
-data.setCell(17, 3, 21299);
+data.setCell(17, 1, 'testAppl')
+data.setCell(17, 2, 'com.verifone.tests.testAppl')
+data.setCell(17, 3, 12743);
 data.setCell(18, 0, 18)
-data.setCell(18, 1, 'columns')
-data.setCell(18, 2, 'com.verifone.tests.Columns')
-data.setCell(18, 3, 21283);
+data.setCell(18, 1, 'testAppl')
+data.setCell(18, 2, 'com.verifone.tests.testAppl')
+data.setCell(18, 3, 12426);
 data.setCell(19, 0, 19)
-data.setCell(19, 1, 'columns')
-data.setCell(19, 2, 'com.verifone.tests.Columns')
-data.setCell(19, 3, 21267);
+data.setCell(19, 1, 'testAppl')
+data.setCell(19, 2, 'com.verifone.tests.testAppl')
+data.setCell(19, 3, 12345);
 data.setCell(20, 0, 20)
-data.setCell(20, 1, 'columns')
-data.setCell(20, 2, 'com.verifone.tests.Columns')
-data.setCell(20, 3, 21237);
+data.setCell(20, 1, 'testAppl')
+data.setCell(20, 2, 'com.verifone.tests.testAppl')
+data.setCell(20, 3, 12317);
 data.setCell(21, 0, 21)
-data.setCell(21, 1, 'columns')
-data.setCell(21, 2, 'com.verifone.tests.Columns')
-data.setCell(21, 3, 21233);
-data.setCell(22, 0, 22)
-data.setCell(22, 1, 'columns')
-data.setCell(22, 2, 'com.verifone.tests.Columns')
-data.setCell(22, 3, 21230);
-data.setCell(23, 0, 23)
-data.setCell(23, 1, 'columns')
-data.setCell(23, 2, 'com.verifone.tests.Columns')
-data.setCell(23, 3, 21164);
-data.setCell(24, 0, 24)
-data.setCell(24, 1, 'columns')
-data.setCell(24, 2, 'com.verifone.tests.Columns')
-data.setCell(24, 3, 21142);
-data.setCell(25, 0, 25)
-data.setCell(25, 1, 'columns')
-data.setCell(25, 2, 'com.verifone.tests.Columns')
-data.setCell(25, 3, 21139);
-data.setCell(26, 0, 26)
-data.setCell(26, 1, 'columns')
-data.setCell(26, 2, 'com.verifone.tests.Columns')
-data.setCell(26, 3, 21104);
-data.setCell(27, 0, 27)
-data.setCell(27, 1, 'columns')
-data.setCell(27, 2, 'com.verifone.tests.Columns')
-data.setCell(27, 3, 21063);
-data.setCell(28, 0, 28)
-data.setCell(28, 1, 'columns')
-data.setCell(28, 2, 'com.verifone.tests.Columns')
-data.setCell(28, 3, 16225);
-data.setCell(29, 0, 29)
-data.setCell(29, 1, 'columns')
-data.setCell(29, 2, 'com.verifone.tests.Columns')
-data.setCell(29, 3, 16180);
-data.setCell(30, 0, 30)
-data.setCell(30, 1, 'columns')
-data.setCell(30, 2, 'com.verifone.tests.Columns')
-data.setCell(30, 3, 15380);
+data.setCell(21, 1, 'testAppl')
+data.setCell(21, 2, 'com.verifone.tests.testAppl')
+data.setCell(21, 3, 12298);
 window.suiteTableData['Verifone']= { tableData: data, tableDiv: 'times-div-Verifone'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 minutes</span>
+              <span class="suite-total-time">Total running time: 8 minutes</span>
               <div id="times-div-Verifone">
               </div> <!-- times-div-Verifone -->
             </div> <!-- times-div -->
@@ -748,260 +613,188 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.verifone.tests.Columns</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.verifone.tests.testAppl</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
-                <span class="method-name">startBrowser(TEST, http://dev.cgateway-portal.verifone.com/, http://test.cgateway-portal.verifone.com/, http://St...)</span>
+                <span class="method-name">startBrowser(DEV, http://dev.cgateway-portal.verifone.com/, http://test.cgateway-portal.verifone.com/, http://Sta...)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
-                <span class="method-name">columns(no, signPackage, Applications, columnsKendo, dialogapplications, resetColumnsapplications, 12, _GUID...)</span>
-                <span class="method-start">22375 ms</span>
+                <span class="method-name">testAppl(99, 1.1 , seleniumTestName2, Active, Control, 1500, .transition, Field is Required)</span>
+                <span class="method-start">23389 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">38558 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">38038 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(no, signPackage, BlackListFilters, columnsKendo, dialogfilters, resetColumnsfilters, 5, _Filter ID, ...)</span>
-                <span class="method-start">38839 ms</span>
+                <span class="method-name">testAppl( , 1.1 , seleniumTestName6, Active, Control, 1500, .transition, Field is Required)</span>
+                <span class="method-start">38223 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">54221 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">50522 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(no, signPackage, Activations, columnsKendo, dialogApplicationActivation, resetColumnsApplicationActi...)</span>
-                <span class="method-start">54292 ms</span>
+                <span class="method-name">testAppl(seleniumTest5Longmorethan60characters123456789012345678901234, 1.1 , seleniumTestName5, Active, Cont...)</span>
+                <span class="method-start">50558 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">70518 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">63302 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, Package and Sign, audit, columnsKendo, dialogaudit, resetColumnsaudit, 9, _Guid, Archive, App I...)</span>
-                <span class="method-start">70582 ms</span>
+                <span class="method-name">testAppl(seleniumTest1, 99, seleniumTestName1, Active, Control, 1500, .transition, Field is Required)</span>
+                <span class="method-start">63333 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">92687 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">75679 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, System configuration, systemParameters, columnsKendo, dialogsystemParameters, resetColumnssyste...)</span>
-                <span class="method-start">92725 ms</span>
+                <span class="method-name">testAppl(seleniumTest7,  , seleniumTestName7, Active, Control, 1500, .transition, Field is Required)</span>
+                <span class="method-start">75707 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">114863 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">88025 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, System configuration, systemdbVersion, columnsKendo, dialogdbversionHistory, resetColumnsdbvers...)</span>
-                <span class="method-start">114928 ms</span>
+                <span class="method-name">testAppl(seleniumTest4, invalidVersion, seleniumTestName4, Active, Control, 1500, .transition, The value is n...)</span>
+                <span class="method-start">88054 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">136534 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">100481 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, System configuration, allowedProcessingScenarios, columnsKendo, dialogallowedProcessingScenario...)</span>
-                <span class="method-start">136599 ms</span>
+                <span class="method-name">testAppl(seleniumTest9, 1.1 , seleniumTest9Longmorethan100characters12345678901234567890123456789012345678901...)</span>
+                <span class="method-start">100517 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">158407 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">113578 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, System configuration, oauthConfigs, columnsKendo, dialogoauthConfigs, resetColumnsoauthConfigs,...)</span>
-                <span class="method-start">158437 ms</span>
+                <span class="method-name">testAppl(seleniumTest10, 1.1 , seleniumTest10, 99, Control, 1500, .transition, Field is Required)</span>
+                <span class="method-start">113606 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">180213 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">129141 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, System configuration, encryptionConfig, columnsKendo, dialogencryptionConfig, resetColumnsencry...)</span>
-                <span class="method-start">180255 ms</span>
+                <span class="method-name">testAppl(seleniumTest11, 1.1 , seleniumTest11, WrongStatus, Control, 1500, .transition, Value not exists)</span>
+                <span class="method-start">129174 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">203208 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">144865 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, System configuration, logConfigurations, columnsKendo, dialoglogConfigurations, resetColumnslog...)</span>
-                <span class="method-start">203263 ms</span>
+                <span class="method-name">testAppl(seleniumTest13, 1.1 , seleniumTest13, Active, Control, 99, .transition, Field is Required)</span>
+                <span class="method-start">144887 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">224933 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">160409 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, Translation, columnsKendo, dialogtranslations, resetColumnstranslations, 4, _GUID,...)</span>
-                <span class="method-start">224973 ms</span>
+                <span class="method-name">testAppl(seleniumTest16, 1.1 , seleniumTest16, Active, Control, String, .transition, throttlingMaxRequestCoun...)</span>
+                <span class="method-start">160435 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">246137 ms</span>
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">175932 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, protocol, columnsKendo, dialogprotocol, resetColumnsprotocol, 4, _GUID, Code ID, L...)</span>
-                <span class="method-start">246166 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">267467 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, responseCodes, columnsKendo, dialogresponseCodes, resetColumnsresponseCodes, 4, _G...)</span>
-                <span class="method-start">267520 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">288663 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, status, columnsKendo, dialogstatus, resetColumnsstatus, 4, _GUID, Code ID, Languag...)</span>
-                <span class="method-start">288690 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">309928 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, activationStatus, columnsKendo, dialogactivationStatus, resetColumnsactivationStat...)</span>
-                <span class="method-start">309975 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">331039 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, filterType, columnsKendo, dialogfilterType, resetColumnsfilterType, 4, _GUID, Code...)</span>
-                <span class="method-start">331072 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">352213 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, throttlingAccess, columnsKendo, dialogthrottlingAccess, resetColumnsthrottlingAcce...)</span>
-                <span class="method-start">352248 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">373696 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, languages, columnsKendo, dialoglanguages, resetColumnslanguages, 4, _GUID, Languag...)</span>
-                <span class="method-start">373723 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">395600 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, processingCodes, columnsKendo, dialogprocessingCodes, resetColumnsprocessingCodes,...)</span>
-                <span class="method-start">395632 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">417065 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, processingTypes, columnsKendo, dialogprocessingTypes, resetColumnsprocessingTypes,...)</span>
-                <span class="method-start">417116 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">438699 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, syslogSeverityLevel, columnsKendo, dialogsyslogSeverityLevel, resetColumnssyslogSe...)</span>
-                <span class="method-start">438722 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">460429 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, basicValues, columnsKendo, dialogbasicValues, resetColumnsbasicValues, 4, _GUID, C...)</span>
-                <span class="method-start">460450 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">481718 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, alertComparators, columnsKendo, dialogalertComparators, resetColumnsalertComparato...)</span>
-                <span class="method-start">481771 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">503070 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, os, columnsKendo, dialogos, resetColumnsos, 4, _GUID, Code ID, Language Code, Valu...)</span>
-                <span class="method-start">503097 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">524765 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, cryptoScenarios, columnsKendo, dialogcryptoScenarios, resetColumnscryptoScenarios,...)</span>
-                <span class="method-start">524815 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">546050 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, encryptionTypes, columnsKendo, dialogencryptionTypes, resetColumnsencryptionTypes,...)</span>
-                <span class="method-start">546081 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">567313 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, encryptionAlgorithms, columnsKendo, dialogencryptionAlgorithms, resetColumnsencryp...)</span>
-                <span class="method-start">567340 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">588623 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, encryptionModes, columnsKendo, dialogencryptionModes, resetColumnsencryptionModes,...)</span>
-                <span class="method-start">588645 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">609749 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, encryptionPaddings, columnsKendo, dialogencryptionPaddings, resetColumnsencryption...)</span>
-                <span class="method-start">609769 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">631314 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, stringEncodings, columnsKendo, dialogstringEncodings, resetColumnsstringEncodings,...)</span>
-                <span class="method-start">631337 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">652797 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">columns(yes, Code Tables, wrapEncryptionAlgorithms, columnsKendo, dialogwrapEncryptionAlgorithms, resetColum...)</span>
-                <span class="method-start">652831 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">closePage([TestResult name=columns status=SUCCESS method=Columns.columns(java.lang.String, java.lang.String, j...)</span>
-                <span class="method-start">674502 ms</span>
+                <span class="method-name">testAppl(seleniumTest18, 1.1 , seleniumTest18, Active, 99, 1500, .transition, Field is Required)</span>
+                <span class="method-start">175953 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=FAILURE method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">254271 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest17, 1.1 , seleniumTest17, Active, Control, 0, .transition, throttlingMaxRequestCount mus...)</span>
+                <span class="method-start">260158 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">280791 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest12, 1.1 , seleniumTest12, Active, Control, 1501, .transition, The value must be in the r...)</span>
+                <span class="method-start">280821 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">296302 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest14, 1.1 , seleniumTest14, Active, Allow, 99, .toast-message, Succeeded.)</span>
+                <span class="method-start">296323 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">325141 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest21, 1.1 , seleniumTestName21, Disabled, Control, 1500, .toast-message, Succeeded.)</span>
+                <span class="method-start">325183 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">354058 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest22, 1.1 , 99, Active, Control, 1500, .toast-message, Succeeded.)</span>
+                <span class="method-start">354098 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">379547 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest23, 1.1 , 99, Active, Control, 111, .toast-message, Succeeded.)</span>
+                <span class="method-start">379585 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">408006 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest23, 1.1 , 99, Active, Control, 2, .toast-message, Succeeded.)</span>
+                <span class="method-start">408028 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">437906 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest15, 1.1 , seleniumTest15, Active, Deny, 99, .toast-message, Succeeded.)</span>
+                <span class="method-start">437947 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">466575 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest19, 1.1 , seleniumTest19, Active, WrongStatus, 1500, .transition, Value not exists)</span>
+                <span class="method-start">466611 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">482396 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">testAppl(seleniumTest20Longis60characters1234567890123456789012345678, 1.1 , seleniumTest20Longis100character...)</span>
+                <span class="method-start">482418 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closePage([TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String...)</span>
+                <span class="method-start">512283 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

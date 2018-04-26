@@ -3,13 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.verifone.tests.WebPortal">
+      <class name="com.verifone.tests.Columns">
         <methods>
-          <include name="getTitlePage"/>
-          <include name="startBrowser"/>
+          <include name="closePage1"/>
+          <include name="columns"/>
           <include name="closePage"/>
+          <include name="startBrowser"/>
         </methods>
-      </class> <!-- com.verifone.tests.WebPortal -->
+      </class> <!-- com.verifone.tests.Columns -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

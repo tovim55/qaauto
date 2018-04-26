@@ -48,10 +48,11 @@ public class Columns{
 	public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date)+".html";	
 	//ExtentReports new instance
 	//public static ExtentTest test;
-	public static ExtentTest childTest, parentTest;
+	public static ExtentTest childTest;
 		
 	public ExtentReports logger = new ExtentReports(reportLocation, true);		
 	Boolean testStepPassed = true;
+	public static ExtentTest parentTest;
 	String capScreenShootPath;
 	//ExtentReports starting test
 	ExtentTest test = logger.startTest("Verifone", "Verifone cgateway Portal Automation");
@@ -98,6 +99,7 @@ public class Columns{
 //		Thread.sleep(2000);
 		Actions builder = new Actions(driver);
 		builder.sendKeys(usern, "vfiqabasicdev@getnada.com").build().perform();
+//		builder.sendKeys(usern, "devadmin@yopmail.com").build().perform();
 //		Thread.sleep(2000);
 //		Type password = Veri1234 and ENTER
 		WebElement userpw = driver.findElement(By.name("password"));
