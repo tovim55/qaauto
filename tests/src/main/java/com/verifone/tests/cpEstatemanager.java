@@ -28,11 +28,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.beust.testng.TestNG;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.utils.DataDrivenUtils;
+import com.verifone.utils.General.TestNgPortal;
 
 /**
  * The purpose of this test is to test CP Estatemanager portal
@@ -105,7 +108,7 @@ public class cpEstatemanager{
 		builder.sendKeys(userpw, "Veri1234" + Keys.ENTER).build().perform();
 //		Thread.sleep(5000);
 	
-		test.log(LogStatus.INFO, "Log in Portal: Successul ");
+		test.log(LogStatus.INFO, "Log in Portal: <span class='label success'>success</span>" );
 	}
 	
 	@Test (groups = {"CP-portal"})
@@ -125,7 +128,7 @@ public class cpEstatemanager{
 
 
 
-		test.log(LogStatus.INFO, "End of page" + title + " testing");
+		test.log(LogStatus.INFO, "End of page" + title + " testing <span class='label info'>info</span>");
 
 	}
 
@@ -133,22 +136,9 @@ public class cpEstatemanager{
 	
 	@AfterMethod
 	public void closePage(ITestResult result) throws Exception{
+		
+		TestNgPortal.afterMethodReport(driver, test, result);		
 
-		test.log(LogStatus.INFO, "result.getStatus value is : " + result.getStatus());
-		switch (result.getStatus()) {        
-		case ITestResult.SKIP:
-			test.log(LogStatus.SKIP, "Test SKIP");			
-			break;
-		case ITestResult.SUCCESS:
-			test.log(LogStatus.PASS, "Test is successul");			
-			break;
-		case ITestResult.FAILURE:
-			String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.FAIL, "Test Failed !!! ");
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-			break;
-		}
 		//ending test
 		logger.endTest(test);
 		//writing everything to document
