@@ -25,7 +25,7 @@
       <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 
       <parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>   
       <classes>
-         <class name = "com.verifone.tests.testAppl"/>
+         <class name = "com.verifone.tests.CGApplicationPage"/>
       </classes>
       
    </test> 
