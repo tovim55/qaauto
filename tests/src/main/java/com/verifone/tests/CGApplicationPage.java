@@ -149,6 +149,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 	boolean currentResult;
 	boolean b;
 	
+	test.log(LogStatus.INFO, "******************************** @test: MandatoryFields **************************************");
 	test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 	
 //	Click on ADD button
@@ -158,7 +159,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 	System.out.println("Add button click: " + currentResult);
 	
 	Assert.assertTrue(currentResult, "Add button click failed!");
-	test.log(LogStatus.INFO, "Add button click: " + currentResult);
+	test.log(LogStatus.INFO, "Add button click: " + currentResult  + " <span class='label info'>info</span>");
 	
 	
 //	Fill ApplicationID field
@@ -169,7 +170,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 	System.out.println("Input Applications ID = " + applicationsID + " " + currentResult);
 	
 	Assert.assertTrue(currentResult, "Type to ApplicationID field failed!");
-	test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult + " <span class='label info'>info</span>");
 	
 //	Fill Version field
 	if (Version.equals("99")) {
@@ -179,7 +180,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 	System.out.println("Input Version = " + Version + currentResult);
 	
 	Assert.assertTrue(currentResult, "Type to Version field failed!");
-	test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult + " <span class='label info'>info</span>");
 	
 	
 //	Fill Status field
@@ -189,7 +190,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 		System.out.println("Input Status = " + Status + currentResult);
 		
 		Assert.assertTrue(currentResult, "Type to Status field failed!");
-		test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult);
+		test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult + " <span class='label info'>info</span>");
 	} 
 	
 	
@@ -200,10 +201,10 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 		} 
 		if (!MaxRequestCount.equals("1500")) {
 			currentResult = ApplicationsPage.textboxInput(driver, "MaxRequestCount", MaxRequestCount_id, MaxRequestCount, timeOut);
-			System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult);
+			System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult + " <span class='label info'>info</span>");
 					
 			Assert.assertTrue(currentResult, "Type to Throttling Max Request Count field failed!");
-			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult);
+			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult + " <span class='label info'>info</span>");
 		}
 	
 
@@ -212,18 +213,18 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 	System.out.println("Update button click: " + currentResult);
 	
 	Assert.assertTrue(currentResult, "Update button click failed!");
-	test.log(LogStatus.INFO, "Update button click: " + currentResult);
+	test.log(LogStatus.INFO, "Update button click: " + currentResult + " <span class='label info'>info</span>");
 
 //	Verify Expected error displayed
 	Messagetext = ErrorMsgs.msgFieldReqTxt(driver, msgFieldReqTxtCss, timeOut);
 	System.out.println("Error message text: " + Messagetext);
 	if(!Messagetext.equals(Error))  {
 		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-		test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error);
+		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+		test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error + " <span class='label failure'>fail</span>");
 	} else { 
-		test.log(LogStatus.PASS, "Expected Error got: " + Messagetext);
+		test.log(LogStatus.PASS, "Expected Error got: " + Messagetext + " <span class='label success'>success</span>");
 	}
 	Assert.assertEquals(Messagetext, Error);
 	
@@ -232,7 +233,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 		currentResult = ApplicationsPage.buttonClick(driver, "Cancel", CancelXPath, timeOut);
 		System.out.println("Cancel button click: " + currentResult);
 		Assert.assertTrue(currentResult, "Cancel button click failed!");
-		test.log(LogStatus.INFO, "Cancel button click: " + currentResult);
+		test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
 	}
 	else {
 
@@ -241,17 +242,17 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 			driver.findElement(By.cssSelector(msgFieldReqTxtCss)).click();
 		}catch(Exception e){
 			System.out.println("Message not found!");
-			test.log(LogStatus.INFO, "Message not found!");
+			test.log(LogStatus.INFO, "Message not found!" + " <span class='label failure'>fail</span>");
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
 		}
 		currentResult = ApplicationsPage.filterClick(driver, filterXPath, timeOut);
 		Assert.assertTrue(currentResult, "Filter icon click failed!");
 		System.out.println("Filter icon click: " + currentResult);
-		test.log(LogStatus.INFO, "Filter icon click: " + currentResult);
+		test.log(LogStatus.INFO, "Filter icon click: " + currentResult + " <span class='label info'>info</span>");
 		System.out.println("Input Applications ID = " + applicationsID);
-		test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID);
+		test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + " <span class='label info'>info</span>");
 		currentResult = ApplicationsPage.filterTypeSearch(driver, filterCSS, applicationsID, timeOut);
 		Assert.assertTrue(currentResult, "Filter Search action failed!");
 
@@ -264,7 +265,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 			b = ApplicationsPage.buttonClick(driver, "Delete", DeleteXPath, timeOut);
 			System.out.println("Delete button click: " + b);
 			Assert.assertTrue(b, "Delete button click failed!");
-			test.log(LogStatus.INFO, "Delete button click: " + b);
+			test.log(LogStatus.INFO, "Delete button click: " + b + " <span class='label info'>info</span>");
 			alert = driver.switchTo().alert();
 			alertMessage= driver.switchTo().alert().getText();
 			if (alertMessage.contains("delete this record")) {
@@ -279,9 +280,9 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 			else {
 				System.out.println("Got incorrect alert: " + alertMessage);
 				capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-				test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage);
+				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+				test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage + " <span class='label failure'>fail</span>");
 			}
 			
 		}
@@ -289,9 +290,9 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 			System.out.println("Filter fail!");
 			Assert.assertEquals(currentResult, true);
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-			test.log(LogStatus.FAIL, "Filter fail!");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.FAIL, "Filter fail!" + " <span class='label failure'>fail</span>");
 		}
 	}                                                  
 	
@@ -333,7 +334,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 
 	boolean currentResult;
 	boolean b;
-	
+	test.log(LogStatus.INFO, "******************************** @test: TypeValidation **************************************");
 	test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 	
 //	Click on ADD button
@@ -343,7 +344,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 	System.out.println("Add button click: " + currentResult);
 	
 	Assert.assertTrue(currentResult, "Add button click failed!");
-	test.log(LogStatus.INFO, "Add button click: " + currentResult);
+	test.log(LogStatus.INFO, "Add button click: " + currentResult + " <span class='label info'>info</span>");
 	
 	
 //	Fill ApplicationID field
@@ -352,7 +353,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 	System.out.println("Input Applications ID = " + applicationsID + " " + currentResult);
 	
 	Assert.assertTrue(currentResult, "Type to ApplicationID field failed!");
-	test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult + " <span class='label info'>info</span>");
 	
 //	Fill Version field
 
@@ -360,7 +361,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 	System.out.println("Input Version = " + Version + currentResult);
 	
 	Assert.assertTrue(currentResult, "Type to Version field failed!");
-	test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult + " <span class='label info'>info</span>");
 	
 //	Fill Name field
 
@@ -368,7 +369,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 	System.out.println("Input Name = " + Name + currentResult);
 	
 	Assert.assertTrue(currentResult, "Type to Name field failed!");
-	test.log(LogStatus.INFO, "Input Name = " + Name + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Name = " + Name + ": " + currentResult + " <span class='label info'>info</span>");
 	
 //	Fill Status field
 
@@ -377,39 +378,39 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 		System.out.println("Input Status = " + Status + currentResult);
 		
 		Assert.assertTrue(currentResult, "Type to Status field failed!");
-		test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult);
+		test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult + " <span class='label info'>info</span>");
 	} 
 	
 	
 //	Fill Throttling Max Request Count field
 
-				if (!MaxRequestCount.equals("1500")) {
-					currentResult = ApplicationsPage.textboxInput(driver, "MaxRequestCount", MaxRequestCount_id, MaxRequestCount, timeOut);
-					System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult);
+		if (!MaxRequestCount.equals("1500")) {
+			currentResult = ApplicationsPage.textboxInput(driver, "MaxRequestCount", MaxRequestCount_id, MaxRequestCount, timeOut);
+			System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult + " <span class='label info'>info</span>");
 					
-					Assert.assertTrue(currentResult, "Type to Throttling Max Request Count field failed!");
-					test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult);
-				}
+			Assert.assertTrue(currentResult, "Type to Throttling Max Request Count field failed!");
+			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult + " <span class='label info'>info</span>");
+		}
 
 	
 
 //	Click on UPDATE button
 	currentResult = ApplicationsPage.buttonClick(driver, "Update", UpdateXPath, timeOut);
-	System.out.println("Update button click: " + currentResult);
+	System.out.println("Update button click: " + currentResult + " <span class='label info'>info</span>");
 	
 	Assert.assertTrue(currentResult, "Update button click failed!");
-	test.log(LogStatus.INFO, "Update button click: " + currentResult);
+	test.log(LogStatus.INFO, "Update button click: " + currentResult + " <span class='label info'>info</span>");
 
 //	Verify Expected error displayed
 	Messagetext = ErrorMsgs.msgFieldReqTxt(driver, msgFieldReqTxtCss, timeOut);
 	System.out.println("Error message text: " + Messagetext);
 	if(!Messagetext.equals(Error))  {
 		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-		test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error);
+		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+		test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error + " <span class='label failure'>fail</span>");
 	} else { 
-		test.log(LogStatus.PASS, "Expected Error got: " + Messagetext);
+		test.log(LogStatus.PASS, "Expected Error got: " + Messagetext + " <span class='label success'>success</span>");
 	}
 	Assert.assertEquals(Messagetext, Error);
 	
@@ -418,7 +419,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 		currentResult = ApplicationsPage.buttonClick(driver, "Cancel", CancelXPath, timeOut);
 		System.out.println("Cancel button click: " + currentResult);
 		Assert.assertTrue(currentResult, "Cancel button click failed!");
-		test.log(LogStatus.INFO, "Cancel button click: " + currentResult);
+		test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
 	}
 	else {
 
@@ -427,17 +428,17 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 			driver.findElement(By.cssSelector(msgFieldReqTxtCss)).click();
 		}catch(Exception e){
 			System.out.println("Message not found!");
-			test.log(LogStatus.INFO, "Message not found!");
+			test.log(LogStatus.INFO, "Message not found!" + " <span class='label failure'>fail</span>");
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
 		}
 		currentResult = ApplicationsPage.filterClick(driver, filterXPath, timeOut);
 		Assert.assertTrue(currentResult, "Filter icon click failed!");
 		System.out.println("Filter icon click: " + currentResult);
-		test.log(LogStatus.INFO, "Filter icon click: " + currentResult);
+		test.log(LogStatus.INFO, "Filter icon click: " + currentResult + " <span class='label info'>info</span>");
 		System.out.println("Input Applications ID = " + applicationsID);
-		test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID);
+		test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + " <span class='label info'>info</span>");
 		currentResult = ApplicationsPage.filterTypeSearch(driver, filterCSS, applicationsID, timeOut);
 		Assert.assertTrue(currentResult, "Filter Search action failed!");
 
@@ -450,7 +451,7 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 			b = ApplicationsPage.buttonClick(driver, "Delete", DeleteXPath, timeOut);
 			System.out.println("Delete button click: " + b);
 			Assert.assertTrue(b, "Delete button click failed!");
-			test.log(LogStatus.INFO, "Delete button click: " + b);
+			test.log(LogStatus.INFO, "Delete button click: " + b + " <span class='label info'>info</span>");
 			alert = driver.switchTo().alert();
 			alertMessage= driver.switchTo().alert().getText();
 			if (alertMessage.contains("delete this record")) {
@@ -465,9 +466,9 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 			else {
 				System.out.println("Got incorrect alert: " + alertMessage);
 				capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-				test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage);
+				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+				test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage + " <span class='label failure'>fail</span>");
 			}
 			
 		}
@@ -475,9 +476,9 @@ public void CGApplicationPageTypeValidation(String applicationsID, String Versio
 			System.out.println("Filter fail!");
 			Assert.assertEquals(currentResult, true);
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-			test.log(LogStatus.FAIL, "Filter fail!");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.FAIL, "Filter fail!" + " <span class='label failure'>fail</span>");
 		}
 	}                                                  
 	
@@ -521,6 +522,7 @@ String capScreenShootPath;
 boolean currentResult;
 boolean b;
 
+test.log(LogStatus.INFO, "******************************** @test: ErrorHandling **************************************");
 test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 
 //Click on ADD button
@@ -530,7 +532,8 @@ currentResult = ApplicationsPage.buttonClick(driver, "Add", AddXPath, timeOut);
 System.out.println("Add button click: " + currentResult);
 
 Assert.assertTrue(currentResult, "Add button click failed!");
-test.log(LogStatus.INFO, "Add button click: " + currentResult);
+test.log(LogStatus.INFO, "Add button click: " + currentResult + " <span class='label info'>info</span>");
+	
 
 
 //Fill ApplicationID field
@@ -541,7 +544,7 @@ currentResult = ApplicationsPage.textboxInput(driver, "ApplicationID", ApplID_id
 System.out.println("Input Applications ID = " + applicationsID + " " + currentResult);
 
 Assert.assertTrue(currentResult, "Type to ApplicationID field failed!");
-test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult + " <span class='label info'>info</span>");
 
 //Fill Version field
 if (Version.equals("99")) {
@@ -551,7 +554,7 @@ currentResult = ApplicationsPage.textboxInput(driver, "Version", Version_id, Ver
 System.out.println("Input Version = " + Version + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Version field failed!");
-test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult + " <span class='label info'>info</span>");
 
 //Fill Name field
 if (Name.equals("99")) {
@@ -561,7 +564,7 @@ currentResult = ApplicationsPage.textboxInputXPATH(driver, "Name", Name_xpath, N
 System.out.println("Input Name = " + Name + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Name field failed!");
-test.log(LogStatus.INFO, "Input Name = " + Name + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Name = " + Name + ": " + currentResult + " <span class='label info'>info</span>");
 
 //Fill Status field
 if (Status.equals("99")) {
@@ -573,7 +576,7 @@ currentResult = ApplicationsPage.textboxInputXPATH(driver, "Status", Status_xpat
 System.out.println("Input Status = " + Status + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Status field failed!");
-test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult + " <span class='label info'>info</span>");
 } 
 
 //Fill Throttling Access field
@@ -586,9 +589,9 @@ System.out.println("Input Access = " + Access + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Throttling Access field failed!");
 if (Access.equals("")) {
-	test.log(LogStatus.INFO, "Input Access is empty: " + currentResult);
+	test.log(LogStatus.INFO, "Input Access is empty: " + currentResult + " <span class='label info'>info</span>");
 } else {
-	test.log(LogStatus.INFO, "Input Access = " + Access + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Access = " + Access + ": " + currentResult + " <span class='label info'>info</span>");
 }
 } 
 
@@ -603,7 +606,7 @@ case "Control":
 			System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult);
 			
 			Assert.assertTrue(currentResult, "Type to Throttling Max Request Count field failed!");
-			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult);
+			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult + " <span class='label info'>info</span>");
 		}
 		break;
 case "Allow":
@@ -613,11 +616,11 @@ case "Allow":
 		System.out.println(currentResult);
 		if(currentResult)  {
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));;
-			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		} else { 
-			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected.");
+			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected." + " <span class='label success'>success</span>");
 		}
 		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!");
 		break;
@@ -628,13 +631,13 @@ case "Deny":
 		
 		if(currentResult)  {
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!");
+			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		} else { 
-			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected.");
+			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected." + " <span class='label success'>success</span>");
 		}
-		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!");
+		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		break;			
 }
 
@@ -644,18 +647,18 @@ currentResult = ApplicationsPage.buttonClick(driver, "Update", UpdateXPath, time
 System.out.println("Update button click: " + currentResult);
 
 Assert.assertTrue(currentResult, "Update button click failed!");
-test.log(LogStatus.INFO, "Update button click: " + currentResult);
+test.log(LogStatus.INFO, "Update button click: " + currentResult + " <span class='label info'>info</span>");
 
 //Verify Expected error displayed
 Messagetext = ErrorMsgs.msgFieldReqTxt(driver, msgFieldReqTxtCss, timeOut);
 System.out.println("Error message text: " + Messagetext);
 if(!Messagetext.equals(Error))  {
 capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
 test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error);
+test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error + " <span class='label failure'>fail</span>");
 } else { 
-test.log(LogStatus.PASS, "Expected Error got: " + Messagetext);
+test.log(LogStatus.PASS, "Expected Error got: " + Messagetext + " <span class='label success'>success</span>");
 }
 Assert.assertEquals(Messagetext, Error);
 
@@ -664,7 +667,7 @@ if(!Messagetext.equals("Succeeded.")) {
 currentResult = ApplicationsPage.buttonClick(driver, "Cancel", CancelXPath, timeOut);
 System.out.println("Cancel button click: " + currentResult);
 Assert.assertTrue(currentResult, "Cancel button click failed!");
-test.log(LogStatus.INFO, "Cancel button click: " + currentResult);
+test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
 }
 else {
 
@@ -673,7 +676,7 @@ try {
 	driver.findElement(By.cssSelector(msgFieldReqTxtCss)).click();
 }catch(Exception e){
 	System.out.println("Message not found!");
-	test.log(LogStatus.INFO, "Message not found!");
+	test.log(LogStatus.INFO, "Message not found!" + " <span class='label failure'>fail</span>");
 	capScreenShootPath = SeleniumUtils.getscreenshot(driver);
 	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
@@ -681,9 +684,9 @@ try {
 currentResult = ApplicationsPage.filterClick(driver, filterXPath, timeOut);
 Assert.assertTrue(currentResult, "Filter icon click failed!");
 System.out.println("Filter icon click: " + currentResult);
-test.log(LogStatus.INFO, "Filter icon click: " + currentResult);
+test.log(LogStatus.INFO, "Filter icon click: " + currentResult + " <span class='label info'>info</span>");
 System.out.println("Input Applications ID = " + applicationsID);
-test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID);
+test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + " <span class='label info'>info</span>");
 currentResult = ApplicationsPage.filterTypeSearch(driver, filterCSS, applicationsID, timeOut);
 Assert.assertTrue(currentResult, "Filter Search action failed!");
 
@@ -696,7 +699,7 @@ if (currentResult == true) {
 	b = ApplicationsPage.buttonClick(driver, "Delete", DeleteXPath, timeOut);
 	System.out.println("Delete button click: " + b);
 	Assert.assertTrue(b, "Delete button click failed!");
-	test.log(LogStatus.INFO, "Delete button click: " + b);
+	test.log(LogStatus.INFO, "Delete button click: " + b + " <span class='label info'>info</span>");
 	alert = driver.switchTo().alert();
 	alertMessage= driver.switchTo().alert().getText();
 	if (alertMessage.contains("delete this record")) {
@@ -713,7 +716,7 @@ if (currentResult == true) {
 		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-		test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage);
+		test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage + " <span class='label failure'>fail</span>");
 	}
 	
 }
@@ -721,9 +724,9 @@ else {
 	System.out.println("Filter fail!");
 	Assert.assertEquals(currentResult, true);
 	capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
 	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-	test.log(LogStatus.FAIL, "Filter fail!");
+	test.log(LogStatus.FAIL, "Filter fail!" + " <span class='label failure'>fail</span>");
 }
 }                                                  
 
@@ -765,6 +768,7 @@ String capScreenShootPath;
 boolean currentResult;
 boolean b;
 
+test.log(LogStatus.INFO, "******************************** @test: MaxLengthValue **************************************");
 test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 
 //Click on ADD button
@@ -774,7 +778,7 @@ currentResult = ApplicationsPage.buttonClick(driver, "Add", AddXPath, timeOut);
 System.out.println("Add button click: " + currentResult);
 
 Assert.assertTrue(currentResult, "Add button click failed!");
-test.log(LogStatus.INFO, "Add button click: " + currentResult);
+test.log(LogStatus.INFO, "Add button click: " + currentResult + " <span class='label info'>info</span>");
 
 
 //Fill ApplicationID field
@@ -783,7 +787,7 @@ currentResult = ApplicationsPage.textboxInput(driver, "ApplicationID", ApplID_id
 System.out.println("Input Applications ID = " + applicationsID + " " + currentResult);
 
 Assert.assertTrue(currentResult, "Type to ApplicationID field failed!");
-test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + ": " + currentResult + " <span class='label info'>info</span>");
 
 //Fill Version field
 
@@ -791,7 +795,7 @@ currentResult = ApplicationsPage.textboxInput(driver, "Version", Version_id, Ver
 System.out.println("Input Version = " + Version + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Version field failed!");
-test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Version = " + Version + ": " + currentResult + " <span class='label info'>info</span>");
 
 //Fill Name field
 
@@ -799,7 +803,7 @@ currentResult = ApplicationsPage.textboxInputXPATH(driver, "Name", Name_xpath, N
 System.out.println("Input Name = " + Name + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Name field failed!");
-test.log(LogStatus.INFO, "Input Name = " + Name + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Name = " + Name + ": " + currentResult + " <span class='label info'>info</span>");
 
 //Fill Status field
 
@@ -808,7 +812,7 @@ currentResult = ApplicationsPage.textboxInputXPATH(driver, "Status", Status_xpat
 System.out.println("Input Status = " + Status + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Status field failed!");
-test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult);
+test.log(LogStatus.INFO, "Input Status = " + Status + ": " + currentResult + " <span class='label info'>info</span>");
 } 
 
 //Fill Throttling Access field
@@ -819,9 +823,9 @@ System.out.println("Input Access = " + Access + currentResult);
 
 Assert.assertTrue(currentResult, "Type to Throttling Access field failed!");
 if (Access.equals("")) {
-	test.log(LogStatus.INFO, "Input Access is empty: " + currentResult);
+	test.log(LogStatus.INFO, "Input Access is empty: " + currentResult + " <span class='label info'>info</span>");
 } else {
-	test.log(LogStatus.INFO, "Input Access = " + Access + ": " + currentResult);
+	test.log(LogStatus.INFO, "Input Access = " + Access + ": " + currentResult + " <span class='label info'>info</span>");
 }
 } 
 
@@ -836,7 +840,7 @@ case "Control":
 			System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult);
 			
 			Assert.assertTrue(currentResult, "Type to Throttling Max Request Count field failed!");
-			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult);
+			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult + " <span class='label info'>info</span>");
 		}
 		break;
 case "Allow":
@@ -846,13 +850,13 @@ case "Allow":
 		System.out.println(currentResult);
 		if(currentResult)  {
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));;
-			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		} else { 
-			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected.");
+			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected." + " <span class='label success'>success</span>");
 		}
-		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!");
+		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		break;
 case "Deny":
 		currentResult = ApplicationsPage.textboxInputXPATH(driver, "Access", Access_xpath, Access, timeOut);
@@ -861,13 +865,13 @@ case "Deny":
 		
 		if(currentResult)  {
 			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.FAIL, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		} else { 
-			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected.");
+			test.log(LogStatus.PASS, "Throttling Max Request Count field disabled as expected." + " <span class='label success'>success</span>");
 		}
-		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!");
+		Assert.assertFalse(currentResult, "Throttling Max Request Count field expected disabled but found enabled!" + " <span class='label failure'>fail</span>");
 		break;			
 }
 
@@ -877,18 +881,18 @@ currentResult = ApplicationsPage.buttonClick(driver, "Update", UpdateXPath, time
 System.out.println("Update button click: " + currentResult);
 
 Assert.assertTrue(currentResult, "Update button click failed!");
-test.log(LogStatus.INFO, "Update button click: " + currentResult);
+test.log(LogStatus.INFO, "Update button click: " + currentResult + " <span class='label info'>info</span>");
 
 //Verify Expected error displayed
 Messagetext = ErrorMsgs.msgFieldReqTxt(driver, msgFieldReqTxtCss, timeOut);
 System.out.println("Error message text: " + Messagetext);
 if(!Messagetext.equals(Error))  {
 capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error);
+test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label info'>info</span>");
+test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+test.log(LogStatus.FAIL, "Error message text: " + Messagetext + ". Expected: " + Error + " <span class='label failure'>fail</span>");
 } else { 
-test.log(LogStatus.PASS, "Expected Error got: " + Messagetext);
+test.log(LogStatus.PASS, "Expected Error got: " + Messagetext + " <span class='label success'>success</span>");
 }
 Assert.assertEquals(Messagetext, Error);
 
@@ -897,7 +901,7 @@ if(!Messagetext.equals("Succeeded.")) {
 currentResult = ApplicationsPage.buttonClick(driver, "Cancel", CancelXPath, timeOut);
 System.out.println("Cancel button click: " + currentResult);
 Assert.assertTrue(currentResult, "Cancel button click failed!");
-test.log(LogStatus.INFO, "Cancel button click: " + currentResult);
+test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
 }
 else {
 
@@ -906,17 +910,17 @@ try {
 	driver.findElement(By.cssSelector(msgFieldReqTxtCss)).click();
 }catch(Exception e){
 	System.out.println("Message not found!");
-	test.log(LogStatus.INFO, "Message not found!");
+	test.log(LogStatus.INFO, "Message not found!" + " <span class='label failure'>fail</span>");
 	capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
 }
 currentResult = ApplicationsPage.filterClick(driver, filterXPath, timeOut);
 Assert.assertTrue(currentResult, "Filter icon click failed!");
 System.out.println("Filter icon click: " + currentResult);
-test.log(LogStatus.INFO, "Filter icon click: " + currentResult);
+test.log(LogStatus.INFO, "Filter icon click: " + currentResult + " <span class='label info'>info</span>");
 System.out.println("Input Applications ID = " + applicationsID);
-test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID);
+test.log(LogStatus.INFO, "Input Applications ID = " + applicationsID + " <span class='label info'>info</span>");
 currentResult = ApplicationsPage.filterTypeSearch(driver, filterCSS, applicationsID, timeOut);
 Assert.assertTrue(currentResult, "Filter Search action failed!");
 
@@ -929,7 +933,7 @@ if (currentResult == true) {
 	b = ApplicationsPage.buttonClick(driver, "Delete", DeleteXPath, timeOut);
 	System.out.println("Delete button click: " + b);
 	Assert.assertTrue(b, "Delete button click failed!");
-	test.log(LogStatus.INFO, "Delete button click: " + b);
+	test.log(LogStatus.INFO, "Delete button click: " + b + " <span class='label info'>info</span>");
 	alert = driver.switchTo().alert();
 	alertMessage= driver.switchTo().alert().getText();
 	if (alertMessage.contains("delete this record")) {
@@ -944,9 +948,9 @@ if (currentResult == true) {
 	else {
 		System.out.println("Got incorrect alert: " + alertMessage);
 		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-		test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage);
+		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+		test.log(LogStatus.FAIL, "Got incorrect alert: " + alertMessage + " <span class='label failure'>fail</span>");
 	}
 	
 }
@@ -954,9 +958,9 @@ else {
 	System.out.println("Filter fail!");
 	Assert.assertEquals(currentResult, true);
 	capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
-	test.log(LogStatus.FAIL, "Filter fail!");
+	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath) + " <span class='label failure'>fail</span>");
+	test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath) + " <span class='label failure'>fail</span>");
+	test.log(LogStatus.FAIL, "Filter fail!" + " <span class='label failure'>fail</span>");
 }
 }                                                  
 

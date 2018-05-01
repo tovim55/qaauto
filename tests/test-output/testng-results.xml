@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="22" passed="21">
+<testng-results skipped="0" failed="1" ignored="0" total="23" passed="22">
   <reporter-output>
   </reporter-output>
-  <suite name="Verifone" duration-ms="512305" started-at="2018-04-26T13:06:27Z" finished-at="2018-04-26T13:14:59Z">
+  <suite name="Verifone" duration-ms="408608" started-at="2018-05-01T15:18:55Z" finished-at="2018-05-01T15:25:43Z">
     <groups>
       <group name="cgateway-portal">
-        <method signature="testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" class="com.verifone.tests.testAppl"/>
+        <method signature="CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" class="com.verifone.tests.CGApplicationPage"/>
+        <method signature="CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" class="com.verifone.tests.CGApplicationPage"/>
+        <method signature="CGApplicationPage.CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMaxLengthValue" class="com.verifone.tests.CGApplicationPage"/>
+        <method signature="CGApplicationPage.CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageTypeValidation" class="com.verifone.tests.CGApplicationPage"/>
       </group> <!-- cgateway-portal -->
     </groups>
-    <test name="Selenium Web Portal Automation Tests" duration-ms="512305" started-at="2018-04-26T13:06:27Z" finished-at="2018-04-26T13:14:59Z">
-      <class name="com.verifone.tests.testAppl">
-        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="startBrowser" is-config="true" duration-ms="23375" started-at="2018-04-26T13:06:27Z" finished-at="2018-04-26T13:06:50Z">
+    <test name="Selenium Web Portal Automation Tests" duration-ms="408608" started-at="2018-05-01T15:18:55Z" finished-at="2018-05-01T15:25:43Z">
+      <class name="com.verifone.tests.CGApplicationPage">
+        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="startBrowser" is-config="true" duration-ms="20047" started-at="2018-05-01T15:18:55Z" finished-at="2018-05-01T15:19:15Z">
           <params>
             <param index="0">
               <value>
@@ -46,7 +49,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="14647" started-at="2018-04-26T13:06:50Z" data-provider="inputValidation" finished-at="2018-04-26T13:07:05Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="14972" started-at="2018-05-01T15:19:15Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:19:30Z">
           <params>
             <param index="0">
               <value>
@@ -91,76 +94,19 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="184" started-at="2018-04-26T13:07:05Z" finished-at="2018-04-26T13:07:05Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="170" started-at="2018-05-01T15:19:30Z" finished-at="2018-05-01T15:19:30Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="12298" started-at="2018-04-26T13:07:05Z" data-provider="inputValidation" finished-at="2018-04-26T13:07:17Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[ ]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTestName6]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.transition]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Field is Required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="36" started-at="2018-04-26T13:07:17Z" finished-at="2018-04-26T13:07:17Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="12743" started-at="2018-04-26T13:07:17Z" data-provider="inputValidation" finished-at="2018-04-26T13:07:30Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="12715" started-at="2018-05-01T15:19:30Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:19:42Z">
           <params>
             <param index="0">
               <value>
@@ -205,137 +151,23 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="30" started-at="2018-04-26T13:07:30Z" finished-at="2018-04-26T13:07:30Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="33" started-at="2018-05-01T15:19:42Z" finished-at="2018-05-01T15:19:42Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="12345" started-at="2018-04-26T13:07:30Z" data-provider="inputValidation" finished-at="2018-04-26T13:07:43Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="12427" started-at="2018-05-01T15:19:42Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:19:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[seleniumTest1]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTestName1]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.transition]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Field is Required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="28" started-at="2018-04-26T13:07:43Z" finished-at="2018-04-26T13:07:43Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="12317" started-at="2018-04-26T13:07:43Z" data-provider="inputValidation" finished-at="2018-04-26T13:07:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest7]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[ ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTestName7]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.transition]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Field is Required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="29" started-at="2018-04-26T13:07:55Z" finished-at="2018-04-26T13:07:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="12426" started-at="2018-04-26T13:07:55Z" data-provider="inputValidation" finished-at="2018-04-26T13:08:07Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest4]]>
+                <![CDATA[seleniumTestE1]]>
               </value>
             </param>
             <param index="1">
@@ -376,23 +208,23 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="35" started-at="2018-04-26T13:08:07Z" finished-at="2018-04-26T13:08:07Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="32" started-at="2018-05-01T15:19:55Z" finished-at="2018-05-01T15:19:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="13059" started-at="2018-04-26T13:08:07Z" data-provider="inputValidation" finished-at="2018-04-26T13:08:20Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="12918" started-at="2018-05-01T15:19:55Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:20:08Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[seleniumTest9]]>
+                <![CDATA[seleniumTestE2]]>
               </value>
             </param>
             <param index="1">
@@ -433,80 +265,23 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="28" started-at="2018-04-26T13:08:20Z" finished-at="2018-04-26T13:08:20Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="33" started-at="2018-05-01T15:20:08Z" finished-at="2018-05-01T15:20:08Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="15534" started-at="2018-04-26T13:08:20Z" data-provider="inputValidation" finished-at="2018-04-26T13:08:36Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="15568" started-at="2018-05-01T15:20:08Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:20:23Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[seleniumTest10]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTest10]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.transition]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Field is Required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="33" started-at="2018-04-26T13:08:36Z" finished-at="2018-04-26T13:08:36Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="15690" started-at="2018-04-26T13:08:36Z" data-provider="inputValidation" finished-at="2018-04-26T13:08:52Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest11]]>
+                <![CDATA[seleniumTestE3]]>
               </value>
             </param>
             <param index="1">
@@ -547,80 +322,23 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="22" started-at="2018-04-26T13:08:52Z" finished-at="2018-04-26T13:08:52Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="30" started-at="2018-05-01T15:20:23Z" finished-at="2018-05-01T15:20:24Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="15521" started-at="2018-04-26T13:08:52Z" data-provider="inputValidation" finished-at="2018-04-26T13:09:07Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="15518" started-at="2018-05-01T15:20:24Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:20:39Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[seleniumTest13]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTest13]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.transition]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Field is Required]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="25" started-at="2018-04-26T13:09:07Z" finished-at="2018-04-26T13:09:07Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="15497" started-at="2018-04-26T13:09:07Z" data-provider="inputValidation" finished-at="2018-04-26T13:09:23Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest16]]>
+                <![CDATA[seleniumTestE4]]>
               </value>
             </param>
             <param index="1">
@@ -662,121 +380,23 @@ The value must be in the range 1 - 1500]]>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="21" started-at="2018-04-26T13:09:23Z" finished-at="2018-04-26T13:09:23Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="33" started-at="2018-05-01T15:20:39Z" finished-at="2018-05-01T15:20:39Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="FAIL" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="78316" started-at="2018-04-26T13:09:23Z" data-provider="inputValidation" finished-at="2018-04-26T13:10:41Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="15366" started-at="2018-05-01T15:20:39Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:20:54Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[seleniumTest18]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTest18]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.transition]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Field is Required]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [Field is Required] but found [Error message not found!]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Field is Required] but found [Error message not found!]
-at org.testng.Assert.fail(Assert.java:96)
-at org.testng.Assert.failNotEquals(Assert.java:776)
-at org.testng.Assert.assertEqualsImpl(Assert.java:137)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:453)
-at org.testng.Assert.assertEquals(Assert.java:463)
-at com.verifone.tests.testAppl.testAppl(testAppl.java:283)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="5887" started-at="2018-04-26T13:10:41Z" finished-at="2018-04-26T13:10:47Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=FAILURE method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="20632" started-at="2018-04-26T13:10:47Z" data-provider="inputValidation" finished-at="2018-04-26T13:11:08Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest17]]>
+                <![CDATA[seleniumTestE5]]>
               </value>
             </param>
             <param index="1">
@@ -817,23 +437,23 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="30" started-at="2018-04-26T13:11:08Z" finished-at="2018-04-26T13:11:08Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="25" started-at="2018-05-01T15:20:54Z" finished-at="2018-05-01T15:20:54Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="15480" started-at="2018-04-26T13:11:08Z" data-provider="inputValidation" finished-at="2018-04-26T13:11:23Z">
+        <test-method status="PASS" signature="CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageErrorHandling" duration-ms="15307" started-at="2018-05-01T15:20:54Z" data-provider="C_ErrorHandling" finished-at="2018-05-01T15:21:10Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[seleniumTest12]]>
+                <![CDATA[seleniumTestE6]]>
               </value>
             </param>
             <param index="1">
@@ -874,82 +494,25 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="20" started-at="2018-04-26T13:11:23Z" finished-at="2018-04-26T13:11:23Z">
+        </test-method> <!-- CGApplicationPageErrorHandling -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="22" started-at="2018-05-01T15:21:10Z" finished-at="2018-05-01T15:21:10Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageErrorHandling status=SUCCESS method=CGApplicationPage.CGApplicationPageErrorHandling(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="28817" started-at="2018-04-26T13:11:23Z" data-provider="inputValidation" finished-at="2018-04-26T13:11:52Z">
+        <test-method status="PASS" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="8754" started-at="2018-05-01T15:21:10Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:21:19Z">
           <params>
             <param index="0">
-              <value>
-                <![CDATA[seleniumTest14]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTest14]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Allow]]>
-              </value>
-            </param>
-            <param index="5">
               <value>
                 <![CDATA[99]]>
               </value>
             </param>
-            <param index="6">
-              <value>
-                <![CDATA[.toast-message]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Succeeded.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="42" started-at="2018-04-26T13:11:52Z" finished-at="2018-04-26T13:11:52Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="28875" started-at="2018-04-26T13:11:52Z" data-provider="inputValidation" finished-at="2018-04-26T13:12:21Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest21]]>
-              </value>
-            </param>
             <param index="1">
               <value>
                 <![CDATA[1.1 ]]>
@@ -957,64 +520,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </param>
             <param index="2">
               <value>
-                <![CDATA[seleniumTestName21]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Disabled]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.toast-message]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Succeeded.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="40" started-at="2018-04-26T13:12:21Z" finished-at="2018-04-26T13:12:21Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="25447" started-at="2018-04-26T13:12:21Z" data-provider="inputValidation" finished-at="2018-04-26T13:12:46Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest22]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[99]]>
+                <![CDATA[seleniumTestName2]]>
               </value>
             </param>
             <param index="3">
@@ -1025,234 +531,6 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             <param index="4">
               <value>
                 <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[1500]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.toast-message]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Succeeded.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="38" started-at="2018-04-26T13:12:46Z" finished-at="2018-04-26T13:12:46Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="28421" started-at="2018-04-26T13:12:46Z" data-provider="inputValidation" finished-at="2018-04-26T13:13:15Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest23]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[111]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.toast-message]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Succeeded.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="22" started-at="2018-04-26T13:13:15Z" finished-at="2018-04-26T13:13:15Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="29877" started-at="2018-04-26T13:13:15Z" data-provider="inputValidation" finished-at="2018-04-26T13:13:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest23]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Control]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[2]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.toast-message]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Succeeded.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="41" started-at="2018-04-26T13:13:45Z" finished-at="2018-04-26T13:13:45Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="28627" started-at="2018-04-26T13:13:45Z" data-provider="inputValidation" finished-at="2018-04-26T13:14:13Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest15]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTest15]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Deny]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[99]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[.toast-message]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[Succeeded.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="36" started-at="2018-04-26T13:14:13Z" finished-at="2018-04-26T13:14:13Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="15784" started-at="2018-04-26T13:14:13Z" data-provider="inputValidation" finished-at="2018-04-26T13:14:29Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[seleniumTest19]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[1.1 ]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[seleniumTest19]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Active]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[WrongStatus]]>
               </value>
             </param>
             <param index="5">
@@ -1267,25 +545,522 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </param>
             <param index="7">
               <value>
-                <![CDATA[Value not exists]]>
+                <![CDATA[Field is Required]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="22" started-at="2018-04-26T13:14:29Z" finished-at="2018-04-26T13:14:29Z">
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="26" started-at="2018-05-01T15:21:19Z" finished-at="2018-05-01T15:21:19Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=SUCCESS method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-        <test-method status="PASS" signature="testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="testAppl" duration-ms="29865" started-at="2018-04-26T13:14:29Z" data-provider="inputValidation" finished-at="2018-04-26T13:14:59Z">
+        <test-method status="PASS" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="8774" started-at="2018-05-01T15:21:19Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:21:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ ]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName6]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Field is Required]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="26" started-at="2018-05-01T15:21:27Z" finished-at="2018-05-01T15:21:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=SUCCESS method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="8875" started-at="2018-05-01T15:21:27Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:21:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestM1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Field is Required]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="25" started-at="2018-05-01T15:21:36Z" finished-at="2018-05-01T15:21:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=SUCCESS method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="8779" started-at="2018-05-01T15:21:36Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:21:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestM2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName7]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Field is Required]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="21" started-at="2018-05-01T15:21:45Z" finished-at="2018-05-01T15:21:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=SUCCESS method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="12211" started-at="2018-05-01T15:21:45Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:21:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestM3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName10]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Field is Required]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="29" started-at="2018-05-01T15:21:57Z" finished-at="2018-05-01T15:21:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=SUCCESS method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="12075" started-at="2018-05-01T15:21:57Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:22:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestM4]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName13]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Field is Required]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="19" started-at="2018-05-01T15:22:09Z" finished-at="2018-05-01T15:22:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=SUCCESS method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="FAIL" signature="CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMandatoryFields" duration-ms="71847" started-at="2018-05-01T15:22:09Z" data-provider="A_MandatoryFields" finished-at="2018-05-01T15:23:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestM5]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName18]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[99]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Field is Required]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Field is Required] but found [Error message not found!]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Field is Required] but found [Error message not found!]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:453)
+at org.testng.Assert.assertEquals(Assert.java:463)
+at com.verifone.tests.CGApplicationPage.CGApplicationPageMandatoryFields(CGApplicationPage.java:229)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMandatoryFields -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="5985" started-at="2018-05-01T15:23:21Z" finished-at="2018-05-01T15:23:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMandatoryFields status=FAILURE method=CGApplicationPage.CGApplicationPageMandatoryFields(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMaxLengthValue" duration-ms="18177" started-at="2018-05-01T15:23:27Z" data-provider="D_MaxLengthValue" finished-at="2018-05-01T15:23:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTest5Longmorethan60characters123456789012345678901234]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName5]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[appID should contain no more than 60 characters]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMaxLengthValue -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="25" started-at="2018-05-01T15:23:45Z" finished-at="2018-05-01T15:23:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMaxLengthValue status=SUCCESS method=CGApplicationPage.CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMaxLengthValue" duration-ms="12907" started-at="2018-05-01T15:23:45Z" data-provider="D_MaxLengthValue" finished-at="2018-05-01T15:23:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestMax1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTest9Longmorethan100characters123456789012345678901234567890123456789012345678901234567890123]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[name should contain no more than 100 characters]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageMaxLengthValue -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="28" started-at="2018-05-01T15:23:58Z" finished-at="2018-05-01T15:23:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageMaxLengthValue status=SUCCESS method=CGApplicationPage.CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageMaxLengthValue" duration-ms="30242" started-at="2018-05-01T15:23:58Z" data-provider="D_MaxLengthValue" finished-at="2018-05-01T15:24:29Z">
           <params>
             <param index="0">
               <value>
@@ -1330,19 +1105,305 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAppl -->
-        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.testAppl@6ac13091]" name="closePage" is-config="true" duration-ms="17" started-at="2018-04-26T13:14:59Z" finished-at="2018-04-26T13:14:59Z">
+        </test-method> <!-- CGApplicationPageMaxLengthValue -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="15" started-at="2018-05-01T15:24:29Z" finished-at="2018-05-01T15:24:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppl status=SUCCESS method=testAppl.testAppl(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.testAppl@6ac13091] output={null}]]]>
+                <![CDATA[[TestResult name=CGApplicationPageMaxLengthValue status=SUCCESS method=CGApplicationPage.CGApplicationPageMaxLengthValue(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePage -->
-      </class> <!-- com.verifone.tests.testAppl -->
+        <test-method status="PASS" signature="CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageTypeValidation" duration-ms="12412" started-at="2018-05-01T15:24:29Z" data-provider="B_TypeValidation" finished-at="2018-05-01T15:24:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestT1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[invalidVersion]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTestName4]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[The value is not valid]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageTypeValidation -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="27" started-at="2018-05-01T15:24:41Z" finished-at="2018-05-01T15:24:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageTypeValidation status=SUCCESS method=CGApplicationPage.CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageTypeValidation" duration-ms="15604" started-at="2018-05-01T15:24:41Z" data-provider="B_TypeValidation" finished-at="2018-05-01T15:24:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestT2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTest11]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[WrongStatus]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Value not exists]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageTypeValidation -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="27" started-at="2018-05-01T15:24:57Z" finished-at="2018-05-01T15:24:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageTypeValidation status=SUCCESS method=CGApplicationPage.CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageTypeValidation" duration-ms="15409" started-at="2018-05-01T15:24:57Z" data-provider="B_TypeValidation" finished-at="2018-05-01T15:25:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestT3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTest16]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[String]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[throttlingMaxRequestCount must be greater than 0
+The value must be in the range 1 - 1500]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageTypeValidation -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="25" started-at="2018-05-01T15:25:12Z" finished-at="2018-05-01T15:25:12Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageTypeValidation status=SUCCESS method=CGApplicationPage.CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageTypeValidation" duration-ms="15324" started-at="2018-05-01T15:25:12Z" data-provider="B_TypeValidation" finished-at="2018-05-01T15:25:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestT4]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTest17]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[throttlingMaxRequestCount must be greater than 0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageTypeValidation -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="18" started-at="2018-05-01T15:25:27Z" finished-at="2018-05-01T15:25:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageTypeValidation status=SUCCESS method=CGApplicationPage.CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+        <test-method status="PASS" signature="CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="CGApplicationPageTypeValidation" duration-ms="15613" started-at="2018-05-01T15:25:27Z" data-provider="B_TypeValidation" finished-at="2018-05-01T15:25:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[seleniumTestT5]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1.1 ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[seleniumTest12]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Active]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Control]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[1501]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.transition]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[The value must be in the range 1 - 1500]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGApplicationPageTypeValidation -->
+        <test-method status="PASS" signature="closePage(org.testng.ITestResult)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091]" name="closePage" is-config="true" duration-ms="26" started-at="2018-05-01T15:25:43Z" finished-at="2018-05-01T15:25:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CGApplicationPageTypeValidation status=SUCCESS method=CGApplicationPage.CGApplicationPageTypeValidation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.CGApplicationPage@6ac13091] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePage -->
+      </class> <!-- com.verifone.tests.CGApplicationPage -->
     </test> <!-- Selenium Web Portal Automation Tests -->
   </suite> <!-- Verifone -->
 </testng-results>
