@@ -204,7 +204,7 @@ public void CGApplicationPageMandatoryFields(String applicationsID, String Versi
 			System.out.println("Input MaxRequestCount = " + MaxRequestCount + currentResult + " <span class='label info'>info</span>");
 					
 			Assert.assertTrue(currentResult, "Type to Throttling Max Request Count field failed!");
-			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult + " <span class='label failure'>fail</span>");
+			test.log(LogStatus.INFO, "Input MaxRequestCount = " + MaxRequestCount + ": " + currentResult + " <span class='label info'>info</span>");
 		}
 	
 
