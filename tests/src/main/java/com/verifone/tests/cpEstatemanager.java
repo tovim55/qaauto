@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -16,6 +17,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -62,13 +64,19 @@ public class cpEstatemanager{
 	public WebDriver driver;
 
 	//webPortal.properties path
-	public String FilePath = "C:\\tmp\\eclipse-workspace-testng-maven\\eclipse-workspace-testng-maven\\tests\\src\\main\\java\\com\\verifone\\tests\\webPortal.properties";
+//	public String FilePath = "C:\\tmp\\eclipse-workspace-testng-maven\\eclipse-workspace-testng-maven\\tests\\src\\main\\java\\com\\verifone\\tests\\webPortal.properties";
+	public String FilePath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\verifone\\tests\\webPortal.properties";
 	public Properties prop = new Properties();
+	
 	
 	Integer Slp = 2000;
 	Integer rowNumber=0;
 	Integer getRowNumFromFile = 0;
 //	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\columns.xls";
+	
+//	private static cpEstatemanagerPageObjFactoryLogin pof;
+	
+	
 	
 	@Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType"})
 	@BeforeTest
@@ -80,6 +88,12 @@ public class cpEstatemanager{
 		// starting test		
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		
+		
+				
+		//webPortal.properties
+		FileInputStream ip = new FileInputStream(FilePath);
+		prop.load(ip);
+		
 		try {
 			driver = SeleniumUtils.setBrowser(browserType);
 		} catch (Exception e) {
@@ -87,28 +101,15 @@ public class cpEstatemanager{
 			e.printStackTrace();
 		}
 
+				
 // 		LOG-IN PORTAL AND NAVIGATE TO APPLICATION PAGE
 		SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, test);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//		Thread.sleep(2000);
-//		Click Log-in button
-//		driver.findElement(By.cssSelector("[href=\"javascript\\:void\\(gotoSso\\(\\)\\)\"]")).click(); 	
-//		Thread.sleep(2000);
-//		Type username = devadmin@yopmail.com
-		WebElement usern = driver.findElement(By.name("username"));
-		usern.click();
-//		Thread.sleep(2000);
-		Actions builder = new Actions(driver);
-		builder.sendKeys(usern, "vfieoustest@getnada.com").build().perform();
-//		Thread.sleep(2000);
-//		Type password = Veri1234 and ENTER
-		WebElement userpw = driver.findElement(By.name("password"));
-		userpw.click();
-//		Thread.sleep(2000);
-		builder.sendKeys(userpw, "Veri1234" + Keys.ENTER).build().perform();
-//		Thread.sleep(5000);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+		
+		LoginPageNew loginPage= PageFactory.initElements(driver, LoginPageNew.class);
+		loginPage.loginPageCp(prop.getProperty("user_id"), prop.getProperty("password_id"));
 	
-		test.log(LogStatus.INFO, "Log in Portal: <span class='label success'>success</span>" );
 	}
 	
 	@Test (groups = {"CP-portal"})

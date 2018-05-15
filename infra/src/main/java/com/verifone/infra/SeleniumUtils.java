@@ -82,18 +82,19 @@ public class SeleniumUtils  {
 		System.out.println("Starting web browser switch: " + browserType);
 		switch (browserType) {
 		case "FF":
-			System.setProperty("webdriver.gecko.driver","C:\\automation_resources\\seleniumDrivers\\geckodriver.exe");
-			DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-			desiredCapabilities.setAcceptInsecureCerts(true);
-			FirefoxProfile firefoxProfile = new FirefoxProfile();    
-			firefoxProfile.setPreference("browser.private.browsing.autostart",true);
-			driver = new FirefoxDriver(desiredCapabilities);
+			System.setProperty("webdriver.gecko.driver",new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\geckodriver.exe");
+//			DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+//			desiredCapabilities.setAcceptInsecureCerts(true);
+//			FirefoxProfile firefoxProfile = new FirefoxProfile();
+//			firefoxProfile.setPreference("browser.private.browsing.autostart",true);
+			driver = new FirefoxDriver();
 			System.out.println("finish start FireFox!!!");
 			break;
 
 		case "CHROME":
 			System.out.println("Starting CHROME web driver");
-			System.setProperty("webdriver.chrome.driver", "C:\\automation_resources\\seleniumDrivers\\chromedriver.exe");
+            System.out.println(new File(System.getProperty("user.dir")).getParent());
+			System.setProperty("webdriver.chrome.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("test-type");
 			options.addArguments("--incognito");
@@ -102,14 +103,14 @@ public class SeleniumUtils  {
 			break;
 		case "EDGE":
 			System.out.println("Starting EDGE web driver");
-			System.setProperty("webdriver.edge.driver", "C:\\automation_resources\\seleniumDrivers\\MicrosoftWebDriver.exe");	
+			System.setProperty("webdriver.edge.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\MicrosoftWebDriver.exe");
 			driver = new EdgeDriver();
 			System.out.println("EDGE web driver started successfully");
 			break;
 
 		case "IE":
 			System.out.println("Starting IE web driver");
-			System.setProperty("webdriver.ie.driver", "C:\\automation_resources\\seleniumDrivers\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\IEDriverServer.exe");
 			WebDriver Driver = new InternetExplorerDriver();
 			//				DesiredCapabilities desiredCapabilities1 = new DesiredCapabilities();
 			//		    	desiredCapabilities1.setAcceptInsecureCerts(true);

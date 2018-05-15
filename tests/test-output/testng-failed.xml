@@ -4,18 +4,17 @@
   <test thread-count="5" name="Selenium Web Portal Automation Tests(failed)">
     <parameter name="urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/>
     <parameter name="urlDev" value="http://dev.cgateway-portal.verifone.com/"/>
-    <parameter name="urlTest" value="http://test.cgateway-portal.verifone.com/"/>
-    <parameter name="env" value="DEV"/>
+    <parameter name="urlTest" value="https://qa.developer.verifonecp.com/docs/overview/get-started/"/>
+    <parameter name="env" value="TEST"/>
     <parameter name="browserType" value="CHROME"/>
     <parameter name="urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>
     <classes>
-      <class name="com.verifone.tests.testAppl">
+      <class name="com.verifone.tests.SignUpTest">
         <methods>
-          <include name="closePage"/>
           <include name="startBrowser"/>
-          <include name="testAppl" invocation-numbers="11"/>
+          <include name="SignUpTest" invocation-numbers="1"/>
         </methods>
-      </class> <!-- com.verifone.tests.testAppl -->
+      </class> <!-- com.verifone.tests.SignUpTest -->
     </classes>
   </test> <!-- Selenium Web Portal Automation Tests(failed) -->
 </suite> <!-- Failed suite [Verifone] -->

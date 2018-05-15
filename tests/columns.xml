@@ -30,7 +30,6 @@
          		<include name="columns" />	
          	</methods>
          </class>
-      </classes>
-      
+      </classes>      
    </test> 
 </suite>

@@ -293,6 +293,55 @@ public class ApplicationsPage {
 		}
 		return result;	
 	}
+	
+//--------------------------------------------------------------------------
+		/**
+		* Method: GET TEXT FROM TEXT BOX. Wait maximum 20 sec till element text box became enabled
+		* identifier is XPATH
+		* @authors Yana Fridman
+		*/
+//--------------------------------------------------------------------------
+		public static String getTextXPATH(WebDriver driver, String ident, int timeout) throws Exception {
+
+			boolean result = false;
+			int t = 0;
+			String TextDisplayed = "";
+
+//			Find text box with wait
+			try{
+				result = driver.findElement(By.xpath(ident)).isDisplayed();
+				}catch(Exception e){
+					   //ignore
+				}	
+			while (result == false & t < timeout*10) {
+				Thread.sleep(timeout);
+				try{
+					result = driver.findElement(By.xpath(ident)).isDisplayed();
+					}catch(Exception e){
+						   //ignore
+					}
+				t = t + timeout;
+			}
+			if (t < timeout*10 & result == true)  {
+		//	Scroll to element
+				WebElement elem = driver.findElement(By.xpath(ident));
+				int y = elem.getLocation().getY();
+				JavascriptExecutor js1 = (JavascriptExecutor) driver;
+				js1 = (JavascriptExecutor) driver;
+				try{
+				js1.executeScript("window.scrollTo(0,"+y+")");
+				}catch(Exception e){
+					   //ignore
+					}
+//			Get text from text box
+				Thread.sleep(timeout);
+				TextDisplayed = elem.getText();
+				result = true;
+				
+			}
+			return TextDisplayed;	
+		}
+
 
 //------------------------------------------------------------------------------
 	/**
