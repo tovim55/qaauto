@@ -9,7 +9,7 @@
       "DEV" - development environment
       "TEST" - Test/QA environment
       "STAGING1" - STAGING1 environment
-      "PRODUCTION" - PRODUCTION environment ( Please do not test on PRODUCTION)
+      "PRODUCTION" - PRODUCTION environment ( Please do not testLog on PRODUCTION)
       -->
    	  <parameter name = "env" value="TEST"/>
    	  <!--
@@ -20,15 +20,16 @@
       "IE" - Internet Explorer 
       --> 
       <parameter name = "urlTest" value="https://qa.developer.verifonecp.com/docs/overview/get-started/"/>	
-      <parameter name = "browserType" value="CHROME"/>  
+      <parameter name = "browserType" value="CHROME"/>
       <parameter name = "urlDev" value="http://dev.cgateway-portal.verifone.com/"/>
+      <parameter name = "urlCGTest" value="http://test.cgateway-portal.verifone.com/"/>
       <!--
       <parameter name = "urlTest" value="http://test.cgateway-portal.verifone.com/"/>
       --> 
       <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 
       <parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>  
       <classes>
-         <class name = "com.verifone.tests.SignUpTest"/>
+         <class name = "com.verifone.tests.cpTests.CpDevPortal"/>
       </classes>
       
    </test> 

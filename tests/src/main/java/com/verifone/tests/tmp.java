@@ -1,37 +1,25 @@
 package com.verifone.tests;
 //"http://test.cgateway-portal.verifone.com/"
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import org.testng.internal.collections.Ints;
 
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -39,11 +27,10 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.utils.DataDrivenUtils;
 import com.verifone.utils.Applications.ApplicationsPage;
-import com.verifone.utils.Applications.ErrorMsgs;
 import com.verifone.utils.General.LoginCGPortal;
 
 /**
-* This test check Application mandatory fields: Appl. ID and Version. 
+* This testLog check Application mandatory fields: Appl. ID and Version.
 * Verify error message displayed in different cases of empty mandatory fields,
 * wrong input type data, value not in allowed range, value not exists, long string value etc.
 * @authors Yana Fridman, Fred Shniper
@@ -70,7 +57,7 @@ public Properties prop = new Properties();
 
 Integer rowNumber=0;
 Integer getRowNumFromFile = 0;
-final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\applicationsGrid.xls";
+final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\resources\\applicationsGrid.xls";
 
 
 @Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })
@@ -87,7 +74,7 @@ public void startBrowser(String env,String urlDev, String urlTest,
 	String userName = prop.getProperty("user_id");
 	String userPassword = prop.getProperty("password_id");
 	
-	// starting test		
+	// starting testLog
 	
 	try {
 		driver = SeleniumUtils.setBrowser(browserType);
@@ -168,7 +155,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertTrue(currentResult, "Add button click failed!");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Add button click failed!");
@@ -184,7 +171,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertTrue(currentResult, "Type to ApplicationID field failed!");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Type to ApplicationID field failed!");
@@ -199,7 +186,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertEquals(applicationsID, applicationsIDGrid, "ApplicationId on grid not matched with ApplicationId on form");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "ApplicationId on grid not matched with ApplicationId on form");
@@ -212,7 +199,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertTrue(currentResult, "Type to Version field failed!");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Type to Version field failed!");
@@ -227,7 +214,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertEquals(Version, VersionGrid, "Version on grid not matched with Version on form");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Version on grid not matched with Version on form");
@@ -266,7 +253,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertEquals(MaxRequestCount, MaxRequestCountGrid, "Throttling Max Request Count on grid not matched with Throttling Max Request Count on form");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "Throttling Max Request Count on grid not matched with Throttling Max Request Count on form");
@@ -289,7 +276,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertEquals(Status, StatusGrid, "Status on grid not matched with Status on table");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Status on grid not matched with Status on table");
@@ -307,7 +294,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertEquals(Access, AccessGrid, "Throttling Access on grid not matched with Throttling Access on form");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Throttling Access on grid not matched with Throttling Access on form");
@@ -324,7 +311,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 	try {
 		Assert.assertEquals(Name, NameGrid, "Name on grid not matched with Name on table");
 	} catch (Throwable t) {
-		capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 		test.log(LogStatus.FAIL, "Name on grid not matched with Name on table");
@@ -337,7 +324,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertTrue(currentResult, "Cancel button click failed!");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "Cancel button click failed!");
@@ -371,7 +358,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertEquals(applicationsIDGrid,applicationsID, "ApplicationId on form not matched with ApplicationId on grid");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "ApplicationId on form not matched with ApplicationId on grid");
@@ -392,7 +379,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertEquals(Version, VersionGrid, "Version on grid not matched with Version on table");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "Version on grid not matched with Version on table");
@@ -420,7 +407,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertEquals(Status, StatusGrid, "Status on grid not matched with Status on table");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "Status on grid not matched with Status on table");
@@ -449,7 +436,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertEquals(Access, AccessGrid, "Access on grid not matched with Access on table");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "Access on grid not matched with Access on table");
@@ -477,7 +464,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 			try {
 				Assert.assertEquals(MaxRequestCount, MaxRequestCountGrid, "Max Request Count on grid not matched with Max Request Count on table");
 			} catch (Throwable t) {
-				capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+				capScreenShootPath = SeleniumUtils.getScreenshot();
 				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 				test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 				test.log(LogStatus.FAIL, "Max Request Count on grid not matched with Max Request Count on table");
@@ -504,7 +491,7 @@ public void testAppl(String applicationsID, String Version, String Name, String 
 		try {
 			Assert.assertEquals(Name, NameGrid, "Name on grid not matched with Name on table");
 		} catch (Throwable t) {
-			capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			test.log(LogStatus.FAIL, "Name on grid not matched with Name on table");

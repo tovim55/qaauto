@@ -9,7 +9,7 @@
       "DEV" - development environment
       "TEST" - Test/QA environment
       "STAGING1" - STAGING1 environment
-      "PRODUCTION" - PRODUCTION environment ( Please do not test on PRODUCTION)
+      "PRODUCTION" - PRODUCTION environment ( Please do not testLog on PRODUCTION)
       -->
    	  <parameter name = "env" value="TEST"/>
    	  <!--
@@ -32,7 +32,7 @@
       <parameter name = "userStaging1" value="vfieoustest@getnada.com/"/> 
       <parameter name = "passwordStaging1" value="Veri1234"/>        
       <classes>
-         <class name = "com.verifone.tests.cpEstatemanager"/>
+         <class name = "com.verifone.tests.cpTests.CpDevPortal"/>
       </classes>
       
    </test> 

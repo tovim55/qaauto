@@ -9,7 +9,7 @@
       "DEV" - development environment
       "TEST" - Test/QA environment
       "STAGING1" - STAGING1 environment
-      "PRODUCTION" - PRODUCTION environment ( Please do not test on PRODUCTION)
+      "PRODUCTION" - PRODUCTION environment ( Please do not testLog on PRODUCTION)
       -->
    	  <parameter name = "env" value="TEST"/>
    	  <!--

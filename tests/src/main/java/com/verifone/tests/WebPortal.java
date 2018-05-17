@@ -5,30 +5,18 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.IExtentTestClass;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
 
@@ -43,7 +31,7 @@ public class WebPortal{
 	public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date)+".html";	
 	//ExtentReports new instance
 	public ExtentReports logger = new ExtentReports(reportLocation, true);		
-	//ExtentReports starting test
+	//ExtentReports starting testLog
 	ExtentTest test = logger.startTest("Verifone", "Verifone cgateway Portal Automation");
 	//Selenium WebDriver
 	public WebDriver driver;
@@ -57,7 +45,7 @@ public class WebPortal{
 	@BeforeTest
 	public void startBrowser(String env,String urlDev, String urlTest,
 			String urlStaging1, String urlProduction, String browserType) throws Exception {
-		// starting test		
+		// starting testLog
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		try {
 			driver = SeleniumUtils.setBrowser(browserType);
@@ -75,7 +63,7 @@ public class WebPortal{
 	@Test (groups = {"cgateway-portal"})
 	public void getTitlePage() throws Exception {
 	
-	//starting test
+	//starting testLog
 	logger.startTest("getTitlePage", "Verifone cgateway-portal get title page ");
 	
 	//webPortal.properties
@@ -104,7 +92,7 @@ public class WebPortal{
 //	@Test (groups = {"cgateway-portal"})
 //	public void findTextInPage() throws Exception {
 //	
-//	//starting test
+//	//starting testLog
 //	logger.startTest("findTextInPage", "Verifone cgateway-portal get title page ");
 //	
 //	//webPortal.properties
@@ -113,7 +101,7 @@ public class WebPortal{
 //	
 //	String textToFind = prop.getProperty("textToFindInWebPage");
 //	SeleniumUtils.findTextInPage(driver, textToFind);
-///	test.log(LogStatus.PASS, "Step details - The text " + textToFind + " was found successfully in the Page");
+///	testLog.log(LogStatus.PASS, "Step details - The text " + textToFind + " was found successfully in the Page");
 //	}
 //	
 	
@@ -124,10 +112,10 @@ public class WebPortal{
 	Reporter.log( "Closing Web Page", true );
 //	if (result.getStatus()==ITestResult.FAILURE)
 //	{
-//		String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-//		test.log(LogStatus.FAIL, "Test Failed !!! - Did not found text: " + prop.getProperty("pageTitleToFind") + " in title page");
-//		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-//		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+//		String capScreenShootPath = SeleniumUtils.getScreenshot(driver);
+//		testLog.log(LogStatus.FAIL, "Test Failed !!! - Did not found text: " + prop.getProperty("pageTitleToFind") + " in title page");
+//		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 	
 		test.log(LogStatus.INFO, "result.getStatus value is : " + result.getStatus());
 		switch (result.getStatus()) {        
@@ -138,7 +126,7 @@ public class WebPortal{
 			test.log(LogStatus.PASS, "Test is successul");			
 			break;
 		case ITestResult.FAILURE:
-			String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			String capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.FAIL, "Test Failed !!! - Did not found text: " + prop.getProperty("pageTitleToFind") + " in title page");
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
@@ -147,7 +135,7 @@ public class WebPortal{
 	}
 	
 		
-	//ending test
+	//ending testLog
 	logger.endTest(test);
 	//writing everything to document
 	logger.flush();	

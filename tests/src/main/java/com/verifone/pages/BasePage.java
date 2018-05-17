@@ -1,0 +1,444 @@
+package com.verifone.pages;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.infra.SeleniumUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.FileInputStream;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+
+public abstract class BasePage {
+
+    public static WebDriver driver;
+    private String url;
+    private String title;
+    public static ExtentTest testLog;
+
+
+    public BasePage(String url, String title) {
+        this.url = url;
+        this.title = title;
+    }
+
+
+    public void navigate() {
+        driver.get(this.url);
+        validateTitle();
+    }
+
+    protected void validateTitle() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 60);
+            wait.until(ExpectedConditions.titleIs(title));
+        } catch (TimeoutException e) {
+            System.out.println(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
+        }
+    }
+
+
+    public void sendKeys(By loc, String text) {
+        try {
+
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.elementToBeClickable(loc));
+            WebElement element = driver.findElement(loc);
+            element.clear();
+            element.sendKeys(text);
+            testLog.log(LogStatus.PASS, "send keys successfully for : " + loc.toString());
+        }
+        catch (TimeoutException e){
+            testLog.log(LogStatus.ERROR, "Elenmnt Not Found For Locator: " + loc.toString());
+        }
+        }
+
+    public void click(By loc) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(loc)).click();
+    }
+//
+//    /**
+//     * Navigate to the page
+//     **/
+//    public abstract void navigate();
+//
+//    /**
+//     * returns title of the page
+//     **/
+//    public abstract String getTitle();
+//
+//    /**
+//     * returns link of the page
+//     **/
+//    public abstract WebElement getPageLink();
+//
+//    /**
+//     * Sets user name and password for login
+//     *
+//     * @param text
+//     * @param text2
+//     */
+//    public abstract void initPage(String text, String text2);
+//
+//    /**
+//     * Returns grid cell text
+//     *
+//     * @param trow
+//     * @param tcolumn
+//     * @return String
+//     */
+//    public abstract String getGridCellText(int trow, int tcolumn);
+//
+//    /**
+//     * returns number of rows in the grid
+//     **/
+//    public abstract int gridRows();
+//
+//    /**
+//     * returns number of columns in the grid
+//     **/
+//    public abstract int gridColumns();
+//
+//    /**
+//     * Set text in grid cell
+//     */
+//    public abstract void setGridCellText(int trow, int tcolumn, String text) throws Exception;
+//
+//    /**
+//     * Click Add button
+//     *
+//     * @throws Exception
+//     **/
+//    public abstract void clickAdd() throws Exception;
+//
+//    public abstract void clickSave() throws Exception;
+//
+//    public abstract void clickCancel() throws Exception;
+//
+//    public abstract void clickMultiActivate() throws Exception;
+//
+//    public abstract void clickUpload() throws Exception;
+//
+//    //Methods that set values in form fields
+//    public abstract void setApplicationId(String text);
+//
+//    public abstract void setVersion(String text);
+//
+//    public abstract void setStatus(String text);
+//
+//    public abstract void setType(String text);
+//
+//    public abstract void setValue(String text);
+//
+//    public abstract void setNote(String text);
+//
+//    public abstract int numberOfErrors();
+//
+//    public abstract String getDisplayedError();
+//
+//    public abstract void selectApplicationId(String text) throws Exception;
+//
+//    public abstract void selectVersion(String text) throws Exception;
+//
+//    public abstract void selectStatus(String text) throws Exception;
+//
+//    public abstract void selectType(String text) throws Exception;
+
+    /**
+     * Method selects option if exists from the dropdown
+     *
+     * @param dropdown - arrow icon with class attribute 'k-icon k-i-arrow-s comboArrowClick'
+     * @param option   to select
+     * @throws Exception
+     */
+    protected void dropdownSelect(WebElement dropdown, String option) throws Exception {
+
+        dropdown.click();
+        String optionsIdentifier = dropdown.getAttribute("aria-controls");
+
+        List<WebElement> options = driver.findElements(By.xpath("//*[contains(@id, '" + optionsIdentifier + "')]//li"));
+
+        for (Iterator<WebElement> iterator = options.iterator(); iterator.hasNext(); ) {
+            WebElement webElement = (WebElement) iterator.next();
+            if (webElement.getAttribute("innerText").equals(option)) {
+                webElement.click();
+                return;
+            }
+        }
+    }
+
+    /**
+     * Method checks if option exists in dropdown
+     *
+     * @param dropdown - arrow icon with class attribute 'k-icon k-i-arrow-s comboArrowClick'
+     * @param option
+     * @return true if exists, false otherwise
+     * @throws Exception
+     */
+    protected boolean isDropdownOptionExists(WebElement dropdown, String option) throws Exception {
+
+        dropdown.click();
+        String optionsIdentifier = dropdown.getAttribute("aria-controls");
+
+        List<WebElement> options = driver.findElements(By.xpath("//*[contains(@id, '" + optionsIdentifier + "')]//li"));
+
+        for (Iterator<WebElement> iterator = options.iterator(); iterator.hasNext(); ) {
+            WebElement webElement = (WebElement) iterator.next();
+            if (webElement.getAttribute("innerText").equals(option)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * Checks if field is labeled as required.
+     * The method uses the fact that kandoo ui assigns speciffic class to required field's lables
+     *
+     * @param fieldLable without asterisk
+     * @return true if field is required, false otherwise
+     */
+    public boolean isRequired(String fieldLable) {
+//		FindBy(how = How.XPATH, using = "//label[contains(@class, 'ng-binding required-asterisk')]")
+//		static WebElement requiredLabels;
+
+        List<WebElement> requiredFields = driver.findElements(By.xpath("//label[contains(@class, 'ng-binding required-asterisk')]"));
+        for (WebElement required : requiredFields) {
+            if (required.getAttribute("innerText").equals(fieldLable))
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method waits for web element identified by locator to appear and clicks on it
+     *
+     * @param locator
+     * @param maxTimeout
+     * @return WebElement
+     * @throws Exception
+     * @author FredS3
+     */
+    protected WebElement actionClick(By locator, int maxTimeout) throws Exception {
+
+        WebElement webEl = driver.findElement(locator);
+
+        //scrollToElement(locator);
+        Actions builder = new Actions(driver);
+        while (!webEl.getAttribute("class").contains("k-edit-cell"))
+            builder.moveToElement(webEl).click().perform();
+
+        return webEl;
+    }
+
+    /**
+     * Method waits for web element to appear and clicks on it
+     *
+     * @param element
+     * @param maxTimeout
+     * @return element
+     * @throws Exception
+     * @author FredS3
+     */
+    protected WebElement actionClick(WebElement element, int maxTimeout) throws Exception {
+        //scrollToElement(element);
+        Actions builder = new Actions(driver);
+        //try to click on grid cell until it's selected
+        while (!element.getAttribute("class").contains("k-edit-cell"))
+            builder.moveToElement(element).click().perform();
+
+        return element;
+    }
+
+    /**
+     * Method check within maxTimeout if element identified by locator enabled
+     *
+     * @param locator
+     * @param maxTimeout
+     * @return true if element enabled, false otherwise
+     * @throws Exception
+     * @author FredS3
+     */
+    protected boolean isEnabled(By locator, int maxTimeout) throws Exception {
+
+        WebDriverWait wait = new WebDriverWait(driver, maxTimeout);
+        WebElement webEl = driver.findElement(locator);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            if (webEl.isEnabled() && webEl.getAttribute("class").equals("k-state-disabled"))
+                return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Method check within maxTimeout if element identified by locator exists
+     *
+     * @param locator
+     * @param maxTimeout
+     * @return true if element exists, false otherwise
+     * @throws Exception
+     * @author FredS3
+     */
+    protected boolean isExists(By locator, int maxTimeout) throws Exception {
+
+        WebDriverWait wait = new WebDriverWait(driver, maxTimeout);
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Method wait's till element is clickable
+     *
+     * @param element
+     * @param maxTimeout
+     */
+    protected void waitTillClickable(WebElement element, int maxTimeout) {
+        WebDriverWait wait = new WebDriverWait(driver, maxTimeout);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    /**
+     * The method scrolls to given element by locator
+     *
+     * @param locator
+     * @author FredS3
+     */
+    protected void scrollToElement(By locator) {
+
+        int yCoordinate;
+        WebElement webEl = driver.findElement(locator);
+
+        yCoordinate = webEl.getLocation().getY();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver;
+        try {
+            js.executeScript("window.scrollTo(0," + yCoordinate + ")");
+        } catch (Exception e) {
+            //ignore error
+        }
+    }
+
+    /**
+     * The method scrolls to given web element
+     *
+     * @param element
+     * @author FredS3
+     */
+    protected void scrollToElement(WebElement element) {
+
+        int yCoordinate;
+        WebElement webEl = element;
+
+        yCoordinate = webEl.getLocation().getY();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver;
+        try {
+            js.executeScript("window.scrollTo(0," + yCoordinate + ")");
+        } catch (Exception e) {
+            //ignore error
+        }
+    }
+
+    /**
+     * Method sets text in web element identified by any locator
+     *
+     * @param locator    of type By
+     * @param text       to set
+     * @param maxTimeout time to wait for element to apear
+     */
+    protected void setTextBoxText(By locator, String text, int maxTimeout) {
+
+        WebDriverWait wait = new WebDriverWait(driver, maxTimeout);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+        //scrollToElement(locator);
+        WebElement elem = driver.findElement(locator);
+        Actions builder = new Actions(driver);
+        try {
+            elem.clear();
+        } catch (Exception e) {
+            //ignore
+        }
+        Actions typeText = builder.moveToElement(elem).click().sendKeys(elem, text);
+        typeText.perform();
+        driver.switchTo().defaultContent();
+    }
+
+    /**
+     * Method sets text in web element
+     *
+     * @param element
+     * @param text
+     * @param maxTimeout
+     */
+    protected void setTextBoxText(WebElement element, String text, int maxTimeout) {
+
+        WebDriverWait wait = new WebDriverWait(driver, maxTimeout);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(toByVal(element)));
+
+        //scrollToElement(locator);
+        WebElement elem = element;
+        Actions builder = new Actions(driver);
+        try {
+            elem.clear();
+        } catch (Exception e) {
+            //ignore
+        }
+        Actions typeText = builder.moveToElement(elem).click().sendKeys(elem, text);
+        typeText.perform();
+        driver.switchTo().defaultContent();
+    }
+
+
+    /**
+     * Receives web element and returns its By type
+     *
+     * @param we of type WebElement
+     * @return ByType of WebElement
+     */
+    protected By toByVal(WebElement we) {
+        // By format = "[foundFrom] -> locator: term"
+        // see RemoteWebElement toString() implementation
+        String str = we.toString().split(" -> ")[1];
+        String[] data = str.substring(0, str.length() - 1).split(": "); //remove last char
+        //String[] data = we.toString().split(" -> ")[1].replace("]", "").split(": ");
+        String locator = data[0];
+        String term = data[1];
+        // remove possible duplication of ] in term
+        while (term.endsWith("]]")) {
+            term = term.substring(0, term.length() - 1);
+        }
+
+        switch (locator) {
+            case "xpath":
+                return By.xpath(term);
+            case "css selector":
+                return By.cssSelector(term);
+            case "id":
+                return By.id(term);
+            case "tag name":
+                return By.tagName(term);
+            case "name":
+                return By.name(term);
+            case "link text":
+                return By.linkText(term);
+            case "class name":
+                return By.className(term);
+        }
+        return (By) we;
+    }
+}

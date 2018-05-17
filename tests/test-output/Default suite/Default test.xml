@@ -56,4 +56,4 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
   <testcase name="testAppl" time="0.0" classname="com.verifone.tests.tmp">
     <skipped/>
   </testcase> <!-- testAppl -->
-</testsuite> <!-- Default test -->
+</testsuite> <!-- Default testLog -->

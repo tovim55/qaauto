@@ -6,13 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
-import java.io.FileInputStream;
-import java.util.concurrent.TimeUnit;
 
 public class TestNgPortal {
 
@@ -33,7 +30,7 @@ public class TestNgPortal {
 		test.log(LogStatus.PASS, "Test Passed - <span class='label success'>success</span>");			
 		break;
 	case ITestResult.FAILURE:
-		String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+		String capScreenShootPath = SeleniumUtils.getScreenshot();
 		test.log(LogStatus.FAIL, "Test Failed !!! <span class='Failed'>fail</span>");
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));

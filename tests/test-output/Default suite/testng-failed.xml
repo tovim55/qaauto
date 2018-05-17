@@ -11,5 +11,5 @@
         </methods>
       </class> <!-- com.verifone.tests.tmp -->
     </classes>
-  </test> <!-- Default test(failed) -->
+  </test> <!-- Default testLog(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
