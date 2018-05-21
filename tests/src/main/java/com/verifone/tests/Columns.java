@@ -1,10 +1,8 @@
 package com.verifone.tests;
 //	"http://test.cgateway-portal.verifone.com/"
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -16,18 +14,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -35,7 +30,7 @@ import com.verifone.infra.SeleniumUtils;
 import com.verifone.utils.DataDrivenUtils;
 
 /**
- * This test check Columns options data and it's status. Initial State and after update and reset changes
+ * This testLog check Columns options data and it's status. Initial State and after update and reset changes
  * @authors Yana Fridman, Fred Shniper
 
  */
@@ -47,14 +42,14 @@ public class Columns{
 	//ExtentReports path
 	public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date)+".html";	
 	//ExtentReports new instance
-	//public static ExtentTest test;
+	//public static ExtentTest testLog;
 	public static ExtentTest childTest;
 		
 	public ExtentReports logger = new ExtentReports(reportLocation, true);		
 	Boolean testStepPassed = true;
 	public static ExtentTest parentTest;
 	String capScreenShootPath;
-	//ExtentReports starting test
+	//ExtentReports starting testLog
 	ExtentTest test = logger.startTest("Verifone", "Verifone cgateway Portal Automation");
 		
 	//Selenium WebDriver
@@ -67,7 +62,7 @@ public class Columns{
 	Integer Slp = 2000;
 	Integer rowNumber=0;
 	Integer getRowNumFromFile = 0;
-	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\columns.xls";
+	final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\resources\\columns.xls";
 	
 	@Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })
 	@BeforeTest
@@ -76,7 +71,7 @@ public class Columns{
 	 */
 	public void startBrowser(String env,String urlDev, String urlTest,
 			String urlStaging1, String urlProduction, String browserType) throws Exception {
-		// starting test		
+		// starting testLog
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		
 		try {
@@ -130,7 +125,7 @@ public class Columns{
 			String c9, String c10, String c11, String c12, String c13, String c14, String c15, String c16, String c17, String c18, String c19, String c20,
 			String c21) throws Exception {
 		
-		logger.startTest("columns", "Verifone cgateway-portal POC Columns test ");
+		logger.startTest("columns", "Verifone cgateway-portal POC Columns testLog ");
 		
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -140,7 +135,7 @@ public class Columns{
 		String subMenuParrentNodeXpath = "//a[@ui-sref=@@@@]"; 
 		boolean testPassed=true;
 
-//		Starting test
+//		Starting testLog
 //		Navigate to Page
 		System.out.println("Navigate to "+pageName+" page.");
 		test.log(LogStatus.INFO, "Navigate to "+pageName+" page.");
@@ -241,7 +236,7 @@ public class Columns{
 					System.out.println("Actual: "+ driver.findElement(By.xpath(columnXpathLocator.replaceAll( "@@@@@", Integer.toString(i+1) ))).getAttribute("innerText"));
 					test.log(LogStatus.FAIL, "Actual: "+ driver.findElement(By.xpath(columnXpathLocator.replaceAll( "@@@@@", Integer.toString(i+1) ))).getAttribute("innerText"));
 					testStepPassed = false;
-					capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+					capScreenShootPath = SeleniumUtils.getScreenshot();
 					test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 					test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 				}
@@ -344,13 +339,13 @@ public class Columns{
 			test.log(LogStatus.PASS, "Test is successul");			
 			break;
 		case ITestResult.FAILURE:
-//			String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+//			String capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 			test.log(LogStatus.FAIL, "Test Failed !!! ");
-//			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-//			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+//			testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//			testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 			break;
 		}
-		//ending test
+		//ending testLog
 		logger.endTest(test);
 		//writing everything to document
 		logger.flush();	
@@ -368,19 +363,19 @@ public class Columns{
 		
 //		driver.findElement(By.id("username")).click(); 
 //		driver.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[1]/div/nav/ul/li[2]/div/ul/li/a")).click(); 
-//		test.log(LogStatus.INFO, "result.getStatus value is : " + result.getStatus());
+//		testLog.log(LogStatus.INFO, "result.getStatus value is : " + result.getStatus());
 //		switch (result.getStatus()) {        
 //		case ITestResult.SKIP:
-//			test.log(LogStatus.SKIP, "Test SKIP");			
+//			testLog.log(LogStatus.SKIP, "Test SKIP");
 //			break;
 //		case ITestResult.SUCCESS:
-//			test.log(LogStatus.PASS, "Test is successul");			
+//			testLog.log(LogStatus.PASS, "Test is successul");
 //			break;
 //		case ITestResult.FAILURE:
-////			String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
-//			test.log(LogStatus.FAIL, "Test Failed !!! ");
-////			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-////			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
+////			String capScreenShootPath = SeleniumUtils.getScreenshot(driver);
+//			testLog.log(LogStatus.FAIL, "Test Failed !!! ");
+////			testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+////			testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //			break;
 //		}
 //

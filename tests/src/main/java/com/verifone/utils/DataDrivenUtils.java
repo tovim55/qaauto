@@ -20,14 +20,14 @@ public class DataDrivenUtils {
  	/**
  	 * This method implements Data Driven mechanism
  	 * @author Fred Shniper 
- 	 * @param FulePath
+// 	 * @param FulePath
  	 * @return SheetName
  	 */
      public static Object[][] getExcelData(String FilePath, String SheetName) throws Exception {
         String[][] tabArray = null;
 
         try {
-            // Access the required test data sheet
+            // Access the required testLog data sheet
             FileInputStream ExcelFile = new FileInputStream(FilePath);
             ExcelWBook = new HSSFWorkbook(ExcelFile);
             ExcelWSheet = ExcelWBook.getSheet(SheetName);
@@ -69,14 +69,14 @@ public class DataDrivenUtils {
  	/**
  	 * This method return number of rows in csv file
  	 * @author Giora Tovim 
- 	 * @param FulePath
+// 	 * @param FulePath
  	 * @return SheetName
  	 */
      public static int getRowNumberExcelData(String FilePath, String SheetName) throws Exception {
          String[][] tabArray = null;
          Integer totalNoOfRow = 0;
          
-             // Access the required test data sheet
+             // Access the required testLog data sheet
              FileInputStream ExcelFile = new FileInputStream(FilePath);
              ExcelWBook = new HSSFWorkbook(ExcelFile);
              ExcelWSheet = ExcelWBook.getSheet(SheetName);

@@ -1,41 +1,32 @@
 package com.verifone.tests;
 //	"http://test.cgateway-portal.verifone.com/"
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
-import com.verifone.utils.DataDrivenUtils;
 
 /**
- * The purpose of this test is to test CP Estatemanager portal
+ * The purpose of this testLog is to testLog CP Estatemanager portal
  * @authors Giora Tovim
  */
 
@@ -46,13 +37,13 @@ public class cpEstatemanagerEstatesupport{
 	//ExtentReports path
 	public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date)+".html";	
 	//ExtentReports new instance
-	//public static ExtentTest test;
+	//public static ExtentTest testLog;
 	public static ExtentTest childTest, parentTest;
 		
 	public ExtentReports logger = new ExtentReports(reportLocation, true);		
 	Boolean testStepPassed = true;
 	String capScreenShootPath;
-	//ExtentReports starting test
+	//ExtentReports starting testLog
 	ExtentTest test = logger.startTest("Verifone", "Verifone CP Estatemanager Portal Automation");
 		
 	//Selenium WebDriver
@@ -65,7 +56,7 @@ public class cpEstatemanagerEstatesupport{
 	Integer Slp = 2000;
 	Integer rowNumber=0;
 	Integer getRowNumFromFile = 0;
-//	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\columns.xls";
+//	final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\resources\\columns.xls";
 	
 	@Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType"})
 	@BeforeTest
@@ -74,7 +65,7 @@ public class cpEstatemanagerEstatesupport{
 	 */
 	public void startBrowser(String env,String urlDev, String urlTest,
 			String urlStaging1, String urlProduction, String browserType) throws Exception {
-		// starting test		
+		// starting testLog
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		
 		try {
@@ -111,7 +102,7 @@ public class cpEstatemanagerEstatesupport{
 	@Test (groups = {"CP-portal"})
 	public void cpEstatemanager() throws Exception {
 		
-		logger.startTest("cpEstatemanager", "Verifone CP-portal POC Estate Manager test ");
+		logger.startTest("CpDevPortal", "Verifone CP-portal POC Estate Manager testLog ");
 		
 		String title = driver.getTitle();
 		System.out.println("Page Title is: " + title);
@@ -143,13 +134,13 @@ public class cpEstatemanagerEstatesupport{
 			test.log(LogStatus.PASS, "Test is successul");			
 			break;
 		case ITestResult.FAILURE:
-			String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			String capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.FAIL, "Test Failed !!! ");
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			break;
 		}
-		//ending test
+		//ending testLog
 		logger.endTest(test);
 		//writing everything to document
 		logger.flush();	

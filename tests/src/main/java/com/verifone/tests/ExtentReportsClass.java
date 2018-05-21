@@ -26,7 +26,7 @@ public class ExtentReportsClass{
 		//replaceExisting - Setting to overwrite (TRUE) the existing file or append to it
 		//True (default): the file will be replaced with brand new markup, and all existing data will be lost. Use this option to create a brand new report
 		//False: existing data will remain, new tests will be appended to the existing report. If the the supplied path does not exist, a new file will be created.
-		extent = new ExtentReports (System.getProperty("user.dir") +"/test-output/STMExtentReport.html", true);
+		extent = new ExtentReports (System.getProperty("user.dir") +"/testLog-output/STMExtentReport.html", true);
 		//extent.addSystemInfo("Environment","Environment Name")
 		extent
                 .addSystemInfo("Host Name", "SoftwareTestingMaterial")
@@ -41,12 +41,12 @@ public class ExtentReportsClass{
 	@Test
 	public void passTest(){
 		//extent.startTest("TestCaseName", "Description")
-		//TestCaseName – Name of the test
-		//Description – Description of the test
-		//Starting test
+		//TestCaseName – Name of the testLog
+		//Description – Description of the testLog
+		//Starting testLog
 		logger = extent.startTest("passTest");
 		Assert.assertTrue(true);
-		//To generate the log when the test case is passed
+		//To generate the log when the testLog case is passed
 		logger.log(LogStatus.PASS, "Test Case Passed is passTest");
 	}
 	
@@ -71,17 +71,17 @@ public class ExtentReportsClass{
 		}else if(result.getStatus() == ITestResult.SKIP){
 			logger.log(LogStatus.SKIP, "Test Case Skipped is "+result.getName());
 		}
-		// ending test
-		//endTest(logger) : It ends the current test and prepares to create HTML report
+		// ending testLog
+		//endTest(logger) : It ends the current testLog and prepares to create HTML report
 		extent.endTest(logger);
 	}
 	@AfterTest
 	public void endReport(){
 		// writing everything to document
-		//flush() - to write or update test information to your report. 
+		//flush() - to write or update testLog information to your report.
                 extent.flush();
                 //Call close() at the very end of your session to clear all resources. 
-                //If any of your test ended abruptly causing any side-affects (not all logs sent to ExtentReports, information missing), this method will ensure that the test is still appended to the report with a warning message.
+                //If any of your testLog ended abruptly causing any side-affects (not all logs sent to ExtentReports, information missing), this method will ensure that the testLog is still appended to the report with a warning message.
                 //You should call close() only once, at the very end (in @AfterSuite for example) as it closes the underlying stream. 
                 //Once this method is called, calling any Extent method will throw an error.
                 //close() - To close all the operation

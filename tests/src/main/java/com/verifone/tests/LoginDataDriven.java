@@ -1,41 +1,24 @@
 package com.verifone.tests;
 //	"http://test.cgateway-portal.verifone.com/"
 
-import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.IExtentTestClass;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.utils.DataDrivenUtils;
-
-import junit.framework.Assert;
 
 
 public class LoginDataDriven{
@@ -46,7 +29,7 @@ public class LoginDataDriven{
 	public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date)+".html";	
 	//ExtentReports new instance
 	public ExtentReports logger = new ExtentReports(reportLocation, true);		
-	//ExtentReports starting test
+	//ExtentReports starting testLog
 	ExtentTest test = logger.startTest("Verifone", "Verifone cgateway Portal Automation");
 	//Selenium WebDriver
 	public WebDriver driver;
@@ -60,7 +43,7 @@ public class LoginDataDriven{
 	@BeforeMethod
 	public void startBrowser(String env,String urlDev, String urlTest,
 			String urlStaging1, String urlProduction, String browserType) throws Exception {
-		// starting test		
+		// starting testLog
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		try {
 			driver = SeleniumUtils.setBrowser(browserType);
@@ -77,7 +60,7 @@ public class LoginDataDriven{
 	//DataProvider for login
     @DataProvider(name = "LogInData")
     public Object[][] dataSupplierLoginData() throws Exception {
-          final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\login.xls";
+          final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\resources\\login.xls";
           Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "login");
           return arrayObject;
     }
@@ -86,8 +69,8 @@ public class LoginDataDriven{
 	public void loginTest(String username, String pwd) throws Exception {
 	
 		
-	//starting test
-	logger.startTest("loginTestPoc", "Verifone cgateway-portal POC login test ");
+	//starting testLog
+	logger.startTest("loginTestPoc", "Verifone cgateway-portal POC login testLog ");
 	System.out.println("username:  "+ username + " password: " + pwd);
 	
 	
@@ -97,7 +80,7 @@ public class LoginDataDriven{
 	
 //	String textToFind = prop.getProperty("textToFindInWebPage");
 //	SeleniumUtils.findTextInPage(driver, textToFind);
-//	test.log(LogStatus.PASS, "Step details - The text " + textToFind + " was found successfully in the Page");
+//	testLog.log(LogStatus.PASS, "Step details - The text " + textToFind + " was found successfully in the Page");
 	}
 	
 	
@@ -116,14 +99,14 @@ public class LoginDataDriven{
 			test.log(LogStatus.PASS, "Test is successul");			
 			break;
 		case ITestResult.FAILURE:
-			String capScreenShootPath = SeleniumUtils.getscreenshot(driver);
+			String capScreenShootPath = SeleniumUtils.getScreenshot();
 			test.log(LogStatus.FAIL, "Test Failed !!! - Did not found text: " + prop.getProperty("pageTitleToFind") + " in title page");
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			break;
 	}
 			
-	//ending test
+	//ending testLog
 	logger.endTest(test);
 	//writing everything to document
 	logger.flush();	

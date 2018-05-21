@@ -25,17 +25,17 @@
 //	public static WebDriver driver;
 //	public static HTMLReporter htmlReports;
 //	public static ExtentReports extent;
-//	public static ExtentTest test;
+//	public static ExtentTest testLog;
 //	public static ExtentTest parentTest;
 //	public static ExtentTest childTest;
-//	String filename = System.getProperty("user.dir") + "/test-output/HtmlTestResults.html";
+//	String filename = System.getProperty("user.dir") + "/testLog-output/HtmlTestResults.html";
 //	
 //	@BeforeMethod
 //	@BeforeTest
 //	public void setUp() {
 //		
 //		htmlReports = new HTMLReporter(filename);
-//		extent = new ExtentReports(System.getProperty("user.dir") +"/test-output/ExtentReport.html", true); //true - overwrite if exists
+//		extent = new ExtentReports(System.getProperty("user.dir") +"/testLog-output/ExtentReport.html", true); //true - overwrite if exists
 //		extent.attachReporter(htmlReports);
 //		htmlReports.config().setReportName("Regression Testing");
 //		htmlReports.config().setTheme(Theme.STANDARD);
@@ -66,8 +66,8 @@
 //	@Test(priority = 2)
 //	public void verifyTitle() throws Exception{
 //		
-//		test = childTest.createNode("Verify Open Page Title");
-//		test.info("Get the page title");
+//		testLog = childTest.createNode("Verify Open Page Title");
+//		testLog.info("Get the page title");
 //		//String actualPageTitle = driver.getTitle();
 //		
 //		//assertEquals(actualPageTitle, "googles");

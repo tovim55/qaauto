@@ -9,7 +9,7 @@
       "DEV" - development environment
       "TEST" - Test/QA environment
       "STAGING1" - STAGING1 environment
-      "PRODUCTION" - PRODUCTION environment ( Please do not test on PRODUCTION)
+      "PRODUCTION" - PRODUCTION environment ( Please do not testLog on PRODUCTION)
       -->
    	  <parameter name = "env" value="TEST"/>
    	  <!--
@@ -19,10 +19,11 @@
       "EDGE" - EDGE
       "IE" - Internet Explorer 
       --> 	
-      <parameter name = "browserType" value="CHROME"/>  
+      <parameter name = "browserType" value="CHROME"/>
       <parameter name = "urlDev" value="https://dev.estatemanager.verifonecp.com"/>
-      <parameter name = "urlTest" value="https://qa.estatemanager.verifonecp.com"/>
-      <parameter name = "urlStaging1" value="https://staging1.estatemanager.verifonecp.com"/> 
+      <parameter name = "urlTest" value="https://qa.account.verifonecp.com/authenticationendpoint/"/>
+      <!--<parameter name = "urlTest" value="https://qa.estatemanager.verifonecp.com"/>-->
+      <parameter name = "urlStaging1" value="https://staging1.estatemanager.verifonecp.com"/>
       <parameter name = "urlProduction" value="https://TBD.estatemanager.verifonecp.com"/> 
       <parameter name = "userDev" value="dev_eoadmin1@yopmail.com"/> 
       <parameter name = "passwordDev" value="Veri1234"/>  
@@ -31,7 +32,7 @@
       <parameter name = "userStaging1" value="vfieoustest@getnada.com/"/> 
       <parameter name = "passwordStaging1" value="Veri1234"/>        
       <classes>
-         <class name = "com.verifone.tests.cpEstatemanager"/>
+         <class name = "com.verifone.tests.cpTests.CpDevPortal"/>
       </classes>
       
    </test> 

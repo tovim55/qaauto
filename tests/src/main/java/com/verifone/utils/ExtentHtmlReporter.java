@@ -177,7 +177,7 @@ public class ExtentHtmlReporter extends BasicFileReporter implements ReportAppen
     }
     
     @Override
-    public void onScreenCaptureAdded(Test test, ScreenCapture screenCapture) throws IOException { }
+    public void onScreenCaptureAdded(Test testLog, ScreenCapture screenCapture) throws IOException { }
 
     @Override
     public void setTestList(List<Test> reportTestList) {
