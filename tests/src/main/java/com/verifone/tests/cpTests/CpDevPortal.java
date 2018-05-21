@@ -16,13 +16,12 @@ public class CpDevPortal extends BaseTest {
 
 
     public CpDevPortal() {
-//        super("CpDevPortal", "CP dev Portal log in test");
         propFilePath = "logIn.properties";
     }
 
     @Test(groups = {"CP-portal"})
     public void cpLoginTest() throws Exception {
-        testLog = BasePage.testLog = logger.startTest("CpDevPortal", "CP dev Portal log in test");
+        starTestLog("CpDevPortal", "CP dev Portal log in test");
         LoginPageNew loginPage = (LoginPageNew) PageFactory.getPage("LoginPage");
         loginPage.loginPageCp(prop.getProperty("user_id"), prop.getProperty("password_id"));
 //        testLog.log(LogStatus.INFO, "End of page" + "blablabla" + " testing <span class='label info'>info</span>");
@@ -31,7 +30,8 @@ public class CpDevPortal extends BaseTest {
 
     @Test(groups = {"CP-portal2"})
     public void cpLoginTest2() throws Exception {
-        testLog = BasePage.testLog = logger.startTest("CpDevPortal2", "CP dev Portal log in test2");
+//        testLog = BasePage.testLog = logger.startTest("CpDevPortal2", "CP dev Portal log in test2");
+        starTestLog("blabla", "blablalbalba ");
         LoginPageNew loginPage = (LoginPageNew) PageFactory.getPage("LoginPage");
         loginPage.loginPageCp(prop.getProperty("user_id"), prop.getProperty("password_id"));
 //        testLog.log(LogStatus.INFO, "End of page" + "blablabla" + " testing <span class='label info'>info</span>");

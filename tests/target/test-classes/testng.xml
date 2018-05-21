@@ -24,10 +24,10 @@
       <parameter name = "urlTest" value="http://test.cgateway-portal.verifone.com/"/>
       <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 
       <parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>   
-      <classes>
-         <class name = "com.verifone.WebPortal"/>
-         <class name = "com.verifone.test1"/>
-      </classes>
+      <!--<classes>-->
+         <!--<class name = "com.verifone.WebPortal"/>-->
+         <!--<class name = "com.verifone.test1"/>-->
+      <!--</classes>-->
       
    </test> 
 </suite>

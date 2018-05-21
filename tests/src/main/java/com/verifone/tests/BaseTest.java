@@ -51,8 +51,14 @@ public abstract class BaseTest {
     }
 
 
+    public void starTestLog(String testName, String description){
+        testLog = BasePage.testLog = logger.startTest(testName, description);
+    }
+
+
     @AfterMethod(lastTimeOnly = true)
     public void stopTestReport(ITestResult result) throws Exception {
+        testLog.log(LogStatus.INFO, "result get status is: " + result.getStatus());
         switch (result.getStatus()) {
             case ITestResult.SKIP:
                 testLog.log(LogStatus.SKIP, "Test SKIP <span class='label info'>info</span>");
@@ -74,9 +80,9 @@ public abstract class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-        System.out.println("Closing Web Page");
-        Reporter.log("Closing Web Page", true);
-        SeleniumUtils.closeRuntimeBrowserInstance();
+//        System.out.println("Closing Web Page");
+//        Reporter.log("Closing Web Page", true);
+//        SeleniumUtils.closeRuntimeBrowserInstance();
 
 
     }

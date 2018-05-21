@@ -29,7 +29,7 @@
       <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 
       <parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>  
       <classes>
-         <class name = "com.verifone.tests.cpTests.CpDevPortal"/>
+         <class name = "com.verifone.tests.cpTests.SignUpTest"/>
       </classes>
       
    </test> 

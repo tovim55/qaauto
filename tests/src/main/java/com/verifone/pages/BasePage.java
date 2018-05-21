@@ -50,12 +50,26 @@ public abstract class BasePage {
             WebElement element = driver.findElement(loc);
             element.clear();
             element.sendKeys(text);
-            testLog.log(LogStatus.PASS, "send keys successfully for : " + loc.toString());
-        }
-        catch (TimeoutException e){
+            testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+        } catch (TimeoutException e) {
             testLog.log(LogStatus.ERROR, "Elenmnt Not Found For Locator: " + loc.toString());
         }
+    }
+
+
+    protected String getText(By loc) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+            return driver.findElement(loc).getText();
+
+        } catch (TimeoutException e) {
+            testLog.log(LogStatus.ERROR, "Elenmnt Not Found For Locator: " + loc.toString());
+//            System.out.println(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
         }
+        return null;
+    }
+
 
     public void click(By loc) {
         WebDriverWait wait = new WebDriverWait(driver, 30);

@@ -22,7 +22,6 @@ public class LoginPageNew extends BasePage {
     }
 
     public void loginPageCp(String userName, String pass) throws InterruptedException {
-//       for CG  click(By.linkText("Login >>"));
         click(toLoginPageBtn);
         sendKeys(username, userName);
         click(password);

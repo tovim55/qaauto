@@ -3,6 +3,7 @@ package com.verifone.pages;
 //import com.verifone.utils.LoginPage.LoginPage;
 
 import com.verifone.pages.cpPages.LoginPageNew;
+import com.verifone.pages.cpPages.SignUpPage;
 
 public class PageFactory {
 
@@ -12,9 +13,9 @@ public class PageFactory {
 		case "LoginPage":
 			return new LoginPageNew();
 			
-//		case "Applications":
-//			return new ActivationsPage();
-////
+		case "SignUpPage":
+			return new SignUpPage();
+//
 //		case "Activations":
 //			return new ActivationsPage(page);
 
