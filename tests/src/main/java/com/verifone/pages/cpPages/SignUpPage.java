@@ -33,11 +33,11 @@ public class SignUpPage extends BasePage {
 
     public void signUp(String firstName, String lastName, String email, String password){
         click(signUpButton);
+        click(chkBox);
         sendKeys(this.firstName, firstName);
         sendKeys(this.lastName, lastName);
         sendKeys(this.email, email);
         sendKeys(this.password, password);
-        click(chkBox);
         click(nextBtn);
         click(agreementBtn);
 

@@ -2,16 +2,16 @@ package com.verifone.pages;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import com.verifone.infra.SeleniumUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
-import java.io.FileInputStream;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
+
 
 public abstract class BasePage {
 
@@ -37,44 +37,57 @@ public abstract class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, 60);
             wait.until(ExpectedConditions.titleIs(title));
         } catch (TimeoutException e) {
-            System.out.println(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
+            testLog.log(LogStatus.ERROR, String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
+            Assert.fail(String.format("Title should be %s, Browser on %S", title, driver.getTitle()), e);
+
         }
-    }
-
-
-    public void sendKeys(By loc, String text) {
-        try {
-
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.elementToBeClickable(loc));
-            WebElement element = driver.findElement(loc);
-            element.clear();
-            element.sendKeys(text);
-            testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
-        } catch (TimeoutException e) {
-            testLog.log(LogStatus.ERROR, "Elenmnt Not Found For Locator: " + loc.toString());
-        }
-    }
-
-
-    protected String getText(By loc) {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.presenceOfElementLocated(loc));
-            return driver.findElement(loc).getText();
-
-        } catch (TimeoutException e) {
-            testLog.log(LogStatus.ERROR, "Elenmnt Not Found For Locator: " + loc.toString());
-//            System.out.println(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
-        }
-        return null;
     }
 
 
     public void click(By loc) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(loc)).click();
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
+        element.click();
+        testLog.log(LogStatus.INFO, "user clicks on:  " + loc.toString());
     }
+
+    public void sendKeys(By loc, String text) {
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
+        element.clear();
+        element.sendKeys(text);
+        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+    }
+
+    protected String getText(By loc) {
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        return element.getText();
+    }
+
+
+    private WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            wait.until(expectedCon);
+        } catch (TimeoutException e) {
+            testLog.log(LogStatus.ERROR, "Element Not Found For Locator: " + loc.toString());
+            Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
+        }
+        return driver.findElement(loc);
+    }
+
+
+//    public void setCheckBox(By loc){
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+//        WebElement a;
+//        if (!driver.findElement(loc).isSelected()){
+//            a = driver.findElement(loc);
+//            a.click();
+//            System.out.println("asdas      " + driver.findElement(loc).isSelected());
+//        }
+//
+//    }
+
+
 //
 //    /**
 //     * Navigate to the page
