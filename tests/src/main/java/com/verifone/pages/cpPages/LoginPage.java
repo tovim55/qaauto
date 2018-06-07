@@ -5,7 +5,7 @@ import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
 
 
-public class LoginPageNew extends BasePage {
+public class LoginPage extends BasePage {
 
     private final static String url = "";
     private final static String title = "Getting Started | Get Started | developer.verifone.com";
@@ -16,17 +16,21 @@ public class LoginPageNew extends BasePage {
     private By loginBtn = By.id("btnPrimaryLogin");
 
 
-    public LoginPageNew() {
+    public LoginPage() {
         super(url, title);
-        validateTitle();
+//        validateTitle();
     }
 
     public void loginPageCp(String userName, String pass) throws InterruptedException {
-        click(toLoginPageBtn);
+
         sendKeys(username, userName);
         click(password);
         sendKeys(password, pass);
         click(loginBtn);
 
+    }
+
+    public void clickOmLoginBtn() {
+        click(toLoginPageBtn);
     }
 }

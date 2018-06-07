@@ -5,11 +5,13 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.pages.BasePage;
+import com.verifone.utils.apiClient.BaseApi;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 
 import java.io.FileInputStream;
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -17,8 +19,6 @@ import java.util.Properties;
 public abstract class BaseTest {
 
 
-    protected String testName;
-    protected String description;
 
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
@@ -35,29 +35,36 @@ public abstract class BaseTest {
 
 
 
-    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType"})
+    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType", "devEOAdmin"})
     @BeforeMethod
-    /**
-     * Login to portal and navigate to Application page
-     */
-    public void startBrowser(String env, String urlDev, String urlTest,
+    public void startBrowser(Method method, String env, String urlDev, String urlTest,
+                             String urlStaging1, String urlProduction, String browserType, String devEOAdmin) throws Exception {
+        if (method.getName().contains("UI")) {
+            ExtentTest driverLog = logger.startTest("setup driver", "");
+            BasePage.driver = SeleniumUtils.getDriver(browserType);
+            SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, devEOAdmin, driverLog);
+        }
+
+    }
+
+
+    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType"})
+    @BeforeMethod()
+    public void startLo(String env, String urlDev, String urlTest,
                              String urlStaging1, String urlProduction, String browserType) throws Exception {
-        // starting testLog
-        ExtentTest driverLog = logger.startTest("setup driver", "");
-        BasePage.driver = SeleniumUtils.getDriver(browserType);
-        SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, driverLog);
         FileInputStream ip = new FileInputStream(basePropPath + propFilePath);
         prop.load(ip);
     }
 
 
+
     public void starTestLog(String testName, String description){
-        testLog = BasePage.testLog = logger.startTest(testName, description);
+        testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
     }
 
 
     @AfterMethod(lastTimeOnly = true)
-    public void stopTestReport(ITestResult result) throws Exception {
+    public void stopTestReport(Method method, ITestResult result) throws Exception {
         testLog.log(LogStatus.INFO, "result get status is: " + result.getStatus());
         switch (result.getStatus()) {
             case ITestResult.SKIP:
@@ -75,15 +82,19 @@ public abstract class BaseTest {
         }
         logger.endTest(testLog);
         logger.flush();
+        if (method.getName().contains("UI")) {
+            closePage();
+        }
     }
 
 
-    @AfterMethod(alwaysRun = true)
+//    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-//        System.out.println("Closing Web Page");
-//        Reporter.log("Closing Web Page", true);
-//        SeleniumUtils.closeRuntimeBrowserInstance();
-
+//        if (method.getName().contains("UI")) {
+//            System.out.println("Closing Web Page");
+//            Reporter.log("Closing Web Page", true);
+//            SeleniumUtils.closeRuntimeBrowserInstance();
+//        }
 
     }
 

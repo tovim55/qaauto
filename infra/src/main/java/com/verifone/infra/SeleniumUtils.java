@@ -47,9 +47,10 @@ public class SeleniumUtils {
     }
 
     public static void closeRuntimeBrowserInstance() {
-        if (driver != null)
+        if (driver != null) {
             driver.close();
             driver.quit();
+        }
     }
 
 
@@ -169,7 +170,7 @@ public class SeleniumUtils {
      * @author Giora Tovim
      */
     public static void setEnv(String env, String urlDev, String urlTest,
-                              String urlStaging1, String urlProduction, ExtentTest test) throws Exception {
+                              String urlStaging1, String urlProduction, String devEOAdmin, ExtentTest test) throws Exception {
         System.out.println("The Automation tests runs on : " + env + " environment");
 
         switch (env) {
@@ -178,6 +179,13 @@ public class SeleniumUtils {
                 driver.get(urlDev);
                 //	System.out.println("Open url: " + urlDev + "ended successfully");
                 test.log(LogStatus.INFO, "Open " + urlDev + " in " + env + " environment");
+                break;
+
+            case "DevEOAdmin":
+                System.out.println("Open urlDev");
+                driver.get(devEOAdmin);
+                //	System.out.println("Open url: " + urlDev + "ended successfully");
+                test.log(LogStatus.INFO, "Open " + devEOAdmin + " in " + env + " environment");
                 break;
 
             case "TEST":
@@ -205,4 +213,12 @@ public class SeleniumUtils {
                 System.out.println("env name is not exist!!!");
         }
     }
+
+    public static void setEnv(String env, String urlDev, String urlTest,
+                              String urlStaging1, String urlProduction, ExtentTest test) throws Exception {
+        System.out.println("The Automation tests runs on : " + env + " environment");
+
+
+    }
+
 }

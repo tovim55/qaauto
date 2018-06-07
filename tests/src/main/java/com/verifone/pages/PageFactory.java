@@ -2,7 +2,7 @@ package com.verifone.pages;
 
 //import com.verifone.utils.LoginPage.LoginPage;
 
-import com.verifone.pages.cpPages.LoginPageNew;
+import com.verifone.pages.cpPages.LoginPage;
 import com.verifone.pages.cpPages.SignUpPage;
 
 public class PageFactory {
@@ -11,7 +11,7 @@ public class PageFactory {
 	public static BasePage getPage(String page) {
 		switch (page) {
 		case "LoginPage":
-			return new LoginPageNew();
+			return new LoginPage();
 			
 		case "SignUpPage":
 			return new SignUpPage();
