@@ -4,6 +4,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
+import com.verifone.infra.EnvConfig;
 import com.verifone.pages.BasePage;
 import com.verifone.utils.apiClient.BaseApi;
 import org.testng.ITestResult;
@@ -11,6 +12,7 @@ import org.testng.Reporter;
 import org.testng.annotations.*;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,27 +33,34 @@ public abstract class BaseTest {
     public Properties prop = new Properties();
     private String basePropPath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\verifone\\tests\\";
     protected String propFilePath = "";
+    public static EnvConfig envConfig;
 
 
 
 
-    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType", "devEOAdmin"})
+    @Parameters({"browserType"})
     @BeforeMethod
-    public void startBrowser(Method method, String env, String urlDev, String urlTest,
-                             String urlStaging1, String urlProduction, String browserType, String devEOAdmin) throws Exception {
+    public void startBrowser(Method method, String browserType) throws Exception {
         if (method.getName().contains("UI")) {
             ExtentTest driverLog = logger.startTest("setup driver", "");
             BasePage.driver = SeleniumUtils.getDriver(browserType);
-            SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, devEOAdmin, driverLog);
+            SeleniumUtils.setEnv(envConfig.getWebUrl());
         }
 
     }
 
+    @Parameters({"env", "portal"})
+    @BeforeSuite
+    public void setEnv(String env, String portal) throws IOException {
+        envConfig = new EnvConfig(env, portal);
+        System.out.println("The Automation tests runs on : " + portal + " portal");
+        System.out.println("The Automation tests runs on : " + env + " environment");
+    }
 
-    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType"})
+
+//    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType"})
     @BeforeMethod()
-    public void startLo(String env, String urlDev, String urlTest,
-                             String urlStaging1, String urlProduction, String browserType) throws Exception {
+    public void startLo() throws Exception {
         FileInputStream ip = new FileInputStream(basePropPath + propFilePath);
         prop.load(ip);
     }
@@ -60,6 +69,8 @@ public abstract class BaseTest {
 
     public void starTestLog(String testName, String description){
         testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
+        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
+        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getEnv() + "portal");
     }
 
 
@@ -91,9 +102,9 @@ public abstract class BaseTest {
 //    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
 //        if (method.getName().contains("UI")) {
-//            System.out.println("Closing Web Page");
-//            Reporter.log("Closing Web Page", true);
-//            SeleniumUtils.closeRuntimeBrowserInstance();
+            System.out.println("Closing Web Page");
+            Reporter.log("Closing Web Page", true);
+            SeleniumUtils.closeRuntimeBrowserInstance();
 //        }
 
     }

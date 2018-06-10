@@ -14,7 +14,7 @@
           <include name="startBrowser"/>
           <include name="SignUpTest" invocation-numbers="1"/>
         </methods>
-      </class> <!-- com.verifone.tests.SignUpTest -->
+      </class> <!-- com.verifone.tests.SignUpTestUI -->
     </classes>
   </test> <!-- Selenium Web Portal Automation Tests(failed) -->
 </suite> <!-- Failed suite [Verifone] -->

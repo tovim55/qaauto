@@ -31,9 +31,19 @@ public abstract class BaseApi {
     protected String authorization = "Authorization";
     protected String correlationId = "X-VFI-CORRELATION-ID";
     protected String accept = "Accept";
+    protected String origin = "Origin";
+    protected String referer = "Referer";
     private HttpClient client = HttpClientBuilder.create().build();
     protected String baseApiPath = System.getProperty("user.dir") +
             "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\";
+    protected  Properties prop = new Properties();
+
+
+    public BaseApi() throws IOException {
+        FileInputStream ip = new FileInputStream(System.getProperty("user.dir") +
+                "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\headers.properties");
+        prop.load(ip);
+    }
 
 
     protected JsonObject getRequest(int expectedCode) throws IOException {
@@ -85,20 +95,20 @@ public abstract class BaseApi {
 
 
 
-    protected Object getPost(String requestData, int expectedCode, Class responseClass) throws IOException {
-
-        HttpPost post = new HttpPost(url);
-        baseHeaders.forEach(post::addHeader);
-        Gson gson = new GsonBuilder().create();
-        post.setEntity(new StringEntity(requestData, "UTF-8"));
-        HttpResponse response = client.execute(post);
-        System.out.println("Sending request to URL : " + url);
-        System.out.println(requestData);
-        testLog.log(LogStatus.INFO, "Sending POST request to URL : " + url);
-        responseCode = response.getStatusLine().getStatusCode();
-        org.testng.Assert.assertEquals(responseCode, expectedCode);
-        return gson.fromJson(EntityUtils.toString(response.getEntity()), responseClass);
-    }
+//    protected Object getPost(String requestData, int expectedCode, Class responseClass) throws IOException {
+//
+//        HttpPost post = new HttpPost(url);
+//        baseHeaders.forEach(post::addHeader);
+//        Gson gson = new GsonBuilder().create();
+//        post.setEntity(new StringEntity(requestData, "UTF-8"));
+//        HttpResponse response = client.execute(post);
+//        System.out.println("Sending request to URL : " + url);
+//        System.out.println(requestData);
+//        testLog.log(LogStatus.INFO, "Sending POST request to URL : " + url);
+//        responseCode = response.getStatusLine().getStatusCode();
+//        org.testng.Assert.assertEquals(responseCode, expectedCode);
+//        return gson.fromJson(EntityUtils.toString(response.getEntity()), responseClass);
+//    }
 
 
     protected JsonObject getAtter(JsonObject response, String[] keys) {

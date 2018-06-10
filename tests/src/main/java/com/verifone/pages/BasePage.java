@@ -45,7 +45,7 @@ public abstract class BasePage {
 
 
     public void click(By loc) {
-        WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
+        WebElement element = getWebElement(loc, 50, ExpectedConditions.elementToBeClickable(loc));
         element.click();
         testLog.log(LogStatus.INFO, "user clicks on:  " + loc.toString());
     }
@@ -61,6 +61,19 @@ public abstract class BasePage {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
         return element.getText();
     }
+
+    protected String getTextFromTable(By loc) throws InterruptedException {
+        Thread.sleep(6000);
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        String text = "";
+        List<WebElement> tr = element.findElements( By.tagName("tr"));
+        for (WebElement w: tr) {
+            text += w.getText();
+        }
+        return text;
+    }
+
+
 
 
     private WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
@@ -175,6 +188,10 @@ public abstract class BasePage {
 //    public abstract void selectStatus(String text) throws Exception;
 //
 //    public abstract void selectType(String text) throws Exception;
+
+
+
+
 
     /**
      * Method selects option if exists from the dropdown

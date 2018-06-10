@@ -6,15 +6,16 @@ import com.verifone.tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SignUpTest extends BaseTest {
+public class SignUpTestUI extends BaseTest {
 
-    public SignUpTest() {
+    public SignUpTestUI() {
         propFilePath = "logIn.properties";
     }
 
     @Test(groups = {"UI"})
     public void cpSignUpTest() throws Exception {
         starTestLog("cpSignUpTest", "CP dev Portal sign up test");
+
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(prop.getProperty("first_name"), prop.getProperty("last_name"),
                 prop.getProperty("email"), prop.getProperty("password"));

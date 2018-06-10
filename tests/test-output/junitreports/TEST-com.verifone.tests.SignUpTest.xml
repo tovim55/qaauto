@@ -3,4 +3,4 @@
 <testsuite skipped="0" hostname="tlvyanaf1lt" name="com.verifone.tests.SignUpTest" tests="2" failures="0" timestamp="13 May 2018 14:57:12 GMT" time="13.486" errors="0">
   <testcase name="SignUpTest" time="5.210" classname="com.verifone.tests.SignUpTest"/>
   <testcase name="SignUpTest" time="8.276" classname="com.verifone.tests.SignUpTest"/>
-</testsuite> <!-- com.verifone.tests.SignUpTest -->
+</testsuite> <!-- com.verifone.tests.SignUpTestUI -->

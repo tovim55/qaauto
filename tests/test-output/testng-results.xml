@@ -71,7 +71,7 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SignUpTest -->
+        </test-method> <!-- SignUpTestUI -->
         <test-method status="PASS" signature="SignUpTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="SignUpTest" duration-ms="5210" started-at="2018-05-13T14:57:07Z" data-provider="signUp" finished-at="2018-05-13T14:57:12Z">
           <params>
             <param index="0">
@@ -97,8 +97,8 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SignUpTest -->
-      </class> <!-- com.verifone.tests.SignUpTest -->
+        </test-method> <!-- SignUpTestUI -->
+      </class> <!-- com.verifone.tests.SignUpTestUI -->
     </test> <!-- Selenium Web Portal Automation Tests -->
   </suite> <!-- Verifone -->
 </testng-results>

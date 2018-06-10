@@ -1,7 +1,8 @@
 package com.verifone.pages;
 
-//import com.verifone.utils.LoginPage.LoginPage;
+//import com.verifone.utils.CGLoginPage.CGLoginPage;
 
+import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.LoginPage;
 import com.verifone.pages.cpPages.SignUpPage;
 
@@ -15,6 +16,9 @@ public class PageFactory {
 			
 		case "SignUpPage":
 			return new SignUpPage();
+
+		case "CGLoginPage":
+			return new CGLoginPage();
 //
 //		case "Activations":
 //			return new ActivationsPage(page);

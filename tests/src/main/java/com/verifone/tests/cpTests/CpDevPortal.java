@@ -19,7 +19,7 @@ public class CpDevPortal extends BaseTest {
     @Test(groups = {"UI", "CP-portal"})
     public void cpLoginTestUI() throws Exception {
         starTestLog("CpDevPortal", "CP dev Portal log in test");
-        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
+        LoginPage loginPage = (LoginPage) PageFactory.getPage("CGLoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(prop.getProperty("user_id"), prop.getProperty("password_id"));
 
@@ -29,7 +29,7 @@ public class CpDevPortal extends BaseTest {
     public void cpLoginTest2UI() throws Exception {
 //        testLog = BasePage.testLog = logger.startTest("CpDevPortal2", "CP dev Portal log in test2");
         starTestLog("blabla", "blablalbalba ");
-        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
+        LoginPage loginPage = (LoginPage) PageFactory.getPage("CGLoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(prop.getProperty("user_id"), prop.getProperty("password_id"));
 
