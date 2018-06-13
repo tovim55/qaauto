@@ -1,44 +1,19 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Verifone">
+<suite name="Verifone" >
 
-   <parameter name = "env" value="QA"/>
-   <parameter name = "portal" value="CGPortal"/>
+    <parameter name="env" value="QA"/>
+    <parameter name="portal" value="CPPortal"/>
 
-   <test name = "Automation Tests">
-   	
-   	  <!--
-      env values:
-      "DEV" - development environment
-      "TEST" - Test/QA environment
-      "STAGING1" - STAGING1 environment
-      "PRODUCTION" - PRODUCTION environment ( Please do not testLog on PRODUCTION)
-      -->
-   	  <!--<parameter name = "env" value="DEV"/>-->
-   	  <!--<parameter name = "portal" value="EOAdmin"/>-->
-   	  <!--
-      browserType values:
-      "CHROME" - Chrome
-      "FF" - FireFox
-      "EDGE" - EDGE
-      "IE" - Internet Explorer 
-      --> 
-      <!--<parameter name = "devEOAdmin" value="https://qa.estatemanager.verifonecp.com/"/>-->
-      <!--<parameter name = "urlTest" value="https://qa.developer.verifonecp.com/docs/overview/get-started/"/>-->
-      <parameter name = "browserType" value="CHROME"/>
-      <!--<parameter name = "urlDev" value="http://dev.cgateway-portal.verifone.com/"/>-->
-      <!--<parameter name = "urlCGTest" value="http://test.cgateway-portal.verifone.com/"/>-->
-      <!--&lt;!&ndash;-->
-      <!--<parameter name = "urlTest" value="http://test.cgateway-portal.verifone.com/"/>-->
-      <!--&ndash;&gt; -->
-      <!--<parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> -->
-      <!--<parameter name = "urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>-->
+    <test name="Automation Tests">
 
+        <parameter name="browserType" value="CHROME"/>
 
-      <classes>
-         <class name = "com.verifone.tests.cgTests.LoginTest"/>
-      </classes>
-      
-   </test> 
+        <classes>
+            <class name="com.verifone.tests.cgTests.LoginTest"/>
+        </classes>
+
+    </test>
+
 </suite>

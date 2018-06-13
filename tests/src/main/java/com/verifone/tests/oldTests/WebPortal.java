@@ -1,16 +1,17 @@
-package com.verifone.tests;
+package com.verifone.tests.oldTests;
 //	"http://test.cgateway-portal.verifone.com/"
 
+import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -18,10 +19,11 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
-import com.verifone.utils.DataDrivenUtils;
+
+import junit.framework.Assert;
 
 
-public class LoginDataDriven{
+public class WebPortal{
 	//ExtentReports date format and path
 	Date date = new Date() ;
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
@@ -40,7 +42,7 @@ public class LoginDataDriven{
 
 	
 	@Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })
-	@BeforeMethod
+	@BeforeTest
 	public void startBrowser(String env,String urlDev, String urlTest,
 			String urlStaging1, String urlProduction, String browserType) throws Exception {
 		// starting testLog
@@ -52,44 +54,69 @@ public class LoginDataDriven{
 			e.printStackTrace();
 		}
 
-			
+				
 		SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, test);
+				
 	}
 	
-
-	//DataProvider for login
-    @DataProvider(name = "LogInData")
-    public Object[][] dataSupplierLoginData() throws Exception {
-          final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\resources\\login.xls";
-          Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "login");
-          return arrayObject;
-    }
-
-    @Test(dataProvider = "LogInData", groups = { "cgateway-portal" })
-	public void loginTest(String username, String pwd) throws Exception {
+	@SuppressWarnings("deprecation")
+	@Test (groups = {"cgateway-portal"})
+	public void getTitlePage() throws Exception {
 	
-		
 	//starting testLog
-	logger.startTest("loginTestPoc", "Verifone cgateway-portal POC login testLog ");
-	System.out.println("username:  "+ username + " password: " + pwd);
+	logger.startTest("getTitlePage", "Verifone cgateway-portal get title page ");
+	
+	//webPortal.properties
+	FileInputStream ip = new FileInputStream(FilePath);
+	prop.load(ip);
+			
+	String title = driver.getTitle();
+	System.out.println("Page Title is: " + title);
+	test.log(LogStatus.INFO, "The Page Title is: " + title);
+	Reporter.log(title, true );
+	Assert.assertTrue(title.contains(prop.getProperty("pageTitleToFind")));
+	test.log(LogStatus.PASS, "Step details - The text " + prop.getProperty("pageTitleToFind") + " was found successfully in the Page Title");
+
+	Reporter.log( "Click Login", true );
+	System.out.println(prop.getProperty("loginBtn_css"));
+	driver.findElement(By.cssSelector(prop.getProperty("loginBtn_css"))).click();
+	
+//	System.out.println(prop.getProperty("name_id"));
+//	SeleniumUtils.findTextInPage(driver, "Login");
+	}
 	
 	
+	
+	
+//	@SuppressWarnings("deprecation")
+//	@Test (groups = {"cgateway-portal"})
+//	public void findTextInPage() throws Exception {
+//	
+//	//starting testLog
+//	logger.startTest("findTextInPage", "Verifone cgateway-portal get title page ");
+//	
 //	//webPortal.properties
 //		FileInputStream ip = new FileInputStream(FilePath);
 //		prop.load(ip);
-	
+//	
 //	String textToFind = prop.getProperty("textToFindInWebPage");
 //	SeleniumUtils.findTextInPage(driver, textToFind);
-//	testLog.log(LogStatus.PASS, "Step details - The text " + textToFind + " was found successfully in the Page");
-	}
-	
+///	testLog.log(LogStatus.PASS, "Step details - The text " + textToFind + " was found successfully in the Page");
+//	}
+//	
 	
 	
 	
 	@AfterMethod
 	public void closePage(ITestResult result) throws Exception{
 	Reporter.log( "Closing Web Page", true );
-
+//	if (result.getStatus()==ITestResult.FAILURE)
+//	{
+//		String capScreenShootPath = SeleniumUtils.getScreenshot(driver);
+//		testLog.log(LogStatus.FAIL, "Test Failed !!! - Did not found text: " + prop.getProperty("pageTitleToFind") + " in title page");
+//		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+	
 		test.log(LogStatus.INFO, "result.getStatus value is : " + result.getStatus());
 		switch (result.getStatus()) {        
 		case ITestResult.SKIP:
@@ -104,8 +131,10 @@ public class LoginDataDriven{
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 			break;
+		
 	}
-			
+	
+		
 	//ending testLog
 	logger.endTest(test);
 	//writing everything to document
@@ -117,6 +146,11 @@ public class LoginDataDriven{
 	
 	}
 	
+//	@AfterTest
+//	   public void aftertest(){
+//		logger.flush();
+//		logger.close();
+//	   }
 
 }
 	

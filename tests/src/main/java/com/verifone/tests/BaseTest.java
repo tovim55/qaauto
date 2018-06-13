@@ -11,7 +11,7 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 
-import java.io.FileInputStream;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -19,7 +19,6 @@ import java.util.Date;
 import java.util.Properties;
 
 public abstract class BaseTest {
-
 
 
     public Date date = new Date();
@@ -31,18 +30,14 @@ public abstract class BaseTest {
     public String capScreenShootPath;
     public ExtentTest testLog;
     public Properties prop = new Properties();
-    private String basePropPath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\verifone\\tests\\";
-    protected String propFilePath = "";
     public static EnvConfig envConfig;
-
-
 
 
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
         if (method.getName().contains("UI")) {
-            ExtentTest driverLog = logger.startTest("setup driver", "");
+//            ExtentTest driverLog = logger.startTest("setup driver", "");
             BasePage.driver = SeleniumUtils.getDriver(browserType);
             SeleniumUtils.setEnv(envConfig.getWebUrl());
         }
@@ -58,23 +53,14 @@ public abstract class BaseTest {
     }
 
 
-//    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType"})
-    @BeforeMethod()
-    public void startLo() throws Exception {
-        FileInputStream ip = new FileInputStream(basePropPath + propFilePath);
-        prop.load(ip);
-    }
-
-
-
-    public void starTestLog(String testName, String description){
+    public void starTestLog(String testName, String description) {
         testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
         testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
         testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getEnv() + "portal");
     }
 
 
-    @AfterMethod(lastTimeOnly = true)
+    @AfterMethod()
     public void stopTestReport(Method method, ITestResult result) throws Exception {
         testLog.log(LogStatus.INFO, "result get status is: " + result.getStatus());
         switch (result.getStatus()) {
@@ -99,14 +85,11 @@ public abstract class BaseTest {
     }
 
 
-//    @AfterMethod(alwaysRun = true)
+    //    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-//        if (method.getName().contains("UI")) {
-            System.out.println("Closing Web Page");
-            Reporter.log("Closing Web Page", true);
-            SeleniumUtils.closeRuntimeBrowserInstance();
-//        }
-
+        System.out.println("Closing Web Page");
+        Reporter.log("Closing Web Page", true);
+        SeleniumUtils.closeRuntimeBrowserInstance();
     }
 
 

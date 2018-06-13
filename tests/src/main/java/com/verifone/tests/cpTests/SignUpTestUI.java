@@ -1,5 +1,7 @@
 package com.verifone.tests.cpTests;
 
+import com.verifone.entities.EntitiesFactory;
+import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.SignUpPage;
 import com.verifone.tests.BaseTest;
@@ -8,26 +10,38 @@ import org.testng.annotations.Test;
 
 public class SignUpTestUI extends BaseTest {
 
-    public SignUpTestUI() {
-        propFilePath = "logIn.properties";
-    }
 
-    @Test(groups = {"UI"})
-    public void cpSignUpTest() throws Exception {
-        starTestLog("cpSignUpTest", "CP dev Portal sign up test");
 
+    @Test(groups = {"CP-Portal"})
+    public void signUpTestUI() throws Exception {
+        starTestLog("Sign Up ", "Sign up with new user successfully");
+
+        User user = EntitiesFactory.getEntity("NewUser");
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
-        signUpPage.signUp(prop.getProperty("first_name"), prop.getProperty("last_name"),
-                prop.getProperty("email"), prop.getProperty("password"));
-
-        String messege = signUpPage.getMessege();
-        try {
-
-            Assert.assertEquals(messege, "Registration has failed.");
+        signUpPage.signUp(user);
+        String message = signUpPage.getMessege();
+        String expectedMessage = "Thanks for your registration!";
+        if (!message.contains(expectedMessage)) {
+            org.testng.Assert.fail("Text expected: " + expectedMessage + " Was: " + message);
         }
-        catch (AssertionError e){
-//            testLog.log(LogStatus.FAIL, "text expected: " + "blabla " + "was: " + messege);
-            org.testng.Assert.fail("Text expected: " + "Registration has failed." + " Was: " + messege);
+
+    }
+
+    @Test(groups = {"CP-Portal"})
+    public void signUpWithExistUserUI() throws Exception {
+        starTestLog("Sign up with exist user email", "Sign up with exist email is fail");
+        String existEmail = EntitiesFactory.getEntity("DevAdmin").getUserName();
+        User user = EntitiesFactory.getEntity("NewUser");
+        user.setUserName(existEmail);
+        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
+        signUpPage.signUp(user);
+        String message = signUpPage.getMessege();
+        String expectedMessage = "Registration has failed.";
+        if (!message.contains(expectedMessage)) {
+            org.testng.Assert.fail("Text expected: " + expectedMessage + " Was: " + message);
         }
     }
+
+
+
 }

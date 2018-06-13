@@ -31,7 +31,7 @@
       <parameter name = "userStaging1" value="vfieoustest@getnada.com"/> 
       <parameter name = "passwordStaging1" value="Veri1234"/>        
       <classes>
-         <class name = "com.verifone.tests.cpEstatemanagerEstatesupport"/>
+         <class name = "com.verifone.tests.oldTests.cpEstatemanagerEstatesupport"/>
       </classes>
       
    </test> 

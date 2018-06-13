@@ -1,6 +1,7 @@
 package com.verifone.pages.cpPages;
 
 
+import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
 
@@ -21,11 +22,11 @@ public class LoginPage extends BasePage {
 //        validateTitle();
     }
 
-    public void loginPageCp(String userName, String pass) throws InterruptedException {
+    public void loginPageCp(User user) throws InterruptedException {
 
-        sendKeys(username, userName);
+        sendKeys(username, user.getUserName());
         click(password);
-        sendKeys(password, pass);
+        sendKeys(password, user.getPassword());
         click(loginBtn);
 
     }

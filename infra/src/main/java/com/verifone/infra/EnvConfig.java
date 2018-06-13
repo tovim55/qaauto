@@ -11,6 +11,7 @@ public class EnvConfig {
     private String portal;
     private ApiUrls apiUrls;
     private String webUrl;
+    private Credentials credentials;
     private Properties prop = new Properties();
 //    private User user;
 
@@ -30,6 +31,7 @@ public class EnvConfig {
 
     private void setEnv() throws IOException {
         this.apiUrls = new ApiUrls(env, prop);
+        this.credentials = new Credentials(env, prop);
         this.webUrl = prop.getProperty(portal + "." + env);
     }
 
@@ -45,4 +47,6 @@ public class EnvConfig {
     public String getEnv(){
         return env;
     }
+
+    public Credentials getCredentials(){return credentials;}
 }

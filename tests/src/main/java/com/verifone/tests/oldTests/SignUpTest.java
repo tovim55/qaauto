@@ -1,4 +1,4 @@
-package com.verifone.tests;
+package com.verifone.tests.oldTests;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import java.awt.Robot;

@@ -5,11 +5,11 @@
   <suite name="Verifone" duration-ms="20754" started-at="2018-05-13T14:56:51Z" finished-at="2018-05-13T14:57:12Z">
     <groups>
       <group name="developer-portal">
-        <method signature="SignUpTest.SignUpTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="SignUpTest" class="com.verifone.tests.SignUpTest"/>
+        <method signature="SignUpTest.SignUpTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="SignUpTest" class="com.verifone.tests.oldTests.SignUpTest"/>
       </group> <!-- developer-portal -->
     </groups>
     <test name="Selenium Web Portal Automation Tests" duration-ms="20754" started-at="2018-05-13T14:56:51Z" finished-at="2018-05-13T14:57:12Z">
-      <class name="com.verifone.tests.SignUpTest">
+      <class name="com.verifone.tests.oldTests.SignUpTest">
         <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="startBrowser" is-config="true" duration-ms="7105" started-at="2018-05-13T14:56:51Z" finished-at="2018-05-13T14:56:58Z">
           <params>
             <param index="0">

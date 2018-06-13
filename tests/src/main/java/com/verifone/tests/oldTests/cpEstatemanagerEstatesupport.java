@@ -1,4 +1,4 @@
-package com.verifone.tests;
+package com.verifone.tests.oldTests;
 //	"http://test.cgateway-portal.verifone.com/"
 
 import org.testng.annotations.Test;
@@ -102,7 +102,7 @@ public class cpEstatemanagerEstatesupport{
 	@Test (groups = {"CP-portal"})
 	public void cpEstatemanager() throws Exception {
 		
-		logger.startTest("CpDevPortal", "Verifone CP-portal POC Estate Manager testLog ");
+		logger.startTest("LoginTest", "Verifone CP-portal POC Estate Manager testLog ");
 		
 		String title = driver.getTitle();
 		System.out.println("Page Title is: " + title);

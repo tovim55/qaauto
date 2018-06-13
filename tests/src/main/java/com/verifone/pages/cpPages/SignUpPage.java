@@ -1,5 +1,6 @@
 package com.verifone.pages.cpPages;
 
+import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
 
@@ -31,13 +32,13 @@ public class SignUpPage extends BasePage {
         return getText(messeegeText);
     }
 
-    public void signUp(String firstName, String lastName, String email, String password){
+    public void signUp(User user){
         click(signUpButton);
         click(chkBox);
-        sendKeys(this.firstName, firstName);
-        sendKeys(this.lastName, lastName);
-        sendKeys(this.email, email);
-        sendKeys(this.password, password);
+        sendKeys(this.firstName, user.getFirstName());
+        sendKeys(this.lastName, user.getLastName());
+        sendKeys(this.email, user.getUserName());
+        sendKeys(this.password, user.getPassword());
         click(nextBtn);
         click(agreementBtn);
 

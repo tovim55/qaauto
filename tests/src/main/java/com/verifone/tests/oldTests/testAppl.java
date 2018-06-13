@@ -1,4 +1,4 @@
-package com.verifone.tests;
+package com.verifone.tests.oldTests;
 //"http://test.cgateway-portal.verifone.com/"
 
 import org.testng.annotations.Test;

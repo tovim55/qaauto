@@ -1,4 +1,4 @@
-package com.verifone.tests;
+package com.verifone.tests.oldTests;
 
 import java.io.File;
 

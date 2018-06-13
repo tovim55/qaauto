@@ -9,7 +9,7 @@
     <parameter name="browserType" value="CHROME"/>
     <parameter name="urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>
     <classes>
-      <class name="com.verifone.tests.SignUpTest">
+      <class name="com.verifone.tests.oldTests.SignUpTest">
         <methods>
           <include name="startBrowser"/>
           <include name="SignUpTest" invocation-numbers="1"/>
