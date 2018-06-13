@@ -1,4 +1,5 @@
-package com.verifone.tests.cpTests;
+package com.verifone.utils.Mail;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -11,23 +12,21 @@ import org.testng.annotations.Test;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.pages.BasePage;
 
-public class MerchantGetCongMailUI {
-	private static WebDriver driver;
+public class InboxGetnada {
 	
-    @Test(groups = {"CP-portal"})
-    public void MerchantGetCongMailUI() throws Exception {
+	public static void AddInboxGetnada(WebDriver driver, String EmailAddr, int timeout) throws Exception {
     	//      Navigate to Getnada
     	
     	BasePage.driver = SeleniumUtils.getDriver("CHROME");
     	BasePage.driver.navigate().to("https://getnada.com/#");
     	
     	// Click Add Inbox
-//    	Thread.sleep(2000);
+
     	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();  
     	
     	// Put email
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys("aeb90709d6164809a56447843ab87ac5");
+    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(EmailAddr);
     	
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
@@ -36,22 +35,10 @@ public class MerchantGetCongMailUI {
     	BasePage.driver.findElement(By.linkText("ACCEPT")).click(); 
     	
     	//  Open Email
-    	Thread.sleep(2000);
+    	Thread.sleep(timeout);
     	BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
     	
-    	//   Get email text    	
-    	
-    	Thread.sleep(2000);
-    	
-    	WebElement iFrame = BasePage.driver.findElement(By.id("idIframe"));
-    	BasePage.driver.switchTo().frame(iFrame);
-    	String mailText = BasePage.driver.getPageSource();
-    	
-    	Boolean langFlag = mailText.contains("Congratulations! You’ve just taken a giant leap toward enhanced");
-    	
-    	System.out.println("Mail text: " + langFlag);	
-    	
-    	BasePage.driver.findElement(By.linkText("Activate Account")).click(); 
     }
 
 }
+
