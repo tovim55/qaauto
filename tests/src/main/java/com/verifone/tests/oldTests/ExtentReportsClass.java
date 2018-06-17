@@ -80,7 +80,7 @@ public class ExtentReportsClass{
 		// writing everything to document
 		//flush() - to write or update testLog information to your report.
                 extent.flush();
-                //Call close() at the very end of your session to clear all resources. 
+                //Call close() at the very end of your session to clear all com.verifone.infra.resources.
                 //If any of your testLog ended abruptly causing any side-affects (not all logs sent to ExtentReports, information missing), this method will ensure that the testLog is still appended to the report with a warning message.
                 //You should call close() only once, at the very end (in @AfterSuite for example) as it closes the underlying stream. 
                 //Once this method is called, calling any Extent method will throw an error.

@@ -124,7 +124,7 @@ public abstract class BaseApi {
     }
 
 
-    protected JsonObject readJsonFile(String filePath) {
+    public static JsonObject readJsonFile(String filePath) {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(filePath));

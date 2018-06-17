@@ -5,7 +5,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="tests"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
 <listAttribute key="org.testng.eclipse.SUITE_TEST_LIST">
-<listEntry value="C:\Users\giorat1\eclipse-workspace-testng-maven\tests\src\test\resources\testng.xml"/>
+<listEntry value="C:\Users\giorat1\eclipse-workspace-testng-maven\tests\src\test\com.verifone.infra.resources\testng.xml"/>
 </listAttribute>
 <intAttribute key="org.testng.eclipse.TYPE" value="3"/>
 </launchConfiguration>

@@ -2,7 +2,7 @@
 <libraryInfos>
 <libraryInfo home="C:\Program Files\Java\jdk1.8.0_162" version="1.8.0_162">
 <bootpath>
-<entry path="C:\Program Files\Java\jdk1.8.0_162\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jdk1.8.0_162\jre\lib\com.verifone.infra.resources.jar"/>
 <entry path="C:\Program Files\Java\jdk1.8.0_162\jre\lib\rt.jar"/>
 <entry path="C:\Program Files\Java\jdk1.8.0_162\jre\lib\sunrsasign.jar"/>
 <entry path="C:\Program Files\Java\jdk1.8.0_162\jre\lib\jsse.jar"/>
@@ -21,7 +21,7 @@
 </libraryInfo>
 <libraryInfo home="C:\Program Files\Java\jre1.8.0_162" version="1.8.0_162">
 <bootpath>
-<entry path="C:\Program Files\Java\jre1.8.0_162\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_162\lib\com.verifone.infra.resources.jar"/>
 <entry path="C:\Program Files\Java\jre1.8.0_162\lib\rt.jar"/>
 <entry path="C:\Program Files\Java\jre1.8.0_162\lib\sunrsasign.jar"/>
 <entry path="C:\Program Files\Java\jre1.8.0_162\lib\jsse.jar"/>

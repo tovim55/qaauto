@@ -37,7 +37,7 @@
 		</dependency>
 		<dependency>
     		<groupId>org.apache.maven.plugins</groupId>
-    		<artifactId>maven-resources-plugin</artifactId>
+    		<artifactId>maven-com.verifone.infra.resources-plugin</artifactId>
     		<version>3.0.2</version>
 		</dependency>
 		<dependency>

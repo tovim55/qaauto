@@ -11,7 +11,7 @@
         <parameter name="browserType" value="CHROME"/>
 
         <classes>
-            <class name="com.verifone.tests.cgTests.LoginTest"/>
+            <class name="com.verifone.tests.cpTests.SignUpTestUI"/>
         </classes>
 
     </test>

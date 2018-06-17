@@ -65,7 +65,7 @@ public Properties prop = new Properties();
 
 Integer rowNumber=0;
 Integer getRowNumFromFile = 0;
-final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\resources\\login.xls";
+final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\login.xls";
 
 
 @Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })

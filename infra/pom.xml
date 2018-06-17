@@ -191,6 +191,47 @@
             <artifactId>java-client</artifactId>
             <version>4.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-gmail</artifactId>
+            <version>v1-rev91-1.23.0</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>1.11.0-beta</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.http-client/google-http-client -->
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>1.16.0-rc</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>0.22.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.12</version>
+            <scope>runtime</scope>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>com.verifone.tests</groupId>-->
             <!--<artifactId>tests</artifactId>-->

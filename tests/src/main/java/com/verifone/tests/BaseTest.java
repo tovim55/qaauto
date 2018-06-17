@@ -93,4 +93,12 @@ public abstract class BaseTest {
     }
 
 
+    protected void assertTextContains(String expectedResult, String actual){
+        if (!expectedResult.contains(actual)) {
+            org.testng.Assert.fail("Text expected: " + expectedResult + " Was: " + actual);
+        }
+    }
+
+
+
 }

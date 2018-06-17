@@ -50,7 +50,9 @@ public class User {
 
 
     private String generateUserName() {
-        return randomAlphabetic(5).toLowerCase() + "@getnada.com";
+//        return randomAlphabetic(5).toLowerCase() + "@getnada.com";
+        return "tov4545@gmail.com";
+
     }
 
     private String generatePassword() {
