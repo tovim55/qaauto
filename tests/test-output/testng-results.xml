@@ -1,104 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Verifone" duration-ms="20754" started-at="2018-05-13T14:56:51Z" finished-at="2018-05-13T14:57:12Z">
+  <suite name="Verifone" duration-ms="8469" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
     <groups>
-      <group name="developer-portal">
-        <method signature="SignUpTest.SignUpTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="SignUpTest" class="com.verifone.tests.oldTests.SignUpTest"/>
-      </group> <!-- developer-portal -->
+      <group name="CP-portal">
+        <method signature="MerchantGetCongMailUI.MerchantGetCongMailUI()[pri:0, instance:com.verifone.tests.cpTests.MerchantGetCongMailUI@4b9e255]" name="MerchantGetCongMailUI" class="com.verifone.tests.cpTests.MerchantGetCongMailUI"/>
+      </group> <!-- CP-portal -->
     </groups>
-    <test name="Selenium Web Portal Automation Tests" duration-ms="20754" started-at="2018-05-13T14:56:51Z" finished-at="2018-05-13T14:57:12Z">
-      <class name="com.verifone.tests.oldTests.SignUpTest">
-        <test-method status="PASS" signature="startBrowser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="startBrowser" is-config="true" duration-ms="7105" started-at="2018-05-13T14:56:51Z" finished-at="2018-05-13T14:56:58Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[TEST]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[http://dev.cgateway-portal.verifone.com/]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[https://qa.developer.verifonecp.com/docs/overview/get-started/]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[http://Staging1.cgateway-portal.verifone.com/]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[http://TBD.cgateway-portal.verifone.com/]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[CHROME]]>
-              </value>
-            </param>
-          </params>
+    <test name="Automation Tests" duration-ms="8469" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
+      <class name="com.verifone.tests.cpTests.MerchantGetCongMailUI">
+        <test-method status="PASS" signature="MerchantGetCongMailUI()[pri:0, instance:com.verifone.tests.cpTests.MerchantGetCongMailUI@4b9e255]" name="MerchantGetCongMailUI" duration-ms="8449" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="SignUpTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="SignUpTest" duration-ms="8276" started-at="2018-05-13T14:56:58Z" data-provider="signUp" finished-at="2018-05-13T14:57:07Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[MerchantTestFour]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[TestFour]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[MerchantTest4@getnada.com]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Veri1234]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTestUI -->
-        <test-method status="PASS" signature="SignUpTest(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.SignUpTest@48fa0f47]" name="SignUpTest" duration-ms="5210" started-at="2018-05-13T14:57:07Z" data-provider="signUp" finished-at="2018-05-13T14:57:12Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[MerchantTestFive]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[TestFive]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[MerchantTest5@getnada.com]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Veri1234]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTestUI -->
-      </class> <!-- com.verifone.tests.SignUpTestUI -->
-    </test> <!-- Selenium Web Portal Automation Tests -->
+        </test-method> <!-- MerchantGetCongMailUI -->
+      </class> <!-- com.verifone.tests.cpTests.MerchantGetCongMailUI -->
+    </test> <!-- Automation Tests -->
   </suite> <!-- Verifone -->
 </testng-results>

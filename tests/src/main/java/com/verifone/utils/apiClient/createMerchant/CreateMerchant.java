@@ -29,6 +29,7 @@ public class CreateMerchant extends BaseApi {
         requestObj.getAsJsonObject("data").addProperty("parentOrgID", eoAdminId);
         requestObj.getAsJsonObject("data").addProperty("rootOrgID", eoAdminId);
         requestObj.getAsJsonObject("data").addProperty("mID", id);
+        id = id.replace("-", "");
         requestObj.getAsJsonObject("data").getAsJsonObject("merchantAdmin").getAsJsonArray("emails").get(0).
                 getAsJsonObject().addProperty("email", id  + "@getnada.com");
         JsonObject a = getPost(requestObj, 201);

@@ -16,7 +16,10 @@ public class EntitiesFactory {
 
             case "DevAdmin":
                 return BaseTest.envConfig.getCredentials().getDevAdmin();
-
+                
+//            case "DevAdmin":
+//                return BaseTest.envConfig.getCredentials().getDevAdmin();
+                
             case "NewUser":
                 return new User();
         }

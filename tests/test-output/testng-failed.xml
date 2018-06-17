@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Verifone]">
-  <test thread-count="5" name="Selenium Web Portal Automation Tests(failed)">
-    <parameter name="urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/>
-    <parameter name="urlDev" value="http://dev.cgateway-portal.verifone.com/"/>
-    <parameter name="urlTest" value="https://qa.developer.verifonecp.com/docs/overview/get-started/"/>
-    <parameter name="env" value="TEST"/>
+  <parameter name="env" value="QA"/>
+  <parameter name="portal" value="CPPortal"/>
+  <test thread-count="5" name="Automation Tests(failed)">
     <parameter name="browserType" value="CHROME"/>
-    <parameter name="urlProduction" value="http://TBD.cgateway-portal.verifone.com/"/>
     <classes>
-      <class name="com.verifone.tests.oldTests.SignUpTest">
+      <class name="com.verifone.tests.cpTests.MerchantGetCongMailUI">
         <methods>
-          <include name="startBrowser"/>
-          <include name="SignUpTest" invocation-numbers="1"/>
+          <include name="MerchantGetCongMailUI"/>
         </methods>
-      </class> <!-- com.verifone.tests.SignUpTestUI -->
+      </class> <!-- com.verifone.tests.cpTests.MerchantGetCongMailUI -->
     </classes>
-  </test> <!-- Selenium Web Portal Automation Tests(failed) -->
+  </test> <!-- Automation Tests(failed) -->
 </suite> <!-- Failed suite [Verifone] -->
