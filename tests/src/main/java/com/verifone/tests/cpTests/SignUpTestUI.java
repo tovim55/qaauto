@@ -2,10 +2,10 @@ package com.verifone.tests.cpTests;
 
 import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.User;
-import com.verifone.infra.connectors.GmailApiClient;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.SignUpPage;
 import com.verifone.tests.BaseTest;
+import com.verifone.utils.Mail.InboxGetnada;
 import org.testng.annotations.Test;
 
 public class SignUpTestUI extends BaseTest {
@@ -19,8 +19,10 @@ public class SignUpTestUI extends BaseTest {
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(user);
         assertTextContains("Thanks for your registration!", signUpPage.getMessege());
-        GmailApiClient.validateMessage("Thank you for completing your Verifone Developer Central registration");
-    }
+        String message = new InboxGetnada().getLastMessage(user.getUserName());
+        assertTextContains(message, "Activate Account");
+
+}
 
     @Test(groups = {"CP-Portal"})
     public void signUpWithExistUserUI() throws Exception {

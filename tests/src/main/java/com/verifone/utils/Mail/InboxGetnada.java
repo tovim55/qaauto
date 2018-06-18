@@ -2,43 +2,45 @@ package com.verifone.utils.Mail;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.Test;
 
-import com.verifone.infra.SeleniumUtils;
 import com.verifone.pages.BasePage;
 
-public class InboxGetnada {
-	
-	public static void AddInboxGetnada(WebDriver driver, String EmailAddr, int timeout) throws Exception {
-    	//      Navigate to Getnada
-    	
-    	BasePage.driver = SeleniumUtils.getDriver("CHROME");
-    	BasePage.driver.navigate().to("https://getnada.com/#");
-    	
-    	// Click Add Inbox
+public class InboxGetnada extends BasePage {
 
-    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();  
-    	
-    	// Put email
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(EmailAddr);
-    	
-    	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
-    	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
-    	
-    	//  Accept
-    	BasePage.driver.findElement(By.linkText("ACCEPT")).click(); 
-    	
-    	//  Open Email
-    	Thread.sleep(timeout);
-    	BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
-    	
+    private final static String url = "https://getnada.com/#";
+    private final static String title = "Nada - temporary email";
+
+    By addInboxBtn = By.xpath("//*[contains(@class, 'icon-plus')]");
+    By emailField = By.xpath("//input[contains(@class, 'user_name')]");
+    By domainField = By.xpath("//select[contains(@id, 'domain')]");
+    By acceptBtn = By.linkText("ACCEPT");
+    By firstMessage = By.xpath("//div[contains(@class, 'subject ')]");
+//    By messageContant = By.partialLinkText("Thank you for completing your Verifone");
+    By acceptLink = By.linkText("Activate Account");
+    By iframe = By.id("idIframe");
+
+
+    public InboxGetnada() {
+        super(url, title);
+        navigate();
     }
+
+
+    public String getLastMessage(String emailAddr) {
+        emailAddr = emailAddr.split("@")[0];
+        click(addInboxBtn);
+        sendKeys(emailField, emailAddr);
+        click(domainField);
+        sendKeysNoClear(domainField, "getnada.com");
+        click(acceptBtn);
+        click(firstMessage);
+        switchToIframe(iframe);
+        String message = driver.findElement(acceptLink).getText();
+        driver.findElement(acceptLink).click();
+        return message;
+    }
+
+
 
 }
 

@@ -1,29 +1,39 @@
 package com.verifone.entities;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.User;
+import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 
 public class EntitiesFactory {
 
 
-    public static User getEntity(String entity){
+    public static User getEntity(String entity) {
+        User user = null;
         switch (entity) {
             case "EOAdminSupport":
-                return BaseTest.envConfig.getCredentials().getEOAdminSupport();
+                user = BaseTest.envConfig.getCredentials().getEOAdminSupport();
+                break;
 
             case "EOAdmin":
-                return BaseTest.envConfig.getCredentials().getEOAdmin();
+                user = BaseTest.envConfig.getCredentials().getEOAdmin();
+                break;
 
             case "DevAdmin":
-                return BaseTest.envConfig.getCredentials().getDevAdmin();
-                
-//            case "DevAdmin":
-//                return BaseTest.envConfig.getCredentials().getDevAdmin();
-                
+                user = BaseTest.envConfig.getCredentials().getDevAdmin();
+                break;
+
             case "NewUser":
-                return new User();
+                user = new User();
+                break;
+
+            case "GmailUser":
+                user = new User(true);
+                break;
         }
-    return null;
+        System.out.println("User " + user.getUserName() + " Was created");
+        BasePage.testLog.log(LogStatus.INFO, "User " + user.getUserName() + " Was created");
+        return user;
     }
 
 }

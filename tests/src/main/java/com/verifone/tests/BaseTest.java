@@ -87,14 +87,14 @@ public abstract class BaseTest {
 
     //    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-        System.out.println("Closing Web Page");
-        Reporter.log("Closing Web Page", true);
-        SeleniumUtils.closeRuntimeBrowserInstance();
+//        System.out.println("Closing Web Page");
+//        Reporter.log("Closing Web Page", true);
+//        SeleniumUtils.closeRuntimeBrowserInstance();
     }
 
 
     protected void assertTextContains(String expectedResult, String actual){
-        if (!expectedResult.contains(actual)) {
+        if (!actual.contains(expectedResult)) {
             org.testng.Assert.fail("Text expected: " + expectedResult + " Was: " + actual);
         }
     }

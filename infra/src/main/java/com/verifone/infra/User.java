@@ -22,6 +22,12 @@ public class User {
         this.lastName = generateNames();
     }
 
+    public User(boolean gmailUser) {
+        this.userName = "tov4545@gmail.com";
+        this.password = generatePassword();
+        this.firstName = generateNames();
+        this.lastName = generateNames();
+    }
 
     public String getUserName() {
         return userName;
@@ -50,13 +56,12 @@ public class User {
 
 
     private String generateUserName() {
-//        return randomAlphabetic(5).toLowerCase() + "@getnada.com";
-        return "tov4545@gmail.com";
-
+        return randomAlphabetic(8).toLowerCase() + "@getnada.com";
     }
 
+
     private String generatePassword() {
-        return random(15, true, true);
+        return "Veri1234";
     }
 
     private String generateNames() {

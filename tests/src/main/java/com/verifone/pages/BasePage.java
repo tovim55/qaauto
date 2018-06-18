@@ -57,6 +57,12 @@ public abstract class BasePage {
         testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
     }
 
+    public void sendKeysNoClear(By loc, String text) {
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
+        element.sendKeys(text);
+        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+    }
+
     protected String getText(By loc) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
         return element.getText();
@@ -73,6 +79,11 @@ public abstract class BasePage {
         return text;
     }
 
+    protected void switchToIframe(By loc){
+        WebElement element = getWebElement(loc, 10, ExpectedConditions.presenceOfElementLocated(loc));
+//        driver.switchTo().defaultContent();
+        driver.switchTo().frame(element);
+    }
 
 
 

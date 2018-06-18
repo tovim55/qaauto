@@ -1,5 +1,6 @@
 package com.verifone.pages.cpPages;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
@@ -33,6 +34,7 @@ public class SignUpPage extends BasePage {
     }
 
     public void signUp(User user){
+//        testLog.log(LogStatus.INFO, "");
         click(signUpButton);
         click(chkBox);
         sendKeys(this.firstName, user.getFirstName());

@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.utils.apiClient.getToken.GetTokenApi;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -58,6 +59,47 @@ public abstract class BaseApi {
         Gson gson = new GsonBuilder().create();
         return gson.fromJson(entity, JsonObject.class);
     }
+
+
+    public static JsonObject getRequestWithHeaders(String url, HashMap<String, String> headers, int expectedCode) throws IOException {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpGet request = new HttpGet(url);
+        headers.forEach(request::addHeader);
+        HttpResponse response = client.execute(request);
+        System.out.println("Sending request to URL : " + url);
+        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        String entity = EntityUtils.toString(response.getEntity());
+        int responseCode = response.getStatusLine().getStatusCode();
+        if(responseCode != expectedCode){
+            testLog.log(LogStatus.ERROR, entity);
+            System.out.println("request failed:  " + entity);
+            Assert.assertEquals(responseCode, expectedCode);
+        }
+        Gson gson = new GsonBuilder().create();
+        return gson.fromJson(entity, JsonObject.class);
+    }
+
+
+
+    public static JsonObject getPostWithHeaders(String url, String body, HashMap<String, String> headers, int expectedCode) throws IOException {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url);
+        headers.forEach(post::addHeader);
+        Gson gson = new GsonBuilder().create();
+        post.setEntity(new StringEntity(body, "UTF-8"));
+        HttpResponse response = client.execute(post);
+        System.out.println("Sending request to URL : " + url);
+        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        String entity = EntityUtils.toString(response.getEntity());
+        int responseCode = response.getStatusLine().getStatusCode();
+        if(responseCode != expectedCode){
+            testLog.log(LogStatus.ERROR, entity);
+            System.out.println("request failed:  " + entity);
+            Assert.assertEquals(responseCode, expectedCode);
+        }
+        return gson.fromJson(entity, JsonObject.class);
+    }
+
 
 
     protected JsonObject getPost(JsonObject requestData, int expectedCode) throws IOException {
