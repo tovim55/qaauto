@@ -1,13 +1,14 @@
 package com.verifone.pages.cgPages;
 
 import com.verifone.pages.BasePage;
+import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 
 public class CGLoginPage extends BasePage {
 
 
 
-    private final static String url = "";
+    private final static String url = BaseTest.envConfig.getWebUrl() + "docs/overview/get-started/";
     private final static String title = "Commerce gateway portal";
 
     private By toLoginPageBtn = By.partialLinkText("Log");

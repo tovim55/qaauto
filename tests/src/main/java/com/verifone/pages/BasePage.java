@@ -29,7 +29,6 @@ public abstract class BasePage {
 
     public void navigate() {
         driver.get(this.url);
-        validateTitle();
     }
 
     protected void validateTitle() {

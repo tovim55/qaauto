@@ -23,6 +23,10 @@ public class EntitiesFactory {
                 user = BaseTest.envConfig.getCredentials().getDevAdmin();
                 break;
 
+            case "DevSupportAdmin":
+                user = BaseTest.envConfig.getCredentials().getDevSupportAdmin();
+                break;
+
             case "NewUser":
                 user = new User();
                 break;

@@ -27,9 +27,9 @@ public class ManagerAddMerchantUI extends BaseTest {
         GetEoadminDataApi getEoadminDataApi = new GetEoadminDataApi(accessToken,"testId");
         String mId = new CreateMerchant(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
 //        LoginPage loginPage = new LoginPage();
-//        loginPage.loginPageCp(user);
+//        loginPage.login(user);
 //        System.out.println(mId);
-//        if (!new HomePage().getMerchants().contains(mId)) {
+//        if (!new DevHomePage().getMerchants().contains(mId)) {
 //            org.testng.Assert.fail("test failed");
 //        }
 

@@ -136,11 +136,11 @@ public class SeleniumUtils {
     }
 
 
-    public static void setEnv(String url)  {
-        System.out.println("Selenium driver on : " + url);
-        driver.get(url);
-
-    }
+//    public static void setEnv(String url)  {
+//        System.out.println("Selenium driver on : " + url);
+//        driver.get(url);
+//
+//    }
 
     public static void setEnv(String env, String urlDev, String urlTest,
                               String urlStaging1, String urlProduction, ExtentTest test) throws Exception {

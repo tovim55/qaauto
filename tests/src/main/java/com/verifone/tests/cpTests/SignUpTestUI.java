@@ -22,7 +22,7 @@ public class SignUpTestUI extends BaseTest {
         String message = new InboxGetnada().getLastMessage(user.getUserName());
         assertTextContains(message, "Activate Account");
 
-}
+    }
 
     @Test(groups = {"CP-Portal"})
     public void signUpWithExistUserUI() throws Exception {

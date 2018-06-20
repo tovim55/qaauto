@@ -39,7 +39,7 @@ public abstract class BaseTest {
         if (method.getName().contains("UI")) {
 //            ExtentTest driverLog = logger.startTest("setup driver", "");
             BasePage.driver = SeleniumUtils.getDriver(browserType);
-            SeleniumUtils.setEnv(envConfig.getWebUrl());
+//            SeleniumUtils.setEnv(envConfig.getWebUrl());
         }
 
     }
