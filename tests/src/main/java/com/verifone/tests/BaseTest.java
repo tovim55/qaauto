@@ -71,11 +71,13 @@ public abstract class BaseTest {
                 testLog.log(LogStatus.PASS, "Test Passed <span class='label success'>success</span>");
                 break;
             case ITestResult.FAILURE:
-                String capScreenShootPath = SeleniumUtils.getScreenshot();
-                testLog.log(LogStatus.FAIL, result.getThrowable() + " <span class='label label-fail'>fail</span>");
-                testLog.log(LogStatus.INFO, "Snapshot path: " + (capScreenShootPath));
-                testLog.log(LogStatus.INFO, "Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-                break;
+                if (method.getName().contains("UI")) {
+                    String capScreenShootPath = SeleniumUtils.getScreenshot();
+                    testLog.log(LogStatus.INFO, "Snapshot path: " + (capScreenShootPath));
+                    testLog.log(LogStatus.INFO, "Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+                }
+                    testLog.log(LogStatus.FAIL, result.getThrowable() + " <span class='label label-fail'>fail</span>");
+                    break;
         }
         logger.endTest(testLog);
         logger.flush();

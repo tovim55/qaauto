@@ -40,6 +40,7 @@ public class SeleniumUtils {
      */
     public static WebDriver getDriver(String browserType) throws Exception {
         driver = SeleniumUtils.setBrowser(browserType);
+        driver.manage().window().maximize();
 //        if (browserType.equalsIgnoreCase("CHROME")) {
 //            driver.manage().window().maximize();
 //        }

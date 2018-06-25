@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -86,5 +88,23 @@ public class DataDrivenUtils {
              System.out.println("Number of Rows is: " + totalNoOfRows);   
 
      return totalNoOfRows;   
-}  		
+}
+
+
+
+    public static HashMap<String, String> getMapFromStr(String headers){
+        headers =  StringUtils.substringBetween(headers, "{", "}");
+        String[] keyValue = headers.split(",");
+        HashMap<String, String> headersMap = new HashMap<String, String>();
+        for(String pair : keyValue)
+        {
+            String[] entry = pair.split(":");
+            headersMap.put(entry[0].trim(), entry[1].trim());
+        }
+
+        return headersMap;
+    }
+
+
+
 }     

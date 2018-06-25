@@ -6,9 +6,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,6 +64,13 @@ public abstract class BasePage {
         testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
     }
 
+
+    public void select(By loc, String value){
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].style.display='block'", element);
+        new Select(element).selectByValue(value);
+    }
+
     protected String getText(By loc) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
         return element.getText();
@@ -84,9 +93,37 @@ public abstract class BasePage {
         driver.switchTo().frame(element);
     }
 
+    protected void switchToPreviosTab(){
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
+    }
+
 
 
     private WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+        waitForElement(loc, timeOut, expectedCon);
+        return driver.findElement(loc);
+    }
+
+    protected void getWebElements(String s) {
+//        waitForElement(loc, timeOut, ExpectedConditions.presenceOfElementLocated(loc));
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+//        js.executeScript("document.getElementsByTagName(\"input\")[20].style.visibility='visible'");
+//        js.executeScript("document.getElementsByTagName(\"input\")[20].style.display = 'block'");
+        WebElement e = (WebElement) js.executeScript("return document.getElementsByTagName(\"input\")[20]");
+        ((JavascriptExecutor)driver).executeScript("arguments[0].style.display='block'", e);
+        e.sendKeys(s);
+//        driver.findElements(By.tagName("input")).get(21).sendKeys(s);
+//        WebElement e = (WebElement) js.executeScript("return document.getElementsByTagName(\"input\")[20]");
+//        e.sendKeys(s);
+//        WebElement e = ((JavascriptExecutor)driver).executeScript("return document.getElementsByTagName(\"input\")[20]");
+
+//        return driver.findElements(loc);
+    }
+
+    private void waitForElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOut);
             wait.until(expectedCon);
@@ -94,7 +131,6 @@ public abstract class BasePage {
             testLog.log(LogStatus.ERROR, "Element Not Found For Locator: " + loc.toString());
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
-        return driver.findElement(loc);
     }
 
 

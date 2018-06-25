@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 
 import com.verifone.pages.BasePage;
 
+import java.util.ArrayList;
+
 public class InboxGetnada extends BasePage {
 
     private final static String url = "https://getnada.com/#";
@@ -37,6 +39,7 @@ public class InboxGetnada extends BasePage {
         switchToIframe(iframe);
         String message = driver.findElement(acceptLink).getText();
         driver.findElement(acceptLink).click();
+        switchToPreviosTab();
         return message;
     }
 
