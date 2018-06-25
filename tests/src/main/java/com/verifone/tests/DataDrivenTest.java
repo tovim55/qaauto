@@ -20,7 +20,7 @@ public class DataDrivenTest extends BaseTest {
 
     @DataProvider(name = "signUp")
     public Object[][] dataSupplierLoginData() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData("C:\\Users\\yonir1\\Desktop\\cpp projects\\CPP-3712\\feqaautomation\\tests\\src\\test\\resources\\login.xls", "signUp");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData("C:\\Users\\yonir1\\Desktop\\cpp projects\\CPP-3712\\feqaautomation\\tests\\src\\test\\resources\\apiData.xls", "EOAdminData");
         return arrayObject;
     }
 
