@@ -9,8 +9,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
@@ -98,6 +97,52 @@ public abstract class BaseApi {
             Assert.assertEquals(responseCode, expectedCode);
         }
         return gson.fromJson(entity, JsonObject.class);
+    }
+
+
+    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpRequestBase request = getRequest(url, method, body);
+        headers.forEach(request::addHeader);
+        Gson gson = new GsonBuilder().create();
+        HttpResponse response = client.execute(request);
+        System.out.println("Sending request to URL : " + url);
+        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        String entity = EntityUtils.toString(response.getEntity());
+        int responseCode = response.getStatusLine().getStatusCode();
+        if(responseCode != expectedCode){
+            testLog.log(LogStatus.ERROR, entity);
+            System.out.println("request failed:  " + entity);
+            Assert.assertEquals(responseCode, expectedCode);
+        }
+        return gson.fromJson(entity, JsonObject.class);
+    }
+
+    private static HttpRequestBase getRequest(String url, String method, String body){
+        if (body == null)
+            body = "";
+        switch(method){
+            case "delete":
+                return new HttpDelete(url);
+            case "get":
+                return new HttpGet(url);
+            case "head":
+                return new HttpHead(url);
+            case "patch":
+                HttpPatch patch = new HttpPatch(url);
+                patch.setEntity(new StringEntity(body, "UTF-8"));
+                return patch;
+            case "post":
+                HttpPost post = new HttpPost(url);
+                post.setEntity(new StringEntity(body, "UTF-8"));
+                return post;
+            case "put":
+                HttpPut put = new HttpPut(url);
+                put.setEntity(new StringEntity(body, "UTF-8"));
+                return put;
+            default:
+                throw new IllegalArgumentException("Invalid or null HttpMethod: " + method);
+        }
     }
 
 

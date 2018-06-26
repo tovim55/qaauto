@@ -20,7 +20,7 @@ public class DataDrivenTest extends BaseTest {
 
     @DataProvider(name = "signUp")
     public Object[][] dataSupplierLoginData() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData("C:\\Users\\yonir1\\Desktop\\cpp projects\\CPP-3712\\feqaautomation\\tests\\src\\test\\resources\\apiData.xls", "EOAdminData");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(System.getProperty("user.dir") + "\\src\\test\\resources\\apiData.xls", "EOAdminData");
         return arrayObject;
     }
 
@@ -35,14 +35,11 @@ public class DataDrivenTest extends BaseTest {
             response = getPostWithHeaders(accSSOURL, accGrantType, getMapFromStr(headersForGetToken), 200);
             headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());
         }
-
-        if (requestMethod.equals("get")) {
-            response = getRequestWithHeaders(uri, headersMap, Integer.parseInt(expectedStatusCode));
-        } else {
-            System.out.println(headersMap);
-            response = getPostWithHeaders(uri, body, headersMap, Integer.parseInt(expectedStatusCode));
+        response = getRequestWithHeaders(uri, requestMethod, body, headersMap, Integer.parseInt(expectedStatusCode));
+        if (response != null) {
+            System.out.println("Response is:");
+            System.out.println(response.toString());
         }
-
         if (expectedResult != null) {
             HashMap<String, String> expectedResultMap = getMapFromStr(expectedResult);
             for (String key : expectedResultMap.keySet()) {
