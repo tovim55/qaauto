@@ -3,7 +3,7 @@
 
 <suite name="Verifone" >
 
-    <parameter name="env" value="QA"/>
+    <parameter name="env" value="DEV"/>
     <parameter name="portal" value="CPPortal"/>
 
     <test name="Automation Tests">

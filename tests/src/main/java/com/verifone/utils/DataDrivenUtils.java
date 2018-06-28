@@ -100,6 +100,9 @@ public class DataDrivenUtils {
         {
             String[] entry = pair.split(":");
             headersMap.put(entry[0].trim(), entry[1].trim());
+            if (pair.contains("https:")){
+                headersMap.put(entry[0].trim(), entry[1].trim() + ":" + entry[2]);
+            }
         }
 
         return headersMap;
