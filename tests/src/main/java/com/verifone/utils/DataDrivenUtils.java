@@ -25,6 +25,7 @@ public class DataDrivenUtils {
 // 	 * @param FulePath
  	 * @return SheetName
  	 */
+
      public static Object[][] getExcelData(String FilePath, String SheetName) throws Exception {
         String[][] tabArray = null;
 
@@ -93,8 +94,7 @@ public class DataDrivenUtils {
 
 
     public static HashMap<String, String> getMapFromStr(String headers){
-        headers =  StringUtils.substringBetween(headers, "{", "}");
-        String[] keyValue = headers.split(",");
+        String[] keyValue = getListFrromString(headers);
         HashMap<String, String> headersMap = new HashMap<String, String>();
         for(String pair : keyValue)
         {
@@ -108,6 +108,10 @@ public class DataDrivenUtils {
         return headersMap;
     }
 
+    public static String[] getListFrromString(String headers) {
+        headers =  StringUtils.substringBetween(headers, "{", "}");
+        return headers.split(",");
+    }
 
 
-}     
+}
