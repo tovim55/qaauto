@@ -25,7 +25,8 @@ import java.util.concurrent.TimeUnit;
 public class GmailApiClient {
     private static final String APPLICATION_NAME = "Gmail API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static final String CREDENTIALS_FOLDER = "credentials"; // Directory to store user credentials.
+    private static final String CREDENTIALS_FOLDER =  new File(System.getProperty("user.dir")).getParent() +
+            "\\infra\\src\\main\\java\\com\\verifone\\infra\\connectors\\credentials";
 
     /**
      * Global instance of the scopes required by this quickstart.

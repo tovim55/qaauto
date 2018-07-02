@@ -3,6 +3,8 @@
 .classpath
 .project
 .idea
+.recommenders
+.metadata
 *.aliases
 *.lvlps
 .prefs
