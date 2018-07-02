@@ -9,7 +9,7 @@
 *.lvlps
 .prefs
 .cache/
-/.recommenders/
-/.metadata/
-/,settings/
-
+.recommenders/
+.metadata/
+.settings/
+test-output/

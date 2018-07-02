@@ -24,10 +24,7 @@ public abstract class BaseTest {
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
     public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
-    public static ExtentTest childTest, parentTest;
     public ExtentReports logger = new ExtentReports(reportLocation, true);
-    public Boolean testStepPassed = true;
-    public String capScreenShootPath;
     public ExtentTest testLog;
     public Properties prop = new Properties();
     public static EnvConfig envConfig;
@@ -37,9 +34,7 @@ public abstract class BaseTest {
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
         if (method.getName().contains("UI")) {
-//            ExtentTest driverLog = logger.startTest("setup driver", "");
             BasePage.driver = SeleniumUtils.getDriver(browserType);
-//            SeleniumUtils.setEnv(envConfig.getWebUrl());
         }
 
     }
@@ -87,11 +82,10 @@ public abstract class BaseTest {
     }
 
 
-    //    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-//        System.out.println("Closing Web Page");
-//        Reporter.log("Closing Web Page", true);
-//        SeleniumUtils.closeRuntimeBrowserInstance();
+        System.out.println("Closing Web Page");
+        Reporter.log("Closing Web Page", true);
+        SeleniumUtils.closeRuntimeBrowserInstance();
     }
 
 
