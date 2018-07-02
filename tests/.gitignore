@@ -1,1 +1,13 @@
 /target/
+.iml
+.classpath
+.project
+.idea
+*.aliases
+*.lvlps
+.prefs
+.cache/
+/.recommenders/
+/.metadata/
+/,settings/
+

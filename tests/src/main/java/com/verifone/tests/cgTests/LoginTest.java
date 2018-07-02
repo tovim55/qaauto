@@ -8,6 +8,7 @@ import com.verifone.tests.BaseTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class LoginTest extends BaseTest {
 

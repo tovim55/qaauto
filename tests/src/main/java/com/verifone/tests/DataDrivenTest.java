@@ -36,8 +36,7 @@ public class DataDrivenTest extends BaseTest {
             Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchant");
 //        }
 
-        return arrayObject;
-    }
+        return arrayObject;    }
 
 
 
@@ -76,6 +75,7 @@ public class DataDrivenTest extends BaseTest {
             for (String key : expectedResultMap.keySet()) {
                 if (response.has(key)) {
                     assertTextContains(expectedResultMap.get(key), response.get(key).toString());
+                    testLog.log(LogStatus.INFO, "Result as expected: " + response.get(key).toString());
                 } else {
                     org.testng.Assert.fail("Key: '" + key + "'  Is not appear in response");
                 }

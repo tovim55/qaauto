@@ -3,11 +3,24 @@
 
 <suite name="Verifone" >
 
-    <parameter name="env" value="DEV"/>
+    <!--Set Env Variable: -->
+    <!--QA-->
+    <!--DEV-->
+    <parameter name="env" value="QA"/>
+
+
+    <!--Set Portal Variable: -->
+    <!--CPPortal-->
+    <!--CGPortal-->
+    <!--EOAdmin-->
     <parameter name="portal" value="CPPortal"/>
 
     <test name="Automation Tests">
-
+        <!--Set Browser Variable:-->
+        <!--CHROME-->
+        <!--FF-->
+        <!--EDGE-->
+        <!--IE-->
         <parameter name="browserType" value="CHROME"/>
 
         <classes>
