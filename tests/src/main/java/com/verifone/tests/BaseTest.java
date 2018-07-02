@@ -84,7 +84,7 @@ public abstract class BaseTest {
 
     public void closePage() throws Exception {
         System.out.println("Closing Web Page");
-        Reporter.log("Closing Web Page", true);
+        testLog.log(LogStatus.INFO,"Closing Web Page");
         SeleniumUtils.closeRuntimeBrowserInstance();
     }
 
