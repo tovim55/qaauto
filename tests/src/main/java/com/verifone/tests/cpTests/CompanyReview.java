@@ -12,9 +12,9 @@ public class CompanyReview extends BaseTest {
 
 
 
-    @Test(groups = {"CP-Portal"})
+    @Test(testName = "Support Admin Accept Basic Dev", description = "After Dev Registration Dev Admin Reviewing And Accept company", groups = {"CP-Portal"})
     public void connectWithCompanyUI() throws Exception {
-        starTestLog("Support Admin Accept Basic Dev", "After Dev Registration Dev Admin Reviewing And Accept company");
+//        starTestLog("Support Admin Accept Basic Dev", "After Dev Registration Dev Admin Reviewing And Accept company");
 //
 //        User developer = EntitiesFactory.getEntity("NewUser");
 //        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");

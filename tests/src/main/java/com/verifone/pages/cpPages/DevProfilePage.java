@@ -80,7 +80,7 @@ public class DevProfilePage extends BasePage {
         Thread.sleep(2000);
         Actions action = new Actions(driver);
         action.click(driver.findElements(agreeBtn).get(4)).perform();
-        click(submitBtn);
+        action.doubleClick(driver.findElement(submitBtn)).perform();
 
 
     }

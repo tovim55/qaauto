@@ -6,7 +6,7 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="DEV"/>
+    <parameter name="env" value="QA"/>
 
 
     <!--Set Portal Variable: -->

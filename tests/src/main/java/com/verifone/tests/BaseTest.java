@@ -33,8 +33,11 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
+        Test test = method.getAnnotation(Test.class);
+        starTestLog(test.testName(), test.description());
         if (method.getName().contains("UI")) {
             BasePage.driver = SeleniumUtils.getDriver(browserType);
+            testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
         }
 
     }
@@ -43,15 +46,15 @@ public abstract class BaseTest {
     @BeforeSuite
     public void setEnv(String env, String portal) throws IOException {
         envConfig = new EnvConfig(env, portal);
-        System.out.println("The Automation tests runs on : " + portal + " portal");
         System.out.println("The Automation tests runs on : " + env + " environment");
+
     }
 
 
     public void starTestLog(String testName, String description) {
         testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
-        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
         testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getEnv() + "portal");
+        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
     }
 
 

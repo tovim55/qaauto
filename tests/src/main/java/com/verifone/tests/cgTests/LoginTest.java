@@ -13,10 +13,9 @@ import java.lang.reflect.Method;
 public class LoginTest extends BaseTest {
 
 
-    @Test(groups = {"CG-Portal"})
+    @Test(testName = "Login to CG ", description = "", groups = {"CG-Portal"})
     public void loginUI() throws IOException, InterruptedException {
         User user = EntitiesFactory.getEntity("EOAdmin");
-        starTestLog("Login to CG ", "Bla bla bla");
         CGLoginPage page = (CGLoginPage) PageFactory.getPage("CGLoginPage");
         page.doLogin();
 

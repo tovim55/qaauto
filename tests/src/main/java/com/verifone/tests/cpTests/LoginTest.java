@@ -13,9 +13,8 @@ public class LoginTest extends BaseTest {
 
 
 
-    @Test(groups = {"CP-portal"})
+    @Test(testName = "LoginTest", description = "CP dev Portal log in test", groups = {"CP-portal"})
     public void cpLoginTestUI() throws Exception {
-        starTestLog("LoginTest", "CP dev Portal log in test");
         User dev = EntitiesFactory.getEntity("DevAdmin");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();

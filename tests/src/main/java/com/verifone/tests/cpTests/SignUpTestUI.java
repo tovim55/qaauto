@@ -13,10 +13,8 @@ import static com.verifone.utils.Assertions.assertTextContains;
 public class SignUpTestUI extends BaseTest {
 
 
-    @Test(groups = {"CP-Portal"})
+    @Test(testName = "Sign Up ", description = "Sign up with new user successfully", groups = {"CP-Portal"})
     public void signUpTestUI() throws Exception {
-        starTestLog("Sign Up ", "Sign up with new user successfully");
-
         User user = EntitiesFactory.getEntity("NewUser");
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(user);
@@ -26,9 +24,8 @@ public class SignUpTestUI extends BaseTest {
 
     }
 
-    @Test(groups = {"CP-Portal"})
+    @Test(testName = "Sign up with exist user email ", description = "Sign up with exist email is fail", groups = {"CP-Portal"})
     public void signUpWithExistUserUI() throws Exception {
-        starTestLog("Sign up with exist user email", "Sign up with exist email is fail");
         String existEmail = EntitiesFactory.getEntity("DevAdmin").getUserName();
         User user = EntitiesFactory.getEntity("NewUser");
         user.setUserName(existEmail);

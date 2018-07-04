@@ -20,9 +20,8 @@ import static com.verifone.utils.Assertions.assertTextContains;
 public class PubSubTest extends BaseTest {
 
 
-    @Test(groups = {"Pub Sub"})
+    @Test(testName = "Pub Sub Get Token", description = "get token and EOadmin data calls", groups = {"Pub Sub"})
     public void GetTokenTestUI() throws IOException, InterruptedException {
-        starTestLog("Pub Sub Get Token", "get token and EOadmin data calls");
         User user = EntitiesFactory.getEntity("EOAdminSupport");
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken();
