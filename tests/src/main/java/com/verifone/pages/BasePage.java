@@ -3,13 +3,19 @@ package com.verifone.pages;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import static java.awt.event.KeyEvent.*;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -102,26 +108,30 @@ public abstract class BasePage {
 
 
 
-    private WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+    protected WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
         waitForElement(loc, timeOut, expectedCon);
         return driver.findElement(loc);
     }
 
 //    TODO complete method implementation
-    protected void getWebElements(String s) {
-//        waitForElement(loc, timeOut, ExpectedConditions.presenceOfElementLocated(loc));
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-//        js.executeScript("document.getElementsByTagName(\"input\")[20].style.visibility='visible'");
-//        js.executeScript("document.getElementsByTagName(\"input\")[20].style.display = 'block'");
-        WebElement e = (WebElement) js.executeScript("return document.getElementsByTagName(\"input\")[20]");
-        ((JavascriptExecutor)driver).executeScript("arguments[0].style.display='block'", e);
-        e.sendKeys(s);
-//        driver.findElements(By.tagName("input")).get(21).sendKeys(s);
-//        WebElement e = (WebElement) js.executeScript("return document.getElementsByTagName(\"input\")[20]");
-//        e.sendKeys(s);
-//        WebElement e = ((JavascriptExecutor)driver).executeScript("return document.getElementsByTagName(\"input\")[20]");
+    protected void uploadFile(String filePath, WebElement element) throws IOException, AWTException, InterruptedException {
+        element.click();
+        StringSelection ss = new StringSelection(filePath);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+        Robot robot =  new Robot();
+        Thread.sleep(2000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
 
-//        return driver.findElements(loc);
+    }
+
+    protected WebElement getElementsByClassJs(String className, int index) {
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        return  (WebElement) js.executeScript("return document.getElementsByClassName('" + className + "')[" + index + "]");
     }
 
     private void waitForElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {

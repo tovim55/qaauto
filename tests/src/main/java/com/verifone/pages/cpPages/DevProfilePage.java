@@ -5,7 +5,10 @@ import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.interactions.Actions;
+
+import java.awt.*;
+import java.io.IOException;
 
 
 public class DevProfilePage extends BasePage {
@@ -23,8 +26,11 @@ public class DevProfilePage extends BasePage {
     private By countryCode = By.xpath("//input[@name='countryCode']");
     private By countryTaxCode = By.xpath("//select[@name='taxCountryCode']");
     private By taxFormFile = By.className("default dz-message dz-clickable");
-    private By checkboxAgreement = By.xpath("//input[@class='checkbox-agreement']");
+    private By checkboxAgreement = By.className("checkbox-material");
     private By submitBtn = By.xpath("//button[@class='btn btn-primary btn-raised submit-button']");
+//    private By agreeBtn = By.className("btn btn-primary btn-raised vui-modal-affirm");
+    private By agreeBtn = By.tagName("button");
+    private String uploadFileClassName = "dz-default dz-message dz-clickable";
 
 
     // User info form:
@@ -55,7 +61,7 @@ public class DevProfilePage extends BasePage {
     }
 
 
-    public void fillCompanyInfo(User user){
+    public void fillCompanyInfo(User user) throws IOException, AWTException, InterruptedException {
         click(addCompaniInfoBtn);
         sendKeys(companyName, "hola");
         select(country, "CA");
@@ -68,10 +74,12 @@ public class DevProfilePage extends BasePage {
         sendKeys(contactNumber, "123456789");
         select(countryTaxCode, "CA");
         sendKeys(email, user.getUserName());
-        getWebElements("C:\\Users\\yonir1\\Desktop\\cpp projects\\CPP-3712\\feqaautomation\\tests\\src\\main\\resources\\a.txt");
-//        getWebElements(taxFormFile, 10).get(1).sendKeys("C:\\Users\\yonir1\\Desktop\\cpp projects\\CPP-3712\\feqaautomation\\tests\\src\\main\\resources\\a.txt");
-//        sendKeys(taxFormFile, "C:\\Users\\yonir1\\Desktop\\cpp projects\\CPP-3712\\feqaautomation\\tests\\src\\main\\resources\\a.txt");
+        uploadFile(System.getProperty("user.dir") + "\\src\\test\\resources\\tax_file.docx",
+                getElementsByClassJs(uploadFileClassName, 1));
         click(checkboxAgreement);
+        Thread.sleep(2000);
+        Actions action = new Actions(driver);
+        action.click(driver.findElements(agreeBtn).get(4)).perform();
         click(submitBtn);
 
 

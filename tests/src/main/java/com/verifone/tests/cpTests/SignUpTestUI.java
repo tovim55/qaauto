@@ -8,6 +8,8 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.Mail.InboxGetnada;
 import org.testng.annotations.Test;
 
+import static com.verifone.utils.Assertions.assertTextContains;
+
 public class SignUpTestUI extends BaseTest {
 
 

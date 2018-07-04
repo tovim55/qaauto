@@ -15,6 +15,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.HashMap;
 
+import static com.verifone.utils.Assertions.assertTextContains;
+
 public class PubSubTest extends BaseTest {
 
 
