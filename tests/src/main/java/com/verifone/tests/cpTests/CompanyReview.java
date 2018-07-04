@@ -8,22 +8,23 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.Mail.InboxGetnada;
 import org.testng.annotations.Test;
 
+import static com.verifone.utils.Assertions.assertTextContains;
+
 public class CompanyReview extends BaseTest {
 
 
 
     @Test(testName = "Support Admin Accept Basic Dev", description = "After Dev Registration Dev Admin Reviewing And Accept company", groups = {"CP-Portal"})
     public void connectWithCompanyUI() throws Exception {
-//        starTestLog("Support Admin Accept Basic Dev", "After Dev Registration Dev Admin Reviewing And Accept company");
 //
-//        User developer = EntitiesFactory.getEntity("NewUser");
-//        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
-//        signUpPage.signUp(developer);
-//        assertTextContains("Thanks for your registration!", signUpPage.getMessege());
-//        String message = new InboxGetnada().getLastMessage(developer.getUserName());
-//        assertTextContains(message, "Activate Account");
+        User developer = EntitiesFactory.getEntity("NewUser");
+        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
+        signUpPage.signUp(developer);
+        assertTextContains("Thanks for your registration!", signUpPage.getMessege());
+        String message = new InboxGetnada().getLastMessage(developer.getUserName());
+        assertTextContains(message, "Activate Account");
 
-        User developer = new User("sbvbqupg@getnada.com", "Veri1234");
+//        User developer = new User("sbvbqupg@getnada.com", "Veri1234");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(developer);
@@ -33,6 +34,7 @@ public class CompanyReview extends BaseTest {
         DevProfilePage devProfilePage = (DevProfilePage) PageFactory.getPage("DevProfilePage");
         devProfilePage.editUserInfo();
         devProfilePage.fillCompanyInfo(developer);
+        assertTextContains("In Review", devProfilePage.getMembershipStatus());
 
 
 //        User devSupport = EntitiesFactory.getEntity("DevSupportAdmin");

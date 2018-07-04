@@ -78,7 +78,7 @@ public abstract class BasePage {
     }
 
     protected String getText(By loc) {
-        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
         return element.getText();
     }
 

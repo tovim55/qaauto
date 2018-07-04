@@ -28,7 +28,6 @@ public class DevProfilePage extends BasePage {
     private By taxFormFile = By.className("default dz-message dz-clickable");
     private By checkboxAgreement = By.className("checkbox-material");
     private By submitBtn = By.xpath("//button[@class='btn btn-primary btn-raised submit-button']");
-//    private By agreeBtn = By.className("btn btn-primary btn-raised vui-modal-affirm");
     private By agreeBtn = By.tagName("button");
     private String uploadFileClassName = "dz-default dz-message dz-clickable";
 
@@ -41,6 +40,9 @@ public class DevProfilePage extends BasePage {
     private By zipCode = By.xpath("//input[@name='zipCode']");
     private By contactNumber = By.xpath("//input[@name='phoneNumber']");
     private By saveBtn = By.id("saveBtn");
+    private By membershipStatus = By.xpath("//span[@class='label label-warning visible-block']");
+
+
 
 
     public DevProfilePage() {
@@ -80,9 +82,13 @@ public class DevProfilePage extends BasePage {
         Thread.sleep(2000);
         Actions action = new Actions(driver);
         action.click(driver.findElements(agreeBtn).get(4)).perform();
-        action.doubleClick(driver.findElement(submitBtn)).perform();
+        Thread.sleep(2000);
+        click(submitBtn);
 
+    }
 
+    public String getMembershipStatus(){
+        return getText(membershipStatus);
     }
 
 }
