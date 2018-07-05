@@ -19,15 +19,31 @@ public class PageFactory {
 
             case "CGLoginPage":
                 return new CGLoginPage();
+                
+    		case "SetupPasswordPage":
+    			return new SetupPasswordPage();
+    			
+    		case "AcceptMerchantAgreementPage":
+    			return new AcceptMerchantAgreementPage();
+    			
+    		case "MerchantViewPage":
+    			return new MerchantViewPage();
+    		case "ForgotPasswordPage": 
+    			return new ForgotPasswordPage();
+    		case "EmailConfirmPage": 
+    			return new EmailConfirmPage();
+    		case "ResetPasswordPage":
+    			return new ResetPasswordPage();
+    		case "ResetThankYou":
+    			return new ResetThankYou();
+//            case "VerifoneAccountLoginPage":
+//                return new VerifoneAccountLoginPage();
 //
-            case "VerifoneAccountLoginPage":
-                return new VerifoneAccountLoginPage();
-
-            case "DevHomePage":
-                return new DevHomePage();
-
-            case "DevProfilePage":
-                return new DevProfilePage();
+//            case "DevHomePage":
+//                return new DevHomePage();
+//
+//            case "DevProfilePage":
+//                return new DevProfilePage();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);
