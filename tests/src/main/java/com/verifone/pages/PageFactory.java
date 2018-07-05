@@ -19,9 +19,15 @@ public class PageFactory {
 
             case "CGLoginPage":
                 return new CGLoginPage();
+
+            case "DevSupportHomePage":
+                return new DevSupportHomePage();
+
+            case "DevUsersPage":
+                return new DevUsersPage();
 //
-            case "VerifoneAccountLoginPage":
-                return new VerifoneAccountLoginPage();
+//            case "VerifoneAccountLoginPage":
+//                return new VerifoneAccountLoginPage();
 
             case "DevHomePage":
                 return new DevHomePage();

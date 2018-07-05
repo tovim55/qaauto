@@ -100,9 +100,20 @@ public abstract class BasePage {
         driver.switchTo().window(tabs2.get(0));
     }
 
+    protected void hoverAndClickOnElement(By loc){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Actions builder = new Actions(driver);
+        WebElement element = driver.findElement(loc);
+        builder.moveToElement(element).click().perform();
+    }
 
 
-    private WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+
+    public WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
         waitForElement(loc, timeOut, expectedCon);
         return driver.findElement(loc);
     }

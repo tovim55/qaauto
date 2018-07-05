@@ -24,7 +24,7 @@
         <parameter name="browserType" value="CHROME"/>
 
         <classes>
-            <class name="com.verifone.tests.DataDrivenTest"/>
+            <class name="com.verifone.tests.cpTests.DevSupportTest"/>
         </classes>
 
     </test>
