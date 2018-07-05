@@ -1,0 +1,15 @@
+/target/
+.iml
+.classpath
+.project
+.idea
+.recommenders
+.metadata
+*.aliases
+*.lvlps
+.prefs
+.cache/
+.recommenders/
+.metadata/
+.settings/
+test-output/

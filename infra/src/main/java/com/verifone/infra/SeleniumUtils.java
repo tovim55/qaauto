@@ -32,7 +32,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 @SuppressWarnings("unused")
 public class SeleniumUtils {
     private static WebDriver driver;
-    //	private static Reporter report = ListenerstManager.getInstance();
 
     /**
      * Reads General Parameters from application.properties
@@ -41,9 +40,6 @@ public class SeleniumUtils {
     public static WebDriver getDriver(String browserType) throws Exception {
         driver = SeleniumUtils.setBrowser(browserType);
         driver.manage().window().maximize();
-//        if (browserType.equalsIgnoreCase("CHROME")) {
-//            driver.manage().window().maximize();
-//        }
         return driver;
     }
 
@@ -137,12 +133,7 @@ public class SeleniumUtils {
     }
 
 
-//    public static void setEnv(String url)  {
-//        System.out.println("Selenium driver on : " + url);
-//        driver.get(url);
-//
-//    }
-
+//    TODO this method is just for support old tets
     public static void setEnv(String env, String urlDev, String urlTest,
                               String urlStaging1, String urlProduction, ExtentTest test) throws Exception {
         System.out.println("The Automation tests runs on : " + env + " environment");

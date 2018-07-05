@@ -8,14 +8,15 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.Mail.InboxGetnada;
 import org.testng.annotations.Test;
 
+import static com.verifone.utils.Assertions.assertTextContains;
+
 public class CompanyReview extends BaseTest {
 
 
 
-    @Test(groups = {"CP-Portal"})
+    @Test(testName = "Support Admin Accept Basic Dev", description = "After Dev Registration Dev Admin Reviewing And Accept company", groups = {"CP-Portal"})
     public void connectWithCompanyUI() throws Exception {
-        starTestLog("Support Admin Accept Basic Dev", "After Dev Registration Dev Admin Reviewing And Accept company");
-
+//
         User developer = EntitiesFactory.getEntity("NewUser");
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(developer);
@@ -28,11 +29,12 @@ public class CompanyReview extends BaseTest {
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(developer);
 
-//        DevHomePage homePage  = (DevHomePage) PageFactory.getPage("DevHomePage");
-//        homePage.clickconnectWithCompany();
-//        DevProfilePage devProfilePage = (DevProfilePage) PageFactory.getPage("DevProfilePage");
-//        devProfilePage.editUserInfo();
-//        devProfilePage.fillCompanyInfo(developer);
+        DevHomePage homePage  = (DevHomePage) PageFactory.getPage("DevHomePage");
+        homePage.clickconnectWithCompany();
+        DevProfilePage devProfilePage = (DevProfilePage) PageFactory.getPage("DevProfilePage");
+        devProfilePage.editUserInfo();
+        devProfilePage.fillCompanyInfo(developer);
+        assertTextContains("In Review", devProfilePage.getMembershipStatus());
 
 
 //        User devSupport = EntitiesFactory.getEntity("DevSupportAdmin");

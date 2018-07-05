@@ -1,4 +1,4 @@
-package com.verifone.infra.connectors;
+package com.verifone.utils.Mail;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -25,15 +25,16 @@ import java.util.concurrent.TimeUnit;
 public class GmailApiClient {
     private static final String APPLICATION_NAME = "Gmail API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static final String CREDENTIALS_FOLDER = "credentials"; // Directory to store user credentials.
+    private static final String CREDENTIALS_FOLDER =  System.getProperty("user.dir") +
+            "\\src\\main\\java\\com\\verifone\\utils\\Mail\\credentials";
 
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved credentials/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(GmailScopes.MAIL_GOOGLE_COM);
-    private static final String CLIENT_SECRET_DIR = new File(System.getProperty("user.dir")).getParent() +
-            "\\infra\\src\\main\\java\\com\\verifone\\infra\\connectors\\client_secret.json";
+    private static final String CLIENT_SECRET_DIR = System.getProperty("user.dir") +
+            "\\src\\main\\java\\com\\verifone\\utils\\Mail\\client_secret.json";
 
     /**
      * Creates an authorized Credential object.

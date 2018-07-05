@@ -18,9 +18,8 @@ import org.testng.annotations.*;
 
 public class ManagerAddMerchantUI extends BaseTest {
 
-    @Test(groups = {"CP-portal"})
+    @Test(testName = "Pub Sub Get Token", description = "get token and EOadmin data calls", groups = {"CP-portal"})
     public void ManagerAddMerchantUI() throws IOException, InterruptedException  {
-        starTestLog("Pub Sub Get Token", "get token and EOadmin data calls");
         User user = EntitiesFactory.getEntity("EOAdminSupport");
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken();

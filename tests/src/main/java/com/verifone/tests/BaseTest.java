@@ -24,10 +24,7 @@ public abstract class BaseTest {
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
     public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
-    public static ExtentTest childTest, parentTest;
     public ExtentReports logger = new ExtentReports(reportLocation, true);
-    public Boolean testStepPassed = true;
-    public String capScreenShootPath;
     public ExtentTest testLog;
     public Properties prop = new Properties();
     public static EnvConfig envConfig;
@@ -36,10 +33,11 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
+        Test test = method.getAnnotation(Test.class);
+        starTestLog(test.testName(), test.description());
         if (method.getName().contains("UI")) {
-//            ExtentTest driverLog = logger.startTest("setup driver", "");
             BasePage.driver = SeleniumUtils.getDriver(browserType);
-//            SeleniumUtils.setEnv(envConfig.getWebUrl());
+            testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
         }
 
     }
@@ -48,15 +46,15 @@ public abstract class BaseTest {
     @BeforeSuite
     public void setEnv(String env, String portal) throws IOException {
         envConfig = new EnvConfig(env, portal);
-        System.out.println("The Automation tests runs on : " + portal + " portal");
         System.out.println("The Automation tests runs on : " + env + " environment");
+
     }
 
 
     public void starTestLog(String testName, String description) {
         testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
-        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
         testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getEnv() + "portal");
+        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
     }
 
 
@@ -87,19 +85,18 @@ public abstract class BaseTest {
     }
 
 
-    //    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-//        System.out.println("Closing Web Page");
-//        Reporter.log("Closing Web Page", true);
+        System.out.println("Closing Web Page");
+        testLog.log(LogStatus.INFO,"Closing Web Page");
 //        SeleniumUtils.closeRuntimeBrowserInstance();
     }
 
 
-    protected void assertTextContains(String expectedResult, String actual){
-        if (!actual.contains(expectedResult)) {
-            org.testng.Assert.fail("Text expected: " + expectedResult + " Was: " + actual);
-        }
-    }
+//    protected void assertTextContains(String expectedResult, String actual){
+//        if (!actual.contains(expectedResult)) {
+//            org.testng.Assert.fail("Text expected: " + expectedResult + " Was: " + actual);
+//        }
+//    }
 
 
 

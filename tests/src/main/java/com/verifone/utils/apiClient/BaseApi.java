@@ -75,7 +75,7 @@ public abstract class BaseApi {
         testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
         testLog.log(LogStatus.INFO, "Method: " + method);
         testLog.log(LogStatus.INFO, "Headers: " + headers.toString());
-        testLog.log(LogStatus.INFO, "Request Time: " + TimeUnit.MILLISECONDS.toSeconds((System.currentTimeMillis() - startTime)));
+        testLog.log(LogStatus.INFO, "Response Time: " + (System.currentTimeMillis() - startTime));
 
     }
 
