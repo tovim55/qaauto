@@ -24,6 +24,9 @@ public class SignUpTestUI extends BaseTest {
 
     }
 
+
+
+
     @Test(testName = "Sign up with exist user email ", description = "Sign up with exist email is fail", groups = {"CP-Portal"})
     public void signUpWithExistUserUI() throws Exception {
         String existEmail = EntitiesFactory.getEntity("DevAdmin").getUserName();

@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 public class SignUpPage extends BasePage {
 
     private final static String url = BaseTest.envConfig.getWebUrl() + "docs/overview/get-started/";
+//    private final static String url = "";
     private final static String title = "Sign Up with Verifone Identity Server";
 
 

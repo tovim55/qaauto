@@ -31,6 +31,7 @@ public class DataDrivenApi {
         headersMap = getMapFromStr(headers);
         getToken(accessToken, accGrantType, accSSOURL, headersForGetToken);
         response = getRequestWithHeaders(uri, requestMethod, body, headersMap, Integer.parseInt(expectedStatusCode));
+        System.out.println("response is: " + response);
         validateResult(expectedResult, verifyList);
     }
 
