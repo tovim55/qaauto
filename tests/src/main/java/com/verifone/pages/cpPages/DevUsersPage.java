@@ -38,11 +38,11 @@ public class DevUsersPage extends BasePage {
 
     public void addUser() {
 ////        TODO change the sleep later
-//        try {
-//            Thread.sleep(15000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 //        waitTillClickable();
         getWebElement(addUserBtn, 10000, ExpectedConditions.visibilityOfElementLocated(addUserBtn)).click();
 //        click(addUserBtn);
@@ -53,11 +53,6 @@ public class DevUsersPage extends BasePage {
 
     public void mandatoryFields(){
 //        fillIncorrectForm();
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         click(submitBtn);
         fillIncorrectForm();
         Assert.assertEquals("Add DevSupport User", getText(userFormTitle));

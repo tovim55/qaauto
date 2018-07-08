@@ -88,15 +88,8 @@ public abstract class BaseTest {
     public void closePage() throws Exception {
         System.out.println("Closing Web Page");
         testLog.log(LogStatus.INFO,"Closing Web Page");
-//        SeleniumUtils.closeRuntimeBrowserInstance();
+        SeleniumUtils.closeRuntimeBrowserInstance();
     }
-
-
-//    protected void assertTextContains(String expectedResult, String actual){
-//        if (!actual.contains(expectedResult)) {
-//            org.testng.Assert.fail("Text expected: " + expectedResult + " Was: " + actual);
-//        }
-//    }
 
 
 
