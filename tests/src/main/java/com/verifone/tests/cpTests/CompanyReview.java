@@ -13,17 +13,17 @@ import static com.verifone.utils.Assertions.assertTextContains;
 public class CompanyReview extends BaseTest {
 
 
-//    @Test(testName = "Developer Basic Add Company", description = "After sign up Dev login,  fill personal & company info, Submit application", groups = {"CP-Portal"})
-    public User connectWithCompanyUI() throws Exception {
+    @Test(testName = "Developer Basic Add Company", description = "After sign up Dev login,  fill personal & company info, Submit application", groups = {"CP-Portal"})
+    public void connectWithCompanyUI() throws Exception {
         // Dev SignUp
-//        User developer = EntitiesFactory.getEntity("NewUser");
-//        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
-//        signUpPage.signUp(developer);
-//        assertTextContains("Thanks for your registration!", signUpPage.getMessege());
-//        String message = new InboxGetnada().getLastMessage(developer.getUserName());
-//        assertTextContains(message, "Activate Account");
+        User developer = EntitiesFactory.getEntity("NewUser");
+        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
+        signUpPage.signUp(developer);
+        assertTextContains("Thanks for your registration!", signUpPage.getMessege());
+        String message = new InboxGetnada().getLastMessage(developer.getUserName());
+        assertTextContains(message, "Activate Account");
 
-        User developer = new SignUpTestUI().signUpTestUI();
+//        User developer = new SignUpTestUI().signUpTestUI();
 
         // Dev Login
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
@@ -37,14 +37,14 @@ public class CompanyReview extends BaseTest {
         devProfilePage.editUserInfo();
         devProfilePage.fillCompanyInfo(developer);
         assertTextContains("In Review", devProfilePage.getMembershipStatus());
-        return developer;
+//        return developer;
 
     }
 
-
-    @Test(testName = "Support Admin Accept Basic Dev", description = "After Dev Registration Dev Admin Reviewing And Accept company", groups = {"CP-Portal"})
-    public void acceptCompanyUI() throws Exception {
-        // Dev SignUp
+//
+//    @Test(testName = "Support Admin Accept Basic Dev", description = "After Dev Registration Dev Admin Reviewing And Accept company", groups = {"CP-Portal"})
+//    public void acceptCompanyUI() throws Exception {
+//        // Dev SignUp
 //        User developer = EntitiesFactory.getEntity("NewUser");
 //        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
 //        signUpPage.signUp(developer);
@@ -64,13 +64,13 @@ public class CompanyReview extends BaseTest {
 //        devProfilePage.editUserInfo();
 //        devProfilePage.fillCompanyInfo(developer);
 //        assertTextContains("In Review", devProfilePage.getMembershipStatus());
+//
+//        User dev = connectWithCompanyUI();
+//        User devSupport = EntitiesFactory.getEntity("DevSupportAdmin");
+//        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
+//        loginPage.login(devSupport);
 
-        User dev = connectWithCompanyUI();
-        User devSupport = EntitiesFactory.getEntity("DevSupportAdmin");
-        VerifoneAccountLoginPage loginPage = (VerifoneAccountLoginPage) PageFactory.getPage("VerifoneAccountLoginPage");
-        loginPage.login(devSupport);
-
-    }
+//    }
 
 
 }

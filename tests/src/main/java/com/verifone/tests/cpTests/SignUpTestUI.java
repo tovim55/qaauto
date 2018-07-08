@@ -14,14 +14,13 @@ public class SignUpTestUI extends BaseTest {
 
 
     @Test(testName = "Sign Up ", description = "Sign up with new user successfully", groups = {"CP-Portal"})
-    public User signUpTestUI() throws Exception {
+    public void signUpTestUI() throws Exception {
         User user = EntitiesFactory.getEntity("NewUser");
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(user);
         assertTextContains("Thanks for your registration!", signUpPage.getMessege());
         String message = new InboxGetnada().getLastMessage(user.getUserName());
         assertTextContains(message, "Activate Account");
-        return user;
 
     }
 
