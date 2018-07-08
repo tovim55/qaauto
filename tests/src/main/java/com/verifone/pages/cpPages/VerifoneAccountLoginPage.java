@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 public class VerifoneAccountLoginPage extends BasePage {
 
-    private final static String url = BaseTest.envConfig.getWebUrl();
+    private final static String url = BaseTest.envConfig.getWebUrl() +  "docs/overview/get-started/";
     private final static String title = "Getting Started | Get Started | developer.verifone.com";
 
     private By toLoginPageBtn = By.partialLinkText("Log");

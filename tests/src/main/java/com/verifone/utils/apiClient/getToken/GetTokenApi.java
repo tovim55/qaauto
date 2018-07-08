@@ -2,6 +2,7 @@ package com.verifone.utils.apiClient.getToken;
 
 import com.google.gson.JsonObject;
 import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.infra.User;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 

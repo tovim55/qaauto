@@ -33,6 +33,8 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
+        if (method.getName().contains("DDT"))
+            return;
         Test test = method.getAnnotation(Test.class);
         starTestLog(test.testName(), test.description());
         if (method.getName().contains("UI")) {
@@ -54,7 +56,7 @@ public abstract class BaseTest {
     public void starTestLog(String testName, String description) {
         testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
         testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getEnv() + "portal");
-        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
+//        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
     }
 
 
