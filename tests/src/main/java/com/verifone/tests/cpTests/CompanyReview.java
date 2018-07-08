@@ -16,12 +16,14 @@ public class CompanyReview extends BaseTest {
 //    @Test(testName = "Developer Basic Add Company", description = "After sign up Dev login,  fill personal & company info, Submit application", groups = {"CP-Portal"})
     public User connectWithCompanyUI() throws Exception {
         // Dev SignUp
-        User developer = EntitiesFactory.getEntity("NewUser");
-        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
-        signUpPage.signUp(developer);
-        assertTextContains("Thanks for your registration!", signUpPage.getMessege());
-        String message = new InboxGetnada().getLastMessage(developer.getUserName());
-        assertTextContains(message, "Activate Account");
+//        User developer = EntitiesFactory.getEntity("NewUser");
+//        SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
+//        signUpPage.signUp(developer);
+//        assertTextContains("Thanks for your registration!", signUpPage.getMessege());
+//        String message = new InboxGetnada().getLastMessage(developer.getUserName());
+//        assertTextContains(message, "Activate Account");
+
+        User developer = new SignUpTestUI().signUpTestUI();
 
         // Dev Login
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");

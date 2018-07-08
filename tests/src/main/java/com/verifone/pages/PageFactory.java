@@ -39,11 +39,11 @@ public class PageFactory {
 //            case "VerifoneAccountLoginPage":
 //                return new VerifoneAccountLoginPage();
 //
-//            case "DevHomePage":
-//                return new DevHomePage();
+            case "DevHomePage":
+                return new DevHomePage();
 //
-//            case "DevProfilePage":
-//                return new DevProfilePage();
+            case "DevProfilePage":
+                return new DevProfilePage();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);
