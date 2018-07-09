@@ -6,7 +6,7 @@
     "parentOrgID": "160c3cb3-6278-4179-8ec2-a9a10e718283",
     "rootOrgID": "160c3cb3-6278-4179-8ec2-a9a10e718283",
     "category": "55",
-    "mID": "12345335",
+    "mID": "12345337",
     "sendEmail": "false",
     "addresses": [{
       "countryCode": "US",
@@ -18,7 +18,7 @@
       "primary": true
     }],
     "emails": [{
-      "email": "AutomationTest5@cmail.club",
+      "email": "AutomationTest7@cmail.club",
       "primary": true
     }],
     "phones": [{
@@ -32,7 +32,7 @@
       "firstName": "Automation",
       "lastName": "Test",
       "emails": [{
-        "email": "AutomationTest5@cmail.club",
+        "email": "AutomationTest7@cmail.club",
         "primary": true
       }]
     }

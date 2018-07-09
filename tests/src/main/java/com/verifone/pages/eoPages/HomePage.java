@@ -9,14 +9,14 @@ public class HomePage extends BasePage {
     private final static String title = "Sign Up with Verifone Identity Server";
 
 
-    private By merchantTable = By.id("MODULE_ID_UNDEFINED");
+    private By merchantTable = By.className("vui-table ");
+    private By merchantBtn = By.id("merchants");
 
     public HomePage() {
         super(url, title);
     }
 
-    public String getMerchantTable(){
-        System.out.println(getText(merchantTable));
-        return getText(merchantTable);
+    public String getMerchants() throws InterruptedException {
+        return getTextFromTable(merchantTable);
     }
 }

@@ -1,1 +1,5 @@
+com\verifone\infra\ApiUrls.class
 com\verifone\infra\SeleniumUtils.class
+com\verifone\infra\User.class
+com\verifone\infra\EnvConfig.class
+com\verifone\infra\Credentials.class

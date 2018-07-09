@@ -1,11 +1,15 @@
 package com.verifone.pages.cpPages;
 
+import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
+import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 
 public class SignUpPage extends BasePage {
 
-    private final static String url = "";
+    private final static String url = BaseTest.envConfig.getWebUrl() + "docs/overview/get-started/";
+//    private final static String url = "";
     private final static String title = "Sign Up with Verifone Identity Server";
 
 
@@ -25,19 +29,20 @@ public class SignUpPage extends BasePage {
 
     public SignUpPage() {
         super(url, title);
+        navigate();
     }
 
     public String getMessege(){
         return getText(messeegeText);
     }
 
-    public void signUp(String firstName, String lastName, String email, String password){
+    public void signUp(User user){
         click(signUpButton);
         click(chkBox);
-        sendKeys(this.firstName, firstName);
-        sendKeys(this.lastName, lastName);
-        sendKeys(this.email, email);
-        sendKeys(this.password, password);
+        sendKeys(this.firstName, user.getFirstName());
+        sendKeys(this.lastName, user.getLastName());
+        sendKeys(this.email, user.getUserName());
+        sendKeys(this.password, user.getPassword());
         click(nextBtn);
         click(agreementBtn);
 

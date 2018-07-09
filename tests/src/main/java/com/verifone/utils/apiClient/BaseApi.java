@@ -6,10 +6,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.utils.apiClient.getToken.GetTokenApi;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
@@ -18,6 +19,7 @@ import org.testng.Assert;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public abstract class BaseApi {
 
@@ -31,9 +33,80 @@ public abstract class BaseApi {
     protected String authorization = "Authorization";
     protected String correlationId = "X-VFI-CORRELATION-ID";
     protected String accept = "Accept";
+    protected String origin = "Origin";
+    protected String referer = "Referer";
     private HttpClient client = HttpClientBuilder.create().build();
     protected String baseApiPath = System.getProperty("user.dir") +
             "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\";
+    protected Properties prop = new Properties();
+
+
+    public BaseApi() throws IOException {
+        FileInputStream ip = new FileInputStream(System.getProperty("user.dir") +
+                "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\headers.properties");
+        prop.load(ip);
+    }
+
+
+    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpRequestBase request = getRequest(url, method, body);
+        headers.forEach(request::addHeader);
+        Gson gson = new GsonBuilder().create();
+        long startTime = System.currentTimeMillis();
+        HttpResponse response = client.execute(request);
+        reportReqestData(url, method, headers, startTime);
+        int responseCode = response.getStatusLine().getStatusCode();
+        if (method.equals("head")) {
+            Assert.assertEquals(responseCode, expectedCode);
+            return null;
+        }
+        String entity = EntityUtils.toString(response.getEntity());
+        if (responseCode != expectedCode) {
+            testLog.log(LogStatus.ERROR, "request failed:  " + entity);
+            System.out.println("request failed:  " + entity);
+            Assert.assertEquals(responseCode, expectedCode);
+        }
+        return gson.fromJson(entity, JsonObject.class);
+    }
+
+    private static void reportReqestData(String url, String method, HashMap<String, String> headers, long startTime) {
+        System.out.println("Sending request to URL : " + url);
+        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        testLog.log(LogStatus.INFO, "Method: " + method);
+        testLog.log(LogStatus.INFO, "Headers: " + headers.toString());
+        testLog.log(LogStatus.INFO, "Response Time: " + (System.currentTimeMillis() - startTime));
+
+    }
+
+    private static HttpRequestBase getRequest(String url, String method, String body) {
+        if (body == null)
+            body = "";
+        switch (method) {
+            case "delete":
+                return new HttpDelete(url);
+            case "get":
+                return new HttpGet(url);
+            case "head":
+                return new HttpHead(url);
+            case "options":
+                return new HttpOptions(url);
+            case "patch":
+                HttpPatch patch = new HttpPatch(url);
+                patch.setEntity(new StringEntity(body, "UTF-8"));
+                return patch;
+            case "post":
+                HttpPost post = new HttpPost(url);
+                post.setEntity(new StringEntity(body, "UTF-8"));
+                return post;
+            case "put":
+                HttpPut put = new HttpPut(url);
+                put.setEntity(new StringEntity(body, "UTF-8"));
+                return put;
+            default:
+                throw new IllegalArgumentException("Invalid or null HttpMethod: " + method);
+        }
+    }
 
 
     protected JsonObject getRequest(int expectedCode) throws IOException {
@@ -65,7 +138,6 @@ public abstract class BaseApi {
     }
 
 
-
     protected JsonObject getPost(String requestData, int expectedCode) throws IOException {
 
         HttpPost post = new HttpPost(url);
@@ -84,23 +156,6 @@ public abstract class BaseApi {
     }
 
 
-
-    protected Object getPost(String requestData, int expectedCode, Class responseClass) throws IOException {
-
-        HttpPost post = new HttpPost(url);
-        baseHeaders.forEach(post::addHeader);
-        Gson gson = new GsonBuilder().create();
-        post.setEntity(new StringEntity(requestData, "UTF-8"));
-        HttpResponse response = client.execute(post);
-        System.out.println("Sending request to URL : " + url);
-        System.out.println(requestData);
-        testLog.log(LogStatus.INFO, "Sending POST request to URL : " + url);
-        responseCode = response.getStatusLine().getStatusCode();
-        org.testng.Assert.assertEquals(responseCode, expectedCode);
-        return gson.fromJson(EntityUtils.toString(response.getEntity()), responseClass);
-    }
-
-
     protected JsonObject getAtter(JsonObject response, String[] keys) {
         for (String k : keys) {
             try {
@@ -114,7 +169,7 @@ public abstract class BaseApi {
     }
 
 
-    protected JsonObject readJsonFile(String filePath) {
+    public static JsonObject readJsonFile(String filePath) {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(filePath));
@@ -128,7 +183,7 @@ public abstract class BaseApi {
 
     private void validateStatusCode(int expectedCode, HttpResponse response, String entity) {
         responseCode = response.getStatusLine().getStatusCode();
-        if(responseCode != expectedCode){
+        if (responseCode != expectedCode) {
             testLog.log(LogStatus.ERROR, entity);
             System.out.println("request failed:  " + entity);
             Assert.assertEquals(responseCode, expectedCode);

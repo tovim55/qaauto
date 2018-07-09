@@ -137,7 +137,7 @@ public class LoginDataDriven{
 	//DataProvider for login
     @DataProvider(name = "LogInData")
     public Object[][] dataSupplierLoginData() throws Exception {
-          final String xlsxFile = System.getProperty("user.dir") + "\\resources\\login2portal.xls";
+          final String xlsxFile = System.getProperty("user.dir") + "\\com.verifone.infra.resources\\login2portal.xls";
           Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "devmember");
           return arrayObject;
     }

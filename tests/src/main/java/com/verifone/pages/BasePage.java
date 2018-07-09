@@ -3,12 +3,20 @@ package com.verifone.pages;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import static java.awt.event.KeyEvent.*;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,7 +37,6 @@ public abstract class BasePage {
 
     public void navigate() {
         driver.get(this.url);
-        validateTitle();
     }
 
     protected void validateTitle() {
@@ -45,7 +52,7 @@ public abstract class BasePage {
 
 
     public void click(By loc) {
-        WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
+        WebElement element = getWebElement(loc, 50, ExpectedConditions.elementToBeClickable(loc));
         element.click();
         testLog.log(LogStatus.INFO, "user clicks on:  " + loc.toString());
     }
@@ -57,13 +64,77 @@ public abstract class BasePage {
         testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
     }
 
-    protected String getText(By loc) {
-        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
-        return element.getText();
+    public void sendKeysNoClear(By loc, String text) {
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
+        element.sendKeys(text);
+        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
     }
 
 
-    private WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+    public void select(By loc, String value){
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].style.display='block'", element);
+        new Select(element).selectByValue(value);
+    }
+
+    protected String getText(By loc) {
+        WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
+        return element.getText();
+    }
+
+    protected String getTextFromTable(By loc) throws InterruptedException {
+        Thread.sleep(6000);
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        String text = "";
+        List<WebElement> tr = element.findElements( By.tagName("tr"));
+        for (WebElement w: tr) {
+            text += w.getText();
+        }
+        return text;
+    }
+
+    protected void switchToIframe(By loc){
+        WebElement element = getWebElement(loc, 10, ExpectedConditions.presenceOfElementLocated(loc));
+//        driver.switchTo().defaultContent();
+        driver.switchTo().frame(element);
+    }
+
+    protected void switchToPreviosTab(){
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
+    }
+
+
+
+    protected WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+        waitForElement(loc, timeOut, expectedCon);
+        return driver.findElement(loc);
+    }
+
+//    TODO complete method implementation
+    protected void uploadFile(String filePath, WebElement element) throws IOException, AWTException, InterruptedException {
+        element.click();
+        StringSelection ss = new StringSelection(filePath);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+        Robot robot =  new Robot();
+        Thread.sleep(2000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+    }
+
+    protected WebElement getElementsByClassJs(String className, int index) {
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        return  (WebElement) js.executeScript("return document.getElementsByClassName('" + className + "')[" + index + "]");
+    }
+
+    private void waitForElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOut);
             wait.until(expectedCon);
@@ -71,110 +142,8 @@ public abstract class BasePage {
             testLog.log(LogStatus.ERROR, "Element Not Found For Locator: " + loc.toString());
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
-        return driver.findElement(loc);
     }
 
-
-//    public void setCheckBox(By loc){
-//        WebDriverWait wait = new WebDriverWait(driver, 30);
-//        wait.until(ExpectedConditions.presenceOfElementLocated(loc));
-//        WebElement a;
-//        if (!driver.findElement(loc).isSelected()){
-//            a = driver.findElement(loc);
-//            a.click();
-//            System.out.println("asdas      " + driver.findElement(loc).isSelected());
-//        }
-//
-//    }
-
-
-//
-//    /**
-//     * Navigate to the page
-//     **/
-//    public abstract void navigate();
-//
-//    /**
-//     * returns title of the page
-//     **/
-//    public abstract String getTitle();
-//
-//    /**
-//     * returns link of the page
-//     **/
-//    public abstract WebElement getPageLink();
-//
-//    /**
-//     * Sets user name and password for login
-//     *
-//     * @param text
-//     * @param text2
-//     */
-//    public abstract void initPage(String text, String text2);
-//
-//    /**
-//     * Returns grid cell text
-//     *
-//     * @param trow
-//     * @param tcolumn
-//     * @return String
-//     */
-//    public abstract String getGridCellText(int trow, int tcolumn);
-//
-//    /**
-//     * returns number of rows in the grid
-//     **/
-//    public abstract int gridRows();
-//
-//    /**
-//     * returns number of columns in the grid
-//     **/
-//    public abstract int gridColumns();
-//
-//    /**
-//     * Set text in grid cell
-//     */
-//    public abstract void setGridCellText(int trow, int tcolumn, String text) throws Exception;
-//
-//    /**
-//     * Click Add button
-//     *
-//     * @throws Exception
-//     **/
-//    public abstract void clickAdd() throws Exception;
-//
-//    public abstract void clickSave() throws Exception;
-//
-//    public abstract void clickCancel() throws Exception;
-//
-//    public abstract void clickMultiActivate() throws Exception;
-//
-//    public abstract void clickUpload() throws Exception;
-//
-//    //Methods that set values in form fields
-//    public abstract void setApplicationId(String text);
-//
-//    public abstract void setVersion(String text);
-//
-//    public abstract void setStatus(String text);
-//
-//    public abstract void setType(String text);
-//
-//    public abstract void setValue(String text);
-//
-//    public abstract void setNote(String text);
-//
-//    public abstract int numberOfErrors();
-//
-//    public abstract String getDisplayedError();
-//
-//    public abstract void selectApplicationId(String text) throws Exception;
-//
-//    public abstract void selectVersion(String text) throws Exception;
-//
-//    public abstract void selectStatus(String text) throws Exception;
-//
-//    public abstract void selectType(String text) throws Exception;
 
     /**
      * Method selects option if exists from the dropdown

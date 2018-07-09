@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><suite allow-return-values="false" configfailurepolicy="skip" data-provider-thread-count="10" group-by-instances="false" guice-stage="DEVELOPMENT" junit="false" name="Verifone" parallel="none" preserve-order="true" skipfailedinvocationcounts="false" thread-count="5">
+   <test allow-return-values="false" group-by-instances="false" junit="false" name="Selenium Web Portal Automation Tests" preserve-order="true" skipfailedinvocationcounts="false">
+      <!--
+      env values:
+      "DEV" - development environment
+      "TEST" - Test/QA environment
+      "STAGING1" - STAGING1 environment
+      "PRODUCTION" - PRODUCTION environment ( Please do not testLog on PRODUCTION)
+      -->
+      <parameter>name="env" value="TEST1"</parameter>
+      <!--
+      browserType values:
+      "CHROME" - Chrome
+      "FF" - FireFox
+      "EDGE" - EDGE
+      "IE" - Internet Explorer 
+      -->
+      <parameter>name="browserType" value="IE"</parameter>
+      <parameter>name="urlDev" value="http://dev.cgateway-portal.verifone.com/"</parameter>
+      <parameter>name="urlTest" value="http://test.cgateway-portal.verifone.com/"</parameter>
+      <parameter>name="urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"</parameter>
+      <parameter>name="urlProduction" value="http://TBD.cgateway-portal.verifone.com/"</parameter>
+      <classes>
+         <class name="com.verifone.tests.oldTests.WebPortal"/>
+         <class name="com.verifone.tests.oldTests.LoginDataDriven"/>
+      </classes>
+   </test>
+</suite>

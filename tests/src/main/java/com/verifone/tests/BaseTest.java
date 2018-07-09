@@ -4,13 +4,15 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.SeleniumUtils;
+import com.verifone.infra.EnvConfig;
 import com.verifone.pages.BasePage;
 import com.verifone.utils.apiClient.BaseApi;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 
-import java.io.FileInputStream;
+
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,51 +21,46 @@ import java.util.Properties;
 public abstract class BaseTest {
 
 
-
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
     public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
-    public static ExtentTest childTest, parentTest;
     public ExtentReports logger = new ExtentReports(reportLocation, true);
-    public Boolean testStepPassed = true;
-    public String capScreenShootPath;
     public ExtentTest testLog;
     public Properties prop = new Properties();
-    private String basePropPath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\verifone\\tests\\";
-    protected String propFilePath = "";
+    public static EnvConfig envConfig;
 
 
-
-
-    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType", "devEOAdmin"})
+    @Parameters({"browserType"})
     @BeforeMethod
-    public void startBrowser(Method method, String env, String urlDev, String urlTest,
-                             String urlStaging1, String urlProduction, String browserType, String devEOAdmin) throws Exception {
+    public void startBrowser(Method method, String browserType) throws Exception {
+        if (method.getName().contains("DDT"))
+            return;
+        Test test = method.getAnnotation(Test.class);
+        starTestLog(test.testName(), test.description());
         if (method.getName().contains("UI")) {
-            ExtentTest driverLog = logger.startTest("setup driver", "");
             BasePage.driver = SeleniumUtils.getDriver(browserType);
-            SeleniumUtils.setEnv(env, urlDev, urlTest, urlStaging1, urlProduction, devEOAdmin, driverLog);
+            testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
         }
 
     }
 
+    @Parameters({"env", "portal"})
+    @BeforeSuite
+    public void setEnv(String env, String portal) throws IOException {
+        envConfig = new EnvConfig(env, portal);
+        System.out.println("The Automation tests runs on : " + env + " environment");
 
-    @Parameters({"env", "urlDev", "urlTest", "urlStaging1", "urlProduction", "browserType"})
-    @BeforeMethod()
-    public void startLo(String env, String urlDev, String urlTest,
-                             String urlStaging1, String urlProduction, String browserType) throws Exception {
-        FileInputStream ip = new FileInputStream(basePropPath + propFilePath);
-        prop.load(ip);
     }
 
 
-
-    public void starTestLog(String testName, String description){
+    public void starTestLog(String testName, String description) {
         testLog = BaseApi.testLog = BasePage.testLog = logger.startTest(testName, description);
+        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getEnv() + "portal");
+//        testLog.log(LogStatus.INFO, "The Automation tests runs on : " + envConfig.getWebUrl());
     }
 
 
-    @AfterMethod(lastTimeOnly = true)
+    @AfterMethod()
     public void stopTestReport(Method method, ITestResult result) throws Exception {
         testLog.log(LogStatus.INFO, "result get status is: " + result.getStatus());
         switch (result.getStatus()) {
@@ -74,11 +71,13 @@ public abstract class BaseTest {
                 testLog.log(LogStatus.PASS, "Test Passed <span class='label success'>success</span>");
                 break;
             case ITestResult.FAILURE:
-                String capScreenShootPath = SeleniumUtils.getScreenshot();
-                testLog.log(LogStatus.FAIL, result.getThrowable() + " <span class='label label-fail'>fail</span>");
-                testLog.log(LogStatus.INFO, "Snapshot path: " + (capScreenShootPath));
-                testLog.log(LogStatus.INFO, "Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-                break;
+                if (method.getName().contains("UI")) {
+                    String capScreenShootPath = SeleniumUtils.getScreenshot();
+                    testLog.log(LogStatus.INFO, "Snapshot path: " + (capScreenShootPath));
+                    testLog.log(LogStatus.INFO, "Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+                }
+                    testLog.log(LogStatus.FAIL, result.getThrowable() + " <span class='label label-fail'>fail</span>");
+                    break;
         }
         logger.endTest(testLog);
         logger.flush();
@@ -88,15 +87,12 @@ public abstract class BaseTest {
     }
 
 
-//    @AfterMethod(alwaysRun = true)
     public void closePage() throws Exception {
-//        if (method.getName().contains("UI")) {
-//            System.out.println("Closing Web Page");
-//            Reporter.log("Closing Web Page", true);
-//            SeleniumUtils.closeRuntimeBrowserInstance();
-//        }
-
+        System.out.println("Closing Web Page");
+        testLog.log(LogStatus.INFO,"Closing Web Page");
+        SeleniumUtils.closeRuntimeBrowserInstance();
     }
+
 
 
 }

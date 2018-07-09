@@ -1,18 +1,20 @@
 package com.verifone.utils.apiClient.getEoeadminData;
 
 import com.google.gson.JsonObject;
+import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 
 import java.io.IOException;
 
 public class GetEoadminDataApi extends BaseApi {
 
-    public GetEoadminDataApi(String accessToken, String contentType, String authorization, String correlationId, String accept){
-        url = "https://dev.account.verifonecp.com/verifone-identity/api/v2/users/profile";
-        baseHeaders.put(this.contentType, contentType);
-        baseHeaders.put(this.authorization, authorization + accessToken);
+    public GetEoadminDataApi(String accessToken, String correlationId) throws IOException {
+        super();
+        url = BaseTest.envConfig.getApiUrls().getGetEoAdminData();
+        baseHeaders.put(this.contentType, prop.getProperty("edminData.contentType"));
+        baseHeaders.put(this.authorization, prop.getProperty("edminData.authorization") + accessToken);
         baseHeaders.put(this.correlationId, correlationId);
-        baseHeaders.put(this.accept, accept);
+        baseHeaders.put(this.accept, prop.getProperty("edminData.accept"));
     }
 
 
