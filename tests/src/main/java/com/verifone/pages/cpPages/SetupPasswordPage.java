@@ -24,12 +24,19 @@ public class SetupPasswordPage extends BasePage {
     private By confpassword = By.id("confirmPassword2");
     private By chboxTOS = By.xpath("//*[@class='check']");
     private By SubmitBtn = By.id("btnSubmit");
+    private By titleLoc = By.xpath("//*[@class='text-center sso-form-title nomargin']");
     private By textLoc = By.xpath("//*[@id='local_auth_div']/div[2]/div/div/div[2]/div/div[2]");
+    private By setupPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword']");
+    private By setupConfirmPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword2']");
+    private By setupCheckBoxLoc = By.xpath("//*[@class='checkbox']");
+    
     private By errorFormatLoc = By.xpath("//*[@class='help-block']");
     private By errorMatchLoc = By.xpath("//*[@id='resetPasswordForm']/div[2]/div[2]");
     private By errorTOSLoc = By.xpath("//*[@class='help-block years-old-marging']"); 
     private By wndTOSLoc = By.xpath("//*[@class='full reset modal-open']");
     private By tosLoc = By.xpath("//*[@class='full reset modal-open']");
+    private By TOSLnk = By.xpath("//*[@class='pull-left']");
+    private By declineTOSBtn = By.xpath("//*[@class='btn btn-primary btn-cancel']");
     private By acceptTOSBtn = By.xpath("//*[@class='btn btn-primary btn-raised btn-accept']");
     private By loginBtn = By.id("btnPrimaryLogin");
     private By loginEmail = By.xpath("//*[@class='control-label' and @for='username']");
@@ -107,6 +114,71 @@ public class SetupPasswordPage extends BasePage {
     	System.out.println(a);
     	return getText(textLoc);
     }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Page title.
+    * Return Page title as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String pageTitle() {
+        
+    	String a = getText(titleLoc);
+    	System.out.println(a);
+    	return getText(titleLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Password field hint.
+    * Return Password field hint as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String setupPasswordHint() {
+        
+    	String a = getText(setupPasswordHintLoc);
+    	System.out.println(a);
+    	return getText(setupPasswordHintLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Confirm Password field hint.
+    * Return Confirm Password field hint as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String setupConfirmPasswordHint() {
+        
+    	String a = getText(setupConfirmPasswordHintLoc);
+    	System.out.println(a);
+    	return getText(setupConfirmPasswordHintLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Agreement check box text.
+    * Return Agreement check box text as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String setupCheckBoxText() {
+        
+    	String a = getText(setupCheckBoxLoc);
+    	System.out.println(a);
+    	return getText(setupCheckBoxLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Submit button label.
+    * Return Submit button label as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String setupSubmitBtnLabel() {
+        
+    	String a = getText(SubmitBtn);
+    	System.out.println(a);
+    	return getText(SubmitBtn);
+    }
     //--------------------------------------------------------------------------
     /**
     * Method: Get TOS text.
@@ -119,6 +191,45 @@ public class SetupPasswordPage extends BasePage {
     	String a = getText(tosLoc);
     	System.out.println(a);
     	return getText(tosLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get TOS Agree button label.
+    * Return TOS Agree button label as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String tosAgreeBtnLabel() {
+        
+    	String a = getText(acceptTOSBtn);
+    	System.out.println(a);
+    	return getText(acceptTOSBtn);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get TOS Decline button label.
+    * Return TOS Decline button label as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String tosDeclineBtnLabel() {
+        
+    	String a = getText(declineTOSBtn);
+    	System.out.println(a);
+    	return getText(declineTOSBtn);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get TOS link text.
+    * Return TOS link text as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String tosLnkText() {
+        
+    	String a = getText(TOSLnk);
+    	System.out.println(a);
+    	return getText(TOSLnk);
     }
     //--------------------------------------------------------------------------
     /**

@@ -36,6 +36,8 @@ public class PageFactory {
     			return new ResetPasswordPage();
     		case "ResetThankYou":
     			return new ResetThankYou();
+    		case "WelcomePage":
+    			return new WelcomePage();
 //            case "VerifoneAccountLoginPage":
 //                return new VerifoneAccountLoginPage();
 //

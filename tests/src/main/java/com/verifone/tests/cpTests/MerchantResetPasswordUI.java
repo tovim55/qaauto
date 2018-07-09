@@ -26,6 +26,7 @@ import com.verifone.pages.PageFactory;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.DataDrivenUtils;
 import com.verifone.utils.apiClient.createMerchant.CreateMerchant;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantDE;
 import com.verifone.utils.apiClient.getEoeadminData.GetEoadminDataApi;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
 
@@ -49,12 +50,16 @@ public class MerchantResetPasswordUI extends BaseTest {
 //	private final static String ThankYouPageTitle = "Thank you!";
 //	private final static String ThankYouPageText = "We've reset the password for your Verifone account. You can now log in using your new password.";
 	
+	private static String mailActivateButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/p[5]/a";
+	private static String mailResetButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/div[4]/a";
 	private final static int timeOut = 2000;
     private static String mId = "";
     private static String ufEmail = "";
     private static Integer rowNumber=0;
     private static Integer getRowNumFromFile = 0;
 	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\merchantResetPassword.xls";
+	private static Boolean TestPassFlag = true;
+	private static String capScreenShootPath;
 	
 	@BeforeTest
 	public void startDDTest() throws Exception{
@@ -70,12 +75,13 @@ public class MerchantResetPasswordUI extends BaseTest {
 		return arrayObject;
 	}
 	
-	@Test(dataProvider = "merchantResetPassword", groups = { "Localization" })
-	public void MerchantResetPasswordUI(String EOAdminMail, String EOAdminPwd, String mailInvText, String actAccountBtnLabel, String ResetMailText1, String ResetMailText2, String ResetMailButtonLabel, String ResetPasswordPageTitle, String ResetPasswordPagePasswdLabel,
+	@Test(testName = "Merchant Reset Password Test", dataProvider = "merchantResetPassword", groups = { "Localization2" })
+	public void MerchantResetPasswordUI(String Lang, String EOAdminMail, String EOAdminPwd, String mailInvText, String actAccountBtnLabel, String ResetMailText1, String ResetMailText2, String ResetMailText3, 
+		String ResetMailButtonLabel, String ResetPasswordPageTitle, String ResetPasswordPagePasswdLabel,
   		String ResetPasswordPageConfirmPasswdLabel, String ResetPasswordPageProceedButton, String ResetPasswordPageEmptyError, 
   		String ResetPasswordPageMatchError, String ThankYouPageTitle, String ThankYouPageText) throws Exception {
     	
-        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
+//        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         rowNumber = rowNumber+1;
         testLog.log(LogStatus.INFO, "Data Driven line number: " + rowNumber);
         testLog.log(LogStatus.INFO, "---------------------------------------------Create Merchant by API---------------------------------------------");
@@ -84,7 +90,11 @@ public class MerchantResetPasswordUI extends BaseTest {
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken(user);
         GetEoadminDataApi getEoadminDataApi = new GetEoadminDataApi(accessToken,"testId");
-        mId = new CreateMerchant(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+        switch (Lang) {
+	        case "DE":
+	        	mId = new CreateMerchantDE(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+	        	break;
+        }
         System.out.println("MID: " + mId);
 
         
@@ -99,7 +109,7 @@ public class MerchantResetPasswordUI extends BaseTest {
     	
     	// Put email
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-    	Thread.sleep(timeOut);
+    	Thread.sleep(timeOut+2000);
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(mId);
     	
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
@@ -122,14 +132,26 @@ public class MerchantResetPasswordUI extends BaseTest {
     	BasePage.driver.switchTo().frame(iFrame);
     	String mailText = BasePage.driver.getPageSource();
     	
-    	Boolean langFlag = mailText.contains(mailInvText);
+    	Boolean currentResult = mailText.contains(mailInvText);
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Invitation mail include text: " + mailInvText + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Invitation mail include text: " + mailText + ". Expected: " + mailInvText);
+    	}    	
+    	System.out.println("Mail text: " + currentResult);	
     	
-    	System.out.println("Mail text: " + langFlag);	
-    	testLog.log(LogStatus.INFO, "Invitation mail include text: " + mailInvText + "...: Succesfull");
+    	String btnText = BasePage.driver.findElement(By.xpath(mailActivateButton)).getText();
+    	currentResult = btnText.contains(actAccountBtnLabel);
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Invitation mail Activate button text: " + actAccountBtnLabel + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Invitation mail Activate button text: " + btnText + ". Expected: " + actAccountBtnLabel);
+    	}    	
+    	BasePage.driver.findElement(By.xpath(mailActivateButton)).click(); 
     	
-    	BasePage.driver.findElement(By.linkText(actAccountBtnLabel)).click(); 
-    	testLog.log(LogStatus.INFO, "Invitation mail include button: " + actAccountBtnLabel + "...: Succesfull");
-    	testLog.log(LogStatus.INFO, "Click on: " + actAccountBtnLabel + " button: Succesfull");
+    	testLog.log(LogStatus.INFO, "Click on: " + btnText + " button: Succesfull"); 
     
     	
     	//		Setup Password
@@ -226,16 +248,40 @@ public class MerchantResetPasswordUI extends BaseTest {
     	mailText = BasePage.driver.getPageSource();
     	
 //    	Compare Mail text with expected 	
-    	Boolean currentResult = mailText.contains(ResetMailText1);
-    	Assert.assertTrue(currentResult, "Correct mail text not found"); 
-    	testLog.log(LogStatus.INFO, "Reset Password mail include text: " + ResetMailText1 + "...: Succesfull");
+    	currentResult = mailText.contains(ResetMailText1);
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password mail include text: " + ResetMailText1 + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password mail include text: " + mailText + ". Expected: " + ResetMailText1);
+    	}
     	currentResult = mailText.contains(ResetMailText2);
-    	Assert.assertTrue(currentResult, "Correct mail text not found"); 
-    	testLog.log(LogStatus.INFO, "Reset Password mail include text: " + ResetMailText2 + "...: Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password mail include text: " + ResetMailText2 + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password mail include text: " + mailText + ". Expected: " + ResetMailText2);
+    	}
+    	currentResult = mailText.contains(ResetMailText3);
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password mail include text: " + ResetMailText3 + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password mail include text: " + mailText + ". Expected: " + ResetMailText3);
+    	}
+//    	Compare Reset Password button label with expected
+    	mailText = BasePage.driver.findElement(By.xpath(mailResetButton)).getText();
+    	currentResult = mailText.contains(ResetMailButtonLabel);
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Found Reset Password button label: " + ResetMailButtonLabel + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Found Reset Password button label: " + mailText + ". Expected: " + ResetMailButtonLabel);
+    	}
     	
-    	BasePage.driver.findElement(By.linkText(ResetMailButtonLabel)).click(); 
-    	testLog.log(LogStatus.INFO, "Reset Password mail include button: " + ResetMailButtonLabel + "...: Succesfull");
-    	testLog.log(LogStatus.INFO, "Click on: " + ResetMailButtonLabel + " button: Succesfull");
+    	BasePage.driver.findElement(By.xpath(mailResetButton)).click(); 
+    	
+    	testLog.log(LogStatus.INFO, "Click on: " + mailResetButton + " button: Succesfull");
     	
 //    	Reset Password Page
     	testLog.log(LogStatus.INFO, "-----------------------------------------------Reset Password page-----------------------------------------------");
@@ -247,27 +293,54 @@ public class MerchantResetPasswordUI extends BaseTest {
 //    	Reset Password Page: Compare title with expected
     	String tText = ResetPasswordPage.pageTitle();
     	currentResult = tText.contains(ResetPasswordPageTitle);
-    	Assert.assertTrue(currentResult, "Correct Reset passweord page Title not found");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Found title: " + ResetPasswordPageTitle + "...: Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Found title: " + ResetPasswordPageTitle + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Found title: " + tText + ". Expected: " + ResetPasswordPageTitle);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Reset Password Page: Compare Password label with expected
     	tText = ResetPasswordPage.passwordLabelText();
     	currentResult = tText.contains(ResetPasswordPagePasswdLabel);
-    	Assert.assertTrue(currentResult, "Correct Reset password page -> password label not found");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Password field hint: " + ResetPasswordPagePasswdLabel + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Password field hint: " + ResetPasswordPagePasswdLabel + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Password field hint: " + tText + ". Expected: " + ResetPasswordPagePasswdLabel);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Reset Password Page: Compare Confirm Password label with expected
     	tText = ResetPasswordPage.confirmPasswordLabelText();
     	currentResult = tText.contains(ResetPasswordPageConfirmPasswdLabel);
-    	Assert.assertTrue(currentResult, "Correct Reset password page -> confirm password label not found");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Confirm Password field hint: " + ResetPasswordPageConfirmPasswdLabel + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Confirm Password field hint: " + ResetPasswordPageConfirmPasswdLabel + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Confirm Password field hint: " + tText + ". Expected: " + ResetPasswordPageConfirmPasswdLabel);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Reset Password Page: Compare Proceed button label with expected
     	tText = ResetPasswordPage.btnProceedText();
     	currentResult = tText.contains(ResetPasswordPageProceedButton);
-    	Assert.assertTrue(currentResult, "Correct Reset password page -> proceed button label not found");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Proceed button label: " + ResetPasswordPageProceedButton + ": Succesfull");
-    	
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Proceed button label: " + ResetPasswordPageProceedButton + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Proceed button label: " + tText + ". Expected: " + ResetPasswordPageProceedButton);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
 
 //    	Reset Password Page: Input empty password, get error and compare with expected
     	testLog.log(LogStatus.INFO, "Reset Password page: Input password = ' '. Proceed");
@@ -276,8 +349,15 @@ public class MerchantResetPasswordUI extends BaseTest {
     	Thread.sleep(timeOut - 1000);
     	tText = ResetPasswordPage.errorEmptyText();
     	currentResult = tText.contains(ResetPasswordPageEmptyError);
-    	Assert.assertTrue(currentResult, "Correct Reset password page -> Error on empty input");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Found Mandatory error: : " + ResetPasswordPageEmptyError + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Found Mandatory error: " + ResetPasswordPageEmptyError + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Found Mandatory error: " + tText + ". Expected: " + ResetPasswordPageEmptyError);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Reset Password Page: Input empty Confirm password, get error and compare with expected
     	testLog.log(LogStatus.INFO, "Reset Password page: Input Confirm password = ' '. Proceed");
@@ -286,8 +366,15 @@ public class MerchantResetPasswordUI extends BaseTest {
     	Thread.sleep(timeOut - 1000);
     	tText = ResetPasswordPage.errorConfirmEmptyText();
     	currentResult = tText.contains(ResetPasswordPageEmptyError);
-    	Assert.assertTrue(currentResult, "Correct Reset password page -> Error on empty input");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Found Mandatory error: : " + ResetPasswordPageEmptyError + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Found Mandatory error: " + ResetPasswordPageEmptyError + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Found Mandatory error: " + tText + ". Expected: " + ResetPasswordPageEmptyError);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Reset Password Page: Input Password and Confirmation Password not match, get error and compare with expected
     	testLog.log(LogStatus.INFO, "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri4321'. Proceed");
@@ -297,8 +384,15 @@ public class MerchantResetPasswordUI extends BaseTest {
     	Thread.sleep(timeOut - 1000);
     	tText = ResetPasswordPage.errorConfirmEmptyText();
     	currentResult = tText.contains(ResetPasswordPageMatchError);
-    	Assert.assertTrue(currentResult, "Correct Reset password page -> Error on not match input");
-    	testLog.log(LogStatus.INFO, "Reset Password page: Found Match error: : " + ResetPasswordPageMatchError + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Reset Password page: Found Match error: " + ResetPasswordPageMatchError + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Reset Password page: Found Match error: " + tText + ". Expected: " + ResetPasswordPageMatchError);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Reset Password Page: Input Same Password and Confirmation Password, click on Proceed button
     	testLog.log(LogStatus.INFO, "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri1234'. Proceed");
@@ -316,20 +410,36 @@ public class MerchantResetPasswordUI extends BaseTest {
 //    	Thank you page: Compare title with expected
     	tText = ResetThankYou.pageTitle();
     	currentResult = tText.contains(ThankYouPageTitle);
-    	Assert.assertTrue(currentResult, "Correct Thank You page Title not found");
-    	testLog.log(LogStatus.INFO, "Thank You page: Found page Title: " + ThankYouPageTitle + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Thank You page: Found page Title: " + ThankYouPageTitle + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Thank You page: Found page Title: " + tText + ". Expected: " + ThankYouPageTitle);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Thank you page: Compare page text with expected
     	tText = ResetThankYou.pageText();
     	currentResult = tText.contains(ThankYouPageText);
-    	Assert.assertTrue(currentResult, "Correct Thank You page Text not found");
-    	testLog.log(LogStatus.INFO, "Thank You page: Found page Text: " + ThankYouPageText + ": Succesfull");
+    	if (currentResult == true) {
+    		testLog.log(LogStatus.PASS, "Thank You page: Found page Text: " + ThankYouPageText + "...: Succesfull");
+    	} else {
+    		TestPassFlag = false;
+    		testLog.log(LogStatus.ERROR, "Thank You page: Found page Text: " + tText + ". Expected: " + ThankYouPageText);
+    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
+    	}
     	
 //    	Thank you page: Click on LogIn link
     	ResetThankYou.clickLoginLnk();
     	
     	Thread.sleep(timeOut);
+    	Assert.assertTrue(TestPassFlag);
     	BasePage.driver.quit();
+    	
     }
 
 }
