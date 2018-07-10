@@ -1,6 +1,7 @@
 package com.verifone.tests.api.tests;
 
 
+import com.aventstack.extentreports.ExtentTest;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.DataDrivenUtils;
 import com.verifone.utils.apiClient.DataDrivenApi;
@@ -51,7 +52,7 @@ public class PubSubDdtTest extends BaseTest {
                                   String headers, String headersForGetToken, String body, String expectedStatusCode,
                                   String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
@@ -61,7 +62,7 @@ public class PubSubDdtTest extends BaseTest {
                           String headers, String headersForGetToken, String body, String expectedStatusCode,
                           String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
@@ -71,7 +72,7 @@ public class PubSubDdtTest extends BaseTest {
                                String headers, String headersForGetToken, String body, String expectedStatusCode,
                                String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
@@ -82,7 +83,7 @@ public class PubSubDdtTest extends BaseTest {
                               String headers, String headersForGetToken, String body, String expectedStatusCode,
                               String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
