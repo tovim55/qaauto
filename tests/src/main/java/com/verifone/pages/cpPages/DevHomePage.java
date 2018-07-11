@@ -1,10 +1,10 @@
 package com.verifone.pages.cpPages;
 
 
+import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class DevHomePage extends BasePage {
