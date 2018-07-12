@@ -1,20 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Verifone" duration-ms="8469" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
+  <suite started-at="2018-07-11T08:43:26Z" name="Verifone" finished-at="2018-07-11T08:43:26Z" duration-ms="9">
     <groups>
-      <group name="CP-portal">
-        <method signature="MerchantGetCongMailUI.MerchantGetCongMailUI()[pri:0, instance:com.verifone.tests.cpTests.MerchantGetCongMailUI@4b9e255]" name="MerchantGetCongMailUI" class="com.verifone.tests.cpTests.MerchantGetCongMailUI"/>
-      </group> <!-- CP-portal -->
+      <group name="CP-Portal">
+        <method signature="CompanyReview.connectWithCompanyUI()[pri:0, instance:com.verifone.tests.cpTests.CompanyReview@43195e57]" name="connectWithCompanyUI" class="com.verifone.tests.cpTests.CompanyReview"/>
+      </group> <!-- CP-Portal -->
     </groups>
-    <test name="Automation Tests" duration-ms="8469" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
-      <class name="com.verifone.tests.cpTests.MerchantGetCongMailUI">
-        <test-method status="PASS" signature="MerchantGetCongMailUI()[pri:0, instance:com.verifone.tests.cpTests.MerchantGetCongMailUI@4b9e255]" name="MerchantGetCongMailUI" duration-ms="8449" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
+    <test started-at="2018-07-11T08:43:26Z" name="Automation Tests" finished-at="2018-07-11T08:43:26Z" duration-ms="9">
+      <class name="com.verifone.tests.cpTests.CompanyReview">
+        <test-method is-config="true" signature="beforeSuite(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.cpTests.CompanyReview@43195e57]" started-at="2018-07-11T08:43:25Z" name="beforeSuite" finished-at="2018-07-11T08:43:26Z" duration-ms="12" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[QA]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CPPortal]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NoClassDefFoundError">
+            <message>
+              <![CDATA[com/aventstack/extentreports/reporter/ExtentHtmlReporter]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoClassDefFoundError: com/aventstack/extentreports/reporter/ExtentHtmlReporter
+at com.verifone.tests.ExtentManager.createInstance(BaseTest.java:124)
+at com.verifone.tests.BaseTest.beforeSuite(BaseTest.java:36)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.TestNG.privateMain(TestNG.java:1354)
+at org.testng.TestNG.main(TestNG.java:1323)
+Caused by: java.lang.ClassNotFoundException: com.aventstack.extentreports.reporter.ExtentHtmlReporter
+at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source)
+at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source)
+at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+... 21 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoClassDefFoundError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- MerchantGetCongMailUI -->
-      </class> <!-- com.verifone.tests.cpTests.MerchantGetCongMailUI -->
+        </test-method> <!-- beforeSuite -->
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.verifone.tests.cpTests.CompanyReview@43195e57]" started-at="2018-07-11T08:43:26Z" name="beforeClass" finished-at="2018-07-11T08:43:26Z" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method signature="connectWithCompanyUI()[pri:0, instance:com.verifone.tests.cpTests.CompanyReview@43195e57]" started-at="2018-07-11T08:43:26Z" name="connectWithCompanyUI" description="After sign up Dev login,  fill personal &amp; company info, Submit application" finished-at="2018-07-11T08:43:26Z" duration-ms="0" status="SKIP">
+          <exception class="java.lang.NoClassDefFoundError">
+            <message>
+              <![CDATA[com/aventstack/extentreports/reporter/ExtentHtmlReporter]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoClassDefFoundError: com/aventstack/extentreports/reporter/ExtentHtmlReporter
+at com.verifone.tests.ExtentManager.createInstance(BaseTest.java:124)
+at com.verifone.tests.BaseTest.beforeSuite(BaseTest.java:36)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.TestNG.privateMain(TestNG.java:1354)
+at org.testng.TestNG.main(TestNG.java:1323)
+Caused by: java.lang.ClassNotFoundException: com.aventstack.extentreports.reporter.ExtentHtmlReporter
+at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source)
+at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source)
+at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+... 21 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoClassDefFoundError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- connectWithCompanyUI -->
+        <test-method is-config="true" signature="startBrowser(java.lang.reflect.Method, java.lang.String)[pri:0, instance:com.verifone.tests.cpTests.CompanyReview@43195e57]" started-at="2018-07-11T08:43:26Z" name="startBrowser" finished-at="2018-07-11T08:43:26Z" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method is-config="true" signature="stopTestReport(java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:com.verifone.tests.cpTests.CompanyReview@43195e57]" started-at="2018-07-11T08:43:26Z" name="stopTestReport" finished-at="2018-07-11T08:43:26Z" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopTestReport -->
+      </class> <!-- com.verifone.tests.cpTests.CompanyReview -->
     </test> <!-- Automation Tests -->
   </suite> <!-- Verifone -->
 </testng-results>
