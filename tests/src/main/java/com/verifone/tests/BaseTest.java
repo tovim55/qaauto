@@ -21,7 +21,7 @@ import java.util.Date;
 public abstract class BaseTest {
 
 
-    public static EnvConfig envConfig;
+    public static EnvConfig     envConfig;
     private static ExtentReports extent;
     private static ThreadLocal parentTest = new ThreadLocal();
     protected static ThreadLocal test = new ThreadLocal();
@@ -98,10 +98,10 @@ public abstract class BaseTest {
                 break;
         }
 
-        if (method.getName().contains("UI")) {
-            child.info("Closing Web Page");
-            SeleniumUtils.closeRuntimeBrowserInstance();
-        }
+//        if (method.getName().contains("UI")) {
+//            child.info("Closing Web Page");
+//            SeleniumUtils.closeRuntimeBrowserInstance();
+//        }
         extent.flush();
     }
 

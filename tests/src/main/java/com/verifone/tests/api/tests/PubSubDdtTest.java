@@ -22,9 +22,9 @@ public class PubSubDdtTest extends BaseTest {
     }
 
 
-    @DataProvider(name = "CreateMerchant")
+    @DataProvider(name = "CreateMerchantTest")
     public Object[][] CreateMerchant() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchant");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchantTest");
         return arrayObject;
     }
 
@@ -53,7 +53,7 @@ public class PubSubDdtTest extends BaseTest {
         return arrayObject;
     }
 
-//    @Test(dataProvider = "CreateMerchant")
+//    @Test(dataProvider = "CreateMerchantTest")
 //    public void createMerchantDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
 //                                  String headers, String headersForGetToken, String body, String expectedStatusCode,
 //                                  String expectedResult, String verifyList, String comments, String rowNum) throws Exception {

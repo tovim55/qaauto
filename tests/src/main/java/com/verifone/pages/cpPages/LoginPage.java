@@ -33,8 +33,8 @@ public class LoginPage extends BasePage {
     public void loginPageCp(User user) {
         sendKeys(username, user.getUserName());
         click(password);
-//        sendKeys(password, user.getPassword());
-//        click(loginBtn);
+        sendKeys(password, user.getPassword());
+        click(loginBtn);
 
     }
 

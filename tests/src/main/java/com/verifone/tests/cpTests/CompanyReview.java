@@ -55,7 +55,7 @@ public class CompanyReview extends BaseTest {
 //        // Dev Login
 //        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
 //        loginPage.clickOmLoginBtn();
-//        loginPage.loginPageCp(developer);
+//        loginPage.login(developer);
 //
 //        // Dev go to info page, fill personal & company info
 //        DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
