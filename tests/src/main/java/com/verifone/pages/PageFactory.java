@@ -4,7 +4,10 @@ package com.verifone.pages;
 
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
+import com.verifone.pages.eoPages.AddUserPage;
 import com.verifone.pages.eoPages.HomePage;
+import com.verifone.pages.eoPages.LoginEOPortal;
+import com.verifone.pages.eoPages.UsersPage;
 
 public class PageFactory {
 
@@ -13,6 +16,8 @@ public class PageFactory {
         switch (page) {
             case "LoginPage":
                 return new LoginPage();
+            case "LoginEOPortal":
+                return new LoginEOPortal();
 
             case "SignUpPage":
                 return new SignUpPage();
@@ -38,6 +43,14 @@ public class PageFactory {
     			return new ResetThankYou();
     		case "WelcomePage":
     			return new WelcomePage();
+    		case "PasswordSetupPage":
+    			return new PasswordSetupPage();
+    		case "HomePage":
+    			return new HomePage();
+    		case "UsersPage":
+    			return new UsersPage();
+    		case "AddUserPage":
+    			return new AddUserPage();
 //            case "VerifoneAccountLoginPage":
 //                return new VerifoneAccountLoginPage();
 //

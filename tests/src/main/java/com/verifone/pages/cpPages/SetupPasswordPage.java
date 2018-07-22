@@ -22,22 +22,32 @@ public class SetupPasswordPage extends BasePage {
     private final static String title = "Setup your Password";
     private By password = By.id("confirmPassword");
     private By confpassword = By.id("confirmPassword2");
-    private By chboxTOS = By.xpath("//*[@class='check']");
+    private By chboxTOS = By.xpath("(//*[@class='check'])[1]");
+    private By chboxAgreement = By.xpath("(//*[@class='check'])[2]");
     private By SubmitBtn = By.id("btnSubmit");
     private By titleLoc = By.xpath("//*[@class='text-center sso-form-title nomargin']");
     private By textLoc = By.xpath("//*[@id='local_auth_div']/div[2]/div/div/div[2]/div/div[2]");
     private By setupPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword']");
     private By setupConfirmPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword2']");
-    private By setupCheckBoxLoc = By.xpath("//*[@class='checkbox']");
+    private By setupCheckBoxLoc = By.xpath("(//*[@class='checkbox'])[1]");
+    private By setupCheckBoxAgrLoc = By.xpath("(//*[@class='checkbox'])[2]");
     
     private By errorFormatLoc = By.xpath("//*[@class='help-block']");
     private By errorMatchLoc = By.xpath("//*[@id='resetPasswordForm']/div[2]/div[2]");
-    private By errorTOSLoc = By.xpath("//*[@class='help-block years-old-marging']"); 
+    private By errorTOSLoc = By.xpath("(//*[@class='help-block years-old-marging'])[1]"); 
+    private By errorAgrLoc = By.xpath("(//*[@class='help-block years-old-marging'])[2]");
+    
     private By wndTOSLoc = By.xpath("//*[@class='full reset modal-open']");
     private By tosLoc = By.xpath("//*[@class='full reset modal-open']");
     private By TOSLnk = By.xpath("//*[@class='pull-left']");
-    private By declineTOSBtn = By.xpath("//*[@class='btn btn-primary btn-cancel']");
-    private By acceptTOSBtn = By.xpath("//*[@class='btn btn-primary btn-raised btn-accept']");
+    private By AgreementLnk = By.xpath("//*[@class='pull-left']");
+    private By declineTOSBtn = By.xpath("(//*[@class='btn btn-primary btn-cancel'])[1]");
+    private By acceptTOSBtn = By.xpath("(//*[@class='btn btn-primary btn-raised btn-accept'])[1]");
+    private By declineAgreementBtn = By.xpath("(//*[@class='btn btn-primary btn-cancel'])[2]");
+    private By acceptAgreementBtn = By.xpath("(//*[@class='btn btn-primary btn-raised btn-accept'])[2]");
+    
+    
+    
     private By loginBtn = By.id("btnPrimaryLogin");
     private By loginEmail = By.xpath("//*[@class='control-label' and @for='username']");
     private By loginTitle = By.xpath("//*[@class='account-name verifone']");
@@ -79,6 +89,15 @@ public class SetupPasswordPage extends BasePage {
     public void clickOnchboxTOS() {
     	click(chboxTOS);
     }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Click on Agreement check element.
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public void clickOnchboxAgreement() {
+    	click(chboxAgreement);
+    }
     //--------------------------------------------------------------------------
     /**
     * Method: Click on Submit button.
@@ -97,6 +116,19 @@ public class SetupPasswordPage extends BasePage {
     public void clickOnAcceptTOSBtn() throws Exception {
 //    	actionClick(acceptTOSBtn, 10);
         WebElement webEl = driver.findElement(acceptTOSBtn);
+        //scrollToElement(locator);
+        Actions builder = new Actions(driver);
+        builder.moveToElement(webEl).click().perform();
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Agreement frame: Click on Accept button.
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public void clickOnAcceptAgrBtn() throws Exception {
+//    	actionClick(acceptTOSBtn, 10);
+        WebElement webEl = driver.findElement(acceptAgreementBtn);
         //scrollToElement(locator);
         Actions builder = new Actions(driver);
         builder.moveToElement(webEl).click().perform();
@@ -155,8 +187,8 @@ public class SetupPasswordPage extends BasePage {
     }
   //--------------------------------------------------------------------------
     /**
-    * Method: Get Agreement check box text.
-    * Return Agreement check box text as String
+    * Method: Get TOS check box text.
+    * Return TOS check box text as String
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
@@ -165,6 +197,19 @@ public class SetupPasswordPage extends BasePage {
     	String a = getText(setupCheckBoxLoc);
     	System.out.println(a);
     	return getText(setupCheckBoxLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Agreement check box text.
+    * Return Agreement check box text as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String setupCheckBoxAgrText() {
+        
+    	String a = getText(setupCheckBoxAgrLoc);
+    	System.out.println(a);
+    	return getText(setupCheckBoxAgrLoc);
     }
   //--------------------------------------------------------------------------
     /**
@@ -231,6 +276,45 @@ public class SetupPasswordPage extends BasePage {
     	System.out.println(a);
     	return getText(TOSLnk);
     }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Agreement Agree button label.
+    * Return Agreement Agree button label as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String agreementAgreeBtnLabel() {
+        
+    	String a = getText(acceptAgreementBtn);
+    	System.out.println(a);
+    	return getText(acceptAgreementBtn);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Agreement Decline button label.
+    * Return Agreement Decline button label as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String agreementDeclineBtnLabel() {
+        
+    	String a = getText(declineAgreementBtn);
+    	System.out.println(a);
+    	return getText(declineAgreementBtn);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Agreement link text.
+    * Return Agreement link text as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String agreementLnkText() {
+        
+    	String a = getText(AgreementLnk);
+    	System.out.println(a);
+    	return getText(AgreementLnk);
+    }
     //--------------------------------------------------------------------------
     /**
     * Method: Get Email Format validation error text.
@@ -260,6 +344,16 @@ public class SetupPasswordPage extends BasePage {
     //--------------------------------------------------------------------------
     public String errorTOS() {
     	return getText(errorTOSLoc);
+    }
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Missing Agreement accept error text.
+    * Return Missing Agreement accept error text as String
+    * @authors Yana Fridman
+    */
+    //--------------------------------------------------------------------------
+    public String errorAgr() {
+    	return getText(errorAgrLoc);
     }
     //--------------------------------------------------------------------------
     /**
