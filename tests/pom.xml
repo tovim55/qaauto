@@ -59,7 +59,7 @@
             <version>2.22.0</version>
             <configuration>
             <additionalClasspathElements>
-            <additionalClasspathElement>C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\target\classes</additionalClasspathElement>
+            <additionalClasspathElement>feqaautomation\tests\target\classes</additionalClasspathElement>
             </additionalClasspathElements>
             <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
