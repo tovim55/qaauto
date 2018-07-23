@@ -19,6 +19,7 @@ import com.verifone.pages.cpPages.SetupPasswordPage;
 import com.verifone.pages.eoPages.AddUserPage;
 import com.verifone.pages.eoPages.HomePage;
 import com.verifone.pages.eoPages.LoginEOPortal;
+import com.verifone.pages.eoPages.UserDetailsPage;
 import com.verifone.pages.eoPages.UsersPage;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.DataDrivenUtils;
@@ -28,7 +29,12 @@ public class EOPortalSanityUI extends BaseTest {
 final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\eoAddUser.xls";
 private static Integer getRowNumFromFile = 0;
 private static String UserEmail = "UserEOAdmin@getnada.com";
-private static String UserEmail2 = "";
+private static String UserEOAdminEmail = "";
+private static String UserDevAppEmail = "";
+private static String UserMerchManEmail = "";
+private static String Env = "https://qa.estatemanager.verifonecp.com/";
+private static String EOAdminMail = "vfieous@getnada.com";
+private static String EOAdminPwd = "Veri1234";
 
 @BeforeTest
 public void startDDTest() throws Exception{
@@ -44,7 +50,7 @@ public Object[][] dataSupplierLoginData() throws Exception {
 	return arrayObject;
 }
 
-@Test(enabled = true, testName = "EOAdmin Users", dataProvider = "eoAddUser", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = false, testName = "EOAdmin Users", dataProvider = "eoAddUser", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUsersUI(String eoRole, String eoMail, String eoPassword, String userName, String userLast, String userMail) throws Exception {
 		BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
@@ -243,7 +249,7 @@ public void startDDTest1() throws Exception{
 
 }
 
-@Test(enabled = true, testName = "EOAdmin Users", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = false, testName = "EOAdmin Users", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserUI() throws Exception {
 	BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
@@ -372,10 +378,10 @@ public void startDDTest4() throws Exception{
 @Test(enabled = false, testName = "EOAdmin Add User Exist Email", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserExistEmailUI() throws Exception {
-	BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
+	BasePage.driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-	LoginEOPortal.loginInputEmail("vfieous@getnada.com");
-	LoginEOPortal.loginInputPassword("Veri1234");
+	LoginEOPortal.loginInputEmail(EOAdminMail);
+	LoginEOPortal.loginInputPassword(EOAdminPwd);
 	LoginEOPortal.clickLoginBtn();
 	
 
@@ -407,10 +413,10 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail());
 	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText());
 	
-	UserEmail2 = "User" + LocalDateTime.now() + "EOAdmin@getnada.com";
-	UserEmail2 = UserEmail2.replace("-", "");
-	UserEmail2 = UserEmail2.replace(":", "");
-	AddUserPage.inputEmail(UserEmail2);
+	UserEOAdminEmail = "User" + LocalDateTime.now() + "EOAdmin@getnada.com";
+	UserEOAdminEmail = UserEOAdminEmail.replace("-", "");
+	UserEOAdminEmail = UserEOAdminEmail.replace(":", "");
+	AddUserPage.inputEmail(UserEOAdminEmail);
 	AddUserPage.clickDropDn();
 	AddUserPage.clickDropDnItem("EO Admin");
 	AddUserPage.clickSubmitBtn();
@@ -420,7 +426,680 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	BasePage.driver.switchTo().window(availableWindows.get(0));
 	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	
-	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserEmail2);
+	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail);
 	AssertJUnit.assertEquals(true, fl);
 	}
+
+@Test(enabled = false, testName = "EOAdmin Add User Exist Email", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminAddMerchantManagerUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		UsersPage.clickAddUserBtn();
+	
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
+		AddUserPage.inputFirstName("UserEOAdmin two");
+		AddUserPage.inputLastName("UserLastEOAdmin two");
+		
+		UserMerchManEmail = "User" + LocalDateTime.now() + "MerchMan@getnada.com";
+		UserMerchManEmail = UserMerchManEmail.replace("-", "");
+		UserMerchManEmail = UserMerchManEmail.replace(":", "");
+		AddUserPage.inputEmail(UserMerchManEmail);
+		AddUserPage.clickDropDn();
+		AddUserPage.clickDropDnItem("EO Merchant Manager");
+		AddUserPage.clickSubmitBtn();
+		
+		Thread.sleep(10000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		
+		boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserMerchManEmail);
+		AssertJUnit.assertEquals(true, fl);
+	}
+@Test(enabled = false, testName = "EOAdmin Add User Exist Email", groups = { "Sanity" }, alwaysRun = true)
+
+public void EOAdminAddDevAppManagerUI() throws Exception {
+	BasePage.driver.navigate().to(Env);
+	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+	LoginEOPortal.loginInputEmail(EOAdminMail);
+	LoginEOPortal.loginInputPassword(EOAdminPwd);
+	LoginEOPortal.clickLoginBtn();
+	
+
+	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+	BasePage.driver.switchTo().window(availableWindows.get(0));
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage.clickHeaderMenu();
+	
+	HomePage.clickUserMenu();
+	
+	Thread.sleep(5000);
+	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+	BasePage.driver.switchTo().window(availableWindows.get(0));
+	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+	UsersPage.clickAddUserBtn();
+
+	Thread.sleep(5000);
+	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+	BasePage.driver.switchTo().window(availableWindows.get(0));
+	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
+	AddUserPage.inputFirstName("UserEOAdmin two");
+	AddUserPage.inputLastName("UserLastEOAdmin two");
+	
+	UserDevAppEmail = "User" + LocalDateTime.now() + "DevAppMan@getnada.com";
+	UserDevAppEmail = UserDevAppEmail.replace("-", "");
+	UserDevAppEmail = UserDevAppEmail.replace(":", "");
+	AddUserPage.inputEmail(UserDevAppEmail);
+	AddUserPage.clickDropDn();
+	AddUserPage.clickDropDnItem("EO Device and App Manager");
+	AddUserPage.clickSubmitBtn();
+	
+	Thread.sleep(10000);
+	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+	BasePage.driver.switchTo().window(availableWindows.get(0));
+	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+	
+	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserDevAppEmail);
+	AssertJUnit.assertEquals(true, fl);
+}
+@Test(enabled = false, testName = "EOAdmin Edit pending EOAdmin", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminEditPendingEOAdminUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.pendingEOAdminRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Pending", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals("EO Admin", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkResend();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogResendExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogResend().contains("This will resend another copy of the invitation email to the pending user. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelResend();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkResend();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogResendExists());
+		UserDetailsPage.clickDoResend();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("Your invitation email was successfully sent.", UserDetailsPage.getMessage());
+		
+	}
+@Test(enabled = false, testName = "EOAdmin Edit pending Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminEditPendingMerchantManUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.pendingMerchantManRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Pending", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals("EO Merchant Manager", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkResend();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogResendExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogResend().contains("This will resend another copy of the invitation email to the pending user. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelResend();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkResend();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogResendExists());
+		UserDetailsPage.clickDoResend();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("Your invitation email was successfully sent.", UserDetailsPage.getMessage());
+		
+	}
+@Test(enabled = false, testName = "EOAdmin Edit pending Device App Manager", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminEditPendingDevAppManUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.pendingDevAppManRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Pending", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals("EO Device and App Manager", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkResend();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogResendExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogResend().contains("This will resend another copy of the invitation email to the pending user. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelResend();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkResend();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogResendExists());
+		UserDetailsPage.clickDoResend();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("Your invitation email was successfully sent.", UserDetailsPage.getMessage());
+		
+	}
+@Test(enabled = false, testName = "EOAdmin Disable active Device App Manager", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminDisableActiveDevAppManUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.activeDevAppManRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(true, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Active", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Disable User"));
+		AssertJUnit.assertEquals("EO Device and App Manager", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(true, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkDisable();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogDisableExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogDisable().contains("This will disable this user account. They will not be able to log in to any Verifone portals. You can re-enable users that were disabled at any time. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelDisable();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkDisable();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogDisableExists());
+		UserDetailsPage.clickDoDisable();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("The user's account was successfully disabled.", UserDetailsPage.getMessage());
+		
+	}
+@Test(enabled = false, testName = "EOAdmin Enable disabled Device App Manager", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminEnableDisabledDevAppManUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.disableDevAppManRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Disabled", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Disable User"));
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Enable User"));
+		AssertJUnit.assertEquals("EO Device and App Manager", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkEnable();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogEnableExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogEnable().contains("This will re-enable this user account and restore their access to the portal. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelEnable();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkEnable();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogEnableExists());
+		UserDetailsPage.clickDoEnable();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("The user's account was successfully re-enabled.", UserDetailsPage.getMessage());
+		
+	}
+@Test(enabled = false, testName = "EOAdmin Disable active EO Admin", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminDisableActiveEOAdminUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.activeEOAdminRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(true, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Active", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Disable User"));
+		AssertJUnit.assertEquals("EO Admin", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(true, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkDisable();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogDisableExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogDisable().contains("This will disable this user account. They will not be able to log in to any Verifone portals. You can re-enable users that were disabled at any time. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelDisable();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkDisable();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogDisableExists());
+		UserDetailsPage.clickDoDisable();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("The user's account was successfully disabled.", UserDetailsPage.getMessage());
+		
+	}
+	@Test(enabled = false, testName = "EOAdmin Enable disabled EO Admin", groups = { "Sanity" }, alwaysRun = true)
+	
+	public void EOAdminEnableDisabledEOAdminUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.disableEOAdminRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Disabled", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Disable User"));
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Enable User"));
+		AssertJUnit.assertEquals("EO Admin", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkEnable();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogEnableExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogEnable().contains("This will re-enable this user account and restore their access to the portal. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelEnable();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkEnable();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogEnableExists());
+		UserDetailsPage.clickDoEnable();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("The user's account was successfully re-enabled.", UserDetailsPage.getMessage());
+		
+	}
+
+	@Test(enabled = true, testName = "EOAdmin Disable active EO Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
+
+	public void EOAdminDisableActiveEOMerchantManUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.activeEOMerchantManRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(true, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Active", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Disable User"));
+		AssertJUnit.assertEquals("EO Merchant Manager", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(true, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkDisable();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogDisableExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogDisable().contains("This will disable this user account. They will not be able to log in to any Verifone portals. You can re-enable users that were disabled at any time. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelDisable();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkDisable();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogDisableExists());
+		UserDetailsPage.clickDoDisable();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("The user's account was successfully disabled.", UserDetailsPage.getMessage());
+		
+	}
+	@Test(enabled = true, testName = "EOAdmin Enable disabled EO Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
+	
+	public void EOAdminEnableDisabledEOMerchantManUI() throws Exception {
+		BasePage.driver.navigate().to(Env);
+		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+		LoginEOPortal.loginInputEmail(EOAdminMail);
+		LoginEOPortal.loginInputPassword(EOAdminPwd);
+		LoginEOPortal.clickLoginBtn();
+		
+	
+		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage.clickHeaderMenu();
+		
+		HomePage.clickUserMenu();
+		
+		Thread.sleep(5000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+		
+		int a = UsersPage.disableEOMerchantManRow();
+		System.out.println(a);
+		UsersPage.clickOnRow(a);
+		
+		Thread.sleep(3000);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(0));
+		UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+		
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementEmailClickable());
+		boolean fl = false;
+		if (UserDetailsPage.getUserEmail().length() > 0) {
+			fl = true;
+		}
+		AssertJUnit.assertEquals(true, fl);
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementUserEditClickable());
+		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
+		AssertJUnit.assertEquals("Disabled", UserDetailsPage.getStatus());
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Disable User"));
+		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Enable User"));
+		AssertJUnit.assertEquals("EO Merchant Manager", UserDetailsPage.getRole());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
+		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleEditClickable());
+		
+		UserDetailsPage.clickLnkEnable();
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogEnableExists());
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.getDialogEnable().contains("This will re-enable this user account and restore their access to the portal. Continue?"));
+		Thread.sleep(3000);
+		UserDetailsPage.clickCancelEnable();
+		AssertJUnit.assertEquals(false, UserDetailsPage.messageExists());
+		Thread.sleep(1000);
+		UserDetailsPage.clickLnkEnable();
+		Thread.sleep(1000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.dialogEnableExists());
+		UserDetailsPage.clickDoEnable();
+		Thread.sleep(5000);
+		AssertJUnit.assertEquals(true, UserDetailsPage.messageExists());
+		AssertJUnit.assertEquals("The user's account was successfully re-enabled.", UserDetailsPage.getMessage());
+		
+	}
+
 }

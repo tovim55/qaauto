@@ -20,14 +20,161 @@ public class UsersPage extends BasePage {
     private By pgintervalUsersLoc = By.xpath("//*[@class='interval ']");
 
 
+
     public UsersPage() {
         super(url, title);
     }
+    
+    public int dataRow(String searchData) throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains(searchData)) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int pendingEOAdminRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Pending")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int pendingMerchantManRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Pending")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int pendingDevAppManRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Pending")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int activeDevAppManRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Active")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int disableDevAppManRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Disabled")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int activeEOAdminRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Active")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int disableEOAdminRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Disabled")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int activeEOMerchantManRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Active")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public int disableEOMerchantManRow() throws InterruptedException {
+    	int row = 1000;
+    	int i;
+    	for (i = 1; i<11; i++) {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+    		if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Disabled")) {
+    			row = i;
+    			break;
+    		}
+    	}
+    	
+    	return row;
+    }
+    
+    public void clickOnRow(int r) throws InterruptedException {
+    		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + r + "]");
+    		click(rowLoc);
+    }
 
-//    public String getMerchants() throws InterruptedException {
-//        return getTextFromTable(merchantTable);
-//    }
-//    
+    public String getUsers() throws InterruptedException {
+//        return getTextFromTable(tblUsersLoc);
+    	return getText(tblUsersLoc);
+    }
+    
     public String titleUsers () throws InterruptedException {
     	return getText(titleUsersLoc);
     } 

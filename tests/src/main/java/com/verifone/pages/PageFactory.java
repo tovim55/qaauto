@@ -7,6 +7,7 @@ import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.AddUserPage;
 import com.verifone.pages.eoPages.HomePage;
 import com.verifone.pages.eoPages.LoginEOPortal;
+import com.verifone.pages.eoPages.UserDetailsPage;
 import com.verifone.pages.eoPages.UsersPage;
 
 public class PageFactory {
@@ -51,6 +52,9 @@ public class PageFactory {
     			return new UsersPage();
     		case "AddUserPage":
     			return new AddUserPage();
+    		case "UserDetailsPage":
+    			return new UserDetailsPage();	
+    			
 //            case "VerifoneAccountLoginPage":
 //                return new VerifoneAccountLoginPage();
 //
