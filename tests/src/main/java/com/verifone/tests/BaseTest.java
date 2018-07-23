@@ -100,7 +100,7 @@ public abstract class BaseTest {
 
         if (method.getName().contains("UI")) {
             child.info("Closing Web Page");
-//            SeleniumUtils.closeRuntimeBrowserInstance();
+            SeleniumUtils.closeRuntimeBrowserInstance();
         }
         extent.flush();
     }
