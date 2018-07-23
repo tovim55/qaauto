@@ -20,7 +20,7 @@ public class CompanyReview extends BaseTest {
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(developer);
         assertTextContains("Thanks for your registration!", signUpPage.getMessege());
-        String message = new InboxGetnada().getLastMessage(developer.getUserName());
+        String message = new InboxGetnada().getLastMessage(developer.getUserName(), "Previous");
         assertTextContains(message, "Activate Account");
 
 //        User developer = new SignUpTestUI().signUpTestUI();

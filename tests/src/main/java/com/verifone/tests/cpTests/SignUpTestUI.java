@@ -19,7 +19,7 @@ public class SignUpTestUI extends BaseTest {
         SignUpPage signUpPage = (SignUpPage) PageFactory.getPage("SignUpPage");
         signUpPage.signUp(user);
         assertTextContains("Thanks for your registration!", signUpPage.getMessege());
-        String message = new InboxGetnada().getLastMessage(user.getUserName());
+        String message = new InboxGetnada().getLastMessage(user.getUserName(), "Previous");
         assertTextContains(message, "Activate Account");
 
     }
