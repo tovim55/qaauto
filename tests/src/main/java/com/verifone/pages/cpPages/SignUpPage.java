@@ -13,7 +13,8 @@ public class SignUpPage extends BasePage {
     private final static String title = "Sign Up with Verifone Identity Server";
 
 
-    By signUpButton = By.xpath("(//*[@class='btn btn-default signup' and @data-text='Sign up'])");
+//    By signUpButton = By.xpath("(//*[@class='btn btn-default signup' and @data-text='Sign up'])");
+    By signUpButton = By.partialLinkText("Sig");
 
     By firstName = By.id("givenname");
     By lastName = By.id("lastname");

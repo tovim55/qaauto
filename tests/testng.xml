@@ -6,7 +6,7 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="DEV"/>
+    <parameter name="env" value="QA"/>
 
 
     <!--Set Portal Variable: -->
@@ -24,7 +24,7 @@
         <parameter name="browserType" value="CHROME"/>
 
         <classes>
-            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
+            <class name="com.verifone.tests.cpTests.SignUpTestUI"/>
         </classes>
 
     </test>
