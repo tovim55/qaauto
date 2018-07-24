@@ -21,7 +21,7 @@
         <!--FF-->
         <!--EDGE-->
         <!--IE-->
-        <parameter name="browserType" value="CHROME"/>
+        <parameter name="browserType" value="${browser}"/>
 
         <classes>
             <class name="com.verifone.tests.cpTests.SignUpTestUI"/>

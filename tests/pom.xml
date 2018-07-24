@@ -64,6 +64,7 @@
             </additionalClasspathElements>
                 <systemPropertyVariables>
                     <environment>QA</environment>
+                    <browser>CHROME</browser>
                 </systemPropertyVariables>
             <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
