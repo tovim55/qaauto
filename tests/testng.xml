@@ -6,8 +6,8 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="QA"/>
-
+    <!--<parameter name="env" value="QA"/>-->
+    <parameter name="env" value="${environment}" />
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
