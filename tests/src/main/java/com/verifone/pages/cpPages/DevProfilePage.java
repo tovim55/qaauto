@@ -54,6 +54,7 @@ public class DevProfilePage extends BasePage {
     public void editUserInfo() throws InterruptedException {
         Thread.sleep(5000);
         click(editBtn);
+        Thread.sleep(3000);
         select(country, "CA");
         sendKeys(address, "hotel california");
         sendKeys(city, "city");

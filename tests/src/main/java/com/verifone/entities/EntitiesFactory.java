@@ -36,7 +36,7 @@ public class EntitiesFactory {
                 break;
         }
         System.out.println("User " + user.getUserName() + " Was created");
-        BasePage.testLog.log(LogStatus.INFO, "User " + user.getUserName() + " Was created");
+        BasePage.testLog.info("User " + user.getUserName() + " Was created");
         return user;
     }
 

@@ -19,18 +19,28 @@ public class PageFactory {
 
             case "CGLoginPage":
                 return new CGLoginPage();
-                
+
+            case "DevSupportHomePage":
+                return new DevSupportHomePage();
+
+            case "DevUsersPage":
+                return new DevUsersPage();
+//
+//            case "VerifoneAccountLoginPage":
+//                return new VerifoneAccountLoginPage();
+
+
     		case "SetupPasswordPage":
     			return new SetupPasswordPage();
-    			
+
     		case "AcceptMerchantAgreementPage":
     			return new AcceptMerchantAgreementPage();
-    			
+
     		case "MerchantViewPage":
     			return new MerchantViewPage();
-    		case "ForgotPasswordPage": 
+    		case "ForgotPasswordPage":
     			return new ForgotPasswordPage();
-    		case "EmailConfirmPage": 
+    		case "EmailConfirmPage":
     			return new EmailConfirmPage();
     		case "ResetPasswordPage":
     			return new ResetPasswordPage();

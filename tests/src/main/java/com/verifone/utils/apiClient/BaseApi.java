@@ -1,13 +1,8 @@
 package com.verifone.utils.apiClient;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-import com.verifone.utils.apiClient.getToken.GetTokenApi;
-import org.apache.http.HttpEntity;
+import com.aventstack.extentreports.ExtentTest;
+import com.google.gson.*;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
@@ -19,7 +14,6 @@ import org.testng.Assert;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public abstract class BaseApi {
 
@@ -63,19 +57,23 @@ public abstract class BaseApi {
         }
         String entity = EntityUtils.toString(response.getEntity());
         if (responseCode != expectedCode) {
-            testLog.log(LogStatus.ERROR, "request failed:  " + entity);
+            testLog.error("request failed:  " + entity);
             System.out.println("request failed:  " + entity);
             Assert.assertEquals(responseCode, expectedCode);
         }
+        if (entity.startsWith("\""))
+            entity = convertFromPrimitive(entity);
         return gson.fromJson(entity, JsonObject.class);
     }
 
+
+
     private static void reportReqestData(String url, String method, HashMap<String, String> headers, long startTime) {
         System.out.println("Sending request to URL : " + url);
-        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
-        testLog.log(LogStatus.INFO, "Method: " + method);
-        testLog.log(LogStatus.INFO, "Headers: " + headers.toString());
-        testLog.log(LogStatus.INFO, "Response Time: " + (System.currentTimeMillis() - startTime));
+        testLog.info("Sending request to URL : " + url);
+        testLog.info("Method: " + method);
+        testLog.info("Headers: " + headers.toString());
+        testLog.info("Response Time: " + (System.currentTimeMillis() - startTime));
 
     }
 
@@ -115,7 +113,7 @@ public abstract class BaseApi {
         baseHeaders.forEach(request::addHeader);
         HttpResponse response = client.execute(request);
         System.out.println("Sending request to URL : " + url);
-        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        testLog.info("Sending request to URL : " + url);
         String entity = EntityUtils.toString(response.getEntity());
         validateStatusCode(expectedCode, response, entity);
         Gson gson = new GsonBuilder().create();
@@ -131,7 +129,7 @@ public abstract class BaseApi {
         post.setEntity(new StringEntity(gson.toJson(requestData), "UTF-8"));
         HttpResponse response = client.execute(post);
         System.out.println("Sending request to URL : " + url);
-        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        testLog.info("Sending request to URL : " + url);
         String entity = EntityUtils.toString(response.getEntity());
         validateStatusCode(expectedCode, response, entity);
         return gson.fromJson(entity, JsonObject.class);
@@ -146,7 +144,7 @@ public abstract class BaseApi {
         post.setEntity(new StringEntity(requestData, "UTF-8"));
         HttpResponse response = client.execute(post);
         System.out.println("Sending request to URL : " + url);
-        testLog.log(LogStatus.INFO, "Sending request to URL : " + url);
+        testLog.info("Sending request to URL : " + url);
         String entity = EntityUtils.toString(response.getEntity());
         validateStatusCode(expectedCode, response, entity);
         return gson.fromJson(entity, JsonObject.class);
@@ -184,10 +182,27 @@ public abstract class BaseApi {
     private void validateStatusCode(int expectedCode, HttpResponse response, String entity) {
         responseCode = response.getStatusLine().getStatusCode();
         if (responseCode != expectedCode) {
-            testLog.log(LogStatus.ERROR, entity);
+            testLog.error(entity);
             System.out.println("request failed:  " + entity);
             Assert.assertEquals(responseCode, expectedCode);
         }
+    }
+
+
+    private static String convertFromPrimitive(String entity) {
+        System.out.println(entity);
+        String [] tempEntity =  StringUtils.substringBetween(entity, "{", "}").split(" ,");
+        entity = "{";
+        for (String s: tempEntity  ) {
+            entity += "\"";
+            String [] tmp = s.split(":");
+            if (tmp[0].startsWith(" "))
+                tmp[0] = tmp[0].substring(1);
+            entity += tmp[0] + "\"" + ":\""+tmp[1] + "\",";
+        }
+        entity = entity.substring(0,entity.length()-1);
+        entity += "}";
+        return entity;
     }
 
 

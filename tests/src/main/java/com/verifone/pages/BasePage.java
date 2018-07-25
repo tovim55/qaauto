@@ -1,16 +1,13 @@
 package com.verifone.pages;
 
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import static java.awt.event.KeyEvent.*;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -44,7 +41,7 @@ public abstract class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, 60);
             wait.until(ExpectedConditions.titleIs(title));
         } catch (TimeoutException e) {
-            testLog.log(LogStatus.ERROR, String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
+            testLog.error(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
             Assert.fail(String.format("Title should be %s, Browser on %S", title, driver.getTitle()), e);
 
         }
@@ -54,20 +51,20 @@ public abstract class BasePage {
     public void click(By loc) {
         WebElement element = getWebElement(loc, 50, ExpectedConditions.elementToBeClickable(loc));
         element.click();
-        testLog.log(LogStatus.INFO, "user clicks on:  " + loc.toString());
+        testLog.info( "user clicks on:  " + loc.toString());
     }
 
     public void sendKeys(By loc, String text) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.clear();
         element.sendKeys(text);
-        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+        testLog.info("send keys " + text + "for : " + loc.toString());
     }
 
     public void sendKeysNoClear(By loc, String text) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.sendKeys(text);
-        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+        testLog.info("send keys " + text + "for : " + loc.toString());
     }
 
 
@@ -106,6 +103,16 @@ public abstract class BasePage {
         driver.switchTo().window(tabs2.get(0));
     }
 
+    protected void hoverAndClickOnElement(By loc){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Actions builder = new Actions(driver);
+        WebElement element = driver.findElement(loc);
+        builder.moveToElement(element).click().perform();
+    }
 
 
     protected WebElement getWebElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
@@ -139,10 +146,115 @@ public abstract class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, timeOut);
             wait.until(expectedCon);
         } catch (TimeoutException e) {
-            testLog.log(LogStatus.ERROR, "Element Not Found For Locator: " + loc.toString());
+            testLog.error("Element Not Found For Locator: " + loc.toString());
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
     }
+
+
+//    public void setCheckBox(By loc){
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+//        WebElement a;
+//        if (!driver.findElement(loc).isSelected()){
+//            a = driver.findElement(loc);
+//            a.click();
+//            System.out.println("asdas      " + driver.findElement(loc).isSelected());
+//        }
+//
+//    }
+
+
+//
+//    /**
+//     * Navigate to the page
+//     **/
+//    public abstract void navigate();
+//
+//    /**
+//     * returns title of the page
+//     **/
+//    public abstract String getTitle();
+//
+//    /**
+//     * returns link of the page
+//     **/
+//    public abstract WebElement getPageLink();
+//
+//    /**
+//     * Sets user name and password for login
+//     *
+//     * @param text
+//     * @param text2
+//     */
+//    public abstract void initPage(String text, String text2);
+//
+//    /**
+//     * Returns grid cell text
+//     *
+//     * @param trow
+//     * @param tcolumn
+//     * @return String
+//     */
+//    public abstract String getGridCellText(int trow, int tcolumn);
+//
+//    /**
+//     * returns number of rows in the grid
+//     **/
+//    public abstract int gridRows();
+//
+//    /**
+//     * returns number of columns in the grid
+//     **/
+//    public abstract int gridColumns();
+//
+//    /**
+//     * Set text in grid cell
+//     */
+//    public abstract void setGridCellText(int trow, int tcolumn, String text) throws Exception;
+//
+//    /**
+//     * Click Add button
+//     *
+//     * @throws Exception
+//     **/
+//    public abstract void clickAdd() throws Exception;
+//
+//    public abstract void clickSave() throws Exception;
+//
+//    public abstract void clickCancel() throws Exception;
+//
+//    public abstract void clickMultiActivate() throws Exception;
+//
+//    public abstract void clickUpload() throws Exception;
+//
+//    //Methods that set values in form fields
+//    public abstract void setApplicationId(String text);
+//
+//    public abstract void setVersion(String text);
+//
+//    public abstract void setStatus(String text);
+//
+//    public abstract void setType(String text);
+//
+//    public abstract void setValue(String text);
+//
+//    public abstract void setNote(String text);
+//
+//    public abstract int numberOfErrors();
+//
+//    public abstract String getDisplayedError();
+//
+//    public abstract void selectApplicationId(String text) throws Exception;
+//
+//    public abstract void selectVersion(String text) throws Exception;
+//
+//    public abstract void selectStatus(String text) throws Exception;
+//
+//    public abstract void selectType(String text) throws Exception;
+
+
+
 
 
     /**
