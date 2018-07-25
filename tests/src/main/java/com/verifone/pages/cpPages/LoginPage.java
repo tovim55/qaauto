@@ -38,8 +38,7 @@ public class LoginPage extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        git comment
-
+        
 //        sendKeys(password, user.getPassword());
 //        click(loginBtn);
 
