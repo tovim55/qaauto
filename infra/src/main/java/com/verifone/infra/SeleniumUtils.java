@@ -1,17 +1,7 @@
 package com.verifone.infra;
 //import static org.junit.Assert.assertTrue;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Properties;
-
-
-//import com.gargoylesoftware.htmlunit.javascript.host.URL;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,6 +11,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+//import com.gargoylesoftware.htmlunit.javascript.host.URL;
 //import org.testng.annotations.Test;
 
 /**
@@ -133,11 +129,20 @@ public class SeleniumUtils {
     }
 
 
-//    TODO this method is just for support old tets
+    //    TODO this method is just for support old tets
     public static void setEnv(String env, String urlDev, String urlTest,
                               String urlStaging1, String urlProduction, ExtentTest test) throws Exception {
         System.out.println("The Automation tests runs on : " + env + " environment");
 
+
+    }
+
+    public static void restartDriver() {
+        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
+        driver.quit();
+        driver = null;
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
     }
 

@@ -2,6 +2,7 @@ package com.verifone.pages;
 
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -76,7 +77,9 @@ public abstract class BasePage {
 
     protected String getText(By loc) {
         WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
-        return element.getText();
+        String text = element.getText();
+        testLog.info("User get text: " + text + " from this locator: " + loc.toString());
+        return text;
     }
 
     protected String getTextFromTable(By loc) throws InterruptedException {
@@ -107,6 +110,15 @@ public abstract class BasePage {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
     }
+
+//    public static void restartDriver() {
+//        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
+//        driver.quit();
+//        driver = null;
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//
+//    }
 
     protected void hoverAndClickOnElement(By loc) {
         try {

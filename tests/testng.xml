@@ -13,7 +13,7 @@
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="EOAdmin"/>
+    <parameter name="portal" value="CPPortal"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->
@@ -24,7 +24,7 @@
         <parameter name="browserType" value="CHROME"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.CreateMerchantTest"/>
+            <class name="com.verifone.tests.cpTests.CompanyReview"/>
             <!--<class name="com.verifone.tests.cpTests.MerchantGetCongMailUI"/>-->
         </classes>
 

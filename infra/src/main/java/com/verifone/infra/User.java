@@ -1,6 +1,7 @@
 package com.verifone.infra;
 
-import static org.apache.commons.lang3.RandomStringUtils.random;
+import java.util.Random;
+
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 public class User {
@@ -62,12 +63,16 @@ public class User {
     }
 
 
-    private String generatePassword() {
+    protected String generatePassword() {
         return "Veri1234";
     }
 
-    private String generateNames() {
+    protected String generateNames() {
         return "Auto Test " + randomAlphabetic(5).toLowerCase();
     }
 
+    protected int getRandomNumber() {
+        Random rand = new Random();
+        return rand.nextInt(100000);
+    }
 }

@@ -21,13 +21,13 @@ import java.util.Date;
 public abstract class BaseTest {
 
 
-    public static EnvConfig     envConfig;
+    public static EnvConfig envConfig;
     private static ExtentReports extent;
     private static ThreadLocal parentTest = new ThreadLocal();
     protected static ThreadLocal test = new ThreadLocal();
-    public Date date =new Date();
-    public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");;
-    public String reportLocation= "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
+    public Date date = new Date();
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+    public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
 
 
     @Parameters({"env", "portal"})

@@ -1,7 +1,7 @@
 package com.verifone.pages.cpPages;
 
 
-import com.verifone.infra.User;
+import com.verifone.infra.Company;
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
@@ -17,7 +17,7 @@ public class DevProfilePage extends BasePage {
     private final static String title = "[QA] Developer Central | Profile";
 
     // Company info form:
-    private By addCompaniInfoBtn = By.xpath("//a[text()='Add Company Information']");
+    private By addCompaniInfoBtn = By.linkText("Add Company Information");
     private By companyName = By.xpath("//input[@name='name']");
     private By dunsNum = By.xpath("//input[@name='dunsNumber']");
     private By firstName = By.xpath("//input[@name='firstName']");
@@ -43,8 +43,6 @@ public class DevProfilePage extends BasePage {
     private By membershipStatus = By.xpath("//span[@class='label label-warning visible-block']");
 
 
-
-
     public DevProfilePage() {
         super(url, title);
         navigate();
@@ -63,18 +61,18 @@ public class DevProfilePage extends BasePage {
     }
 
 
-    public void fillCompanyInfo(User user) throws IOException, AWTException, InterruptedException {
+    public void fillCompanyInfo(Company user) throws IOException, AWTException, InterruptedException {
         click(addCompaniInfoBtn);
-        sendKeys(companyName, "hola");
-        select(country, "CA");
-        sendKeys(address, "hotel california");
-        sendKeys(city, "city");
-        sendKeys(zipCode, "zipCode");
+        sendKeys(companyName, user.getCompanyName());
+        select(country, user.getCountry());
+        sendKeys(address, user.getAddress());
+        sendKeys(city, user.getCity());
+        sendKeys(zipCode, String.valueOf(user.getZipCode()));
         sendKeys(firstName, user.getFirstName());
         sendKeys(lastName, user.getLastName());
-        sendKeys(countryCode, "123");
-        sendKeys(contactNumber, "123456789");
-        select(countryTaxCode, "CA");
+        sendKeys(countryCode, String.valueOf(user.getCountryCode()));
+        sendKeys(contactNumber, String.valueOf(user.getContactNumber()));
+        select(countryTaxCode, user.getCountryTaxCode());
         sendKeys(email, user.getUserName());
         uploadFile(System.getProperty("user.dir") + "\\src\\test\\resources\\tax_file.docx",
                 getElementsByClassJs(uploadFileClassName, 1));
@@ -87,7 +85,7 @@ public class DevProfilePage extends BasePage {
 
     }
 
-    public String getMembershipStatus(){
+    public String getMembershipStatus() {
         return getText(membershipStatus);
     }
 

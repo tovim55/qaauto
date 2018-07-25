@@ -1,6 +1,7 @@
 package com.verifone.entities;
 
 import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.infra.Company;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
@@ -32,6 +33,10 @@ public class EntitiesFactory {
 
             case "NewUser":
                 user = new User();
+                break;
+
+            case "Company":
+                user = new Company();
                 break;
 
             case "GmailUser":
