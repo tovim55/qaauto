@@ -25,9 +25,9 @@ public abstract class BaseTest {
     private static ExtentReports extent;
     private static ThreadLocal parentTest = new ThreadLocal();
     protected static ThreadLocal test = new ThreadLocal();
-    public Date date =new Date();
-    public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");;
-    public String reportLocation= "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
+    public Date date = new Date();
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+    public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
 
 
     @Parameters({"env", "portal"})
@@ -98,10 +98,10 @@ public abstract class BaseTest {
                 break;
         }
 
-        if (method.getName().contains("UI")) {
-            child.info("Closing Web Page");
-            SeleniumUtils.closeRuntimeBrowserInstance();
-        }
+//        if (method.getName().contains("UI")) {
+//            child.info("Closing Web Page");
+//            SeleniumUtils.closeRuntimeBrowserInstance();
+//        }
         extent.flush();
     }
 

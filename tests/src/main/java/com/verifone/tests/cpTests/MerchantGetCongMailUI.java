@@ -20,22 +20,10 @@ public class MerchantGetCongMailUI {
     	
     	BasePage.driver = SeleniumUtils.getDriver("CHROME");
     	BasePage.driver.navigate().to("https://getnada.com/#");
-    	
-    	// Click Add Inbox
-//    	Thread.sleep(2000);
-    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();  
-    	
-    	// Put email
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys("aeb90709d6164809a56447843ab87ac5");
-    	
-    	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
-    	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
-    	
-    	//  Accept
-    	BasePage.driver.findElement(By.linkText("ACCEPT")).click(); 
-    	
-    	//  Open Email
+		addNewEmail("aeb90709d6164809a56447843ab87ac5");
+
+
+		//  Open Email
     	Thread.sleep(2000);
     	BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
     	
@@ -53,5 +41,22 @@ public class MerchantGetCongMailUI {
     	
     	BasePage.driver.findElement(By.linkText("Activate Account")).click(); 
     }
+
+	static void addNewEmail(String emailName) throws InterruptedException {
+		// Click Add Inbox
+		Thread.sleep(2000);
+		BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
+
+		// Put email
+		BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
+		BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(emailName);
+		Thread.sleep(2000);
+
+		BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
+		BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
+
+		//  Accept
+		BasePage.driver.findElement(By.linkText("ACCEPT")).click();
+	}
 
 }

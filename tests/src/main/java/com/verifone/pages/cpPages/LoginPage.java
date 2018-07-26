@@ -1,10 +1,13 @@
 package com.verifone.pages.cpPages;
 
 
+import com.verifone.infra.Company;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
+
+import static com.verifone.utils.Assertions.assertTextContains;
 
 
 public class LoginPage extends BasePage {
@@ -22,6 +25,9 @@ public class LoginPage extends BasePage {
     private By toLoginPageBtn = By.partialLinkText("Log");
     private By loginBtn = By.id("btnPrimaryLogin");
     private By supportLoginBtn = By.id("signIn");
+    private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\"])[4]");
+    private By tableRows1 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[1]");
+    private By tableRows2 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[2]");
 
 
     public LoginPage() {
@@ -33,14 +39,8 @@ public class LoginPage extends BasePage {
     public void loginPageCp(User user) {
         sendKeys(username, user.getUserName());
         click(password);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
-//        sendKeys(password, user.getPassword());
-//        click(loginBtn);
+        sendKeys(password, user.getPassword());
+        click(loginBtn);
 
     }
 
@@ -56,6 +56,16 @@ public class LoginPage extends BasePage {
         sendKeys(supportUsername, userName);
         sendKeys(SupportPassword, user.getPassword());
         click(supportLoginBtn);
+    }
 
+    public void checkExistCompanies(Company user){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        click(companiesBtn);
+        assertTextContains(user.getCompanyName(), getText(tableRows1));
+        click(tableRows1);
     }
 }
