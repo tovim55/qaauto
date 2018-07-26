@@ -3,7 +3,6 @@ package com.verifone.tests.steps;
 import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.Company;
 import com.verifone.infra.User;
-import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.DevHomePage;
 import com.verifone.pages.cpPages.DevProfilePage;
@@ -33,8 +32,6 @@ public class Steps {
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(dev);
-//        System.out.println("fdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd");
-
     }
 
     public static void devLogin() {
@@ -42,8 +39,6 @@ public class Steps {
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(developer);
-//        System.out.println("fdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd");
-
     }
 
     public static void devLoginFillCompany(Company dev) throws AWTException, InterruptedException, IOException {
