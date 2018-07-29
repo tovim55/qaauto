@@ -1,7 +1,7 @@
 package com.verifone.utils.apiClient;
 
 import com.google.gson.JsonObject;
-import com.relevantcodes.extentreports.ExtentTest;
+import com.aventstack.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.io.IOException;
@@ -20,8 +20,12 @@ public class DataDrivenApi {
     private ExtentTest testLog;
 
 
-    public DataDrivenApi(ExtentTest testLog) {
-        this.testLog = testLog;
+//    public DataDrivenApi(ExtentTest testLog) {
+//        this.testLog = testLog;
+//    }
+
+    public DataDrivenApi(ExtentTest child) {
+        this.testLog = child;
     }
 
 
@@ -38,7 +42,7 @@ public class DataDrivenApi {
 
     private void validateResult(String expectedResult, String verifyList) {
         if (response != null)
-            testLog.log(LogStatus.INFO, "Response is:\n" + response.toString());
+            testLog.info("Response is:\n" + response.toString());
         if (verifyList != null) {
             for (String param : getListFrromString(verifyList)) {
                 assertTextContains(param, response.toString());
@@ -49,7 +53,7 @@ public class DataDrivenApi {
             for (String key : expectedResultMap.keySet()) {
                 if (response.has(key)) {
                     assertTextContains(expectedResultMap.get(key), response.get(key).toString());
-                    testLog.log(LogStatus.INFO, "Result as expected: " + response.get(key).toString());
+                    testLog.info("Result as expected: " + response.get(key).toString());
                 } else {
                     org.testng.Assert.fail("Key: '" + key + "'  Is not appear in response");
                 }
@@ -61,7 +65,7 @@ public class DataDrivenApi {
         if (accessToken.equals("true")) {
             response = getRequestWithHeaders(accSSOURL, "post", accGrantType, getMapFromStr(headersForGetToken), 200);
             headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());
-            testLog.log(LogStatus.INFO, "Access Token: " + response.get("access_token").getAsString());
+            testLog.info("Access Token: " + response.get("access_token").getAsString());
         }
     }
 }

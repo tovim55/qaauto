@@ -19,7 +19,7 @@
       "EDGE" - EDGE
       "IE" - Internet Explorer 
       --> 	
-      <parameter name = "browserType" value="FF"/>  
+      <parameter name = "browserType" value="CHROME"/>
       <parameter name = "urlDev" value="http://dev.cgateway-portal.verifone.com/"/>
       <parameter name = "urlTest" value="http://test.cgateway-portal.verifone.com/"/>
       <parameter name = "urlStaging1" value="http://Staging1.cgateway-portal.verifone.com/"/> 

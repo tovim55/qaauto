@@ -23,7 +23,7 @@ public class GetTokenApi extends BaseApi {
     	response = getPost("grant_type=password&username="+ user.getUserName() + "&password=" + user.getPassword() +"&scope=openid\"", 200);
         String accessToken = response.get("access_token").getAsString();
         System.out.println("access token was generated:  " + accessToken);
-        testLog.log(LogStatus.INFO, "access token was generated:  " + accessToken);
+        testLog.info("access token was generated:  " + accessToken);
         return accessToken;
     }
 

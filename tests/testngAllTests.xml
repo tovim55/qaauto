@@ -6,7 +6,7 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="QA"/>
+    <parameter name="env" value="${environment}"/>
 
 
     <!--Set Portal Variable: -->
@@ -21,17 +21,17 @@
         <!--FF-->
         <!--EDGE-->
         <!--IE-->
-        <parameter name="browserType" value="CHROME"/>
+        <parameter name="browserType" value="${browser}"/>
 
         <classes>
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
             <class name="com.verifone.tests.cpTests.SignUpTestUI"/>
             <class name="com.verifone.tests.cpTests.CompanyReview"/>
+            <class name="com.verifone.tests.cpTests.DevSupportTest"/>
+            <class name="com.verifone.tests.cpTests.CreateMerchantTest"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
             <class name="com.verifone.tests.cpTests.ManagerAddMerchantUI"/>
             <class name="com.verifone.tests.cpTests.MerchantGetCongMailUI"/>
-            <class name="com.verifone.tests.cgTests.LoginTest"/>
-            <class name="com.verifone.tests.api.tests.PubSubTest"/>
         </classes>
 
     </test>

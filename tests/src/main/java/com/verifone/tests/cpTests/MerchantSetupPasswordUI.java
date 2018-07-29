@@ -64,15 +64,15 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    private final static String docText = "These Standard Terms and Conditions for Verifone Services and Solutions";
 //    private final static String docAgreeBtnText = "Agree";
 //    private final static String merchantPageTitle = "Thank you!";
-    
+
     private final static int timeOut = 2000;
     private static String mId = "";
     private static Integer rowNumber=0;
     private static Integer getRowNumFromFile = 0;
 	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\merchantSetupPassword.xls";
 	private static Boolean TestPassFlag = true;
-	private static String capScreenShootPath;	
-	
+	private static String capScreenShootPath;
+
 	@BeforeTest
 	public void startDDTest() throws Exception{
 //	 		Get number of Rows from Data driven
@@ -87,21 +87,21 @@ public class MerchantSetupPasswordUI extends BaseTest {
 		return arrayObject;
 	}
 
-	@Test(testName = "Merchant Setup Password Test", dataProvider = "merchantSetupPassword", groups = { "Localization" })	
+	@Test(testName = "Merchant Setup Password Test", dataProvider = "merchantSetupPassword", groups = { "Localization" })
 //    @Test(groups = {"CP-portal"})
-    public void MerchantSetupPasswordUI(String Lang, String EOAdminMail, String EOAdminPwd, String mailInvText, String actAccountBtnLabel, String setupTitle, String setupText, String setupPasswordHint, 
+    public void MerchantSetupPasswordUI(String Lang, String EOAdminMail, String EOAdminPwd, String mailInvText, String actAccountBtnLabel, String setupTitle, String setupText, String setupPasswordHint,
     		String setupConfirmPasswordHint, String setupCheckBox, String setupCheckBoxAgr, String setupSubmitBtn, String setupErrorFormat, String setupErrorAccept, String setupErrorAcceptAgr, String setupErrorMatch, String textTOS1,
     		String textTOS2, String textTOS3, String textTOS4, String textTOS5, String TOSLnk, String TOSDeclineBtn, String TOSAgreeBtn,
     		String textAgreement1,
     		String textAgreement2, String textAgreement3, String textAgreement4, String textAgreement5, String AgreementLnk, String AgreementDeclineBtn, String AgreementAgreeBtn,
     		String PasswordSetupFinalTitle, String PasswordSetupFinalText) throws Exception {
-    	
+
 //        starTestLog("Merchant Setup Password Test", "Merchant Setup Password Test");
         rowNumber = rowNumber+1;
         testLog.log(LogStatus.INFO, "Data Driven line number: " + rowNumber);
-        
+
         testLog.log(LogStatus.INFO, "---------------------------------------------Create Merchant by API---------------------------------------------");
-    	
+
         User user = new User(EOAdminMail, EOAdminPwd);
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken(user);
@@ -112,50 +112,50 @@ public class MerchantSetupPasswordUI extends BaseTest {
 	        	break;
         }
         System.out.println("MID: " + mId);
-        
-//      Navigate to Getnada    	
+
+//      Navigate to Getnada
 //    	BasePage.driver = SeleniumUtils.getDriver("CHROME");
         testLog.log(LogStatus.INFO, "-------------------------------------------------Getnada service-------------------------------------------------");
     	BasePage.driver.navigate().to("https://getnada.com/#");
-    	
+
     	// Click Add Inbox
 
-    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();  
-    	
+    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
+
     	// Put email
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
     	Thread.sleep(timeOut+2000);
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(mId);
-    	
+
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
-    	
+
     	//  Accept
-    	BasePage.driver.findElement(By.linkText("ACCEPT")).click(); 
+    	BasePage.driver.findElement(By.linkText("ACCEPT")).click();
     	testLog.log(LogStatus.INFO, "Create email inbox: " + mId + "getnada.com: Succesfull");
-    	
+
     	//  Open Email
     	Thread.sleep(timeOut);
     	BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
     	testLog.log(LogStatus.INFO, "Found Invitation mail: Succesfull");
-    	
-    	//   Get email text    	
-    	
+
+    	//   Get email text
+
     	Thread.sleep(timeOut);
-    	
+
     	WebElement iFrame = BasePage.driver.findElement(By.id("idIframe"));
     	BasePage.driver.switchTo().frame(iFrame);
     	String mailText = BasePage.driver.getPageSource();
-    	
+
     	Boolean currentResult = mailText.contains(mailInvText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Invitation mail include text: " + mailInvText + "...: Succesfull");
     	} else {
     		TestPassFlag = false;
     		testLog.log(LogStatus.ERROR, "Invitation mail include text: " + mailText + ". Expected: " + mailInvText);
-    	}    	
-    	System.out.println("Mail text: " + currentResult);	
-    	
+    	}
+    	System.out.println("Mail text: " + currentResult);
+
     	String btnText = BasePage.driver.findElement(By.xpath(mailActivateButton)).getText();
     	currentResult = btnText.contains(actAccountBtnLabel);
     	if (currentResult == true) {
@@ -163,21 +163,21 @@ public class MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.log(LogStatus.ERROR, "Invitation mail Activate button text: " + btnText + ". Expected: " + actAccountBtnLabel);
-    	}    	
-    	BasePage.driver.findElement(By.xpath(mailActivateButton)).click(); 
-    	
-    	testLog.log(LogStatus.INFO, "Click on: " + btnText + " button: Succesfull"); 
-    
-    	
+    	}
+    	BasePage.driver.findElement(By.xpath(mailActivateButton)).click();
+
+    	testLog.log(LogStatus.INFO, "Click on: " + btnText + " button: Succesfull");
+
+
 //		Setup Password
     	testLog.log(LogStatus.INFO, "-----------------------------------------------Setup Password page-----------------------------------------------");
-    	
+
     	Thread.sleep(timeOut + 2000);
     	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
 
-    	SetupPasswordPage SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");   
-    	
+    	SetupPasswordPage SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");
+
     	String pgText = SetupPasswordPage.pageTitle();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupTitle);
@@ -190,7 +190,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	pgText = SetupPasswordPage.pageText();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupText);
@@ -203,7 +203,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	pgText = SetupPasswordPage.setupPasswordHint();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupPasswordHint);
@@ -216,7 +216,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	pgText = SetupPasswordPage.setupConfirmPasswordHint();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupConfirmPasswordHint);
@@ -229,7 +229,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	pgText = SetupPasswordPage.setupCheckBoxText();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupCheckBox);
@@ -242,7 +242,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	pgText = SetupPasswordPage.setupCheckBoxAgrText();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupCheckBoxAgr);
@@ -255,7 +255,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	pgText = SetupPasswordPage.setupSubmitBtnLabel();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupSubmitBtn);
@@ -268,9 +268,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	//		Input blank space as Password and ConfirmPassword
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Input password = ' ', confirm password = ' '");
     	SetupPasswordPage.SetupPasswordPageCp(" ", " ");
     	SetupPasswordPage.clickOnSubmitBtn();
@@ -286,9 +286,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	//		Not agree with TOS and aGREEMENT
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Not accept TOS");
     	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");
     	SetupPasswordPage.clickOnSubmitBtn();
@@ -304,7 +304,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	errText = SetupPasswordPage.errorAgr();
     	System.out.println(errText);
     	currentResult = errText.contains(setupErrorAcceptAgr);
@@ -317,12 +317,12 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
-    	
+
+
 //     Input different Password and ConfirmPassword
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Input password = 'Veri1234', confirm password = 'Veri5234'");
-    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri5234");   	
+    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri5234");
     	SetupPasswordPage.clickOnSubmitBtn();
     	Thread.sleep(timeOut);
     	errText = SetupPasswordPage.errorMatch();
@@ -337,20 +337,20 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //      Input correct Password and ConfirmPassword, pass to TOS window, verify text
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Input password = 'Veri1234', confirm password = 'Veri1234'");
-    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");   
+    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");
     	testLog.log(LogStatus.INFO, "Display TOS");
     	SetupPasswordPage.clickOnchboxTOS();
-    	
+
     	testLog.log(LogStatus.INFO, "--------------------------------------------------TOS document---------------------------------------------------");
-    	
+
     	Thread.sleep(timeOut);
-    	
+
 //    	Verify TOS page text
-    	String tText = SetupPasswordPage.tosText();   	
+    	String tText = SetupPasswordPage.tosText();
     	currentResult = tText.contains(textTOS1);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found TOS text: " + textTOS1 + "...: Succesfull");
@@ -361,7 +361,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textTOS2);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found TOS text: " + textTOS2 + "...: Succesfull");
@@ -372,7 +372,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textTOS3);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found TOS text: " + textTOS3 + "...: Succesfull");
@@ -383,7 +383,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textTOS4);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found TOS text: " + textTOS4 + "...: Succesfull");
@@ -394,7 +394,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textTOS5);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found TOS text: " + textTOS5 + "...: Succesfull");
@@ -406,8 +406,8 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
     	System.out.println(tText);
-    	
-    	tText = SetupPasswordPage.tosLnkText();   	
+
+    	tText = SetupPasswordPage.tosLnkText();
     	currentResult = tText.contains(TOSLnk);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found link text: " + TOSLnk + "...: Succesfull");
@@ -417,10 +417,10 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		capScreenShootPath = SeleniumUtils.getScreenshot();
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-    	}   	
+    	}
     	System.out.println(tText);
-    	
-    	tText = SetupPasswordPage.tosDeclineBtnLabel();   	
+
+    	tText = SetupPasswordPage.tosDeclineBtnLabel();
     	currentResult = tText.contains(TOSDeclineBtn);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found Decline button label: " + TOSDeclineBtn + "...: Succesfull");
@@ -430,10 +430,10 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		capScreenShootPath = SeleniumUtils.getScreenshot();
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-    	}   	
+    	}
     	System.out.println(tText);
-    	
-    	tText = SetupPasswordPage.tosAgreeBtnLabel();   	
+
+    	tText = SetupPasswordPage.tosAgreeBtnLabel();
     	currentResult = tText.contains(TOSAgreeBtn);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found Agree button label: " + TOSAgreeBtn + "...: Succesfull");
@@ -443,25 +443,25 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		capScreenShootPath = SeleniumUtils.getScreenshot();
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-    	}   	
+    	}
     	System.out.println(tText);
-    	
+
 //		Agree with TOS
     	testLog.log(LogStatus.INFO, "Accept TOS");
     	SetupPasswordPage.clickOnAcceptTOSBtn();
     	Thread.sleep(timeOut - 1000);
-    	
+
 //      Pass to Agreement window, verify text
-    	
+
     	testLog.log(LogStatus.INFO, "Display Agreement");
     	SetupPasswordPage.clickOnchboxAgreement();
- 	
+
     	testLog.log(LogStatus.INFO, "-----------------------------------------------Agreement document------------------------------------------------");
-    	
+
     	Thread.sleep(timeOut);
-    	
+
 //    	Verify Agreement page text
-    	tText = SetupPasswordPage.tosText();   	
+    	tText = SetupPasswordPage.tosText();
     	currentResult = tText.contains(textAgreement1);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Agreement text: " + textAgreement1 + "...: Succesfull");
@@ -472,7 +472,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textAgreement2);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Agreement text: " + textAgreement2 + "...: Succesfull");
@@ -483,7 +483,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textAgreement3);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Agreement text: " + textAgreement3 + "...: Succesfull");
@@ -494,7 +494,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textAgreement4);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Agreement text: " + textAgreement4 + "...: Succesfull");
@@ -505,7 +505,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	currentResult = tText.contains(textAgreement5);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Agreement text: " + textAgreement5 + "...: Succesfull");
@@ -517,8 +517,8 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
     	System.out.println(tText);
-    	
-    	tText = SetupPasswordPage.agreementLnkText();   	
+
+    	tText = SetupPasswordPage.agreementLnkText();
     	currentResult = tText.contains(AgreementLnk);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found link text: " + AgreementLnk + "...: Succesfull");
@@ -528,10 +528,10 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		capScreenShootPath = SeleniumUtils.getScreenshot();
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-    	}   	
+    	}
     	System.out.println(tText);
-    	
-    	tText = SetupPasswordPage.agreementDeclineBtnLabel();   	
+
+    	tText = SetupPasswordPage.agreementDeclineBtnLabel();
     	currentResult = tText.contains(AgreementDeclineBtn);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Decline button label: " + AgreementDeclineBtn + "...: Succesfull");
@@ -541,10 +541,10 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		capScreenShootPath = SeleniumUtils.getScreenshot();
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-    	}   	
+    	}
     	System.out.println(tText);
-    	
-    	tText = SetupPasswordPage.agreementAgreeBtnLabel();   	
+
+    	tText = SetupPasswordPage.agreementAgreeBtnLabel();
     	currentResult = tText.contains(AgreementAgreeBtn);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Agreement doc: Found Agree button label: " + AgreementAgreeBtn + "...: Succesfull");
@@ -554,28 +554,28 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		capScreenShootPath = SeleniumUtils.getScreenshot();
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
-    	}   	
+    	}
     	System.out.println(tText);
-    	
+
 //		Agree with Agreement
     	testLog.log(LogStatus.INFO, "Accept Agreement");
     	SetupPasswordPage.clickOnAcceptAgrBtn();
     	Thread.sleep(timeOut - 1000);
     	testLog.log(LogStatus.INFO, "Submit Setup");
     	SetupPasswordPage.clickOnSubmitBtn();
-    	
+
 //		Test Password Setup Final Page
 
 	testLog.log(LogStatus.INFO, "---------------------------------------Password Setup Final page------------------------------------------");
-	
+
 	Thread.sleep(timeOut + 2000);
 	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
 	BasePage.driver.switchTo().window(availableWindows.get(1));
-	    	
-	PasswordSetupPage PasswordSetupPage = (PasswordSetupPage) PageFactory.getPage("PasswordSetupPage");  
-	
+
+	PasswordSetupPage PasswordSetupPage = (PasswordSetupPage) PageFactory.getPage("PasswordSetupPage");
+
 //	Compare Password Setup Page Title with expected
-	tText = PasswordSetupPage.pageTitle();   	
+	tText = PasswordSetupPage.pageTitle();
 	currentResult = tText.contains(PasswordSetupFinalTitle);
 	if (currentResult == true) {
 		testLog.log(LogStatus.PASS, "Password Setup Final page: Found title: " + PasswordSetupFinalTitle + "...: Succesfull");
@@ -586,9 +586,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 	}
-	
+
 //	Compare Password Setup Page text with expected
-	tText = PasswordSetupPage.pageText();   	
+	tText = PasswordSetupPage.pageText();
 	currentResult = tText.contains(PasswordSetupFinalText);
 	if (currentResult == true) {
 		testLog.log(LogStatus.PASS, "Password Setup Final pag: Found text: " + PasswordSetupFinalText + "...: Succesfull");
@@ -599,20 +599,20 @@ public class MerchantSetupPasswordUI extends BaseTest {
 		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 	}
-	
+
 
 ////		Test Welcome Page
 //
 //    	testLog.log(LogStatus.INFO, "-------------------------------------------------Welcome page----------------------------------------------------");
-//    	
+//
 //    	Thread.sleep(timeOut + 2000);
 //    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
 //    	BasePage.driver.switchTo().window(availableWindows.get(1));
-//    	    	
-//    	WelcomePage WelcomePage = (WelcomePage) PageFactory.getPage("WelcomePage");  
-//    	
+//
+//    	WelcomePage WelcomePage = (WelcomePage) PageFactory.getPage("WelcomePage");
+//
 ////    	Compare Welcome Title with expected
-//    	tText = WelcomePage.pageTitle();   	
+//    	tText = WelcomePage.pageTitle();
 //    	currentResult = tText.contains(welcomeTitle);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Welcome page: Found title: " + welcomeTitle + "...: Succesfull");
@@ -623,9 +623,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Compare Welcome text with expected
-//    	tText = WelcomePage.pageText1();   	
+//    	tText = WelcomePage.pageText1();
 //    	currentResult = tText.contains(welcomeText1);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Welcome page: Found text: " + welcomeText1 + "...: Succesfull");
@@ -636,9 +636,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Compare Welcome text with expected
-//    	tText = WelcomePage.pageText2();   	
+//    	tText = WelcomePage.pageText2();
 //    	currentResult = tText.contains(welcomeText2);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Welcome page: Found text: " + welcomeText2 + "...: Succesfull");
@@ -649,9 +649,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Compare Welcome page LogIn button label with expected
-//    	tText = WelcomePage.loginBtnLabel();   	
+//    	tText = WelcomePage.loginBtnLabel();
 //    	currentResult = tText.contains(welcomeLoginBtn);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Welcome page: Found LogIn button label: " + welcomeLoginBtn + "...: Succesfull");
@@ -662,20 +662,20 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Click Login Button
 //    	WelcomePage.clickLoginBtn();
-//    	
+//
 ////		Test Login
 ////    	Setup Login button
 //    	testLog.log(LogStatus.INFO, "---------------------------------------------------Login page----------------------------------------------------");
-//    	
+//
 //    	Thread.sleep(timeOut + 2000);
 //    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
 //    	BasePage.driver.switchTo().window(availableWindows.get(1));
-//    	
+//
 ////    	Compare login Title text with expected
-//    	tText = SetupPasswordPage.loginTitle();   	
+//    	tText = SetupPasswordPage.loginTitle();
 //    	currentResult = tText.contains(loginTitle);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found title: " + loginTitle + "...: Succesfull");
@@ -686,9 +686,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
-////    	Compare login Email text with expected    	
-//    	tText = SetupPasswordPage.loginEmail();   	
+//
+////    	Compare login Email text with expected
+//    	tText = SetupPasswordPage.loginEmail();
 //    	currentResult = tText.contains(loginEmail);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Email field hint: " + loginEmail + "...: Succesfull");
@@ -699,9 +699,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
-////    	Compare login Password text with expected  
-//    	tText = SetupPasswordPage.loginPassword();   	
+//
+////    	Compare login Password text with expected
+//    	tText = SetupPasswordPage.loginPassword();
 //    	currentResult = tText.contains(loginPassword);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Password field hint: " + loginPassword + "...: Succesfull");
@@ -712,9 +712,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
-////    	Compare login Forgot link text with expected  
-//    	tText = SetupPasswordPage.loginForgotLink();   	
+//
+////    	Compare login Forgot link text with expected
+//    	tText = SetupPasswordPage.loginForgotLink();
 //    	currentResult = tText.contains(loginForgotLink);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Password field hint: " + loginForgotLink + "...: Succesfull");
@@ -725,9 +725,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//   	
-////    	Compare login button text with expected  
-//    	tText = SetupPasswordPage.loginBtnLabel();   	
+//
+////    	Compare login button text with expected
+//    	tText = SetupPasswordPage.loginBtnLabel();
 //    	currentResult = tText.contains(loginBtnLabel);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Login button label: " + loginBtnLabel + "...: Succesfull");
@@ -738,12 +738,12 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Click on Email field, click out, get and Compare mandatory error
 //    	SetupPasswordPage.loginInputEmail(ulMail);
 //    	testLog.log(LogStatus.INFO, "Login page: Input Email = ' '");
 //    	Thread.sleep(timeOut - 1000);
-//    	tText = SetupPasswordPage.lerrorMandatoryField();   	
+//    	tText = SetupPasswordPage.lerrorMandatoryField();
 //    	currentResult = tText.contains(loginErrorMandatoryField);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Mandatory error: " + loginErrorMandatoryField + "...: Succesfull");
@@ -754,12 +754,12 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//     	
+//
 ////    	Click on Password field, click out, get and Compare mandatory error
 //    	SetupPasswordPage.loginInputPassword(ulPassword);
 //    	testLog.log(LogStatus.INFO, "Login page: Input Password = ' '");
 //    	Thread.sleep(timeOut - 1000);
-//    	tText = SetupPasswordPage.lerrorMandatoryField();   	
+//    	tText = SetupPasswordPage.lerrorMandatoryField();
 //    	currentResult = tText.contains(loginErrorMandatoryField);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Mandatory error: " + loginErrorMandatoryField + "...: Succesfull");
@@ -770,13 +770,13 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Click on Email field, input invalid email, click out, get and Compare validation error
 //    	ulMail = "InvalidEmail";
 //    	SetupPasswordPage.loginInputEmail(ulMail);
 //    	testLog.log(LogStatus.INFO, "Login page: Input Email = " + ulMail);
 //    	Thread.sleep(timeOut - 1000);
-//    	tText = SetupPasswordPage.lerrorMandatoryField();   	
+//    	tText = SetupPasswordPage.lerrorMandatoryField();
 //    	currentResult = tText.contains(loginErrorValidationMail);
 //    	if (currentResult == true) {
 //    		testLog.log(LogStatus.PASS, "Login page: Found Invalid email error: " + loginErrorValidationMail + "...: Succesfull");
@@ -787,7 +787,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Input Not Matched Email and Password. Compare validation error
 //    	ulMail = "ValidEmail@getnada.com";
 //    	ulPassword = "Veri1234";
@@ -807,7 +807,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Input Valid Email and Password. Login
 //    	ulMail = mId + "@getnada.com";
 //    	ulPassword = "Veri1234";
@@ -817,9 +817,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    	Thread.sleep(timeOut - 1000);
 //    	SetupPasswordPage.loginCpBtn_from_LoginSetup();
 //    	testLog.log(LogStatus.INFO, "Click Login button");
-//    	
+//
 //    	testLog.log(LogStatus.INFO, "-------------------------------------------------Agreement page--------------------------------------------------");
-//    	
+//
 ////    	Get Title, Text, button label from Agreement page. Compare with Expected.
 //    	Thread.sleep(timeOut - 1000);
 //    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
@@ -836,7 +836,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.pageText();
 //    	currentResult = tText.contains(pageAgreementText);
 //    	if (currentResult == true) {
@@ -848,7 +848,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.acceptBtnText();
 //    	currentResult = tText.contains(pageAgreementBtnText);
 //    	if (currentResult == true) {
@@ -860,13 +860,13 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 ////    	Click on Accept Merchant Agreement
 //    	AcceptMerchantAgreementPage.clickAcceptBtn();
 //    	testLog.log(LogStatus.INFO, "Click Accept button");
-//    	
+//
 //    	testLog.log(LogStatus.INFO, "-----------------------------------------------Agreement document------------------------------------------------");
-//    	
+//
 ////    	Get Verifone Merchant Agreement, Compare header, text, button text with expected and Agree
 //    	Thread.sleep(timeOut - 1000);
 //    	tText = AcceptMerchantAgreementPage.docHeader();
@@ -880,7 +880,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.docHeader2();
 //    	currentResult = tText.contains(docHeader2);
 //    	if (currentResult == true) {
@@ -892,7 +892,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.docHeader3();
 //    	currentResult = tText.contains(docHeader3);
 //    	if (currentResult == true) {
@@ -904,7 +904,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.docText();
 //    	currentResult = tText.contains(docText);
 //    	if (currentResult == true) {
@@ -916,7 +916,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.docDeclineBtnText();
 //    	currentResult = tText.contains(docDeclineBtnText);
 //    	if (currentResult == true) {
@@ -928,7 +928,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = AcceptMerchantAgreementPage.docAgreeBtnText();
 //    	currentResult = tText.contains(docAgreeBtnText);
 //    	if (currentResult == true) {
@@ -942,9 +942,9 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    	}
 //    	testLog.log(LogStatus.INFO, "Agreement document: Accept");
 //    	AcceptMerchantAgreementPage.clickDocAcceptBtn();
-//    	
+//
 //    	testLog.log(LogStatus.INFO, "--------------------------------------------------Merchant page--------------------------------------------------");
-//    	
+//
 ////		Get Merchant View Title and Text
 //    	Thread.sleep(timeOut - 1000);
 //    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
@@ -961,7 +961,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = MerchantViewPage.pageText1();
 //    	currentResult = tText.contains(merchantPageText1);
 //    	if (currentResult == true) {
@@ -973,7 +973,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
 //    	tText = MerchantViewPage.pageText2();
 //    	currentResult = tText.contains(merchantPageText2);
 //    	if (currentResult == true) {
@@ -985,7 +985,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
 //    	}
-//    	
+//
     	Thread.sleep(timeOut);
     	Assert.assertTrue(TestPassFlag);
     	BasePage.driver.quit();

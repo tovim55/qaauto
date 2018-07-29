@@ -1,62 +1,66 @@
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\DevHomePage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\PubSubDdtTest.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\DataDrivenUtils.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\DataDrivenApi.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\getEoeadminData\GetEoadminDataApi.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\HtmlReports.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\LoginDataDriven.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\VerifyXMLFile.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\CGApplicationPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\eoPages\HomePage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantForgotPasswordUI.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\SignUpPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\Columns.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\LoginTest.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\cpEstatemanagerEstatesupport.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\SignUpTestUI.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\AcceptMerchantAgreementPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cgPages\CGLoginPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\BlackList\BlackListPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\BasePage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\ExtentHtmlReporter.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\General\LoginDevPortal.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cgTests\LoginTest.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\ManagerAddMerchantUI.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\Applications\ApplicationsPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\CompanyReview.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\createMerchant\CreateMerchant.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\BlackList\ErrorMsgs.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\MerchantViewPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\entities\EntitiesFactory.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantSetupPasswordUI.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\VerifoneAccountLoginPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\SignUpTest.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\tmp.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\Applications\ErrorMsgs.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\ForgotPasswordPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\LoginPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\ExtentReportsClass.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\General\LoginCGPortal.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\Assertions.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\EmailConfirmPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\DevProfilePage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\SetupPasswordPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantResetPasswordUI.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\BaseApi.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\ModifyXMLFile.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\WebPortal.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\testXML.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\DevPortal\DevPortal.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\BaseTest.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\EntitiesFactory.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\testAppl.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\getToken\GetTokenApi.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\ResetThankYou.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\General\TestNgPortal.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\testBlackList.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\Mail\GmailApiClient.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\PubSubTest.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\PageFactory.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantGetCongMailUI.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\ResetPasswordPage.java
-C:\FEQAAutomation\env_extensions\feqaautomation\tests\src\main\java\com\verifone\utils\Mail\InboxGetnada.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\General\TestNgPortal.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\ModifyXMLFile.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\SignUpTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\Applications\ErrorMsgs.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantSetupPasswordUI.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\cpEstatemanagerEstatesupport.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\DevSupportHomePage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\VerifoneAccountLoginPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantGetCongMailUI.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\BasePage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\EmailConfirmPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\Mail\GmailApiClient.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\Columns.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\testXML.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\CGApplicationPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\CloudApiDdt.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\EntitiesFactory.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\ExtentReportsClass.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\General\LoginDevPortal.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\ResetPasswordPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\WebPortal.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\PageFactory.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\LoginPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\getEoeadminData\GetEoadminDataApi.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\DataDrivenUtils.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\SetupPasswordPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cgTests\LoginTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantResetPasswordUI.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\getToken\GetTokenApi.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\DevSupportTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\VerifyXMLFile.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\ResetThankYou.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\entities\EntitiesFactory.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\SignUpTestUI.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\createMerchant\CreateMerchantDE.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\ManagerAddMerchantUI.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\LoginTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\testBlackList.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\createMerchant\CreateMerchant.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\LoginDataDriven.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\BaseApi.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\tmp.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\MerchantViewPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\MerchantForgotPasswordUI.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\PubSubDdtTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\BlackList\ErrorMsgs.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\General\LoginCGPortal.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\eoPages\HomePage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\BlackList\BlackListPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\ExtentHtmlReporter.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\AcceptMerchantAgreementPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\DevHomePage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\apiClient\DataDrivenApi.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cgPages\CGLoginPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\Assertions.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\Mail\InboxGetnada.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\DevUsersPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\oldTests\testAppl.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\Applications\ApplicationsPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\utils\DevPortal\DevPortal.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\SignUpPage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\cpTests\CompanyReview.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\DevProfilePage.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\api\tests\PubSubTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\tests\BaseTest.java
+C:\Users\yonir1\Desktop\cpp projects\CPP-3712\feqaautomation\tests\src\main\java\com\verifone\pages\cpPages\ForgotPasswordPage.java

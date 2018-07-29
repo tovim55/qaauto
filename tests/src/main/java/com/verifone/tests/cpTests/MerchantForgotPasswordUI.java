@@ -56,7 +56,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
 //    private final static String EmailConfPageTitle = "Email Confirmed!";
 //    private final static String EmailConfPageText = "We''ve sent password reset instructions to login into your";
 //    private final static String EmailConfPageMutedText = "Note: Check your spam folder if you don''t see";
-	
+
 	private static String mailActivateButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/p[5]/a";
 	private final static int timeOut = 2000;
     private static String mId = "";
@@ -66,7 +66,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
 	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\merchantForgotPassword.xls";
 	private static Boolean TestPassFlag = true;
 	private static String capScreenShootPath;
-	
+
 	@BeforeTest
 	public void startDDTest() throws Exception{
 //	 		Get number of Rows from Data driven
@@ -80,18 +80,18 @@ public class MerchantForgotPasswordUI extends BaseTest {
 		Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "merchantForgotPassword");
 		return arrayObject;
 	}
-	
+
 	@Test(testName = "Merchant Forgot Password Test", dataProvider = "merchantForgotPassword", groups = { "Localization1" })
     public void MerchantForgotPasswordUI(String Lang, String EOAdminMail, String EOAdminPwd, String mailInvText, String actAccountBtnLabel, String setupText, String setupErrorFormat, String setupErrorAccept, String setupErrorMatch, String textTOS,
     		String loginTitle, String loginEmail, String loginPassword, String loginForgotLink, String loginBtnLabel, String ForgotPageTitle,
     		String ForgotPageText, String ForgotPageMailLabelText, String ForgotPageLnkLoginText, String ForgotPageBtnSendText,
     		String ForgotErrorEmptyText, String ForgotErrorInvalidText, String EmailConfPageTitle, String EmailConfPageText, String EmailConfPageMutedText) throws Exception {
-    	
+
 //        starTestLog("Merchant Forgot Password Test", "Merchant Forgot Password Test");
         rowNumber = rowNumber+1;
         testLog.log(LogStatus.INFO, "Data Driven line number: " + rowNumber);
         testLog.log(LogStatus.INFO, "---------------------------------------------Create Merchant by API---------------------------------------------");
-    	
+
         User user = new User(EOAdminMail, EOAdminPwd);
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken(user);
@@ -103,51 +103,51 @@ public class MerchantForgotPasswordUI extends BaseTest {
         }
         System.out.println("MID: " + mId);
 
-        
+
     	//      Navigate to Getnada
-        
+
         testLog.log(LogStatus.INFO, "-------------------------------------------------Getnada service-------------------------------------------------");
     	BasePage.driver.navigate().to("https://getnada.com/#");
-    	
+
     	// Click Add Inbox
 
-    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();  
-    	
+    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
+
     	// Put email
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
     	Thread.sleep(timeOut+2000);
     	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(mId);
-    	
+
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
-    	
+
     	//  Accept
-    	BasePage.driver.findElement(By.linkText("ACCEPT")).click(); 
-    	
+    	BasePage.driver.findElement(By.linkText("ACCEPT")).click();
+
     	testLog.log(LogStatus.INFO, "Create email inbox: " + mId + "getnada.com: Succesfull");
-    	
+
     	//  Open Email
     	Thread.sleep(timeOut);
     	BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
-    	
+
     	testLog.log(LogStatus.INFO, "Found Invitation mail: Succesfull");
-    	//   Get email text    	
-    	
+    	//   Get email text
+
     	Thread.sleep(timeOut);
-    	
+
     	WebElement iFrame = BasePage.driver.findElement(By.id("idIframe"));
     	BasePage.driver.switchTo().frame(iFrame);
     	String mailText = BasePage.driver.getPageSource();
-    	
+
     	Boolean currentResult = mailText.contains(mailInvText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Invitation mail include text: " + mailInvText + "...: Succesfull");
     	} else {
     		TestPassFlag = false;
     		testLog.log(LogStatus.ERROR, "Invitation mail include text: " + mailText + ". Expected: " + mailInvText);
-    	}    	
-    	System.out.println("Mail text: " + currentResult);	
-    	
+    	}
+    	System.out.println("Mail text: " + currentResult);
+
     	String btnText = BasePage.driver.findElement(By.xpath(mailActivateButton)).getText();
     	currentResult = btnText.contains(actAccountBtnLabel);
     	if (currentResult == true) {
@@ -155,20 +155,20 @@ public class MerchantForgotPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.log(LogStatus.ERROR, "Invitation mail Activate button text: " + btnText + ". Expected: " + actAccountBtnLabel);
-    	}    	
-    	BasePage.driver.findElement(By.xpath(mailActivateButton)).click(); 
-    	
-    	testLog.log(LogStatus.INFO, "Click on: " + btnText + " button: Succesfull"); 
-    
-    	
+    	}
+    	BasePage.driver.findElement(By.xpath(mailActivateButton)).click();
+
+    	testLog.log(LogStatus.INFO, "Click on: " + btnText + " button: Succesfull");
+
+
     	//		Setup Password
     	testLog.log(LogStatus.INFO, "-----------------------------------------------Setup Password page-----------------------------------------------");
-    	
+
     	Thread.sleep(timeOut + 2000);
     	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
 
-    	SetupPasswordPage SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");   
+    	SetupPasswordPage SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");
     	String pgText = SetupPasswordPage.pageText();
     	System.out.println(pgText);
     	currentResult = pgText.contains(setupText);
@@ -185,9 +185,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
 
     	JavascriptExecutor jse = (JavascriptExecutor)BasePage.driver;
     	jse.executeScript("var language = window.navigator.userLanguage || window.navigator.language");
-    	
+
     	//		Input blank space as Password and ConfirmPassword
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Input password = ' ', confirm password = ' '");
     	SetupPasswordPage.SetupPasswordPageCp(" ", " ");
     	SetupPasswordPage.clickOnSubmitBtn();
@@ -203,9 +203,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	//		Not agree with TOS
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Not accept TOS");
     	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");
     	SetupPasswordPage.clickOnSubmitBtn();
@@ -221,11 +221,11 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	//     Input different Password and ConfirmPassword
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Input password = 'Veri1234', confirm password = 'Veri5234'");
-    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri5234");   	
+    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri5234");
     	SetupPasswordPage.clickOnSubmitBtn();
     	Thread.sleep(timeOut);
     	errText = SetupPasswordPage.errorMatch();
@@ -240,19 +240,19 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //      Input correct Password and ConfirmPassword, pass to TOS window, verify text
-    	
+
     	testLog.log(LogStatus.INFO, "Setup page: Input password = 'Veri1234', confirm password = 'Veri1234'");
-    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");   
+    	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");
     	testLog.log(LogStatus.INFO, "Display TOS");
     	SetupPasswordPage.clickOnchboxTOS();
-    	
+
     	testLog.log(LogStatus.INFO, "--------------------------------------------------TOS document---------------------------------------------------");
-    	
+
     	Thread.sleep(timeOut);
 //    	Verify TOS page text
-    	String tText = SetupPasswordPage.tosText();   	
+    	String tText = SetupPasswordPage.tosText();
     	currentResult = tText.contains(textTOS);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "TOS doc: Found TOS text: " + textTOS + "...: Succesfull");
@@ -264,42 +264,42 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
     	System.out.println(tText);
-    	
+
 //		Agree with TOS
     	testLog.log(LogStatus.INFO, "Accept TOS");
     	SetupPasswordPage.clickOnAcceptTOSBtn();
     	Thread.sleep(timeOut - 1000);
     	testLog.log(LogStatus.INFO, "Submit Setup");
     	SetupPasswordPage.clickOnSubmitBtn();
-    	
+
 //		Test Login
 //    	Setup Login button
-    	
+
     	Thread.sleep(timeOut + 2000);
     	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
-    	testLog.log(LogStatus.INFO, "Navigate to Login page");    	
+    	testLog.log(LogStatus.INFO, "Navigate to Login page");
     	SetupPasswordPage.loginCpLnk_from_LoginSetup();
-    	
+
     	testLog.log(LogStatus.INFO, "---------------------------------------------------Login page----------------------------------------------------");
 
 //    	Click on Forgot Password link
     	Thread.sleep(timeOut + 1000);
     	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
-    	testLog.log(LogStatus.INFO, "Navigate to Forgot Password page"); 
+    	testLog.log(LogStatus.INFO, "Navigate to Forgot Password page");
     	SetupPasswordPage.loginForgotLinkClick();
-    	
+
     	testLog.log(LogStatus.INFO, "----------------------------------------------Forgot Password page-----------------------------------------------");
-    	    	
-//    	Compare Title, Text, Email text, Send button label, Login link label with expected on Forgot Password page 
+
+//    	Compare Title, Text, Email text, Send button label, Login link label with expected on Forgot Password page
     	Thread.sleep(timeOut + 3000);
     	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
     	ForgotPasswordPage ForgotPasswordPage = (ForgotPasswordPage) PageFactory.getPage("ForgotPasswordPage");
-  	
+
 //    	Compare Forgot page title with expected
-    	tText = ForgotPasswordPage.pageTitle(); 	
+    	tText = ForgotPasswordPage.pageTitle();
     	currentResult = tText.contains(ForgotPageTitle);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Forgot Password page: Found title: " + ForgotPageTitle + "...: Succesfull");
@@ -310,9 +310,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Compare Forgot page text with expected
-    	tText = ForgotPasswordPage.pageText(); 	
+    	tText = ForgotPasswordPage.pageText();
     	currentResult = tText.contains(ForgotPageText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Forgot Password page: Found text: " + ForgotPageText + "...: Succesfull");
@@ -323,9 +323,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Compare Forgot page Mail label with expected
-    	tText = ForgotPasswordPage.mailLabelText(); 	
+    	tText = ForgotPasswordPage.mailLabelText();
     	currentResult = tText.contains(ForgotPageMailLabelText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Forgot Password page: Found mail field hint: " + ForgotPageMailLabelText + "...: Succesfull");
@@ -336,9 +336,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Compare Forgot page Login link text with expected
-    	tText = ForgotPasswordPage.btnSendText(); 	
+    	tText = ForgotPasswordPage.btnSendText();
     	currentResult = tText.contains(ForgotPageBtnSendText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Forgot Password page: Found Send button label: " + ForgotPageBtnSendText + "...: Succesfull");
@@ -349,9 +349,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Compare Forgot page Login link text with expected
-    	tText = ForgotPasswordPage.lnkLoginText(); 	
+    	tText = ForgotPasswordPage.lnkLoginText();
     	currentResult = tText.contains(ForgotPageLnkLoginText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Forgot Password page: Found Login link Text: " + ForgotPageLnkLoginText + "...: Succesfull");
@@ -362,21 +362,21 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Click on Forgot page Login link
     	ForgotPasswordPage.clickLoginLnk();
-     	
+
 //    	Login Page
     	testLog.log(LogStatus.INFO, "---------------------------------------------------Login page----------------------------------------------------");
-    	
+
     	Thread.sleep(timeOut + 3000);
     	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
-    	
+
 //    	LogIn Page: Get Title, Email label, Password Label, button label and Compare with Expected.
-    	
+
 //    	Compare login Title text with expected
-    	tText = SetupPasswordPage.loginTitle();   	
+    	tText = SetupPasswordPage.loginTitle();
     	currentResult = tText.contains(loginTitle);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Login page: Found title: " + loginTitle + "...: Succesfull");
@@ -387,9 +387,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
-//    	Compare login Email text with expected    	
-    	tText = SetupPasswordPage.loginEmail();   	
+
+//    	Compare login Email text with expected
+    	tText = SetupPasswordPage.loginEmail();
     	currentResult = tText.contains(loginEmail);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Login page: Found Email field hint: " + loginEmail + "...: Succesfull");
@@ -400,9 +400,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
-//    	Compare login Password text with expected  
-    	tText = SetupPasswordPage.loginPassword();   	
+
+//    	Compare login Password text with expected
+    	tText = SetupPasswordPage.loginPassword();
     	currentResult = tText.contains(loginPassword);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Login page: Found Password field hint: " + loginPassword + "...: Succesfull");
@@ -413,9 +413,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
-//    	Compare login Forgot link text with expected  
-    	tText = SetupPasswordPage.loginForgotLink();   	
+
+//    	Compare login Forgot link text with expected
+    	tText = SetupPasswordPage.loginForgotLink();
     	currentResult = tText.contains(loginForgotLink);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Login page: Found Forgot Password link: " + loginForgotLink + "...: Succesfull");
@@ -426,9 +426,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
-//    	Compare login button text with expected  
-    	tText = SetupPasswordPage.loginBtnLabel();   	
+
+//    	Compare login button text with expected
+    	tText = SetupPasswordPage.loginBtnLabel();
     	currentResult = tText.contains(loginBtnLabel);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Login page: Found Login button hint: " + loginBtnLabel + "...: Succesfull");
@@ -439,13 +439,13 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Login Page: Click on Forgot Password link
     	testLog.log(LogStatus.INFO, "Click on Forgot link");
     	SetupPasswordPage.loginForgotLinkClick();
-    	
+
     	testLog.log(LogStatus.INFO, "----------------------------------------------Forgot Password page-----------------------------------------------");
-    	
+
 //    	Forgot Password Page: Email empty. Get error and compare with expected
     	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(1));
@@ -453,7 +453,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     	testLog.log(LogStatus.INFO, "Forgot Password page: Input mail: " + ufEmail + " and Send");
     	ForgotPasswordPage.InputEmail(ufEmail);
     	ForgotPasswordPage.clickBtnSend();
-    	
+
     	Thread.sleep(timeOut - 1000);
     	tText = ForgotPasswordPage.errorEmptyText();
     	currentResult = tText.contains(ForgotErrorEmptyText);
@@ -466,7 +466,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Forgot Password Page: Email Invalid. Get error and compare with expected
     	Thread.sleep(timeOut - 1000);
     	ufEmail = "InvalidMail";
@@ -474,7 +474,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     	ForgotPasswordPage.InputEmail(ufEmail);
     	ForgotPasswordPage.clickBtnSend();
     	Thread.sleep(1000);
-    	
+
     	tText = ForgotPasswordPage.errorEmptyText();
     	currentResult = tText.contains(ForgotErrorInvalidText);
     	if (currentResult == true) {
@@ -486,14 +486,14 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Forgot Password Page: Email Not Match. Get error and compare with expected
     	Thread.sleep(timeOut - 1000);
     	ufEmail = mId + "@getnada.com";
     	testLog.log(LogStatus.INFO, "Forgot Password page: Input mail: " + ufEmail + " and Send");
     	ForgotPasswordPage.InputEmail(ufEmail);
     	ForgotPasswordPage.clickBtnSend();
-    	
+
     	testLog.log(LogStatus.INFO, "---------------------------------------------Email Confirmation page---------------------------------------------");
 
 //    	Email Confirmation Page: Get Title text, Page text, Muted text and compare with expected
@@ -501,9 +501,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     	BasePage.driver.switchTo().window(availableWindows.get(1));
     	Thread.sleep(timeOut - 1000);
     	EmailConfirmPage EmailConfirmPage = (EmailConfirmPage) PageFactory.getPage("EmailConfirmPage");
-      	
+
 //    	Compare Email Confirmation page title with expected
-    	tText = EmailConfirmPage.pageTitle(); 	
+    	tText = EmailConfirmPage.pageTitle();
     	currentResult = tText.contains(EmailConfPageTitle);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Email Confirmation page: Found Title: " + EmailConfPageTitle + "...: Succesfull");
@@ -514,9 +514,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Compare Email Confirmation page text with expected
-    	tText = EmailConfirmPage.pageText(); 	
+    	tText = EmailConfirmPage.pageText();
     	currentResult = tText.contains(EmailConfPageText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Email Confirmation page: Found Text: " + EmailConfPageText + "...: Succesfull");
@@ -527,9 +527,9 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
 //    	Compare Email Confirmation page muted text with expected
-    	tText = EmailConfirmPage.pageTextMuted(); 	
+    	tText = EmailConfirmPage.pageTextMuted();
     	currentResult = tText.contains(EmailConfPageMutedText);
     	if (currentResult == true) {
     		testLog.log(LogStatus.PASS, "Email Confirmation page: Found Muted Text: " + EmailConfPageMutedText + "...: Succesfull");
@@ -540,7 +540,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + testLog.addBase64ScreenShot(capScreenShootPath));
     	}
-    	
+
     	Thread.sleep(timeOut);
     	Assert.assertTrue(TestPassFlag);
     	BasePage.driver.quit();

@@ -1,6 +1,7 @@
 package com.verifone.tests.api.tests;
 
 
+import com.aventstack.extentreports.ExtentTest;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.DataDrivenUtils;
 import com.verifone.utils.apiClient.DataDrivenApi;
@@ -21,9 +22,9 @@ public class PubSubDdtTest extends BaseTest {
     }
 
 
-    @DataProvider(name = "CreateMerchant")
+    @DataProvider(name = "CreateMerchantTest")
     public Object[][] CreateMerchant() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchant");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchantTest");
         return arrayObject;
     }
 
@@ -46,12 +47,18 @@ public class PubSubDdtTest extends BaseTest {
     }
 
 
+//    @DataProvider(name = "getAgreement")
+//    public Object[][] getAgreementData() throws Exception {
+//        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "getAgreement");
+//        return arrayObject;
+//    }
+
     @Test(dataProvider = "CreateMerchant")
     public void createMerchantDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                                   String headers, String headersForGetToken, String body, String expectedStatusCode,
                                   String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
@@ -61,7 +68,7 @@ public class PubSubDdtTest extends BaseTest {
                           String headers, String headersForGetToken, String body, String expectedStatusCode,
                           String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
@@ -71,7 +78,7 @@ public class PubSubDdtTest extends BaseTest {
                                String headers, String headersForGetToken, String body, String expectedStatusCode,
                                String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
@@ -82,10 +89,22 @@ public class PubSubDdtTest extends BaseTest {
                               String headers, String headersForGetToken, String body, String expectedStatusCode,
                               String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi(testLog);
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
+
+
+//
+//    @Test(dataProvider = "getAgreement")
+//    public void getAgreementDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+//                              String headers, String headersForGetToken, String body, String expectedStatusCode,
+//                              String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
+//        starTestLog(rowNum + ". " + comments, comments);
+//        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
+//        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
+//                expectedStatusCode, expectedResult, verifyList);
+//    }
 
 
 }

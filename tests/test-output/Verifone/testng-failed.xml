@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Verifone]">
+<suite name="Failed suite [Verifone]" guice-stage="DEVELOPMENT">
   <parameter name="env" value="QA"/>
   <parameter name="portal" value="CPPortal"/>
   <test thread-count="5" name="Automation Tests(failed)">
     <parameter name="browserType" value="CHROME"/>
     <classes>
-      <class name="com.verifone.tests.cpTests.EOPortalSanityUI">
+      <class name="com.verifone.tests.cpTests.CompanyReview">
         <methods>
-          <include name="startDDTest2"/>
+          <include name="beforeClass"/>
           <include name="stopTestReport"/>
-          <include name="startDDTest3"/>
-          <include name="startDDTest"/>
+          <include name="connectWithCompanyUI"/>
           <include name="startBrowser"/>
-          <include name="startDDTest1"/>
-          <include name="EOAdminEnableDisabledDevAppManUI"/>
-          <include name="setEnv"/>
-          <include name="startDDTest4"/>
+          <include name="beforeSuite"/>
         </methods>
-      </class> <!-- com.verifone.tests.cpTests.EOPortalSanityUI -->
+      </class> <!-- com.verifone.tests.cpTests.CompanyReview -->
     </classes>
   </test> <!-- Automation Tests(failed) -->
 </suite> <!-- Failed suite [Verifone] -->

@@ -1,16 +1,14 @@
 package com.verifone.pages;
 
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import static java.awt.event.KeyEvent.*;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -44,7 +42,7 @@ public abstract class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, 60);
             wait.until(ExpectedConditions.titleIs(title));
         } catch (TimeoutException e) {
-            testLog.log(LogStatus.ERROR, String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
+            testLog.error(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
             Assert.fail(String.format("Title should be %s, Browser on %S", title, driver.getTitle()), e);
 
         }
@@ -54,59 +52,75 @@ public abstract class BasePage {
     public void click(By loc) {
         WebElement element = getWebElement(loc, 50, ExpectedConditions.elementToBeClickable(loc));
         element.click();
-        testLog.log(LogStatus.INFO, "user clicks on:  " + loc.toString());
+        testLog.info("user clicks on:  " + loc.toString());
     }
 
     public void sendKeys(By loc, String text) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.clear();
         element.sendKeys(text);
-        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+        testLog.info("send keys " + text + "for : " + loc.toString());
     }
 
     public void sendKeysNoClear(By loc, String text) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.sendKeys(text);
-        testLog.log(LogStatus.INFO, "send keys " + text + "for : " + loc.toString());
+        testLog.info("send keys " + text + "for : " + loc.toString());
     }
 
 
-    public void select(By loc, String value){
+    public void select(By loc, String value) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].style.display='block'", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block'", element);
         new Select(element).selectByValue(value);
     }
 
     protected String getText(By loc) {
         WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
-        return element.getText();
+        String text = element.getText();
+        testLog.info("User get text: " + text + " from this locator: " + loc.toString());
+        return text;
     }
 
     protected String getTextFromTable(By loc) throws InterruptedException {
         Thread.sleep(6000);
         WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
         String text = "";
-        List<WebElement> tr = element.findElements( By.tagName("tr"));
-        for (WebElement w: tr) {
+        List<WebElement> tr = element.findElements(By.tagName("tr"));
+        for (WebElement w : tr) {
             text += w.getText();
         }
         return text;
     }
 
-    protected void switchToIframe(By loc){
+    protected void switchToIframe(By loc) {
         WebElement element = getWebElement(loc, 10, ExpectedConditions.presenceOfElementLocated(loc));
 //        driver.switchTo().defaultContent();
         driver.switchTo().frame(element);
     }
 
-    protected void switchToPreviosTab(){
+    protected void switchToPreviousTab() {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
-    protected void hoverAndClickOnElement(By loc){
+    protected void switchToNextTab() {
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+    }
+
+//    public static void restartDriver() {
+//        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
+//        driver.quit();
+//        driver = null;
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//
+//    }
+
+    protected void hoverAndClickOnElement(By loc) {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -123,12 +137,12 @@ public abstract class BasePage {
         return driver.findElement(loc);
     }
 
-//    TODO complete method implementation
+    //    TODO complete method implementation
     protected void uploadFile(String filePath, WebElement element) throws IOException, AWTException, InterruptedException {
         element.click();
         StringSelection ss = new StringSelection(filePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-        Robot robot =  new Robot();
+        Robot robot = new Robot();
         Thread.sleep(2000);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -140,8 +154,8 @@ public abstract class BasePage {
     }
 
     protected WebElement getElementsByClassJs(String className, int index) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        return  (WebElement) js.executeScript("return document.getElementsByClassName('" + className + "')[" + index + "]");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (WebElement) js.executeScript("return document.getElementsByClassName('" + className + "')[" + index + "]");
     }
 
     private void waitForElement(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
@@ -149,7 +163,7 @@ public abstract class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, timeOut);
             wait.until(expectedCon);
         } catch (TimeoutException e) {
-            testLog.log(LogStatus.ERROR, "Element Not Found For Locator: " + loc.toString());
+            testLog.error("Element Not Found For Locator: " + loc.toString());
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
     }
@@ -255,9 +269,6 @@ public abstract class BasePage {
 //    public abstract void selectStatus(String text) throws Exception;
 //
 //    public abstract void selectType(String text) throws Exception;
-
-
-
 
 
     /**
