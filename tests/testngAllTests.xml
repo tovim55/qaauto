@@ -32,6 +32,7 @@
             <class name="com.verifone.tests.cpTests.LoginTest"/>
             <class name="com.verifone.tests.cpTests.ManagerAddMerchantUI"/>
             <class name="com.verifone.tests.cpTests.MerchantGetCongMailUI"/>
+            <class name="com.verifone.tests.cpTests.MerchantSetupPasswordUI"/>
         </classes>
 
     </test>

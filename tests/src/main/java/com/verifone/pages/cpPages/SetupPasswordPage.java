@@ -26,7 +26,8 @@ public class SetupPasswordPage extends BasePage {
     private By chboxAgreement = By.xpath("(//*[@class='check'])[2]");
     private By SubmitBtn = By.id("btnSubmit");
     private By titleLoc = By.xpath("//*[@class='text-center sso-form-title nomargin']");
-    private By textLoc = By.xpath("//*[@id='local_auth_div']/div[2]/div/div/div[2]/div/div[2]");
+    private By textLoc = By.xpath("//*[@class='text-center']");
+    //private By textLoc = By.xpath("//*[@id='local_auth_div']/div[2]/div/div/div[2]/div/div[2]");
     private By setupPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword']");
     private By setupConfirmPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword2']");
     private By setupCheckBoxLoc = By.xpath("(//*[@class='checkbox'])[1]");
