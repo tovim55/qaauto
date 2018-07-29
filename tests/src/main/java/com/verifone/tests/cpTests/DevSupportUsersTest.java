@@ -9,7 +9,7 @@ import com.verifone.pages.cpPages.LoginPage;
 import com.verifone.tests.BaseTest;
 import org.testng.annotations.Test;
 
-public class DevSupportTest extends BaseTest {
+public class DevSupportUsersTest extends BaseTest {
 
     @Test(testName = "checkUsersBtnTest", description = "CP dev Portal - check users button", groups = {"CP-portal"})
     public void checkUsersBtnUI() throws Exception {

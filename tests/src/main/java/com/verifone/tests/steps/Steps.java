@@ -13,7 +13,8 @@ import com.verifone.utils.Mail.InboxGetnada;
 import java.awt.*;
 import java.io.IOException;
 
-import static com.verifone.infra.SeleniumUtils.restartDriver;
+//import static com.verifone.infra.SeleniumUtils.restartDriver;
+import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 import static com.verifone.utils.Assertions.assertTextContains;
 
 public class Steps {
@@ -52,20 +53,25 @@ public class Steps {
     }
 
 
-    public static void devSupportLogin() {
+    public static LoginPage devSupportAdminLogin() {
         User dev = EntitiesFactory.getEntity("DevSupportAdmin");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.supportLogin(dev);
+        return loginPage;
     }
 
     public static void checkCompaniesList(Company dev) {
-        restartDriver();
-        User user = EntitiesFactory.getEntity("DevSupportAdmin");
-        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
-        loginPage.supportLogin(user);
+//        restartSession();
+        LoginPage loginPage = devSupportAdminLogin();
         loginPage.checkExistCompanies(dev);
     }
 
+    public static void restartSession (){ restartDriver();}
+
+    public static void checkAcceptCompany(Company dev){
+        LoginPage loginPage = devSupportAdminLogin();
+        loginPage.acceptCompany(dev);
+    }
 
 }
 
