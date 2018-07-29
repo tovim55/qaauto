@@ -22,9 +22,9 @@ public class PubSubDdtTest extends BaseTest {
     }
 
 
-    @DataProvider(name = "CreateMerchantTest")
+    @DataProvider(name = "CreateMerchant")
     public Object[][] CreateMerchant() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchantTest");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "CreateMerchant");
         return arrayObject;
     }
 

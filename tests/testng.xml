@@ -24,7 +24,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.MerchantSetupPasswordUI"/>
+            <class name="com.verifone.tests.cpTests.SignUpTestUI"/>
         </classes>
 
     </test>
