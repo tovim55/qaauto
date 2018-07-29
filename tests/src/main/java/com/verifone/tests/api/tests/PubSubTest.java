@@ -30,6 +30,7 @@ public class PubSubTest extends BaseTest {
         GetEoadminDataApi getEoadminDataApi = new GetEoadminDataApi(accessToken, "testId");
         String mId = new CreateMerchant(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
         LoginPage loginPage = new LoginPage();
+        loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(user);
         System.out.println(mId);
         assertTextContains(mId, new HomePage().getMerchants());

@@ -13,3 +13,4 @@
 .metadata/
 .settings/
 test-output/
+*/target/*
