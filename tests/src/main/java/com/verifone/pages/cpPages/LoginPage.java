@@ -19,6 +19,7 @@ public class LoginPage extends BasePage {
     private By loginBtn = By.id("btnPrimaryLogin");
 
 
+
     public LoginPage() {
         super(url, title);
         navigate();
@@ -36,4 +37,6 @@ public class LoginPage extends BasePage {
     public void clickOmLoginBtn() {
         click(toLoginPageBtn);
     }
+
+
 }

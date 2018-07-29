@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content passed suite-Verifone">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.cpTests.MerchantGetCongMailUI" hash-for-method="MerchantGetCongMailUI">MerchantGetCongMailUI</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.cpTests.EOPortalSanityUI" hash-for-method="EOAdminDisableActiveEOMerchantManUI">EOAdminDisableActiveEOMerchantManUI</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Verifone" title="com.verifone.tests.cpTests.EOPortalSanityUI" hash-for-method="EOAdminEnableDisabledEOMerchantManUI">EOAdminEnableDisabledEOMerchantManUI</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Verifone -->
@@ -120,14 +125,21 @@
           <div class="suite-Verifone-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.verifone.tests.cpTests.MerchantGetCongMailUI</span>
+              <span class="class-name">com.verifone.tests.cpTests.EOPortalSanityUI</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="MerchantGetCongMailUI">
-                  </a> <!-- MerchantGetCongMailUI -->
-                  <span class="method-name">MerchantGetCongMailUI</span>
+                  <a name="EOAdminDisableActiveEOMerchantManUI">
+                  </a> <!-- EOAdminDisableActiveEOMerchantManUI -->
+                  <span class="method-name">EOAdminDisableActiveEOMerchantManUI</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="EOAdminEnableDisabledEOMerchantManUI">
+                  </a> <!-- EOAdminEnableDisabledEOMerchantManUI -->
+                  <span class="method-name">EOAdminEnableDisabledEOMerchantManUI</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -147,7 +159,7 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Automation Tests&quot;&gt;
     &lt;parameter name=&quot;browserType&quot; value=&quot;CHROME&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.verifone.tests.cpTests.MerchantGetCongMailUI&quot;/&gt;
+      &lt;class name=&quot;com.verifone.tests.cpTests.EOPortalSanityUI&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Automation Tests --&gt;
 &lt;/suite&gt; &lt;!-- Verifone --&gt;
@@ -172,10 +184,14 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">CP-portal</span>
+              <span class="test-group-name">Sanity</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">MerchantGetCongMailUI</span>
+                <span class="method-in-group-name">EOAdminDisableActiveEOMerchantManUI</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">EOAdminEnableDisabledEOMerchantManUI</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -195,16 +211,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'MerchantGetCongMailUI')
-data.setCell(0, 2, 'com.verifone.tests.cpTests.MerchantGetCongMailUI')
-data.setCell(0, 3, 8449);
+data.setCell(0, 1, 'EOAdminDisableActiveEOMerchantManUI')
+data.setCell(0, 2, 'com.verifone.tests.cpTests.EOPortalSanityUI')
+data.setCell(0, 3, 63033);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'EOAdminEnableDisabledEOMerchantManUI')
+data.setCell(1, 2, 'com.verifone.tests.cpTests.EOPortalSanityUI')
+data.setCell(1, 3, 60214);
 window.suiteTableData['Verifone']= { tableData: data, tableDiv: 'times-div-Verifone'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 seconds</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Verifone">
               </div> <!-- times-div-Verifone -->
             </div> <!-- times-div -->
@@ -219,9 +239,42 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Verifone" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">14 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.verifone.tests.cpTests.EOPortalSanityUI</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">EOAdminAddUserExistEmailUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminDisableActiveEOAdminUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminAddUserViewUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminViewUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminDisableActiveDevAppManUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminEditPendingMerchantManUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminAddMerchantManagerUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminEditPendingEOAdminUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminEditPendingDevAppManUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminAddUserUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminEnableDisabledEOAdminUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminUsersUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminEnableDisabledDevAppManUI</span>
+                <br/>
+                <span class="ignored-method-name">EOAdminAddDevAppManagerUI</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Verifone" class="panel">
@@ -230,15 +283,58 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.verifone.tests.cpTests.MerchantGetCongMailUI</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">MerchantGetCongMailUI</span>
+              <div class="chronological-class-name">com.verifone.tests.cpTests.EOPortalSanityUI</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">setEnv(QA, CPPortal)</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-test before">
+                <span class="method-name">startDDTest</span>
+                <span class="method-start">19 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">startDDTest1</span>
+                <span class="method-start">145 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">startDDTest2</span>
+                <span class="method-start">146 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">startDDTest3</span>
+                <span class="method-start">146 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-test before">
+                <span class="method-name">startDDTest4</span>
+                <span class="method-start">146 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-method before">
+                <span class="method-name">startBrowser(public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminDisableActiveEOMerchantManUI() throws...)</span>
+                <span class="method-start">155 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">EOAdminDisableActiveEOMerchantManUI</span>
+                <span class="method-start">3982 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopTestReport(public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminDisableActiveEOMerchantManUI() throws...)</span>
+                <span class="method-start">67016 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startBrowser(public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminEnableDisabledEOMerchantManUI() throw...)</span>
+                <span class="method-start">70368 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">EOAdminEnableDisabledEOMerchantManUI</span>
+                <span class="method-start">73525 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">stopTestReport(public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminEnableDisabledEOMerchantManUI() throw...)</span>
+                <span class="method-start">133741 ms</span>
+              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
-    </div>
   </body>
 </html>

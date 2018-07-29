@@ -19,6 +19,8 @@ public class PageFactory {
                 return new LoginPage();
             case "LoginEOPortal":
                 return new LoginEOPortal();
+			case "LoginSSOPage":
+				return new LoginSSOPage();
 
             case "SignUpPage":
                 return new SignUpPage();
@@ -53,7 +55,9 @@ public class PageFactory {
     		case "AddUserPage":
     			return new AddUserPage();
     		case "UserDetailsPage":
-    			return new UserDetailsPage();	
+    			return new UserDetailsPage();
+			case "NoAccessPage":
+				return new NoAccessPage();
     			
 //            case "VerifoneAccountLoginPage":
 //                return new VerifoneAccountLoginPage();

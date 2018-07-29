@@ -1,20 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="14" total="16" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Verifone" duration-ms="8469" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
+  <suite name="Verifone" duration-ms="136900" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:38:08Z">
     <groups>
-      <group name="CP-portal">
-        <method signature="MerchantGetCongMailUI.MerchantGetCongMailUI()[pri:0, instance:com.verifone.tests.cpTests.MerchantGetCongMailUI@4b9e255]" name="MerchantGetCongMailUI" class="com.verifone.tests.cpTests.MerchantGetCongMailUI"/>
-      </group> <!-- CP-portal -->
+      <group name="Sanity">
+        <method signature="EOPortalSanityUI.EOAdminDisableActiveEOMerchantManUI()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="EOAdminDisableActiveEOMerchantManUI" class="com.verifone.tests.cpTests.EOPortalSanityUI"/>
+        <method signature="EOPortalSanityUI.EOAdminEnableDisabledEOMerchantManUI()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="EOAdminEnableDisabledEOMerchantManUI" class="com.verifone.tests.cpTests.EOPortalSanityUI"/>
+      </group> <!-- Sanity -->
     </groups>
-    <test name="Automation Tests" duration-ms="8469" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
-      <class name="com.verifone.tests.cpTests.MerchantGetCongMailUI">
-        <test-method status="PASS" signature="MerchantGetCongMailUI()[pri:0, instance:com.verifone.tests.cpTests.MerchantGetCongMailUI@4b9e255]" name="MerchantGetCongMailUI" duration-ms="8449" started-at="2018-06-13T13:34:16Z" finished-at="2018-06-13T13:34:24Z">
+    <test name="Automation Tests" duration-ms="136900" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:38:08Z">
+      <class name="com.verifone.tests.cpTests.EOPortalSanityUI">
+        <test-method status="PASS" signature="setEnv(java.lang.String, java.lang.String)[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="setEnv" is-config="true" duration-ms="17" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[QA]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CPPortal]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- MerchantGetCongMailUI -->
-      </class> <!-- com.verifone.tests.cpTests.MerchantGetCongMailUI -->
+        </test-method> <!-- setEnv -->
+        <test-method status="PASS" signature="startDDTest()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startDDTest" is-config="true" duration-ms="126" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDDTest -->
+        <test-method status="PASS" signature="startDDTest1()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startDDTest1" is-config="true" duration-ms="0" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDDTest1 -->
+        <test-method status="PASS" signature="startDDTest2()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startDDTest2" is-config="true" duration-ms="0" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDDTest2 -->
+        <test-method status="PASS" signature="startDDTest4()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startDDTest4" is-config="true" duration-ms="0" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDDTest4 -->
+        <test-method status="PASS" signature="startDDTest3()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startDDTest3" is-config="true" duration-ms="0" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDDTest3 -->
+        <test-method status="PASS" signature="startBrowser(java.lang.reflect.Method, java.lang.String)[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startBrowser" is-config="true" duration-ms="3827" started-at="2018-07-23T15:35:51Z" finished-at="2018-07-23T15:35:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminDisableActiveEOMerchantManUI() throws java.lang.Exception]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method status="PASS" signature="EOAdminDisableActiveEOMerchantManUI()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="EOAdminDisableActiveEOMerchantManUI" duration-ms="63033" started-at="2018-07-23T15:35:55Z" finished-at="2018-07-23T15:36:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EOAdminDisableActiveEOMerchantManUI -->
+        <test-method status="PASS" signature="stopTestReport(java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="stopTestReport" is-config="true" duration-ms="3351" started-at="2018-07-23T15:36:58Z" finished-at="2018-07-23T15:37:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminDisableActiveEOMerchantManUI() throws java.lang.Exception]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[TestResult name=EOAdminDisableActiveEOMerchantManUI status=SUCCESS method=EOPortalSanityUI.EOAdminDisableActiveEOMerchantManUI()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopTestReport -->
+        <test-method status="PASS" signature="startBrowser(java.lang.reflect.Method, java.lang.String)[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="startBrowser" is-config="true" duration-ms="3157" started-at="2018-07-23T15:37:01Z" finished-at="2018-07-23T15:37:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminEnableDisabledEOMerchantManUI() throws java.lang.Exception]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startBrowser -->
+        <test-method status="PASS" signature="EOAdminEnableDisabledEOMerchantManUI()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="EOAdminEnableDisabledEOMerchantManUI" duration-ms="60214" started-at="2018-07-23T15:37:04Z" finished-at="2018-07-23T15:38:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EOAdminEnableDisabledEOMerchantManUI -->
+        <test-method status="PASS" signature="stopTestReport(java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002]" name="stopTestReport" is-config="true" duration-ms="3175" started-at="2018-07-23T15:38:05Z" finished-at="2018-07-23T15:38:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminEnableDisabledEOMerchantManUI() throws java.lang.Exception]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[TestResult name=EOAdminEnableDisabledEOMerchantManUI status=SUCCESS method=EOPortalSanityUI.EOAdminEnableDisabledEOMerchantManUI()[pri:0, instance:com.verifone.tests.cpTests.EOPortalSanityUI@670002] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopTestReport -->
+      </class> <!-- com.verifone.tests.cpTests.EOPortalSanityUI -->
     </test> <!-- Automation Tests -->
   </suite> <!-- Verifone -->
 </testng-results>
