@@ -18,7 +18,8 @@ public class LoginPage extends BasePage {
 
     private By firstUsername= By.id("username");
     private By username= By.id("username");
-    private By password = By.id("password");
+    private By password = By.id("ipassword");
+    private By iframe = By.id("veriPassFrame");
     private By supportUsername= By.id("Username");
     private By SupportPassword = By.id("Passwd");
 //    private By firstPass= By.id("password");
@@ -38,8 +39,10 @@ public class LoginPage extends BasePage {
 
     public void loginPageCp(User user) {
         sendKeys(username, user.getUserName());
+        switchToIframe(iframe);
         click(password);
         sendKeys(password, user.getPassword());
+        driver.switchTo().defaultContent();
         click(loginBtn);
 
     }
@@ -51,6 +54,7 @@ public class LoginPage extends BasePage {
     public void supportLogin(User user) {
         click(toLoginPageBtn);
         sendKeys(firstUsername, user.getUserName());
+        switchToIframe(iframe);
         click(password);
         String userName = user.getUserName().split("@")[0];
         sendKeys(supportUsername, userName);
