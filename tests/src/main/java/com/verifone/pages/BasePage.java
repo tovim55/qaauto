@@ -143,10 +143,11 @@ public abstract class BasePage {
         StringSelection ss = new StringSelection(filePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
         Robot robot = new Robot();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_V);
+        Thread.sleep(2000);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);

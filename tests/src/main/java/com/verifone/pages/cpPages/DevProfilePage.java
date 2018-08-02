@@ -76,7 +76,7 @@ public class DevProfilePage extends BasePage {
         select(countryTaxCode, user.getCountryTaxCode());
         sendKeys(email, user.getUserName());
         uploadFile(System.getProperty("user.dir") + "\\src\\test\\resources\\tax_file.docx",
-                getElementsByClassJs(uploadFileClassName, 1));
+        getElementsByClassJs(uploadFileClassName, 1));
         click(checkboxAgreement);
         Thread.sleep(2000);
         Actions action = new Actions(driver);
