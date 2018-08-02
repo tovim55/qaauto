@@ -60,6 +60,13 @@ public class Steps {
         return loginPage;
     }
 
+//    public static LoginPage devSupportAdminLogin(Company dev) {
+////        User dev = EntitiesFactory.getEntity("DevSupportAdmin");
+//        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
+//        loginPage.supportLogin(dev);
+//        return loginPage;
+//    }
+
     public static void checkCompaniesList(Company dev) {
 //        restartSession();
         LoginPage loginPage = devSupportAdminLogin();
@@ -68,10 +75,17 @@ public class Steps {
 
     public static void restartSession (){ restartDriver();}
 
-    public static void checkAcceptCompany(Company dev){
+    public static void checkAcceptCompany(Company dev){//Company dev
         LoginPage loginPage = devSupportAdminLogin();
-        loginPage.acceptCompany(dev);
+        loginPage.acceptCompany(dev);//dev
     }
+
+    public static void checkRejectCompany(Company dev){//Company dev
+        LoginPage loginPage = devSupportAdminLogin();
+        loginPage.rejectCompany(dev);//dev
+    }
+
+
 
 }
 

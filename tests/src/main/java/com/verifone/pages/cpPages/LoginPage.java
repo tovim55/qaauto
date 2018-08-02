@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.verifone.utils.Assertions.assertTextContains;
+import static com.verifone.utils.Assertions.assertTextEqual;
 
 
 public class LoginPage extends BasePage {
@@ -27,9 +28,10 @@ public class LoginPage extends BasePage {
     private By loginBtn = By.id("btnPrimaryLogin");
     private By supportLoginBtn = By.id("signIn");
     private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\"])[4]");
-    private By tableRows1 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[1]");
+    private By newCompany = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[1]");
     private By tableRows2 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[2]");
     private By acceptBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary btn-raised approve\"])");
+    private By rejectBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary reject\"])");
 
 
     public LoginPage() {
@@ -62,13 +64,12 @@ public class LoginPage extends BasePage {
 
     public void checkExistCompanies(Company user) {
         clickCompaniesBtn();
-        assertTextContains(user.getCompanyName(), getText(tableRows1));
-        click(tableRows1);
+        assertTextContains(user.getCompanyName(), getText(newCompany));
+        click(newCompany);
     }
 
     private void clickCompaniesBtn() {
-        waitSimple(6000);
-        click(companiesBtn);
+        clickAcceptCompany(6000, companiesBtn);
     }
 
     private void waitSimple(int time) {
@@ -88,14 +89,47 @@ public class LoginPage extends BasePage {
     }
 
     public void acceptCompany(Company user) {
+        clickNewCompany();
+        clickAcceptCompany(3000, acceptBtn);
+        checkCompanyDetails(user, "CP_Approved");
+
+    }
+
+    private void checkCompanyDetails(Company user, String status) {
+        waitSimple(8000);
+        String[] companyDetails;
+        companyDetails = getNewCompanyDetails();
+        assertTextContains(user.getCompanyName(), companyDetails[0]);
+        assertTextEqual(status, companyDetails[1]);
+    }
+
+    public void rejectCompany (Company user){
+        clickNewCompany();
+        clickRejectCompany();
+        checkCompanyDetails(user, "Rejected");
+    }
+
+    private void clickRejectCompany() {
+        click(rejectBtn);
+    }
+
+    private String[] getNewCompanyDetails() {
+        String[] companyDetails;
+        companyDetails = getText(newCompany).split("\n");
+//        System.out.println(companyDetails[0] + "    0");
+//        System.out.println(companyDetails[1] + "    1");
+//        System.out.println(companyDetails[2] + "    2");
+        return companyDetails;
+    }
+
+    private void clickNewCompany() {
         clickCompaniesBtn();
-        click(tableRows1);
-        waitSimple(3000);
+        click(newCompany);
+
+    }
+
+    private void clickAcceptCompany(int time, By acceptBtn) {
+        waitSimple(time);
         click(acceptBtn);
-        waitSimple(3000);
-        System.out.println(getText(tableRows1));
-        assertTextContains(user.getCompanyName(), getText(tableRows1));
-
-
     }
 }

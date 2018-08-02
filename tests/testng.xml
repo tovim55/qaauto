@@ -13,7 +13,8 @@
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="CPPortal"/>
+    <!--<parameter name="portal" value="CPPortal"/>-->
+    <parameter name="portal" value="EOAdmin"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->
@@ -24,7 +25,8 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>
+            <class name="com.verifone.tests.cpTests.CreateMerchantTest"/>
+            <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
         </classes>
 
     </test>
