@@ -13,9 +13,10 @@ import com.verifone.utils.Mail.InboxGetnada;
 import java.awt.*;
 import java.io.IOException;
 
-//import static com.verifone.infra.SeleniumUtils.restartDriver;
 import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 import static com.verifone.utils.Assertions.assertTextContains;
+
+//import static com.verifone.infra.SeleniumUtils.restartDriver;
 
 public class Steps {
 
@@ -73,18 +74,19 @@ public class Steps {
         loginPage.checkExistCompanies(dev);
     }
 
-    public static void restartSession (){ restartDriver();}
+    public static void restartSession() {
+        restartDriver();
+    }
 
-    public static void checkAcceptCompany(Company dev){//Company dev
+    public static void checkAcceptCompany(Company dev) {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.acceptCompany(dev);//dev
     }
 
-    public static void checkRejectCompany(Company dev){//Company dev
+    public static void checkRejectCompany(Company dev) {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.rejectCompany(dev);//dev
     }
-
 
 
 }
