@@ -50,7 +50,7 @@ public Object[][] dataSupplierLoginData() throws Exception {
 	return arrayObject;
 }
 
-@Test(enabled = false, testName = "EOAdmin Users", dataProvider = "eoAddUser", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=1, testName = "EOAdmin Users", dataProvider = "eoAddUser", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUsersUI(String eoRole, String eoMail, String eoPassword, String userName, String userLast, String userMail) throws Exception {
 		BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
@@ -217,17 +217,21 @@ public Object[][] dataSupplierLoginData() throws Exception {
 		
 		AddUserPage.inputEmail("");
 		AddUserPage.clickDropDn();
+		Thread.sleep(1000);
 		AssertJUnit.assertEquals("Field Email must not be empty", AddUserPage.errorEmail());
 		
 		AddUserPage.inputEmail(userMail);
 		
-		AddUserPage.clickDropDn();
+//		AddUserPage.clickDropDn();
+
 		AddUserPage.clickDropDnItem("EO Merchant Manager");
 		
 		AddUserPage.clickDropDn();
+
 		AddUserPage.clickDropDnItem("EO Device and App Manager");
 		
 		AddUserPage.clickDropDn();
+
 		AddUserPage.clickDropDnItem("EO Admin");
 		
 		AddUserPage.clickCancelBtn();
@@ -249,13 +253,14 @@ public void startDDTest1() throws Exception{
 
 }
 
-@Test(enabled = false, testName = "EOAdmin Users", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=2, testName = "EOAdmin Users", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserUI() throws Exception {
 	BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 	LoginEOPortal.loginInputEmail("vfieous@getnada.com");
 	LoginEOPortal.loginInputPassword("Veri1234");
+//	LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 	LoginEOPortal.clickLoginBtn();
 	
 
@@ -290,7 +295,7 @@ public void startDDTest2() throws Exception{
 
 }
 
-@Test(enabled = false, testName = "EOAdmin Users View", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=3, testName = "EOAdmin Users View", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminViewUI() throws Exception {
 	BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
@@ -326,7 +331,7 @@ public void startDDTest3() throws Exception{
 
 }
 
-@Test(enabled = false, testName = "EOAdmin Add User View", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=4, testName = "EOAdmin Add User View", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserViewUI() throws Exception {
 	BasePage.driver.navigate().to("https://qa.estatemanager.verifonecp.com/");
@@ -375,7 +380,7 @@ public void startDDTest4() throws Exception{
 
 }
 
-@Test(enabled = false, testName = "EOAdmin Add User Exist Email", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=5, testName = "EOAdmin Add EOAdmin Exist Email", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserExistEmailUI() throws Exception {
 	BasePage.driver.navigate().to(Env);
@@ -430,7 +435,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	AssertJUnit.assertEquals(true, fl);
 	}
 
-@Test(enabled = false, testName = "EOAdmin Add User Exist Email", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=6, testName = "EOAdmin Add Merchant Manager Exist Email", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminAddMerchantManagerUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -477,7 +482,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 		boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserMerchManEmail);
 		AssertJUnit.assertEquals(true, fl);
 	}
-@Test(enabled = false, testName = "EOAdmin Add User Exist Email", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=7, testName = "EOAdmin Add Dev App Manager Exist Email", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddDevAppManagerUI() throws Exception {
 	BasePage.driver.navigate().to(Env);
@@ -524,7 +529,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserDevAppEmail);
 	AssertJUnit.assertEquals(true, fl);
 }
-@Test(enabled = false, testName = "EOAdmin Edit pending EOAdmin", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=8, testName = "EOAdmin Edit pending EOAdmin", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminEditPendingEOAdminUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -587,7 +592,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("Your invitation email was successfully sent.", UserDetailsPage.getMessage());
 		
 	}
-@Test(enabled = false, testName = "EOAdmin Edit pending Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=9, testName = "EOAdmin Edit pending Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminEditPendingMerchantManUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -650,7 +655,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("Your invitation email was successfully sent.", UserDetailsPage.getMessage());
 		
 	}
-@Test(enabled = false, testName = "EOAdmin Edit pending Device App Manager", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=10, testName = "EOAdmin Edit pending Device App Manager", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminEditPendingDevAppManUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -713,7 +718,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("Your invitation email was successfully sent.", UserDetailsPage.getMessage());
 		
 	}
-@Test(enabled = false, testName = "EOAdmin Disable active Device App Manager", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=11, testName = "EOAdmin Disable active Device App Manager", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminDisableActiveDevAppManUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -750,11 +755,12 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
 		}
+		Thread.sleep(2000);
 		AssertJUnit.assertEquals(true, fl);
 		AssertJUnit.assertEquals(true, UserDetailsPage.elementUserEditClickable());
 		AssertJUnit.assertEquals(UserDetailsPage.getTitle(), UserDetailsPage.getUserName());
 		AssertJUnit.assertEquals("Active", UserDetailsPage.getStatus());
-		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));
+		AssertJUnit.assertEquals(false, UserDetailsPage.getAction().contains("Resend Invitation"));;
 		AssertJUnit.assertEquals(true, UserDetailsPage.getAction().contains("Disable User"));
 		AssertJUnit.assertEquals("EO Device and App Manager", UserDetailsPage.getRole());
 		AssertJUnit.assertEquals(false, UserDetailsPage.elementRoleClickable());
@@ -777,7 +783,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("The user's account was successfully disabled.", UserDetailsPage.getMessage());
 		
 	}
-@Test(enabled = false, testName = "EOAdmin Enable disabled Device App Manager", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=12, testName = "EOAdmin Enable disabled Device App Manager", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminEnableDisabledDevAppManUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -842,7 +848,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("The user's account was successfully re-enabled.", UserDetailsPage.getMessage());
 		
 	}
-@Test(enabled = false, testName = "EOAdmin Disable active EO Admin", groups = { "Sanity" }, alwaysRun = true)
+@Test(enabled = true, priority=13, testName = "EOAdmin Disable active EO Admin", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminDisableActiveEOAdminUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -906,7 +912,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("The user's account was successfully disabled.", UserDetailsPage.getMessage());
 		
 	}
-	@Test(enabled = false, testName = "EOAdmin Enable disabled EO Admin", groups = { "Sanity" }, alwaysRun = true)
+	@Test(enabled = true, priority=14, testName = "EOAdmin Enable disabled EO Admin", groups = { "Sanity" }, alwaysRun = true)
 	
 	public void EOAdminEnableDisabledEOAdminUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -972,7 +978,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		
 	}
 
-	@Test(enabled = true, testName = "EOAdmin Disable active EO Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
+	@Test(enabled = true, priority=15, testName = "EOAdmin Disable active EO Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminDisableActiveEOMerchantManUI() throws Exception {
 		BasePage.driver.navigate().to(Env);
@@ -1036,7 +1042,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 		AssertJUnit.assertEquals("The user's account was successfully disabled.", UserDetailsPage.getMessage());
 		
 	}
-	@Test(enabled = true, testName = "EOAdmin Enable disabled EO Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
+	@Test(enabled = true, priority=16, testName = "EOAdmin Enable disabled EO Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
 	
 	public void EOAdminEnableDisabledEOMerchantManUI() throws Exception {
 		BasePage.driver.navigate().to(Env);

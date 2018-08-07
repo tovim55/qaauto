@@ -141,17 +141,20 @@ public class AddUserPage extends BasePage {
     	switch (itemName) {
         case "EO Admin":
         	if (isExists(dropdnRoleEOAdmLoc,5)) {
+                Thread.sleep(1000);
         	click(dropdnRoleEOAdmLoc);
         	}
         	break;
 	    case "EO Merchant Manager":
 	    	if (isExists(dropdnRoleEOMMLoc,5)) {
+                Thread.sleep(1000);
 	    	click(dropdnRoleEOMMLoc);
 	    	}
 	    	break;
 	    	
 	    case "EO Device and App Manager":
 	    	if (isExists(dropdnRoleEODALoc,5)) {
+                Thread.sleep(1000);
 	    	click(dropdnRoleEODALoc);
 	    	}
 	    	break;

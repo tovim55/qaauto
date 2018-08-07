@@ -30,7 +30,8 @@ public class LoginEOPortal extends BasePage {
     private By loginForgotLink = By.xpath("//*[@id=\"loginForm\"]/div[3]/a");
     private By loginBtnLabel = By.id("btnPrimaryLogin");
     private By lEmail = By.id("username");
-    private By lPassword = By.id("password");
+    private By lPassword = By.id("ipassword");
+    private By lPassword1 = By.xpath("//*[@class='form-group label-floating required is-empty']");
     private By lerrorMandatoryField = By.xpath("//*[@class='help-block']");
     private By loginSetupBtn = By.id("btnPrimaryLogin");
     private By lerrorMatch = By.xpath("//*[@class='alert alert-danger']");
@@ -76,7 +77,7 @@ public class LoginEOPortal extends BasePage {
     //--------------------------------------------------------------------------
     public void loginInputEmail(String ulEmail)  throws Exception {
         sendKeys(lEmail, ulEmail);
-        click(lPassword);
+//        click(lPassword1);
     }
     //--------------------------------------------------------------------------
     /**
@@ -86,7 +87,11 @@ public class LoginEOPortal extends BasePage {
      */
     //--------------------------------------------------------------------------
     public void loginInputPassword(String ulPassword)  throws Exception {
-        sendKeys(lPassword, ulPassword);
+//        sendKeys(lPassword1, ulPassword);
+        WebElement iFrame = BasePage.driver.findElement(By.id("veriPassFrame"));
+        BasePage.driver.switchTo().frame(iFrame);
+        BasePage.driver.findElement(lPassword).sendKeys(ulPassword);
+        driver.switchTo().defaultContent();
         click(lEmail);
     }
     //--------------------------------------------------------------------------

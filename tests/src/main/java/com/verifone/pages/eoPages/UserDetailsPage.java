@@ -192,7 +192,7 @@ public class UserDetailsPage extends BasePage {
     }
     
     public boolean messageExists() throws Exception {
-    	return isExists(messageLoc, 3);  	
+    	return isExists(messageLoc, 30);
     }
     public String getMessage() throws InterruptedException {
         return getText(messageLoc);
