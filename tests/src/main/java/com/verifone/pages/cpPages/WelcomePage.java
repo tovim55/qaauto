@@ -11,22 +11,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Merchants page. 
+* This class described all elements and actions can be executed on Thank You page displayed after Reset Password. 
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------
 
-public class MerchantViewPage extends BasePage {
+public class WelcomePage extends BasePage {
 
     private final static String url = "";
-    private final static String title = "Action Required";
+    private final static String title = "Forgot your password?";
     
-    private By titleLoc = By.xpath("//*[@class='top-container']");
-    private By textLoc1 = By.xpath("//*[@class='panel-heading panel-no-border']");
-    private By textLoc2 = By.xpath("//*[@class='panel-body']");
+    private By titleLoc = By.xpath("//*[@class='title']"); 
+    private By textLoc1 = By.xpath("//*[@id=\"loginForm\"]/div/div[2]");
+    private By textLoc2 = By.xpath("//*[@id=\"loginForm\"]/div/div[3]");
+    private By loginBtnLoc = By.xpath("//*[@class='btn btn-raised btn-primary btn-block']"); 
 
-
-    public MerchantViewPage() {
+    
+    
+    public WelcomePage() {
         super(url, title);
     }
     //--------------------------------------------------------------------------
@@ -68,7 +70,29 @@ public class MerchantViewPage extends BasePage {
     	System.out.println(a);
     	return getText(textLoc2);
     }
-}
+  //--------------------------------------------------------------------------
+    /**
+    * Method: Get Login button Label.
+    * Return Login button Label as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String loginBtnLabel() {
+        
+    	String a = getText(loginBtnLoc);
+    	System.out.println(a);
+    	return getText(loginBtnLoc);
+    }
+    //--------------------------------------------------------------------------
+    /**
+    * Method: Click on Login button.
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public void clickLoginBtn()  throws Exception {
+        click(loginBtnLoc);
+    }
 
+}
 
 

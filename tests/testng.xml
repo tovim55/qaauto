@@ -24,7 +24,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.CompanyReview"/>
+            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
         </classes>
 
     </test>

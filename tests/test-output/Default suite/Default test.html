@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/0/4</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Wed May 02 17:55:22 IDT 2018</td>
+<td>Started on:</td><td>Sun Jul 22 15:21:45 IDT 2018</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (191 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (46 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,21 +75,17 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.verifone.tests.oldTests.tmp.startBrowser()'><b>startBrowser</b><br>Test class: com.verifone.tests.tmp</td>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.setEnv()'><b>setEnv</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
 <td><div><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
+Parameter &apos;env&apos; is required by BeforeSuite on method setEnv but has not been marked @Optional or defined
+in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--651946308\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
 	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
 	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
@@ -100,21 +96,17 @@ in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsu
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace386163331", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace386163331'><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
+</pre></div><a href='#' onClick='toggleBox("stack-trace1259014228", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1259014228'><pre>org.testng.TestNGException: 
+Parameter &apos;env&apos; is required by BeforeSuite on method setEnv but has not been marked @Optional or defined
+in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--651946308\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
 	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
 	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
@@ -127,7 +119,7 @@ in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsu
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
 <td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
@@ -137,25 +129,40 @@ in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsu
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.verifone.tests.oldTests.tmp.closePage()'><b>closePage</b><br>Test class: com.verifone.tests.tmp</td>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.startDDTest()'><b>startDDTest</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
 <td></td>
 <td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
 <tr>
-<td title='com.verifone.tests.oldTests.tmp.closePage()'><b>closePage</b><br>Test class: com.verifone.tests.tmp</td>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.startDDTest1()'><b>startDDTest1</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
 <td></td>
 <td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
 <tr>
-<td title='com.verifone.tests.oldTests.tmp.closePage()'><b>closePage</b><br>Test class: com.verifone.tests.tmp</td>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.startDDTest2()'><b>startDDTest2</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
 <td></td>
 <td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
 <tr>
-<td title='com.verifone.tests.oldTests.tmp.closePage()'><b>closePage</b><br>Test class: com.verifone.tests.tmp</td>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.startDDTest3()'><b>startDDTest3</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
 <td></td>
 <td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
+<tr>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.startDDTest4()'><b>startDDTest4</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
+<td></td>
+<td>0</td>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
+<tr>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.startBrowser()'><b>startBrowser</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
+<td></td>
+<td>0</td>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
+<tr>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.stopTestReport()'><b>stopTestReport</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
+<td></td>
+<td>0</td>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -165,21 +172,17 @@ in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsu
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.verifone.tests.oldTests.tmp.testAppl()'><b>testAppl</b><br>Test class: com.verifone.tests.tmp</td>
+<td title='com.verifone.tests.cpTests.EOPortalSanityUI.EOAdminEditPendingEOAdminUI()'><b>EOAdminEditPendingEOAdminUI</b><br>Test class: com.verifone.tests.cpTests.EOPortalSanityUI</td>
 <td><div><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
+Parameter &apos;env&apos; is required by BeforeSuite on method setEnv but has not been marked @Optional or defined
+in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--651946308\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
 	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
 	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
@@ -190,21 +193,17 @@ in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsu
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace686989583", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace686989583'><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
+</pre></div><a href='#' onClick='toggleBox("stack-trace1449263511", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1449263511'><pre>org.testng.TestNGException: 
+Parameter &apos;env&apos; is required by BeforeSuite on method setEnv but has not been marked @Optional or defined
+in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--651946308\testng-customsuite.xml
 	at org.testng.internal.Parameters.createParams(Parameters.java:290)
 	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
 	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
 	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
 	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
 	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
@@ -217,169 +216,7 @@ in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsu
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
 <td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
-<tr>
-<td title='com.verifone.tests.oldTests.tmp.testAppl()'><b>testAppl</b><br>Test class: com.verifone.tests.tmp</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace2122049087", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2122049087'><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
-<tr>
-<td title='com.verifone.tests.oldTests.tmp.testAppl()'><b>testAppl</b><br>Test class: com.verifone.tests.tmp</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1632413663", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1632413663'><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
-<tr>
-<td title='com.verifone.tests.oldTests.tmp.testAppl()'><b>testAppl</b><br>Test class: com.verifone.tests.tmp</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1725165248", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1725165248'><pre>org.testng.TestNGException: 
-Parameter &apos;env&apos; is required by BeforeTest on method startBrowser but has not been marked @Optional or defined
-in C:\Users\yanaf1\AppData\Local\Temp\testng-eclipse--1376100834\testng-customsuite.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.TestRunner.beforeRun(TestRunner.java:529)
-	at org.testng.TestRunner.run(TestRunner.java:497)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>0</td>
-<td>com.verifone.tests.tmp@1677d1</td></tr>
+<td>com.verifone.tests.cpTests.EOPortalSanityUI@2b6faea6</td></tr>
 </table><p>
 </body>
 </html>

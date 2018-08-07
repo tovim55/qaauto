@@ -24,7 +24,10 @@ public class AcceptMerchantAgreementPage extends BasePage {
     private By textLoc = By.xpath("//*[@class='panel panel-default']");
     private By acceptBtnLoc = By.xpath("//*[@class='btn btn-raised btn-primary accept-agreement']");
     private By docHeaderLoc = By.xpath("//*[@class='doc-header']");
+    private By docHeader2Loc = By.xpath("//*[@id='agreementModal']/div/div/div[2]/div/div/h2/i");
+    private By docHeader3Loc = By.xpath("//*[@id='agreementModal']/div/div/div[2]/div/div/h3");
     private By docTextLoc = By.xpath("//*[@id='agreementModal']/div/div/div[2]/div/div/p[1]/span[1]");
+    private By docDeclineBtnLoc = By.id("agreementModalNegateId");
     private By docAgreeBtnLoc = By.id("agreementModalAffirmId");
     
     public AcceptMerchantAgreementPage() {
@@ -82,6 +85,30 @@ public class AcceptMerchantAgreementPage extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
+    * Method: Get Accept merchant agreement doc header2 text.
+    * Return header2 text as String
+    * @authors Yana Fridman
+    */
+    //--------------------------------------------------------------------------  
+        public String docHeader2() {
+        	String a = getText(docHeader2Loc);
+        	System.out.println(a);
+        	return getText(docHeader2Loc);
+        }
+      //--------------------------------------------------------------------------
+      /**
+      * Method: Get Accept merchant agreement doc header3 text.
+      * Return header3 text as String
+      * @authors Yana Fridman
+      */
+      //--------------------------------------------------------------------------  
+      public String docHeader3() {
+    	  String a = getText(docHeader3Loc);
+          System.out.println(a);
+          return getText(docHeader3Loc);
+      }
+    //--------------------------------------------------------------------------
+    /**
     * Method: Get Accept merchant agreement body text.
     * Return body text as String
     * @authors Yana Fridman
@@ -91,6 +118,18 @@ public class AcceptMerchantAgreementPage extends BasePage {
     	String a = getText(docTextLoc);
     	System.out.println(a);
     	return getText(docTextLoc);
+    }
+    //--------------------------------------------------------------------------
+    /**
+    * Method: Get Decline button label.
+    * Return Decline button label as String
+    * @authors Yana Fridman
+    */
+    //--------------------------------------------------------------------------  
+    public String docDeclineBtnText() {
+    	String a = getText(docDeclineBtnLoc);
+    	System.out.println(a);
+    	return getText(docDeclineBtnLoc);
     }
     //--------------------------------------------------------------------------
     /**
