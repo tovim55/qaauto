@@ -67,9 +67,11 @@ public class LoginPage extends BasePage {
     }
 
     public void checkExistCompanies(Company user) {
+        waitSimple(5000);
         clickCompaniesBtn();
+        System.out.println(getText(newCompany)  + "98998989898989  "  + user.getCompanyName());
         assertTextContains(user.getCompanyName(), getText(newCompany));
-        click(newCompany);
+//        click(newCompany);
     }
 
     private void clickCompaniesBtn() {
@@ -94,7 +96,7 @@ public class LoginPage extends BasePage {
 
     public void acceptCompany(Company user) {
         clickNewCompany();
-        clickAcceptCompany(3000, acceptBtn);
+        clickAcceptCompany(5000, acceptBtn);
         checkCompanyDetails(user, "CP_Approved");
 
     }

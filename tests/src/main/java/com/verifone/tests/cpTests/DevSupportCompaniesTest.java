@@ -8,16 +8,16 @@ import static com.verifone.tests.steps.Steps.*;
 
 public class DevSupportCompaniesTest extends BaseTest {
 
-    @Test(testName = "Dev Admin check list companies", description = "CP - dev basic add company & admin check is exist" +
-            "in the list", groups = {"CP-portal"})
-    public void checkCompaniesListUI() throws Exception {
-        Company dev = devSignUp();
-        devLogin(dev);
-        devLoginFillCompany(dev);
-        restartSession();
-        checkCompaniesList(dev);
-    }
-
+//    @Test(testName = "Dev Admin check list companies", description = "CP - dev basic add company & admin check is exist" +
+//            "in the list", groups = {"CP-portal"})
+//    public void checkCompaniesListUI() throws Exception {
+//        Company dev = devSignUp();
+//        devLogin(dev);
+//        devLoginFillCompany(dev);
+//        restartSession();
+//        checkCompaniesList(dev);
+//    }
+//
     @Test(testName = "Dev Admin accepted company", description = "CP - dev basic add company & admin accepted",
             groups = {"CP-portal"})
     public void acceptedCompanyUI() throws Exception {
