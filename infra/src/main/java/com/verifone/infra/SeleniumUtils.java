@@ -137,13 +137,12 @@ public class SeleniumUtils {
 
     }
 
-    public static void restartDriver() {
-        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
-        driver.quit();
-        driver = null;
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-
-    }
+//    public static void restartDriver() {
+//        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
+//        driver.quit();
+//        driver = null;
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//    }
 
 }
