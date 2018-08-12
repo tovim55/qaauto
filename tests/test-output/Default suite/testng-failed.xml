@@ -3,13 +3,19 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.verifone.tests.oldTests.tmp">
+      <class name="com.verifone.tests.cpTests.EOPortalSanityUI">
         <methods>
-          <include name="testAppl"/>
+          <include name="startDDTest2"/>
+          <include name="stopTestReport"/>
+          <include name="startDDTest3"/>
+          <include name="EOAdminEditPendingEOAdminUI"/>
+          <include name="startDDTest"/>
           <include name="startBrowser"/>
-          <include name="closePage"/>
+          <include name="startDDTest1"/>
+          <include name="setEnv"/>
+          <include name="startDDTest4"/>
         </methods>
-      </class> <!-- com.verifone.tests.tmp -->
+      </class> <!-- com.verifone.tests.cpTests.EOPortalSanityUI -->
     </classes>
-  </test> <!-- Default testLog(failed) -->
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

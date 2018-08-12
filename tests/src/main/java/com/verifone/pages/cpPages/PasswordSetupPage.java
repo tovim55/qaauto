@@ -11,22 +11,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Merchants page. 
+* This class described all elements and actions can be executed on Password Setup Final page. 
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------
 
-public class MerchantViewPage extends BasePage {
+public class PasswordSetupPage extends BasePage {
 
     private final static String url = "";
     private final static String title = "Action Required";
     
-    private By titleLoc = By.xpath("//*[@class='top-container']");
-    private By textLoc1 = By.xpath("//*[@class='panel-heading panel-no-border']");
-    private By textLoc2 = By.xpath("//*[@class='panel-body']");
+    private By titleLoc = By.xpath("//*[@class='title']");
+    private By textLoc = By.xpath("//*[@class='instruction']");
 
 
-    public MerchantViewPage() {
+    public PasswordSetupPage() {
         super(url, title);
     }
     //--------------------------------------------------------------------------
@@ -49,26 +48,12 @@ public class MerchantViewPage extends BasePage {
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
-    public String pageText1() {
+    public String pageText() {
         
-    	String a = getText(textLoc1);
+    	String a = getText(textLoc);
     	System.out.println(a);
-    	return getText(textLoc1);
-    }
-    //--------------------------------------------------------------------------
-    /**
-    * Method: Get Page text.
-    * Return Page text as String
-    * @authors Yana Fridman
-    */
-    //-------------------------------------------------------------------------- 
-    public String pageText2() {
-        
-    	String a = getText(textLoc2);
-    	System.out.println(a);
-    	return getText(textLoc2);
+    	return getText(textLoc);
     }
 }
-
 
 
