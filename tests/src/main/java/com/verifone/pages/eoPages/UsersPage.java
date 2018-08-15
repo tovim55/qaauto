@@ -178,7 +178,19 @@ public class UsersPage extends BasePage {
     	
     	return row;
     }
-    
+	public int disableEOMerchantManRow_ParameterSearch(String param) throws InterruptedException {
+		int row = 1000;
+		int i;
+		for (i = 1; i<11; i++) {
+			By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+			if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Disabled") & getText(rowLoc).contains(param)) {
+				row = i;
+				break;
+			}
+		}
+
+		return row;
+	}
     public void clickOnRow(int r) throws InterruptedException {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + r + "]");
     		click(rowLoc);

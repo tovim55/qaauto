@@ -7,13 +7,17 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
-    <parameter name="env" value="${environment}" />
+    <parameter name="env" value="Prod" />
+    <parameter name="mail" value="TestUserEODAM@getnada.com" />
+    <parameter name="pwd" value="Veri1234" />
+    <parameter name="name" value="" />
+    <parameter name="answer" value="" />
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="CPPortal"/>
+    <parameter name="portal" value="EOPortal"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->
@@ -24,7 +28,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.CreateMerchantTest"/>
+            <class name="com.verifone.tests.fastLogin.Login_User_Portal"/>
         </classes>
 
     </test>

@@ -10,12 +10,14 @@ public class HomePage extends BasePage {
     private final static String url = "";
     private final static String title = "Sign Up with Verifone Identity Server";
 
-
+    private By sectionTitleLoc = By.xpath("//*[@class='section-title']");
     private By merchantTable = By.className("vui-table ");
     private By merchantBtn = By.id("merchants");
     private By headerMenuContainerLoc = By.xpath("//*[@class='header-menu__container']");
-    private By headerMenuLoc = By.xpath("//*[@class='header-menu__item header-menu__item--last-child']");
+//    private By headerMenuLoc = By.xpath("//*[@class='header-menu__item header-menu__item--last-child']");
+    private By headerMenuLoc = By.xpath("//*[@class='header-menu__link ']");
     private By headerMenuGroupLoc = By.xpath("//*[@class='header-submenu__group']");
+    private By merchantsMenuLoc = By.xpath("(//*[@class='header-menu__item'])[2]");
     private By userMenuLoc = By.id("users");
     private By profileMenuLoc = By.id("profile");
     private By mailerMenuLoc = By.id("mailer");
@@ -34,18 +36,33 @@ public class HomePage extends BasePage {
     public boolean menuAccountExists () throws Exception {
         return isExists(headerMenuLoc, 20);
     }
+    public boolean menuMerchantsExists () throws Exception {
+        return isExists(merchantsMenuLoc, 20);
+    }
     public void clickHeaderMenu () throws InterruptedException {
     	boolean f1 = false;
     	int t = 0;
     	WebDriverWait wait = new WebDriverWait(BasePage.driver, 20);
-    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='header-menu__item header-menu__item--last-child']")));
+    	wait.until(ExpectedConditions.visibilityOfElementLocated(headerMenuLoc));
     	Thread.sleep(3000);
     	while (f1 == false & t < 20000){
     		f1 = BasePage.driver.findElement(headerMenuLoc).isEnabled();
     		t=t+1000;
     	}
         click(headerMenuLoc);
-    } 
+    }
+    public void clickMerchantsMenu () throws InterruptedException {
+        boolean f1 = false;
+        int t = 0;
+        WebDriverWait wait = new WebDriverWait(BasePage.driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(merchantsMenuLoc));
+        Thread.sleep(3000);
+        while (f1 == false & t < 20000){
+            f1 = BasePage.driver.findElement(merchantsMenuLoc).isEnabled();
+            t=t+1000;
+        }
+        click(merchantsMenuLoc);
+    }
     public void clickUserMenu () throws InterruptedException {
     	
         click(userMenuLoc);
@@ -88,5 +105,16 @@ public class HomePage extends BasePage {
     	System.out.println(a);
     	return getText(headerMenuGroupLoc);
     }
-//    --------------------------------------------------------------------------
+    //    --------------------------------------------------------------------------
+//    * Method: Get Title text.
+//    * Return Title text as String
+//    * @authors Yana Fridman
+//    */
+//--------------------------------------------------------------------------
+    public String sectionTitle() {
+
+        String a = getText(sectionTitleLoc);
+        System.out.println(a);
+        return getText(sectionTitleLoc);
+    }
 }

@@ -7,13 +7,17 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
-    <parameter name="env" value="${environment}" />
+    <parameter name="env" value="QA" />
+    <parameter name="mail" value="QA.Test@verifone.com" />
+    <parameter name="pwd" value="cuhFHz@p" />
+    <parameter name="name" value="QA.Test" />
+    <parameter name="answer" value="Elephant" />
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="CPPortal"/>
+    <parameter name="portal" value="EOSupportPortal"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->
@@ -24,7 +28,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.CreateMerchantTest"/>
+            <class name="com.verifone.tests.fastLogin.Login_User_Portal"/>
         </classes>
 
     </test>

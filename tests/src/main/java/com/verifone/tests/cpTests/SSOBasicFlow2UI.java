@@ -5,11 +5,9 @@ import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.*;
-import com.verifone.pages.eoPages.HomePage;
-import com.verifone.pages.eoPages.LoginEOPortal;
-import com.verifone.pages.eoPages.UserDetailsPage;
-import com.verifone.pages.eoPages.UsersPage;
+import com.verifone.pages.eoPages.*;
 import com.verifone.tests.BaseTest;
+import com.verifone.utils.Assertions;
 import com.verifone.utils.DataDrivenUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -30,23 +28,32 @@ public class SSOBasicFlow2UI extends BaseTest {
     private static String ForgotEmail = "gemerchantx@getnada.com";
     private static String NewPwd = "Veri1234";
     private static String mailResetButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/div[4]/a";
-    private static String portalEOURI = "https://qa.estatemanager.verifonecp.com";
+    private static String portalEOURI = "";
     private static String EOAdminEmail = "User20180722T132418.524MerchMan@getnada.com";
     private static String EOAdminPwd = "Veri1234";
     private static String DisableUserEmail = "";
     private static String DisableUserPwd = "Veri1234";
+    private static String DisableMerchantEmail = "";
+    private static String DisableMerchantPwd = "Veri1234";
+    private static String EnableUserEmail = "";
+    private static String EnableUserPwd = "Veri1234";
+    private static String EnableMerchantEmail = "";
+    private static String EnableMerchantPwd = "Veri1234";
+    private static String env = "";
 
     @BeforeTest
     public void startDDTest() throws Exception {
-
+        env = envConfig.getEnv();
+        portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
     }
 
 
-    @Test(enabled = false, testName = "User Forgot/Reset Password", groups = {"SSOBasic"}, alwaysRun = true)
+    @Test(enabled = true, priority=1, testName = "User Forgot/Reset Password", description = "User Merchant Manager forgot password, reset password login EO Admin portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void userForgotResetPasswordUI() throws Exception {
 
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
-
+        testLog.info( "This test verify that User Merchant Manager can Reset Password, setup New and Log In using New Password");
+        testLog.info("User mail: " + EOAdminEmail);
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
         BasePage.driver.navigate().to(portalEOURI);
@@ -73,68 +80,23 @@ public class SSOBasicFlow2UI extends BaseTest {
 
 //    	Compare Forgot page title with expected
         String tText = ForgotPasswordPage.pageTitle();
-        boolean currentResult = tText.contains("Forgot your password?");
-        if (currentResult == true) {
-            testLog.pass( "Forgot Password page: Found title: " + "Forgot your password?" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found title: " + tText + ". Expected: " + "Forgot your password?");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog);
 
 //    	Compare Forgot page text with expected
         tText = ForgotPasswordPage.pageText();
-        currentResult = tText.contains("Enter the email address associated with your account and we'll send you an email with password reset instructions.");
-        if (currentResult == true) {
-            testLog.pass( "Forgot Password page: Found text: " + "Enter the email address associated with your account and we'll send you an email with password reset instructions." + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found text: " + tText + ". Expected: " + "Enter the email address associated with your account and we'll send you an email with password reset instructions.");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog);
 
 //    	Compare Forgot page Mail label with expected
         tText = ForgotPasswordPage.mailLabelText();
-        currentResult = tText.contains("Email");
-        if (currentResult == true) {
-            testLog.pass( "Forgot Password page: Found mail field hint: " + "Email" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found mail field hint: " + tText + ". Expected: " + "Email");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog);
 
 //    	Compare Forgot page Login link text with expected
         tText = ForgotPasswordPage.btnSendText();
-        currentResult = tText.contains("Send");
-        if (currentResult == true) {
-            testLog.pass("Forgot Password page: Found Send button label: " + "Send" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found Send button label: " + tText + ". Expected: " + "Send");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog);
 
 //    	Compare Forgot page Login link text with expected
         tText = ForgotPasswordPage.lnkLoginText();
-        currentResult = tText.contains("Login");
-        if (currentResult == true) {
-            testLog.pass( "Forgot Password page: Found Login link Text: " + "Login" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found Login link Text: " + tText + ". Expected: " + "Login");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog);
 
         //    	Forgot Password Page: Email empty. Get error and compare with expected
         Thread.sleep(timeOut - 1000);
@@ -144,16 +106,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         Thread.sleep(timeOut - 1000);
         tText = ForgotPasswordPage.errorEmptyText();
-        currentResult = tText.contains("This field is required.");
-        if (currentResult == true) {
-            testLog.pass( "Forgot Password page: Found Mandatory error: " + "This field is required." + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found Mandatory error: " + tText + ". Expected: " + "This field is required.");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog);
 
 //    	Forgot Password Page: Email Invalid. Get error and compare with expected
         Thread.sleep(timeOut - 1000);
@@ -163,16 +116,8 @@ public class SSOBasicFlow2UI extends BaseTest {
         Thread.sleep(1000);
 
         tText = ForgotPasswordPage.errorEmptyText();
-        currentResult = tText.contains("Field Email should have valid format!");
-        if (currentResult == true) {
-            testLog.pass( "Forgot Password page: Found Format error: " + "Field Email should have valid format!" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Forgot Password page: Found Format error: " + tText + ". Expected: " + "Field Email should have valid format!");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog);
+
 //    	Forgot Password Page: Email Not Match. Get error and compare with expected
 
         Thread.sleep(timeOut - 1000);
@@ -216,36 +161,13 @@ public class SSOBasicFlow2UI extends BaseTest {
         String mailText = BasePage.driver.getPageSource();
 
 //    	Compare Mail text with expected
-        currentResult = mailText.contains("You recently requested a password change for");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password mail include text: " + "You recently requested a password change for" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password mail include text: " + mailText + ". Expected: " + "You recently requested a password change for");
-        }
-        currentResult = mailText.contains("If you didn't make this request, please ignore this email. For any questions, please get in touch with us");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password mail include text: " + "If you didn't make this request, please ignore this email. For any questions, please get in touch with us" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password mail include text: " + mailText + ". Expected: " + "If you didn't make this request, please ignore this email. For any questions, please get in touch with us");
-        }
-        currentResult = mailText.contains("Thank you,");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password mail include text: " + "Thank you," + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password mail include text: " + mailText + ". Expected: " + "Thank you,");
-        }
+        TestPassFlag = Assertions.compareValue("You recently requested a password change for", tText, "Reset Password mail include text:", testLog);
+        TestPassFlag = Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", tText, "Reset Password mail include text:", testLog);
+        TestPassFlag = Assertions.compareValue("Thank you,", tText, "Reset Password mail include text:", testLog);
+
 //    	Compare Reset Password button label with expected
         mailText = BasePage.driver.findElement(By.xpath(mailResetButton)).getText();
-        currentResult = mailText.contains("Reset Password");
-        if (currentResult == true) {
-            testLog.pass( "Found Reset Password button label: " + "Reset Password" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Found Reset Password button label: " + mailText + ". Expected: " + "Reset Password");
-        }
+        TestPassFlag = Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog);
 
         BasePage.driver.findElement(By.xpath(mailResetButton)).click();
 
@@ -260,55 +182,19 @@ public class SSOBasicFlow2UI extends BaseTest {
 
 //    	Reset Password Page: Compare title with expected
         tText = ResetPasswordPage.pageTitle();
-        currentResult = tText.contains("Reset Password");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Found title: " + "Reset Password" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Found title: " + tText + ". Expected: " + "Reset Password");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog);
 
 //    	Reset Password Page: Compare Password label with expected
         tText = ResetPasswordPage.passwordLabelText();
-        currentResult = tText.contains("New password");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Password field hint: " + "New password" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Password field hint: " + tText + ". Expected: " + "New password");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog);
 
 //    	Reset Password Page: Compare Confirm Password label with expected
         tText = ResetPasswordPage.confirmPasswordLabelText();
-        currentResult = tText.contains("Confirm Password");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Confirm Password field hint: " + "Confirm Password" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Confirm Password field hint: " + tText + ". Expected: " + "Confirm Password");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog);
 
 //    	Reset Password Page: Compare Proceed button label with expected
         tText = ResetPasswordPage.btnProceedText();
-        currentResult = tText.contains("PROCEED");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Proceed button label: " + "PROCEED" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Proceed button label: " + tText + ". Expected: " + "PROCEED");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog);
 
 //    	Reset Password Page: Input empty password, get error and compare with expected
         testLog.info( "Reset Password page: Input password = ' '. Proceed");
@@ -316,16 +202,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorEmptyText();
-        currentResult = tText.contains("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Found Mandatory error: " + "Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters." + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Found Mandatory error: " + tText + ". Expected: " + "Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog);
 
 //    	Reset Password Page: Input empty Confirm password, get error and compare with expected
         testLog.info( "Reset Password page: Input Confirm password = ' '. Proceed");
@@ -333,16 +210,8 @@ public class SSOBasicFlow2UI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorConfirmEmptyText();
-        currentResult = tText.contains("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Found Mandatory error: " + "Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters." + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Found Mandatory error: " + tText + ". Expected: " + "Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog);
+
 
 //    	Reset Password Page: Input Password and Confirmation Password not match, get error and compare with expected
         testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri4321'. Proceed");
@@ -351,16 +220,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorConfirmEmptyText();
-        currentResult = tText.contains("Password and Confirmation Password must match.");
-        if (currentResult == true) {
-            testLog.pass( "Reset Password page: Found Match error: " + "Password and Confirmation Password must match." + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Reset Password page: Found Match error: " + tText + ". Expected: " + "Password and Confirmation Password must match.");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog);
 
 //    	Reset Password Page: Input Same Password and Confirmation Password, click on Proceed button
         testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri1234'. Proceed");
@@ -378,29 +238,12 @@ public class SSOBasicFlow2UI extends BaseTest {
 
 //    	Thank you page: Compare title with expected
         tText = ResetThankYou.pageTitle();
-        currentResult = tText.contains("Thank you!");
-        if (currentResult == true) {
-            testLog.pass( "Thank You page: Found page Title: " + "Thank you!" + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Thank You page: Found page Title: " + tText + ". Expected: " + "Thank you!");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog);
+
 
 //    	Thank you page: Compare page text with expected
         tText = ResetThankYou.pageText();
-        currentResult = tText.contains("We've reset the password for your Verifone account. You can now log in using your new password.");
-        if (currentResult == true) {
-            testLog.pass( "Thank You page: Found page Text: " + "We've reset the password for your Verifone account. You can now log in using your new password." + "...: Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "Thank You page: Found page Text: " + tText + ". Expected: " + "We've reset the password for your Verifone account. You can now log in using your new password.");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog);
 
 //    	Thank you page: Click on LogIn link
         ResetThankYou.clickLoginLnk();
@@ -438,28 +281,188 @@ public class SSOBasicFlow2UI extends BaseTest {
 //            }
 //        });
         String url = BasePage.driver.getCurrentUrl();
-        currentResult = url.contains("verifonecp.com/#home");
-        if (currentResult == true) {
-            testLog.pass( "User redirected to Home Page Succesfull");
-        } else {
-            TestPassFlag = false;
-            testLog.error( "User redirected to: " + url + ". Expected: " + "Home Page");
-            capScreenShootPath = SeleniumUtils.getScreenshot();
-            testLog.info( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-            testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-        }
+        TestPassFlag = Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog);
+
         Assert.assertTrue(TestPassFlag);
+        BasePage.driver.quit();
     }
 
     @BeforeTest
     public void startDD1Test() throws Exception {
-
+        env = envConfig.getEnv();
+        portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
     }
 
 
-    @Test(enabled = true, testName = "Disable User", groups = {"SSOBasic"}, alwaysRun = true)
+    @Test(enabled = true, priority=2, testName = "Disable Merchant Manager", description = "Disable Merchant Manager blocked login EO Portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void DisableUserUI() throws Exception {
 
+//        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
+        testLog.info( "This test check that disabled Merchant Manager blocked to Log In EO Portal");
+
+
+        testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+
+        BasePage.driver.navigate().to(portalEOURI);
+
+        LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginInputEmail(EOAdminEmail);
+        LoginEOPortal.loginInputPassword(EOAdminPwd);
+        LoginEOPortal.clickLoginBtn();
+
+        testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
+
+        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+
+        HomePage.clickHeaderMenu();
+
+        boolean UserMenu = HomePage.menuUserExists();
+        AssertJUnit.assertEquals(true, UserMenu);
+
+        testLog.info( "-------------------------------------------------Users list-------------------------------------------------");
+
+        HomePage.clickUserMenu();
+
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+        AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+
+        testLog.info( "-------------------------------------Edit Active Merchant Manager and disable it-------------------------------------------------");
+
+        int a = UsersPage.activeEOMerchantManRow_ParameterSearch("@getnada.com");
+        System.out.println(a);
+        UsersPage.clickOnRow(a);
+        Thread.sleep(timeOut);
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
+        DisableUserEmail = UserDetailsPage.getUserEmail();
+        testLog.info( "Disabled user: " + DisableUserEmail);
+
+        Thread.sleep(timeOut);
+        UserDetailsPage.clickLnkDisable();
+        UserDetailsPage.clickDoDisable();
+        Thread.sleep(timeOut+2000);
+
+        testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
+
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        Thread.sleep(timeOut);
+        HomePage.clickHeaderMenu();
+        Thread.sleep(timeOut);
+        HomePage.clickLogoutMenu();
+        Thread.sleep(timeOut);
+
+        testLog.info( "-----------------------------------------Try to Log in as disabled Merchant Manager-------------------------------------------------");
+
+        BasePage.driver.navigate().to(portalEOURI);
+        Thread.sleep(timeOut);
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginInputEmail(DisableUserEmail);
+        LoginEOPortal.loginInputPassword(DisableUserPwd);
+        LoginEOPortal.clickLoginBtn();
+        Thread.sleep(timeOut);
+
+        String tText = LoginEOPortal.lerrorMatch();
+        TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog);
+
+        Assert.assertTrue(TestPassFlag);
+        BasePage.driver.quit();
+    }
+
+    @BeforeTest
+    public void startDD2Test() throws Exception {
+        env = envConfig.getEnv();
+        portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+    }
+    @Test(enabled = true, priority=3, testName = "Disable Merchant", description = "Disable Merchant blocked login merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
+    public void DisableMerchantUI() throws Exception {
+
+//        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
+        testLog.info( "This test check that disabled Merchant blocked to Log In Merchant Portal");
+        testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+
+        BasePage.driver.navigate().to(portalEOURI);
+
+        LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginInputEmail(EOAdminEmail);
+        LoginEOPortal.loginInputPassword(EOAdminPwd);
+        LoginEOPortal.clickLoginBtn();
+
+        testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
+
+        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+
+        testLog.info( "-------------------------------------------------Merchants list-------------------------------------------------");
+
+        HomePage.clickMerchantsMenu();
+
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        MerchantsPage MerchantsPage = (MerchantsPage) PageFactory.getPage("MerchantsPage");
+        AssertJUnit.assertEquals("Merchants", MerchantsPage.titleMerchants());
+
+        int a = MerchantsPage.activeMerchantRow_ParameterSearch("@getnada.com");
+        System.out.println(a);
+        MerchantsPage.clickOnRow(a);
+        Thread.sleep(timeOut);
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        MerchantDetailsPage MerchantDetailsPage = (MerchantDetailsPage) PageFactory.getPage("MerchantDetailsPage");
+        DisableMerchantEmail = MerchantDetailsPage.getMerchantEmail();
+        testLog.info( "Disabled Merchant: " + DisableMerchantEmail);
+
+        testLog.info( "-----------------------------------------Edit Active Merchant  and disable it-------------------------------------------------");
+
+        Thread.sleep(timeOut);
+        MerchantDetailsPage.clickLnkDisable();
+        MerchantDetailsPage.clickDoDisable();
+        Thread.sleep(timeOut+2000);
+
+        testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
+
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        Thread.sleep(timeOut);
+        HomePage.clickHeaderMenu();
+        Thread.sleep(timeOut);
+        HomePage.clickLogoutMenu();
+
+        testLog.info( "--------------------------------------------Try to Log in as disabled Merchant -------------------------------------------------");
+
+        Thread.sleep(timeOut);
+        BasePage.driver.navigate().to(portalEOURI);
+        Thread.sleep(timeOut);
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginInputEmail(DisableMerchantEmail);
+        LoginEOPortal.loginInputPassword(DisableMerchantPwd);
+        LoginEOPortal.clickLoginBtn();
+        Thread.sleep(timeOut);
+
+        String tText = LoginEOPortal.lerrorMatch();
+        TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog);
+
+        Assert.assertTrue(TestPassFlag);
+        BasePage.driver.quit();
+    }
+
+    @BeforeTest
+    public void startDD3Test() throws Exception {
+        env = envConfig.getEnv();
+        portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+    }
+    @Test(enabled = true, priority=4, testName = "Enable Merchant Manager", description = "Enable Merchant Manager logged in merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
+    public void EnableUserUI() throws Exception {
+
+        testLog.info( "This test check that enabled Merchant Manager Logged In EO Admin Portal successfully");
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
 
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
@@ -471,6 +474,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         LoginEOPortal.loginInputPassword(EOAdminPwd);
         LoginEOPortal.clickLoginBtn();
 
+        testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
 
         ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
@@ -481,6 +485,8 @@ public class SSOBasicFlow2UI extends BaseTest {
         boolean UserMenu = HomePage.menuUserExists();
         AssertJUnit.assertEquals(true, UserMenu);
 
+        testLog.info( "-----------------------------------------------------Users list-------------------------------------------------");
+
         HomePage.clickUserMenu();
 
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
@@ -488,31 +494,137 @@ public class SSOBasicFlow2UI extends BaseTest {
         UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
         AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 
-        int a = UsersPage.activeEOMerchantManRow_ParameterSearch("@getnada.com");
+        int a = UsersPage.disableEOMerchantManRow_ParameterSearch("@getnada.com");
         System.out.println(a);
         UsersPage.clickOnRow(a);
         Thread.sleep(timeOut);
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
         UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
-        DisableUserEmail = UserDetailsPage.getUserEmail();
+        EnableUserEmail = UserDetailsPage.getUserEmail();
+        testLog.info( "Enabled user: " + EnableUserEmail);
 
-        UserDetailsPage.clickLnkDisable();
-        UserDetailsPage.clickDoDisable();
+        testLog.info( "---------------------------------------Edit Disable Merchant Manager and enable it-------------------------------------------------");
+        Thread.sleep(timeOut);
+        UserDetailsPage.clickLnkEnable();
+        UserDetailsPage.clickDoEnable();
         Thread.sleep(timeOut+2000);
 
+        testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
+
         HomePage = (HomePage) PageFactory.getPage("HomePage");
+        Thread.sleep(timeOut);
+        HomePage.clickHeaderMenu();
+        Thread.sleep(timeOut);
+        HomePage.clickLogoutMenu();
+        Thread.sleep(timeOut);
+
+        testLog.info( "----------------------------------------Log in EO portal as enabled Merchant Manager-------------------------------------------------");
+
+        BasePage.driver.navigate().to(portalEOURI);
+        Thread.sleep(timeOut);
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        Thread.sleep(timeOut);
+        LoginEOPortal.loginInputEmail(EnableUserEmail);
+        LoginEOPortal.loginInputPassword(EnableUserPwd);
+        LoginEOPortal.clickLoginBtn();
+        Thread.sleep(timeOut);
+
+        testLog.info( "-------------------------------------------------Merchant Manager Home page-------------------------------------------------");
+
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        AssertJUnit.assertEquals(true, HomePage.headerExists());
+
+        Assert.assertTrue(TestPassFlag);
+        BasePage.driver.quit();
+    }
+
+    @BeforeTest
+    public void startDD4Test() throws Exception {
+        env = envConfig.getEnv();
+        portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+    }
+    @Test(enabled = true, priority=5, testName = "Enable Merchant", description = "Enable Merchant logged in merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
+    public void EnableMerchantUI() throws Exception {
+
+        testLog.info( "This test check that enabled Merchant Logged In EO Merchant Portal successfully");
+//        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
+
+        testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+
+        BasePage.driver.navigate().to(portalEOURI);
+
+        LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginInputEmail(EOAdminEmail);
+        LoginEOPortal.loginInputPassword(EOAdminPwd);
+        LoginEOPortal.clickLoginBtn();
+
+        testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
+
+        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+
+        testLog.info( "-----------------------------------------------------Merchants list-------------------------------------------------");
+
+        HomePage.clickMerchantsMenu();
+
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        MerchantsPage MerchantsPage = (MerchantsPage) PageFactory.getPage("MerchantsPage");
+        AssertJUnit.assertEquals("Merchants", MerchantsPage.titleMerchants());
+
+        int a = MerchantsPage.disableMerchantRow_ParameterSearch("@getnada.com");
+        System.out.println(a);
+        MerchantsPage.clickOnRow(a);
+        Thread.sleep(timeOut);
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        MerchantDetailsPage MerchantDetailsPage = (MerchantDetailsPage) PageFactory.getPage("MerchantDetailsPage");
+        EnableMerchantEmail = MerchantDetailsPage.getMerchantEmail();
+        testLog.info( "Enabled Merchant: " + EnableMerchantEmail);
+
+        testLog.info( "---------------------------------------------Edit Disable Merchant and enable it-------------------------------------------------");
+        Thread.sleep(timeOut);
+        MerchantDetailsPage.clickLnkEnable();
+        MerchantDetailsPage.clickDoEnable();
+        Thread.sleep(timeOut+2000);
+
+        testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
+
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
         HomePage.clickLogoutMenu();
 
+        testLog.info( "-----------------------------------------------Log in EO portal as enabled Merchant-------------------------------------------------");
+
+        Thread.sleep(timeOut);
         BasePage.driver.navigate().to(portalEOURI);
+        Thread.sleep(timeOut);
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-        LoginEOPortal.loginInputEmail(DisableUserEmail);
-        LoginEOPortal.loginInputPassword(DisableUserPwd);
+        Thread.sleep(timeOut);
+        LoginEOPortal.loginInputEmail(EnableMerchantEmail);
+        LoginEOPortal.loginInputPassword(EnableMerchantPwd);
         LoginEOPortal.clickLoginBtn();
         Thread.sleep(timeOut);
+
+        testLog.info( "---------------------------------------------------------Merchant Home page-------------------------------------------------");
+
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        MerchantThankYouPage MerchantThankYouPage = (MerchantThankYouPage) PageFactory.getPage("MerchantThankYouPage");
+        AssertJUnit.assertEquals("Thank you!",MerchantThankYouPage.pageTitle());
+
+        Assert.assertTrue(TestPassFlag);
+        BasePage.driver.quit();
     }
+
 }
