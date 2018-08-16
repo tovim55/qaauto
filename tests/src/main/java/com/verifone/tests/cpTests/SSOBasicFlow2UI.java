@@ -284,7 +284,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         TestPassFlag = Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog);
 
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
     @BeforeTest
@@ -372,7 +372,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog);
 
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
     @BeforeTest
@@ -451,7 +451,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog);
 
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
     @BeforeTest
@@ -540,7 +540,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         AssertJUnit.assertEquals(true, HomePage.headerExists());
 
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
     @BeforeTest
@@ -624,7 +624,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         AssertJUnit.assertEquals("Thank you!",MerchantThankYouPage.pageTitle());
 
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
 }
