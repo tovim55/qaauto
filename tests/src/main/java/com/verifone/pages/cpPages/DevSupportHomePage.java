@@ -30,14 +30,25 @@ public class DevSupportHomePage extends BasePage {
     }
 
     public void goToUsersPage() {
+        waitSimple(5000);
         hoverAndClickOnElement(usernameBtn);
         click(userBtn);
 
     }
+
+    private void waitSimple(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void appsTable(){
 //        getWebElements();
 
     }
+
 
 
 }
