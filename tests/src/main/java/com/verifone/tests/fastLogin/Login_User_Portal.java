@@ -2,6 +2,8 @@ package com.verifone.tests.fastLogin;
 import com.verifone.pages.cpPages.NoAccessPage;
 import com.verifone.pages.cpPages.OktaLogin;
 import com.verifone.utils.Assertions;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import org.testng.annotations.BeforeTest;
@@ -18,7 +20,8 @@ import java.util.ArrayList;
 import static com.verifone.pages.BasePage.testLog;
 
 
-public class Login_User_Portal extends BaseTest {
+//public class Login_User_Portal {
+    public class Login_User_Portal extends BaseTest {
 
     @BeforeTest
     public void startTest() throws Exception {
@@ -28,7 +31,7 @@ public class Login_User_Portal extends BaseTest {
     @Parameters({ "env", "mail", "pwd", "portal", "name", "answer"})
     @Test(enabled = true, priority = 1, testName = "EOAdmin EOPortal", groups = {"FastLogin"}, alwaysRun = true)
 
-    public void Login_User_PortalUI(String param1, String param2, String param3, String param4, String param5, String param6) throws Exception {
+    public void Login_User_PortalUI_Cont(String param1, String param2, String param3, String param4, String param5, String param6) throws Exception {
         String url = "";
         switch(param1) {
             case "QA":

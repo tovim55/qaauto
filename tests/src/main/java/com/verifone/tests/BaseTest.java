@@ -98,7 +98,7 @@ public abstract class BaseTest {
                 break;
         }
 
-        if (method.getName().contains("UI")) {
+        if (method.getName().contains("UI") & !method.getName().contains("UI_Cont")) {
             child.info("Closing Web Page");
             SeleniumUtils.closeRuntimeBrowserInstance();
         }
