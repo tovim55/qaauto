@@ -1,4 +1,5 @@
-package com.verifone.pages.eoPages;
+package com.verifone.pages.cpPages;
+
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
@@ -11,27 +12,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Thank You page displayed after Reset Password. 
-* @authors Yana Fridman
-*/
+ * This class described all elements and actions can be executed on Thank You page displayed after Reset Password.
+ * @authors Yana Fridman
+ */
 //--------------------------------------------------------------------------
 
-public class LoginEOPortal extends BasePage {
+public class OktaLogin extends BasePage {
 
     private final static String url = "";
     private final static String title = "Forgot your password?";
-    
-    private By emailLoc = By.id("username"); 
-    private By passwordLoc = By.id("password");
-    private By loginBtnLoc = By.xpath("//*[@class='btn btn-raised btn-primary btn-block']");
-    private By loginEmail = By.xpath("//*[@class='control-label' and @for='username']");
-    private By loginTitle = By.xpath("//*[@class='account-name verifone']");
-    private By loginPassword = By.xpath("//*[@class='control-label' and @for='ipassword']");
-    private By loginForgotLink = By.xpath("//*[@id=\"loginForm\"]/div[2]/a");
+
+    private By SihnInBtnLoc = By.id("okta-signin-submit");
+    private By loginNameLoc = By.id("okta-signin-username");
+    private By loginOktaTitle = By.xpath("//*[@class='okta-form-title o-form-head']");
+    private By loginPwdLoc = By.id("okta-signin-password");
+    private By loginAnswerLoc = By.id("input67");
+    private By loginForgotLink = By.xpath("//*[@id=\"loginForm\"]/div[3]/a");
     private By loginBtnLabel = By.id("btnPrimaryLogin");
-    private By lEmail = By.id("username");
-    private By lPassword = By.id("ipassword");
-    private By lPassword1 = By.xpath("//*[@class='form-group label-floating required is-empty']");
+    private By verifyBtnLoc = By.xpath("//*[@class='button button-primary']");
+
     private By lerrorMandatoryField = By.xpath("//*[@class='help-block']");
     private By loginSetupBtn = By.id("btnPrimaryLogin");
     private By lerrorMatch = By.xpath("//*[@class='alert alert-danger']");
@@ -39,37 +38,12 @@ public class LoginEOPortal extends BasePage {
     private By panel = By.xpath("//*[@class='panel-body']");
 
 
-    
-    
-    public LoginEOPortal() {
+
+
+    public OktaLogin() {
         super(url, title);
     }
-//    //--------------------------------------------------------------------------
-//    /**
-//    * Method: Get Page title.
-//    * Return Page title as String
-//    * @authors Yana Fridman
-//    */
-//    //--------------------------------------------------------------------------
-//    public String pageTitle() {
-//        
-//    	String a = getText(titleLoc);
-//    	System.out.println(a);
-//    	return getText(titleLoc);
-//    }
-//    //--------------------------------------------------------------------------
-//    /**
-//    * Method: Get Page text.
-//    * Return Page text as String
-//    * @authors Yana Fridman
-//    */
-//    //-------------------------------------------------------------------------- 
-//    public String pageText() {
-//        
-//    	String a = getText(textLoc);
-//    	System.out.println(a);
-//    	return getText(textLoc);
-//    }
+
     //--------------------------------------------------------------------------
     /**
      * Method: Login: Input Email data.
@@ -77,9 +51,8 @@ public class LoginEOPortal extends BasePage {
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
-    public void loginInputEmail(String ulEmail)  throws Exception {
-        sendKeys(lEmail, ulEmail);
-        click(panel);
+    public void loginInputName(String ulName)  throws Exception {
+        sendKeys(loginNameLoc, ulName);
     }
     //--------------------------------------------------------------------------
     /**
@@ -89,57 +62,67 @@ public class LoginEOPortal extends BasePage {
      */
     //--------------------------------------------------------------------------
     public void loginInputPassword(String ulPassword)  throws Exception {
-//        sendKeys(lPassword1, ulPassword);
-        WebElement iFrame = BasePage.driver.findElement(By.id("veriPassFrame"));
-        BasePage.driver.switchTo().frame(iFrame);
-        BasePage.driver.findElement(lPassword).sendKeys(ulPassword);
-        driver.switchTo().defaultContent();
-        click(lEmail);
+        sendKeys(loginPwdLoc, ulPassword);
     }
     //--------------------------------------------------------------------------
     /**
-    * Method: Click on Login link.
-    * @authors Yana Fridman
-    */
-    //-------------------------------------------------------------------------- 
-    public void clickLoginBtn()  throws Exception {
-        click(loginBtnLoc);
-    }
-    //--------------------------------------------------------------------------
-    /**
-     * Method: Login: Get Page title.
-     * Return Page title as String
+     * Method: Click on Sign In button.
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
-    public String loginTitle() {
-        return getText(loginTitle);
+    public void clickSignInBtn()  throws Exception {
+        click(SihnInBtnLoc);
+    }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Login: Input Security answer data.
+     * Get Security answer data as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
+    public void loginInputAnswer(String ulAnswer)  throws Exception {
+        sendKeys(loginAnswerLoc, ulAnswer);
+    }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click on Verify button.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
+    public void clickVerifyBtn()  throws Exception {
+        click(verifyBtnLoc);
+    }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Login: Get Okta Login page Title.
+     * Return Okta Login page Title as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
+    public String loginOktaTitle() {
+        return getText(loginOktaTitle);
     }
 
     //--------------------------------------------------------------------------
-    /**
-     * Method: Login: Get Email field hint.
-     * Return Email field hint as String
-     * @authors Yana Fridman
-     */
-    //--------------------------------------------------------------------------
-    public String loginEmail() {
-        return getText(loginEmail);
-    }
-    //--------------------------------------------------------------------------
-    /**
-     * Method: Login: Get Password field hint.
-     * Return Password field hint as String
-     * @authors Yana Fridman
-     */
-    //--------------------------------------------------------------------------
-    public String loginPassword() {
-        WebElement iFrame = BasePage.driver.findElement(By.id("veriPassFrame"));
-        BasePage.driver.switchTo().frame(iFrame);
-        String a = getText(loginPassword);
-        driver.switchTo().defaultContent();
-        return a;
-    }
+//    /**
+//     * Method: Login: Get Okta Login page Title.
+//     * Return Okta Login page Title as String
+//     * @authors Yana Fridman
+//     */
+//    //--------------------------------------------------------------------------
+//    public String loginEmail() {
+//        return getText(loginEmail);
+//    }
+//    //--------------------------------------------------------------------------
+//    /**
+//     * Method: Login: Get Password field hint.
+//     * Return Password field hint as String
+//     * @authors Yana Fridman
+//     */
+//    //--------------------------------------------------------------------------
+//    public String loginPassword() {
+//        return getText(loginPassword);
+//    }
 
     //--------------------------------------------------------------------------
     /**
@@ -149,9 +132,7 @@ public class LoginEOPortal extends BasePage {
      */
     //--------------------------------------------------------------------------
     public String loginForgotLink() {
-
         return getText(loginForgotLink);
-
     }
 
     //--------------------------------------------------------------------------
