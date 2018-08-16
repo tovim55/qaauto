@@ -8,7 +8,7 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="env" value="QA" />
-    <parameter name="mail" value="qa_mer_manager@yopmail.com" />
+    <parameter name="mail" value="User20180806T161625.721MerchMan@getnada.com" />
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />
