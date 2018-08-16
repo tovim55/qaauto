@@ -26,7 +26,7 @@
 
         <classes>
             <!--<class name="com.verifone.tests.cpTests.DevSupportUsersTest"/>-->
-            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>
         </classes>
 
     </test>

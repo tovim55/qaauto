@@ -236,7 +236,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				Assert.assertTrue(LoginSSOPage.formOKTAExists());
 		}
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
 	@BeforeTest
@@ -388,7 +388,7 @@ public class SSOBasicFlowUI extends BaseTest {
 
 		}
 		Assert.assertTrue(TestPassFlag);
-		BasePage.driver.quit();
+		//BasePage.driver.quit();
 
 
 	}
@@ -550,6 +550,6 @@ public class SSOBasicFlowUI extends BaseTest {
                 break;
         }
 		Assert.assertTrue(TestPassFlag);
-		BasePage.driver.quit();
+		//BasePage.driver.quit();
         }
     }

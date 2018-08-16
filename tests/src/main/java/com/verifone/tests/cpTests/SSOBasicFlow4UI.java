@@ -298,7 +298,7 @@ public class SSOBasicFlow4UI extends BaseTest {
 
         Thread.sleep(timeOut);
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 
     @BeforeTest
@@ -341,6 +341,6 @@ public class SSOBasicFlow4UI extends BaseTest {
         TestPassFlag = com.verifone.utils.Assertions.compareValue("Thanks for your registration!", tText, "Password Setup Final pag: Found text:", testLog);
 
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+        //BasePage.driver.quit();
     }
 }

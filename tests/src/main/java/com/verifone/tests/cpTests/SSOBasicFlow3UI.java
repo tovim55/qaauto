@@ -114,6 +114,6 @@ public class SSOBasicFlow3UI extends BaseTest {
 
         Thread.sleep(timeOut);
         Assert.assertTrue(TestPassFlag);
-        BasePage.driver.quit();
+//        BasePage.driver.quit();
     }
 }
