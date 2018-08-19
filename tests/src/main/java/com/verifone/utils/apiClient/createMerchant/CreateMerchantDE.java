@@ -5,6 +5,9 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 public class CreateMerchantDE extends BaseApi {
@@ -20,7 +23,7 @@ public class CreateMerchantDE extends BaseApi {
     }
 
 
-    public String createMerchant(String eoAdminId) throws IOException {
+    public String createMerchant(String eoAdminId) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 //        Date date = new Date();
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String id = UUID.randomUUID().toString();

@@ -7,11 +7,11 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
-    <parameter name="env" value="Dev" />
-    <parameter name="mail" value="dev_devadmin1@yopmail.com" />
-    <parameter name="pwd" value="Veri1234" />
-    <parameter name="name" value="" />
-    <parameter name="answer" value="" />
+    <parameter name="env" value="Test" />
+    <parameter name="mail" value="QA.Test@verifone.com" />
+    <parameter name="pwd" value="cuhFHz@p" />
+    <parameter name="name" value="QA.Test" />
+    <parameter name="answer" value="Elephant" />
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
