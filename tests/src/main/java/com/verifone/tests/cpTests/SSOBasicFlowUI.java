@@ -62,7 +62,7 @@ public class SSOBasicFlowUI extends BaseTest {
         ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
     	BasePage.driver.switchTo().window(availableWindows.get(0));
 
-//    	Compare login Title text with expected
+//    	Compare loginAndCheck Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
     	String tText = LoginEOPortal.loginTitle();
     	boolean currentResult = tText.contains("Login to your Verifone Account");
@@ -76,7 +76,7 @@ public class SSOBasicFlowUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login Email text with expected
+//    	Compare loginAndCheck Email text with expected
     	tText = LoginEOPortal.loginEmail();
     	currentResult = tText.contains("Email Address");
     	if (currentResult == true) {
@@ -89,7 +89,7 @@ public class SSOBasicFlowUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login Password text with expected
+//    	Compare loginAndCheck Password text with expected
     	tText = LoginEOPortal.loginPassword();
     	currentResult = tText.contains("Password");
     	if (currentResult == true) {
@@ -102,7 +102,7 @@ public class SSOBasicFlowUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login Forgot link text with expected
+//    	Compare loginAndCheck Forgot link text with expected
     	tText = LoginEOPortal.loginForgotLink();
     	currentResult = tText.contains("Forgot Password?");
     	if (currentResult == true) {
@@ -115,7 +115,7 @@ public class SSOBasicFlowUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login button text with expected
+//    	Compare loginAndCheck button text with expected
     	tText = LoginEOPortal.loginBtnLabel();
     	currentResult = tText.contains("LOG IN");
     	if (currentResult == true) {
@@ -335,7 +335,7 @@ public class SSOBasicFlowUI extends BaseTest {
 		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
 		BasePage.driver.switchTo().window(availableWindows.get(0));
 
-//    	Compare login Title text with expected
+//    	Compare loginAndCheck Title text with expected
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 		String tText = LoginEOPortal.loginTitle();
 		boolean currentResult = tText.contains("Login to your Verifone Account");
@@ -349,7 +349,7 @@ public class SSOBasicFlowUI extends BaseTest {
 			testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 		}
 
-//    	Compare login Email text with expected
+//    	Compare loginAndCheck Email text with expected
 		tText = LoginEOPortal.loginEmail();
 		currentResult = tText.contains("Email Address");
 		if (currentResult == true) {
@@ -362,7 +362,7 @@ public class SSOBasicFlowUI extends BaseTest {
 			testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 		}
 
-//    	Compare login Password text with expected
+//    	Compare loginAndCheck Password text with expected
 		tText = LoginEOPortal.loginPassword();
 		currentResult = tText.contains("Password");
 		if (currentResult == true) {
@@ -375,7 +375,7 @@ public class SSOBasicFlowUI extends BaseTest {
 			testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 		}
 
-//    	Compare login Forgot link text with expected
+//    	Compare loginAndCheck Forgot link text with expected
 		tText = LoginEOPortal.loginForgotLink();
 		currentResult = tText.contains("Forgot Password?");
 		if (currentResult == true) {
@@ -388,7 +388,7 @@ public class SSOBasicFlowUI extends BaseTest {
 			testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 		}
 
-//    	Compare login button text with expected
+//    	Compare loginAndCheck button text with expected
 		tText = LoginEOPortal.loginBtnLabel();
 		currentResult = tText.contains("LOG IN");
 		if (currentResult == true) {
@@ -543,7 +543,7 @@ public class SSOBasicFlowUI extends BaseTest {
         ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
 
-//    	Compare login Title text with expected
+//    	Compare loginAndCheck Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         String tText = LoginEOPortal.loginTitle();
         boolean currentResult = tText.contains("Login to your Verifone Account");
@@ -557,7 +557,7 @@ public class SSOBasicFlowUI extends BaseTest {
             testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
         }
 
-//    	Compare login Email text with expected
+//    	Compare loginAndCheck Email text with expected
         tText = LoginEOPortal.loginEmail();
         currentResult = tText.contains("Email Address");
         if (currentResult == true) {
@@ -570,7 +570,7 @@ public class SSOBasicFlowUI extends BaseTest {
             testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
         }
 
-//    	Compare login Password text with expected
+//    	Compare loginAndCheck Password text with expected
         tText = LoginEOPortal.loginPassword();
         currentResult = tText.contains("Password");
         if (currentResult == true) {
@@ -583,7 +583,7 @@ public class SSOBasicFlowUI extends BaseTest {
             testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
         }
 
-//    	Compare login Forgot link text with expected
+//    	Compare loginAndCheck Forgot link text with expected
         tText = LoginEOPortal.loginForgotLink();
         currentResult = tText.contains("Forgot Password?");
         if (currentResult == true) {
@@ -596,7 +596,7 @@ public class SSOBasicFlowUI extends BaseTest {
             testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
         }
 
-//    	Compare login button text with expected
+//    	Compare loginAndCheck button text with expected
         tText = LoginEOPortal.loginBtnLabel();
         currentResult = tText.contains("LOG IN");
         if (currentResult == true) {

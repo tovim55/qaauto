@@ -19,4 +19,10 @@ public class Assertions {
 //        testLog.info("Test: text should equal: " + expectedResult + " Actual text: " + actual);
         assertEquals(expectedResult, actual);
     }
+
+    public static void assertTextEqual(boolean expectedResult, boolean actual) {
+//        testLog.info("Test: text should equal: " + expectedResult + " Actual text: " + actual);
+        assertEquals(expectedResult, actual);
+    }
+
 }

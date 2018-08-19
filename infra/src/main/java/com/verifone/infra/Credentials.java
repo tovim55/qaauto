@@ -43,5 +43,7 @@ public class Credentials {
         return new User(prop.getProperty(env + "DevBasic"), prop.getProperty(env + "DevBasicPass"));
     }
 
-
+    public User getCGPortal() {
+        return new User(prop.getProperty(env + "CGDevAdmin"), prop.getProperty(env + "CGDevAdminPass"));
+    }
 }

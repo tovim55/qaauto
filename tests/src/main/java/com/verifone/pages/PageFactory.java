@@ -2,6 +2,7 @@ package com.verifone.pages;
 
 //import com.verifone.utils.CGLoginPage.CGLoginPage;
 
+import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.AddUserPage;
@@ -31,6 +32,9 @@ public class PageFactory {
 
             case "CGLoginPage":
                 return new CGLoginPage();
+
+            case "CGApplicationPage":
+                return new CGApplicationPage();
 
             case "DevSupportHomePage":
                 return new DevSupportHomePage();
