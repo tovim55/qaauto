@@ -81,28 +81,33 @@ public class SSOBasicFlowUI extends BaseTest {
 //    	Compare login Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
     	String tText = LoginEOPortal.loginTitle();
-		TestPassFlag = Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog);
-
+    	if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog)) {
+			TestPassFlag = false;
+		}
 
 //    	Compare login Email text with expected
     	tText = LoginEOPortal.loginEmail();
-		TestPassFlag = Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog);
-
+		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Compare login Password text with expected
 		tText = LoginEOPortal.loginPassword();
-		TestPassFlag = Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog);
-
+		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Compare login Forgot link text with expected
 		tText = LoginEOPortal.loginForgotLink();
-		TestPassFlag = Assertions.compareValue("Forgot Password?", tText, "Login page: Found Forgot Password link text:", testLog);
-
+		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Forgot Password link text:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Compare login button text with expected
     	tText = LoginEOPortal.loginBtnLabel();
-		TestPassFlag = Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog);
-
+		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Click on Email field, click out, get and Compare mandatory error
         ulMail = "";
@@ -110,8 +115,9 @@ public class SSOBasicFlowUI extends BaseTest {
     	testLog.info( "Login page: Input Email = ' '");
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMandatoryField();
-		TestPassFlag = Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog);
-
+		if (!Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Click on Password field, click out, get and Compare mandatory error
         ulPassword = "";
@@ -119,8 +125,9 @@ public class SSOBasicFlowUI extends BaseTest {
     	testLog.info( "Login page: Input Password = ' '");
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMandatoryField();
-		TestPassFlag = Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog);
-
+		if (!Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Click on Email field, input invalid email, click out, get and Compare validation error
     	ulMail = "InvalidEmail";
@@ -128,8 +135,9 @@ public class SSOBasicFlowUI extends BaseTest {
     	testLog.info( "Login page: Input Email = " + ulMail);
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMandatoryField();
-		TestPassFlag = Assertions.compareValue("Email has incorrect format. You can only use letters, numbers and symbols.", tText, "Login page: Found Invalid email error:", testLog);
-
+		if (!Assertions.compareValue("Email has incorrect format. You can only use letters, numbers and symbols.", tText, "Login page: Found Invalid email error:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Input Not Matched Email and Password. Compare validation error
 		ulMail = "ValidEmail@getnada.com";
@@ -140,8 +148,9 @@ public class SSOBasicFlowUI extends BaseTest {
         LoginEOPortal.clickLoginBtn();
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMatch();
-		TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found Match data error:", testLog);
-
+		if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found Match data error:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Input Valid Email and Password. Login
     	ulMail = Mail;
@@ -225,8 +234,9 @@ public class SSOBasicFlowUI extends BaseTest {
 				BasePage.driver.switchTo().window(availableWindows.get(0));
 				NoAccessPage NoAccessPage = (NoAccessPage) PageFactory.getPage("NoAccessPage");
 				tText = NoAccessPage.pageText();
-				TestPassFlag = Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog);
-
+				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog)){
+					TestPassFlag = false;
+				}
 				break;
 			case "Verifone Dev Support Admin":
 			case "Verifone EO Support Admin":
@@ -279,24 +289,29 @@ public class SSOBasicFlowUI extends BaseTest {
 //    	Compare login Title text with expected
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 		String tText = LoginEOPortal.loginTitle();
-		TestPassFlag = Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog);
-
+		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login Email text with expected
 		tText = LoginEOPortal.loginEmail();
-		TestPassFlag = Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog);
-
+		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login Password text with expected
 		tText = LoginEOPortal.loginPassword();
-		TestPassFlag = Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog);
-
+		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login Forgot link text with expected
 		tText = LoginEOPortal.loginForgotLink();
-		TestPassFlag = Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog);
-
+		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login button text with expected
 		tText = LoginEOPortal.loginBtnLabel();
-		TestPassFlag = Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog);
-
+		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Input Valid Email and Password. Login
 
@@ -320,7 +335,9 @@ public class SSOBasicFlowUI extends BaseTest {
 			case "Merchant":
 				Thread.sleep(timeOut+2000);
 				String url = BasePage.driver.getCurrentUrl();
-				TestPassFlag = Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog);
+				if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog)){
+					TestPassFlag = false;
+				}
 				break;
 
 			case "Basic Developer":
@@ -330,7 +347,9 @@ public class SSOBasicFlowUI extends BaseTest {
 				BasePage.driver.switchTo().window(availableWindows.get(0));
 				NoAccessPage NoAccessPage = (NoAccessPage) PageFactory.getPage("NoAccessPage");
 				tText = NoAccessPage.pageText();
-				TestPassFlag = Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog);
+				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog)){
+					TestPassFlag = false;
+				}
 				break;
 
 			case "Verifone Dev Support Admin":
@@ -433,24 +452,29 @@ public class SSOBasicFlowUI extends BaseTest {
 //    	Compare login Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         String tText = LoginEOPortal.loginTitle();
-		TestPassFlag = Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog);
-
+		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login Email text with expected
         tText = LoginEOPortal.loginEmail();
-		TestPassFlag = Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog);
-
+		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login Password text with expected
         tText = LoginEOPortal.loginPassword();
-		TestPassFlag = Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog);
-
+		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login Forgot link text with expected
         tText = LoginEOPortal.loginForgotLink();
-		TestPassFlag = Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog);
-
+		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog)){
+			TestPassFlag = false;
+		}
 //    	Compare login button text with expected
         tText = LoginEOPortal.loginBtnLabel();
-		TestPassFlag = Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog);
-
+		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog)){
+			TestPassFlag = false;
+		}
 
 //    	Input Valid Email and Password. Login
 
@@ -477,8 +501,10 @@ public class SSOBasicFlowUI extends BaseTest {
                 BasePage.driver.switchTo().window(availableWindows.get(0));
                 NoAccessPage NoAccessPage = (NoAccessPage) PageFactory.getPage("NoAccessPage");
                 tText = NoAccessPage.pageText();
-				TestPassFlag = Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog);
-                break;
+				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog)){
+					TestPassFlag = false;
+				}
+				break;
 
             case "Verifone EO Support Admin":
                 Thread.sleep(timeOut+2000);
@@ -510,8 +536,10 @@ public class SSOBasicFlowUI extends BaseTest {
             case "Dev Admin":
                 Thread.sleep(timeOut+2000);
                 String url = BasePage.driver.getCurrentUrl();
-				TestPassFlag = Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog);
-                Thread.sleep(timeOut);
+				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog)){
+					TestPassFlag = false;
+				}
+				Thread.sleep(timeOut);
                 availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
                 BasePage.driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header

@@ -109,8 +109,9 @@ public class SSOBasicFlow3UI extends BaseTest {
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         String tText = HomePage.sectionTitle();
-        TestPassFlag = Assertions.compareValue(sectionTitle, tText, "Home page: Found section title:", testLog);
-
+        if (!Assertions.compareValue(sectionTitle, tText, "Home page: Found section title:", testLog)){
+            TestPassFlag = false;
+        }
 
         Thread.sleep(timeOut);
         Assert.assertTrue(TestPassFlag);

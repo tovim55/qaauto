@@ -80,24 +80,29 @@ public class SSOBasicFlow2UI extends BaseTest {
 
 //    	Compare Forgot page title with expected
         String tText = ForgotPasswordPage.pageTitle();
-        TestPassFlag = Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog);
-
+        if (!Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Compare Forgot page text with expected
         tText = ForgotPasswordPage.pageText();
-        TestPassFlag = Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog);
-
+        if (!Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Compare Forgot page Mail label with expected
         tText = ForgotPasswordPage.mailLabelText();
-        TestPassFlag = Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog);
-
+        if (!Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Compare Forgot page Login link text with expected
         tText = ForgotPasswordPage.btnSendText();
-        TestPassFlag = Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog);
-
+        if (!Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Compare Forgot page Login link text with expected
         tText = ForgotPasswordPage.lnkLoginText();
-        TestPassFlag = Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog);
-
+        if (!Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog)){
+            TestPassFlag = false;
+        }
         //    	Forgot Password Page: Email empty. Get error and compare with expected
         Thread.sleep(timeOut - 1000);
         testLog.info( "Forgot Password page: Input mail: " + "<empty>" + " and Send");
@@ -106,8 +111,9 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         Thread.sleep(timeOut - 1000);
         tText = ForgotPasswordPage.errorEmptyText();
-        TestPassFlag = Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog);
-
+        if (!Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Forgot Password Page: Email Invalid. Get error and compare with expected
         Thread.sleep(timeOut - 1000);
         testLog.info( "Forgot Password page: Input mail: " + "InvalidMail" + " and Send");
@@ -116,8 +122,9 @@ public class SSOBasicFlow2UI extends BaseTest {
         Thread.sleep(1000);
 
         tText = ForgotPasswordPage.errorEmptyText();
-        TestPassFlag = Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog);
-
+        if (!Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Forgot Password Page: Email Not Match. Get error and compare with expected
 
         Thread.sleep(timeOut - 1000);
@@ -161,14 +168,20 @@ public class SSOBasicFlow2UI extends BaseTest {
         String mailText = BasePage.driver.getPageSource();
 
 //    	Compare Mail text with expected
-        TestPassFlag = Assertions.compareValue("You recently requested a password change for", tText, "Reset Password mail include text:", testLog);
-        TestPassFlag = Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", tText, "Reset Password mail include text:", testLog);
-        TestPassFlag = Assertions.compareValue("Thank you,", tText, "Reset Password mail include text:", testLog);
-
+        if (!Assertions.compareValue("You recently requested a password change for", mailText, "Reset Password mail include text:", testLog)){
+            TestPassFlag = false;
+        }
+        if (!Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", mailText, "Reset Password mail include text:", testLog)){
+            TestPassFlag = false;
+        }
+        if (!Assertions.compareValue("Thank you,", mailText, "Reset Password mail include text:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Compare Reset Password button label with expected
         mailText = BasePage.driver.findElement(By.xpath(mailResetButton)).getText();
-        TestPassFlag = Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog);
-
+        if (!Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog)){
+            TestPassFlag = false;
+        }
         BasePage.driver.findElement(By.xpath(mailResetButton)).click();
 
         testLog.info( "Click on: " + mailResetButton + " button: Succesfull");
@@ -182,36 +195,42 @@ public class SSOBasicFlow2UI extends BaseTest {
 
 //    	Reset Password Page: Compare title with expected
         tText = ResetPasswordPage.pageTitle();
-        TestPassFlag = Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog);
-
+        if (!Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Reset Password Page: Compare Password label with expected
         tText = ResetPasswordPage.passwordLabelText();
-        TestPassFlag = Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog);
-
+        if (!Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Reset Password Page: Compare Confirm Password label with expected
         tText = ResetPasswordPage.confirmPasswordLabelText();
-        TestPassFlag = Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog);
-
+        if (!Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Reset Password Page: Compare Proceed button label with expected
         tText = ResetPasswordPage.btnProceedText();
-        TestPassFlag = Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog);
-
+        if (!Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Reset Password Page: Input empty password, get error and compare with expected
         testLog.info( "Reset Password page: Input password = ' '. Proceed");
         ResetPasswordPage.InputPassword("");
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorEmptyText();
-        TestPassFlag = Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog);
-
+        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Reset Password Page: Input empty Confirm password, get error and compare with expected
         testLog.info( "Reset Password page: Input Confirm password = ' '. Proceed");
         ResetPasswordPage.InputConfirmPassword("");
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorConfirmEmptyText();
-        TestPassFlag = Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog);
-
+        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog)){
+            TestPassFlag = false;
+        }
 
 //    	Reset Password Page: Input Password and Confirmation Password not match, get error and compare with expected
         testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri4321'. Proceed");
@@ -220,8 +239,9 @@ public class SSOBasicFlow2UI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorConfirmEmptyText();
-        TestPassFlag = Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog);
-
+        if (!Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Reset Password Page: Input Same Password and Confirmation Password, click on Proceed button
         testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri1234'. Proceed");
         System.out.println(NewPwd);
@@ -238,13 +258,15 @@ public class SSOBasicFlow2UI extends BaseTest {
 
 //    	Thank you page: Compare title with expected
         tText = ResetThankYou.pageTitle();
-        TestPassFlag = Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog);
-
+        if (!Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog)){
+            TestPassFlag = false;
+        }
 
 //    	Thank you page: Compare page text with expected
         tText = ResetThankYou.pageText();
-        TestPassFlag = Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog);
-
+        if (!Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog)){
+            TestPassFlag = false;
+        }
 //    	Thank you page: Click on LogIn link
         ResetThankYou.clickLoginLnk();
 
@@ -281,8 +303,9 @@ public class SSOBasicFlow2UI extends BaseTest {
 //            }
 //        });
         String url = BasePage.driver.getCurrentUrl();
-        TestPassFlag = Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog);
-
+        if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog)){
+            TestPassFlag = false;
+        }
         Assert.assertTrue(TestPassFlag);
         //BasePage.driver.quit();
     }
@@ -369,8 +392,9 @@ public class SSOBasicFlow2UI extends BaseTest {
         Thread.sleep(timeOut);
 
         String tText = LoginEOPortal.lerrorMatch();
-        TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog);
-
+        if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog)){
+            TestPassFlag = false;
+        }
         Assert.assertTrue(TestPassFlag);
         //BasePage.driver.quit();
     }
@@ -448,8 +472,9 @@ public class SSOBasicFlow2UI extends BaseTest {
         Thread.sleep(timeOut);
 
         String tText = LoginEOPortal.lerrorMatch();
-        TestPassFlag = Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog);
-
+        if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog)){
+            TestPassFlag = false;
+        }
         Assert.assertTrue(TestPassFlag);
         //BasePage.driver.quit();
     }

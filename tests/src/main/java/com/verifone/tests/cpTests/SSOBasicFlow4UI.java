@@ -123,13 +123,15 @@ public class SSOBasicFlow4UI extends BaseTest {
         WebElement iFrame = BasePage.driver.findElement(By.id("idIframe"));
         BasePage.driver.switchTo().frame(iFrame);
         String mailText = BasePage.driver.getPageSource();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(mailInvText, mailText, "Invitation mail include text:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(mailInvText, mailText, "Invitation mail include text:", testLog)){
+            TestPassFlag = false;
+        }
         System.out.println("Mail text: " + TestPassFlag);
 
         String btnText = BasePage.driver.findElement(By.xpath(mailActivateButton)).getText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(actAccountBtnLabel, btnText, "Invitation mail Activate button text:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(actAccountBtnLabel, btnText, "Invitation mail Activate button text:", testLog)){
+            TestPassFlag = false;
+        }
         BasePage.driver.findElement(By.xpath(mailActivateButton)).click();
 
         testLog.pass("Click on: " + btnText + " button: Succesfull");
@@ -146,32 +148,44 @@ public class SSOBasicFlow4UI extends BaseTest {
 
         String pgText = SetupPasswordPage.pageTitle();
         System.out.println(pgText);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupTitle, pgText, "Found Setup page title:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(setupTitle, pgText, "Found Setup page title:", testLog)){
+            TestPassFlag = false;
+        }
         pgText = SetupPasswordPage.pageText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupText, pgText, "Found Setup page text:", testLog);
+        if (!com.verifone.utils.Assertions.compareValue(setupText, pgText, "Found Setup page text:", testLog)){
+            TestPassFlag = false;
+        }
         System.out.println(pgText);
 
         pgText = SetupPasswordPage.setupPasswordHint();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupPasswordHint, pgText, "Found Setup page Password Hint:", testLog);
+        if (!com.verifone.utils.Assertions.compareValue(setupPasswordHint, pgText, "Found Setup page Password Hint:", testLog)){
+            TestPassFlag = false;
+        }
         System.out.println(pgText);
 
         pgText = SetupPasswordPage.setupConfirmPasswordHint();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupConfirmPasswordHint, pgText, "Found Setup page Confirm Password Hint:", testLog);
+        if (!com.verifone.utils.Assertions.compareValue(setupConfirmPasswordHint, pgText, "Found Setup page Confirm Password Hint:", testLog)){
+            TestPassFlag = false;
+        }
         System.out.println(pgText);
 
         pgText = SetupPasswordPage.setupCheckBoxText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupCheckBox, pgText, "Found Setup page check box label:", testLog);
+        if (!com.verifone.utils.Assertions.compareValue(setupCheckBox, pgText, "Found Setup page check box label:", testLog)){
+            TestPassFlag = false;
+        }
         System.out.println(pgText);
 
-        pgText = SetupPasswordPage.setupCheckBoxAgrText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupCheckBoxAgr, pgText, "Found Setup page check box label:", testLog);
-        System.out.println(pgText);
+//        pgText = SetupPasswordPage.setupCheckBoxAgrText();
+//        if (!com.verifone.utils.Assertions.compareValue(setupCheckBoxAgr, pgText, "Found Setup page check box label:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(pgText);
 
         pgText = SetupPasswordPage.setupSubmitBtnLabel();
         System.out.println(pgText);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupSubmitBtn, pgText, "Found Setup page Submit btn label:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(setupSubmitBtn, pgText, "Found Setup page Submit btn label:", testLog)){
+            TestPassFlag = false;
+        }
         //		Input blank space as Password and ConfirmPassword
 
         testLog.pass("Setup page: Input password = ' ', confirm password = ' '");
@@ -179,8 +193,9 @@ public class SSOBasicFlow4UI extends BaseTest {
         SetupPasswordPage.clickOnSubmitBtn();
         String errText = SetupPasswordPage.errorFormat();
         System.out.println(errText);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupErrorFormat, errText, "Found Format Error:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(setupErrorFormat, errText, "Found Format Error:", testLog)){
+            TestPassFlag = false;
+        }
         //		Not agree with TOS and Agreement
 
         testLog.pass("Setup page: Not accept TOS");
@@ -188,12 +203,14 @@ public class SSOBasicFlow4UI extends BaseTest {
         SetupPasswordPage.clickOnSubmitBtn();
         errText = SetupPasswordPage.errorTOS();
         System.out.println(errText);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupErrorAccept, errText, "Found Accept TOS Error:", testLog);
-
-        errText = SetupPasswordPage.errorAgr();
-        System.out.println(errText);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupErrorAcceptAgr, errText, "Found Accept TOS Error:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(setupErrorAccept, errText, "Found Accept TOS Error:", testLog)){
+            TestPassFlag = false;
+        }
+//        errText = SetupPasswordPage.errorAgr();
+//        System.out.println(errText);
+//        if (!com.verifone.utils.Assertions.compareValue(setupErrorAcceptAgr, errText, "Found Accept TOS Error:", testLog)){
+//            TestPassFlag = false;
+//        }
 
 //     Input different Password and ConfirmPassword
 
@@ -203,8 +220,9 @@ public class SSOBasicFlow4UI extends BaseTest {
         Thread.sleep(timeOut);
         errText = SetupPasswordPage.errorMatch();
         System.out.println(errText);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(setupErrorMatch, errText, "Found Match Error:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(setupErrorMatch, errText, "Found Match Error:", testLog)){
+            TestPassFlag = false;
+        }
 //      Input correct Password and ConfirmPassword, pass to TOS window, verify text
 
         testLog.pass("Setup page: Input password = 'Veri1234', confirm password = 'Veri1234'");
@@ -212,68 +230,97 @@ public class SSOBasicFlow4UI extends BaseTest {
         testLog.pass("Display TOS");
         SetupPasswordPage.clickOnchboxTOS();
 
-        testLog.pass("--------------------------------------------------TOS document---------------------------------------------------");
-
-        Thread.sleep(timeOut);
-
-//    	Verify TOS page text
-        String tText = SetupPasswordPage.tosText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textTOS1, tText, "TOS doc: Found TOS text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textTOS2, tText, "TOS doc: Found TOS text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textTOS3, tText, "TOS doc: Found TOS text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textTOS4, tText, "TOS doc: Found TOS text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textTOS5, tText, "TOS doc: Found TOS text:", testLog);
-
-        System.out.println(tText);
-
-        tText = SetupPasswordPage.tosLnkText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(TOSLnk, tText, "TOS doc: Found link text:", testLog);
-        System.out.println(tText);
-
-        tText = SetupPasswordPage.tosDeclineBtnLabel();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(TOSDeclineBtn, tText, "TOS doc: Found Decline button label:", testLog);
-        System.out.println(tText);
-
-        tText = SetupPasswordPage.tosAgreeBtnLabel();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(TOSAgreeBtn, tText, "TOS doc: Found Agree button label:", testLog);
-        System.out.println(tText);
-
-//		Agree with TOS
-        testLog.pass("Accept TOS");
-        SetupPasswordPage.clickOnAcceptTOSBtn();
-        Thread.sleep(timeOut - 1000);
-
-//      Pass to Agreement window, verify text
-
-        testLog.pass("Display Agreement");
-        SetupPasswordPage.clickOnchboxAgreement();
-
-        testLog.pass("-----------------------------------------------Agreement document------------------------------------------------");
-
-        Thread.sleep(timeOut);
-
-//    	Verify Agreement page text
-        tText = SetupPasswordPage.tosText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textAgreement1, tText, "Agreement doc: Found Agreement text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textAgreement2, tText, "Agreement doc: Found Agreement text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textAgreement3, tText, "Agreement doc: Found Agreement text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textAgreement4, tText, "Agreement doc: Found Agreement text:", testLog);
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(textAgreement5, tText, "Agreement doc: Found Agreement text:", testLog);
-        System.out.println(tText);
-
-
-        tText = SetupPasswordPage.agreementDeclineBtnLabel();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(AgreementDeclineBtn, tText, "Agreement doc: Found Decline button label:", testLog);
-        System.out.println(tText);
-
-        tText = SetupPasswordPage.agreementAgreeBtnLabel();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(AgreementAgreeBtn, tText, "Agreement doc: Found Agree button label:", testLog);
-        System.out.println(tText);
-
-//		Agree with Agreement
-        testLog.pass("Accept Agreement");
-        SetupPasswordPage.clickOnAcceptAgrBtn();
-        Thread.sleep(timeOut - 1000);
+//        testLog.pass("--------------------------------------------------TOS document---------------------------------------------------");
+//
+//        Thread.sleep(timeOut);
+//
+////    	Verify TOS page text
+//        String tText = SetupPasswordPage.tosText();
+//        if (!com.verifone.utils.Assertions.compareValue(textTOS1, tText, "TOS doc: Found TOS text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textTOS2, tText, "TOS doc: Found TOS text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textTOS3, tText, "TOS doc: Found TOS text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textTOS4, tText, "TOS doc: Found TOS text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textTOS5, tText, "TOS doc: Found TOS text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+//        tText = SetupPasswordPage.tosLnkText();
+//        if (!com.verifone.utils.Assertions.compareValue(TOSLnk, tText, "TOS doc: Found link text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+//        tText = SetupPasswordPage.tosDeclineBtnLabel();
+//        if (!com.verifone.utils.Assertions.compareValue(TOSDeclineBtn, tText, "TOS doc: Found Decline button label:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+//        tText = SetupPasswordPage.tosAgreeBtnLabel();
+//        if (!com.verifone.utils.Assertions.compareValue(TOSAgreeBtn, tText, "TOS doc: Found Agree button label:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+////		Agree with TOS
+//        testLog.pass("Accept TOS");
+//        SetupPasswordPage.clickOnAcceptTOSBtn();
+//        Thread.sleep(timeOut - 1000);
+//
+////      Pass to Agreement window, verify text
+//
+//        testLog.pass("Display Agreement");
+//        SetupPasswordPage.clickOnchboxAgreement();
+//
+//        testLog.pass("-----------------------------------------------Agreement document------------------------------------------------");
+//
+//        Thread.sleep(timeOut);
+//
+////    	Verify Agreement page text
+//        tText = SetupPasswordPage.tosText();
+//        if (!com.verifone.utils.Assertions.compareValue(textAgreement1, tText, "Agreement doc: Found Agreement text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textAgreement2, tText, "Agreement doc: Found Agreement text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textAgreement3, tText, "Agreement doc: Found Agreement text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textAgreement4, tText, "Agreement doc: Found Agreement text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        if (!com.verifone.utils.Assertions.compareValue(textAgreement5, tText, "Agreement doc: Found Agreement text:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+//
+//        tText = SetupPasswordPage.agreementDeclineBtnLabel();
+//        if (!com.verifone.utils.Assertions.compareValue(AgreementDeclineBtn, tText, "Agreement doc: Found Decline button label:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+//        tText = SetupPasswordPage.agreementAgreeBtnLabel();
+//        if (!com.verifone.utils.Assertions.compareValue(AgreementAgreeBtn, tText, "Agreement doc: Found Agree button label:", testLog)){
+//            TestPassFlag = false;
+//        }
+//        System.out.println(tText);
+//
+////		Agree with Agreement
+//        testLog.pass("Accept Agreement");
+//        SetupPasswordPage.clickOnAcceptAgrBtn();
+//        Thread.sleep(timeOut - 1000);
         testLog.pass("Submit Setup");
         SetupPasswordPage.clickOnSubmitBtn();
 
@@ -288,13 +335,15 @@ public class SSOBasicFlow4UI extends BaseTest {
         PasswordSetupPage PasswordSetupPage = (PasswordSetupPage) PageFactory.getPage("PasswordSetupPage");
 
 //	Compare Password Setup Page Title with expected
-        tText = PasswordSetupPage.pageTitle();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(PasswordSetupFinalTitle, tText, "Password Setup Final page: Found title:", testLog);
-
+        String tText = PasswordSetupPage.pageTitle();
+        if (!com.verifone.utils.Assertions.compareValue(PasswordSetupFinalTitle, tText, "Password Setup Final page: Found title:", testLog)){
+            TestPassFlag = false;
+        }
 //	Compare Password Setup Page text with expected
         tText = PasswordSetupPage.pageText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue(PasswordSetupFinalText, tText, "Password Setup Final pag: Found text:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue(PasswordSetupFinalText, tText, "Password Setup Final pag: Found text:", testLog)){
+            TestPassFlag = false;
+        }
 
         Thread.sleep(timeOut);
         Assert.assertTrue(TestPassFlag);
@@ -335,11 +384,13 @@ public class SSOBasicFlow4UI extends BaseTest {
 
         ActionRequiredPage ActionRequiredPage = (ActionRequiredPage) PageFactory.getPage("ActionRequiredPage");
         String tText = ActionRequiredPage.pageTitle();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue("Action Required", tText, "Password Setup Final pag: Found text:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue("Action Required", tText, "Password Setup Final pag: Found text:", testLog)){
+            TestPassFlag = false;
+        }
         tText = ActionRequiredPage.pageText();
-        TestPassFlag = com.verifone.utils.Assertions.compareValue("Thanks for your registration!", tText, "Password Setup Final pag: Found text:", testLog);
-
+        if (!com.verifone.utils.Assertions.compareValue("Thanks for your registration!", tText, "Password Setup Final pag: Found text:", testLog)){
+            TestPassFlag = false;
+        }
         Assert.assertTrue(TestPassFlag);
         //BasePage.driver.quit();
     }

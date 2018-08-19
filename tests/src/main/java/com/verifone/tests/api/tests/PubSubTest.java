@@ -14,6 +14,9 @@ import com.verifone.utils.apiClient.getEoeadminData.GetEoadminDataApi;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 import static com.verifone.utils.Assertions.assertTextContains;
@@ -22,7 +25,7 @@ public class PubSubTest extends BaseTest {
 
 
     @Test(testName = "Pub Sub Get Token", description = "get token and EOadmin data calls", groups = {"Pub Sub"})
-    public void GetTokenTestUI() throws IOException, InterruptedException {
+    public void GetTokenTestUI() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         User user = EntitiesFactory.getEntity("EOAdminSupport");
 //        User user = new User(EOAdminMail, EOAdminPwd);
         GetTokenApi getTokenApi = new GetTokenApi("testId");
