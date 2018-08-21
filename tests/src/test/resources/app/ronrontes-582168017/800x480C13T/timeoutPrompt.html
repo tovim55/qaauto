@@ -1,0 +1,36 @@
+<html>
+<body style="overflow:hidden;">
+<?js
+          //The amount of time (in seconds) the application will wait for user input
+        conf = JSON.parse(ARGV.cp_confOwner);
+        ARGV.timeout = conf.cp_inactivityTimeoutPeriod;
+         //for locaization specify suffix string from catalog file i.e *.ctlg file.
+        lang.setLanguage("en");
+        ?>
+
+<div id="bodydiv" class="TimeoutPrompt_Mandatory_Template" style="background-color: rgb(247, 247, 247); height: 100%; width: 100%;">
+    <div class="panel" style="position: absolute; top: 0%; left: 0%;">
+        <div id="bandCtrl" class="bandContr bandCtrlto" style=" height: 2%; width: 100%;">
+        </div>
+    </div>
+    <div class="panel" style="position: absolute; top: 43%; left: 5%;">
+        <h2 id="thead1" class="head1" data-color="#272527" style="height: 8%; width: 91%;">Inactivity Timeout</h2>
+    </div>
+    <div class="panel" style="position: absolute; top: 52%; left: 5%;">
+        <p id="tpara" class="p1" style="width: 91%; height: 13%;">Do you want to continue ?</p>
+    </div>
+    <div id="ctrl_btn_no" class="panel" style="position: absolute; top: 85%; left: 5%;">
+        <button id="btn_no" type="button" accesskey="&#27;"  accesskey="&#27;" action="return 0" class="btninput back" style="height: 12%; width: 43%; "><?text btn_no?></button>
+    </div>
+    <div id="ctrl_btn_yes" class="panel" style="position: absolute; top: 85%; left: 52%;">
+        <button id="btn_yes" type="button" accesskey="&#13;"  accesskey="&#13;" action="load <?var currentfilename?>" class="btninput ok" style="width: 43%; height: 12%;"><?text btn_yes?></button>
+    </div>
+    <div class="panel" style="top: 15%;position: absolute;margin:0px auto;text-align:center;">
+        <img id="AlertQuestion" class="iconContr  AlertQuestion"  src="../Images/alertquestion.png" alt="" style="" />
+    </div>
+    <div class="panel" style="position: absolute; top: 8%; left: 0%;">
+        <input id="inpText" class="textinput inpText" placeholder="Enter text" type="idletimeout" value="<?var timeout?>" action="return 0" text="" style="width: 41%;  height: 9%; ">
+    </div>
+</div>
+</body>
+</html>
