@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Verifone" >
+
+    <!--Set Env Variable: -->
+    <!--QA-->
+    <!--DEV-->
+    <!--parameter name="env" value="QA"/-->
+    <parameter name="env" value="QA" />
+    <parameter name="mail" value="vfitestdev6_25@getnada.com" />
+    <parameter name="pwd" value="Veri1234" />
+    <parameter name="name" value="" />
+    <parameter name="answer" value="" />
+
+    <!--Set Portal Variable: -->
+    <!--CPPortal-->
+    <!--CGPortal-->
+    <!--EOAdmin-->
+    <parameter name="portal" value="DevPortal"/>
+
+    <test name="Automation Tests">
+        <!--Set Browser Variable:-->
+        <!--CHROME-->
+        <!--FF-->
+        <!--EDGE-->
+        <!--IE-->
+        <parameter name="browserType" value="${browser}"/>
+
+        <classes>
+            <class name="com.verifone.tests.fastLogin.Login_User_Portal"/>
+        </classes>
+
+    </test>
+
+</suite>
