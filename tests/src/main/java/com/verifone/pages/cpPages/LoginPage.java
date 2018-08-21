@@ -1,10 +1,13 @@
 package com.verifone.pages.cpPages;
 
 
+import com.verifone.infra.Company;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
+
+import static com.verifone.utils.Assertions.assertTextContains;
 
 
 public class LoginPage extends BasePage {
@@ -15,13 +18,17 @@ public class LoginPage extends BasePage {
 
     private By firstUsername= By.id("username");
     private By username= By.id("username");
-    private By password = By.id("password");
+    private By password = By.id("ipassword");
+    private By iframe = By.id("veriPassFrame");
     private By supportUsername= By.id("Username");
     private By SupportPassword = By.id("Passwd");
 //    private By firstPass= By.id("password");
     private By toLoginPageBtn = By.partialLinkText("Log");
     private By loginBtn = By.id("btnPrimaryLogin");
     private By supportLoginBtn = By.id("signIn");
+    private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\"])[4]");
+    private By tableRows1 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[1]");
+    private By tableRows2 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[2]");
 
 
     public LoginPage() {
@@ -32,14 +39,11 @@ public class LoginPage extends BasePage {
 
     public void loginPageCp(User user) {
         sendKeys(username, user.getUserName());
+        switchToIframe(iframe);
         click(password);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        sendKeys(password, user.getPassword());
-//        click(loginBtn);
+        sendKeys(password, user.getPassword());
+        driver.switchTo().defaultContent();
+        click(loginBtn);
 
     }
 
@@ -50,11 +54,22 @@ public class LoginPage extends BasePage {
     public void supportLogin(User user) {
         click(toLoginPageBtn);
         sendKeys(firstUsername, user.getUserName());
+        switchToIframe(iframe);
         click(password);
         String userName = user.getUserName().split("@")[0];
         sendKeys(supportUsername, userName);
         sendKeys(SupportPassword, user.getPassword());
         click(supportLoginBtn);
+    }
 
+    public void checkExistCompanies(Company user){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        click(companiesBtn);
+        assertTextContains(user.getCompanyName(), getText(tableRows1));
+        click(tableRows1);
     }
 }

@@ -14,11 +14,17 @@ public class DevHomePage extends BasePage {
     private By connectWithCompanyBtn = By.xpath("//a[text()='Connect with Company']");
     //    private By message = By.className("section-item col-xs-12 col-md-12 get-started");
     private By message = By.xpath("Get started now");
+    private By createAppBtn = By.linkText("Create an App");
 
 
     public DevHomePage() {
         super(url, title);
-        navigate();
+//        navigate();
+    }
+
+    public void createAppBtn() {
+        click(createAppBtn);
+
     }
 
     public void clickconnectWithCompany() {

@@ -25,7 +25,7 @@
 //import com.verifone.pages.PageFactory;
 //import com.verifone.tests.BaseTest;
 //import com.verifone.utils.DataDrivenUtils;
-//import com.verifone.utils.apiClient.createMerchant.CreateMerchant;
+//import com.verifone.utils.apiClient.createMerchant.CreateMerchantTest;
 //import com.verifone.utils.apiClient.getEoeadminData.GetEoadminDataApi;
 //import com.verifone.utils.apiClient.getToken.GetTokenApi;
 //
@@ -84,7 +84,7 @@
 //        GetTokenApi getTokenApi = new GetTokenApi("testId");
 //        String accessToken = getTokenApi.getToken(user);
 //        GetEoadminDataApi getEoadminDataApi = new GetEoadminDataApi(accessToken,"testId");
-//        mId = new CreateMerchant(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+//        mId = new CreateMerchantTest(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
 //        System.out.println("MID: " + mId);
 //
 //
