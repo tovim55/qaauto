@@ -56,7 +56,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
 //    private final static String ForgotErrorEmptyText = "This field is required.";
 //    private final static String ForgotErrorInvalidText = "Field Email should have valid format!";
 //    private final static String EmailConfPageTitle = "Email Confirmed!";
-//    private final static String EmailConfPageText = "We''ve sent password reset instructions to login into your";
+//    private final static String EmailConfPageText = "We''ve sent password reset instructions to loginAndCheck into your";
 //    private final static String EmailConfPageMutedText = "Note: Check your spam folder if you don''t see";
 
 	private static String mailActivateButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/p[5]/a";
@@ -377,7 +377,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
 
 //    	LogIn Page: Get Title, Email label, Password Label, button label and Compare with Expected.
 
-//    	Compare login Title text with expected
+//    	Compare loginAndCheck Title text with expected
     	tText = SetupPasswordPage.loginTitle();
     	currentResult = tText.contains(loginTitle);
     	if (currentResult == true) {
@@ -390,7 +390,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login Email text with expected
+//    	Compare loginAndCheck Email text with expected
     	tText = SetupPasswordPage.loginEmail();
     	currentResult = tText.contains(loginEmail);
     	if (currentResult == true) {
@@ -403,7 +403,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login Password text with expected
+//    	Compare loginAndCheck Password text with expected
     	tText = SetupPasswordPage.loginPassword();
     	currentResult = tText.contains(loginPassword);
     	if (currentResult == true) {
@@ -416,7 +416,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login Forgot link text with expected
+//    	Compare loginAndCheck Forgot link text with expected
     	tText = SetupPasswordPage.loginForgotLink();
     	currentResult = tText.contains(loginForgotLink);
     	if (currentResult == true) {
@@ -429,7 +429,7 @@ public class MerchantForgotPasswordUI extends BaseTest {
     		testLog.info( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-//    	Compare login button text with expected
+//    	Compare loginAndCheck button text with expected
     	tText = SetupPasswordPage.loginBtnLabel();
     	currentResult = tText.contains(loginBtnLabel);
     	if (currentResult == true) {

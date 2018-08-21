@@ -19,6 +19,10 @@ public class EntitiesFactory {
                 user = BaseTest.envConfig.getCredentials().getEOMerchant();
                 break;
 
+            case "CGPortal":
+                user = BaseTest.envConfig.getCredentials().getCGPortal();
+                break;
+
             case "EOAdmin":
                 user = BaseTest.envConfig.getCredentials().getEOAdmin();
                 break;

@@ -2,7 +2,6 @@ package com.verifone.pages;
 
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -67,6 +66,12 @@ public abstract class BasePage {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.sendKeys(text);
         testLog.info("send keys " + text + "for : " + loc.toString());
+    }
+
+    public boolean isDisplay(By loc) {
+        boolean results = driver.findElement(loc).isDisplayed();
+        testLog.info("Check is element: " + loc + " display: " + results);
+        return results;
     }
 
 
@@ -225,7 +230,7 @@ public abstract class BasePage {
 //    public abstract WebElement getPageLink();
 //
 //    /**
-//     * Sets user name and password for login
+//     * Sets user name and password for loginAndCheck
 //     *
 //     * @param text
 //     * @param text2

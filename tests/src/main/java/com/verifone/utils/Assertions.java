@@ -25,6 +25,12 @@ public class Assertions {
         assertEquals(expectedResult, actual);
     }
 
+    public static void assertTextEqual(boolean expectedResult, boolean actual) {
+//        testLog.info("Test: text should equal: " + expectedResult + " Actual text: " + actual);
+        assertEquals(expectedResult, actual);
+    }
+
+
     public static boolean compareValue(String ExpectedRes, String ActualRes, String Desc, ExtentTest testLog) throws AWTException, InterruptedException, IOException, Exception {
         boolean TestPassFlag;
         String capScreenShootPath;
