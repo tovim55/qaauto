@@ -5,6 +5,9 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 
 public class GetEoadminDataApi extends BaseApi {
 
@@ -18,7 +21,7 @@ public class GetEoadminDataApi extends BaseApi {
     }
 
 
-    public String getData() throws IOException {
+    public String getData() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
         JsonObject response =  getRequest(200);
         String eoAdminId = getAtter(response,  new String[]{"data", "organizations"}).get("id").getAsString();

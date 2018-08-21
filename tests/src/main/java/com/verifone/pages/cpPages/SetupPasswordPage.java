@@ -41,7 +41,7 @@ public class SetupPasswordPage extends BasePage {
     private By wndTOSLoc = By.xpath("//*[@class='full reset modal-open']");
     private By tosLoc = By.xpath("//*[@class='full reset modal-open']");
     private By TOSLnk = By.xpath("//*[@class='pull-left']");
-    private By AgreementLnk = By.xpath("//*[@class='pull-left']");
+    private By AgreementLnk = By.xpath("//*[@class='external-link']");
     private By declineTOSBtn = By.xpath("(//*[@class='btn btn-primary btn-cancel'])[1]");
     private By acceptTOSBtn = By.xpath("(//*[@class='btn btn-primary btn-raised btn-accept'])[1]");
     private By declineAgreementBtn = By.xpath("(//*[@class='btn btn-primary btn-cancel'])[2]");

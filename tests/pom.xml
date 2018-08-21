@@ -63,7 +63,7 @@
                 <additionalClasspathElement>feqaautomation\tests\target\classes</additionalClasspathElement>
             </additionalClasspathElements>
                 <systemPropertyVariables>
-                    <environment>DEV</environment>
+                    <environment>QA</environment>
                     <browser>CHROME</browser>
                 </systemPropertyVariables>
             <suiteXmlFiles>

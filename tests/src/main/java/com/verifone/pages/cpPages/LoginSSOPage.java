@@ -8,7 +8,7 @@ public class LoginSSOPage extends BasePage {
     private final static String url = "";
     private final static String title = "Verifone";
 
-    private By formSSOLoc = By.xpath("//*[@class='sso-absolute-center loginAndCheck sso-form']");
+    private By formOKTALoc = By.id("okta-sign-in");
     private By userLoc = By.id("Username");
     private By passwordLoc = By.id("Passwd");
     private By btnSignInLoc = By.id("signIn");
@@ -26,8 +26,8 @@ public class LoginSSOPage extends BasePage {
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
-    public boolean formSSOExists () throws Exception {
-        return isExists(formSSOLoc, 20);
+    public boolean formOKTAExists () throws Exception {
+        return isExists(formOKTALoc, 20);
     }
     //--------------------------------------------------------------------------
     /**
