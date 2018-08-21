@@ -6,14 +6,15 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <!--<parameter name="env" value="QA"/>-->
-    <parameter name="env" value="${environment}" />
+    <parameter name="env" value="QA"/>
+    <!--<parameter name="env" value="${environment}" />-->
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
     <parameter name="portal" value="CPPortal"/>
+    <!--<parameter name="portal" value="EOAdmin"/>-->
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->
@@ -24,7 +25,8 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.CompanyReview"/>
+            <!--<class name="com.verifone.tests.cpTests.DevSupportUsersTest"/>-->
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>
         </classes>
 
     </test>

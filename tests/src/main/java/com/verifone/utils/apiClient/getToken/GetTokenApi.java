@@ -7,6 +7,9 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 
 public class GetTokenApi extends BaseApi {
 
@@ -19,7 +22,7 @@ public class GetTokenApi extends BaseApi {
     }
 
 
-    public String getToken(User user) throws IOException {
+    public String getToken(User user) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
     	response = getPost("grant_type=password&username="+ user.getUserName() + "&password=" + user.getPassword() +"&scope=openid\"", 200);
         String accessToken = response.get("access_token").getAsString();
         System.out.println("access token was generated:  " + accessToken);

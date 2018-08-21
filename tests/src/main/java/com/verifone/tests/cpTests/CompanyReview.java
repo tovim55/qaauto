@@ -16,13 +16,6 @@ public class CompanyReview extends BaseTest {
         devLoginFillCompany(dev);
     }
 
-    @Test(testName = "Dev support view companies", description = "CP dev Portal - check companies list", groups = {"CP-portal"})
-    public void checkCompaniesListUI() throws Exception {
-        Company dev = devSignUp();
-        devLogin(dev);
-        devLoginFillCompany(dev);
-        checkCompaniesList(dev);
-    }
 
 }
 

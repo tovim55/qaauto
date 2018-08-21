@@ -12,9 +12,9 @@ public class CreateMerchantPage extends BasePage {
     private final static String url = BaseTest.envConfig.getWebUrl();
     private final static String title = "[QA] Estate Manager | Home";
 
-
+    private By iframe = By.id("veriPassFrame");
     private By username = By.id("username");
-    private By password = By.id("password");
+    private By password = By.id("ipassword");
     private By loginBtn = By.id("btnPrimaryLogin");
     private By merchantsBtn = By.xpath("//*[@id=\"merchants\"]");
     private By addMerchantsBtn = By.linkText("Add Merchant");
@@ -41,10 +41,11 @@ public class CreateMerchantPage extends BasePage {
 
     public void login(User user) {
         sendKeys(username, user.getUserName());
+        switchToIframe(iframe);
         click(password);
         sendKeys(password, user.getPassword());
+        driver.switchTo().defaultContent();
         click(loginBtn);
-
     }
 
     public String merchantClick() {
@@ -65,7 +66,7 @@ public class CreateMerchantPage extends BasePage {
 
     public String fillForm() {
         click(addMerchantsBtn);
-        waitSimple(3000);
+        waitSimple(5000);
         click(name);
         sendKeys(name, getRandomName());
         click(industryCode);

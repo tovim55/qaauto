@@ -26,7 +26,8 @@ public class ForgotPasswordPage extends BasePage {
     private By mailLabelLoc = By.xpath("//*[@class='control-label']");   
     private By mailInput = By.id("username");
     private By btnSendLoc = By.id("btnSubmit");
-    private By lnkLoginLoc = By.id("btnCancel");
+//    private By lnkLoginLoc = By.id("btnCancel");
+    private By lnkLoginLoc = By.xpath("//*[@class='form-group text-center sso-form-alt-action']");
     private By errorEmptyLoc = By.xpath("//*[@class='help-block']");
     
     

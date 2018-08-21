@@ -49,13 +49,25 @@ public class MerchantViewPage extends BasePage {
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
-    public String pageText() {
+    public String pageText1() {
         
-    	String a = getText(textLoc1) + " " + getText(textLoc2);
+    	String a = getText(textLoc1);
     	System.out.println(a);
-    	return getText(textLoc1) + " " + getText(textLoc2);
+    	return getText(textLoc1);
     }
-
+    //--------------------------------------------------------------------------
+    /**
+    * Method: Get Page text.
+    * Return Page text as String
+    * @authors Yana Fridman
+    */
+    //-------------------------------------------------------------------------- 
+    public String pageText2() {
+        
+    	String a = getText(textLoc2);
+    	System.out.println(a);
+    	return getText(textLoc2);
+    }
 }
 
 
