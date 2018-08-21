@@ -4,9 +4,12 @@ package com.verifone.pages.cpPages;
 import com.verifone.infra.Company;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
+import com.verifone.pages.PageFactory;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.ArrayList;
 
 import static com.verifone.utils.Assertions.assertTextContains;
 import static com.verifone.utils.Assertions.assertTextEqual;
@@ -15,7 +18,6 @@ import static com.verifone.utils.Assertions.assertTextEqual;
 public class LoginPage extends BasePage {
 
     private final static String url = BaseTest.envConfig.getWebUrl() + "docs/overview/get-started/";
-    //    private final static String url = "";
     private final static String title = "Getting Started | Get Started | developer.verifone.com";
 
     private By firstUsername = By.id("username");
@@ -55,27 +57,49 @@ public class LoginPage extends BasePage {
         click(toLoginPageBtn);
     }
 
-    public void supportLogin(User user) {
+    public void supportLogin(User user) throws Exception {
         click(toLoginPageBtn);
         sendKeys(firstUsername, user.getUserName());
         switchToIframe(iframe);
         click(password);
-        String userName = user.getUserName().split("@")[0];
-        sendKeys(supportUsername, userName);
-        sendKeys(SupportPassword, user.getPassword());
-        click(supportLoginBtn);
+        if (user.getUserName().contains("@verifone.com")) {
+            oktaHandle(user);
+        } else {
+            String userName = user.getUserName().split("@")[0];
+            sendKeys(supportUsername, userName);
+            sendKeys(SupportPassword, user.getPassword());
+            click(supportLoginBtn);
+        }
+    }
+
+    private void oktaHandle(User user) throws Exception {
+        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+
+        OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+        OktaLogin.loginInputName(String.valueOf(user.getName()));
+        OktaLogin.loginInputPassword(String.valueOf(user.getPassword()));
+        OktaLogin.clickSignInBtn();
+
+        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+        BasePage.driver.switchTo().window(availableWindows.get(0));
+        OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+        OktaLogin.loginInputAnswer(String.valueOf(user.getSecurityAnswer()));
+        testLog.info("Security answer: " + "");
+        OktaLogin.clickVerifyBtn();
     }
 
     public void checkExistCompanies(Company user) {
         waitSimple(5000);
         clickCompaniesBtn();
-        System.out.println(getText(newCompany)  + "98998989898989  "  + user.getCompanyName());
         assertTextContains(user.getCompanyName(), getText(newCompany));
+        driver.close();
 //        click(newCompany);
     }
 
     private void clickCompaniesBtn() {
-        clickAcceptCompany(6000, companiesBtn);
+        waitSimple(8000);
+        click(companiesBtn);
     }
 
     private void waitSimple(int time) {
@@ -96,8 +120,10 @@ public class LoginPage extends BasePage {
 
     public void acceptCompany(Company user) {
         clickNewCompany();
-        clickAcceptCompany(5000, acceptBtn);
+        waitSimple(5000);
+        click(acceptBtn);
         checkCompanyDetails(user, "CP_Approved");
+        driver.close();
 
     }
 
@@ -134,8 +160,8 @@ public class LoginPage extends BasePage {
 
     }
 
-    private void clickAcceptCompany(int time, By acceptBtn) {
-        waitSimple(time);
-        click(acceptBtn);
-    }
+//    private void clickAcceptCompany(int time, By acceptBtn) {
+//        waitSimple(time);
+//        click(acceptBtn);
+//    }
 }

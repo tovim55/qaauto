@@ -12,13 +12,20 @@ public class DevHomePage extends BasePage {
     private final static String title = "[QA] Developer Central | Home";
 
     private By connectWithCompanyBtn = By.xpath("//a[text()='Connect with Company']");
-    //    private By message = By.className("section-item col-xs-12 col-md-12 get-started");
     private By message = By.xpath("Get started now");
+    private By createAppBtn = By.xpath("//a[text()='Create an App']");
 
 
     public DevHomePage() {
         super(url, title);
-        navigate();
+        waitForLoader(loader);
+    }
+
+    public void createAppBtn() throws InterruptedException {
+        Thread.sleep(8000);
+        click(createAppBtn);
+        Thread.sleep(3000);
+
     }
 
     public void clickconnectWithCompany() {

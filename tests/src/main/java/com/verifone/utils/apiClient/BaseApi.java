@@ -11,7 +11,6 @@ import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.testng.Assert;
@@ -39,10 +38,7 @@ public abstract class BaseApi {
     protected String accept = "Accept";
     protected String origin = "Origin";
     protected String referer = "Referer";
-//    private final HttpClient client = HttpClients.custom()
-//            .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build()
-//                )
-//            ).build(); //HttpClientBuilder.create().build();
+    private HttpClient client = HttpClientBuilder.create().build();
     protected String baseApiPath = System.getProperty("user.dir") +
             "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\";
     protected Properties prop = new Properties();
@@ -55,8 +51,13 @@ public abstract class BaseApi {
     }
 
 
-    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException {
-        HttpClient client = HttpClientBuilder.create().build();
+    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+        HttpClient client = HttpClients.custom()
+                .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
+                                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                                .build()
+                        )
+                ).build();
         HttpRequestBase request = getRequest(url, method, body);
         headers.forEach(request::addHeader);
         Gson gson = new GsonBuilder().create();
@@ -129,9 +130,6 @@ public abstract class BaseApi {
                 ).build();
         HttpGet request = new HttpGet(url);
         baseHeaders.forEach(request::addHeader);
-        System.out.println(baseHeaders);
-        System.out.println(url);
-        System.out.println(expectedCode);
         HttpResponse response = client.execute(request);
         System.out.println("Sending request to URL : " + url);
         testLog.info("Sending request to URL : " + url);
@@ -153,7 +151,6 @@ public abstract class BaseApi {
         baseHeaders.forEach(post::addHeader);
         Gson gson = new GsonBuilder().create();
         post.setEntity(new StringEntity(gson.toJson(requestData), "UTF-8"));
-        System.out.println(baseHeaders);
         HttpResponse response = client.execute(post);
         System.out.println("Sending request to URL : " + url);
         testLog.info("Sending request to URL : " + url);

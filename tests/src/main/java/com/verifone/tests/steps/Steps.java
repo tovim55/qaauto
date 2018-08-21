@@ -4,11 +4,10 @@ import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.Company;
 import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
-import com.verifone.pages.cpPages.DevHomePage;
-import com.verifone.pages.cpPages.DevProfilePage;
-import com.verifone.pages.cpPages.LoginPage;
-import com.verifone.pages.cpPages.SignUpPage;
+import com.verifone.pages.cpPages.*;
 import com.verifone.utils.Mail.InboxGetnada;
+import com.verifone.utils.appUtils.Application;
+import com.verifone.utils.appUtils.ApplicationUtils;
 
 import java.awt.*;
 import java.io.IOException;
@@ -54,7 +53,7 @@ public class Steps {
     }
 
 
-    public static LoginPage devSupportAdminLogin() {
+    public static LoginPage devSupportAdminLogin() throws Exception {
         User dev = EntitiesFactory.getEntity("DevSupportAdmin");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.supportLogin(dev);
@@ -68,7 +67,7 @@ public class Steps {
 //        return loginPage;
 //    }
 
-    public static void checkCompaniesList(Company dev) {
+    public static void checkCompaniesList(Company dev) throws Exception {
 //        restartSession();
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.checkExistCompanies(dev);
@@ -78,14 +77,32 @@ public class Steps {
         restartDriver();
     }
 
-    public static void checkAcceptCompany(Company dev) {//Company dev
+    public static void checkAcceptCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.acceptCompany(dev);//dev
     }
 
-    public static void checkRejectCompany(Company dev) {//Company dev
+    public static void checkRejectCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.rejectCompany(dev);//dev
+    }
+
+
+    public static void createApp() throws InterruptedException, IOException, AWTException {
+        DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
+        NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
+        homePage.createAppBtn();
+        Application app = new Application("ppppoooo","", "1.0.0 ","this test", "this is veri important!!");
+        String id = newAppFormPage.fillGetStartedForm(app);
+        ApplicationUtils.createZipApp(id, app.getAppName());
+        newAppFormPage.fillUploadPackageForm(app.appPath + "\\" + id + ".zip");
+        newAppFormPage.fillAppIconScreenshots(app.iconPath);
+        ApplicationUtils.deleteDirectory();
+        newAppFormPage.fillPriceForm();
+        newAppFormPage. fillLegalAndSupportForm();
+        newAppFormPage. clickOnSubmitBtn();
+
+
     }
 
 

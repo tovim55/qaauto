@@ -10,13 +10,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.zeroturnaround:zt-zip:1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.6" level="project" />
+    <orderEntry type="library" name="Maven: org.zeroturnaround:zt-zip:1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.6" level="project" />
     <orderEntry type="module" module-name="infra" />
     <orderEntry type="library" name="Maven: com.relevantcodes:extentreports:2.41.2" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.8.11.1" level="project" />
     <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.7" level="project" />
     <orderEntry type="library" name="Maven: net.schmizz:sshj:0.10.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.50" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-resources-plugin:3.0.2" level="project" />
@@ -176,6 +179,8 @@
     <orderEntry type="library" name="Maven: com.jcabi:jcabi-log:0.17" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.6.12" level="project" />
+    <orderEntry type="library" name="Maven: org.zeroturnaround:zt-zip:1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.6" level="project" />
     <orderEntry type="library" name="Maven: com.aventstack:extentreports:3.1.5" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:bson:3.3.0" level="project" />

@@ -1,0 +1,200 @@
+
+body {
+}
+
+#bodydiv {
+	background-color: rgb(247, 247, 247);
+}
+
+table {
+	border: 0px none rgb(255,255,255);
+	border-spacing: 2px;
+	border-collapse: separate;
+	width: 10%;
+}
+
+td {
+	font-size: 12px;
+	font-family: Open Sans;
+	color: black;
+	border: 0px none rgb(255,255,255);
+	border-color: black;
+	padding: 1px;
+}
+
+th {
+	font-size: 16px;
+	font-family: Open Sans;
+	padding: 0px;
+	text-align: center;
+}
+
+select {
+	background-color: white;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-top-width: 1px;
+	border-top-style: solid;
+	margin: 1px;
+}
+
+button {
+	border-width: 2px;
+	background-color: rgb(191, 191, 191);
+	color: rgb(0, 0, 0);
+	font-size: 20px;
+	font-family: Open Sans Light;
+	font-weight: lighter;
+	text-align: center;
+	border-radius: 6px/6px;
+}
+
+.checkcontrol {
+	min-width: 17px;
+	min-height: 17px;
+}
+
+.radiocontrol {
+	min-width: 17px;
+	min-height: 17px;
+}
+
+.textinput {
+	background-color: white;
+	border-color: rgb(192, 192, 192);
+	border-radius: 3px;
+	height: 25px;
+	font-family: Open Sans Light;
+	font-weight: lighter;
+}
+
+.btninput {
+	border-width: 0px;
+	color: rgb(255, 255, 255);
+	background-color: rgb(102, 102, 102);
+	font-size: 12px;
+	font-family: Open Sans Light;
+	text-align: center;
+	border-radius: 3px;
+	font-weight: lighter;
+}
+
+.OnScreenButton {
+	background-color: rgb(255, 255, 255);
+}
+
+.PositiveActionButton {
+	background-color: rgb(0, 174, 239);
+}
+
+.OtherActionButton {
+	background-color: rgb(155, 155, 155);
+}
+
+.PositiveActionButton:active {
+	background-color: rgb(21, 133, 194);
+}
+
+.OtherActionButton:active {
+	background-color: rgb(74, 74, 74);
+}
+
+.inpText {
+	width: 20%;
+	min-height: 28px;
+	float: left;
+	height: 6%;
+	display: none;
+}
+
+.images {
+	height: 55px;
+	width: 55px;
+	border-width: 0px;
+}
+
+.back {
+	background-color: rgb(155, 155, 155);
+	color: rgb(255, 255, 255);
+	font-size: 18px;
+	margin-top: auto;
+	padding-left: 1%;
+	padding-top: 1%;
+	height: 14%;
+	width: 46%;
+	background-color: rgb(155, 155, 155);
+}
+
+.ok {
+	background-color: rgb(0, 174, 239);
+	color: rgb(255, 255, 255);
+	font-size: 18px;
+	margin-top: auto;
+	padding-left: 1%;
+	padding-top: 1%;
+	height: 14%;
+	width: 46%;
+	background-color: rgb(0, 174, 239);
+}
+
+.head1 {
+	font-size: 24px;
+	text-align: center;
+	color: rgb(39, 37, 39);
+	margin-top: auto;
+	padding-left: 1%;
+	padding-top: 1%;
+	height: 9%;
+	width: 95%;
+	font-family: "Open Sans Light";
+	font-weight: lighter;
+}
+
+.p1 {
+	font-size: 16px;
+	height: 16%;
+	width: 95%;
+	font-family: "Open Sans Light";
+	font-weight: lighter;
+	text-align: center;
+	margin-top: auto;
+	padding-left: 1%;
+	padding-top: 1%;
+}
+
+.thead1 {
+	font-size: 24px;
+	text-align: center;
+	color: rgb(39, 37, 39);
+	margin-top: auto;
+	padding-left: 1%;
+	padding-top: 1%;
+	height: 9%;
+	width: 95%;
+	font-family: "Open Sans Light";
+	font-weight: lighter;
+}
+
+.tpara {
+	font-size: 16px;
+	height: 16%;
+	width: 95%;
+	font-family: "Open Sans Light";
+	font-weight: lighter;
+	text-align: center;
+	margin-top: auto;
+	padding-left: 1%;
+	padding-top: 1%;
+}
+
+.bandCtrlto {
+	background-color: rgb(0, 174, 239);
+	width: 100%;
+	height: 2%;
+}
+
+.AlertQuestion {
+	height: 55px;
+	width: 55px;
+	font-family: "Open Sans";
+}

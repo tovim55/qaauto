@@ -2,7 +2,6 @@ package com.verifone.pages;
 
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,6 +24,7 @@ public abstract class BasePage {
     private String url;
     private String title;
     public static ExtentTest testLog;
+    protected By loader = By.className("vui-spinner");
 
 
     public BasePage(String url, String title) {
@@ -66,6 +66,12 @@ public abstract class BasePage {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.sendKeys(text);
         testLog.info("send keys " + text + "for : " + loc.toString());
+    }
+
+    public boolean isDisplay(By loc) {
+        boolean results = driver.findElement(loc).isDisplayed();
+        testLog.info("Check is element: " + loc + " display: " + results);
+        return results;
     }
 
 
@@ -111,6 +117,20 @@ public abstract class BasePage {
         driver.switchTo().window(tabs2.get(1));
     }
 
+
+
+    protected void waitForLoader(By loc){
+        try {
+            WebDriverWait element  = new WebDriverWait(driver,  15);
+            element.until(ExpectedConditions.visibilityOfElementLocated(loc));
+            WebDriverWait wait = new WebDriverWait(driver, 15);
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(loc));
+        }
+        catch (TimeoutException e){
+
+        }
+    }
+
 //    public static void restartDriver() {
 //        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
 //        driver.quit();
@@ -128,6 +148,16 @@ public abstract class BasePage {
         }
         Actions builder = new Actions(driver);
         WebElement element = driver.findElement(loc);
+        builder.moveToElement(element).click().perform();
+    }
+
+    protected void hoverAndClickOnElement(WebElement element) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Actions builder = new Actions(driver);
         builder.moveToElement(element).click().perform();
     }
 
@@ -200,7 +230,7 @@ public abstract class BasePage {
 //    public abstract WebElement getPageLink();
 //
 //    /**
-//     * Sets user name and password for login
+//     * Sets user name and password for loginAndCheck
 //     *
 //     * @param text
 //     * @param text2

@@ -8,11 +8,22 @@ public class User {
 
     private String userName;
     private String password;
+    private String name;
+    private String securityAnswer;
     private String firstName;
     private String lastName;
 
     public User(String userName, String password) {
         this.userName = userName;
+        this.password = password;
+        this.firstName = generateNames();
+        this.lastName = generateNames();
+    }
+
+    public User(String userName, String name, String password, String securityAnswer) {
+        this.userName = userName;
+        this.name = userName;
+        this.securityAnswer = securityAnswer;
         this.password = password;
         this.firstName = generateNames();
         this.lastName = generateNames();
@@ -47,10 +58,25 @@ public class User {
     public String getLastName() {
         return lastName;
     }
+    public String getName() {
+        return name;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
 
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public void setName(String Name) {
+        this.name = Name;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
     }
 
     public void setPassword(String password) {

@@ -58,7 +58,10 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
-        if (method.getName().contains("DDT"))
+        if (method.getName().contains("DDT") && method.getName().contains("UI")) {
+            BasePage.driver = SeleniumUtils.getDriver(browserType);
+            return;
+        } else if (method.getName().contains("DDT"))
             return;
         Test test = method.getAnnotation(Test.class);
         starTestLog(test.testName(), test.description());
