@@ -11,6 +11,9 @@ import com.verifone.utils.apiClient.getEoeadminData.GetEoadminDataApi;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 
 import org.testng.annotations.*;
 
@@ -19,7 +22,7 @@ import org.testng.annotations.*;
 public class ManagerAddMerchantUI extends BaseTest {
 
     @Test(testName = "Pub Sub Get Token", description = "get token and EOadmin data calls", groups = {"CP-portal"})
-    public void ManagerAddMerchantUI() throws IOException, InterruptedException  {
+    public void ManagerAddMerchantUI() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         User user = EntitiesFactory.getEntity("EOAdminSupport");
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken(user);

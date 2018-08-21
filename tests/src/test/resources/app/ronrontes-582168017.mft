@@ -1,0 +1,41 @@
+{
+  "schema_version" : "1.0",
+  "imports_trigger" : [ {
+    "file" : "index.html",
+    "optional" : false,
+    "id" : "CP_SYSTEM_NOTIFIES_CARD_PRESENTED",
+    "status_bar" : true,
+    "type" : "APPLICATION",
+    "interruptible" : false
+  } ],
+  "application" : {
+    "is_companion_app" : false,
+    "name" : "ronrontest1",
+    "id" : "ronrontes-582168017",
+    "type" : "CP_TERMINAL",
+    "version" : "1.0.0"
+  },
+  "imports_sdk" : {
+    "cpruntime_min_version" : "2.0.0",
+    "triggers_min_version" : "4.3.0"
+  },
+  "imports_api" : [ {
+    "optional" : false,
+    "id" : "CP_APP_REQUESTS_CARD_DATA"
+  }, {
+    "optional" : false,
+    "id" : "CP_APP_REQUESTS_ENCRYPTED_CARD"
+  }, {
+    "optional" : false,
+    "id" : "CP_APP_REQUESTS_APPEND_RECEIPT"
+  }, {
+    "optional" : false,
+    "id" : "CP_APP_REQUESTS_PRINT"
+  }, {
+    "optional" : false,
+    "id" : "CP_APP_REQUESTS_PAYMENT_TRANSACTION_START"
+  } ],
+  "imports_hardware" : {
+    "platforms" : [ "160x120M15N", "240x320C15T", "240x320C21N", "320x240C15N", "320x240C21N", "320x240C24N", "320x480C0T", "320x480C15T", "480x272C13T", "800x480C13T", "854x480C0T", "854x480C15T" ]
+  }
+}
