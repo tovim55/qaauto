@@ -5,6 +5,9 @@ import com.aventstack.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 import static com.verifone.utils.Assertions.assertTextContains;
@@ -31,7 +34,7 @@ public class DataDrivenApi {
 
     public void startProsess(String accessToken, String accGrantType, String accSSOURL, String uri,
                              String requestMethod, String headers, String headersForGetToken, String body,
-                             String expectedStatusCode, String expectedResult, String verifyList) throws IOException {
+                             String expectedStatusCode, String expectedResult, String verifyList) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         headersMap = getMapFromStr(headers);
         getToken(accessToken, accGrantType, accSSOURL, headersForGetToken);
         response = getRequestWithHeaders(uri, requestMethod, body, headersMap, Integer.parseInt(expectedStatusCode));
@@ -61,7 +64,7 @@ public class DataDrivenApi {
         }
     }
 
-    private void getToken(String accessToken, String accGrantType, String accSSOURL, String headersForGetToken) throws IOException {
+    private void getToken(String accessToken, String accGrantType, String accSSOURL, String headersForGetToken) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         if (accessToken.equals("true")) {
             response = getRequestWithHeaders(accSSOURL, "post", accGrantType, getMapFromStr(headersForGetToken), 200);
             headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());

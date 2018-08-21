@@ -6,13 +6,20 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.testng.Assert;
 
 
 import java.io.*;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public abstract class BaseApi {
@@ -42,8 +49,13 @@ public abstract class BaseApi {
     }
 
 
-    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException {
-        HttpClient client = HttpClientBuilder.create().build();
+    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+        HttpClient client = HttpClients.custom()
+                .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
+                                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                                .build()
+                        )
+                ).build();
         HttpRequestBase request = getRequest(url, method, body);
         headers.forEach(request::addHeader);
         Gson gson = new GsonBuilder().create();

@@ -25,6 +25,7 @@ public abstract class BasePage {
     private String url;
     private String title;
     public static ExtentTest testLog;
+    protected By loader = By.className("vui-spinner");
 
 
     public BasePage(String url, String title) {
@@ -111,6 +112,19 @@ public abstract class BasePage {
         driver.switchTo().window(tabs2.get(1));
     }
 
+
+
+    protected void waitForLoader(By loc){
+        try {
+            WebElement element  = getWebElement(loc, 15, ExpectedConditions.visibilityOfElementLocated(loc));
+            WebDriverWait wait = new WebDriverWait(driver, 15);
+            wait.until(ExpectedConditions.invisibilityOf(element));
+        }
+        catch (AssertionError e){
+
+        }
+    }
+
 //    public static void restartDriver() {
 //        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
 //        driver.quit();
@@ -128,6 +142,16 @@ public abstract class BasePage {
         }
         Actions builder = new Actions(driver);
         WebElement element = driver.findElement(loc);
+        builder.moveToElement(element).click().perform();
+    }
+
+    protected void hoverAndClickOnElement(WebElement element) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Actions builder = new Actions(driver);
         builder.moveToElement(element).click().perform();
     }
 

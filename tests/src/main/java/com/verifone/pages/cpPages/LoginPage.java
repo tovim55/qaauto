@@ -13,7 +13,6 @@ import static com.verifone.utils.Assertions.assertTextContains;
 public class LoginPage extends BasePage {
 
     private final static String url = BaseTest.envConfig.getWebUrl() + "docs/overview/get-started/";
-//    private final static String url = "";
     private final static String title = "Getting Started | Get Started | developer.verifone.com";
 
     private By firstUsername= By.id("username");

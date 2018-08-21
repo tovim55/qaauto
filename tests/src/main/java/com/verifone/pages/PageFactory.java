@@ -59,6 +59,9 @@ public class PageFactory {
             case "DevProfilePage":
                 return new DevProfilePage();
 
+            case "NewAppFormPage":
+                return new NewAppFormPage();
+
             case "InboxGetnada":
                 return new InboxGetnada();
 
