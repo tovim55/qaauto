@@ -12,7 +12,7 @@ public class Steps {
         User user = EntitiesFactory.getEntity("CGPortal");
         System.out.println(user.getPassword());
         CGLoginPage page = (CGLoginPage) PageFactory.getPage("CGLoginPage");
-//        page.openChrome();
+        page.openChrome();
         page.doLogin(user);
         page.checkTitle();
     }
