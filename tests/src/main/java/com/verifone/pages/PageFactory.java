@@ -90,6 +90,8 @@ public class PageFactory {
                 return new InboxGetnada();
             case "ActionRequiredPage":
                 return new ActionRequiredPage();
+            case "AgreementPage":
+                return new AgreementPage();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);
