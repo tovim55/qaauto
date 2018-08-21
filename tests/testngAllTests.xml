@@ -29,7 +29,7 @@
             <class name="com.verifone.tests.cpTests.SignUpTestUI"/>
             <class name="com.verifone.tests.cpTests.CompanyReview"/>
             <class name="com.verifone.tests.cpTests.DevSupportUsersTest"/>
-            <class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>
+            <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
             <class name="com.verifone.tests.cpTests.CreateMerchantTest"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
 

@@ -11,18 +11,8 @@ public class LoginTest extends BaseTest {
 
 
     @Test(testName = "Login to CG ", description = "Login to CG portal successfully", groups = {"CG-Portal"})
-    public void loginUI() throws IOException, InterruptedException {
+    public void login() throws IOException, InterruptedException {
         loginAndCheck();
-
-
     }
-
-//    @Test(testName = "Login to CG ", description = "Login to CG portal successfully", groups = {"CG-Portal"})
-//    public void loginUI() throws IOException, InterruptedException {
-//        User user = EntitiesFactory.getEntity("CGPortal");
-//        CGLoginPage page = (CGLoginPage) PageFactory.getPage("CGLoginPage");
-//        page.doLogin(user);
-//
-//    }
 
 }

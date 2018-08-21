@@ -6,6 +6,7 @@ import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
 
@@ -24,6 +25,7 @@ public class CGLoginPage extends BasePage {
     private By iframe = By.id("veriPassFrame");
     private By dashboardIframe = By.id("iFrameResizer0");
     private By cgDashboardTitle = By.xpath("(//*[@class=\"dashboard-header clearfix\"]/h2)");
+    private By panel = By.xpath("//*[@class='panel-body']");
 
 
     public CGLoginPage() {
@@ -58,6 +60,28 @@ public class CGLoginPage extends BasePage {
         assertTextEqual("CG Dashboard", pageTitle);
         testLog.info("Test passed - Login success, browser on page: " + pageTitle);
         driver.switchTo().defaultContent();
+    }
+
+
+    public void clickLoginLink() {
+        click(toLoginPageBtn);
+    }
+
+    public void inputUserName(String UserName){
+        sendKeys(username, UserName);
+        click(panel);
+    }
+
+    public void inputPassword(String Pwd){
+       switchToIframe(iframe);
+        sendKeys(password, Pwd);
+        driver.switchTo().defaultContent();
+        click(panel);
+//        sendKeys(password, Pwd);
+    }
+
+    public void clickLoginBtn(){
+        click(loginBtn);
     }
 
 

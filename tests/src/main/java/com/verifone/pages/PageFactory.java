@@ -19,8 +19,8 @@ public class PageFactory {
                 return new LoginEOPortal();
             case "OktaLogin":
                 return new OktaLogin();
-			case "LoginSSOPage":
-				return new LoginSSOPage();
+            case "LoginSSOPage":
+                return new LoginSSOPage();
 
             case "CreateMerchantPage":
                 return new CreateMerchantPage();
