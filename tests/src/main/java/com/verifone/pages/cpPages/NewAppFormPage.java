@@ -47,6 +47,7 @@ public class NewAppFormPage extends BasePage {
         sendKeys(this.appName, app.getAppName());
         click(version);
         click(generateIdBtn);
+        Thread.sleep(2000);
         sendKeys(version, app.getVersion());
         sendKeys(this.description5Words, app.getDescription5Words());
         sendKeys(this.description, app.getDescription());
