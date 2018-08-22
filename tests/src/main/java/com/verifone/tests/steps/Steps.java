@@ -74,6 +74,7 @@ public class Steps {
     }
 
     public static void restartSession() {
+        // Not recommended to use this method
         restartDriver();
     }
 
@@ -87,21 +88,19 @@ public class Steps {
         loginPage.rejectCompany(dev);//dev
     }
 
-
     public static void createApp() throws InterruptedException, IOException, AWTException {
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
-        Application app = new Application("ppppoooo","", "1.0.0 ","this test", "this is veri important!!");
+        Application app = new Application("ppppoooo", "", "1.0.0 ", "this test", "this is veri important!!");
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + "\\" + id + ".zip");
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
         newAppFormPage.fillPriceForm();
-        newAppFormPage. fillLegalAndSupportForm();
-        newAppFormPage. clickOnSubmitBtn();
-
+        newAppFormPage.fillLegalAndSupportForm();
+        newAppFormPage.clickOnSubmitBtn();
 
     }
 
