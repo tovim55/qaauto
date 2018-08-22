@@ -60,12 +60,12 @@ public class SignUpTest{
 public WebDriver driver;
 
 //webPortal.properties path
-public String FilePath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\verifone\\tests\\login.properties";
+public String FilePath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\verifone\\tests\\loginAndCheck.properties";
 public Properties prop = new Properties();
 
 Integer rowNumber=0;
 Integer getRowNumFromFile = 0;
-final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\login.xls";
+final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\loginAndCheck.xls";
 
 
 @Parameters({ "env", "urlDev", "urlTest", "urlStaging1","urlProduction", "browserType" })

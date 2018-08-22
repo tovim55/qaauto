@@ -2,8 +2,6 @@ package com.verifone.infra;
 
 import java.util.Properties;
 
-import com.verifone.infra.User;
-
 public class Credentials {
 
     private String env;
@@ -32,7 +30,8 @@ public class Credentials {
     }
 
     public User getDevSupportAdmin() {
-        return new User(prop.getProperty(env + "DevSupportAdmin"), prop.getProperty(env + "DevSupportAdminPass"));
+        return new User(prop.getProperty(env + "DevSupportAdmin"), prop.getProperty(env + "DevSupportAdminName"),
+                prop.getProperty(env + "DevSupportAdminPass"), prop.getProperty(env + "DevSupportAdminSecurityAnswer"));
     }
 
     public User getDevAdmin() {
@@ -43,5 +42,7 @@ public class Credentials {
         return new User(prop.getProperty(env + "DevBasic"), prop.getProperty(env + "DevBasicPass"));
     }
 
-
+    public User getCGPortal() {
+        return new User(prop.getProperty(env + "CGDevAdmin"), prop.getProperty(env + "CGDevAdminPass"));
+    }
 }

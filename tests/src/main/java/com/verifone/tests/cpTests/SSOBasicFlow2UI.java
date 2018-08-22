@@ -276,7 +276,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(1));
 
-//    	Compare login Title text with expected
+//    	Compare loginAndCheck Title text with expected
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
         Thread.sleep(timeOut);

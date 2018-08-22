@@ -57,11 +57,11 @@ public class LoginDataDriven{
 	}
 	
 
-	//DataProvider for login
+	//DataProvider for loginAndCheck
     @DataProvider(name = "LogInData")
     public Object[][] dataSupplierLoginData() throws Exception {
-          final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\login.xls";
-          Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "login");
+          final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\loginAndCheck.xls";
+          Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginAndCheck");
           return arrayObject;
     }
 
@@ -70,7 +70,7 @@ public class LoginDataDriven{
 	
 		
 	//starting testLog
-	logger.startTest("loginTestPoc", "Verifone cgateway-portal POC login testLog ");
+	logger.startTest("loginTestPoc", "Verifone cgateway-portal POC loginAndCheck testLog ");
 	System.out.println("username:  "+ username + " password: " + pwd);
 	
 	

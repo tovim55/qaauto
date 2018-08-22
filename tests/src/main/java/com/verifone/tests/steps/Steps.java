@@ -53,7 +53,7 @@ public class Steps {
     }
 
 
-    public static LoginPage devSupportAdminLogin() {
+    public static LoginPage devSupportAdminLogin() throws Exception {
         User dev = EntitiesFactory.getEntity("DevSupportAdmin");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.supportLogin(dev);
@@ -67,7 +67,7 @@ public class Steps {
 //        return loginPage;
 //    }
 
-    public static void checkCompaniesList(Company dev) {
+    public static void checkCompaniesList(Company dev) throws Exception {
 //        restartSession();
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.checkExistCompanies(dev);
@@ -77,12 +77,12 @@ public class Steps {
         restartDriver();
     }
 
-    public static void checkAcceptCompany(Company dev) {//Company dev
+    public static void checkAcceptCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.acceptCompany(dev);//dev
     }
 
-    public static void checkRejectCompany(Company dev) {//Company dev
+    public static void checkRejectCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.rejectCompany(dev);//dev
     }

@@ -2,6 +2,7 @@ package com.verifone.pages;
 
 //import com.verifone.utils.CGLoginPage.CGLoginPage;
 
+import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.*;
@@ -18,8 +19,8 @@ public class PageFactory {
                 return new LoginEOPortal();
             case "OktaLogin":
                 return new OktaLogin();
-			case "LoginSSOPage":
-				return new LoginSSOPage();
+            case "LoginSSOPage":
+                return new LoginSSOPage();
 
             case "CreateMerchantPage":
                 return new CreateMerchantPage();
@@ -29,6 +30,9 @@ public class PageFactory {
 
             case "CGLoginPage":
                 return new CGLoginPage();
+
+            case "CGApplicationPage":
+                return new CGApplicationPage();
 
             case "DevSupportHomePage":
                 return new DevSupportHomePage();
@@ -93,6 +97,8 @@ public class PageFactory {
                 return new InboxGetnada();
             case "ActionRequiredPage":
                 return new ActionRequiredPage();
+            case "AgreementPage":
+                return new AgreementPage();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);
