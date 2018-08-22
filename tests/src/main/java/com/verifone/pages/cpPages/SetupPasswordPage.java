@@ -32,6 +32,8 @@ public class SetupPasswordPage extends BasePage {
     private By setupConfirmPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword2']");
     private By setupCheckBoxLoc = By.xpath("(//*[@class='checkbox'])[1]");
     private By setupCheckBoxAgrLoc = By.xpath("(//*[@class='checkbox'])[2]");
+    private By setupTOSLinkLoc = By.id("tandm_container");
+    private By setupAgreementLinkLoc = By.xpath("//*[@class='external-link']");
     
     private By errorFormatLoc = By.xpath("//*[@class='help-block']");
     private By errorMatchLoc = By.xpath("//*[@id='resetPasswordForm']/div[2]/div[2]");
@@ -46,6 +48,7 @@ public class SetupPasswordPage extends BasePage {
     private By acceptTOSBtn = By.xpath("(//*[@class='btn btn-primary btn-raised btn-accept'])[1]");
     private By declineAgreementBtn = By.xpath("(//*[@class='btn btn-primary btn-cancel'])[2]");
     private By acceptAgreementBtn = By.xpath("(//*[@class='btn btn-primary btn-raised btn-accept'])[2]");
+    private By tosXBtn = By.xpath("//*[@class='close']");
     
     
     
@@ -212,6 +215,26 @@ public class SetupPasswordPage extends BasePage {
     	System.out.println(a);
     	return getText(setupCheckBoxAgrLoc);
     }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click TOS link.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
+    public void setupTOSLinkClick() throws Exception {
+
+        click(setupTOSLinkLoc);
+    }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Agreement link.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
+    public void setupAgreementLinkClick() throws Exception {
+
+        click(setupAgreementLinkLoc);
+    }
   //--------------------------------------------------------------------------
     /**
     * Method: Get Submit button label.
@@ -276,6 +299,16 @@ public class SetupPasswordPage extends BasePage {
     	String a = getText(TOSLnk);
     	System.out.println(a);
     	return getText(TOSLnk);
+    }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click on TOS x button.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
+    public void tosClose() {
+
+        click(tosXBtn);
     }
   //--------------------------------------------------------------------------
     /**

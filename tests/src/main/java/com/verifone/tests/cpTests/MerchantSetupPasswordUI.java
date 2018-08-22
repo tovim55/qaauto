@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.verifone.pages.cpPages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -16,12 +17,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-import com.verifone.pages.cpPages.AcceptMerchantAgreementPage;
-import com.verifone.pages.cpPages.LoginPage;
-import com.verifone.pages.cpPages.MerchantViewPage;
-import com.verifone.pages.cpPages.PasswordSetupPage;
-import com.verifone.pages.cpPages.SetupPasswordPage;
-import com.verifone.pages.cpPages.WelcomePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.createMerchant.CreateMerchant;
@@ -245,18 +240,18 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-    	pgText = SetupPasswordPage.setupCheckBoxAgrText();
-    	System.out.println(pgText);
-    	currentResult = pgText.contains(setupCheckBoxAgr);
-    	if (currentResult == true) {
-    		testLog.pass( "Found Setup page check box label: " + setupCheckBoxAgr + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Found Setup page check box label: " + pgText + ". Expected: " + setupCheckBoxAgr);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
+//    	pgText = SetupPasswordPage.setupCheckBoxAgrText();
+//    	System.out.println(pgText);
+//    	currentResult = pgText.contains(setupCheckBoxAgr);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Found Setup page check box label: " + setupCheckBoxAgr + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Found Setup page check box label: " + pgText + ". Expected: " + setupCheckBoxAgr);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
 
     	pgText = SetupPasswordPage.setupSubmitBtnLabel();
     	System.out.println(pgText);
@@ -307,18 +302,18 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
 
-    	errText = SetupPasswordPage.errorAgr();
-    	System.out.println(errText);
-    	currentResult = errText.contains(setupErrorAcceptAgr);
-    	if (currentResult == true) {
-    		testLog.pass( "Found Accept TOS Error: " + setupErrorAcceptAgr + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Found Accept TOS Error: " + errText + ". Expected: " + setupErrorAcceptAgr);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
+//    	errText = SetupPasswordPage.errorAgr();
+//    	System.out.println(errText);
+//    	currentResult = errText.contains(setupErrorAcceptAgr);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Found Accept TOS Error: " + setupErrorAcceptAgr + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Found Accept TOS Error: " + errText + ". Expected: " + setupErrorAcceptAgr);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
 
 
 //     Input different Password and ConfirmPassword
@@ -345,8 +340,8 @@ public class MerchantSetupPasswordUI extends BaseTest {
     	testLog.pass( "Setup page: Input password = 'Veri1234', confirm password = 'Veri1234'");
     	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");
     	testLog.pass( "Display TOS");
-    	SetupPasswordPage.clickOnchboxTOS();
-
+//    	SetupPasswordPage.clickOnchboxTOS();
+		SetupPasswordPage.setupTOSLinkClick();
     	testLog.pass( "--------------------------------------------------TOS document---------------------------------------------------");
 
     	Thread.sleep(timeOut);
@@ -409,61 +404,64 @@ public class MerchantSetupPasswordUI extends BaseTest {
     	}
     	System.out.println(tText);
 
-    	tText = SetupPasswordPage.tosLnkText();
-    	currentResult = tText.contains(TOSLnk);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found link text: " + TOSLnk + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found link text: " + tText + ". Expected: " + TOSLnk);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = SetupPasswordPage.tosLnkText();
+//    	currentResult = tText.contains(TOSLnk);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found link text: " + TOSLnk + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found link text: " + tText + ". Expected: " + TOSLnk);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
-    	tText = SetupPasswordPage.tosDeclineBtnLabel();
-    	currentResult = tText.contains(TOSDeclineBtn);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found Decline button label: " + TOSDeclineBtn + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found Decline button label: " + tText + ". Expected: " + TOSDeclineBtn);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = SetupPasswordPage.tosDeclineBtnLabel();
+//    	currentResult = tText.contains(TOSDeclineBtn);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found Decline button label: " + TOSDeclineBtn + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found Decline button label: " + tText + ". Expected: " + TOSDeclineBtn);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
-    	tText = SetupPasswordPage.tosAgreeBtnLabel();
-    	currentResult = tText.contains(TOSAgreeBtn);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found Agree button label: " + TOSAgreeBtn + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found Agree button label: " + tText + ". Expected: " + TOSAgreeBtn);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = SetupPasswordPage.tosAgreeBtnLabel();
+//    	currentResult = tText.contains(TOSAgreeBtn);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found Agree button label: " + TOSAgreeBtn + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found Agree button label: " + tText + ". Expected: " + TOSAgreeBtn);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
 //		Agree with TOS
     	testLog.pass( "Accept TOS");
-    	SetupPasswordPage.clickOnAcceptTOSBtn();
+    	SetupPasswordPage.tosClose();
     	Thread.sleep(timeOut - 1000);
 
 //      Pass to Agreement window, verify text
 
     	testLog.pass( "Display Agreement");
-    	SetupPasswordPage.clickOnchboxAgreement();
+    	SetupPasswordPage.setupAgreementLinkClick();
 
     	testLog.pass( "-----------------------------------------------Agreement document------------------------------------------------");
 
     	Thread.sleep(timeOut);
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(2));
 
+		AgreementPage AgreementPage = (AgreementPage) PageFactory.getPage("AgreementPage");
 //    	Verify Agreement page text
-    	tText = SetupPasswordPage.tosText();
+    	tText = AgreementPage.pageText();
     	currentResult = tText.contains(textAgreement1);
     	if (currentResult == true) {
     		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement1 + "...: Succesfull");
@@ -520,48 +518,52 @@ public class MerchantSetupPasswordUI extends BaseTest {
     	}
     	System.out.println(tText);
 
-    	tText = SetupPasswordPage.agreementLnkText();
-    	currentResult = tText.contains(AgreementLnk);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found link text: " + AgreementLnk + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found link text: " + tText + ". Expected: " + AgreementLnk);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = SetupPasswordPage.agreementLnkText();
+//    	currentResult = tText.contains(AgreementLnk);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found link text: " + AgreementLnk + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found link text: " + tText + ". Expected: " + AgreementLnk);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
-    	tText = SetupPasswordPage.agreementDeclineBtnLabel();
-    	currentResult = tText.contains(AgreementDeclineBtn);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Decline button label: " + AgreementDeclineBtn + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Decline button label: " + tText + ". Expected: " + AgreementDeclineBtn);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = SetupPasswordPage.agreementDeclineBtnLabel();
+//    	currentResult = tText.contains(AgreementDeclineBtn);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Decline button label: " + AgreementDeclineBtn + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Decline button label: " + tText + ". Expected: " + AgreementDeclineBtn);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
-    	tText = SetupPasswordPage.agreementAgreeBtnLabel();
-    	currentResult = tText.contains(AgreementAgreeBtn);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Agree button label: " + AgreementAgreeBtn + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Agree button label: " + tText + ". Expected: " + AgreementAgreeBtn);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = SetupPasswordPage.agreementAgreeBtnLabel();
+//    	currentResult = tText.contains(AgreementAgreeBtn);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Agree button label: " + AgreementAgreeBtn + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Agree button label: " + tText + ". Expected: " + AgreementAgreeBtn);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
 //		Agree with Agreement
+		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+		BasePage.driver.switchTo().window(availableWindows.get(1));
+
+		SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");
     	testLog.pass( "Accept Agreement");
-    	SetupPasswordPage.clickOnAcceptAgrBtn();
+    	SetupPasswordPage.clickOnchboxTOS();
     	Thread.sleep(timeOut - 1000);
     	testLog.pass( "Submit Setup");
     	SetupPasswordPage.clickOnSubmitBtn();
@@ -989,7 +991,6 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    	}
 //
     	Thread.sleep(timeOut);
-		BasePage.driver.quit();
     	Assert.assertTrue(TestPassFlag);
     }
 
