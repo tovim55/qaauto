@@ -12,6 +12,21 @@ public class ApplicationsPageTest extends BaseTest {
     static boolean firstTime = true;
     final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\applicationsInputValidation.xls";
 
+    private void checkFieldsByDdt(String applicationsID, String Version, String Name, String Status, String Access,
+                                  String ThrottlingMaxRequestCount, String Error, String TestName, String RowNumber,
+                                  String description, boolean normalCheck) {
+        starTestLog("Check: " + TestName + " Row: " + RowNumber, description);
+        if (firstTime) {
+//            openChromeBrowser();
+            loginAndCheck();
+            appNavigate();
+            checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, normalCheck);
+            firstTime = false;
+        } else {
+            checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, normalCheck);
+        }
+    }
+
     @DataProvider(name = "A_MandatoryFields")
     public Object[][] getDataMandatoryFields() throws Exception {
         Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "A_MandatoryFields");
@@ -21,22 +36,7 @@ public class ApplicationsPageTest extends BaseTest {
     @Test(dataProvider = "A_MandatoryFields", dataProviderClass = ApplicationsPageTest.class)
     public void checkMandatoryFieldsDDT(String applicationsID, String Version, String Name, String Status, String Access,
                                         String ThrottlingMaxRequestCount, String Error, String TestName, String RowNumber) {
-        checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName, RowNumber, "CG - PortalSite, check mandatory fields");
-    }
-
-    private void checkFieldsByDdt(String applicationsID, String Version, String Name, String Status, String Access,
-                                  String ThrottlingMaxRequestCount, String Error, String TestName, String RowNumber,
-                                  String s) {
-        starTestLog("Check: " + TestName + " Row: " + RowNumber, s);
-        if (firstTime) {
-            openChromeBrowser();
-            loginAndCheck();
-            appNavigate();
-            checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error);
-            firstTime = false;
-        } else {
-            checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error);
-        }
+        checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName, RowNumber, "CG - PortalSite, check mandatory fields", true);
     }
 
     @DataProvider(name = "B_TypeValidation")
@@ -50,7 +50,7 @@ public class ApplicationsPageTest extends BaseTest {
                                         String ThrottlingMaxRequestCount, String Error, String TestName,
                                        String RowNumber) {
         checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
-                RowNumber, "CG - PortalSite, check type validation");
+                RowNumber, "CG - PortalSite, check type validation", true);
     }
 
     @DataProvider(name = "C_ErrorHandling")
@@ -64,10 +64,23 @@ public class ApplicationsPageTest extends BaseTest {
                                        String ThrottlingMaxRequestCount, String Error, String TestName,
                                     String RowNumber) {
         checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
-                RowNumber, "CG - PortalSite, check error handling and max/min length");
+                RowNumber, "CG - PortalSite, check error handling and max/min length", true);
     }
 
+    @DataProvider(name = "D_CheckCancelButton")
+    public Object[][] getButtonData() throws Exception {
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "D_CheckCancelButton");
+        return arrayObject;
+    }
 
+    @Test(dataProvider = "D_CheckCancelButton", dataProviderClass = ApplicationsPageTest.class)
+    public void checkCancelButtonDDT(String applicationsID, String Version, String Name, String Status, String Access,
+                                    String ThrottlingMaxRequestCount, String Error, String TestName,
+                                    String RowNumber) {
+        checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
+                RowNumber, "CG - PortalSite, check error handling and max/min length", false);
+        checkCancelBtn();
+    }
 
 
 }

@@ -30,11 +30,12 @@ public class LoginPage extends BasePage {
     private By toLoginPageBtn = By.partialLinkText("Log");
     private By loginBtn = By.id("btnPrimaryLogin");
     private By supportLoginBtn = By.id("signIn");
-    private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\"])[4]");
+    private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\" and @id=\"companies\"])");
     private By newCompany = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[1]");
     private By tableRows2 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[2]");
     private By acceptBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary btn-raised approve\"])");
     private By rejectBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary reject\"])");
+    private By confirnReject = By.xpath("(//*[@id=\"modalAffirmId\" and @class=\"btn btn-primary btn-raised vui-modal-affirm\"])");
 
 
     public LoginPage() {
@@ -64,12 +65,14 @@ public class LoginPage extends BasePage {
         click(password);
         if (user.getUserName().contains("@verifone.com")) {
             oktaHandle(user);
+            driver.switchTo().defaultContent();
         } else {
             String userName = user.getUserName().split("@")[0];
             sendKeys(supportUsername, userName);
             sendKeys(SupportPassword, user.getPassword());
             click(supportLoginBtn);
         }
+        waitSimple(2000);
     }
 
     private void oktaHandle(User user) throws Exception {
@@ -80,7 +83,7 @@ public class LoginPage extends BasePage {
         OktaLogin.loginInputName(String.valueOf(user.getName()));
         OktaLogin.loginInputPassword(String.valueOf(user.getPassword()));
         OktaLogin.clickSignInBtn();
-
+        waitSimple(1000);
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
         OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
@@ -92,8 +95,8 @@ public class LoginPage extends BasePage {
     public void checkExistCompanies(Company user) {
         waitSimple(5000);
         clickCompaniesBtn();
-        assertTextContains(user.getCompanyName(), getText(newCompany));
-        driver.close();
+//        assertTextContains(user.getCompanyName(), getText(newCompany));
+        checkCompanyDetails(user, "In Review");
 //        click(newCompany);
     }
 
@@ -120,10 +123,9 @@ public class LoginPage extends BasePage {
 
     public void acceptCompany(Company user) {
         clickNewCompany();
-        waitSimple(5000);
+        waitSimple(4000);
         click(acceptBtn);
         checkCompanyDetails(user, "CP_Approved");
-        driver.close();
 
     }
 
@@ -142,15 +144,15 @@ public class LoginPage extends BasePage {
     }
 
     private void clickRejectCompany() {
+        waitSimple(2000);
         click(rejectBtn);
+        waitSimple(2000);
+        click(confirnReject);
     }
 
     private String[] getNewCompanyDetails() {
         String[] companyDetails;
         companyDetails = getText(newCompany).split("\n");
-//        System.out.println(companyDetails[0] + "    0");
-//        System.out.println(companyDetails[1] + "    1");
-//        System.out.println(companyDetails[2] + "    2");
         return companyDetails;
     }
 
@@ -159,9 +161,4 @@ public class LoginPage extends BasePage {
         click(newCompany);
 
     }
-
-//    private void clickAcceptCompany(int time, By acceptBtn) {
-//        waitSimple(time);
-//        click(acceptBtn);
-//    }
 }

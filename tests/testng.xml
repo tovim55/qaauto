@@ -24,7 +24,9 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.DevUploadApp"/>
+            <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
+            <!--<class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>-->
+            <class name="com.verifone.tests.cpTests.DevSupportRejectCompanyTest"/>
         </classes>
 
     </test>

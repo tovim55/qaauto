@@ -8,36 +8,20 @@ import static com.verifone.tests.steps.Steps.*;
 
 public class DevSupportCompaniesTest extends BaseTest {
 
+    public static Company devPublic;
+
+    @Test(testName = "Dev Admin check list companies", description = "CP - dev basic add company",
+            groups = {"CP-portal-createNewCompanyUI"})
+    public void createNewCompanyUI() throws Exception {
+        Company dev = devSignUp();
+        devLogin(dev);
+        devLoginFillCompany(dev);
+        devPublic = dev;
+    }
+
     @Test(testName = "Dev Admin check list companies", description = "CP - dev basic add company & admin check is exist" +
-            "in the list", groups = {"CP-portal"})
-    public void checkCompaniesListUI_Cont() throws Exception {
-        Company dev = devSignUp();
-        devLogin(dev);
-        devLoginFillCompany(dev);
-        restartSession();
-        checkCompaniesList(dev);
+            "in the list", dependsOnGroups = {"CP-portal-createNewCompanyUI"})
+    public void checkIsNewCompanyExistUI() throws Exception {
+        checkCompaniesList(devPublic);
     }
-
-    @Test(testName = "Dev Admin accepted company", description = "CP - dev basic add company & admin accepted",
-            groups = {"CP-portal"})
-    public void acceptedCompanyUI_Cont() throws Exception {
-        Company dev = devSignUp();
-        devLogin(dev);
-        devLoginFillCompany(dev);
-        restartSession();
-        checkAcceptCompany(dev);//dev
-
-    }
-
-//    @Test(testName = "Dev Admin reject company", description = "CP - dev basic add company & admin rejected",
-//            groups = {"CP-portal"})
-//    public void rejectCompanyUI() throws Exception {
-//        Company dev = devSignUp();
-//        devLogin(dev);
-//        devLoginFillCompany(dev);
-//        restartSession();
-//        checkRejectCompany(dev);//dev
-//        // TODO finish test required
-//
-//    }
 }

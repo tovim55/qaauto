@@ -3,108 +3,92 @@ package com.verifone.pages.cgPages;
 
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
-import org.testng.annotations.Test;
-
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
-
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-import com.verifone.infra.SeleniumUtils;
-import com.verifone.utils.DataDrivenUtils;
-import com.verifone.utils.Applications.ApplicationsPage;
-import com.verifone.utils.Applications.ErrorMsgs;
-import com.verifone.utils.General.LoginCGPortal;
 
 import static com.verifone.utils.Assertions.assertTextEqual;
 
 /**
-* This testLog check Application mandatory fields: Appl. ID and Version.
-* Verify error message displayed in different cases of empty mandatory fields,
-* wrong input type data, value not in allowed range, value not exists, long string value etc.
-* @authors Yana Fridman, Fred Shniper
-*/
+ * This testLog check Application mandatory fields: Appl. ID and Version.
+ * Verify error message displayed in different cases of empty mandatory fields,
+ * wrong input type data, value not in allowed range, value not exists, long string value etc.
+ *
+ * @authors Yana Fridman, Fred Shniper
+ */
 
 public class CGApplicationPage extends BasePage {
-	private final static String url = BaseTest.envConfig.getWebUrl();
-	private final static String title = "Commerce gateway portal";
+    private final static String url = BaseTest.envConfig.getWebUrl();
+    private final static String title = "Commerce gateway portal";
 
-	private By addBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[1]");
-	private By saveBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
-	private By cancelBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[2]");
-	private By updateBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
-	private By deleteBtn = By.xpath("//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"); // "//td[@id='applications_active_cell']/a/span";
-	private By filterXPath = By.xpath("//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img");
-	private By filterCSS = By.cssSelector("input.k-textbox");
-	private By appID = By.id("appID");
-	private By versionId = By.id("version");
-	private By appName = By.xpath("(//input[@type='text'])[5]");
-	private By appStatus = By.xpath("(//input[@type='text'])[7]");
-	private By appAccess = By.xpath("(//input[@type='text'])[8]");
-	private By maxRequestApp = By.id("throttlingMaxRequestCount");
-	private By applicatiobBtn = By.linkText("Applications");
-	private By fieldRequired = By.xpath("//*[@class=\"ui red pointing prompt label transition visible vf\"]");
-	private String Messagetext = "";
-	final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\applicationsInputValidation.xls";
+    private By addBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[1]");
+    private By saveBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
+    private By cancelBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[2]");
+    private By updateBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
+    private By deleteBtn = By.xpath("//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"); // "//td[@id='applications_active_cell']/a/span";
+    private By filterXPath = By.xpath("//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img");
+    private By filterCSS = By.cssSelector("input.k-textbox");
+    private By appID = By.id("appID");
+    private By versionId = By.id("version");
+    private By appName = By.xpath("(//input[@type='text'])[5]");
+    private By appStatus = By.xpath("(//input[@type='text'])[7]");
+    private By appAccess = By.xpath("(//input[@type='text'])[8]");
+    private By maxRequestApp = By.id("throttlingMaxRequestCount");
+    private By applicatiobBtn = By.linkText("Applications");
+    private By fieldRequired = By.xpath("//*[@class=\"ui red pointing prompt label transition visible vf\"]");
+    private String Messagetext = "";
+    final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\applicationsInputValidation.xls";
 //	private Integer timeOut = Integer.valueOf(prop.getProperty("time_out"));
 
-	public CGApplicationPage() {
-		super(url, title);
+    public CGApplicationPage() {
+        super(url, title);
 //		navigate();
-	}
+    }
 
-	public void nevigateAppPage() {
-		click(applicatiobBtn);
-	}
-	
-	public void clickOnAddBtn(){
-		click(addBtn);
-	}
+    public void nevigateAppPage() {
+        click(applicatiobBtn);
+    }
 
-	public void checkFields(String applicationsID, String version, String name, String status, String access,
-							String maxRequestCount, String error){
+    public void clickOnAddBtn() {
+        click(addBtn);
+    }
 
-		click(addBtn);
-		sendKeys(appID, applicationsID.equals("99") ? " " : applicationsID);
-		sendKeys(versionId, version.equals("99") ? " " : version);
-		sendKeys(appName, name.equals("99") ? " " : name);
-		sendKeys(appStatus, status.equals("99") ? " " : status);
-		sendKeys(appAccess, access.equals("99" )? " " : access);
-		sendKeys(maxRequestApp, maxRequestCount.equals("99" )? " " : maxRequestCount);
-		click(saveBtn);
-		waitSimple(2000);
-		String errorMsg = getText(fieldRequired);
-		try {
-			assertTextEqual(true, isDisplay(fieldRequired));
-			testLog.info("TEST: Error should equal: " + error + ", Actual text: " + errorMsg);
-			assertTextEqual(error, errorMsg.replace("\n", " "));
-		}catch (Exception e){
-			testLog.fail("TEST Failed : Error should equal: " + error + ", Actual text: " + errorMsg);
-		}
-	}
+    public void checkFields(String applicationsID, String version, String name, String status, String access,
+                            String maxRequestCount, String error, boolean normalCheck) {
+        click(addBtn);
+        sendKeys(appID, applicationsID.equals("99") ? " " : applicationsID);
+        sendKeys(versionId, version.equals("99") ? " " : version);
+        sendKeys(appName, name.equals("99") ? " " : name);
+        sendKeys(appStatus, status.equals("99") ? " " : status);
+        sendKeys(appAccess, access.equals("99") ? " " : access);
+        sendKeys(maxRequestApp, maxRequestCount.equals("99") ? " " : maxRequestCount);
+        click(saveBtn);
+        waitSimple(2000);
+        String errorMsg = getText(fieldRequired);
+        if (normalCheck) {
+            try {
+                testLog.info("TEST 1: Is error display: " + isDisplay(fieldRequired));
+                assertTextEqual(true, isDisplay(fieldRequired));
+                testLog.info("TEST 2: Error should equal: " + error + ", Actual text: " + errorMsg);
+                assertTextEqual(error, errorMsg.replace("\n", " "));
+            } catch (Exception e) {
+                testLog.fail("TEST Failed : Error should equal: " + error + ", Actual text: " + errorMsg);
+            }
+        }
+    }
 
-	private void waitSimple(int time) {
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}}
+    private void waitSimple(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void checkCancelButton() {
+        click(cancelBtn);
+        testLog.info("TEST: Is error display: " + isDisplay(fieldRequired));
+        assertTextEqual(false, isDisplay(fieldRequired));
+    }
+}
 //}
 ////---------------------------------------------------
 //	ExtentReports date format and path

@@ -30,9 +30,14 @@ public class Steps {
     }
 
     public static void checkAppFields(String applicationsID, String version, String name, String status, String access,
-                                      String maxRequestCount, String error){
+                                      String maxRequestCount, String error, boolean normalCheck){
         CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
-        page.checkFields(applicationsID, version, name, status,access, maxRequestCount, error);
+        page.checkFields(applicationsID, version, name, status,access, maxRequestCount, error, normalCheck);
+    }
+
+    public static void checkCancelBtn(){
+        CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
+        page.checkCancelButton();
     }
 
 }
