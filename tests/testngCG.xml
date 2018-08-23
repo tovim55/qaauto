@@ -25,7 +25,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cgTests.LoginTest"/>
+            <!--<class name="com.verifone.tests.cgTests.LoginTest"/>-->
             <class name="com.verifone.tests.cgTests.ApplicationsPageTest"/>
         </classes>
 
