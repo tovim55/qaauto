@@ -3,6 +3,7 @@ package com.verifone.pages.cgPages;
 
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
+import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.By;
 
 import static com.verifone.utils.Assertions.assertTextEqual;
@@ -25,7 +26,10 @@ public class CGApplicationPage extends BasePage {
     private By updateBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
     private By deleteBtn = By.xpath("//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"); // "//td[@id='applications_active_cell']/a/span";
     private By filterXPath = By.xpath("//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img");
+    private By appIdField = By.xpath("(//*[@role=\"gridcell\"])[2]");
     private By filterCSS = By.cssSelector("input.k-textbox");
+    private By filterInput = By.xpath("(//*[@class=\"k-textbox\"])");
+    private By filterBtn = By.xpath("(//*[@class=\"k-button k-primary\"])");
     private By appID = By.id("appID");
     private By versionId = By.id("version");
     private By appName = By.xpath("(//input[@type='text'])[5]");
@@ -47,14 +51,20 @@ public class CGApplicationPage extends BasePage {
         click(applicatiobBtn);
     }
 
+    public String getRandomName() {
+        return RandomStringUtils.randomAlphanumeric(8).toUpperCase();
+    }
+
+
     public void clickOnAddBtn() {
         click(addBtn);
     }
 
-    public void checkFields(String applicationsID, String version, String name, String status, String access,
-                            String maxRequestCount, String error, boolean normalCheck) {
+    public String checkFields(String applicationsID, String version, String name, String status, String access,
+                              String maxRequestCount, String error, boolean normalCheck) {
+        String newAppId = applicationsID.equals("99") ? " " : applicationsID + getRandomName();
         click(addBtn);
-        sendKeys(appID, applicationsID.equals("99") ? " " : applicationsID);
+        sendKeys(appID, newAppId);
         sendKeys(versionId, version.equals("99") ? " " : version);
         sendKeys(appName, name.equals("99") ? " " : name);
         sendKeys(appStatus, status.equals("99") ? " " : status);
@@ -62,17 +72,18 @@ public class CGApplicationPage extends BasePage {
         sendKeys(maxRequestApp, maxRequestCount.equals("99") ? " " : maxRequestCount);
         click(saveBtn);
         waitSimple(2000);
-        String errorMsg = getText(fieldRequired);
         if (normalCheck) {
             try {
+                String errorMsg = getText(fieldRequired);
                 testLog.info("TEST 1: Is error display: " + isDisplay(fieldRequired));
                 assertTextEqual(true, isDisplay(fieldRequired));
                 testLog.info("TEST 2: Error should equal: " + error + ", Actual text: " + errorMsg);
                 assertTextEqual(error, errorMsg.replace("\n", " "));
             } catch (Exception e) {
-                testLog.fail("TEST Failed : Error should equal: " + error + ", Actual text: " + errorMsg);
+                testLog.fail("TEST Failed : Error should equal: " + error + ", Actual text: " + e);
             }
         }
+        return newAppId;
     }
 
     private void waitSimple(int time) {
@@ -87,6 +98,18 @@ public class CGApplicationPage extends BasePage {
         click(cancelBtn);
         testLog.info("TEST: Is error display: " + isDisplay(fieldRequired));
         assertTextEqual(false, isDisplay(fieldRequired));
+    }
+
+    public void checkSaveButton(String appID) {
+        waitSimple(1000);
+        click(saveBtn);
+        waitSimple(1000);
+        click(filterXPath);
+        waitSimple(1000);
+        sendKeys(filterInput, appID);
+        click(filterBtn);
+        testLog.info("TEST: Excepted results: " + appID + " Actual results: " + getText(appIdField));
+        assertTextEqual(appID, getText(appIdField));
     }
 }
 //}

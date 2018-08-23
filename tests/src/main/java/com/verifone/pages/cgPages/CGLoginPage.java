@@ -6,7 +6,6 @@ import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.WebElement;
 
 import java.io.File;
 
@@ -67,20 +66,20 @@ public class CGLoginPage extends BasePage {
         click(toLoginPageBtn);
     }
 
-    public void inputUserName(String UserName){
+    public void inputUserName(String UserName) {
         sendKeys(username, UserName);
         click(panel);
     }
 
-    public void inputPassword(String Pwd){
-       switchToIframe(iframe);
+    public void inputPassword(String Pwd) {
+        switchToIframe(iframe);
         sendKeys(password, Pwd);
         driver.switchTo().defaultContent();
         click(panel);
 //        sendKeys(password, Pwd);
     }
 
-    public void clickLoginBtn(){
+    public void clickLoginBtn() {
         click(loginBtn);
     }
 
