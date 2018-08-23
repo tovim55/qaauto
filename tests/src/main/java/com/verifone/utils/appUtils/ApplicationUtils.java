@@ -55,7 +55,7 @@ public class ApplicationUtils {
 
     public static void deleteDirectory() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             FileUtils.deleteDirectory(destFolder);
         } catch (IOException e) {
             e.printStackTrace();

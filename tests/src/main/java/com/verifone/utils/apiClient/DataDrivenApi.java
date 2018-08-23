@@ -2,7 +2,6 @@ package com.verifone.utils.apiClient;
 
 import com.google.gson.JsonObject;
 import com.aventstack.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
@@ -21,6 +20,8 @@ public class DataDrivenApi {
     private JsonObject response;
     private HashMap<String, String> expectedResultMap;
     private ExtentTest testLog;
+    private String confirmationCode;
+    private String user;
 
 
 //    public DataDrivenApi(ExtentTest testLog) {
@@ -37,6 +38,9 @@ public class DataDrivenApi {
                              String expectedStatusCode, String expectedResult, String verifyList) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         headersMap = getMapFromStr(headers);
         getToken(accessToken, accGrantType, accSSOURL, headersForGetToken);
+        if (confirmationCode != null)
+            body = addConfirmationCode(body);
+        System.out.println(headersMap);
         response = getRequestWithHeaders(uri, requestMethod, body, headersMap, Integer.parseInt(expectedStatusCode));
         System.out.println("response is: " + response);
         validateResult(expectedResult, verifyList);
@@ -64,11 +68,30 @@ public class DataDrivenApi {
         }
     }
 
-    private void getToken(String accessToken, String accGrantType, String accSSOURL, String headersForGetToken) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    private String getToken(String accessToken, String accGrantType, String accSSOURL, String headersForGetToken) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         if (accessToken.equals("true")) {
             response = getRequestWithHeaders(accSSOURL, "post", accGrantType, getMapFromStr(headersForGetToken), 200);
             headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());
             testLog.info("Access Token: " + response.get("access_token").getAsString());
+
         }
+        return accessToken;
+    }
+
+    private String addConfirmationCode(String body) {
+        if (body.contains("\"username\":"))
+            return body;
+        body = body.substring(0,body.length()-2);
+        body = body + "\"code\":\"" + confirmationCode + "\",\"username\":\"" + user + "\"}";
+        testLog.info("Confirmation Code: " + confirmationCode);
+        System.out.println(body);
+        return body;
+    }
+    public void setConfirmationCode(String confirmationCode) {
+        this.confirmationCode = confirmationCode;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }
