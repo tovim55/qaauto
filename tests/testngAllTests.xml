@@ -40,7 +40,7 @@
             <class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>
             <class name="com.verifone.tests.cpTests.MerchantSetupPasswordUI"/>
-            <class name="com.verifone.tests.cpTests.EOPortalSanityUI"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalSanityUI"/>-->
 
 
 
