@@ -16,7 +16,5 @@ public class CompanyReview extends BaseTest {
         devLoginFillCompany(dev);
     }
 
-
-
 }
 

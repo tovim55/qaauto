@@ -52,20 +52,20 @@ public abstract class BasePage {
     public void click(By loc) {
         WebElement element = getWebElement(loc, 50, ExpectedConditions.elementToBeClickable(loc));
         element.click();
-        testLog.info("user clicks on:  " + loc.toString());
+        testLog.info("User clicks on: " + loc.toString());
     }
 
     public void sendKeys(By loc, String text) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.clear();
         element.sendKeys(text);
-        testLog.info("send keys " + text + "for : " + loc.toString());
+        testLog.info("Send keys: " + text + " for: " + loc.toString());
     }
 
     public void sendKeysNoClear(By loc, String text) {
         WebElement element = getWebElement(loc, 30, ExpectedConditions.elementToBeClickable(loc));
         element.sendKeys(text);
-        testLog.info("send keys " + text + "for : " + loc.toString());
+        testLog.info("Send keys: " + text + " for: " + loc.toString());
     }
 
     public boolean isDisplay(By loc) {
