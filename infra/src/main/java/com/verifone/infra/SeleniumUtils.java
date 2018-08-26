@@ -2,6 +2,7 @@ package com.verifone.infra;
 //import static org.junit.Assert.assertTrue;
 
 import com.relevantcodes.extentreports.ExtentTest;
+import junit.runner.BaseTestRunner;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
@@ -29,6 +30,7 @@ import java.util.Date;
 @SuppressWarnings("unused")
 public class SeleniumUtils {
     private static WebDriver driver;
+    public static String reportDirectory;
 
     /**
      * Reads General Parameters from application.properties
@@ -123,7 +125,7 @@ public class SeleniumUtils {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         //The below method will save the screen shot in d drive with folder "screenshot" + filenameDate + ".png "
-        String screeshootPath = "C:\\screenshot\\" + dateFormat.format(date) + ".png";
+        String screeshootPath =  reportDirectory + dateFormat.format(date) + ".png";
         try {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File(screeshootPath));

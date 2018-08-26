@@ -27,7 +27,8 @@ public abstract class BaseTest {
     protected static ThreadLocal test = new ThreadLocal();
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-    public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
+    public String reportDirectory = "C:\\reportTestNgResults\\" + dateFormat.format(date) + "\\";
+    public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
 
 
     @Parameters({"env", "portal"})
@@ -58,6 +59,7 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
+        SeleniumUtils.reportDirectory = reportDirectory;
         if (method.getName().contains("DDT") && method.getName().contains("UI")) {
             BasePage.driver = SeleniumUtils.getDriver(browserType);
             return;
@@ -106,6 +108,11 @@ public abstract class BaseTest {
             SeleniumUtils.closeRuntimeBrowserInstance();
         }
         extent.flush();
+    }
+
+
+    public String getReportDirectory(){
+        return reportDirectory;
     }
 
 
