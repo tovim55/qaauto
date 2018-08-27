@@ -44,7 +44,7 @@ public class SeleniumUtils {
 
     public static void closeRuntimeBrowserInstance() {
         if (driver != null) {
-            driver.close();
+//            driver.close();
             driver.quit();
         }
     }

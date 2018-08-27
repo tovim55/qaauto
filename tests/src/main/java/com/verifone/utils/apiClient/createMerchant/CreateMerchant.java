@@ -27,7 +27,7 @@ public class CreateMerchant extends BaseApi {
 //        Date date = new Date();
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String id = UUID.randomUUID().toString();
-
+        url = url + "b2bMode=false";
         JsonObject requestObj = readJsonFile(baseApiPath + "createMerchant\\create_merchant.json");
         requestObj.getAsJsonObject("data").addProperty("parentOrgID", eoAdminId);
         requestObj.getAsJsonObject("data").addProperty("rootOrgID", eoAdminId);

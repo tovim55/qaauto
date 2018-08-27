@@ -91,7 +91,7 @@ public class SSOBasicFlow4UI extends BaseTest {
         System.out.println("MID: " + mId);
 
 //      Navigate to Getnada
-
+        Thread.sleep(timeOut + 2000);
         testLog.pass("-------------------------------------------------Getnada service-------------------------------------------------");
         BasePage.driver.navigate().to("https://getnada.com/#");
 
