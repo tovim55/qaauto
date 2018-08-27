@@ -15,6 +15,7 @@ public class CreateMerchantDE extends BaseApi {
     public CreateMerchantDE(String accessToken, String correlationId) throws IOException {
         super();
         url = BaseTest.envConfig.getApiUrls().getCreateMerchant();
+        url = url + "b2bMode=false";
         baseHeaders.put(this.contentType, prop.getProperty("createMerchant.contentType"));
         baseHeaders.put(this.authorization, prop.getProperty("createMerchant.authorization") + accessToken);
         baseHeaders.put(this.correlationId, correlationId);
