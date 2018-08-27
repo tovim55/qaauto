@@ -112,6 +112,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 
 //      Navigate to Getnada
 //    	BasePage.driver = SeleniumUtils.getDriver("CHROME");
+		Thread.sleep(timeOut + 2000);
         testLog.pass( "-------------------------------------------------Getnada service-------------------------------------------------");
     	BasePage.driver.navigate().to("https://getnada.com/#");
 

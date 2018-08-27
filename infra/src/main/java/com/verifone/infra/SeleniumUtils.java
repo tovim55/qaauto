@@ -2,7 +2,9 @@ package com.verifone.infra;
 //import static org.junit.Assert.assertTrue;
 
 import com.relevantcodes.extentreports.ExtentTest;
+import junit.runner.BaseTestRunner;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +30,7 @@ import java.util.Date;
 @SuppressWarnings("unused")
 public class SeleniumUtils {
     private static WebDriver driver;
+    public static String reportDirectory;
 
     /**
      * Reads General Parameters from application.properties
@@ -40,9 +43,14 @@ public class SeleniumUtils {
     }
 
     public static void closeRuntimeBrowserInstance() {
-        if (driver != null) {
-            driver.close();
+        try{
+        if (driver!= null) {
+//            driver.close();
             driver.quit();
+        }
+        }
+        catch (NoSuchSessionException e){
+            e.printStackTrace();
         }
     }
 
@@ -121,10 +129,15 @@ public class SeleniumUtils {
     public static String getScreenshot() throws Exception {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         //The below method will save the screen shot in d drive with folder "screenshot" + filenameDate + ".png "
-        String screeshootPath = "C:\\screenshot\\" + dateFormat.format(date) + ".png";
-        FileUtils.copyFile(scrFile, new File(screeshootPath));
+        String screeshootPath =  reportDirectory + dateFormat.format(date) + ".png";
+        try {
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(scrFile, new File(screeshootPath));
+        } catch (NoSuchSessionException e) {
+            e.printStackTrace();
+            return "";
+        }
         return screeshootPath;
     }
 

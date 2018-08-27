@@ -12,6 +12,7 @@ import com.verifone.utils.apiClient.BaseApi;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -27,12 +28,14 @@ public abstract class BaseTest {
     protected static ThreadLocal test = new ThreadLocal();
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-    public String reportLocation = "C:\\reportTestNgResults\\" + dateFormat.format(date) + ".html";
+    public String reportDirectory = "C:\\reportTestNgResults\\" + dateFormat.format(date) + "\\";
+    public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
 
 
     @Parameters({"env", "portal"})
     @BeforeSuite
     public void beforeSuite(String env, String portal) throws IOException {
+        new File(reportDirectory).mkdir();
         extent = ExtentManager.createInstance(reportLocation);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
@@ -58,6 +61,7 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
+        SeleniumUtils.reportDirectory = reportDirectory;
         if (method.getName().contains("DDT") && method.getName().contains("UI")) {
             BasePage.driver = SeleniumUtils.getDriver(browserType);
             return;
@@ -107,6 +111,9 @@ public abstract class BaseTest {
         }
         extent.flush();
     }
+
+
+
 
 
 }
