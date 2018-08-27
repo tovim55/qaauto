@@ -43,9 +43,14 @@ public class SeleniumUtils {
     }
 
     public static void closeRuntimeBrowserInstance() {
-        if (driver != null) {
+        try{
+        if (driver!= null) {
 //            driver.close();
             driver.quit();
+        }
+        }
+        catch (NoSuchSessionException e){
+            e.printStackTrace();
         }
     }
 
