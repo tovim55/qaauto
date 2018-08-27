@@ -12,6 +12,7 @@ import com.verifone.utils.apiClient.BaseApi;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,7 @@ public abstract class BaseTest {
     @Parameters({"env", "portal"})
     @BeforeSuite
     public void beforeSuite(String env, String portal) throws IOException {
+        new File(reportDirectory).mkdir();
         extent = ExtentManager.createInstance(reportLocation);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
@@ -111,9 +113,7 @@ public abstract class BaseTest {
     }
 
 
-    public String getReportDirectory(){
-        return reportDirectory;
-    }
+
 
 
 }
