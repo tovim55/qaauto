@@ -46,7 +46,7 @@ public class CreateMerchant extends BaseApi {
 
     public String createMerchantWithConfirmation(String eoAdminId, String id) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 
-
+        url += "?b2bMode=true";
         JsonObject requestObj = readJsonFile(baseApiPath + "createMerchant\\create_merchant.json");
         requestObj.getAsJsonObject("data").addProperty("parentOrgID", eoAdminId);
         requestObj.getAsJsonObject("data").addProperty("rootOrgID", eoAdminId);

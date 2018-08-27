@@ -121,9 +121,9 @@ public abstract class BasePage {
 
     protected void waitForLoader(By loc){
         try {
-            WebDriverWait element  = new WebDriverWait(driver,  15);
+            WebDriverWait element  = new WebDriverWait(driver,  40);
             element.until(ExpectedConditions.visibilityOfElementLocated(loc));
-            WebDriverWait wait = new WebDriverWait(driver, 15);
+            WebDriverWait wait = new WebDriverWait(driver, 40);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(loc));
         }
         catch (TimeoutException e){

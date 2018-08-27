@@ -95,7 +95,7 @@ public class NewAppFormPage extends BasePage {
 
     public void clickOnSubmitBtn() throws InterruptedException {
         waitForLoader(loader);
-        Thread.sleep(2000);
+        Thread.sleep(8000);
         click(submitBtn);
         waitForLoader(loader);
         click(okBtn);
