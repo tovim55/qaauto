@@ -22,17 +22,29 @@ public class Steps {
         page.openChrome();
     }
 
-    public static void appNavigate() {
+    public static void appPageNavigate() {
 //        loginAndCheck();
         CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
 //        page.doLogin(user);
-        page.nevigateAppPage();
+        page.navigateAppPage();
     }
 
-    public static String checkAppFields(String applicationsID, String version, String name, String status, String access,
-                                        String maxRequestCount, String error, boolean normalCheck) {
+    public static void connectionsNavigate() {
+        CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
+//        page.doLogin(user);
+        page.navigateToConnection();
+    }
+
+    public static String checkAppFields(String applicationsID, String version, String name, String status,
+                                        String access, String maxRequestCount, String error, boolean normalCheck) {
         CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
         return page.checkFields(applicationsID, version, name, status, access, maxRequestCount, error, normalCheck);
+    }
+
+    public static String checkConnectionFields(String Host, String SandBox, String Protocol, String RowNumber,
+                                               String Error) {
+        CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
+        return page.connectionsFields(Host, SandBox, Protocol, RowNumber, Error);
     }
 
     public static void checkCancelBtn() {
@@ -45,4 +57,8 @@ public class Steps {
         page.checkSaveButton(appID);
     }
 
+    public static void searchNewConnect(String newHost) {
+        CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
+        page.searchConnect(newHost);
+    }
 }

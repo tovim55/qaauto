@@ -19,7 +19,7 @@ public class ApplicationsPageTest extends BaseTest {
         if (firstTime) {
             firstTime = false;
             loginAndCheck();
-            appNavigate();
+            appPageNavigate();
             return checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error,
                     normalCheck);
         } else {

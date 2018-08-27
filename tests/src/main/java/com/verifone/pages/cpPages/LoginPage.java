@@ -36,7 +36,7 @@ public class LoginPage extends BasePage {
     private By acceptBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary btn-raised approve\"])");
     private By rejectBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary reject\"])");
     private By confirnReject = By.xpath("(//*[@id=\"modalAffirmId\" and @class=\"btn btn-primary btn-raised vui-modal-affirm\"])");
-
+    protected By loader = By.className("vui-spinner");
 
     public LoginPage() {
         super(url, title);
@@ -102,6 +102,7 @@ public class LoginPage extends BasePage {
 
     private void clickCompaniesBtn() {
         waitSimple(8000);
+        waitForLoader(loader);
         click(companiesBtn);
     }
 
@@ -133,7 +134,9 @@ public class LoginPage extends BasePage {
         waitSimple(8000);
         String[] companyDetails;
         companyDetails = getNewCompanyDetails();
+        testLog.info("TEST 1: Excepted results: " + user.getCompanyName() + " Actual results: " + companyDetails[0]);
         assertTextContains(user.getCompanyName(), companyDetails[0]);
+        testLog.info("TEST 2: Excepted results: " + status + " Actual results: " + companyDetails[1]);
         assertTextEqual(status, companyDetails[1]);
     }
 

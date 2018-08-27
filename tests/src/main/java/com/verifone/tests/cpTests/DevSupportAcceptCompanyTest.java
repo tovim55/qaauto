@@ -8,20 +8,19 @@ import static com.verifone.tests.steps.Steps.*;
 
 public class DevSupportAcceptCompanyTest extends BaseTest {
 
-    public static Company devPublic;
+    public static Company devPublicAccept;
 
-    @Test(testName = "Dev Admin accepted company", description = "CP - dev basic add company & admin accepted",
-            groups = {"CP-portal-createCompany2UI"})
+    @Test(testName = "Dev Admin accepted company", description = "CP - dev basic add company & admin accepted")
     public void createCompanyUI() throws Exception {
         Company dev = devSignUp();
         devLogin(dev);
         devLoginFillCompany(dev);
-        devPublic = dev;
+        devPublicAccept = dev;
     }
 
     @Test(testName = "Dev Admin accepted company", description = "CP - dev basic add company & admin accepted",
-            dependsOnGroups = {"CP-portal-createCompany2UI"})
+            dependsOnMethods = {"createCompanyUI"})
     public void acceptedCompanyUI() throws Exception {
-        checkAcceptCompany(devPublic);
+        checkAcceptCompany(devPublicAccept);
     }
 }
