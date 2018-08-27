@@ -3,6 +3,7 @@ package com.verifone.pages.cgPages;
 
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
+import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.By;
 
 import static com.verifone.utils.Assertions.assertTextEqual;
@@ -19,21 +20,36 @@ public class CGApplicationPage extends BasePage {
     private final static String url = BaseTest.envConfig.getWebUrl();
     private final static String title = "Commerce gateway portal";
 
-    private By addBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[1]");
-    private By saveBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
-    private By cancelBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[2]");
+    private By addBtnUp = By.xpath("//*[@id=\"applications\"]/div[2]/a[1]");
+    private By addBtnDown = By.xpath("//*[@id=\"connectionConfigs\"]/div[2]/a[1]");
+    private By saveBtnUp = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
+    private By saveBtnDown = By.xpath("//*[@id=\"connectionConfigs\"]/div[2]/a[3]");
+    private By cancelBtnUp = By.xpath("//*[@id=\"applications\"]/div[2]/a[2]");
+    private By cancelBtnDown = By.xpath("//*[@id=\"connectionConfigs\"]/div[2]/a[2]");
     private By updateBtn = By.xpath("//*[@id=\"applications\"]/div[2]/a[3]");
-    private By deleteBtn = By.xpath("//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"); // "//td[@id='applications_active_cell']/a/span";
+    private By deleteBtn = By.xpath("//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span");
     private By filterXPath = By.xpath("//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img");
+    private By filterFieldDown = By.xpath("//*[@class=\"k-textbox\"]");
+    private By appIdField = By.xpath("(//*[@role=\"gridcell\"])[2]");
     private By filterCSS = By.cssSelector("input.k-textbox");
+    private By filterInput = By.xpath("(//*[@class=\"k-textbox\"])");
+    private By filterBtn = By.xpath("(//*[@class=\"k-button k-primary\"])");
+    private By filterBtnDown = By.xpath("//*[@id=\"connectionConfigs_active_cell\"]/a[1]");
+    private By hostTableField = By.xpath("(//*[@id=\"connectionConfigs_active_cell\"])");
     private By appID = By.id("appID");
     private By versionId = By.id("version");
     private By appName = By.xpath("(//input[@type='text'])[5]");
+    private By hostField = By.xpath("(//input[@type='text'])[17]");
+    private By protocolField = By.xpath("(//input[@type='text'])[14]");
+    private By sandBoxField = By.xpath("(//input[@type='text'])[18]");
+    private By timeoutField = By.xpath("(//*[@class=\"form-control ng-pristine ng-valid ng-touched\" and " +
+            "@ng-model=\"vm.currentGridRowConnection.timeout\"])");
     private By appStatus = By.xpath("(//input[@type='text'])[7]");
     private By appAccess = By.xpath("(//input[@type='text'])[8]");
     private By maxRequestApp = By.id("throttlingMaxRequestCount");
     private By applicatiobBtn = By.linkText("Applications");
     private By fieldRequired = By.xpath("//*[@class=\"ui red pointing prompt label transition visible vf\"]");
+    private By connectionsBtn = By.linkText("Connections");
     private String Messagetext = "";
     final String xlsxFile = System.getProperty("user.dir") + "\\src\\testLog\\com.verifone.infra.resources\\applicationsInputValidation.xls";
 //	private Integer timeOut = Integer.valueOf(prop.getProperty("time_out"));
@@ -43,36 +59,69 @@ public class CGApplicationPage extends BasePage {
 //		navigate();
     }
 
-    public void nevigateAppPage() {
+    public void navigateAppPage() {
         click(applicatiobBtn);
     }
 
-    public void clickOnAddBtn() {
-        click(addBtn);
+    public void navigateToConnection() {
+        click(appIdField);
+        click(connectionsBtn);
+
+
     }
 
-    public void checkFields(String applicationsID, String version, String name, String status, String access,
-                            String maxRequestCount, String error, boolean normalCheck) {
-        click(addBtn);
-        sendKeys(appID, applicationsID.equals("99") ? " " : applicationsID);
+    public String getRandomName() {
+        return RandomStringUtils.randomAlphanumeric(8).toUpperCase();
+    }
+
+
+    public String checkFields(String applicationsID, String version, String name, String status, String access,
+                              String maxRequestCount, String error, boolean normalCheck) {
+        String newAppId = applicationsID.equals("99") ? " " : applicationsID + getRandomName();
+        click(addBtnUp);
+        sendKeys(appID, newAppId);
         sendKeys(versionId, version.equals("99") ? " " : version);
         sendKeys(appName, name.equals("99") ? " " : name);
         sendKeys(appStatus, status.equals("99") ? " " : status);
         sendKeys(appAccess, access.equals("99") ? " " : access);
         sendKeys(maxRequestApp, maxRequestCount.equals("99") ? " " : maxRequestCount);
-        click(saveBtn);
+        click(saveBtnUp);
         waitSimple(2000);
-        String errorMsg = getText(fieldRequired);
         if (normalCheck) {
-            try {
-                testLog.info("TEST 1: Is error display: " + isDisplay(fieldRequired));
-                assertTextEqual(true, isDisplay(fieldRequired));
-                testLog.info("TEST 2: Error should equal: " + error + ", Actual text: " + errorMsg);
-                assertTextEqual(error, errorMsg.replace("\n", " "));
-            } catch (Exception e) {
-                testLog.fail("TEST Failed : Error should equal: " + error + ", Actual text: " + errorMsg);
-            }
+            errorHandling(error);
         }
+        return newAppId;
+    }
+
+    private void errorHandling(String error) {
+        try {
+            String errorMsg = getText(fieldRequired);
+            testLog.info("TEST 1: Is error display: " + isDisplay(fieldRequired));
+            assertTextEqual(true, isDisplay(fieldRequired));
+            testLog.info("TEST 2: Error should equal: " + error + ", Actual text: " + errorMsg);
+            assertTextEqual(error, errorMsg.replace("\n", " "));
+        } catch (Exception e) {
+            testLog.fail("TEST Failed : Error should equal: " + error + ", Actual text: " + e);
+        }
+    }
+
+    public String connectionsFields(String host, String sandBox, String protocol, String rowNumber, String error) {
+        String newHost = host.equals("99") ? " " : host + getRandomName();
+        click(addBtnDown);
+        click(hostField);
+        sendKeys(hostField, newHost);
+        click(sandBoxField);
+        sendKeys(sandBoxField, sandBox.equals("99") ? " " : sandBox);
+        click(protocolField);
+        sendKeys(protocolField, protocol.equals("99") ? " " : protocol);
+        click(saveBtnDown);
+        waitSimple(2000);
+        if (Integer.valueOf(rowNumber) != 4) {
+            errorHandling(error);
+            click(cancelBtnDown);
+        }
+
+        return newHost;
     }
 
     private void waitSimple(int time) {
@@ -84,9 +133,33 @@ public class CGApplicationPage extends BasePage {
     }
 
     public void checkCancelButton() {
-        click(cancelBtn);
+        click(cancelBtnUp);
         testLog.info("TEST: Is error display: " + isDisplay(fieldRequired));
         assertTextEqual(false, isDisplay(fieldRequired));
+    }
+
+    public void checkSaveButton(String appID) {
+        waitSimple(1000);
+        click(saveBtnUp);
+        waitSimple(1000);
+        click(filterXPath);
+        waitSimple(1000);
+        sendKeys(filterInput, appID);
+        click(filterBtn);
+        testLog.info("TEST: Excepted results: " + appID + " Actual results: " + getText(appIdField));
+        assertTextEqual(appID, getText(appIdField));
+    }
+
+    public void searchConnect(String newHost) {
+        click(saveBtnDown);
+//        click(addBtnDown);
+        click(filterBtnDown);
+        sendKeys(filterFieldDown, newHost);
+        click(filterBtn);
+        waitSimple(2000);
+        String uiHost = getText(appIdField);
+        testLog.info("TEST: Excepted results: " + newHost + " Actual results: " + uiHost);
+        assertTextEqual(newHost, uiHost);
     }
 }
 //}
@@ -163,8 +236,8 @@ public class CGApplicationPage extends BasePage {
 //@Test(dataProvider = "A_MandatoryFields", groups = { "cgateway-portal" })
 //
 //public void CGApplicationPageMandatoryFields(String applicationsID, String Version, String Name, String Status, String Access, String MaxRequestCount, String msgFieldReqTxtCss, String Error) throws Exception {
-//	String addBtn = "//*[@id=\"applications\"]/div[2]/a[1]";
-//	String cancelBtn = "//*[@id=\"applications\"]/div[2]/a[2]";
+//	String addBtnUp = "//*[@id=\"applications\"]/div[2]/a[1]";
+//	String cancelBtnUp = "//*[@id=\"applications\"]/div[2]/a[2]";
 //	String updateBtn = "//*[@id=\"applications\"]/div[2]/a[3]";
 //	String deleteBtn = "//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span";
 //	String filterXPath = "//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img";
@@ -194,9 +267,9 @@ public class CGApplicationPage extends BasePage {
 //	test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 //
 ////	Click on ADD button
-//	currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtn, timeOut);
+//	currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtnUp, timeOut);
 //	System.out.println("Add button found: " + currentResult);
-//	currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtn, timeOut);
+//	currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtnUp, timeOut);
 //	System.out.println("Add button click: " + currentResult);
 //
 //	Assert.assertTrue(currentResult, "Add button click failed!");
@@ -271,7 +344,7 @@ public class CGApplicationPage extends BasePage {
 //
 ////	Click on CANCEL button
 //	if(!Messagetext.equals("Succeeded.")) {
-//		currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtn, timeOut);
+//		currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtnUp, timeOut);
 //		System.out.println("Cancel button click: " + currentResult);
 //		Assert.assertTrue(currentResult, "Cancel button click failed!");
 //		test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
@@ -353,8 +426,8 @@ public class CGApplicationPage extends BasePage {
 //@Test(dataProvider = "B_TypeValidation", groups = { "cgateway-portal" })
 //
 //public void CGApplicationPageTypeValidation(String applicationsID, String Version, String Name, String Status, String Access, String MaxRequestCount, String msgFieldReqTxtCss, String Error) throws Exception {
-//	String addBtn = "//*[@id=\"applications\"]/div[2]/a[1]";
-//	String cancelBtn = "//*[@id=\"applications\"]/div[2]/a[2]";
+//	String addBtnUp = "//*[@id=\"applications\"]/div[2]/a[1]";
+//	String cancelBtnUp = "//*[@id=\"applications\"]/div[2]/a[2]";
 //	String updateBtn = "//*[@id=\"applications\"]/div[2]/a[3]";
 //	String deleteBtn = "//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"; // "//td[@id='applications_active_cell']/a/span";
 //	String filterXPath = "//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img";
@@ -379,9 +452,9 @@ public class CGApplicationPage extends BasePage {
 //	test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 //
 ////	Click on ADD button
-//	currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtn, timeOut);
+//	currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtnUp, timeOut);
 //	System.out.println("Add button found: " + currentResult);
-//	currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtn, timeOut);
+//	currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtnUp, timeOut);
 //	System.out.println("Add button click: " + currentResult);
 //
 //	Assert.assertTrue(currentResult, "Add button click failed!");
@@ -457,7 +530,7 @@ public class CGApplicationPage extends BasePage {
 //
 ////	Click on CANCEL button
 //	if(!Messagetext.equals("Succeeded.")) {
-//		currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtn, timeOut);
+//		currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtnUp, timeOut);
 //		System.out.println("Cancel button click: " + currentResult);
 //		Assert.assertTrue(currentResult, "Cancel button click failed!");
 //		test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
@@ -540,8 +613,8 @@ public class CGApplicationPage extends BasePage {
 //@Test(dataProvider = "C_ErrorHandling", groups = { "cgateway-portal" })
 //
 //public void CGApplicationPageErrorHandling(String applicationsID, String Version, String Name, String Status, String Access, String MaxRequestCount, String msgFieldReqTxtCss, String Error) throws Exception {
-//String addBtn = "//*[@id=\"applications\"]/div[2]/a[1]";
-//String cancelBtn = "//*[@id=\"applications\"]/div[2]/a[2]";
+//String addBtnUp = "//*[@id=\"applications\"]/div[2]/a[1]";
+//String cancelBtnUp = "//*[@id=\"applications\"]/div[2]/a[2]";
 //String updateBtn = "//*[@id=\"applications\"]/div[2]/a[3]";
 //String deleteBtn = "//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"; // "//td[@id='applications_active_cell']/a/span";
 //String filterXPath = "//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img";
@@ -567,9 +640,9 @@ public class CGApplicationPage extends BasePage {
 //test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 //
 ////Click on ADD button
-//currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtn, timeOut);
+//currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtnUp, timeOut);
 //System.out.println("Add button found: " + currentResult);
-//currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtn, timeOut);
+//currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtnUp, timeOut);
 //System.out.println("Add button click: " + currentResult);
 //
 //Assert.assertTrue(currentResult, "Add button click failed!");
@@ -705,7 +778,7 @@ public class CGApplicationPage extends BasePage {
 //
 ////Click on CANCEL button
 //if(!Messagetext.equals("Succeeded.")) {
-//currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtn, timeOut);
+//currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtnUp, timeOut);
 //System.out.println("Cancel button click: " + currentResult);
 //Assert.assertTrue(currentResult, "Cancel button click failed!");
 //test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");
@@ -786,8 +859,8 @@ public class CGApplicationPage extends BasePage {
 //@Test(dataProvider = "D_MaxLengthValue", groups = { "cgateway-portal" })
 //
 //public void CGApplicationPageMaxLengthValue(String applicationsID, String Version, String Name, String Status, String Access, String MaxRequestCount, String msgFieldReqTxtCss, String Error) throws Exception {
-//String addBtn = "//*[@id=\"applications\"]/div[2]/a[1]";
-//String cancelBtn = "//*[@id=\"applications\"]/div[2]/a[2]";
+//String addBtnUp = "//*[@id=\"applications\"]/div[2]/a[1]";
+//String cancelBtnUp = "//*[@id=\"applications\"]/div[2]/a[2]";
 //String updateBtn = "//*[@id=\"applications\"]/div[2]/a[3]";
 //String deleteBtn = "//div[@id='applications']/div[4]/table/tbody/tr/td[13]/a/span"; // "//td[@id='applications_active_cell']/a/span";
 //String filterXPath = "//div[@id='applications']/div[3]/div/table/thead/tr/th[2]/a/span/img";
@@ -813,9 +886,9 @@ public class CGApplicationPage extends BasePage {
 //test.log(LogStatus.INFO, "**************************** Start current Row number: " + Integer.toString(rowNumber+1) + " **********************************");
 //
 ////Click on ADD button
-//currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtn, timeOut);
+//currentResult = ApplicationsPage.buttonExists(driver, "Add", addBtnUp, timeOut);
 //System.out.println("Add button found: " + currentResult);
-//currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtn, timeOut);
+//currentResult = ApplicationsPage.buttonClick(driver, "Add", addBtnUp, timeOut);
 //System.out.println("Add button click: " + currentResult);
 //
 //Assert.assertTrue(currentResult, "Add button click failed!");
@@ -939,7 +1012,7 @@ public class CGApplicationPage extends BasePage {
 //
 ////Click on CANCEL button
 //if(!Messagetext.equals("Succeeded.")) {
-//currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtn, timeOut);
+//currentResult = ApplicationsPage.buttonClick(driver, "Cancel", cancelBtnUp, timeOut);
 //System.out.println("Cancel button click: " + currentResult);
 //Assert.assertTrue(currentResult, "Cancel button click failed!");
 //test.log(LogStatus.INFO, "Cancel button click: " + currentResult + " <span class='label info'>info</span>");

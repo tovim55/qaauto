@@ -12,18 +12,19 @@ public class ApplicationsPageTest extends BaseTest {
     static boolean firstTime = true;
     final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\applicationsInputValidation.xls";
 
-    private void checkFieldsByDdt(String applicationsID, String Version, String Name, String Status, String Access,
-                                  String ThrottlingMaxRequestCount, String Error, String TestName, String RowNumber,
-                                  String description, boolean normalCheck) {
+    private String checkFieldsByDdt(String applicationsID, String Version, String Name, String Status, String Access,
+                                    String ThrottlingMaxRequestCount, String Error, String TestName, String RowNumber,
+                                    String description, boolean normalCheck) {
         starTestLog("Check: " + TestName + " Row: " + RowNumber, description);
         if (firstTime) {
-//            openChromeBrowser();
-            loginAndCheck();
-            appNavigate();
-            checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, normalCheck);
             firstTime = false;
+            loginAndCheck();
+            appPageNavigate();
+            return checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error,
+                    normalCheck);
         } else {
-            checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, normalCheck);
+            return checkAppFields(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error,
+                    normalCheck);
         }
     }
 
@@ -34,9 +35,11 @@ public class ApplicationsPageTest extends BaseTest {
     }
 
     @Test(dataProvider = "A_MandatoryFields", dataProviderClass = ApplicationsPageTest.class)
-    public void checkMandatoryFieldsDDT(String applicationsID, String Version, String Name, String Status, String Access,
-                                        String ThrottlingMaxRequestCount, String Error, String TestName, String RowNumber) {
-        checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName, RowNumber, "CG - PortalSite, check mandatory fields", true);
+    public void checkMandatoryFieldsDDT(String applicationsID, String Version, String Name, String Status,
+                                        String Access, String ThrottlingMaxRequestCount, String Error, String TestName,
+                                        String RowNumber) {
+        checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
+                RowNumber, "CG - PortalSite, check mandatory fields", true);
     }
 
     @DataProvider(name = "B_TypeValidation")
@@ -47,7 +50,7 @@ public class ApplicationsPageTest extends BaseTest {
 
     @Test(dataProvider = "B_TypeValidation", dataProviderClass = ApplicationsPageTest.class)
     public void checkTypeValidationDDT(String applicationsID, String Version, String Name, String Status, String Access,
-                                        String ThrottlingMaxRequestCount, String Error, String TestName,
+                                       String ThrottlingMaxRequestCount, String Error, String TestName,
                                        String RowNumber) {
         checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
                 RowNumber, "CG - PortalSite, check type validation", true);
@@ -61,7 +64,7 @@ public class ApplicationsPageTest extends BaseTest {
 
     @Test(dataProvider = "C_ErrorHandling", dataProviderClass = ApplicationsPageTest.class)
     public void checkErrorHandleDDT(String applicationsID, String Version, String Name, String Status, String Access,
-                                       String ThrottlingMaxRequestCount, String Error, String TestName,
+                                    String ThrottlingMaxRequestCount, String Error, String TestName,
                                     String RowNumber) {
         checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
                 RowNumber, "CG - PortalSite, check error handling and max/min length", true);
@@ -75,11 +78,27 @@ public class ApplicationsPageTest extends BaseTest {
 
     @Test(dataProvider = "D_CheckCancelButton", dataProviderClass = ApplicationsPageTest.class)
     public void checkCancelButtonDDT(String applicationsID, String Version, String Name, String Status, String Access,
-                                    String ThrottlingMaxRequestCount, String Error, String TestName,
-                                    String RowNumber) {
+                                     String ThrottlingMaxRequestCount, String Error, String TestName,
+                                     String RowNumber) {
         checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount, Error, TestName,
                 RowNumber, "CG - PortalSite, check error handling and max/min length", false);
         checkCancelBtn();
+    }
+
+    @DataProvider(name = "General")
+    public Object[][] getGeneralData() throws Exception {
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "General");
+        return arrayObject;
+    }
+
+    @Test(dataProvider = "General", dataProviderClass = ApplicationsPageTest.class)
+    public void checkSaveButtonDDT(String applicationsID, String Version, String Name, String Status, String Access,
+                                   String ThrottlingMaxRequestCount, String Error, String TestName,
+                                   String RowNumber) {
+        String newAppId = checkFieldsByDdt(applicationsID, Version, Name, Status, Access, ThrottlingMaxRequestCount,
+                Error, TestName, RowNumber, "CG - PortalSite, check error handling and max/min length",
+                false);
+        checkSaveBtn(newAppId);
     }
 
 

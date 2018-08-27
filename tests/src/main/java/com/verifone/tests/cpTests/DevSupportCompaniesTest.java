@@ -11,7 +11,7 @@ public class DevSupportCompaniesTest extends BaseTest {
     public static Company devPublic;
 
     @Test(testName = "Dev Admin check list companies", description = "CP - dev basic add company",
-            groups = {"CP-portal-createNewCompanyUI"})
+            groups = "CP-portal-createNewCompanyUI")
     public void createNewCompanyUI() throws Exception {
         Company dev = devSignUp();
         devLogin(dev);
@@ -20,7 +20,7 @@ public class DevSupportCompaniesTest extends BaseTest {
     }
 
     @Test(testName = "Dev Admin check list companies", description = "CP - dev basic add company & admin check is exist" +
-            "in the list", dependsOnGroups = {"CP-portal-createNewCompanyUI"})
+            "in the list", dependsOnMethods = {"createNewCompanyUI"})
     public void checkIsNewCompanyExistUI() throws Exception {
         checkCompaniesList(devPublic);
     }

@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Verifone" >
+<suite name="Verifone">
 
     <!--Set Env Variable: -->
     <!--QA-->
@@ -25,8 +25,9 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.cgTests.LoginTest"/>-->
+            <class name="com.verifone.tests.cgTests.LoginTest"/>
             <class name="com.verifone.tests.cgTests.ApplicationsPageTest"/>
+            <!--<class name="com.verifone.tests.cgTests.ConnectionsAppTest"/>-->
         </classes>
 
     </test>
