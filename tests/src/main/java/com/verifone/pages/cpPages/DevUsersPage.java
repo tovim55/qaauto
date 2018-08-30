@@ -38,11 +38,12 @@ public class DevUsersPage extends BasePage {
 
     public void addUser() {
 ////        TODO change the sleep later
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(15000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        waitForLoader(loader);
 //        waitTillClickable();
         getWebElement(addUserBtn, 10000, ExpectedConditions.visibilityOfElementLocated(addUserBtn)).click();
 //        click(addUserBtn);
