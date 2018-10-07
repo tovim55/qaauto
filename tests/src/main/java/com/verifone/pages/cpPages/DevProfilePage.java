@@ -72,6 +72,7 @@ public class DevProfilePage extends BasePage {
         sendKeys(firstName, user.getFirstName());
         sendKeys(lastName, user.getLastName());
         sendKeys(countryCode, String.valueOf(user.getCountryCode()));
+        Thread.sleep(1000);
         sendKeys(contactNumber, String.valueOf(user.getContactNumber()));
         select(countryTaxCode, user.getCountryTaxCode());
         sendKeys(email, user.getUserName());
