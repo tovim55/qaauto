@@ -26,7 +26,7 @@
         <classes>
             <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
             <!--<class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>-->
-            <class name="com.verifone.tests.cpTests.MerchantSetupPasswordUI"/>
+            <class name="com.verifone.tests.cpTests.CompanyReview"/>
         </classes>
 
     </test>
