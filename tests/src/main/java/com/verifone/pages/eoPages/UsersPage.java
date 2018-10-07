@@ -44,7 +44,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Pending")) {
+    		if (getText(rowLoc).contains("EO Admin") & getText(rowLoc).contains("Pending")) {
     			row = i;
     			break;
     		}
@@ -58,7 +58,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Pending")) {
+    		if (getText(rowLoc).contains("EO Merchant Manager") & getText(rowLoc).contains("Pending")) {
     			row = i;
     			break;
     		}
@@ -72,7 +72,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Pending")) {
+    		if (getText(rowLoc).contains("EO Device and App Manager") & getText(rowLoc).contains("Pending")) {
     			row = i;
     			break;
     		}
@@ -86,7 +86,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Active")) {
+    		if (getText(rowLoc).contains("EO Device and App Manager") & getText(rowLoc).contains("Active")) {
     			row = i;
     			break;
     		}
@@ -100,7 +100,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Disabled")) {
+    		if (getText(rowLoc).contains("EO Device and App Manager") & getText(rowLoc).contains("Disabled")) {
     			row = i;
     			break;
     		}
@@ -114,7 +114,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Active")) {
+    		if (getText(rowLoc).contains("EO Admin") & getText(rowLoc).contains("Active")) {
     			row = i;
     			break;
     		}
@@ -128,7 +128,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Disabled")) {
+    		if (getText(rowLoc).contains("EO Admin") & getText(rowLoc).contains("Disabled")) {
     			row = i;
     			break;
     		}
@@ -142,7 +142,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Active")) {
+    		if (getText(rowLoc).contains("EO Merchant Manager") & getText(rowLoc).contains("Active")) {
     			row = i;
     			break;
     		}
@@ -156,7 +156,7 @@ public class UsersPage extends BasePage {
 		int i;
 		for (i = 1; i<11; i++) {
 			By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-			if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Active") & getText(rowLoc).contains(param)) {
+			if (getText(rowLoc).contains("EO Merchant Manager") & getText(rowLoc).contains("Active") & getText(rowLoc).contains(param)) {
 				row = i;
 				break;
 			}
@@ -170,7 +170,7 @@ public class UsersPage extends BasePage {
     	int i;
     	for (i = 1; i<11; i++) {
     		By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-    		if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Disabled")) {
+    		if (getText(rowLoc).contains("EO Merchant Manager") & getText(rowLoc).contains("Disabled")) {
     			row = i;
     			break;
     		}
@@ -183,7 +183,7 @@ public class UsersPage extends BasePage {
 		int i;
 		for (i = 1; i<11; i++) {
 			By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-			if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Disabled") & getText(rowLoc).contains(param)) {
+			if (getText(rowLoc).contains("EO Merchant Manager") & getText(rowLoc).contains("Disabled") & getText(rowLoc).contains(param)) {
 				row = i;
 				break;
 			}

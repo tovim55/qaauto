@@ -182,7 +182,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				Assert.assertTrue(HomePage.menuUserExists());
 				Assert.assertTrue(HomePage.menuProfileExists());
 				Assert.assertTrue(HomePage.menuMailerExists());
-				Assert.assertTrue(HomePage.menuSponsorExists());
+//				Assert.assertTrue(HomePage.menuSponsorExists());
 				Assert.assertTrue(HomePage.menuLogoutExists());
 				break;
 			case "EO Device and App Manager":
@@ -197,7 +197,7 @@ public class SSOBasicFlowUI extends BaseTest {
 //				Assert.assertFalse(HomePage1.menuUserExists());
 				Assert.assertTrue(HomePage1.menuProfileExists());
 //				Assert.assertFalse(HomePage1.menuMailerExists());
-				Assert.assertTrue(HomePage1.menuSponsorExists());
+//				Assert.assertTrue(HomePage1.menuSponsorExists());
 				Assert.assertTrue(HomePage1.menuLogoutExists());
 				break;
 			case "EO Merchant Manager":
