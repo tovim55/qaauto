@@ -14,6 +14,8 @@ public class DevHomePage extends BasePage {
     private By connectWithCompanyBtn = By.xpath("//a[text()='Connect with Company']");
     private By message = By.xpath("Get started now");
     private By createAppBtn = By.xpath("//a[text()='Create an App']");
+    private By logoutBtn = By.id("logout");
+    private By username = By.className("username");
 
 
     public DevHomePage() {
@@ -32,5 +34,11 @@ public class DevHomePage extends BasePage {
         click(connectWithCompanyBtn);
 
     }
+
+    public void logout(){
+        hoverAndClickOnElement(username);
+        click(logoutBtn);
+    }
+
 
 }

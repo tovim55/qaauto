@@ -45,6 +45,7 @@ public class LoginPage extends BasePage {
     }
 
     public void loginPageCp(User user) {
+        waitSimple(2000);
         sendKeys(username, user.getUserName());
         switchToIframe(iframe);
         click(password);
@@ -147,9 +148,9 @@ public class LoginPage extends BasePage {
     }
 
     private void clickRejectCompany() {
-        waitSimple(2000);
+        waitSimple(4000);
         click(rejectBtn);
-        waitSimple(2000);
+        waitSimple(3000);
         click(confirnReject);
     }
 

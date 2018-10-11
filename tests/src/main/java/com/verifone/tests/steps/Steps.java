@@ -88,6 +88,10 @@ public class Steps {
         loginPage.rejectCompany(dev);//dev
     }
 
+    public static void logout(){
+        new DevHomePage().logout();
+    }
+
     public static void createApp() throws InterruptedException, IOException, AWTException {
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");

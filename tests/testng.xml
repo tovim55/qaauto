@@ -24,10 +24,10 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>-->
-            <class name="com.verifone.tests.cpTests.SignUpTestUI"/>
-            <!--<class name="com.verifone.tests.cpTests.CompanyReview"/>-->
+            <class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow2UI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>-->
         </classes>
 
     </test>
