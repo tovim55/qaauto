@@ -23,5 +23,6 @@ public class DevSupportRejectCompanyTest extends BaseTest {
             dependsOnMethods = {"createCompanyUI"})
     public void rejectCompanyUI() throws Exception {
         checkRejectCompany(devPublicReject);
+        logout();
     }
 }
