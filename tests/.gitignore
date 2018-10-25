@@ -1,0 +1,7 @@
+/target/
+.mft
+/tempApp/
+/reports/
+.log
+.class
+.settings
