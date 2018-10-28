@@ -23,7 +23,7 @@ import static com.verifone.pages.BasePage.testLog;
 
 import java.util.ArrayList;
 
-public class SSOBasicFlowUI extends BaseTest {
+public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
     private final static int timeOut = 2000;
     private static Integer rowNumber = 0;
@@ -44,21 +44,33 @@ public class SSOBasicFlowUI extends BaseTest {
     @BeforeTest
     public void startDDTest() throws Exception {
 //	 		Get number of Rows from Data driven
-        getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRoles");
 		env = envConfig.getEnv();
+		if (env.contains("QA")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesQA");
+		}
+		if (env.contains("DEV")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesDEV");
+		}
     }
 
 //  Data Provider
 
     @DataProvider(name = "loginRoles")
     public Object[][] dataSupplierLoginData() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRoles");
-        return arrayObject;
+		Object[][] arrayObject = null;
+		if (env.contains("QA")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesQA");
+		}
+		if (env.contains("DEV")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesDEV");
+		}
+		return arrayObject;
     }
 
     @Test(enabled = true, priority = 1, testName = "EO Portal Login", description = "EO Portal Login with different roles", dataProvider = "loginRoles", groups = {"SSOBasic"}, alwaysRun = true)
-    public void loginEOPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
 
+	public void loginEOPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
+		TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         rowNumber = rowNumber + 1;
         testLog.info( "Data Driven line number: " + rowNumber);
@@ -182,7 +194,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				Assert.assertTrue(HomePage.menuUserExists());
 				Assert.assertTrue(HomePage.menuProfileExists());
 				Assert.assertTrue(HomePage.menuMailerExists());
-				Assert.assertTrue(HomePage.menuSponsorExists());
+//				Assert.assertTrue(HomePage.menuSponsorExists());
 				Assert.assertTrue(HomePage.menuLogoutExists());
 				break;
 			case "EO Device and App Manager":
@@ -196,8 +208,8 @@ public class SSOBasicFlowUI extends BaseTest {
 				Thread.sleep(timeOut);
 //				Assert.assertFalse(HomePage1.menuUserExists());
 				Assert.assertTrue(HomePage1.menuProfileExists());
-//				Assert.assertFalse(HomePage1.menuMailerExists());
-				Assert.assertTrue(HomePage1.menuSponsorExists());
+				Assert.assertFalse(HomePage1.menuMailerExists());
+//				Assert.assertTrue(HomePage1.menuSponsorExists());
 				Assert.assertTrue(HomePage1.menuLogoutExists());
 				break;
 			case "EO Merchant Manager":
@@ -252,21 +264,32 @@ public class SSOBasicFlowUI extends BaseTest {
 	@BeforeTest
 	public void startDDTest2() throws Exception {
 //	 		Get number of Rows from Data driven
-		getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRoles");
 		env = envConfig.getEnv();
+		if (env.contains("QA")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesQA");
+		}
+		if (env.contains("DEV")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesDEV");
+		}
 	}
 
 //  Data Provider
 
 	@DataProvider(name = "loginSupportRoles")
 	public Object[][] dataSupplierLoginData1() throws Exception {
-		Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRoles");
+		Object[][] arrayObject = null;
+    	if (env.contains("QA")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesQA");
+		}
+		if (env.contains("DEV")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesDEV");
+		}
 		return arrayObject;
 	}
 
 	@Test(enabled = true, priority = 2, testName = "EO Support Portal Login", description = "EO Support Portal Login with different roles",dataProvider = "loginSupportRoles", groups = {"SSOBasic"}, alwaysRun = true)
 	public void loginEOSupportPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
-
+		TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
 		rowNumber = rowNumber + 1;
 		testLog.info( "Data Driven line number: " + rowNumber);
@@ -415,21 +438,32 @@ public class SSOBasicFlowUI extends BaseTest {
     @BeforeTest
     public void startDDTest1() throws Exception {
 //	 		Get number of Rows from Data driven
-        getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRoles");
 		env = envConfig.getEnv();
+		if (env.contains("QA")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesQA");
+		}
+		if (env.contains("DEV")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesDEV");
+		}
     }
 
 //  Data Provider
 
     @DataProvider(name = "loginDeveloperRoles")
     public Object[][] dataSupplierLoginData2() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRoles");
-        return arrayObject;
+		Object[][] arrayObject = null;
+		if (env.contains("QA")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesQA");
+		}
+		if (env.contains("DEV")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesDEV");
+		}
+		return arrayObject;
     }
 
     @Test(enabled = true, priority = 3, testName = "Developer Portal Login", description = "Developer Portal Login with different roles", dataProvider = "loginDeveloperRoles", groups = {"SSOBasic"}, alwaysRun = true)
     public void loginDeveloperPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
-
+		TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         rowNumber = rowNumber + 1;
         testLog.info( "Data Driven line number: " + rowNumber);
@@ -533,9 +567,27 @@ public class SSOBasicFlowUI extends BaseTest {
 //                }
                 break;
             case "Basic Developer":
+				Thread.sleep(timeOut+2000);
+				String url = BasePage.driver.getCurrentUrl();
+				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog)){
+					TestPassFlag = false;
+				}
+				Thread.sleep(timeOut);
+				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+				BasePage.driver.switchTo().window(availableWindows.get(0));
+//    	Search for Header
+				HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
+				Assert.assertTrue(HomePage3.headerExists());
+				HomePage3.clickHeaderMenu();
+				Thread.sleep(timeOut);
+				Assert.assertFalse(HomePage3.menuUserExists());
+				Assert.assertTrue(HomePage3.menuProfileExists());
+				Assert.assertFalse(HomePage3.menuCompanyExists());
+				Assert.assertTrue(HomePage3.menuLogoutExists());
+				break;
             case "Dev Admin":
                 Thread.sleep(timeOut+2000);
-                String url = BasePage.driver.getCurrentUrl();
+                url = BasePage.driver.getCurrentUrl();
 				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog)){
 					TestPassFlag = false;
 				}
@@ -543,7 +595,7 @@ public class SSOBasicFlowUI extends BaseTest {
                 availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
                 BasePage.driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-                HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
+                HomePage3 = (HomePage) PageFactory.getPage("HomePage");
                 Assert.assertTrue(HomePage3.headerExists());
                 HomePage3.clickHeaderMenu();
                 Thread.sleep(timeOut);

@@ -1,5 +1,6 @@
 package com.verifone.tests.cpTests;
 import com.relevantcodes.extentreports.LogStatus;
+import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
@@ -21,16 +22,16 @@ import static com.verifone.pages.BasePage.testLog;
 
 import java.util.ArrayList;
 
-public class SSOBasicFlow2UI extends BaseTest {
+public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
     private final static int timeOut = 2000;
     private static Boolean TestPassFlag = true;
     private static String capScreenShootPath;
-    private static String ForgotEmail = "gemerchantx@getnada.com";
-    private static String NewPwd = "Veri1234";
+    private static String ForgotEmail = ""; //"gemerchantx@getnada.com";
+    private static String NewPwd = "Veri4321";
     private static String mailResetButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/div[4]/a";
     private static String portalEOURI = "";
-    private static String EOAdminEmail = "User20180722T132418.524MerchMan@getnada.com";
-    private static String EOAdminPwd = "Veri1234";
+    private static String EOAdminEmail = ""; //"User20180722T132418.524MerchMan@getnada.com";
+    private static String EOAdminPwd = ""; //"Veri1234";
     private static String DisableUserEmail = "";
     private static String DisableUserPwd = "Veri1234";
     private static String DisableMerchantEmail = "";
@@ -45,12 +46,18 @@ public class SSOBasicFlow2UI extends BaseTest {
     public void startDDTest() throws Exception {
         env = envConfig.getEnv();
         portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+        TestPassFlag = true;
     }
 
 
     @Test(enabled = true, priority=1, testName = "User Forgot/Reset Password", description = "User Merchant Manager forgot password, reset password login EO Admin portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void userForgotResetPasswordUI() throws Exception {
 
+        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+        EOAdminEmail = EOAdmin.getUserName();
+        EOAdminPwd = EOAdmin.getPassword();
+        User EOMerchantForgotPassword = EntitiesFactory.getEntity("EOMerchantForgotPassword");
+        ForgotEmail = EOMerchantForgotPassword.getUserName();
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         testLog.info( "This test verify that User Merchant Manager can Reset Password, setup New and Log In using New Password");
         testLog.info("User mail: " + EOAdminEmail);
@@ -314,12 +321,16 @@ public class SSOBasicFlow2UI extends BaseTest {
     public void startDD1Test() throws Exception {
         env = envConfig.getEnv();
         portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+        TestPassFlag = true;
     }
 
 
     @Test(enabled = true, priority=2, testName = "Disable Merchant Manager", description = "Disable Merchant Manager blocked login EO Portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void DisableUserUI() throws Exception {
 
+        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+        EOAdminEmail = EOAdmin.getUserName();
+        EOAdminPwd = EOAdmin.getPassword();
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         testLog.info( "This test check that disabled Merchant Manager blocked to Log In EO Portal");
 
@@ -339,6 +350,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         BasePage.driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
+        Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
 
         boolean UserMenu = HomePage.menuUserExists();
@@ -347,6 +359,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         testLog.info( "-------------------------------------------------Users list-------------------------------------------------");
 
         HomePage.clickUserMenu();
+        Thread.sleep(timeOut);
 
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
@@ -403,10 +416,13 @@ public class SSOBasicFlow2UI extends BaseTest {
     public void startDD2Test() throws Exception {
         env = envConfig.getEnv();
         portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+        TestPassFlag = true;
     }
     @Test(enabled = true, priority=3, testName = "Disable Merchant", description = "Disable Merchant blocked login merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void DisableMerchantUI() throws Exception {
-
+        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+        EOAdminEmail = EOAdmin.getUserName();
+        EOAdminPwd = EOAdmin.getPassword();
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         testLog.info( "This test check that disabled Merchant blocked to Log In Merchant Portal");
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
@@ -425,8 +441,9 @@ public class SSOBasicFlow2UI extends BaseTest {
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         testLog.info( "-------------------------------------------------Merchants list-------------------------------------------------");
-
+        Thread.sleep(timeOut);
         HomePage.clickMerchantsMenu();
+        Thread.sleep(timeOut);
 
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
@@ -483,10 +500,13 @@ public class SSOBasicFlow2UI extends BaseTest {
     public void startDD3Test() throws Exception {
         env = envConfig.getEnv();
         portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+        TestPassFlag = true;
     }
     @Test(enabled = true, priority=4, testName = "Enable Merchant Manager", description = "Enable Merchant Manager logged in merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void EnableUserUI() throws Exception {
-
+        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+        EOAdminEmail = EOAdmin.getUserName();
+        EOAdminPwd = EOAdmin.getPassword();
         testLog.info( "This test check that enabled Merchant Manager Logged In EO Admin Portal successfully");
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
 
@@ -505,6 +525,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         BasePage.driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
+        Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
 
         boolean UserMenu = HomePage.menuUserExists();
@@ -513,6 +534,7 @@ public class SSOBasicFlow2UI extends BaseTest {
         testLog.info( "-----------------------------------------------------Users list-------------------------------------------------");
 
         HomePage.clickUserMenu();
+        Thread.sleep(timeOut);
 
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
@@ -572,10 +594,13 @@ public class SSOBasicFlow2UI extends BaseTest {
     public void startDD4Test() throws Exception {
         env = envConfig.getEnv();
         portalEOURI = "https://" + env + "." + "estatemanager.verifonecp.com";
+        TestPassFlag = true;
     }
     @Test(enabled = true, priority=5, testName = "Enable Merchant", description = "Enable Merchant logged in merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void EnableMerchantUI() throws Exception {
-
+        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+        EOAdminEmail = EOAdmin.getUserName();
+        EOAdminPwd = EOAdmin.getPassword();
         testLog.info( "This test check that enabled Merchant Logged In EO Merchant Portal successfully");
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
 
@@ -596,7 +621,9 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         testLog.info( "-----------------------------------------------------Merchants list-------------------------------------------------");
 
+        Thread.sleep(timeOut);
         HomePage.clickMerchantsMenu();
+        Thread.sleep(timeOut);
 
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));

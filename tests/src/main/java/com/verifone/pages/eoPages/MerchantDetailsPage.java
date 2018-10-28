@@ -13,8 +13,17 @@ public class MerchantDetailsPage extends BasePage {
         private final static String title = "";
 
         private By titleLoc = By.xpath("//*[@class='top-container']");
-        private By userNameLoc = By.xpath("(//*[@class='control-value'])[1]");
+        private By busNameLoc = By.xpath("(//*[@class='control-value'])[1]");
+        private By indCodeLoc = By.xpath("(//*[@class='control-value'])[2]");
+        private By midLoc = By.xpath("(//*[@class='control-value'])[3]");
+        private By countryLoc = By.xpath("(//*[@class='control-value'])[4]");
+        private By addressLoc = By.xpath("(//*[@class='control-value'])[5]");
+        private By contNumberLoc = By.xpath("(//*[@class='control-value'])[6]");
+        private By busMailLoc = By.xpath("(//*[@class='control-value'])[8]");
+
         private By merchantEmailLoc = By.xpath("(//*[@class='control-value'])[11]");
+        private By businessEditLoc = By.xpath("//*[@class='edit-organization pull-right']");
+        private By businessEditMutedLoc = By.xpath("(//*[@class='pull-right text-muted'])[1]");
         private By userEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[1]");
         private By roleEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[2]");
         private By userEnableEditLoc = By.xpath("//*[@class='pull-right edit-user']");
@@ -55,12 +64,41 @@ public class MerchantDetailsPage extends BasePage {
             return a;
         }
 
-        public String getUserName() throws InterruptedException {
-            return getText(userNameLoc);
+        public String getBusName() throws InterruptedException {
+            int k = 0;
+            while (getText(busNameLoc)=="" & k <=100){
+                Thread.sleep (1000);
+                k++;
+            }
+            return getText(busNameLoc);
         }
 
         public String getTitle() throws InterruptedException {
             return getText(titleLoc);
+        }
+
+        public String getIndCode() throws InterruptedException {
+            return getText(indCodeLoc);
+        }
+
+        public String getMID() throws InterruptedException {
+            return getText(midLoc);
+        }
+
+        public String getCountry() throws InterruptedException {
+            return getText(countryLoc);
+        }
+
+        public String getAddress() throws InterruptedException {
+            return getText(addressLoc);
+        }
+
+        public String getContactNumber() throws InterruptedException {
+            return getText(contNumberLoc);
+        }
+
+        public String getBusEmail() throws InterruptedException {
+            return getText(busMailLoc);
         }
 
         public String getStatus() throws Exception {
@@ -122,25 +160,15 @@ public class MerchantDetailsPage extends BasePage {
             }
         }
 
-        public boolean elementUserEditClickable() throws Exception {
+        public boolean elementBusinessEditClickable() throws Exception {
 
-            if (isExists(userEditLoc, 3)) {
+            if (isExists(businessEditMutedLoc, 3)) {
                 return false;
             }
-            if (isExists(userEnableEditLoc, 3)) {
+            if (isExists(businessEditLoc, 3)) {
                 return true;
             }
             return false;
-//    	WebElement elem = driver.findElement(userEditLoc);
-////    	return elem.isEnabled();
-//    	try{
-//            WebDriverWait wait = new WebDriverWait(driver, 3);
-//            wait.until(ExpectedConditions.attributeContains(elem, "isContentEditable", "true"));
-//            return true;
-//        }
-//        catch (Exception e){
-//        	return false;
-//        }
         }
 
         public boolean elementRoleEditClickable() throws Exception {
@@ -153,6 +181,9 @@ public class MerchantDetailsPage extends BasePage {
             return false;
         }
 
+        public void clickLnkEditBus() throws InterruptedException {
+            click(businessEditLoc);
+        }
 
         public void clickLnkResend() throws InterruptedException {
             click(lnkResendLoc);

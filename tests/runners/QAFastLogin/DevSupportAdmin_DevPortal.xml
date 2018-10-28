@@ -9,7 +9,8 @@
     <!--parameter name="env" value="QA"/-->
     <parameter name="env" value="QA" />
     <parameter name="mail" value="qa.cptest@verifone.com" />
-    <parameter name="pwd" value="ARp@43Hp" />
+    <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
+    <parameter name="pwd" value="ARp@43Hpa" />
     <parameter name="name" value="qa.cptest" />
     <parameter name="answer" value="BigTiger" />
 

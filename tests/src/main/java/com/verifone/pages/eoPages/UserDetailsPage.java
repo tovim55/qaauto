@@ -14,8 +14,10 @@ public class UserDetailsPage extends BasePage {
     private By titleLoc = By.xpath("//*[@class='top-container']");
     private By userNameLoc = By.xpath("(//*[@class='control-value'])[1]");
     private By userEmaulLoc = By.xpath("(//*[@class='control-value'])[2]");
-    private By userEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[1]");
-    private By roleEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[2]");
+//    private By userEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[1]");
+    private By userEditLoc = By.xpath("//*[@class='pull-right edit-user']");
+//    private By roleEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[2]");
+    private By roleEditLoc = By.xpath("//*[@class='pull-right edit-role']");
     private By userEnableEditLoc = By.xpath("//*[@class='pull-right edit-user']");
     private By roleEnableEditLoc = By.xpath("//*[@class='pull-right edit-role']");
     private By userStatusLoc = By.xpath("//*[@class='label label-info']");
@@ -48,6 +50,11 @@ public class UserDetailsPage extends BasePage {
     }
 
     public String getUserEmail() throws InterruptedException {
+        int t = 0;
+        while (getText(userEmaulLoc).length()<=3 & t < 5000){
+            Thread.sleep(500);
+            t = t + 500;
+        }
         return getText(userEmaulLoc);
     }
     
@@ -121,7 +128,7 @@ public class UserDetailsPage extends BasePage {
     public boolean elementUserEditClickable() throws Exception {
     	
     	if (isExists(userEditLoc, 3)) {
-    		return false;
+    		return true;
     	}
     	if (isExists(userEnableEditLoc, 3)) {
     		return true;
@@ -141,14 +148,21 @@ public class UserDetailsPage extends BasePage {
     
     public boolean elementRoleEditClickable() throws Exception {
     	if (isExists(roleEditLoc, 3)) {
-    		return false;
+    		return true;
     	}
     	if (isExists(roleEnableEditLoc, 3)) {
     		return true;
     	}
     	return false;
     }
-    
+
+    public void clickLnkEditUserInf() throws InterruptedException {
+        click(userEditLoc);
+    }
+
+    public void clickLnkEditRole() throws InterruptedException {
+        click(roleEditLoc);
+    }
     
     public void clickLnkResend() throws InterruptedException {
     	click(lnkResendLoc);

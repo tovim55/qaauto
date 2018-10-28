@@ -27,6 +27,18 @@ public class EntitiesFactory {
                 user = BaseTest.envConfig.getCredentials().getEOAdmin();
                 break;
 
+            case "EODevAppManager":
+                user = BaseTest.envConfig.getCredentials().getEODevAppManager();
+                break;
+
+            case "EOMerchantManager":
+                user = BaseTest.envConfig.getCredentials().getEOMerchantManager();
+                break;
+
+            case "EOMerchantForgotPassword":
+                user = BaseTest.envConfig.getCredentials().getEOMerchantForgotPassword();
+                break;
+
             case "DevAdmin":
                 user = BaseTest.envConfig.getCredentials().getDevAdmin();
                 break;

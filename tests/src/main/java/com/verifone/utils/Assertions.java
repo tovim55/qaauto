@@ -43,4 +43,35 @@ public class Assertions {
         }
         return TestPassFlag;
     }
+    public static boolean compareNumber(int ExpectedRes, int ActualRes, String Desc, ExtentTest testLog) throws AWTException, InterruptedException, IOException, Exception {
+        boolean TestPassFlag;
+        String capScreenShootPath;
+
+        if (ExpectedRes == ActualRes) {
+            testLog.pass(Desc + " " + ExpectedRes + "...: Succesfull");
+            TestPassFlag = true;
+        } else {
+            TestPassFlag = false;
+            testLog.error(Desc + " " + ActualRes + ". Expected: " + ExpectedRes);
+            capScreenShootPath = SeleniumUtils.getScreenshot();
+            testLog.info("Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+            testLog.info("Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+        }
+        return TestPassFlag;
+    }
+    public static boolean compareBoolean(Boolean ExpectedRes, Boolean ActualRes, String Desc, ExtentTest testLog) throws AWTException, InterruptedException, IOException, Exception {
+        boolean TestPassFlag;
+        String capScreenShootPath;
+        if (ActualRes == ExpectedRes) {
+            testLog.pass(Desc + " " + ExpectedRes + " as expected");
+            TestPassFlag = true;
+        } else {
+            TestPassFlag = false;
+            testLog.error(Desc + " " + ActualRes + ". Expected: " + ExpectedRes);
+            capScreenShootPath = SeleniumUtils.getScreenshot();
+            testLog.info("Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+            testLog.info("Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+        }
+        return TestPassFlag;
+    }
 }

@@ -19,24 +19,10 @@ import static com.verifone.pages.BasePage.testLog;
 
 import java.util.ArrayList;
 
-public class SSOBasicFlow3UI extends BaseTest {
+public class SSOBasicFlow_OktaLoginUI extends BaseTest {
     private final static int timeOut = 2000;
     private static Boolean TestPassFlag = true;
-    private static String capScreenShootPath;
-    private static String ForgotEmail = "gemerchantx@getnada.com";
-    private static String NewPwd = "Veri1234";
-    private static String mailResetButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/div[4]/a";
     private static String portalURI = "";
-    private static String EOAdminEmail = "User20180722T132418.524MerchMan@getnada.com";
-    private static String EOAdminPwd = "Veri1234";
-    private static String DisableUserEmail = "";
-    private static String DisableUserPwd = "Veri1234";
-    private static String DisableMerchantEmail = "";
-    private static String DisableMerchantPwd = "Veri1234";
-    private static String EnableUserEmail = "";
-    private static String EnableUserPwd = "Veri1234";
-    private static String EnableMerchantEmail = "";
-    private static String EnableMerchantPwd = "Veri1234";
     final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\oktaLogin.xls";
     private static Integer getRowNumFromFile = 0;
     private static String env = "";
@@ -44,20 +30,31 @@ public class SSOBasicFlow3UI extends BaseTest {
     @BeforeTest
     public void startDDTest() throws Exception{
 //	 		Get number of Rows from Data driven
-        getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "oktaLogin");
         env = envConfig.getEnv();
+        if (env.contains("QA")) {
+            getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "oktaLoginQA");
+        }
+        if (env.contains("DEV")) {
+            getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "oktaLoginDEV");
+        }
     }
 
 //	      Data Provider
 
     @DataProvider(name = "oktaLogin")
     public Object[][] dataSupplierLoginData() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "oktaLogin");
+        Object[][] arrayObject = null;
+        if (env.contains("QA")) {
+            arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "oktaLoginQA");
+        }
+        if (env.contains("DEV")) {
+            arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "oktaLoginDEV");
+        }
         return arrayObject;
     }
 
     @Test(enabled = true, priority = 1, testName = "okta login", dataProvider = "oktaLogin", groups = {"SSOBasic"}, alwaysRun = true)
-    public void oktaLoginUI(String env, String portal, String role, String email, String name, String password,
+    public void oktaLoginUI(String portal, String role, String email, String name, String password,
             String answer, String sectionTitle) throws Exception {
 
         testLog.info("This test verify user: " + role + ", email: " + email + ", name: " + name + " logged in: " + portal + ", using OKTA verification");

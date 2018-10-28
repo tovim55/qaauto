@@ -1,67 +1,47 @@
 package com.verifone.tests.cpTests;
 
-import com.mongodb.assertions.Assertions;
-import com.relevantcodes.extentreports.LogStatus;
-import com.verifone.entities.EntitiesFactory;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.verifone.pages.cpPages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import com.verifone.pages.PageFactory;
 import com.verifone.tests.BaseTest;
-import com.verifone.utils.apiClient.createMerchant.CreateMerchant;
 import com.verifone.utils.apiClient.createMerchant.CreateMerchantDE;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantIE;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantBR;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantFR;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantIT;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantPT;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantES;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantMX;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantPR;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantAT;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantIL;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantKR;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantCA;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantNZ;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantGB;
+import com.verifone.utils.apiClient.createMerchant.CreateMerchantAU;
 import com.verifone.utils.apiClient.getEoeadminData.GetEoadminDataApi;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
 
 import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
-import org.testng.asserts.Assertion;
 
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.utils.DataDrivenUtils;
-import com.verifone.utils.General.LoginCGPortal;
 
 import static com.verifone.pages.BasePage.testLog;
 
 public class MerchantSetupPasswordUI extends BaseTest {
-//    private final static String text = "To create your Verifone Account";
-//    private final static String errorFormat = "Use at least eight characters";
-//    private final static String errorAccept = "You are required to accept our Terms and Conditions and Privacy Policy.";
-//    private final static String errorMatch = "Password and Confirm Password must match.";
-//    private final static String textTOS = "These Terms of Service for the Verifone Web Portal";
-//    private final static String loginTitle = "Login to your Verifone Account";
-//    private final static String loginEmail = "Email Address";
-//    private final static String loginPassword = "Password";
-//    private final static String loginForgotLink = "Forgot Password?";
-//    private final static String loginBtnLabel = "LOG IN";
     private static String ulMail = "";
     private static String ulPassword = "";
     private static String mailActivateButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/p[5]/a";
-//    private final static String lerrorMandatoryField = "This field is required.";
-//    private final static String lerrorValidationMail = "Email has incorrect format. You can only use letters, numbers and symbols.";
-//    private final static String lerrorMatch = "The information you''ve entered does not match the information we have on file.";
-//    private final static String pageAgreementTitle = "Action Required";
-//    private final static String pageAgreementText = "Your Verifone activation account is not yet completed";
-//    private final static String pageBtnText = "Accept Merchant Agreement";
-//    private final static String docHeader = "Standard Terms and Conditions for";
-//    private final static String docText = "These Standard Terms and Conditions for Verifone Services and Solutions";
-//    private final static String docAgreeBtnText = "Agree";
-//    private final static String merchantPageTitle = "Thank you!";
-
     private final static int timeOut = 2000;
     private static String mId = "";
     private static Integer rowNumber=0;
@@ -94,6 +74,8 @@ public class MerchantSetupPasswordUI extends BaseTest {
     		String PasswordSetupFinalTitle, String PasswordSetupFinalText) throws Exception {
 
 //        starTestLog("Merchant Setup Password Test", "Merchant Setup Password Test");
+		String tText;
+		TestPassFlag = true;
         rowNumber = rowNumber+1;
         testLog.pass( "Data Driven line number: " + rowNumber);
 
@@ -103,11 +85,59 @@ public class MerchantSetupPasswordUI extends BaseTest {
         GetTokenApi getTokenApi = new GetTokenApi("testId");
         String accessToken = getTokenApi.getToken(user);
         GetEoadminDataApi getEoadminDataApi = new GetEoadminDataApi(accessToken,"testId");
+		testLog.pass( "Lang - Country: " + Lang);
+        Lang = Lang.substring(3);
         switch (Lang) {
+			case "AU":
+				mId = new CreateMerchantAU(accessToken, "testId").createMerchantAU(getEoadminDataApi.getData());
+				break;
+			case "GB":
+				mId = new CreateMerchantGB(accessToken, "testId").createMerchantGB(getEoadminDataApi.getData());
+				break;
+			case "NZ":
+				mId = new CreateMerchantNZ(accessToken, "testId").createMerchantNZ(getEoadminDataApi.getData());
+				break;
+			case "CA":
+				mId = new CreateMerchantCA(accessToken, "testId").createMerchantCA(getEoadminDataApi.getData());
+				break;
+			case "KR":
+				mId = new CreateMerchantKR(accessToken, "testId").createMerchantKR(getEoadminDataApi.getData());
+				break;
+			case "IE":
+				mId = new CreateMerchantIE(accessToken, "testId").createMerchantIE(getEoadminDataApi.getData());
+				break;
 	        case "DE":
 	        	mId = new CreateMerchantDE(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
 	        	break;
+			case "BR":
+				mId = new CreateMerchantBR(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "FR":
+				mId = new CreateMerchantFR(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "IT":
+				mId = new CreateMerchantIT(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "PT":
+				mId = new CreateMerchantPT(accessToken, "testId").createMerchantPT(getEoadminDataApi.getData());
+				break;
+			case "ES":
+				mId = new CreateMerchantES(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "MX":
+				mId = new CreateMerchantMX(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "PR":
+				mId = new CreateMerchantPR(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "AT":
+				mId = new CreateMerchantAT(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
+			case "IL":
+				mId = new CreateMerchantIL(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+				break;
         }
+
         System.out.println("MID: " + mId);
 
 //      Navigate to Getnada
@@ -121,9 +151,10 @@ public class MerchantSetupPasswordUI extends BaseTest {
     	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
 
     	// Put email
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-    	Thread.sleep(timeOut+2000);
-    	BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(mId);
+		WebElement a = BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]"));
+		a.clear();
+//    	Thread.sleep(timeOut);
+    	a.sendKeys(mId);
 
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
     	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
@@ -340,70 +371,74 @@ public class MerchantSetupPasswordUI extends BaseTest {
 
     	testLog.pass( "Setup page: Input password = 'Veri1234', confirm password = 'Veri1234'");
     	SetupPasswordPage.SetupPasswordPageCp("Veri1234", "Veri1234");
-    	testLog.pass( "Display TOS");
+		System.out.println(Lang);
+    	if (!Lang.contains("KR")) {
+			testLog.pass("Display TOS");
 //    	SetupPasswordPage.clickOnchboxTOS();
-		SetupPasswordPage.setupTOSLinkClick();
-    	testLog.pass( "--------------------------------------------------TOS document---------------------------------------------------");
+			SetupPasswordPage.setupTOSLinkClick();
+			testLog.pass("--------------------------------------------------TOS document---------------------------------------------------");
 
-    	Thread.sleep(timeOut);
+			Thread.sleep(timeOut);
 
-//    	Verify TOS page text
-    	String tText = SetupPasswordPage.tosText();
-    	currentResult = tText.contains(textTOS1);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found TOS text: " + textTOS1 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found TOS text: " + tText + ". Expected: " + textTOS1);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textTOS2);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found TOS text: " + textTOS2 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found TOS text: " + tText + ". Expected: " + textTOS2);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textTOS3);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found TOS text: " + textTOS3 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found TOS text: " + tText + ". Expected: " + textTOS3);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textTOS4);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found TOS text: " + textTOS4 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found TOS text: " + tText + ". Expected: " + textTOS4);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textTOS5);
-    	if (currentResult == true) {
-    		testLog.pass( "TOS doc: Found TOS text: " + textTOS5 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "TOS doc: Found TOS text: " + tText + ". Expected: " + textTOS5);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+////    	Verify TOS page text
+//    	String tText = SetupPasswordPage.tosText();
+//    	currentResult = tText.contains(textTOS1);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found TOS text: " + textTOS1 + "...: Succesfull");
+//    	} else {
+//    		if (Lang != "KR") {
+//				TestPassFlag = false;
+//				testLog.error("TOS doc: Found TOS text: " + tText.substring(1, 30) + ".... Expected: " + textTOS1);
+//				capScreenShootPath = SeleniumUtils.getScreenshot();
+//				testLog.pass("Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//				testLog.pass("Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//			}
+//    	}
+//
+//    	currentResult = tText.contains(textTOS2);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found TOS text: " + textTOS2 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS2);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textTOS3);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found TOS text: " + textTOS3 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS3);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textTOS4);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found TOS text: " + textTOS4 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS4);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textTOS5);
+//    	if (currentResult == true) {
+//    		testLog.pass( "TOS doc: Found TOS text: " + textTOS5 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS5);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
 //    	tText = SetupPasswordPage.tosLnkText();
 //    	currentResult = tText.contains(TOSLnk);
@@ -445,79 +480,80 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    	System.out.println(tText);
 
 //		Agree with TOS
-    	testLog.pass( "Accept TOS");
-    	SetupPasswordPage.tosClose();
-    	Thread.sleep(timeOut - 1000);
+//    	testLog.pass( "Accept TOS");
+			SetupPasswordPage.tosClose();
+
+			Thread.sleep(timeOut - 1000);
 
 //      Pass to Agreement window, verify text
 
-    	testLog.pass( "Display Agreement");
-    	SetupPasswordPage.setupAgreementLinkClick();
+//    	testLog.pass( "Display Agreement");
+			SetupPasswordPage.setupAgreementLinkClick();
 
-    	testLog.pass( "-----------------------------------------------Agreement document------------------------------------------------");
+			testLog.pass("-----------------------------------------------Agreement document------------------------------------------------");
 
-    	Thread.sleep(timeOut);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(2));
+			Thread.sleep(timeOut);
+			availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+			BasePage.driver.switchTo().window(availableWindows.get(2));
 
-		AgreementPage AgreementPage = (AgreementPage) PageFactory.getPage("AgreementPage");
+			AgreementPage AgreementPage = (AgreementPage) PageFactory.getPage("AgreementPage");
 //    	Verify Agreement page text
-    	tText = AgreementPage.pageText();
-    	currentResult = tText.contains(textAgreement1);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement1 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Agreement text: " + tText + ". Expected: " + textAgreement1);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textAgreement2);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement2 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Agreement text: " + tText + ". Expected: " + textAgreement2);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textAgreement3);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement3 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Agreement text: " + tText + ". Expected: " + textAgreement3);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textAgreement4);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement4 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Agreement text: " + tText + ". Expected: " + textAgreement4);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-
-    	currentResult = tText.contains(textAgreement5);
-    	if (currentResult == true) {
-    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement5 + "...: Succesfull");
-    	} else {
-    		TestPassFlag = false;
-    		testLog.error( "Agreement doc: Found Agreement text: " + tText + ". Expected: " + textAgreement5);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
-    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
-    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
-    	}
-    	System.out.println(tText);
+//    	tText = AgreementPage.pageText();
+//    	currentResult = tText.contains(textAgreement1);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement1 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Agreement text: " + tText.substring(0, 30) + ".... Expected: " + textAgreement1);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textAgreement2);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement2 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement2);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textAgreement3);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement3 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement3);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textAgreement4);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement4 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement4);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//
+//    	currentResult = tText.contains(textAgreement5);
+//    	if (currentResult == true) {
+//    		testLog.pass( "Agreement doc: Found Agreement text: " + textAgreement5 + "...: Succesfull");
+//    	} else {
+//    		TestPassFlag = false;
+//    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement5);
+//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
+//    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
+//    	}
+//    	System.out.println(tText);
 
 //    	tText = SetupPasswordPage.agreementLnkText();
 //    	currentResult = tText.contains(AgreementLnk);
@@ -557,6 +593,7 @@ public class MerchantSetupPasswordUI extends BaseTest {
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
 //    	System.out.println(tText);
+		}
 
 //		Agree with Agreement
 		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());

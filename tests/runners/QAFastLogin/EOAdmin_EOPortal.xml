@@ -8,7 +8,11 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="env" value="QA" />
-    <parameter name="mail" value="vfieous@getnada.com" />
+    <parameter name="mail" value="LocaleEOAdmin@getnada.com" />
+    <!--<parameter name="mail" value="LocalBrazil@getnada.com" />-->
+    <!--<parameter name="mail" value="LocalGermanyEO@getnada.com" />-->
+    <!--<parameter name="mail" value="vfieoger@getnada.com" />-->
+    <!--<parameter name="mail" value="vfieous@getnada.com" />-->
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />

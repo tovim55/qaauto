@@ -9,6 +9,7 @@
     <!--parameter name="env" value="QA"/-->
     <parameter name="env" value="QA" />
     <parameter name="mail" value="vfitestdev6_25@getnada.com" />
+    <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />

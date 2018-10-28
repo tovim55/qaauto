@@ -32,7 +32,7 @@ public class SetupPasswordPage extends BasePage {
     private By setupConfirmPasswordHintLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword2']");
     private By setupCheckBoxLoc = By.xpath("(//*[@class='checkbox'])[1]");
     private By setupCheckBoxAgrLoc = By.xpath("(//*[@class='checkbox'])[2]");
-    private By setupTOSLinkLoc = By.id("tandm_container");
+    private By setupTOSLinkLoc = By.id("tandc_container");
     private By setupAgreementLinkLoc = By.xpath("//*[@class='external-link']");
     
     private By errorFormatLoc = By.xpath("//*[@class='help-block']");
@@ -41,7 +41,8 @@ public class SetupPasswordPage extends BasePage {
     private By errorAgrLoc = By.xpath("(//*[@class='help-block years-old-marging'])[2]");
     
     private By wndTOSLoc = By.xpath("//*[@class='full reset modal-open']");
-    private By tosLoc = By.xpath("//*[@class='full reset modal-open']");
+//    private By tosLoc = By.xpath("//*[@class='full reset modal-open']");
+    private By tosLoc = By.xpath("//*[@class='modal-content']");
     private By TOSLnk = By.xpath("//*[@class='pull-left']");
     private By AgreementLnk = By.xpath("//*[@class='external-link']");
     private By declineTOSBtn = By.xpath("(//*[@class='btn btn-primary btn-cancel'])[1]");

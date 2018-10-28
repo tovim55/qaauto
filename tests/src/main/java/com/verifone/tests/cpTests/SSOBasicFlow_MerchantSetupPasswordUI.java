@@ -38,7 +38,7 @@ import com.verifone.utils.General.LoginCGPortal;
 
 import static com.verifone.pages.BasePage.testLog;
 
-public class SSOBasicFlow4UI extends BaseTest {
+public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 
     private static String ulMail = "";
     private static String ulPassword = "";
@@ -56,15 +56,26 @@ public class SSOBasicFlow4UI extends BaseTest {
 
     @BeforeTest
     public void startDDTest() throws Exception {
-
         env = envConfig.getEnv();
+        if (env.contains("QA")) {
+            getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "merchantSetupPasswordQA");
+        }
+        if (env.contains("DEV")) {
+            getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "merchantSetupPasswordDEV");
+        }
     }
 
 //	      Data Provider
 
     @DataProvider(name = "merchantSetupPassword")
     public Object[][] dataSupplierLoginData() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "merchantSetupPassword");
+        Object[][] arrayObject = null;
+        if (env.contains("QA")) {
+            arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "merchantSetupPasswordQA");
+        }
+        if (env.contains("DEV")) {
+            arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "merchantSetupPasswordDEV");
+        }
         return arrayObject;
     }
 
@@ -100,10 +111,10 @@ public class SSOBasicFlow4UI extends BaseTest {
         BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
 
         // Put email
+        Thread.sleep(timeOut);
         BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-        Thread.sleep(timeOut + 2000);
         BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(mId);
-
+        Thread.sleep(timeOut);
         BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
         BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
 
@@ -355,7 +366,7 @@ public class SSOBasicFlow4UI extends BaseTest {
         env = envConfig.getEnv();
     }
 
-    @Test(enabled = true, testName = "Developer Self SignUp Test", description = "Developer Self SignUp Test", groups = {"SSOBasicFlow"})
+    @Test(enabled = false, testName = "Developer Self SignUp Test", description = "Developer Self SignUp Test", groups = {"SSOBasicFlow"})
 //    @Test(groups = {"CP-portal"})
     public void DeveloperSetupPasswordSSOUI() throws Exception {
 

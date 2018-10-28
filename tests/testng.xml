@@ -25,8 +25,14 @@
 
         <classes>
             <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>-->
-            <class name="com.verifone.tests.cpTests.DevSupportRejectCompanyTest"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.MerchantSetupPasswordUI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>-->
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>-->
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
         </classes>
 
     </test>

@@ -8,6 +8,10 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="env" value="Prod" />
+    <!--<parameter name="mail" value="vfitestdev11_30@getnada.com" />-->
+    <!--<parameter name="pwd" value="Veri1234" />-->
+    <!--<parameter name="name" value="" />-->
+    <!--<parameter name="answer" value="" />-->
     <parameter name="mail" value="vfitestdev11_30@getnada.com" />
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />

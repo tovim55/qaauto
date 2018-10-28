@@ -8,8 +8,10 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="env" value="Prod" />
-    <parameter name="mail" value="MerchantMng.RFourteen@getnada.com" />
-    <parameter name="pwd" value="Veri1234" />
+    <!--<parameter name="mail" value="MerchantMng.RFourteen@getnada.com" />-->
+    <parameter name="mail" value="EOMM_18_rel@getnada.com" />
+    <!--<parameter name="mail" value="MerchantRelease17_1@getnada.com" />-->
+    <parameter name="pwd" value="Veri4321" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />
 

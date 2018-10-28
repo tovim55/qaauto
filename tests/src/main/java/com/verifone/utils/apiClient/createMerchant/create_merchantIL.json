@@ -1,0 +1,40 @@
+{
+  "data": {
+    "logoUrl": "",
+    "name": "Automation",
+    "orgType": "MERCHANT",
+    "parentOrgID": "160c3cb3-6278-4179-8ec2-a9a10e718283",
+    "rootOrgID": "160c3cb3-6278-4179-8ec2-a9a10e718283",
+    "category": "55",
+    "mID": "12345307",
+    "sendEmail": "false",
+    "addresses": [{
+      "countryCode": "IL",
+      "addressLineOne": "Main",
+      "addressLineTwo": "",
+      "city": "Anytown",
+      "state": "CA",
+      "zipCode": "97765",
+      "primary": true
+    }],
+    "emails": [{
+      "email": "AutomationTest7@cmail.club",
+      "primary": true
+    }],
+    "phones": [{
+      "countryCode": "1",
+      "phoneNumber": "6504057865",
+      "primary": true,
+      "phoneType": "SUPPORT"
+    }],
+    "websites": [],
+    "merchantAdmin": {
+      "firstName": "Automation",
+      "lastName": "Test",
+      "emails": [{
+        "email": "AutomationTest7@cmail.club",
+        "primary": true
+      }]
+    }
+  }
+}

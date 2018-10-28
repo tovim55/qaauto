@@ -21,8 +21,16 @@ public class Credentials {
         return new User(prop.getProperty(env + "EOAdmin"), prop.getProperty(env + "EOAdminPass"));
     }
 
-    public User getEOMerchantMeneger() {
+    public User getEOMerchantManager() {
         return new User(prop.getProperty(env + "EOMerchantManager"), prop.getProperty(env + "EOMerchantManagerPass"));
+    }
+
+    public User getEOMerchantForgotPassword() {
+        return new User(prop.getProperty(env + "EOMerchantForgotPassword"), "");
+    }
+
+    public User getEODevAppManager() {
+        return new User(prop.getProperty(env + "EODevAppManager"), prop.getProperty(env + "EODevAppManagerPass"));
     }
 
     public User getEOMerchant() {

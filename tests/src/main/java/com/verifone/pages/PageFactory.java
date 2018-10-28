@@ -70,6 +70,12 @@ public class PageFactory {
                 return new UsersPage();
             case "AddUserPage":
                 return new AddUserPage();
+            case "EditUserPage":
+                return new EditUserPage();
+            case "EditRolePage":
+                return new EditRolePage();
+            case "EditBusinessPage":
+                return new EditBusinessPage();
             case "UserDetailsPage":
                 return new UserDetailsPage();
             case "MerchantsPage":

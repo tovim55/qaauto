@@ -25,61 +25,20 @@ public class MerchantsPage extends BasePage {
         super(url, title);
     }
 
-//    public int dataRow(String searchData) throws InterruptedException {
-//        int row = 1000;
-//        int i;
-//        for (i = 1; i<11; i++) {
-//            By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-//            if (getText(rowLoc).contains(searchData)) {
-//                row = i;
-//                break;
-//            }
-//        }
-//
-//        return row;
-//    }
-//
-//    public int pendingEOAdminRow() throws InterruptedException {
-//        int row = 1000;
-//        int i;
-//        for (i = 1; i<11; i++) {
-//            By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-//            if (getText(rowLoc).contains("EO_ADMIN") & getText(rowLoc).contains("Pending")) {
-//                row = i;
-//                break;
-//            }
-//        }
-//
-//        return row;
-//    }
 
-//    public int pendingMerchantManRow() throws InterruptedException {
-//        int row = 1000;
-//        int i;
-//        for (i = 1; i<11; i++) {
-//            By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-//            if (getText(rowLoc).contains("EO_MERCHANT_MANAGER") & getText(rowLoc).contains("Pending")) {
-//                row = i;
-//                break;
-//            }
-//        }
-//
-//        return row;
-//    }
-//
-//    public int pendingDevAppManRow() throws InterruptedException {
-//        int row = 1000;
-//        int i;
-//        for (i = 1; i<11; i++) {
-//            By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
-//            if (getText(rowLoc).contains("EO_DEVICE_AND_APP_MANAGER") & getText(rowLoc).contains("Pending")) {
-//                row = i;
-//                break;
-//            }
-//        }
-//
-//        return row;
-//    }
+    public int pendingMerchantRow() throws InterruptedException {
+        int row = 1000;
+        int i;
+        for (i = 1; i<11; i++) {
+            By rowLoc = By.xpath("(//*[@class='vui-datagrid-body-row '])[" + i + "]");
+            if (getText(rowLoc).contains("Pending")) {
+                row = i;
+                break;
+            }
+        }
+
+        return row;
+    }
 
 
     public int activeMerchantRow() throws InterruptedException {
