@@ -277,7 +277,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 		BasePage.driver.switchTo().window(availableWindows.get(0));
 		Assert.assertTrue(TestPassFlag);
 	}
-
+//
 	@Test(enabled = true, priority=18, testName = "EOAdmin Update enabled EO Merchant Manager - Role", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUpdateEOMerchantMan_RoleUI() throws Exception {
