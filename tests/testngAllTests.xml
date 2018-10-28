@@ -35,12 +35,15 @@
             <class name="com.verifone.tests.cpTests.LoginTest"/>
             <class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>
 
-            <class name="com.verifone.tests.cpTests.SSOBasicFlowUI"/>
-            <class name="com.verifone.tests.cpTests.SSOBasicFlow2UI"/>
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>-->
-            <class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>
-            <!--<class name="com.verifone.tests.cpTests.MerchantSetupPasswordUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.EOPortalSanityUI"/>-->
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalSanityUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>
+            <class name="com.verifone.tests.cpTests.Locale_MerchantSetupPasswordUI"/>
 
 
 

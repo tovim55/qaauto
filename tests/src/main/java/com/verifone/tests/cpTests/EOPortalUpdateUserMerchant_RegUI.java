@@ -31,7 +31,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 	private static String EOAdminPwd = "Veri1234";
 	private static Integer TimeOut = 2000;
 
-	@Test(enabled = false, priority=17, testName = "EOAdmin Update enabled EO Merchant Manager - User Info", groups = { "Sanity" }, alwaysRun = true)
+	@Test(enabled = true, priority=17, testName = "EOAdmin Update enabled EO Merchant Manager - User Info", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUpdateEOMerchantMan_UserInfoUI() throws Exception {
 
@@ -278,7 +278,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 		Assert.assertTrue(TestPassFlag);
 	}
 
-	@Test(enabled = false, priority=18, testName = "EOAdmin Update enabled EO Merchant Manager - Role", groups = { "Sanity" }, alwaysRun = true)
+	@Test(enabled = true, priority=18, testName = "EOAdmin Update enabled EO Merchant Manager - Role", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUpdateEOMerchantMan_RoleUI() throws Exception {
 
