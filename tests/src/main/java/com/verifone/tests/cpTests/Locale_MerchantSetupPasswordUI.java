@@ -38,7 +38,7 @@ import com.verifone.utils.DataDrivenUtils;
 
 import static com.verifone.pages.BasePage.testLog;
 
-public class MerchantSetupPasswordUI extends BaseTest {
+class MerchantSetupPasswordUI extends BaseTest {
     private static String ulMail = "";
     private static String ulPassword = "";
     private static String mailActivateButton = "/html/body/table/tbody/tr/td/table/tbody/tr[2]/td/p[5]/a";
