@@ -2,16 +2,13 @@ package com.verifone.pages.eoPages;
 
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 //--------------------------------------------------------------------------
 /**
- * This class described all elements and actions can be executed on Edit User page.
+ * This class described all elements and actions can be executed on Edit Profile page.
  * @authors Yana Fridman
  */
 //--------------------------------------------------------------------------
-public class EditUserPage extends BasePage {
+public class EditProfilePage extends BasePage {
 
     private final static String url = "";
     private final static String title = "";
@@ -22,12 +19,11 @@ public class EditUserPage extends BasePage {
     private By emailLoc = By.xpath("//*[@class='control-value']");
     private By errorFirstNameLoc = By.xpath("//*[@class='help-block']");
     private By errorLastNameLoc = By.xpath("(//*[@class='help-block'])[2]");
-
     private By btnCancelLoc = By.id("cancelBtn");
-    private By btnSaveLoc = By.id("createBtn");
+    private By btnSaveLoc = By.id("saveBtn");
 
 
-    public EditUserPage() {
+    public EditProfilePage() {
         super(url, title);
     }
 //--------------------------------------------------------------------------
@@ -52,21 +48,20 @@ public class EditUserPage extends BasePage {
     }
 //--------------------------------------------------------------------------
     /**
-     * Method: Get First Name value.
+     * Method: Wait for 5 sec till First Name display value and get this value.
      * Return First Name value as String
      * @authors Yana Fridman
      */
 //--------------------------------------------------------------------------
     public String getfirstName() throws InterruptedException {
+        int t = 0;
+        while (BasePage.driver.findElement(firstNameLoc).getAttribute("value").length()<1 & t < 5000){
+            Thread.sleep(500);
+            t = t + 500;
+        }
         return BasePage.driver.findElement(firstNameLoc).getAttribute("value");
     }
-//--------------------------------------------------------------------------
-    /**
-     * Method: Get Last Name value.
-     * Return Last Name value as String
-     * @authors Yana Fridman
-     */
-//--------------------------------------------------------------------------
+
     public String getlastName() throws InterruptedException {
         return BasePage.driver.findElement(lastNameLoc).getAttribute("value");
     }

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Merchants page. 
+* This class described all elements and actions can be executed on Reset Password page.
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------
@@ -46,8 +46,8 @@ public class ResetPasswordPage extends BasePage {
     //--------------------------------------------------------------------------
     public String pageTitle() {
         
-    	String a = getText(titleLoc);
-    	System.out.println(a);
+//    	String a = getText(titleLoc);
+//    	System.out.println(a);
     	return getText(titleLoc);
     }
     //--------------------------------------------------------------------------
@@ -58,8 +58,8 @@ public class ResetPasswordPage extends BasePage {
     */
     //--------------------------------------------------------------------------  
         public String btnProceedText() {
-    	String a = getText(btnProceedLoc);
-    	System.out.println(a);
+//    	String a = getText(btnProceedLoc);
+//    	System.out.println(a);
     	return getText(btnProceedLoc);
     }
      //--------------------------------------------------------------------------
@@ -70,8 +70,8 @@ public class ResetPasswordPage extends BasePage {
      */
      //-------------------------------------------------------------------------- 
     public String passwordLabelText() {
-    	String a = getText(mailLabelLoc);
-    	System.out.println(a);
+//    	String a = getText(mailLabelLoc);
+//    	System.out.println(a);
     	return getText(mailLabelLoc);
     }
     //--------------------------------------------------------------------------
@@ -82,8 +82,8 @@ public class ResetPasswordPage extends BasePage {
     */
     //-------------------------------------------------------------------------- 
     public String confirmPasswordLabelText() {
-    	String a = getText(confirmMailLabelLoc);
-    	System.out.println(a);
+//    	String a = getText(confirmMailLabelLoc);
+//    	System.out.println(a);
     	return getText(confirmMailLabelLoc);
     }
     //--------------------------------------------------------------------------
@@ -94,8 +94,8 @@ public class ResetPasswordPage extends BasePage {
     */
     //--------------------------------------------------------------------------
     public String errorEmptyText() {
-    	String a = getText(errorEmptyLoc);
-    	System.out.println(a);
+//    	String a = getText(errorEmptyLoc);
+//    	System.out.println(a);
     	return getText(errorEmptyLoc);
     }
     //--------------------------------------------------------------------------
@@ -106,8 +106,8 @@ public class ResetPasswordPage extends BasePage {
     */
     //--------------------------------------------------------------------------
     public String errorConfirmEmptyText() {
-    	String a = getText(errorConfirmEmptyLoc);
-    	System.out.println(a);
+//    	String a = getText(errorConfirmEmptyLoc);
+//    	System.out.println(a);
     	return getText(errorConfirmEmptyLoc);
     }
     //--------------------------------------------------------------------------
@@ -139,7 +139,6 @@ public class ResetPasswordPage extends BasePage {
     public void InputConfirmPassword(String urPassword)  throws Exception {
         sendKeys(confirmPasswordInput, urPassword);
     }
-
 }
 
 

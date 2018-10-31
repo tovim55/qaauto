@@ -37,7 +37,14 @@ import com.verifone.pages.BasePage;
 import com.verifone.utils.DataDrivenUtils;
 
 import static com.verifone.pages.BasePage.testLog;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: EstateManager
+ * This test verify Merchant related to NON English country get Invitation email on his language,
+ * Pass Setup Password process on his language.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class Locale_MerchantSetupPasswordUI extends BaseTest {
     private static String ulMail = "";
     private static String ulPassword = "";

@@ -18,11 +18,24 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static com.verifone.pages.BasePage.testLog;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: EstateManager
+ * This test set verify EO Admin can update Active EO Admin - User Info and Role.
+ * EO Admin can update Active Merchant Manager - User Info and Role.
+ * EO Admin can update Device and Application Manager - User Info and Role.
+ * EO Admin and Merchant Manager can update Merchant in all statuses - User Info and Business Info.
+ * Edit User page GUI validation.
+ * Edit Role page GUI validation.
+ * Edit Merchant - User info page GUI validation.
+ * Edit Merchant - Business info page GUI validation.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
-	private static String UserDevAppEmail = "User20181010T190208.543DevAppMan@getnada.com";
-	private static String UserMerchManEmail = "User20181010T190123.176MerchMan@getnada.com";
+	private static String UserDevAppEmail = ""; //"User20181010T190208.543DevAppMan@getnada.com";
+	private static String UserMerchManEmail = ""; //"User20181010T190123.176MerchMan@getnada.com";
 	private static String UserDevAppPwd = "Veri1234";
 	private static String UserMerchManPwd = "Veri1234";
 	private static String EnvPort = ".estatemanager.verifonecp.com";

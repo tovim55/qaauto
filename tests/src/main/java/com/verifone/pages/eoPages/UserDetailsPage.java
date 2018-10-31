@@ -5,7 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+//--------------------------------------------------------------------------
+/**
+ * This class described all elements and actions can be executed on User Details page.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class UserDetailsPage extends BasePage {
 
     private final static String url = "";
@@ -48,7 +53,13 @@ public class UserDetailsPage extends BasePage {
     public UserDetailsPage() {
         super(url, title);
     }
-
+//--------------------------------------------------------------------------
+    /**
+     * Method: Wait 5 sec for Email value displayed and Get Email value.
+     * Return Email value as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getUserEmail() throws InterruptedException {
         int t = 0;
         while (getText(userEmaulLoc).length()<=3 & t < 5000){
@@ -57,15 +68,33 @@ public class UserDetailsPage extends BasePage {
         }
         return getText(userEmaulLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Name value.
+     * Return Name value as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getUserName() throws InterruptedException {
         return getText(userNameLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get page Title.
+     * Return page Title as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getTitle() throws InterruptedException {
         return getText(titleLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Status value.
+     * Return Status value as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getStatus() throws Exception {
     	if (isExists(userStatusLoc, 3)) {
     		return getText(userStatusLoc);
@@ -78,27 +107,63 @@ public class UserDetailsPage extends BasePage {
     	}
     	return "";
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Action value.
+     * Return Action value as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getAction() throws InterruptedException {
         return getText(userActionLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Role value.
+     * Return Role value as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getRole() throws InterruptedException {
         return getText(roleLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Resend Invitation dialog text.
+     * Return Resend Invitation dialog text as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getDialogResend() throws InterruptedException {
         return getText(dialogResendTextLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Disable dialog text.
+     * Return Disable dialog text as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getDialogDisable() throws InterruptedException {
         return getText(dialogDisableTextLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Enable dialog text.
+     * Return Enable dialog text as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getDialogEnable() throws InterruptedException {
         return getText(dialogEnableTextLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if Email field enabled.
+     * Return True if enabled.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean elementEmailClickable() throws InterruptedException {
     	WebElement elem = driver.findElement(userEmaulLoc);
 //    	return elem.isEnabled();	
@@ -111,10 +176,15 @@ public class UserDetailsPage extends BasePage {
             return false;
         }
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if Role field enabled.
+     * Return True if enabled.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean elementRoleClickable() throws InterruptedException {
     	WebElement elem = driver.findElement(roleLoc);
-//    	return elem.isEnabled();	
     	try{
             WebDriverWait wait = new WebDriverWait(driver, 6);
             wait.until(ExpectedConditions.attributeContains(elem, "localName", "input"));
@@ -124,7 +194,13 @@ public class UserDetailsPage extends BasePage {
             return false;
         }
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if Edit User link enabled.
+     * Return True if enabled.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean elementUserEditClickable() throws Exception {
     	
     	if (isExists(userEditLoc, 3)) {
@@ -134,18 +210,14 @@ public class UserDetailsPage extends BasePage {
     		return true;
     	}
     	return false;
-//    	WebElement elem = driver.findElement(userEditLoc);
-////    	return elem.isEnabled();	
-//    	try{
-//            WebDriverWait wait = new WebDriverWait(driver, 3);
-//            wait.until(ExpectedConditions.attributeContains(elem, "isContentEditable", "true"));
-//            return true;
-//        }
-//        catch (Exception e){
-//        	return false;
-//        }
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if Edit Role link enabled.
+     * Return True if enabled.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean elementRoleEditClickable() throws Exception {
     	if (isExists(roleEditLoc, 3)) {
     		return true;
@@ -155,59 +227,152 @@ public class UserDetailsPage extends BasePage {
     	}
     	return false;
     }
-
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Edit User Information link .
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickLnkEditUserInf() throws InterruptedException {
         click(userEditLoc);
     }
-
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Edit Role link .
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickLnkEditRole() throws InterruptedException {
         click(roleEditLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Resend Invitation link .
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickLnkResend() throws InterruptedException {
     	click(lnkResendLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Disable User link .
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickLnkDisable() throws InterruptedException {
     	click(lnkDisableLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Enable User link .
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickLnkEnable() throws InterruptedException {
     	click(lnkEnableLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if Resend Invitation dialog displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean dialogResendExists() throws Exception {
     	return isExists(dialogResendLoc, 3);  	
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click Cancel on Resend Invitation dialog.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickCancelResend() throws InterruptedException {
     	click(dialogCancelBtnLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click Resend on Resend Invitation dialog.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickDoResend() throws InterruptedException {
     	click(dialogResendBtnLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if User Disable dialog displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean dialogDisableExists() throws Exception {
     	return isExists(dialogDisableLoc, 3);  	
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click Cancel on User Disable dialog.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickCancelDisable() throws InterruptedException {
     	click(dialogDisableCancelBtnLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click Disable on User Disable dialog.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickDoDisable() throws InterruptedException {
     	click(dialogDisableBtnLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if User Enable dialog displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean dialogEnableExists() throws Exception {
     	return isExists(dialogEnableLoc, 3);  	
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click Cancel on User Enable dialog.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickCancelEnable() throws InterruptedException {
     	click(dialogEnableCancelBtnLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click Enable on User Enable dialog.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickDoEnable() throws InterruptedException {
     	click(dialogEnableBtnLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Check if Message displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public boolean messageExists() throws Exception {
     	return isExists(messageLoc, 30);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Message text.
+     * Return Message text as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String getMessage() throws InterruptedException {
         return getText(messageLoc);
     }

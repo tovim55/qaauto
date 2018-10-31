@@ -72,6 +72,8 @@ public class PageFactory {
                 return new AddUserPage();
             case "EditUserPage":
                 return new EditUserPage();
+            case "EditProfilePage":
+                return new EditProfilePage();
             case "EditRolePage":
                 return new EditRolePage();
             case "EditBusinessPage":
@@ -84,7 +86,8 @@ public class PageFactory {
                 return new MerchantDetailsPage();
             case "MerchantThankYouPage":
                 return new MerchantThankYouPage();
-
+            case "MyProfilePage":
+                return new MyProfilePage();
             case "NoAccessPage":
                 return new NoAccessPage();
 //            case "VerifoneAccountLoginPage":

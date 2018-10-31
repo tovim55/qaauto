@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Thank You page displayed after Reset Password. 
+* This class described all elements and actions can be executed on Welcome page.
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------
@@ -39,9 +39,8 @@ public class WelcomePage extends BasePage {
     */
     //--------------------------------------------------------------------------
     public String pageTitle() {
-        
-    	String a = getText(titleLoc);
-    	System.out.println(a);
+//    	String a = getText(titleLoc);
+//    	System.out.println(a);
     	return getText(titleLoc);
     }
     //--------------------------------------------------------------------------
@@ -52,9 +51,8 @@ public class WelcomePage extends BasePage {
     */
     //-------------------------------------------------------------------------- 
     public String pageText1() {
-        
-    	String a = getText(textLoc1);
-    	System.out.println(a);
+//    	String a = getText(textLoc1);
+//    	System.out.println(a);
     	return getText(textLoc1);
     }
     //--------------------------------------------------------------------------
@@ -65,9 +63,8 @@ public class WelcomePage extends BasePage {
     */
     //-------------------------------------------------------------------------- 
     public String pageText2() {
-        
-    	String a = getText(textLoc2);
-    	System.out.println(a);
+//    	String a = getText(textLoc2);
+//    	System.out.println(a);
     	return getText(textLoc2);
     }
   //--------------------------------------------------------------------------
@@ -78,9 +75,8 @@ public class WelcomePage extends BasePage {
     */
     //-------------------------------------------------------------------------- 
     public String loginBtnLabel() {
-        
-    	String a = getText(loginBtnLoc);
-    	System.out.println(a);
+//    	String a = getText(loginBtnLoc);
+//    	System.out.println(a);
     	return getText(loginBtnLoc);
     }
     //--------------------------------------------------------------------------
@@ -92,7 +88,6 @@ public class WelcomePage extends BasePage {
     public void clickLoginBtn()  throws Exception {
         click(loginBtnLoc);
     }
-
 }
 
 

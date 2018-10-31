@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Confirmation page. 
+* This class described all elements and actions can be executed on Forgot Password page.
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------

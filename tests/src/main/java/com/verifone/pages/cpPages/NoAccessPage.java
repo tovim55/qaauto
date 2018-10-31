@@ -40,7 +40,7 @@ public class NoAccessPage extends BasePage {
     public String pageText() {
 
         String a = getText(textLoc);
-        System.out.println(a);
+//        System.out.println(a);
         return getText(textLoc);
     }
 
