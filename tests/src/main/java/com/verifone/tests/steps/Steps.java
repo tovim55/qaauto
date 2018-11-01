@@ -12,7 +12,7 @@ import com.verifone.utils.appUtils.ApplicationUtils;
 import java.awt.*;
 import java.io.IOException;
 
-import static com.verifone.pages.cpPages.LoginPage.restartDriver;
+//import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 import static com.verifone.utils.Assertions.assertTextContains;
 
 //import static com.verifone.infra.SeleniumUtils.restartDriver;
@@ -75,7 +75,7 @@ public class Steps {
 
     public static void restartSession() {
         // Not recommended to use this method
-        restartDriver();
+//        restartDriver();
     }
 
     public static void checkAcceptCompany(Company dev) throws Exception {//Company dev
