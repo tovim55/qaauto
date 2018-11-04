@@ -64,6 +64,8 @@ public class PageFactory {
                 return new WelcomePage();
             case "PasswordSetupPage":
                 return new PasswordSetupPage();
+            case "ChangePasswordPage":
+                return new ChangePasswordPage();
             case "HomePage":
                 return new HomePage();
             case "UsersPage":
@@ -80,6 +82,8 @@ public class PageFactory {
                 return new EditBusinessPage();
             case "UserDetailsPage":
                 return new UserDetailsPage();
+            case "EmailTemplatePage":
+                return new EmailTemplatePage();
             case "MerchantsPage":
                 return new MerchantsPage();
             case "MerchantDetailsPage":

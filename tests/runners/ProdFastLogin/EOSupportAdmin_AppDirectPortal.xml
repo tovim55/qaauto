@@ -7,7 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
-    <parameter name="env" value="Dev" />
+    <parameter name="env" value="Prod" />
     <parameter name="mail" value="QA.Test@verifone.com" />
     <parameter name="pwd" value='Y6"bB6ca' />
     <parameter name="name" value="QA.Test" />
@@ -17,7 +17,7 @@
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="EOSupportPortal"/>
+    <parameter name="portal" value="AppDirectPortal"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->

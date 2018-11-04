@@ -1,40 +1,38 @@
 package com.verifone.pages.cpPages;
-import com.relevantcodes.extentreports.LogStatus;
-import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 //--------------------------------------------------------------------------
+
 /**
-* This class described all elements and actions can be executed on Reset Password page.
+* This class described all elements and actions can be executed on Change Password page.
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------
 
-public class ResetPasswordPage extends BasePage {
+public class ChangePasswordPage extends BasePage {
 
     private final static String url = "";
-    private final static String title = "Forgot your password?";
-    
-    private By titleLoc = By.xpath("//*[@class='reset text-center sso-form-title']");  
-    private By mailLabelLoc = By.xpath("//*[@class='control-label' and @for='password']");   
-    private By confirmMailLabelLoc = By.xpath("//*[@class='control-label' and @for='confirmPassword']");
-    
-    private By passwordInput = By.id("password");
-    private By confirmPasswordInput = By.id("confirmPassword");
-    private By btnProceedLoc = By.id("btnSubmit");
-    
+    private final static String title = "Change Password?";
+
+    private By titleLoc = By.xpath("//*[@class='text-center sso-form-title']");
+    private By currentPasswordLabelLoc = By.xpath("//*[@class='control-label' and @for='current_password']");
+    private By newPasswordLabelLoc = By.xpath("//*[@class='control-label' and @for='new_password']");
+
+    private By currentPasswordInput = By.id("current_password");
+    private By newPasswordInput = By.id("new_password");
+    private By btnSubmitLoc = By.id("btnSubmit");
+    private By btnCancelLoc = By.id("linkCancel");
+
 //    private By errorEmptyLoc = By.xpath("//*[@class='help-block']");
-    private By errorEmptyLoc = By.xpath("//*[@id='resetPasswordForm']/div[1]/div[2]");
-    private By errorConfirmEmptyLoc = By.xpath("//*[@id='resetPasswordForm']/div[2]/div[2]");
-    
-    
-    public ResetPasswordPage() {
+    private By errorEmptyPasswordLoc = By.xpath("//*[@id='resetPasswordForm']/div[1]/div[2]");
+    private By errorEmptyNewPasswordLoc = By.xpath("//*[@id='resetPasswordForm']/div[2]/div[2]");
+    private By errorMatchLoc = By.xpath("//*[@class='text-center text-danger global-error']");
+
+    private By notifyTextLoc = By.xpath("//*[@class='notification-container success']");
+    private By btnOkLoc = By.xpath("//*[@class='btn btn-primary btn-raised btn-accept']");
+
+
+    public ChangePasswordPage() {
         super(url, title);
     }
     //--------------------------------------------------------------------------
@@ -44,10 +42,7 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //--------------------------------------------------------------------------
-    public String pageTitle() {
-        
-//    	String a = getText(titleLoc);
-//    	System.out.println(a);
+    public String getTitle() {
     	return getText(titleLoc);
     }
     //--------------------------------------------------------------------------
@@ -57,10 +52,8 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //--------------------------------------------------------------------------  
-        public String btnProceedText() {
-//    	String a = getText(btnProceedLoc);
-//    	System.out.println(a);
-    	return getText(btnProceedLoc);
+        public String btnSubmitText() {
+    	return getText(btnSubmitLoc);
     }
      //--------------------------------------------------------------------------
      /**
@@ -69,10 +62,8 @@ public class ResetPasswordPage extends BasePage {
      * @authors Yana Fridman
      */
      //-------------------------------------------------------------------------- 
-    public String passwordLabelText() {
-//    	String a = getText(mailLabelLoc);
-//    	System.out.println(a);
-    	return getText(mailLabelLoc);
+    public String currentPasswordLabel() {
+    	return getText(currentPasswordLabelLoc);
     }
     //--------------------------------------------------------------------------
     /**
@@ -81,10 +72,8 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
-    public String confirmPasswordLabelText() {
-//    	String a = getText(confirmMailLabelLoc);
-//    	System.out.println(a);
-    	return getText(confirmMailLabelLoc);
+    public String newPasswordLabel() {
+    	return getText(newPasswordLabelLoc);
     }
     //--------------------------------------------------------------------------
     /**
@@ -93,10 +82,8 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //--------------------------------------------------------------------------
-    public String errorEmptyText() {
-//    	String a = getText(errorEmptyLoc);
-//    	System.out.println(a);
-    	return getText(errorEmptyLoc);
+    public String errorEmptyPassword() {
+    	return getText(errorEmptyPasswordLoc);
     }
     //--------------------------------------------------------------------------
     /**
@@ -105,10 +92,25 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //--------------------------------------------------------------------------
-    public String errorConfirmEmptyText() {
-//    	String a = getText(errorConfirmEmptyLoc);
-//    	System.out.println(a);
-    	return getText(errorConfirmEmptyLoc);
+    public String errorEmptyNewPassword() {
+    	return getText(errorEmptyNewPasswordLoc);
+    }
+    public String errorMatch() {
+        return getText(errorMatchLoc);
+    }
+    public boolean errorCurrentPasswordExists() throws Exception {
+
+        if (isExists(errorEmptyPasswordLoc, 6)) {
+            return true;
+        }
+        return false;
+    }
+    public boolean errorNewPasswordExists() throws Exception {
+
+        if (isExists(errorEmptyNewPasswordLoc, 6)) {
+            return true;
+        }
+        return false;
     }
     //--------------------------------------------------------------------------
     /**
@@ -116,8 +118,17 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
-    public void clickBtnProceed()  throws Exception {
-        click(btnProceedLoc);
+    public void clickBtnSubmit()  throws Exception {
+        click(btnSubmitLoc);
+    }
+    public void clickBtnCancel()  throws Exception {
+        click(btnCancelLoc);
+    }
+    public void clickNewPasswordFld()  throws Exception {
+        click(newPasswordInput);
+    }
+    public void clickCurrentPasswordFld()  throws Exception {
+        click(currentPasswordInput);
     }
     //--------------------------------------------------------------------------
     /**
@@ -126,8 +137,8 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
-    public void InputPassword(String urPassword)  throws Exception {
-        sendKeys(passwordInput, urPassword);
+    public void InputCurrentPassword(String urPassword)  throws Exception {
+        sendKeys(currentPasswordInput, urPassword);
     }
     //--------------------------------------------------------------------------
     /**
@@ -136,8 +147,21 @@ public class ResetPasswordPage extends BasePage {
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
-    public void InputConfirmPassword(String urPassword)  throws Exception {
-        sendKeys(confirmPasswordInput, urPassword);
+    public void InputNewPassword(String urPassword)  throws Exception {
+        sendKeys(newPasswordInput, urPassword);
+    }
+
+    public String notifyText() throws Exception {
+        int t = 0;
+        while (getText(notifyTextLoc).length()< 1 & t < 10000){
+            Thread.sleep(500);
+            t = t + 500;
+        };
+        return getText(notifyTextLoc);
+    }
+
+    public void clickOkBtn()  throws Exception {
+        click(btnOkLoc);
     }
 }
 

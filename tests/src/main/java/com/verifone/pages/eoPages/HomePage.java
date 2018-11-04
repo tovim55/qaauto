@@ -117,6 +117,9 @@ public class HomePage extends BasePage {
     public void clickUserMenu () throws InterruptedException {
         click(userMenuLoc);
     }
+    public void clickCustomizeMenu () throws InterruptedException {
+        click(mailerMenuLoc);
+    }
 //--------------------------------------------------------------------------
     /**
      * Method: Click on LogOut submenu.

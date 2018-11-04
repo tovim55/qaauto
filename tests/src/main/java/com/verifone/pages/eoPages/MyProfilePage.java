@@ -240,7 +240,11 @@ public class MyProfilePage extends BasePage {
      * @authors Yana Fridman
      */
 //--------------------------------------------------------------------------
-    public void clickLnkEnable() throws InterruptedException {
+    public void clickLnkChangePassword() throws Exception {
+        while (!isExists(lnkChangePasswordLoc, 5)){
+            Thread.sleep(500);
+        }
+        Thread.sleep(500);
     	click(lnkChangePasswordLoc);
     }
 }
