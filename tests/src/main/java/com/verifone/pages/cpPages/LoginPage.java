@@ -27,7 +27,9 @@ public class LoginPage extends BasePage {
     private By supportUsername = By.id("Username");
     private By SupportPassword = By.id("Passwd");
     //    private By firstPass= By.id("password");
-    private By toLoginPageBtn = By.partialLinkText("Log");
+    private By toLoginPageBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\"])[5]");
+    private By continueToLoginBtn = By.xpath("//a[text()='Continue to Login']");
+
     private By loginBtn = By.id("btnPrimaryLogin");
     private By supportLoginBtn = By.id("signIn");
     private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\" and @id=\"companies\"])");
@@ -56,11 +58,12 @@ public class LoginPage extends BasePage {
     }
 
     public void clickOmLoginBtn() {
-        click(toLoginPageBtn);
+        hoverAndClickOnElement(toLoginPageBtn);
+        click(continueToLoginBtn);
     }
 
     public void supportLogin(User user) throws Exception {
-        click(toLoginPageBtn);
+        clickOmLoginBtn();
         sendKeys(firstUsername, user.getUserName());
         switchToIframe(iframe);
         click(password);
@@ -77,16 +80,16 @@ public class LoginPage extends BasePage {
     }
 
     private void oktaHandle(User user) throws Exception {
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
 
         OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
         OktaLogin.loginInputName(String.valueOf(user.getName()));
         OktaLogin.loginInputPassword(String.valueOf(user.getPassword()));
         OktaLogin.clickSignInBtn();
         waitSimple(1000);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
         OktaLogin.loginInputAnswer(String.valueOf(user.getSecurityAnswer()));
         testLog.info("Security answer: " + "");
@@ -115,13 +118,6 @@ public class LoginPage extends BasePage {
         }
     }
 
-    public static void restartDriver() {
-        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
-        driver.quit();
-        driver = null;
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
     public void acceptCompany(Company user) {
         clickNewCompany();
