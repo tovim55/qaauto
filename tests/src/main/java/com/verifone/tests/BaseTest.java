@@ -36,12 +36,19 @@ public abstract class BaseTest {
 
     @Parameters({"env", "portal"})
     @BeforeSuite
-    public void beforeSuite(String env, String portal) throws IOException {
+    public void beforeSuite(String env, String portal) throws Exception {
         new File(reportDirectory).mkdir();
         extent = ExtentManager.createInstance(reportLocation);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
         setEnv(env, portal);
+        ExtentTest parent = extent.createTest("Get Versions");
+        parentTest.set(parent);
+        starTestLog("Get Versions", "");
+        SeleniumUtils.reportDirectory = reportDirectory;
+        BasePage.driver = SeleniumUtils.getDriver("CHROME");
+        parent.info("Versions: " + getVersions());
+        SeleniumUtils.closeRuntimeBrowserInstance();
 
     }
 
@@ -57,11 +64,11 @@ public abstract class BaseTest {
         ExtentTest parent = extent.createTest(getClass().getName());
         parentTest.set(parent);
         parent.info("The Automation tests runs on : " + envConfig.getWebUrl() + " " + envConfig.getEnv() + " environment");
-        starTestLog("Get Versions", "");
-        SeleniumUtils.reportDirectory = reportDirectory;
-        BasePage.driver = SeleniumUtils.getDriver("CHROME");
-        parent.info("Versions: " + getVersions());
-        SeleniumUtils.closeRuntimeBrowserInstance();
+//        starTestLog("Get Versions", "");
+//        SeleniumUtils.reportDirectory = reportDirectory;
+//        BasePage.driver = SeleniumUtils.getDriver("CHROME");
+//        parent.info("Versions: " + getVersions());
+//        SeleniumUtils.closeRuntimeBrowserInstance();
 
     }
 
