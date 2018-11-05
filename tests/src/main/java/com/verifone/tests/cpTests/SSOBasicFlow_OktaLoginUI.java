@@ -18,7 +18,13 @@ import org.testng.annotations.Test;
 import static com.verifone.pages.BasePage.testLog;
 
 import java.util.ArrayList;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: EstateManager
+ * This test use in DataDriven data. Different roles Login to Different Portals via OKTA verification.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class SSOBasicFlow_OktaLoginUI extends BaseTest {
     private final static int timeOut = 2000;
     private static Boolean TestPassFlag = true;

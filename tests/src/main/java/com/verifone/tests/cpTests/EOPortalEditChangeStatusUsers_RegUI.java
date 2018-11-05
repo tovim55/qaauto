@@ -18,7 +18,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static com.verifone.pages.BasePage.testLog;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: EstateManager
+ * This test set verify EO Admin, Merchant Manager, Device and Application Manager can Edit User Information and Role sections.
+ * EO Admin, Merchant Manager can Edit Merchant User Information and Business sections.
+ * Resend Invitation, Enable, Disable users and Merchant
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 	private static String EnvPort = ".estatemanager.verifonecp.com";

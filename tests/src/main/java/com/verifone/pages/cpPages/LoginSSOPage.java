@@ -2,7 +2,12 @@ package com.verifone.pages.cpPages;
 
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
-
+//--------------------------------------------------------------------------
+/**
+ * This class described all elements and actions can be executed on OKTA login page.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class LoginSSOPage extends BasePage {
 
     private final static String url = "";
@@ -21,7 +26,7 @@ public class LoginSSOPage extends BasePage {
 
     //--------------------------------------------------------------------------
     /**
-     * Method: Check if sso form exists.
+     * Method: Check if OKTA form exists.
      * Return true / false
      * @authors Yana Fridman
      */

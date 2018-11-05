@@ -21,7 +21,17 @@ import org.testng.annotations.Test;
 import static com.verifone.pages.BasePage.testLog;
 
 import java.util.ArrayList;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: EstateManager
+ * This tests set verify user can Reset Password and LogIn with new Password.
+ * Disabled Merchant Manager not allowed to LogIn.
+ * Disabled Merchant not allowed to LogIn.
+ * Enabled Merchant Manager allowed to LogIn.
+ * Enabled Merchant allowed to LogIn.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
     private final static int timeOut = 2000;
     private static Boolean TestPassFlag = true;

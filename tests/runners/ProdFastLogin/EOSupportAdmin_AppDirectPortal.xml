@@ -6,14 +6,18 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <!--<parameter name="env" value="QA"/>-->
-    <parameter name="env" value="QA" />
+    <!--parameter name="env" value="QA"/-->
+    <parameter name="env" value="Prod" />
+    <parameter name="mail" value="QA.Test@verifone.com" />
+    <parameter name="pwd" value='Y6"bB6ca' />
+    <parameter name="name" value="QA.Test" />
+    <parameter name="answer" value="Elephant" />
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="CPPortal"/>
+    <parameter name="portal" value="AppDirectPortal"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->
@@ -24,11 +28,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
-            <class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow2UI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>-->
+            <class name="com.verifone.tests.fastLogin.Login_User_Portal"/>
         </classes>
 
     </test>

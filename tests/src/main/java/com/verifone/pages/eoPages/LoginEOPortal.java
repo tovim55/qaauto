@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
-* This class described all elements and actions can be executed on Thank You page displayed after Reset Password. 
+* This class described all elements and actions can be executed on LogIn page.
 * @authors Yana Fridman
 */
 //--------------------------------------------------------------------------
@@ -44,36 +44,10 @@ public class LoginEOPortal extends BasePage {
     public LoginEOPortal() {
         super(url, title);
     }
-//    //--------------------------------------------------------------------------
-//    /**
-//    * Method: Get Page title.
-//    * Return Page title as String
-//    * @authors Yana Fridman
-//    */
-//    //--------------------------------------------------------------------------
-//    public String pageTitle() {
-//        
-//    	String a = getText(titleLoc);
-//    	System.out.println(a);
-//    	return getText(titleLoc);
-//    }
-//    //--------------------------------------------------------------------------
-//    /**
-//    * Method: Get Page text.
-//    * Return Page text as String
-//    * @authors Yana Fridman
-//    */
-//    //-------------------------------------------------------------------------- 
-//    public String pageText() {
-//        
-//    	String a = getText(textLoc);
-//    	System.out.println(a);
-//    	return getText(textLoc);
-//    }
+
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Input Email data.
-     * Get Email data as String
+     * Method: Input Email value. Blur Email field.
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
@@ -83,8 +57,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Input Password data.
-     * Get Password data as String
+     * Method: Input Password value.
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
@@ -98,7 +71,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-    * Method: Click on Login link.
+    * Method: Click on Login button.
     * @authors Yana Fridman
     */
     //-------------------------------------------------------------------------- 
@@ -107,7 +80,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Get Page title.
+     * Method: Get Page title.
      * Return Page title as String
      * @authors Yana Fridman
      */
@@ -118,7 +91,7 @@ public class LoginEOPortal extends BasePage {
 
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Get Email field hint.
+     * Method: Get Email field hint.
      * Return Email field hint as String
      * @authors Yana Fridman
      */
@@ -128,7 +101,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Get Password field hint.
+     * Method: Get Password field hint.
      * Return Password field hint as String
      * @authors Yana Fridman
      */
@@ -156,7 +129,7 @@ public class LoginEOPortal extends BasePage {
 
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Get Login button label.
+     * Method: Get Login button label.
      * Return Login button label as String
      * @authors Yana Fridman
      */
@@ -166,7 +139,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Click on Forgot link.
+     * Method: Click on Forgot link.
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
@@ -175,7 +148,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Get Mandatory field error text.
+     * Method: Get Mandatory field error text.
      * Return Mandatory field error text as String
      * @authors Yana Fridman
      */
@@ -185,7 +158,7 @@ public class LoginEOPortal extends BasePage {
     }
     //--------------------------------------------------------------------------
     /**
-     * Method: Login: Get Match data error text.
+     * Method: Get Match data error text.
      * Return Match data error text as String
      * @authors Yana Fridman
      */

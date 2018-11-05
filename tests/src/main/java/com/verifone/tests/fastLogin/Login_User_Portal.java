@@ -1,5 +1,4 @@
 package com.verifone.tests.fastLogin;
-import com.verifone.pages.cpPages.NoAccessPage;
 import com.verifone.pages.cpPages.OktaLogin;
 import com.verifone.utils.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +7,6 @@ import org.testng.annotations.Test;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
 import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
@@ -58,6 +56,9 @@ import static com.verifone.pages.BasePage.testLog;
                         break;
                     case "DevPortal":
                         url = "https://developer.verifone.com/home";
+                        break;
+                    case "AppDirectPortal":
+                        url = "https://testverifone.appdirect.com/login";
                         break;
                 }
                 break;

@@ -22,7 +22,15 @@ import org.testng.annotations.Test;
 import static com.verifone.pages.BasePage.testLog;
 
 import java.util.ArrayList;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: all
+ * This tests use in DataDriven data.
+ * This tests set verify users with different roles can login to related portal.
+ * verify users with different roles not allowed to login other portals.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
     private final static int timeOut = 2000;

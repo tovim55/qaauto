@@ -37,7 +37,13 @@ import com.verifone.utils.DataDrivenUtils;
 import com.verifone.utils.General.LoginCGPortal;
 
 import static com.verifone.pages.BasePage.testLog;
-
+//--------------------------------------------------------------------------
+/**
+ * Portal: EstateManager
+ * This test verify Merchant Merchant setup Password. Merchant added by PabSub APIs.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 
     private static String ulMail = "";

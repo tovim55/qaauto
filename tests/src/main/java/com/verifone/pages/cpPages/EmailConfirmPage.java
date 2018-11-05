@@ -38,7 +38,7 @@ public class EmailConfirmPage extends BasePage {
     public String pageTitle() {
         
     	String a = getText(titleLoc);
-    	System.out.println(a);
+//    	System.out.println(a);
     	return getText(titleLoc);
     }
     //--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class EmailConfirmPage extends BasePage {
     public String pageText() {
         
     	String a = getText(textLoc);
-    	System.out.println(a);
+//    	System.out.println(a);
     	return getText(textLoc);
     }
     //--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ public class EmailConfirmPage extends BasePage {
     public String pageTextMuted() {
         
     	String a = getText(textMutedLoc);
-    	System.out.println(a);
+//    	System.out.println(a);
     	return getText(textMutedLoc);
     }
 

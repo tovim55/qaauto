@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
- * This class described all elements and actions can be executed on Setup Password page.
+ * This class described all elements and actions can be executed on Agreement page.
  * @authors Yana Fridman
  */
 //--------------------------------------------------------------------------
@@ -22,8 +22,6 @@ public class AgreementPage extends BasePage {
     private final static String title = "Setup your Password";
     private By titleLoc = By.xpath("//*[@class='hero__title']");
     private By textLoc = By.xpath("//*[@class='article-body']");
-
-
 
 
     public AgreementPage() {
@@ -41,7 +39,7 @@ public class AgreementPage extends BasePage {
     public String pageText() {
 
         String a = getText(textLoc);
-        System.out.println(a);
+//        System.out.println(a);
         return getText(textLoc);
     }
     //--------------------------------------------------------------------------
@@ -54,7 +52,7 @@ public class AgreementPage extends BasePage {
     public String pageTitle() {
 
         String a = getText(titleLoc);
-        System.out.println(a);
+//        System.out.println(a);
         return getText(titleLoc);
     }
 

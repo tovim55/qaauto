@@ -39,7 +39,7 @@ public class MerchantViewPage extends BasePage {
     public String pageTitle() {
         
     	String a = getText(titleLoc);
-    	System.out.println(a);
+//    	System.out.println(a);
     	return getText(titleLoc);
     }
     //--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ public class MerchantViewPage extends BasePage {
     public String pageText1() {
         
     	String a = getText(textLoc1);
-    	System.out.println(a);
+//    	System.out.println(a);
     	return getText(textLoc1);
     }
     //--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ public class MerchantViewPage extends BasePage {
     public String pageText2() {
         
     	String a = getText(textLoc2);
-    	System.out.println(a);
+//    	System.out.println(a);
     	return getText(textLoc2);
     }
 }

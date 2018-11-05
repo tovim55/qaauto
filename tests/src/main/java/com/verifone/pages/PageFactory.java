@@ -64,6 +64,8 @@ public class PageFactory {
                 return new WelcomePage();
             case "PasswordSetupPage":
                 return new PasswordSetupPage();
+            case "ChangePasswordPage":
+                return new ChangePasswordPage();
             case "HomePage":
                 return new HomePage();
             case "UsersPage":
@@ -72,19 +74,24 @@ public class PageFactory {
                 return new AddUserPage();
             case "EditUserPage":
                 return new EditUserPage();
+            case "EditProfilePage":
+                return new EditProfilePage();
             case "EditRolePage":
                 return new EditRolePage();
             case "EditBusinessPage":
                 return new EditBusinessPage();
             case "UserDetailsPage":
                 return new UserDetailsPage();
+            case "EmailTemplatePage":
+                return new EmailTemplatePage();
             case "MerchantsPage":
                 return new MerchantsPage();
             case "MerchantDetailsPage":
                 return new MerchantDetailsPage();
             case "MerchantThankYouPage":
                 return new MerchantThankYouPage();
-
+            case "MyProfilePage":
+                return new MyProfilePage();
             case "NoAccessPage":
                 return new NoAccessPage();
 //            case "VerifoneAccountLoginPage":

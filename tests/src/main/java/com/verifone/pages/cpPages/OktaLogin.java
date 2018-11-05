@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
- * This class described all elements and actions can be executed on Thank You page displayed after Reset Password.
+ * This class described all elements and actions can be executed on OKTA login page.
  * @authors Yana Fridman
  */
 //--------------------------------------------------------------------------
@@ -102,27 +102,6 @@ public class OktaLogin extends BasePage {
     public String loginOktaTitle() {
         return getText(loginOktaTitle);
     }
-
-    //--------------------------------------------------------------------------
-//    /**
-//     * Method: Login: Get Okta Login page Title.
-//     * Return Okta Login page Title as String
-//     * @authors Yana Fridman
-//     */
-//    //--------------------------------------------------------------------------
-//    public String loginEmail() {
-//        return getText(loginEmail);
-//    }
-//    //--------------------------------------------------------------------------
-//    /**
-//     * Method: Login: Get Password field hint.
-//     * Return Password field hint as String
-//     * @authors Yana Fridman
-//     */
-//    //--------------------------------------------------------------------------
-//    public String loginPassword() {
-//        return getText(loginPassword);
-//    }
 
     //--------------------------------------------------------------------------
     /**

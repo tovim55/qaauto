@@ -4,7 +4,12 @@ import com.verifone.pages.BasePage;
 import com.verifone.utils.apiClient.createMerchant.CreateMerchantDE;
 
 import org.openqa.selenium.By;
-
+//--------------------------------------------------------------------------
+/**
+ * This class described all elements and actions can be executed on Add User page.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class AddUserPage extends BasePage {
 
     private final static String url = "";
@@ -41,6 +46,13 @@ public class AddUserPage extends BasePage {
         super(url, title);
     }
 
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Error message text.
+     * Return Error message text as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String msgErrorText () throws Exception {
 	  if (isExists(msgErrorLoc,5)) {
 		  return getText(msgErrorLoc);
@@ -48,19 +60,43 @@ public class AddUserPage extends BasePage {
 			  return "Not found!";
 		  }
   }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get page Title.
+     * Return page Title as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String titleText () throws InterruptedException {
 	  return getText(titleLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get page Description.
+     * Return page Description as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String titleDescText () throws InterruptedException {
 	  return getText(titleDescLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get panel Title.
+     * Return panel Title as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String titlePanelText () throws InterruptedException {
 	  return getText(titlePanelLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get First Name hint.
+     * Return First Name hint as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String hintFName () throws Exception {
 	  if (isExists(hintFNameLoc,5)) {
 		  return getText(hintFNameLoc);
@@ -68,7 +104,13 @@ public class AddUserPage extends BasePage {
 		  return "Not found!";
 	  }
   }
-   
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Last Name hint.
+     * Return Last Name hint as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String hintLName () throws Exception {
 	  if (isExists(hintLNameLoc,5)) {
 	  return getText(hintLNameLoc);
@@ -76,50 +118,120 @@ public class AddUserPage extends BasePage {
 		  return "Not found!";
 	  }
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Email hint.
+     * Return Email hint as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String hintEmail () throws InterruptedException {
 	  return getText(hintEmailLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Email help.
+     * Return Email help as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String helpEmail () throws InterruptedException {
 	  return getText(helpEmailLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Role section title.
+     * Return Role section title as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String titleRole () throws InterruptedException {
 	  return getText(titleRoleLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Role drop down element.
+     * Return Role drop down element as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String dropdnRoleText () throws InterruptedException {
 	  return getText(dropdnRoleLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Cancel button label.
+     * Return Cancel button label as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String btnCancelLabel () throws InterruptedException {
 	  return getText(btnCancelLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Submit button label.
+     * Return Submit button label as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public String btnSubmitLabel () throws InterruptedException {
 	  return getText(btnSubmitLoc);
   }
-  
+//--------------------------------------------------------------------------
+    /**
+     * Method: Input First Name.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public void inputFirstName(String uFName)  throws Exception {
       sendKeys(firstNameLoc, uFName);
   }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Input Last Name.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public void inputLastName(String uLName)  throws Exception {
       sendKeys(lastNameLoc, uLName);
   }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Input Email.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
   public void inputEmail(String uEmail)  throws Exception {
       sendKeys(emailLoc, uEmail);
   }
-//    public String getMerchants() throws InterruptedException {
-//        return getTextFromTable(merchantTable);
-//    }
-//    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get First Name validation error.
+     * Return First Name validation error as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String errorFirstName () throws InterruptedException {
     	return getText(errorFirstNameLoc);
-    } 
+    }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get Last Name validation error.
+     * Return Last Name validation error as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String errorLastName () throws InterruptedException {
     	return getText(errorLastNameLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Wait for Email validation error for 5 min.
+     * Return Email validation error as String
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public String errorEmail () throws Exception {
     	int count = 0;
     	while (!isExists(errorEmailLoc,5) | getText(errorEmailLoc).length() <= 1 & count < 5000) {
@@ -127,16 +239,39 @@ public class AddUserPage extends BasePage {
   		  }
     	return getText(errorEmailLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Last Name field.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickLastNameFld () throws InterruptedException {
         click(lastNameLoc);
-    } 
+    }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Email field.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickEmailFld () throws InterruptedException {
         click(emailLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Role drop down element.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickDropDn () throws InterruptedException {
         click(dropdnRoleLoc);
     }
-    
+//--------------------------------------------------------------------------
+    /**
+     * Method: Select item from Role list.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickDropDnItem (String itemName) throws Exception {
     	switch (itemName) {
         case "EO Admin":
@@ -160,9 +295,21 @@ public class AddUserPage extends BasePage {
 	    	break;
 		}
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Cancel button.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickCancelBtn () throws InterruptedException {
         click(btnCancelLoc);
     }
+//--------------------------------------------------------------------------
+    /**
+     * Method: Click on Submit button.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
     public void clickSubmitBtn () throws InterruptedException {
         click(btnSubmitLoc);
     }

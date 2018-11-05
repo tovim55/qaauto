@@ -5,7 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+//--------------------------------------------------------------------------
+/**
+ * This class described all elements and actions can be executed on Merchant Details page.
+ * @authors Yana Fridman
+ */
+//--------------------------------------------------------------------------
 public class MerchantDetailsPage extends BasePage {
 
 
@@ -56,51 +61,114 @@ public class MerchantDetailsPage extends BasePage {
         public MerchantDetailsPage() {
             super(url, title);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Wait 5 sec. for Merchant Email value displayed and Get Merchant Email value.
+     * Return Merchant Email value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getMerchantEmail() throws InterruptedException {
             scrollToElement(merchantEmailLoc);
-            Thread.sleep(2000);
-            String a = getText(merchantEmailLoc);
-            return a;
+            int t = 0;
+            while (getText(merchantEmailLoc).length()<1 & t < 5000){
+                Thread.sleep(500);
+                t = t + 500;
+            }
+            return getText(merchantEmailLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Wait 5 sec. for Business Name value displayed and Get Business Name value.
+     * Return Merchant Email value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getBusName() throws InterruptedException {
-            int k = 0;
-            while (getText(busNameLoc)=="" & k <=100){
-                Thread.sleep (1000);
-                k++;
+            int t = 0;
+            while (getText(busNameLoc).length()<1 & t < 5000){
+                Thread.sleep(500);
+                t = t + 500;
             }
             return getText(busNameLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get page Title.
+     * Return page Title as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getTitle() throws InterruptedException {
             return getText(titleLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Industry Code value.
+     * Return Industry Code value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getIndCode() throws InterruptedException {
             return getText(indCodeLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get MID value.
+     * Return MID value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getMID() throws InterruptedException {
             return getText(midLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Country value.
+     * Return Country value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getCountry() throws InterruptedException {
             return getText(countryLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Address value.
+     * Return Address value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getAddress() throws InterruptedException {
             return getText(addressLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Contact Number value.
+     * Return Contact Number value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getContactNumber() throws InterruptedException {
             return getText(contNumberLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Business Email value.
+     * Return Business Email value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getBusEmail() throws InterruptedException {
             return getText(busMailLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Status value.
+     * Return Status value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getStatus() throws Exception {
             if (isExists(userStatusLoc, 3)) {
                 return getText(userStatusLoc);
@@ -113,27 +181,63 @@ public class MerchantDetailsPage extends BasePage {
             }
             return "";
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Action value.
+     * Return Action value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getAction() throws InterruptedException {
             return getText(userActionLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Role value.
+     * Return Role value as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getRole() throws InterruptedException {
             return getText(roleLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Resend Invitation dialog text.
+     * Return Resend Invitation dialog text as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getDialogResend() throws InterruptedException {
             return getText(dialogResendTextLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Disable Merchant dialog text.
+     * Return Disable Merchant dialog text as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getDialogDisable() throws InterruptedException {
             return getText(dialogDisableTextLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Enable Merchant dialog text.
+     * Return Enable Merchant dialog text as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getDialogEnable() throws InterruptedException {
             return getText(dialogEnableTextLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Email field enabled.
+     * Return True if enabled
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean elementEmailClickable() throws InterruptedException {
             WebElement elem = driver.findElement(merchantEmailLoc);
 //    	return elem.isEnabled();
@@ -146,7 +250,13 @@ public class MerchantDetailsPage extends BasePage {
                 return false;
             }
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Role field enabled.
+     * Return True if enabled
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean elementRoleClickable() throws InterruptedException {
             WebElement elem = driver.findElement(roleLoc);
 //    	return elem.isEnabled();
@@ -159,7 +269,13 @@ public class MerchantDetailsPage extends BasePage {
                 return false;
             }
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Business Info link enabled.
+     * Return True if enabled
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean elementBusinessEditClickable() throws Exception {
 
             if (isExists(businessEditMutedLoc, 3)) {
@@ -170,7 +286,13 @@ public class MerchantDetailsPage extends BasePage {
             }
             return false;
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Role link enabled.
+     * Return True if enabled
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean elementRoleEditClickable() throws Exception {
             if (isExists(roleEditLoc, 3)) {
                 return false;
@@ -180,58 +302,144 @@ public class MerchantDetailsPage extends BasePage {
             }
             return false;
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click on Edit Business link.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickLnkEditBus() throws InterruptedException {
             click(businessEditLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click on Resend Invitation link.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickLnkResend() throws InterruptedException {
             click(lnkResendLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click on Disable link.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickLnkDisable() throws InterruptedException {
             click(lnkDisableLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click on Enable link.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickLnkEnable() throws InterruptedException {
             click(lnkEnableLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Resend Invitation dialog displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean dialogResendExists() throws Exception {
             return isExists(dialogResendLoc, 3);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Cancel on Resend Invitation dialog window.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickCancelResend() throws InterruptedException {
             click(dialogCancelBtnLoc);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Resend on Resend Invitation dialog window.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickDoResend() throws InterruptedException {
             click(dialogResendBtnLoc);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Disable dialog displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean dialogDisableExists() throws Exception {
             return isExists(dialogDisableLoc, 3);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Cancel on Disable dialog window.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickCancelDisable() throws InterruptedException {
             click(dialogDisableCancelBtnLoc);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Disable on Disable dialog window.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickDoDisable() throws InterruptedException {
             click(dialogDisableBtnLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Enable dialog displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean dialogEnableExists() throws Exception {
             return isExists(dialogEnableLoc, 3);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Cancel on Enable dialog window.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickCancelEnable() throws InterruptedException {
             click(dialogEnableCancelBtnLoc);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Click Enable on Enable dialog window.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public void clickDoEnable() throws InterruptedException {
             click(dialogEnableBtnLoc);
         }
-
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Check if Message displayed.
+     * Return True if displayed.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public boolean messageExists() throws Exception {
             return isExists(messageLoc, 30);
         }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Get Message text.
+     * Return Message text as string.
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
         public String getMessage() throws InterruptedException {
             return getText(messageLoc);
         }
-
-
 }
