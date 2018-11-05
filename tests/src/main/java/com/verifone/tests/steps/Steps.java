@@ -1,19 +1,27 @@
 package com.verifone.tests.steps;
 
+import com.google.gson.JsonObject;
 import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.Company;
 import com.verifone.infra.User;
+import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.*;
+import com.verifone.tests.BaseTest;
 import com.verifone.utils.Mail.InboxGetnada;
 import com.verifone.utils.appUtils.Application;
 import com.verifone.utils.appUtils.ApplicationUtils;
 
 import java.awt.*;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 //import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 import static com.verifone.utils.Assertions.assertTextContains;
+import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
 
 //import static com.verifone.infra.SeleniumUtils.restartDriver;
 
@@ -40,6 +48,21 @@ public class Steps {
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(developer);
+    }
+
+
+    public static String getVersions() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
+        LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
+        loginPage.clickOmLoginBtn();
+        loginPage.loginPageCp(BaseTest.envConfig.getCredentials().getDevAdmin());
+//        System.out.println("CP_SESSIONID=" + BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("Cookie", "CP_SESSIONID=" + BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
+        headers.put("X-Requested-With", "XMLHttpRequest");
+        System.out.println(BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
+        JsonObject response = getRequestWithHeaders("https://qa.dashboard.verifonecp.com/v2/info", "get", "", headers, 200);
+        System.out.println(response.toString());
+        return response.toString();
     }
 
     public static void devLoginFillCompany(Company dev) throws AWTException, InterruptedException, IOException {
