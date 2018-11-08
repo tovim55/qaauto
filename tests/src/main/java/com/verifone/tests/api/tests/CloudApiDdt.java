@@ -29,5 +29,6 @@ public class CloudApiDdt extends BaseTest {
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
+
     }
 }
