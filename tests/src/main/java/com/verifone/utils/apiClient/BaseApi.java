@@ -65,7 +65,7 @@ public abstract class BaseApi {
         HttpResponse response = client.execute(request);
         reportReqestData(url, method, headers, startTime);
         int responseCode = response.getStatusLine().getStatusCode();
-        if (method.equals("head")) {
+        if (response.getEntity() == null) {
             Assert.assertEquals(responseCode, expectedCode);
             return null;
         }
@@ -79,7 +79,6 @@ public abstract class BaseApi {
             entity = convertFromPrimitive(entity);
         return gson.fromJson(entity, JsonObject.class);
     }
-
 
 
     private static void reportReqestData(String url, String method, HashMap<String, String> headers, long startTime) {
@@ -220,16 +219,16 @@ public abstract class BaseApi {
 
     private static String convertFromPrimitive(String entity) {
         System.out.println(entity);
-        String [] tempEntity =  StringUtils.substringBetween(entity, "{", "}").split(" ,");
+        String[] tempEntity = StringUtils.substringBetween(entity, "{", "}").split(" ,");
         entity = "{";
-        for (String s: tempEntity  ) {
+        for (String s : tempEntity) {
             entity += "\"";
-            String [] tmp = s.split(":");
+            String[] tmp = s.split(":");
             if (tmp[0].startsWith(" "))
                 tmp[0] = tmp[0].substring(1);
-            entity += tmp[0] + "\"" + ":\""+tmp[1] + "\",";
+            entity += tmp[0] + "\"" + ":\"" + tmp[1] + "\",";
         }
-        entity = entity.substring(0,entity.length()-1);
+        entity = entity.substring(0, entity.length() - 1);
         entity += "}";
         return entity;
     }
