@@ -7,27 +7,52 @@ import com.verifone.utils.apiClient.DataDrivenApi;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.UUID;
+
 public class CloudApiDdt extends BaseTest {
 
 
     private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\cloudApi.xls";
 
 
-    @DataProvider(name = "cloudApi")
-    public Object[][] cloudApi() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "Sheet1");
+    @DataProvider(name = "shift")
+    public Object[][] shift() throws Exception {
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "shift");
         return arrayObject;
     }
 
 
+    @DataProvider(name = "employee")
+    public Object[][] employee() throws Exception {
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "employee");
+        return arrayObject;
+    }
 
-    @Test(dataProvider = "cloudApi")
-    public void cloudApiDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
-                                  String headers, String headersForGetToken, String body, String expectedStatusCode,
-                                  String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
+
+    @Test(dataProvider = "shift")
+    public void cloudApiShiftDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+                            String headers, String headersForGetToken, String body, String expectedStatusCode,
+                            String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
+        String uuid = UUID.randomUUID().toString();
+        if (requestMethod.equals("post"))
+            headers = "{RequestID:" + uuid + "}";
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
+    @Test(dataProvider = "employee")
+    public void cloudApiEmployeeDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+                                  String headers, String headersForGetToken, String body, String expectedStatusCode,
+                                  String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
+        starTestLog(rowNum + ". " + comments, comments);
+        String uuid = UUID.randomUUID().toString();
+        if (requestMethod.equals("post"))
+            headers = "{RequestID:" + uuid + "}";
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
+        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
+                expectedStatusCode, expectedResult, verifyList);
+    }
+
+
 }
