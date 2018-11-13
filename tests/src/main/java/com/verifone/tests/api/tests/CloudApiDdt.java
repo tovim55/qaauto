@@ -47,8 +47,11 @@ public class CloudApiDdt extends BaseTest {
                                   String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
         String uuid = UUID.randomUUID().toString();
-        if (requestMethod.equals("post"))
+        String email = uuid.replace("-", "") + "@getnada.com";
+        if (requestMethod.equals("post")) {
             headers = "{RequestID:" + uuid + "}";
+            body = body.replace("test@getnada.com", email);
+        }
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
