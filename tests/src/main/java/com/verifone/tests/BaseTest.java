@@ -34,21 +34,23 @@ public abstract class BaseTest {
     public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
 
 
-    @Parameters({"env", "portal"})
+    @Parameters({"env", "portal", "getVersions"})
     @BeforeSuite
-    public void beforeSuite(String env, String portal) throws Exception {
+    public void beforeSuite(String env, String portal, String getVersions) throws Exception {
         new File(reportDirectory).mkdir();
         extent = ExtentManager.createInstance(reportLocation);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
         setEnv(env, portal);
-        ExtentTest parent = extent.createTest("Get Versions");
-        parentTest.set(parent);
-        starTestLog("Get Versions", "");
-        SeleniumUtils.reportDirectory = reportDirectory;
-        BasePage.driver = SeleniumUtils.getDriver("CHROME");
-        parent.info("Versions: " + getVersions());
-        SeleniumUtils.closeRuntimeBrowserInstance();
+        if (getVersions.equals("true")) {
+            ExtentTest parent = extent.createTest("Get Versions");
+            parentTest.set(parent);
+            starTestLog("Get Versions", "");
+            SeleniumUtils.reportDirectory = reportDirectory;
+            BasePage.driver = SeleniumUtils.getDriver("CHROME");
+            parent.info("Versions: " + getVersions());
+            SeleniumUtils.closeRuntimeBrowserInstance();
+        }
 
     }
 

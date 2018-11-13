@@ -41,7 +41,7 @@ import static com.verifone.pages.BasePage.testLog;
                     case "EOSupportPortal":
                         url = "https://" + param1 + ".estatemanager.verifonecp.com/estatesupport";
                         break;
-                    case "DevPortal":
+                    case "CPPortal":
                         url = "https://" + param1 + ".developer.verifonecp.com/home";
                         break;
                 }
