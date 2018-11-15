@@ -5,9 +5,12 @@ import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.appUtils.Application;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 
 public class NewAppFormPage extends BasePage {
@@ -33,6 +36,8 @@ public class NewAppFormPage extends BasePage {
     private By termsOfUseUrl = By.xpath("//input[@name='termsOfUseUrl']");
     private By submitBtn= By.id("submitBtn");
     private By okBtn= By.id("okBtn");
+    private By dropZonePackage = By.xpath("//*[@class='dropzone document-upload dashed-border dropzone-square ']");
+    private By dropZoneImages = By.xpath("//*[@class='dropzone image-upload dashed-border dropzone-square ']");
 
 
 
@@ -60,22 +65,25 @@ public class NewAppFormPage extends BasePage {
 
     public void fillUploadPackageForm(String appPath) throws AWTException, InterruptedException, IOException {
         waitForLoader(loader);
-        uploadFile(appPath, getElementsByClassJs(uploadFileClassName, 0));
+        uploadFile(appPath, getWebElement(dropZonePackage, 10,
+                ExpectedConditions.visibilityOfElementLocated(dropZonePackage)));
         waitForLoader(loader);
         click(nextBtn);
     }
 
     public void fillAppIconScreenshots(String path) throws AWTException, InterruptedException, IOException {
         waitForLoader(loader);
-        uploadFile(path, getElementsByClassJs(uploadFileClassName, 0));
+        List<WebElement> imagesList = getWebElements(dropZoneImages, 10,
+                ExpectedConditions.visibilityOfElementLocated(dropZoneImages));
+        uploadFile(path, imagesList.get(0));
         waitForLoader(loader);
-        uploadFile(path, getElementsByClassJs(uploadFileClassName, 1));
+        uploadFile(path, imagesList.get(1));
         waitForLoader(loader);
         click(nextBtn);
     }
 
     public void fillPriceForm() throws InterruptedException {
-         Thread.sleep(6000);
+         Thread.sleep(4000);
          hoverAndClickOnElement(selectAllCountriesBtn);
          click(nextBtn);
     }
@@ -95,7 +103,7 @@ public class NewAppFormPage extends BasePage {
 
     public void clickOnSubmitBtn() throws InterruptedException {
         waitForLoader(loader);
-        Thread.sleep(8000);
+        Thread.sleep(4000);
         click(submitBtn);
         waitForLoader(loader);
         click(okBtn);

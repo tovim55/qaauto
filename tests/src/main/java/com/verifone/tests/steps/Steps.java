@@ -76,7 +76,7 @@ public class Steps {
     }
 
 
-    public static LoginPage devSupportAdminLogin() throws Exception {
+        public static LoginPage devSupportAdminLogin() throws Exception {
         User dev = EntitiesFactory.getEntity("DevSupportAdmin");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.supportLogin(dev);
@@ -119,7 +119,7 @@ public class Steps {
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
-        Application app = new Application("ppppoooo", "", "1.0.0 ", "this test", "this is veri important!!");
+        Application app = new Application("ppppoooo", "", "1.0.0 ", "this test", "this is auto test!!");
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + "\\" + id + ".zip");
