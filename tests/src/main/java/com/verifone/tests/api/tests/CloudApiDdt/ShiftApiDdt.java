@@ -1,4 +1,4 @@
-package com.verifone.tests.api.tests;
+package com.verifone.tests.api.tests.CloudApiDdt;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.verifone.tests.BaseTest;

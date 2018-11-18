@@ -10,10 +10,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
 
@@ -118,15 +120,13 @@ public abstract class BasePage {
     }
 
 
-
-    protected void waitForLoader(By loc){
+    protected void waitForLoader(By loc) {
         try {
-            WebDriverWait element  = new WebDriverWait(driver,  40);
+            WebDriverWait element = new WebDriverWait(driver, 10);
             element.until(ExpectedConditions.visibilityOfElementLocated(loc));
-            WebDriverWait wait = new WebDriverWait(driver, 40);
+            WebDriverWait wait = new WebDriverWait(driver, 10);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(loc));
-        }
-        catch (TimeoutException e){
+        } catch (TimeoutException e) {
 
         }
     }
@@ -167,22 +167,62 @@ public abstract class BasePage {
         return driver.findElement(loc);
     }
 
-    //    TODO complete method implementation
-    protected void uploadFile(String filePath, WebElement element) throws IOException, AWTException, InterruptedException {
-        element.click();
-        StringSelection ss = new StringSelection(filePath);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-        Robot robot = new Robot();
-        Thread.sleep(4000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        Thread.sleep(2000);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-
+    protected List<WebElement> getWebElements(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+        waitForElement(loc, timeOut, expectedCon);
+        return driver.findElements(loc);
     }
+
+    //    TODO complete method implementation
+    protected void uploadFile(String filePath, WebElement dropZoneClass) throws IOException {
+
+        String id = dropZoneClass.getAttribute("id");
+        String[] path = filePath.split("\\\\");
+        String fileName = path[path.length - 1];
+        String base64IFile = convertFileToBase64String(filePath);
+        ((JavascriptExecutor) driver).executeScript("var myZone = Dropzone.forElement('#" + id + "');" +
+                "base64Image = '" + base64IFile + "';" +
+                "function base64toBlob(b64Data, contentType, sliceSize) {  \n" +
+                "    contentType = contentType || '';\n" +
+                "    sliceSize = sliceSize || 512;\n" +
+                "\n" +
+                "    var byteCharacters = atob(b64Data);\n" +
+                "    var byteArrays = [];\n" +
+                "\n" +
+                "    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {\n" +
+                "        var slice = byteCharacters.slice(offset, offset + sliceSize);\n" +
+                "\n" +
+                "        var byteNumbers = new Array(slice.length);\n" +
+                "        for (var i = 0; i < slice.length; i++) {\n" +
+                "            byteNumbers[i] = slice.charCodeAt(i);\n" +
+                "        }\n" +
+                "\n" +
+                "        var byteArray = new Uint8Array(byteNumbers);\n" +
+                "\n" +
+                "        byteArrays.push(byteArray);\n" +
+                "    }\n" +
+                "\n" +
+                "    var blob = new Blob(byteArrays, {type: contentType});\n" +
+                "    return blob;\n" +
+                "}" +
+                "var blob = base64toBlob(base64Image, 'image / png');" +
+                "blob.name = '" + fileName + "';" +
+                "myZone.addFile(blob);  "
+        );
+    }
+
+    public static String convertFileToBase64String(String fileName) throws IOException {
+
+        File file = new File(fileName);
+        int length = (int) file.length();
+        BufferedInputStream reader = new BufferedInputStream(new FileInputStream(file));
+        byte[] bytes = new byte[length];
+        reader.read(bytes, 0, length);
+        reader.close();
+        String encodedFile = Base64.getEncoder().encodeToString(bytes);
+
+        return encodedFile;
+    }
+
 
     protected WebElement getElementsByClassJs(String className, int index) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -200,106 +240,7 @@ public abstract class BasePage {
     }
 
 
-//    public void setCheckBox(By loc){
-//        WebDriverWait wait = new WebDriverWait(driver, 30);
-//        wait.until(ExpectedConditions.presenceOfElementLocated(loc));
-//        WebElement a;
-//        if (!driver.findElement(loc).isSelected()){
-//            a = driver.findElement(loc);
-//            a.click();
-//            System.out.println("asdas      " + driver.findElement(loc).isSelected());
-//        }
-//
-//    }
 
-
-//
-//    /**
-//     * Navigate to the page
-//     **/
-//    public abstract void navigate();
-//
-//    /**
-//     * returns title of the page
-//     **/
-//    public abstract String getTitle();
-//
-//    /**
-//     * returns link of the page
-//     **/
-//    public abstract WebElement getPageLink();
-//
-//    /**
-//     * Sets user name and password for loginAndCheck
-//     *
-//     * @param text
-//     * @param text2
-//     */
-//    public abstract void initPage(String text, String text2);
-//
-//    /**
-//     * Returns grid cell text
-//     *
-//     * @param trow
-//     * @param tcolumn
-//     * @return String
-//     */
-//    public abstract String getGridCellText(int trow, int tcolumn);
-//
-//    /**
-//     * returns number of rows in the grid
-//     **/
-//    public abstract int gridRows();
-//
-//    /**
-//     * returns number of columns in the grid
-//     **/
-//    public abstract int gridColumns();
-//
-//    /**
-//     * Set text in grid cell
-//     */
-//    public abstract void setGridCellText(int trow, int tcolumn, String text) throws Exception;
-//
-//    /**
-//     * Click Add button
-//     *
-//     * @throws Exception
-//     **/
-//    public abstract void clickAdd() throws Exception;
-//
-//    public abstract void clickSave() throws Exception;
-//
-//    public abstract void clickCancel() throws Exception;
-//
-//    public abstract void clickMultiActivate() throws Exception;
-//
-//    public abstract void clickUpload() throws Exception;
-//
-//    //Methods that set values in form fields
-//    public abstract void setApplicationId(String text);
-//
-//    public abstract void setVersion(String text);
-//
-//    public abstract void setStatus(String text);
-//
-//    public abstract void setType(String text);
-//
-//    public abstract void setValue(String text);
-//
-//    public abstract void setNote(String text);
-//
-//    public abstract int numberOfErrors();
-//
-//    public abstract String getDisplayedError();
-//
-//    public abstract void selectApplicationId(String text) throws Exception;
-//
-//    public abstract void selectVersion(String text) throws Exception;
-//
-//    public abstract void selectStatus(String text) throws Exception;
-//
-//    public abstract void selectType(String text) throws Exception;
 
 
     /**

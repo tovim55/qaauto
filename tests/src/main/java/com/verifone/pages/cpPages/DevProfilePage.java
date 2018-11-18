@@ -76,8 +76,8 @@ public class DevProfilePage extends BasePage {
         sendKeys(contactNumber, String.valueOf(user.getContactNumber()));
         select(countryTaxCode, user.getCountryTaxCode());
         sendKeys(email, user.getUserName());
-        uploadFile(System.getProperty("user.dir") + "\\src\\test\\resources\\tax_file.docx",
-        getElementsByClassJs(uploadFileClassName, 1));
+//        uploadFile(System.getProperty("user.dir") + "\\src\\test\\resources\\tax_file.docx",
+//        getElementsByClassJs(uploadFileClassName, 1));
         click(checkboxAgreement);
         Thread.sleep(2000);
         Actions action = new Actions(driver);

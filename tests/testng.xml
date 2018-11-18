@@ -7,8 +7,8 @@
     <!--QA-->
     <!--DEV-->
     <!--<parameter name="env" value="QA"/>-->
-    <parameter name="env" value="DEV" />
-    <parameter name="getVersions" value="false"/>
+    <parameter name="env" value="QA" />
+
     <!--Set Portal Variable: -->
     <!--CPPortal-->
     <!--CGPortal-->
