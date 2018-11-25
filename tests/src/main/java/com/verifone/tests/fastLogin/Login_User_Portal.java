@@ -31,6 +31,7 @@ import static com.verifone.pages.BasePage.testLog;
 
     public void Login_User_PortalUI_Cont(String param1, String param2, String param3, String param4, String param5, String param6) throws Exception {
         String url = "";
+        String OktaHome_url = "https://verifone.okta.com/";
         switch(param1) {
             case "QA":
             case "Dev":
@@ -41,7 +42,7 @@ import static com.verifone.pages.BasePage.testLog;
                     case "EOSupportPortal":
                         url = "https://" + param1 + ".estatemanager.verifonecp.com/estatesupport";
                         break;
-                    case "CPPortal":
+                    case "DevPortal":
                         url = "https://" + param1 + ".developer.verifonecp.com/home";
                         break;
                 }
@@ -63,15 +64,23 @@ import static com.verifone.pages.BasePage.testLog;
                 }
                 break;
         }
-        BasePage.driver.navigate().to(url);
-        LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-        LoginEOPortal.loginInputEmail(param2);
         if (param2.contains("@verifone.com")){
             Thread.sleep(2000);
+            BasePage.driver.navigate().to(OktaHome_url);
+            LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+            OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+            if (!OktaLogin.loginOktaTitleExists()) {
+                OktaLogin.SignOut();
+            }
+
+            Thread.sleep(2000);
+            BasePage.driver.navigate().to(url);
+            LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+            LoginEOPortal.loginInputEmail(param2);
             ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
             BasePage.driver.switchTo().window(availableWindows.get(0));
 
-            OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+            OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
             OktaLogin.loginInputName(param5);
             OktaLogin.loginInputPassword(param3);
             OktaLogin.clickSignInBtn();
@@ -85,6 +94,9 @@ import static com.verifone.pages.BasePage.testLog;
 
         }
         else {
+            BasePage.driver.navigate().to(url);
+            LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+            LoginEOPortal.loginInputEmail(param2);
             LoginEOPortal.loginInputPassword(param3);
             LoginEOPortal.clickLoginBtn();
         }

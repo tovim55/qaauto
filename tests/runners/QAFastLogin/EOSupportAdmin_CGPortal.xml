@@ -7,9 +7,10 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
+    <parameter name="getVersions" value="false"/>
     <parameter name="env" value="Test" />
     <parameter name="mail" value="QA.Test@verifone.com" />
-    <parameter name="pwd" value='Y6"bB6ca' />
+    <parameter name="pwd" value='SpT5rRvq' />
     <parameter name="name" value="QA.Test" />
     <parameter name="answer" value="Elephant" />
 

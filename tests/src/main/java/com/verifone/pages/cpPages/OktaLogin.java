@@ -30,6 +30,8 @@ public class OktaLogin extends BasePage {
     private By loginForgotLink = By.xpath("//*[@id=\"loginForm\"]/div[3]/a");
     private By loginBtnLabel = By.id("btnPrimaryLogin");
     private By verifyBtnLoc = By.xpath("//*[@class='button button-primary']");
+    private By btnOktaAccount = By.xpath("//*[@class='link-button link-button-icon option-selected center notranslate h-nav-href']");
+    private By clickSignOut = By.xpath("//*[@class='option-title' and @data-se = 'logout-link']");
 
     private By lerrorMandatoryField = By.xpath("//*[@class='help-block']");
     private By loginSetupBtn = By.id("btnPrimaryLogin");
@@ -99,6 +101,16 @@ public class OktaLogin extends BasePage {
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------
+    public boolean loginOktaTitleExists () throws Exception {
+        return isExists(loginOktaTitle, 6);
+    }
+    //--------------------------------------------------------------------------
+    /**
+     * Method: Login: Get Okta Login page Title.
+     * Return Okta Login page Title as String
+     * @authors Yana Fridman
+     */
+    //--------------------------------------------------------------------------
     public String loginOktaTitle() {
         return getText(loginOktaTitle);
     }
@@ -153,6 +165,13 @@ public class OktaLogin extends BasePage {
     public String lerrorMatch() {
         return getText(lerrorMatch);
     }
+
+    //--------------------------------------------------------------------------
+    public void SignOut() throws Exception {
+        click(btnOktaAccount);
+        click(clickSignOut);
+    }
+    //--------------------------------------------------------------------------
 
 }
 

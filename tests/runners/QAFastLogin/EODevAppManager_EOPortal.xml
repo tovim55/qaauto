@@ -7,6 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
+    <parameter name="getVersions" value="false"/>
     <parameter name="env" value="QA" />
     <parameter name="mail" value="qa_app_manager@yopmail.com" />
     <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
