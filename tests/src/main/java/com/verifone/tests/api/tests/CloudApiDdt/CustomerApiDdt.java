@@ -31,14 +31,14 @@ public class CustomerApiDdt extends BaseTest {
     }
 
     @Test(dataProvider = "customer")
-    public void cloudApiShiftDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+    public void cloudApiCustomerDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                             String headers, String headersForGetToken, String body, String expectedStatusCode,
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
         String uuid = UUID.randomUUID().toString();
         String email = uuid.replace("-", "").substring(21) + "@getnada.com";
         String existingEmail = "test@getnada.com";
-
+        
         if (requestMethod.equals("post")) {
             if(body!= null) {
                 if (headers!=null)
@@ -46,7 +46,11 @@ public class CustomerApiDdt extends BaseTest {
                 else
                     body = body.replace("email@getnada.com", existingEmail);
             }
-            headers = "{RequestID:" + uuid + "}";
+            if(body == null && headers ==null) {
+                headers = "{RequestID: }";
+            }
+            else
+                headers = "{RequestID:" + uuid + "}";
         }
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,

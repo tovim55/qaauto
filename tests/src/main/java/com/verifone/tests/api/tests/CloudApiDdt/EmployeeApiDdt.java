@@ -44,7 +44,11 @@ public class EmployeeApiDdt extends BaseTest {
                 else
                     body = body.replace("email@getnada.com", existingEmail);
             }
-            headers = "{RequestID:" + uuid + "}";
+            if(body == null && headers ==null) {
+                headers = "{RequestID: }";
+            }
+            else
+                headers = "{RequestID:" + uuid + "}";
         }
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
