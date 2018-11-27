@@ -7,9 +7,10 @@
     <!--QA-->
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
+    <parameter name="getVersions" value="false"/>
     <parameter name="env" value="Dev" />
     <parameter name="mail" value="qa.cptest@verifone.com" />
-    <parameter name="pwd" value="ARp@43Hpa" />
+    <parameter name="pwd" value="amKwD5Cd" />
     <parameter name="name" value="qa.cptest" />
     <parameter name="answer" value="BigTiger" />
 
