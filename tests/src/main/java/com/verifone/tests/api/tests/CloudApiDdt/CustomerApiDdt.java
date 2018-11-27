@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
-public class ShiftApiDdt extends BaseTest {
+public class CustomerApiDdt extends BaseTest {
 
 
     private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
@@ -24,21 +24,30 @@ public class ShiftApiDdt extends BaseTest {
     }
 
 
-    @DataProvider(name = "shift")
-    public Object[][] shift() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "shift");
+    @DataProvider(name = "customer")
+    public Object[][] customer() throws Exception {
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "customer");
         return arrayObject;
     }
 
-    @Test(dataProvider = "shift")
+    @Test(dataProvider = "customer")
     public void cloudApiShiftDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                             String headers, String headersForGetToken, String body, String expectedStatusCode,
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
         String uuid = UUID.randomUUID().toString();
-        if (requestMethod.equals("post")){
-            if(headers==null)
-            headers = "{RequestID:" + uuid + "}";}
+        String email = uuid.replace("-", "").substring(21) + "@getnada.com";
+        String existingEmail = "test@getnada.com";
+
+        if (requestMethod.equals("post")) {
+            if(body!= null) {
+                if (headers!=null)
+                    body = body.replace("email@getnada.com", email);
+                else
+                    body = body.replace("email@getnada.com", existingEmail);
+            }
+            headers = "{RequestID:" + uuid + "}";
+        }
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
