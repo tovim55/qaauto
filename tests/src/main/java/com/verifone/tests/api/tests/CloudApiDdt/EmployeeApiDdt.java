@@ -29,7 +29,7 @@ public class EmployeeApiDdt extends BaseTest {
         return arrayObject;
     }
 
-    @Test(dataProvider = "employee")
+    @Test(dataProvider = "employee", groups = "cloudApi")
     public void cloudApiEmployeeDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                                     String headers, String headersForGetToken, String body, String expectedStatusCode,
                                     String expectedResult, String verifyList, String comments, String rowNum) throws Exception {

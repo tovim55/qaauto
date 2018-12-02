@@ -10,35 +10,36 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
+import static com.verifone.utils.apiClient.DataDrivenApi.setFilePath;
+
 public class CustomerApiDdt extends BaseTest {
 
-
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
-
     @BeforeSuite
-    private void setFile() {
-        if (BaseTest.envConfig.getEnv().equals("QA"))
-            dataFile += "cloudApiQA.xls";
-        else
-            dataFile += "cloudApi.xls";
-    }
+    public String getFile() {
+        return setFilePath("cloudApiQA.xls", "cloudApi.xls");
 
+    }
 
     @DataProvider(name = "customer")
     public Object[][] customer() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "customer");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(getFile(), "customer");
         return arrayObject;
     }
 
-    @Test(dataProvider = "customer")
+    @Test(dataProvider = "customer", groups = "cloudApi")
+
     public void cloudApiCustomerDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                             String headers, String headersForGetToken, String body, String expectedStatusCode,
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
+
+        //Generate unique alphanumeric String
         String uuid = UUID.randomUUID().toString();
+        //Define unique unexisting email
         String email = uuid.replace("-", "").substring(21) + "@getnada.com";
+        //Define existing email in Database
         String existingEmail = "test@getnada.com";
-        
+
         if (requestMethod.equals("post")) {
             if(body!= null) {
                 if (headers!=null)

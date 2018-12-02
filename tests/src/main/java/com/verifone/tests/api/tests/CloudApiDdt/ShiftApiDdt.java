@@ -30,7 +30,7 @@ public class ShiftApiDdt extends BaseTest {
         return arrayObject;
     }
 
-    @Test(dataProvider = "shift")
+    @Test(dataProvider = "shift", groups = "cloudApi")
     public void cloudApiShiftDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                             String headers, String headersForGetToken, String body, String expectedStatusCode,
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
