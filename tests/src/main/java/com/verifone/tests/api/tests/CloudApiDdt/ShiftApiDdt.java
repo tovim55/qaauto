@@ -10,10 +10,18 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
-public class CloudApiDdt extends BaseTest {
+public class ShiftApiDdt extends BaseTest {
 
 
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\cloudApi.xls";
+    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+
+    @BeforeSuite
+    private void setFile() {
+        if (BaseTest.envConfig.getEnv().equals("QA"))
+            dataFile += "cloudApiQA.xls";
+        else
+            dataFile += "cloudApi.xls";
+    }
 
 
     @DataProvider(name = "shift")
@@ -22,41 +30,18 @@ public class CloudApiDdt extends BaseTest {
         return arrayObject;
     }
 
-    @DataProvider(name = "employee")
-    public Object[][] employee() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "employee");
-        return arrayObject;
-    }
-
-    @Test(dataProvider = "shift")
+    @Test(dataProvider = "shift", groups = "cloudApi")
     public void cloudApiShiftDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                             String headers, String headersForGetToken, String body, String expectedStatusCode,
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
         String uuid = UUID.randomUUID().toString();
-        if (requestMethod.equals("post"))
-            headers = "{RequestID:" + uuid + "}";
+        if (requestMethod.equals("post")){
+            if(headers==null)
+            headers = "{RequestID:" + uuid + "}";}
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
-    @Test(dataProvider = "employee")
-    public void cloudApiEmployeeDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
-                                  String headers, String headersForGetToken, String body, String expectedStatusCode,
-                                  String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
-        starTestLog(rowNum + ". " + comments, comments);
-        String uuid = UUID.randomUUID().toString();
-        String email = uuid.replace("-", "") + "@getnada.com";
-        if (requestMethod.equals("post")) {
-            headers = "{RequestID:" + uuid + "}";
-           if(body!= null)
-           body = body.replace("test@getnada.com", email);
-        }
-        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
-        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
-                expectedStatusCode, expectedResult, verifyList);
-
-   }
-
 
 }
