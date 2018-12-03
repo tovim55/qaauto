@@ -26,7 +26,7 @@
 
         <classes>
             <!--<class name="com.verifone.tests.cpTests.DevUploadApp"/>-->
-            <class name="com.verifone.tests.api.tests.CloudApiDdt"/>
+            <!--<class name="com.verifone.tests.api.tests.CloudApiDdt"/>-->
             <!--<class name="com.verifone.tests.cpTests.SignUpTestUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.DevSupportRejectCompanyTest"/>-->
             <!--<class name="com.verifone.tests.cpTests.CompanyReview"/>-->
@@ -41,13 +41,14 @@
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>-->
+            <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
             <!--<class name="com.verifone.tests.cpTests.EOPortalChangePassword_RegUI "/>-->
-            <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.Locale_MerchantSetupPasswordUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>-->
+            <class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>
+            <class name="com.verifone.tests.cpTests.Locale_MerchantSetupPasswordUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>
+
+
 
 
 

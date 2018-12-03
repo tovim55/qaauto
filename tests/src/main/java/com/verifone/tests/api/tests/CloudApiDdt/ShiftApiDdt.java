@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
-public class CloudApiDdt extends BaseTest {
+class CloudApiDdt extends BaseTest {
 
 
     private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\cloudApi.xls";
