@@ -54,7 +54,6 @@ public abstract class BaseTest {
 
     }
 
-
     public void setEnv(String env, String portal) throws IOException {
         envConfig = new EnvConfig(env, portal);
         System.out.println("The Automation tests runs on : " + env + " environment");
