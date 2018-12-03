@@ -10,22 +10,21 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
+import static com.verifone.utils.apiClient.DataDrivenApi.setFilePath;
+
 
 public class EmployeeApiDdt extends BaseTest {
 
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
 
-    @BeforeSuite
-    private void setFile() {
-        if (BaseTest.envConfig.getEnv().equals("QA"))
-            dataFile += "cloudApiQA.xls";
-        else
-            dataFile += "cloudApi.xls";
+    private String file;
+
+    public EmployeeApiDdt() {
+        this.file = setFilePath("cloudApiQA.xls", "cloudApi.xls");
     }
 
     @DataProvider(name = "employee")
     public Object[][] employee() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "employee");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(file, "employee");
         return arrayObject;
     }
 
@@ -34,8 +33,11 @@ public class EmployeeApiDdt extends BaseTest {
                                     String headers, String headersForGetToken, String body, String expectedStatusCode,
                                     String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
+        //Generate unique alphanumeric String
         String uuid = UUID.randomUUID().toString();
+        //Define unique unexisting email
         String email = uuid.replace("-", "").substring(21) + "@getnada.com";
+        //Define existing email in Database
         String existingEmail = "test@getnada.com";
         if (requestMethod.equals("post")) {
             if(body!= null) {
