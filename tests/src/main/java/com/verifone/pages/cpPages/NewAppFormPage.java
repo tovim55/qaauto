@@ -50,7 +50,9 @@ public class NewAppFormPage extends BasePage {
     public String fillGetStartedForm(Application app) throws InterruptedException {
         Thread.sleep(1000);
         sendKeys(this.appName, app.getAppName());
+        Thread.sleep(1000);
         click(version);
+        Thread.sleep(1000);
         click(generateIdBtn);
         Thread.sleep(2000);
         sendKeys(version, app.getVersion());
