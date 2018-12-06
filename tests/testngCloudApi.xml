@@ -28,7 +28,8 @@
             <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
             <!--<class name="com.verifone.tests.api.tests.CloudApiDdt.ShiftApiDdt"/>-->
             <!--<class name="com.verifone.tests.api.tests.CloudApiDdt.EmployeeApiDdt"/>-->
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.CustomerApiDdt"/>
+            <!--<class name="com.verifone.tests.api.tests.CloudApiDdt.CustomerApiDdt"/>-->
+            <class name="com.verifone.tests.api.tests.CloudApiDdt.CustomerAttributeApiDdt"/>
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow2UI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>-->
