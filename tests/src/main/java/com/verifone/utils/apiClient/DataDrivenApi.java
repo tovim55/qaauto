@@ -105,7 +105,7 @@ public class DataDrivenApi {
      */
     public static String setFilePath(String fileQA, String fileDev) {
 
-        String env = BaseTest.envConfig.getEnv();
+       String env = BaseTest.envConfig.getEnv();
 
         if (env.equals("QA"))
             return dataFile += fileQA;

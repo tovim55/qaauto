@@ -14,15 +14,17 @@ import static com.verifone.utils.apiClient.DataDrivenApi.setFilePath;
 
 public class CustomerApiDdt extends BaseTest {
 
-    @BeforeSuite
-    public String getFile() {
-        return setFilePath("cloudApiQA.xls", "cloudApi.xls");
+    private String file;
 
+    @BeforeSuite
+    private void getFile()
+    {
+        file = setFilePath("cloudApiQA.xls", "cloudApi.xls");
     }
 
     @DataProvider(name = "customer")
     public Object[][] customer() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(getFile(), "customer");
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(file, "customer");
         return arrayObject;
     }
 
@@ -43,15 +45,15 @@ public class CustomerApiDdt extends BaseTest {
         if (requestMethod.equals("post")) {
             if(body!= null) {
                 if (headers!=null)
-                    body = body.replace("email@getnada.com", email);
+                    body = body.replace("email@getnada.com", email); //verify post with unique email
                 else
-                    body = body.replace("email@getnada.com", existingEmail);
+                    body = body.replace("email@getnada.com", existingEmail); //verify post with existing email
             }
             if(body == null && headers ==null) {
-                headers = "{RequestID: }";
+                headers = "{RequestID: }"; //verify post without requestID
             }
             else
-                headers = "{RequestID:" + uuid + "}";
+                headers = "{RequestID:" + uuid + "}"; //verify post with unique requestID
         }
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
