@@ -30,7 +30,8 @@ public abstract class BaseTest {
     protected static ThreadLocal test = new ThreadLocal();
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-    public String reportDirectory = "C:\\reportTestNgResults\\" + dateFormat.format(date) + "\\";
+    public String reportDirectory = java.nio.file.Paths.get(
+            System.getProperty("user.dir"), "reports", dateFormat.format(date)).toString() + File.separator;
     public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
 
 
@@ -53,7 +54,6 @@ public abstract class BaseTest {
         }
 
     }
-
 
     public void setEnv(String env, String portal) throws IOException {
         envConfig = new EnvConfig(env, portal);
@@ -78,7 +78,7 @@ public abstract class BaseTest {
     @Parameters({"browserType"})
     @BeforeMethod
     public void startBrowser(Method method, String browserType) throws Exception {
-//        SeleniumUtils.reportDirectory = reportDirectory;
+        SeleniumUtils.reportDirectory = reportDirectory;
         if (method.getName().contains("DDT") && method.getName().contains("UI")) {
             BasePage.driver = SeleniumUtils.getDriver(browserType);
             return;
@@ -128,9 +128,6 @@ public abstract class BaseTest {
         }
         extent.flush();
     }
-
-
-
 
 
 }

@@ -12,10 +12,9 @@ import java.util.UUID;
 
 import static com.verifone.utils.apiClient.DataDrivenApi.setFilePath;
 
+public class LocationApiDdt extends BaseTest {
 
-public class ShiftApiDdt extends BaseTest {
-
-    private static String file;
+    private String file;
 
     @BeforeSuite
     private void getFile()
@@ -23,22 +22,19 @@ public class ShiftApiDdt extends BaseTest {
         file = setFilePath("cloudApiQA.xls", "cloudApi.xls");
     }
 
-    @DataProvider(name = "shift")
-    public Object[][] shift() throws Exception {
-        Object[][] arrayObject = DataDrivenUtils.getExcelData(file, "shift");
+    @DataProvider(name = "location")
+    public Object[][] location() throws Exception {
+        Object[][] arrayObject = DataDrivenUtils.getExcelData(file, "location");
         return arrayObject;
     }
 
-    @Test(dataProvider = "shift", groups = "cloudApi")
-    public void cloudApiShiftDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+    @Test(dataProvider = "location", groups = "cloudApi")
+
+    public void cloudApiLocationDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                             String headers, String headersForGetToken, String body, String expectedStatusCode,
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
-        //Generate unique alphanumeric String
-        String uuid = UUID.randomUUID().toString();
-        if (requestMethod.equals("post")){
-            if(headers==null)
-            headers = "{RequestID:" + uuid + "}";} //verify post with unique requestID
+
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);

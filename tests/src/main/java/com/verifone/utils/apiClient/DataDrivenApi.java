@@ -2,6 +2,7 @@ package com.verifone.utils.apiClient;
 
 import com.google.gson.JsonObject;
 import com.aventstack.extentreports.ExtentTest;
+import com.verifone.tests.BaseTest;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
@@ -31,7 +32,6 @@ public class DataDrivenApi {
     public DataDrivenApi(ExtentTest child) {
         this.testLog = child;
     }
-
 
     public void startProsess(String accessToken, String accGrantType, String accSSOURL, String uri,
                              String requestMethod, String headers, String headersForGetToken, String body,
@@ -95,6 +95,21 @@ public class DataDrivenApi {
         this.user = user;
     }
 
+    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
 
+    /**
+     *
+     * @param fileQA
+     * @param fileDev
+     * @return full dataFilePath String (according to Environment)
+     */
+    public static String setFilePath(String fileQA, String fileDev) {
 
+       String env = BaseTest.envConfig.getEnv();
+
+        if (env.equals("QA"))
+            return dataFile += fileQA;
+         else
+            return dataFile += fileDev;
+    }
 }
