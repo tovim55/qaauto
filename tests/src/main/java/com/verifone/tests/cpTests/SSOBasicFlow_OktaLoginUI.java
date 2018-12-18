@@ -67,6 +67,7 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
         testLog.info("-------------------------------------------------Navigate to Portal-------------------------------------------------");
 
         portalURI = "https://" + env + "." + portal;
+        String OktaHome_url = "https://verifone.okta.com/";
         BasePage.driver.navigate().to(portalURI);
 
 //		Test LoginportalURI
@@ -87,23 +88,73 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
 
         testLog.info("---------------------------------------------------OKTA page----------------------------------------------------");
 
-        Thread.sleep(timeOut);
+        Thread.sleep(2000);
+        BasePage.driver.navigate().to(OktaHome_url);
+        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+        if (!OktaLogin.loginOktaTitleExists()) {
+            OktaLogin.SignOut();
+        }
+
+        Thread.sleep(2000);
+        BasePage.driver.navigate().to(portalURI);
+        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginInputEmail(email);
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
-        testLog.info("Navigate to OKTA Login page");
-        OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+
+        Thread.sleep(2000);
+        OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+
+        if (OktaLogin.loginOktaTitle().contains("Okta Verify")){
+            OktaLogin.SignOutOktaVerify();
+        }
+        Thread.sleep(2000);
         OktaLogin.loginInputName(name);
-        testLog.info("Name: " + name);
         OktaLogin.loginInputPassword(password);
-        testLog.info("Password: " + password);
         OktaLogin.clickSignInBtn();
 
         availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
         BasePage.driver.switchTo().window(availableWindows.get(0));
         OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
         OktaLogin.loginInputAnswer(answer);
-        testLog.info("Security answer: " + answer);
+        testLog.info("Security answer: " + "");
         OktaLogin.clickVerifyBtn();
+
+        Thread.sleep(2000);
+        if (!OktaLogin.loginOktaTitleExists()) {
+            BasePage.driver.navigate().to(portalURI);
+            LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+            LoginEOPortal.loginInputEmail(email);
+            availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+            BasePage.driver.switchTo().window(availableWindows.get(0));
+
+            Thread.sleep(2000);
+            if (OktaLogin.loginOktaTitleExists()) {
+                if (OktaLogin.loginOktaTitle().contains("Sign In")) {
+                    OktaLogin.loginInputName(name);
+                    OktaLogin.loginInputPassword(password);
+                    OktaLogin.clickSignInBtn();
+                }
+            }
+        }
+        Thread.sleep(timeOut);
+//        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+//        BasePage.driver.switchTo().window(availableWindows.get(0));
+//        testLog.info("Navigate to OKTA Login page");
+//        OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+//        OktaLogin.loginInputName(name);
+//        testLog.info("Name: " + name);
+//        OktaLogin.loginInputPassword(password);
+//        testLog.info("Password: " + password);
+//        OktaLogin.clickSignInBtn();
+//
+//        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+//        BasePage.driver.switchTo().window(availableWindows.get(0));
+//        OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+//        OktaLogin.loginInputAnswer(answer);
+//        testLog.info("Security answer: " + answer);
+//        OktaLogin.clickVerifyBtn();
 
         testLog.info("---------------------------------------------------Portal page----------------------------------------------------");
 

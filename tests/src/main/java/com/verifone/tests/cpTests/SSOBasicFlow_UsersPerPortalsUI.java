@@ -216,7 +216,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 				Thread.sleep(timeOut);
 //				Assert.assertFalse(HomePage1.menuUserExists());
 				Assert.assertTrue(HomePage1.menuProfileExists());
-				Assert.assertFalse(HomePage1.menuMailerExists());
+//				Assert.assertFalse(HomePage1.menuMailerExists());
 //				Assert.assertTrue(HomePage1.menuSponsorExists());
 				Assert.assertTrue(HomePage1.menuLogoutExists());
 				break;
@@ -588,9 +588,9 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 				Assert.assertTrue(HomePage3.headerExists());
 				HomePage3.clickHeaderMenu();
 				Thread.sleep(timeOut);
-				Assert.assertFalse(HomePage3.menuUserExists());
+//				Assert.assertFalse(HomePage3.menuUserExists());
 				Assert.assertTrue(HomePage3.menuProfileExists());
-				Assert.assertFalse(HomePage3.menuCompanyExists());
+//				Assert.assertFalse(HomePage3.menuCompanyExists());
 				Assert.assertTrue(HomePage3.menuLogoutExists());
 				break;
             case "Dev Admin":

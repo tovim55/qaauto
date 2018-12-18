@@ -18,7 +18,7 @@ public class UserDetailsPage extends BasePage {
 
     private By titleLoc = By.xpath("//*[@class='top-container']");
     private By userNameLoc = By.xpath("(//*[@class='control-value'])[1]");
-    private By userEmaulLoc = By.xpath("(//*[@class='control-value'])[2]");
+    private By userEmaulLoc = By.xpath("//*[@class='control-value text-overfolw-fix']");
 //    private By userEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[1]");
     private By userEditLoc = By.xpath("//*[@class='pull-right edit-user']");
 //    private By roleEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[2]");

@@ -80,7 +80,13 @@ import static com.verifone.pages.BasePage.testLog;
             ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
             BasePage.driver.switchTo().window(availableWindows.get(0));
 
+            Thread.sleep(2000);
             OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+
+            if (OktaLogin.loginOktaTitle().contains("Okta Verify")){
+                OktaLogin.SignOutOktaVerify();
+            }
+            Thread.sleep(2000);
             OktaLogin.loginInputName(param5);
             OktaLogin.loginInputPassword(param3);
             OktaLogin.clickSignInBtn();
@@ -91,6 +97,26 @@ import static com.verifone.pages.BasePage.testLog;
             OktaLogin.loginInputAnswer(param6);
             testLog.info("Security answer: " + "");
             OktaLogin.clickVerifyBtn();
+
+            Thread.sleep(2000);
+            if (!OktaLogin.loginOktaTitleExists()) {
+                BasePage.driver.navigate().to(url);
+                LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+                LoginEOPortal.loginInputEmail(param2);
+                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
+                BasePage.driver.switchTo().window(availableWindows.get(0));
+
+                Thread.sleep(2000);
+                if (OktaLogin.loginOktaTitleExists()){
+                    if (OktaLogin.loginOktaTitle().contains("Sign In")) {
+                        OktaLogin.loginInputName(param5);
+                        OktaLogin.loginInputPassword(param3);
+                        OktaLogin.clickSignInBtn();
+                    }
+                }
+            }
+
+
 
         }
         else {
