@@ -204,7 +204,7 @@ public abstract class BasePage {
                 "    var blob = new Blob(byteArrays, {type: contentType});\n" +
                 "    return blob;\n" +
                 "}" +
-                "var blob = base64toBlob(base64Image, 'image / png');" +
+                "var blob = base64toBlob(base64Image, 'zip');" +
                 "blob.name = '" + fileName + "';" +
                 "myZone.addFile(blob);  "
         );
