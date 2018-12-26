@@ -7,7 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <parameter name="env" value="${environment}"/>
-    <parameter name="getVersions" value="false"/>
+    <parameter name="getVersions" value="true"/>
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
@@ -25,16 +25,9 @@
 
 
         <classes>
-            <class name="com.verifone.tests.cpTests.DevUploadApp"/>
-            <!--<class name="com.verifone.tests.api.tests.CloudApiDdt.ShiftApiDdt"/>-->
-            <!--<class name="com.verifone.tests.cpTests.SignUpTestUI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevSupportRejectCompanyTest"/>-->
-            <!--<class name="com.verifone.tests.cpTests.CompanyReview"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevSupportUsersTest"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevSupportCompaniesTest"/>-->
-            <!--&lt;!&ndash;<class name="com.verifone.tests.cpTests.CreateMerchantTest"/>&ndash;&gt;-->
-            <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevSupportAcceptCompanyTest"/>-->
+            <class name="com.verifone.tests.api.tests.CloudApiDdt.ShiftApiDdt"/>
+            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
+            <class name="com.verifone.tests.cpTests.LoginTest"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>
