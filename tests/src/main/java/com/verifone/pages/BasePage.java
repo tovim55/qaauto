@@ -173,7 +173,7 @@ public abstract class BasePage {
     }
 
     //    TODO complete method implementation
-    protected void uploadFile(String filePath, WebElement dropZoneClass) throws IOException {
+    protected void uploadFile(String filePath, WebElement dropZoneClass, String fileType) throws IOException {
 
         String id = dropZoneClass.getAttribute("id");
         String[] path = filePath.split("\\\\");
@@ -204,7 +204,7 @@ public abstract class BasePage {
                 "    var blob = new Blob(byteArrays, {type: contentType});\n" +
                 "    return blob;\n" +
                 "}" +
-                "var blob = base64toBlob(base64Image, 'zip');" +
+                "var blob = base64toBlob(base64Image, '" + fileType + "');" +
                 "blob.name = '" + fileName + "';" +
                 "myZone.addFile(blob);  "
         );
@@ -238,9 +238,6 @@ public abstract class BasePage {
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
     }
-
-
-
 
 
     /**

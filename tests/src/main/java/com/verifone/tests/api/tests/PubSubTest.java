@@ -3,6 +3,7 @@ package com.verifone.tests.api.tests;
 import com.google.gson.JsonObject;
 //import com.verifone.entities.EntitiesFactory;
 //import com.verifone.entities.EntitiesFactory;
+import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.User;
 import com.verifone.pages.cpPages.LoginPage;
 import com.verifone.pages.eoPages.HomePage;
@@ -37,7 +38,6 @@ public class PubSubTest extends BaseTest {
         loginPage.loginPageCp(user);
         System.out.println(mId);
         assertTextContains(mId, new HomePage().getMerchants());
-        
         
     }
 

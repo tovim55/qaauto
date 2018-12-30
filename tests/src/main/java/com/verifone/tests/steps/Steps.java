@@ -9,6 +9,8 @@ import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.*;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Mail.InboxGetnada;
+import com.verifone.utils.apiClient.dc.SsoApi;
+import com.verifone.utils.apiClient.getToken.GetTokenApi;
 import com.verifone.utils.appUtils.Application;
 import com.verifone.utils.appUtils.ApplicationUtils;
 
@@ -76,7 +78,7 @@ public class Steps {
     }
 
 
-        public static LoginPage devSupportAdminLogin() throws Exception {
+    public static LoginPage devSupportAdminLogin() throws Exception {
         User dev = EntitiesFactory.getEntity("DevSupportAdmin");
         LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
         loginPage.supportLogin(dev);
@@ -96,10 +98,40 @@ public class Steps {
         loginPage.checkExistCompanies(dev);
     }
 
-    public static void restartSession() {
-        // Not recommended to use this method
-//        restartDriver();
+
+    public static String getToken(User user) throws IOException {
+        GetTokenApi getTokenApi = new GetTokenApi("testId");
+        return getTokenApi.getToken(user);
     }
+
+
+    public static User createDcOrg() throws IOException {
+        User eoAdmin = EntitiesFactory.getEntity("EOAdmin");
+        User dcOrg = EntitiesFactory.getEntity("NewUser");
+        String token = getToken(eoAdmin);
+        new SsoApi(token).createDcOrg(dcOrg);
+        return dcOrg;
+    }
+
+
+    public static User createDcUser() throws IOException {
+        User eoAdmin = EntitiesFactory.getEntity("EOAdmin");
+        User dcOrg = createDcOrg();
+        User dcUser = EntitiesFactory.getEntity("NewUser");
+        SsoApi ssoApi = new SsoApi(getToken(eoAdmin));
+        ssoApi.createDcUser(dcUser, dcOrg);
+        return dcUser;
+    }
+
+    public static User createDcUserGivenOrg(User dcOrg) throws IOException {
+        User eoAdmin = EntitiesFactory.getEntity("EOAdmin");
+        User dcUser = EntitiesFactory.getEntity("NewUser");
+        SsoApi ssoApi = new SsoApi(getToken(eoAdmin));
+        ssoApi.createDcUser(dcUser, dcOrg);
+        return dcUser;
+    }
+
+
 
     public static void checkAcceptCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
@@ -111,7 +143,7 @@ public class Steps {
         loginPage.rejectCompany(dev);//dev
     }
 
-    public static void logout(){
+    public static void logout() {
         new DevHomePage().logout();
     }
 

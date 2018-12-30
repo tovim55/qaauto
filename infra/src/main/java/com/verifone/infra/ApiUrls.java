@@ -16,6 +16,8 @@ public class ApiUrls {
     private String getAgreement;
     private String acceptAgreement;
     private String resendInvitation;
+    private String createDcOrg;
+
 
     public ApiUrls(String env, Properties prop) throws IOException {
         env = env + ".";
@@ -27,6 +29,7 @@ public class ApiUrls {
         updatePassword = prop.getProperty(env + "updatePassword");
         acceptAgreement = prop.getProperty(env + "acceptAgreement");
         resendInvitation = prop.getProperty(env + "resendInvitation");
+        createDcOrg = prop.getProperty(env + "createDcOrg");
 
     }
 
@@ -49,6 +52,10 @@ public class ApiUrls {
 
     public String getCreateMerchant() {
         return createMerchant;
+    }
+
+    public String getCreateDcOrg() {
+        return createDcOrg;
     }
 
     public void setCreateMerchant(String createMerchant) {

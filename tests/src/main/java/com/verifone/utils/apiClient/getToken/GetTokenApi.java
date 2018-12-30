@@ -22,7 +22,7 @@ public class GetTokenApi extends BaseApi {
     }
 
 
-    public String getToken(User user) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    public String getToken(User user) throws IOException {
     	response = getPost("grant_type=password&username="+ user.getUserName() + "&password=" + user.getPassword() +"&scope=openid\"", 200);
         String accessToken = response.get("access_token").getAsString();
         System.out.println("access token was generated:  " + accessToken);

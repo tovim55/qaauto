@@ -1,0 +1,59 @@
+{
+  "data": {
+    "addresses": [
+      {
+        "addressLineOne": "88 W Plumeria Dr",
+        "addressLineTwo": "",
+        "city": "San Jose",
+        "countryCode": "US",
+        "primary": true,
+        "state": "CA",
+        "zipCode": "95134"
+      }
+    ],
+    "contact": {
+      "email": {
+        "email": "mukysDC@getnada.com",
+        "primary": true
+      },
+      "firstName": "Ed",
+      "lastName": "Tr",
+      "phone": {
+        "countryCode": "1",
+        "extensionNumber": "1",
+        "phoneNumber": "456223222",
+        "phoneType": "SUPPORT",
+        "primary": true
+      }
+    },
+    "emails": [
+      {
+        "email": "mukysDC@getnada.com",
+        "primary": true
+      }
+    ],
+    "logoUrl": "www.dc.com",
+    "name": "mukysDC",
+    "orgType": "DISTRIBUTION_CENTER",
+    "parentOrgID": "",
+    "phones": [
+      {
+        "countryCode": "1",
+        "extensionNumber": "1",
+        "phoneNumber": "4502333232",
+        "phoneType": "SUPPORT",
+        "primary": true
+      }
+    ],
+    "pin": 333,
+    "rootOrgID": "",
+    "vhqCustomerId": 123423588828,
+    "vhqEndpointId": 12456,
+    "websites": [
+      {
+        "primary": true,
+        "website": "www.dc.com"
+      }
+    ]
+  }
+}
