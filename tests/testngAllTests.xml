@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Verifone" >
+<suite name="Verifone">
 
     <!--Set Env Variable: -->
     <!--QA-->
@@ -24,7 +24,6 @@
         <!--IE-->
         <parameter name="browserType" value="${browser}"/>
 
-
         <classes>
             <class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
@@ -34,16 +33,19 @@
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>
+        </classes>
+
+    </test>
+
+    <test name="Eo Portal">
+        <parameter name="browserType" value="${browser}"/>
+
+        <classes>
             <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
-            <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
             <class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>
             <class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>
             <class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>
-
-
-
-
-
+            <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
         </classes>
 
     </test>
