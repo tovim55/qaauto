@@ -9,6 +9,7 @@ import com.verifone.utils.apiClient.DataDrivenApi;
 import com.verifone.utils.apiClient.createMerchant.CreateMerchant;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.util.UUID;
 
 import static com.verifone.utils.DataDrivenUtils.getMapFromStr;
@@ -17,15 +18,16 @@ import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
 
 public class PubSubDdtTest extends BaseTest {
 
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+    private static String dataFile = java.nio.file.Paths.get(System.getProperty("user.dir"),
+            "src", "test", "resources").toString();
 
 
     @BeforeSuite
     private void setFile() {
         if (BaseTest.envConfig.getEnv().equals("QA"))
-            dataFile += "apiDataQA.xls";
+            dataFile += File.separator + "apiDataQA.xls";
         else
-            dataFile += "apiData.xls";
+            dataFile += File.separator + "apiData.xls";
     }
 
 

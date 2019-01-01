@@ -30,7 +30,7 @@ public class TestNgPortal {
 		test.log(LogStatus.PASS, "Test Passed - <span class='label success'>success</span>");			
 		break;
 	case ITestResult.FAILURE:
-		String capScreenShootPath = SeleniumUtils.getScreenshot();
+		String capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 		test.log(LogStatus.FAIL, "Test Failed !!! <span class='Failed'>fail</span>");
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));

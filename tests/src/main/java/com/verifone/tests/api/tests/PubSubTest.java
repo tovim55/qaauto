@@ -38,7 +38,7 @@ public class PubSubTest extends BaseTest {
         loginPage.loginPageCp(user);
         System.out.println(mId);
         assertTextContains(mId, new HomePage().getMerchants());
-        
+
     }
 
 

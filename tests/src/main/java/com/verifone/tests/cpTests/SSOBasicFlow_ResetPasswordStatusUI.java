@@ -62,7 +62,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
     @Test(enabled = true, priority=1, testName = "User Forgot/Reset Password", description = "User Merchant Manager forgot password, reset password login EO Admin portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void userForgotResetPasswordUI() throws Exception {
-
+        WebDriver driver = new HomePage().getDriver();
         User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
         EOAdminEmail = EOAdmin.getUserName();
         EOAdminPwd = EOAdmin.getPassword();
@@ -73,7 +73,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         testLog.info("User mail: " + EOAdminEmail);
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
 
 //		Test Login
 //    	Setup Login button
@@ -82,8 +82,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         //    	Click on Forgot Password link
         Thread.sleep(timeOut + 1000);
         ArrayList<String>
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         testLog.info( "Navigate to Forgot Password page");
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginForgotLinkClick();
@@ -91,33 +91,33 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         testLog.info( "----------------------------------------------Forgot Password page-----------------------------------------------");
         //    	Compare Title, Text, Email text, Send button label, Login link label with expected on Forgot Password page
         Thread.sleep(timeOut + 3000);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         ForgotPasswordPage ForgotPasswordPage = (ForgotPasswordPage) PageFactory.getPage("ForgotPasswordPage");
 
 //    	Compare Forgot page title with expected
         String tText = ForgotPasswordPage.pageTitle();
-        if (!Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog)){
+        if (!Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Compare Forgot page text with expected
         tText = ForgotPasswordPage.pageText();
-        if (!Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog)){
+        if (!Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Compare Forgot page Mail label with expected
         tText = ForgotPasswordPage.mailLabelText();
-        if (!Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog)){
+        if (!Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Compare Forgot page Login link text with expected
         tText = ForgotPasswordPage.btnSendText();
-        if (!Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog)){
+        if (!Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Compare Forgot page Login link text with expected
         tText = ForgotPasswordPage.lnkLoginText();
-        if (!Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog)){
+        if (!Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog, driver)){
             TestPassFlag = false;
         }
         //    	Forgot Password Page: Email empty. Get error and compare with expected
@@ -128,7 +128,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         Thread.sleep(timeOut - 1000);
         tText = ForgotPasswordPage.errorEmptyText();
-        if (!Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog)){
+        if (!Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Forgot Password Page: Email Invalid. Get error and compare with expected
@@ -139,7 +139,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         Thread.sleep(1000);
 
         tText = ForgotPasswordPage.errorEmptyText();
-        if (!Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog)){
+        if (!Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Forgot Password Page: Email Not Match. Get error and compare with expected
@@ -153,81 +153,81 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
 //    	Goto Getnada mail and Open received email
         Thread.sleep(timeOut + 3000);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
-        BasePage.driver.navigate().to("https://getnada.com/#");
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
+        driver.navigate().to("https://getnada.com/#");
 
 // 		Click Add Inbox
-        BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
+        driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
 
         // Put email
-        BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-        BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(ForgotEmail.replace("@getnada.com",""));
+        driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
+        driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(ForgotEmail.replace("@getnada.com",""));
 
-        BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
-        BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
+        driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
+        driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
 
         //  Accept
-        BasePage.driver.findElement(By.linkText("ACCEPT")).click();
+        driver.findElement(By.linkText("ACCEPT")).click();
 
         //  Open Email
 
         Thread.sleep(timeOut);
         testLog.info( "Open received email");
-        BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject bold')]")).click();
+        driver.findElement(By.xpath("//div[contains(@class, 'subject bold')]")).click();
 
         //   Get email text
 
         Thread.sleep(timeOut);
 
-        WebElement iFrame = BasePage.driver.findElement(By.id("idIframe"));
-        BasePage.driver.switchTo().frame(iFrame);
-        String mailText = BasePage.driver.getPageSource();
+        WebElement iFrame = driver.findElement(By.id("idIframe"));
+        driver.switchTo().frame(iFrame);
+        String mailText = driver.getPageSource();
 
 //    	Compare Mail text with expected
-        if (!Assertions.compareValue("You recently requested a password change for", mailText, "Reset Password mail include text:", testLog)){
+        if (!Assertions.compareValue("You recently requested a password change for", mailText, "Reset Password mail include text:", testLog, driver)){
             TestPassFlag = false;
         }
-        if (!Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", mailText, "Reset Password mail include text:", testLog)){
+        if (!Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", mailText, "Reset Password mail include text:", testLog, driver)){
             TestPassFlag = false;
         }
-        if (!Assertions.compareValue("Thank you,", mailText, "Reset Password mail include text:", testLog)){
+        if (!Assertions.compareValue("Thank you,", mailText, "Reset Password mail include text:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Compare Reset Password button label with expected
-        mailText = BasePage.driver.findElement(By.xpath(mailResetButton)).getText();
-        if (!Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog)){
+        mailText = driver.findElement(By.xpath(mailResetButton)).getText();
+        if (!Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog, driver)){
             TestPassFlag = false;
         }
-        BasePage.driver.findElement(By.xpath(mailResetButton)).click();
+        driver.findElement(By.xpath(mailResetButton)).click();
 
         testLog.info( "Click on: " + mailResetButton + " button: Succesfull");
 
 //    	Reset Password Page
         testLog.info( "-----------------------------------------------Reset Password page-----------------------------------------------");
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(1));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(1));
         ResetPasswordPage ResetPasswordPage = (ResetPasswordPage) PageFactory.getPage("ResetPasswordPage");
 
 //    	Reset Password Page: Compare title with expected
         tText = ResetPasswordPage.pageTitle();
-        if (!Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog)){
+        if (!Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Compare Password label with expected
         tText = ResetPasswordPage.passwordLabelText();
-        if (!Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog)){
+        if (!Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Compare Confirm Password label with expected
         tText = ResetPasswordPage.confirmPasswordLabelText();
-        if (!Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog)){
+        if (!Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Compare Proceed button label with expected
         tText = ResetPasswordPage.btnProceedText();
-        if (!Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog)){
+        if (!Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Input empty password, get error and compare with expected
@@ -236,7 +236,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorEmptyText();
-        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog)){
+        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Input empty Confirm password, get error and compare with expected
@@ -245,7 +245,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorConfirmEmptyText();
-        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog)){
+        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog, driver)){
             TestPassFlag = false;
         }
 
@@ -256,7 +256,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         ResetPasswordPage.clickBtnProceed();
         Thread.sleep(timeOut - 1000);
         tText = ResetPasswordPage.errorConfirmEmptyText();
-        if (!Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog)){
+        if (!Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Input Same Password and Confirmation Password, click on Proceed button
@@ -269,19 +269,19 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 //    	Thank you page
         testLog.info( "-------------------------------------------------Thank You page--------------------------------------------------");
         Thread.sleep(timeOut + 2000);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(1));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(1));
         ResetThankYou ResetThankYou = (ResetThankYou) PageFactory.getPage("ResetThankYou");
 
 //    	Thank you page: Compare title with expected
         tText = ResetThankYou.pageTitle();
-        if (!Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog)){
+        if (!Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog, driver)){
             TestPassFlag = false;
         }
 
 //    	Thank you page: Compare page text with expected
         tText = ResetThankYou.pageText();
-        if (!Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog)){
+        if (!Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Thank you page: Click on LogIn link
@@ -290,8 +290,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
 
         Thread.sleep(timeOut + 2000);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(1));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(1));
 
 //    	Compare loginAndCheck Title text with expected
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
@@ -310,21 +310,21 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 //		Home Page
         testLog.info( "---------------------------------------------------Home page----------------------------------------------------");
         Thread.sleep(timeOut+3000);
-//        WebDriverWait wait = new WebDriverWait(BasePage.driver, 30);
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
 //
 //        wait.until(new ExpectedCondition<Boolean>() {
 //            public Boolean apply(WebDriver wdriver) {
-//                return ((JavascriptExecutor) BasePage.driver).executeScript(
+//                return ((JavascriptExecutor) driver).executeScript(
 //                        "return document.readyState"
 //                ).equals("complete");
 //            }
 //        });
-        String url = BasePage.driver.getCurrentUrl();
-        if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog)){
+        String url = driver.getCurrentUrl();
+        if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog, driver)){
             TestPassFlag = false;
         }
         Assert.assertTrue(TestPassFlag);
-        //BasePage.driver.quit();
+        //driver.quit();
     }
 
     @BeforeTest
@@ -337,7 +337,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
     @Test(enabled = true, priority=2, testName = "Disable Merchant Manager", description = "Disable Merchant Manager blocked login EO Portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void DisableUserUI() throws Exception {
-
+        WebDriver driver = new HomePage().getDriver();
         User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
         EOAdminEmail = EOAdmin.getUserName();
         EOAdminPwd = EOAdmin.getPassword();
@@ -347,7 +347,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
 
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(EOAdminEmail);
@@ -356,8 +356,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
 
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         Thread.sleep(timeOut);
@@ -371,8 +371,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         HomePage.clickUserMenu();
         Thread.sleep(timeOut);
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
         AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 
@@ -382,8 +382,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         System.out.println(a);
         UsersPage.clickOnRow(a);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
         DisableUserEmail = UserDetailsPage.getUserEmail();
         testLog.info( "Disabled user: " + DisableUserEmail);
@@ -404,10 +404,10 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-----------------------------------------Try to Log in as disabled Merchant Manager-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(DisableUserEmail);
         LoginEOPortal.loginInputPassword(DisableUserPwd);
@@ -415,11 +415,11 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         Thread.sleep(timeOut);
 
         String tText = LoginEOPortal.lerrorMatch();
-        if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog)){
+        if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog, driver)){
             TestPassFlag = false;
         }
         Assert.assertTrue(TestPassFlag);
-        //BasePage.driver.quit();
+        //driver.quit();
     }
 
     @BeforeTest
@@ -430,6 +430,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
     }
     @Test(enabled = true, priority=3, testName = "Disable Merchant", description = "Disable Merchant blocked login merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void DisableMerchantUI() throws Exception {
+        WebDriver driver = new HomePage().getDriver();
         User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
         EOAdminEmail = EOAdmin.getUserName();
         EOAdminPwd = EOAdmin.getPassword();
@@ -437,7 +438,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         testLog.info( "This test check that disabled Merchant blocked to Log In Merchant Portal");
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
 
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(EOAdminEmail);
@@ -446,8 +447,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
 
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         testLog.info( "-------------------------------------------------Merchants list-------------------------------------------------");
@@ -455,8 +456,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         HomePage.clickMerchantsMenu();
         Thread.sleep(timeOut);
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         MerchantsPage MerchantsPage = (MerchantsPage) PageFactory.getPage("MerchantsPage");
         AssertJUnit.assertEquals("Merchants", MerchantsPage.titleMerchants());
 
@@ -464,8 +465,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         System.out.println(a);
         MerchantsPage.clickOnRow(a);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         MerchantDetailsPage MerchantDetailsPage = (MerchantDetailsPage) PageFactory.getPage("MerchantDetailsPage");
         DisableMerchantEmail = MerchantDetailsPage.getMerchantEmail();
         testLog.info( "Disabled Merchant: " + DisableMerchantEmail);
@@ -488,10 +489,10 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         testLog.info( "--------------------------------------------Try to Log in as disabled Merchant -------------------------------------------------");
 
         Thread.sleep(timeOut);
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(DisableMerchantEmail);
         LoginEOPortal.loginInputPassword(DisableMerchantPwd);
@@ -499,11 +500,11 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         Thread.sleep(timeOut);
 
         String tText = LoginEOPortal.lerrorMatch();
-        if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog)){
+        if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found error:", testLog, driver)){
             TestPassFlag = false;
         }
         Assert.assertTrue(TestPassFlag);
-        //BasePage.driver.quit();
+        //driver.quit();
     }
 
     @BeforeTest
@@ -514,6 +515,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
     }
     @Test(enabled = true, priority=4, testName = "Enable Merchant Manager", description = "Enable Merchant Manager logged in merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void EnableUserUI() throws Exception {
+        WebDriver driver = new HomePage().getDriver();
         User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
         EOAdminEmail = EOAdmin.getUserName();
         EOAdminPwd = EOAdmin.getPassword();
@@ -522,7 +524,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
 
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(EOAdminEmail);
@@ -531,8 +533,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
 
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         Thread.sleep(timeOut);
@@ -546,8 +548,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         HomePage.clickUserMenu();
         Thread.sleep(timeOut);
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
         AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 
@@ -555,8 +557,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         System.out.println(a);
         UsersPage.clickOnRow(a);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         UserDetailsPage UserDetailsPage = (UserDetailsPage) PageFactory.getPage("UserDetailsPage");
         EnableUserEmail = UserDetailsPage.getUserEmail();
         testLog.info( "Enabled user: " + EnableUserEmail);
@@ -578,10 +580,10 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "----------------------------------------Log in EO portal as enabled Merchant Manager-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         Thread.sleep(timeOut);
         LoginEOPortal.loginInputEmail(EnableUserEmail);
@@ -591,13 +593,13 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------Merchant Manager Home page-------------------------------------------------");
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         HomePage = (HomePage) PageFactory.getPage("HomePage");
         AssertJUnit.assertEquals(true, HomePage.headerExists());
 
         Assert.assertTrue(TestPassFlag);
-        //BasePage.driver.quit();
+        //driver.quit();
     }
 
     @BeforeTest
@@ -608,6 +610,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
     }
     @Test(enabled = true, priority=5, testName = "Enable Merchant", description = "Enable Merchant logged in merchant portal", groups = {"SSOBasic"}, alwaysRun = true)
     public void EnableMerchantUI() throws Exception {
+        WebDriver driver = new HomePage().getDriver();
         User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
         EOAdminEmail = EOAdmin.getUserName();
         EOAdminPwd = EOAdmin.getPassword();
@@ -616,7 +619,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
 
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(EOAdminEmail);
@@ -625,8 +628,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------EO Admin Home page-------------------------------------------------");
 
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         testLog.info( "-----------------------------------------------------Merchants list-------------------------------------------------");
@@ -635,8 +638,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         HomePage.clickMerchantsMenu();
         Thread.sleep(timeOut);
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         MerchantsPage MerchantsPage = (MerchantsPage) PageFactory.getPage("MerchantsPage");
         AssertJUnit.assertEquals("Merchants", MerchantsPage.titleMerchants());
 
@@ -644,8 +647,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         System.out.println(a);
         MerchantsPage.clickOnRow(a);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         MerchantDetailsPage MerchantDetailsPage = (MerchantDetailsPage) PageFactory.getPage("MerchantDetailsPage");
         EnableMerchantEmail = MerchantDetailsPage.getMerchantEmail();
         testLog.info( "Enabled Merchant: " + EnableMerchantEmail);
@@ -667,10 +670,10 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         testLog.info( "-----------------------------------------------Log in EO portal as enabled Merchant-------------------------------------------------");
 
         Thread.sleep(timeOut);
-        BasePage.driver.navigate().to(portalEOURI);
+        driver.navigate().to(portalEOURI);
         Thread.sleep(timeOut);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         Thread.sleep(timeOut);
         LoginEOPortal.loginInputEmail(EnableMerchantEmail);
@@ -680,13 +683,13 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "---------------------------------------------------------Merchant Home page-------------------------------------------------");
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         MerchantThankYouPage MerchantThankYouPage = (MerchantThankYouPage) PageFactory.getPage("MerchantThankYouPage");
         AssertJUnit.assertEquals("Thank you!",MerchantThankYouPage.pageTitle());
 
         Assert.assertTrue(TestPassFlag);
-        //BasePage.driver.quit();
+        //driver.quit();
     }
 
 }

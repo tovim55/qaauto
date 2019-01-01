@@ -268,7 +268,7 @@ public class Columns{
 					System.out.println("Actual: "+ driver.findElement(By.xpath(columnXpathLocator.replaceAll( "@@@@@", Integer.toString(i+1) ))).getAttribute("innerText"));
 					test.log(LogStatus.FAIL, "Actual: "+ driver.findElement(By.xpath(columnXpathLocator.replaceAll( "@@@@@", Integer.toString(i+1) ))).getAttribute("innerText"));
 					testStepPassed = false;
-					capScreenShootPath = SeleniumUtils.getScreenshot();
+					capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 					test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 					test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));
 				}

@@ -78,6 +78,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
     @Test(enabled = true, priority = 1, testName = "EO Portal Login", description = "EO Portal Login with different roles", dataProvider = "loginRoles", groups = {"SSOBasic"}, alwaysRun = true)
 
 	public void loginEOPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
+		WebDriver driver = new HomePage().getDriver();
 		TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         rowNumber = rowNumber + 1;
@@ -88,44 +89,44 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to("https://" + env + "." + EOPortalURI);
+        driver.navigate().to("https://" + env + "." + EOPortalURI);
 
 //		Test Login
 //    	Setup Login button
     	testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
 
     	Thread.sleep(timeOut + 2000);
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-    	BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+    	driver.switchTo().window(availableWindows.get(0));
 
 //    	Compare login Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
     	String tText = LoginEOPortal.loginTitle();
-    	if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog)) {
+    	if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 //    	Compare login Email text with expected
     	tText = LoginEOPortal.loginEmail();
-		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog)){
+		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 //    	Compare login Password text with expected
 		tText = LoginEOPortal.loginPassword();
-		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog)){
+		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 //    	Compare login Forgot link text with expected
 		tText = LoginEOPortal.loginForgotLink();
-		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Forgot Password link text:", testLog)){
+		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Forgot Password link text:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 //    	Compare login button text with expected
     	tText = LoginEOPortal.loginBtnLabel();
-		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog)){
+		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -135,7 +136,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
     	testLog.info( "Login page: Input Email = ' '");
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMandatoryField();
-		if (!Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog)){
+		if (!Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -145,7 +146,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
     	testLog.info( "Login page: Input Password = ' '");
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMandatoryField();
-		if (!Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog)){
+		if (!Assertions.compareValue("This field is required.", tText, "Login page: Found Mandatory error:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -155,7 +156,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
     	testLog.info( "Login page: Input Email = " + ulMail);
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMandatoryField();
-		if (!Assertions.compareValue("Email has incorrect format. You can only use letters, numbers and symbols.", tText, "Login page: Found Invalid email error:", testLog)){
+		if (!Assertions.compareValue("Email has incorrect format. You can only use letters, numbers and symbols.", tText, "Login page: Found Invalid email error:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -168,7 +169,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
         LoginEOPortal.clickLoginBtn();
     	Thread.sleep(timeOut - 1000);
     	tText = LoginEOPortal.lerrorMatch();
-		if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found Match data error:", testLog)){
+		if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", tText, "Login page: Found Match data error:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -192,8 +193,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		switch(Role) {
 			case "EO Admin":
 				Thread.sleep(timeOut + 2000);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
 				HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 				Assert.assertTrue(HomePage.headerExists());
@@ -207,8 +208,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 				break;
 			case "EO Device and App Manager":
 				Thread.sleep(timeOut + 2000);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
 				HomePage HomePage1 = (HomePage) PageFactory.getPage("HomePage");
 				Assert.assertTrue(HomePage1.headerExists());
@@ -222,8 +223,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 				break;
 			case "EO Merchant Manager":
 				Thread.sleep(timeOut + 2000);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
 				HomePage HomePage2 = (HomePage) PageFactory.getPage("HomePage");
 				Assert.assertTrue(HomePage2.headerExists());
@@ -238,8 +239,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
 			case "Merchant":
 				Thread.sleep(timeOut + 2000);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 
 //    	Search for Header
 				HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
@@ -250,18 +251,18 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
 			case "Basic Developer":
 			case "Dev Admin":
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 				NoAccessPage NoAccessPage = (NoAccessPage) PageFactory.getPage("NoAccessPage");
 				tText = NoAccessPage.pageText();
-				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog)){
+				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog, driver)){
 					TestPassFlag = false;
 				}
 				break;
 			case "Verifone Dev Support Admin":
 			case "Verifone EO Support Admin":
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 				LoginSSOPage LoginSSOPage = (LoginSSOPage) PageFactory.getPage("LoginSSOPage");
 				Assert.assertTrue(LoginSSOPage.formOKTAExists());
 		}
@@ -297,7 +298,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
 	@Test(enabled = true, priority = 2, testName = "EO Support Portal Login", description = "EO Support Portal Login with different roles",dataProvider = "loginSupportRoles", groups = {"SSOBasic"}, alwaysRun = true)
 	public void loginEOSupportPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
-		TestPassFlag = true;
+		WebDriver driver = new HomePage().getDriver();
+    	TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
 		rowNumber = rowNumber + 1;
 		testLog.info( "Data Driven line number: " + rowNumber);
@@ -307,40 +309,40 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
 		testLog.info( "-------------------------------------------------Navigate to EO Support Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to("https://" + env + "." + EOSupportPortalURI);
+		driver.navigate().to("https://" + env + "." + EOSupportPortalURI);
 
 //		Test Login
 //    	Setup Login button
 		testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
 
 		Thread.sleep(timeOut + 2000);
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 
 //    	Compare login Title text with expected
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 		String tText = LoginEOPortal.loginTitle();
-		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog)){
+		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Email text with expected
 		tText = LoginEOPortal.loginEmail();
-		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog)){
+		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Password text with expected
 		tText = LoginEOPortal.loginPassword();
-		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog)){
+		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Forgot link text with expected
 		tText = LoginEOPortal.loginForgotLink();
-		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog)){
+		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login button text with expected
 		tText = LoginEOPortal.loginBtnLabel();
-		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog)){
+		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -365,8 +367,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 			case "EO Merchant Manager":
 			case "Merchant":
 				Thread.sleep(timeOut+2000);
-				String url = BasePage.driver.getCurrentUrl();
-				if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog)){
+				String url = driver.getCurrentUrl();
+				if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog, driver)){
 					TestPassFlag = false;
 				}
 				break;
@@ -374,19 +376,19 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 			case "Basic Developer":
 			case "Dev Admin":
                 Thread.sleep(timeOut+2000);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 				NoAccessPage NoAccessPage = (NoAccessPage) PageFactory.getPage("NoAccessPage");
 				tText = NoAccessPage.pageText();
-				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog)){
+				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog, driver)){
 					TestPassFlag = false;
 				}
 				break;
 
 			case "Verifone Dev Support Admin":
                 Thread.sleep(timeOut+2000);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 				LoginSSOPage LoginSSOPage = (LoginSSOPage) PageFactory.getPage("LoginSSOPage");
 				Assert.assertTrue(LoginSSOPage.formOKTAExists());
 
@@ -413,8 +415,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
             case "Verifone EO Support Admin":
                 Thread.sleep(timeOut+2000);
-                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-                BasePage.driver.switchTo().window(availableWindows.get(0));
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(availableWindows.get(0));
                 LoginSSOPage LoginSSOPage1 = (LoginSSOPage) PageFactory.getPage("LoginSSOPage");
                 Assert.assertTrue(LoginSSOPage1.formOKTAExists());
 //                LoginSSOPage1.inputUserName(Mail.replace("@verifone.com",""));
@@ -471,7 +473,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
     @Test(enabled = true, priority = 3, testName = "Developer Portal Login", description = "Developer Portal Login with different roles", dataProvider = "loginDeveloperRoles", groups = {"SSOBasic"}, alwaysRun = true)
     public void loginDeveloperPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
-		TestPassFlag = true;
+		WebDriver driver = new HomePage().getDriver();
+    	TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
         rowNumber = rowNumber + 1;
         testLog.info( "Data Driven line number: " + rowNumber);
@@ -481,40 +484,40 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 
         testLog.info( "-------------------------------------------------Navigate to Developer Portal-------------------------------------------------");
 
-        BasePage.driver.navigate().to("https://" + env + "." + DeveloperPortalURI);
+        driver.navigate().to("https://" + env + "." + DeveloperPortalURI);
 
 //		Test Login
 //    	Setup Login button
         testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
 
         Thread.sleep(timeOut + 2000);
-        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
 
 //    	Compare login Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         String tText = LoginEOPortal.loginTitle();
-		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog)){
+		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Email text with expected
         tText = LoginEOPortal.loginEmail();
-		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog)){
+		if (!Assertions.compareValue("Email Address", tText, "Login page: Found Email field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Password text with expected
         tText = LoginEOPortal.loginPassword();
-		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog)){
+		if (!Assertions.compareValue("Password", tText, "Login page: Found Password field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Forgot link text with expected
         tText = LoginEOPortal.loginForgotLink();
-		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog)){
+		if (!Assertions.compareValue("Forgot Password?", tText, "Login page: Found Password field hint:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login button text with expected
         tText = LoginEOPortal.loginBtnLabel();
-		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog)){
+		if (!Assertions.compareValue("LOG IN", tText, "Login page: Found Login button label:", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -539,19 +542,19 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
             case "EO Merchant Manager":
             case "Merchant":
                 Thread.sleep(timeOut+2000);
-                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-                BasePage.driver.switchTo().window(availableWindows.get(0));
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(availableWindows.get(0));
                 NoAccessPage NoAccessPage = (NoAccessPage) PageFactory.getPage("NoAccessPage");
                 tText = NoAccessPage.pageText();
-				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog)){
+				if (!Assertions.compareValue("You don't have access to the page you requested.", tText, "No Access page: Found error:", testLog, driver)){
 					TestPassFlag = false;
 				}
 				break;
 
             case "Verifone EO Support Admin":
                 Thread.sleep(timeOut+2000);
-                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-                BasePage.driver.switchTo().window(availableWindows.get(0));
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(availableWindows.get(0));
                 LoginSSOPage LoginSSOPage = (LoginSSOPage) PageFactory.getPage("LoginSSOPage");
                 Assert.assertTrue(LoginSSOPage.formOKTAExists());
 //                LoginSSOPage.inputUserName(Mail.replace("@verifone.com",""));
@@ -576,13 +579,13 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
                 break;
             case "Basic Developer":
 				Thread.sleep(timeOut+2000);
-				String url = BasePage.driver.getCurrentUrl();
-				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog)){
+				String url = driver.getCurrentUrl();
+				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog, driver)){
 					TestPassFlag = false;
 				}
 				Thread.sleep(timeOut);
-				availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-				BasePage.driver.switchTo().window(availableWindows.get(0));
+				availableWindows = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
 				HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
 				Assert.assertTrue(HomePage3.headerExists());
@@ -595,13 +598,13 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 				break;
             case "Dev Admin":
                 Thread.sleep(timeOut+2000);
-                url = BasePage.driver.getCurrentUrl();
-				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog)){
+                url = driver.getCurrentUrl();
+				if (!Assertions.compareValue("verifonecp.com/home", url, "User redirected to:", testLog, driver)){
 					TestPassFlag = false;
 				}
 				Thread.sleep(timeOut);
-                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-                BasePage.driver.switchTo().window(availableWindows.get(0));
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
                 HomePage3 = (HomePage) PageFactory.getPage("HomePage");
                 Assert.assertTrue(HomePage3.headerExists());
@@ -614,8 +617,8 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
                 break;
             case "Verifone Dev Support Admin":
                 Thread.sleep(timeOut+2000);
-                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-                BasePage.driver.switchTo().window(availableWindows.get(0));
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(availableWindows.get(0));
                 LoginSSOPage LoginSSOPage1 = (LoginSSOPage) PageFactory.getPage("LoginSSOPage");
                 Assert.assertTrue(LoginSSOPage1.formOKTAExists());
 //                LoginSSOPage1.inputUserName(Mail.replace("@verifone.com",""));

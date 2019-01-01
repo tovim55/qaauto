@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 //--------------------------------------------------------------------------
 /**
- * This class described all elements and actions can be executed on Action Required page.
+ * This class described all elements and actions can be executed on Thank You page displayed after Reset Password.
  * @authors Yana Fridman
  */
 //--------------------------------------------------------------------------
@@ -62,6 +62,7 @@ public class ActionRequiredPage extends BasePage {
     //--------------------------------------------------------------------------
     /**
      * Method: Click on LogIn link.
+     * Method: Click on Back to Verifone Developer Central link.
      * @authors Yana Fridman
      */
     //--------------------------------------------------------------------------

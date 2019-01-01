@@ -10,6 +10,7 @@ import com.verifone.pages.eoPages.*;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
 import com.verifone.utils.DataDrivenUtils;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
@@ -62,13 +63,13 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
     @Test(enabled = true, priority = 1, testName = "okta login", dataProvider = "oktaLogin", groups = {"SSOBasic"}, alwaysRun = true)
     public void oktaLoginUI(String portal, String role, String email, String name, String password,
             String answer, String sectionTitle) throws Exception {
-
+        WebDriver driver = new HomePage().getDriver();
         testLog.info("This test verify user: " + role + ", email: " + email + ", name: " + name + " logged in: " + portal + ", using OKTA verification");
         testLog.info("-------------------------------------------------Navigate to Portal-------------------------------------------------");
 
         portalURI = "https://" + env + "." + portal;
         String OktaHome_url = "https://verifone.okta.com/";
-        BasePage.driver.navigate().to(portalURI);
+        driver.navigate().to(portalURI);
 
 //		Test LoginportalURI
 //    	Setup Login button
@@ -76,8 +77,8 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
 
         Thread.sleep(timeOut + 1000);
         ArrayList<String>
-                availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         testLog.info("Navigate to Forgot Password page");
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
@@ -89,7 +90,7 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
         testLog.info("---------------------------------------------------OKTA page----------------------------------------------------");
 
         Thread.sleep(2000);
-        BasePage.driver.navigate().to(OktaHome_url);
+        driver.navigate().to(OktaHome_url);
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
         if (!OktaLogin.loginOktaTitleExists()) {
@@ -97,11 +98,11 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
         }
 
         Thread.sleep(2000);
-        BasePage.driver.navigate().to(portalURI);
+        driver.navigate().to(portalURI);
         LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         LoginEOPortal.loginInputEmail(email);
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
 
         Thread.sleep(2000);
         OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
@@ -114,8 +115,8 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
         OktaLogin.loginInputPassword(password);
         OktaLogin.clickSignInBtn();
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
         OktaLogin.loginInputAnswer(answer);
         testLog.info("Security answer: " + "");
@@ -123,11 +124,11 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
 
         Thread.sleep(2000);
         if (!OktaLogin.loginOktaTitleExists()) {
-            BasePage.driver.navigate().to(portalURI);
+            driver.navigate().to(portalURI);
             LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
             LoginEOPortal.loginInputEmail(email);
-            availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-            BasePage.driver.switchTo().window(availableWindows.get(0));
+            availableWindows = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(availableWindows.get(0));
 
             Thread.sleep(2000);
             if (OktaLogin.loginOktaTitleExists()) {
@@ -139,8 +140,8 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
             }
         }
         Thread.sleep(timeOut);
-//        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-//        BasePage.driver.switchTo().window(availableWindows.get(0));
+//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//        driver.switchTo().window(availableWindows.get(0));
 //        testLog.info("Navigate to OKTA Login page");
 //        OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
 //        OktaLogin.loginInputName(name);
@@ -149,8 +150,8 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
 //        testLog.info("Password: " + password);
 //        OktaLogin.clickSignInBtn();
 //
-//        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-//        BasePage.driver.switchTo().window(availableWindows.get(0));
+//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//        driver.switchTo().window(availableWindows.get(0));
 //        OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
 //        OktaLogin.loginInputAnswer(answer);
 //        testLog.info("Security answer: " + answer);
@@ -158,17 +159,17 @@ public class SSOBasicFlow_OktaLoginUI extends BaseTest {
 
         testLog.info("---------------------------------------------------Portal page----------------------------------------------------");
 
-        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-        BasePage.driver.switchTo().window(availableWindows.get(0));
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
         HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         String tText = HomePage.sectionTitle();
-        if (!Assertions.compareValue(sectionTitle, tText, "Home page: Found section title:", testLog)){
+        if (!Assertions.compareValue(sectionTitle, tText, "Home page: Found section title:", testLog, driver)){
             TestPassFlag = false;
         }
 
         Thread.sleep(timeOut);
         Assert.assertTrue(TestPassFlag);
-//        BasePage.driver.quit();
+//        driver.quit();
     }
 }

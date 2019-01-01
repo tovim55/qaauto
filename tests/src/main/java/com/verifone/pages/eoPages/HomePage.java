@@ -71,29 +71,32 @@ public class HomePage extends BasePage {
     public void clickHeaderMenu () throws InterruptedException {
     	boolean f1 = false;
     	int t = 0;
-    	WebDriverWait wait = new WebDriverWait(BasePage.driver, 20);
+    	WebDriverWait wait = new WebDriverWait(driver, 20);
     	wait.until(ExpectedConditions.visibilityOfElementLocated(headerMenuLoc));
     	Thread.sleep(3000);
     	while (f1 == false & t < 20000){
-    		f1 = BasePage.driver.findElement(headerMenuLoc).isEnabled();
+    		f1 = driver.findElement(headerMenuLoc).isEnabled();
     		t=t+1000;
     	}
         click(headerMenuLoc);
     }
-//--------------------------------------------------------------------------
+
+
+    //--------------------------------------------------------------------------
     /**
      * Method: Wait 20 sec. for Merchants menu displayed and click on Merchants menu.
      * @authors Yana Fridman
      */
 //--------------------------------------------------------------------------
+
     public void clickMerchantsMenu () throws InterruptedException {
         boolean f1 = false;
         int t = 0;
-        WebDriverWait wait = new WebDriverWait(BasePage.driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(merchantsMenuLoc));
         Thread.sleep(3000);
         while (f1 == false & t < 20000){
-            f1 = BasePage.driver.findElement(merchantsMenuLoc).isEnabled();
+            f1 = driver.findElement(merchantsMenuLoc).isEnabled();
             t=t+1000;
         }
         click(merchantsMenuLoc);

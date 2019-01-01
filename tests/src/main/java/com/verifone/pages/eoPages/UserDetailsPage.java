@@ -202,7 +202,7 @@ public class UserDetailsPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public boolean elementUserEditClickable() throws Exception {
-    	
+
     	if (isExists(userEditLoc, 3)) {
     		return true;
     	}
@@ -280,7 +280,7 @@ public class UserDetailsPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public boolean dialogResendExists() throws Exception {
-    	return isExists(dialogResendLoc, 3);  	
+    	return isExists(dialogResendLoc, 3);
     }
 //--------------------------------------------------------------------------
     /**
@@ -308,7 +308,7 @@ public class UserDetailsPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public boolean dialogDisableExists() throws Exception {
-    	return isExists(dialogDisableLoc, 3);  	
+    	return isExists(dialogDisableLoc, 3);
     }
 //--------------------------------------------------------------------------
     /**
@@ -336,7 +336,7 @@ public class UserDetailsPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public boolean dialogEnableExists() throws Exception {
-    	return isExists(dialogEnableLoc, 3);  	
+    	return isExists(dialogEnableLoc, 3);
     }
 //--------------------------------------------------------------------------
     /**

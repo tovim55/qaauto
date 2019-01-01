@@ -8,6 +8,7 @@ import com.verifone.pages.cpPages.ChangePasswordPage;
 import com.verifone.pages.eoPages.*;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
@@ -41,7 +42,7 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 	@Test(enabled = true, priority=33, testName = "EOAdmin Change Password", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUpdateEOMerchantMan_UserInfoUI() throws Exception {
-
+		WebDriver driver = new HomePage().getDriver();
 		String firstName = "";
 		String lastName = "";
 		String userName = "";
@@ -53,7 +54,7 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
@@ -67,8 +68,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -79,8 +80,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 //		Click change Password
@@ -89,48 +90,48 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- Change Password page -------------------------------------------------");
 
 		Thread.sleep(TimeOut);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		ChangePasswordPage ChangePasswordPage = (ChangePasswordPage) PageFactory.getPage("ChangePasswordPage");
 		AssertJUnit.assertEquals("Change Password", ChangePasswordPage.getTitle());
 
 //		Validation
-		if (!Assertions.compareValue("Current Password", ChangePasswordPage.currentPasswordLabel(), "Current Password hint: ", testLog)){
+		if (!Assertions.compareValue("Current Password", ChangePasswordPage.currentPasswordLabel(), "Current Password hint: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareValue("New Password", ChangePasswordPage.newPasswordLabel(), "New Password hint: ", testLog)){
+		if (!Assertions.compareValue("New Password", ChangePasswordPage.newPasswordLabel(), "New Password hint: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 //		Current Password Validation
 		ChangePasswordPage.InputCurrentPassword("");
 		ChangePasswordPage.clickNewPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog)){
+		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputCurrentPassword(" ");
 		ChangePasswordPage.clickNewPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog)){
+		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputCurrentPassword("!@#$%^&*()");
 		ChangePasswordPage.clickNewPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		} else if (!Assertions.compareValue("Invalid string", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog)){
+		} else if (!Assertions.compareValue("Invalid string", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputCurrentPassword("12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890");
 		ChangePasswordPage.clickNewPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorCurrentPasswordExists(), "Current password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		}  else	if (!Assertions.compareValue("Long string", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog)){
+		}  else	if (!Assertions.compareValue("Long string", ChangePasswordPage.errorEmptyPassword(), "Current password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -139,40 +140,40 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 //		New Password Validation
 		ChangePasswordPage.InputNewPassword("");
 		ChangePasswordPage.clickCurrentPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog)){
+		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputNewPassword(" ");
 		ChangePasswordPage.clickCurrentPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog)){
+		} else if (!Assertions.compareValue("Should not be empty", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputNewPassword("!@#$%^&*()");
 		ChangePasswordPage.clickCurrentPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		} else if (!Assertions.compareValue("Invalid string", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog)){
+		} else if (!Assertions.compareValue("Invalid string", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputNewPassword("12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890");
 		ChangePasswordPage.clickCurrentPasswordFld();
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.errorNewPasswordExists(), "New password validation error displayed: ", testLog, driver)){
 			TestPassFlag = false;
-		}  else	if (!Assertions.compareValue("Long string", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog)){
+		}  else	if (!Assertions.compareValue("Long string", ChangePasswordPage.errorEmptyNewPassword(), "New password validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		ChangePasswordPage.InputNewPassword("Veri4321");
 
 		ChangePasswordPage.clickBtnSubmit();
-		if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", ChangePasswordPage.errorMatch(), "New password match error: ", testLog)){
+		if (!Assertions.compareValue("The information you've entered does not match the information we have on file.", ChangePasswordPage.errorMatch(), "New password match error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -184,8 +185,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 		Thread.sleep(TimeOut );
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 //		Click change Password
@@ -195,8 +196,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- Change Password again -------------------------------------------------");
 
 		Thread.sleep(TimeOut);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		ChangePasswordPage = (ChangePasswordPage) PageFactory.getPage("ChangePasswordPage");
 		AssertJUnit.assertEquals("Change Password", ChangePasswordPage.getTitle());
 
@@ -206,7 +207,7 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 
 		testLog.info("------------------------------------------------- Verify Notification -------------------------------------------------");
 
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.notifyText().contains("Password Changed"), "Password changed notification: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.notifyText().contains("Password Changed"), "Password changed notification: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 		ChangePasswordPage.clickOkBtn();
@@ -220,7 +221,7 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		LoginEOPortal.loginInputEmail(EOAdminMail);
 		LoginEOPortal.loginInputPassword(EOAdminPwd);
 		LoginEOPortal.clickLoginBtn();
-		if (!Assertions.compareBoolean(true, LoginEOPortal.lerrorMatch().contains("The information you've entered does not match the information we have on file"), "Wrong Password error: ", testLog)){
+		if (!Assertions.compareBoolean(true, LoginEOPortal.lerrorMatch().contains("The information you've entered does not match the information we have on file"), "Wrong Password error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -232,8 +233,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 
 		testLog.info("-------------------------------------------------Return Password to original-------------------------------------------------");
 
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -244,8 +245,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 
 //		Click change Password
@@ -254,8 +255,8 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- Change Password page -------------------------------------------------");
 
 		Thread.sleep(TimeOut);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		ChangePasswordPage = (ChangePasswordPage) PageFactory.getPage("ChangePasswordPage");
 
 
@@ -267,7 +268,7 @@ public class EOPortalChangePassword_RegUI extends BaseTest {
 
 		testLog.info("------------------------------------------------- Verify Notification -------------------------------------------------");
 
-		if (!Assertions.compareBoolean(true, ChangePasswordPage.notifyText().contains("Password Changed"), "Password changed notification: ", testLog)){
+		if (!Assertions.compareBoolean(true, ChangePasswordPage.notifyText().contains("Password Changed"), "Password changed notification: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 		ChangePasswordPage.clickOkBtn();

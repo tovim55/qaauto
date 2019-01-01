@@ -8,6 +8,7 @@ import com.verifone.pages.eoPages.*;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
 import com.verifone.utils.DataDrivenUtils;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
@@ -60,13 +61,14 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 	@Test(enabled = true, priority = 1, testName = "EOAdmin, Merchant Man and Dev App Manager add Users and Cancel action", dataProvider = "eoAddUser", groups = {"Sanity"}, alwaysRun = true)
 
 	public void EOAdminAddUsersCancelUI(String eoRole, String eoMail, String eoPassword, String userName, String userLast, String userMail) throws Exception {
+		WebDriver driver = new HomePage().getDriver();
 		Boolean TestPassFlag = true;
 		rowNumber = rowNumber + 1;
 		testLog.info("Data Driven line number: " + rowNumber);
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		testLog.info("-------------------------------------------------Login as: " + eoMail + " " + eoPassword + "-------------------------------------------------");
@@ -77,8 +79,8 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 		HomePage.clickHeaderMenu();
 
@@ -87,18 +89,18 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		switch (eoRole) {
 			case "eoMMan":
-				if (!Assertions.compareBoolean(false, UserMenu, "Merchant Manager view User menu", testLog)) {
+				if (!Assertions.compareBoolean(false, UserMenu, "Merchant Manager view User menu", testLog, driver)) {
 					TestPassFlag = false;
 				}
 				break;
 			case "eoAppDev":
-				if (!Assertions.compareBoolean(false, UserMenu, "Device and App Manager view User menu", testLog)) {
+				if (!Assertions.compareBoolean(false, UserMenu, "Device and App Manager view User menu", testLog, driver)) {
 					TestPassFlag = false;
 				}
 				break;
 
 			case "eoAdmin":
-				if (!Assertions.compareBoolean(true, UserMenu, "EO Admin view User menu", testLog)) {
+				if (!Assertions.compareBoolean(true, UserMenu, "EO Admin view User menu", testLog, driver)) {
 					TestPassFlag = false;
 				}
 
@@ -108,13 +110,13 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 		HomePage.clickUserMenu();
 
 		Thread.sleep(TimeOut + 3000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 
 //		Verify title page = Users
 
-		if (!Assertions.compareValue("Users", UsersPage.titleUsers(), "page Title: ", testLog)) {
+		if (!Assertions.compareValue("Users", UsersPage.titleUsers(), "page Title: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -125,40 +127,40 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 //		First Name Validation check
 
 		Thread.sleep(TimeOut + 3000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
 		AddUserPage.inputFirstName("12345");
 		AddUserPage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 		AddUserPage.inputFirstName("");
 		AddUserPage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name must not be empty", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field First Name must not be empty", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputFirstName(" ");
 		AddUserPage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name must not be empty", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field First Name must not be empty", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputFirstName("~!@#$%^&*()");
 		AddUserPage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputFirstName(".string");
 		AddUserPage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 		AddUserPage.inputFirstName("qwertyuiopqwertyuiopqwertyuiop.-.-.-");
 		AddUserPage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name must be at least 1 characters long, but not more than 35 characters", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field First Name must be at least 1 characters long, but not more than 35 characters", AddUserPage.errorFirstName(), "FirstName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -171,37 +173,37 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 //		Last Name Validation check
 		AddUserPage.inputLastName("12345");
 		AddUserPage.clickEmailFld();
-		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", AddUserPage.errorLastName(), "LastName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", AddUserPage.errorLastName(), "LastName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputLastName("");
 		AddUserPage.clickEmailFld();
-		if (!Assertions.compareValue("Field Last Name must not be empty", AddUserPage.errorLastName(), "LastName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Last Name must not be empty", AddUserPage.errorLastName(), "LastName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputLastName(" ");
 		AddUserPage.clickEmailFld();
-		if (!Assertions.compareValue("Field Last Name must not be empty", AddUserPage.errorLastName(), "LastName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Last Name must not be empty", AddUserPage.errorLastName(), "LastName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputLastName("~!@#$%^&*()");
 		AddUserPage.clickEmailFld();
-		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", AddUserPage.errorLastName(), "LastName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", AddUserPage.errorLastName(), "LastName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputLastName("'string'");
 		AddUserPage.clickEmailFld();
-		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", AddUserPage.errorLastName(), "LastName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", AddUserPage.errorLastName(), "LastName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputLastName("qwertyuiopqwertyuiopqwertyuiop.-.-.-");
 		AddUserPage.clickEmailFld();
-		if (!Assertions.compareValue("Field Last Name must be at least 1 characters long, but not more than 35 characters", AddUserPage.errorLastName(), "LastName validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Last Name must be at least 1 characters long, but not more than 35 characters", AddUserPage.errorLastName(), "LastName validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -214,37 +216,37 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 //		Mail Validation check
 		AddUserPage.inputEmail("plainaddress");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("#@%^%#$@#$@#.com");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("@example.com");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("Joe Smith <email@example.com>");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("email.example.com");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("email@example@example.com");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -262,13 +264,13 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		AddUserPage.inputEmail("email@example.com (Joe Smith)");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("email@example");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -282,13 +284,13 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		AddUserPage.inputEmail("email@111.222.333.44444");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		AddUserPage.inputEmail("email@example..com");
 		AddUserPage.clickDropDn();
-		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email should be a valid email", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -299,7 +301,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 		AddUserPage.inputEmail("");
 		AddUserPage.clickDropDn();
 		Thread.sleep(TimeOut - 2000);
-		if (!Assertions.compareValue("Field Email must not be empty", AddUserPage.errorEmail(), "Mail validation error: ", testLog)) {
+		if (!Assertions.compareValue("Field Email must not be empty", AddUserPage.errorEmail(), "Mail validation error: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -321,14 +323,14 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		AddUserPage.clickCancelBtn();
 
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 
 		testLog.info("------------------------------------------------- Verify user not added -------------------------------------------------");
 
 		boolean fl = UsersPage.tblUsersText().contains(userMail);
-		Assertions.compareBoolean(false, fl, "User Not added ", testLog);
+		Assertions.compareBoolean(false, fl, "User Not added ", testLog, driver);
 
 		break;
 		}
@@ -340,13 +342,13 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 @Test(enabled = true, priority=2, testName = "EOAdmin Add EOAdmin and Submit action", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserSubmitUI() throws Exception {
-
+	WebDriver driver = new HomePage().getDriver();
 	Env = "https://" + envConfig.getEnv() + EnvPort;
 	Boolean TestPassFlag = true;
 
 	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-	BasePage.driver.navigate().to(Env);
+	driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -360,8 +362,8 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 
 	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
 
-	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 	HomePage.clickHeaderMenu();
 
@@ -369,8 +371,8 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 	HomePage.clickUserMenu();
 	
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 
@@ -379,8 +381,8 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 	UsersPage.clickAddUserBtn();
 
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
 
 	AddUserPage.inputFirstName("UserEOAdmin");
@@ -395,8 +397,8 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 
 	AddUserPage.clickSubmitBtn();
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	}
 
@@ -404,12 +406,13 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 @Test(enabled = true, priority=3, testName = "EOAdmin View Users", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminViewUsersUI() throws Exception {
-	Env = "https://" + envConfig.getEnv() + EnvPort;
+	WebDriver driver = new HomePage().getDriver();
+		Env = "https://" + envConfig.getEnv() + EnvPort;
 	Boolean TestPassFlag = true;
 
 	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-	BasePage.driver.navigate().to(Env);
+	driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -422,8 +425,8 @@ public void EOAdminViewUsersUI() throws Exception {
 	LoginEOPortal.clickLoginBtn();
 	
 
-	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
@@ -437,21 +440,21 @@ public void EOAdminViewUsersUI() throws Exception {
 
 	HomePage.clickUserMenu();
     
-    availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+    availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 
 //	Verify EO Admin can view Users
 //    AssertJUnit.assertEquals(true, UsersPage.tblUsersExists());
-	if (!Assertions.compareBoolean(true, UsersPage.tblUsersExists(), "Users table displayed", testLog)){
+	if (!Assertions.compareBoolean(true, UsersPage.tblUsersExists(), "Users table displayed", testLog, driver)){
 		TestPassFlag = false;
 	}
 //    AssertJUnit.assertEquals(true, UsersPage.pgUsersExists());
-	if (!Assertions.compareBoolean(true, UsersPage.pgUsersExists(), "Users page displayed", testLog)){
+	if (!Assertions.compareBoolean(true, UsersPage.pgUsersExists(), "Users page displayed", testLog, driver)){
 		TestPassFlag = false;
 	}
 //    AssertJUnit.assertEquals(true, UsersPage.btnAddUserExists());
-	if (!Assertions.compareBoolean(true, UsersPage.btnAddUserExists(), "Add User button displayed", testLog)){
+	if (!Assertions.compareBoolean(true, UsersPage.btnAddUserExists(), "Add User button displayed", testLog, driver)){
 		TestPassFlag = false;
 	}
 	Assert.assertTrue(TestPassFlag);
@@ -459,12 +462,13 @@ public void EOAdminViewUsersUI() throws Exception {
 @Test(enabled = true, priority=4, testName = "EOAdmin View Add User page", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminViewAddUserPageUI() throws Exception {
-	Env = "https://" + envConfig.getEnv() + EnvPort;
+	WebDriver driver = new HomePage().getDriver();
+		Env = "https://" + envConfig.getEnv() + EnvPort;
 	Boolean TestPassFlag = true;
 
 	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-	BasePage.driver.navigate().to(Env);
+	driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -478,8 +482,8 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 
 	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
 
-	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 	
 	HomePage.clickHeaderMenu();
@@ -489,8 +493,8 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 	HomePage.clickUserMenu();
     
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	
 	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
@@ -499,41 +503,41 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 	UsersPage.clickAddUserBtn();
 	
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
 
 	//	Verify EO Admin can view Add User page
 	//	Verify all gui elements present and enabled
 	
-	if (!Assertions.compareValue("Add User", AddUserPage.titleText(), "Verify page title", testLog)){
+	if (!Assertions.compareValue("Add User", AddUserPage.titleText(), "Verify page title", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("Add new user to your organization", AddUserPage.titleDescText(), "Verify page description text", testLog)){
+	if (!Assertions.compareValue("Add new user to your organization", AddUserPage.titleDescText(), "Verify page description text", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("User Information", AddUserPage.titlePanelText(), "Verify User Information section present", testLog)){
+	if (!Assertions.compareValue("User Information", AddUserPage.titlePanelText(), "Verify User Information section present", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("First Name", AddUserPage.hintFName(), "Verify First Name hint", testLog)){
+	if (!Assertions.compareValue("First Name", AddUserPage.hintFName(), "Verify First Name hint", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("Last Name", AddUserPage.hintLName(), "Verify Last Name hint", testLog)){
+	if (!Assertions.compareValue("Last Name", AddUserPage.hintLName(), "Verify Last Name hint", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("Email", AddUserPage.hintEmail(), "Verify Email hint", testLog)){
+	if (!Assertions.compareValue("Email", AddUserPage.hintEmail(), "Verify Email hint", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("This will be used for the business member to log into the system. Once submitted this user will get an email to set up their account.", AddUserPage.helpEmail(), "Verify Email help", testLog)){
+	if (!Assertions.compareValue("This will be used for the business member to log into the system. Once submitted this user will get an email to set up their account.", AddUserPage.helpEmail(), "Verify Email help", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("Role", AddUserPage.titleRole(), "Verify Role section", testLog)){
+	if (!Assertions.compareValue("Role", AddUserPage.titleRole(), "Verify Role section", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("Cancel", AddUserPage.btnCancelLabel(), "Verify Cancel button present", testLog)){
+	if (!Assertions.compareValue("Cancel", AddUserPage.btnCancelLabel(), "Verify Cancel button present", testLog, driver)){
 		TestPassFlag = false;
 	}
-	if (!Assertions.compareValue("Submit", AddUserPage.btnSubmitLabel(), "Verify Submit button present", testLog)){
+	if (!Assertions.compareValue("Submit", AddUserPage.btnSubmitLabel(), "Verify Submit button present", testLog, driver)){
 		TestPassFlag = false;
 	}
 	Assert.assertTrue(TestPassFlag);
@@ -542,12 +546,13 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 @Test(enabled = true, priority=5, testName = "EOAdmin Add EOAdmin Exist Email", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddUserExistEmailUI() throws Exception {
-	Env = "https://" + envConfig.getEnv() + EnvPort;
+	WebDriver driver = new HomePage().getDriver();
+		Env = "https://" + envConfig.getEnv() + EnvPort;
 	Boolean TestPassFlag = true;
 
 	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-	BasePage.driver.navigate().to(Env);
+	driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -560,8 +565,8 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	LoginEOPortal.clickLoginBtn();
 	
 
-	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
@@ -570,8 +575,8 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	HomePage.clickUserMenu();
 	
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 	UserEmail = UsersPage.EOAdminEmail();
@@ -581,8 +586,8 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	UsersPage.clickAddUserBtn();
 
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
 
 	testLog.info("------------------------------------------------- Fill new user data and exists email -------------------------------------------------");
@@ -594,11 +599,11 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	AddUserPage.clickDropDnItem("EO Admin");
 	AddUserPage.clickSubmitBtn();
 	Thread.sleep(TimeOut + 1000);
-	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail(), "Verify error", testLog)){
+	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail(), "Verify error", testLog, driver)){
 		TestPassFlag = false;
 	}
 //	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail());
-	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText(), "Verify message error", testLog)){
+	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText(), "Verify message error", testLog, driver)){
 		TestPassFlag = false;
 	}
 //	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText());
@@ -613,12 +618,12 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	AddUserPage.clickSubmitBtn();
 	
 	Thread.sleep(TimeOut - 1000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	
 //	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail);
-	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail), "Verify User added", testLog)){
+	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail), "Verify User added", testLog, driver)){
 		TestPassFlag = false;
 	}
 	Assert.assertTrue(TestPassFlag);
@@ -627,12 +632,13 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 @Test(enabled = true, priority=6, testName = "EOAdmin Add Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminAddMerchantManagerUI() throws Exception {
-	Env = "https://" + envConfig.getEnv() + EnvPort;
+	WebDriver driver = new HomePage().getDriver();
+		Env = "https://" + envConfig.getEnv() + EnvPort;
 	Boolean TestPassFlag = true;
 
 	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-	BasePage.driver.navigate().to(Env);
+	driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -645,8 +651,8 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	LoginEOPortal.clickLoginBtn();
 		
 	
-	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
@@ -655,8 +661,8 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	HomePage.clickUserMenu();
 		
 		Thread.sleep(TimeOut + 3000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 		AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 
@@ -665,8 +671,8 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	UsersPage.clickAddUserBtn();
 	
 		Thread.sleep(TimeOut + 3000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 
 	testLog.info("------------------------------------------------- Fill valid user data -------------------------------------------------");
 
@@ -683,11 +689,11 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 		AddUserPage.clickSubmitBtn();
 		
 		Thread.sleep(TimeOut + 8000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 
-	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserMerchManEmail), "Verify User added", testLog)){
+	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserMerchManEmail), "Verify User added", testLog, driver)){
 		TestPassFlag = false;
 	}
 	Assert.assertTrue(TestPassFlag);
@@ -695,12 +701,13 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 @Test(enabled = true, priority=7, testName = "EOAdmin Add Dev App Manager", groups = { "Sanity" }, alwaysRun = true)
 
 public void EOAdminAddDevAppManagerUI() throws Exception {
-	Env = "https://" + envConfig.getEnv() + EnvPort;
+	WebDriver driver = new HomePage().getDriver();
+		Env = "https://" + envConfig.getEnv() + EnvPort;
 	Boolean TestPassFlag = true;
 
 	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-	BasePage.driver.navigate().to(Env);
+	driver.navigate().to(Env);
 	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -713,8 +720,8 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 	LoginEOPortal.clickLoginBtn();
 	
 
-	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
@@ -723,8 +730,8 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 	HomePage.clickUserMenu();
 	
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
 
@@ -732,8 +739,8 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 
 	UsersPage.clickAddUserBtn();
 	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
 
 	testLog.info("------------------------------------------------- Fill valid user data -------------------------------------------------");
@@ -750,11 +757,11 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 	AddUserPage.clickSubmitBtn();
 	
 	Thread.sleep(TimeOut + 8000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(0));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
 	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
 
-	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserDevAppEmail), "Verify User added", testLog)){
+	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserDevAppEmail), "Verify User added", testLog, driver)){
 		TestPassFlag = false;
 	}
 	Assert.assertTrue(TestPassFlag);

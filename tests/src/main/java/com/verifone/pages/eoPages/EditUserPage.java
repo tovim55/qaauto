@@ -58,7 +58,7 @@ public class EditUserPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getfirstName() throws InterruptedException {
-        return BasePage.driver.findElement(firstNameLoc).getAttribute("value");
+        return driver.findElement(firstNameLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -68,7 +68,7 @@ public class EditUserPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getlastName() throws InterruptedException {
-        return BasePage.driver.findElement(lastNameLoc).getAttribute("value");
+        return driver.findElement(lastNameLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**

@@ -6,9 +6,13 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <!--<parameter name="env" value="QA"/>-->
-    <parameter name="env" value="DEV" />
+    <parameter name="env" value="${environment}"/>
     <parameter name="getVersions" value="false"/>
+
+
+
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
+
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->
@@ -25,12 +29,11 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
-            <!--<class name="com.verifone.tests.api.tests.CloudApiDdt.EmployeeApiDdt"/>-->
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow2UI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>-->
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>-->
+            <class name="com.verifone.tests.cpTests.DCTests"/>
+
+
+
         </classes>
 
     </test>

@@ -29,28 +29,24 @@ import java.util.Date;
 
 @SuppressWarnings("unused")
 public class SeleniumUtils {
-    private static WebDriver driver;
+    private WebDriver driver;
     public static String reportDirectory;
+    public static String isLinuxMachine;
 
     /**
      * Reads General Parameters from application.properties
      * Sets browser (Chrome, Firefox, IE etc...) and navigates to the class related page
      */
-    public static WebDriver getDriver(String browserType) throws Exception {
-        driver = SeleniumUtils.setBrowser(browserType);
+    public WebDriver getDriver(String browserType) throws Exception {
+        driver = setBrowser(browserType);
         driver.manage().window().maximize();
         return driver;
     }
 
-    public static void closeRuntimeBrowserInstance() {
-        try{
-        if (driver!= null) {
+    public  void closeRuntimeBrowserInstance() {
+        if (driver != null) {
 //            driver.close();
             driver.quit();
-        }
-        }
-        catch (NoSuchSessionException e){
-            e.printStackTrace();
         }
     }
 
@@ -68,14 +64,14 @@ public class SeleniumUtils {
      * @author Giora Tovim
      */
     @SuppressWarnings("deprecation")
-    public static WebDriver setBrowser(String browserType) throws Exception
+    public WebDriver setBrowser(String browserType) throws Exception
 
     {
 
         System.out.println("Starting web browser switch: " + browserType);
         switch (browserType) {
             case "FF":
-                System.setProperty("webdriver.gecko.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", pathToDrivers("geckodriver.exe"));
 //			DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 //			desiredCapabilities.setAcceptInsecureCerts(true);
 //			FirefoxProfile firefoxProfile = new FirefoxProfile();
@@ -87,23 +83,27 @@ public class SeleniumUtils {
             case "CHROME":
                 System.out.println("Starting CHROME web driver");
                 System.out.println(new File(System.getProperty("user.dir")).getParent());
-                System.setProperty("webdriver.chrome.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\chromedriver.exe");
+                if (!isLinuxMachine.contains("FALSE")) {
+                    System.setProperty("webdriver.chrome.driver", pathToDrivers("chromedriver"));
+                } else {
+                    System.setProperty("webdriver.chrome.driver", pathToDrivers("chromedriver.exe"));
+                }
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("test-type");
                 options.addArguments("--incognito");
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(options);
                 System.out.println("CHROME web driver started successfully");
                 break;
             case "EDGE":
                 System.out.println("Starting EDGE web driver");
-                System.setProperty("webdriver.edge.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\MicrosoftWebDriver.exe");
+                System.setProperty("webdriver.edge.driver", pathToDrivers("MicrosoftWebDriver.exe"));
                 driver = new EdgeDriver();
                 System.out.println("EDGE web driver started successfully");
                 break;
 
             case "IE":
                 System.out.println("Starting IE web driver");
-                System.setProperty("webdriver.ie.driver", new File(System.getProperty("user.dir")).getParent() + "\\infra\\drivers\\IEDriverServer.exe");
+                System.setProperty("webdriver.ie.driver", pathToDrivers("IEDriverServer.exe"));
                 WebDriver Driver = new InternetExplorerDriver();
                 //				DesiredCapabilities desiredCapabilities1 = new DesiredCapabilities();
                 //		    	desiredCapabilities1.setAcceptInsecureCerts(true);
@@ -126,11 +126,28 @@ public class SeleniumUtils {
      * @throws Exception
      * @author Giora Tovim
      */
-    public static String getScreenshot() throws Exception {
+    public String getScreenshot() throws Exception {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         //The below method will save the screen shot in d drive with folder "screenshot" + filenameDate + ".png "
-        String screeshootPath =  reportDirectory + dateFormat.format(date) + ".png";
+        String screeshootPath = reportDirectory + dateFormat.format(date) + ".png";
+        try {
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(scrFile, new File(screeshootPath));
+        } catch (NoSuchSessionException e) {
+            e.printStackTrace();
+            return "";
+        }
+        return screeshootPath;
+    }
+
+
+
+    public static String getScreenshot(WebDriver driver) throws Exception {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        //The below method will save the screen shot in d drive with folder "screenshot" + filenameDate + ".png "
+        String screeshootPath = reportDirectory + dateFormat.format(date) + ".png";
         try {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File(screeshootPath));
@@ -148,6 +165,13 @@ public class SeleniumUtils {
         System.out.println("The Automation tests runs on : " + env + " environment");
 
 
+    }
+
+
+
+    private static String pathToDrivers(String fileName){
+        return  java.nio.file.Paths.get(
+             new File(System.getProperty("user.dir")).getParent(),"infra", "drivers", fileName).toString();
     }
 
 //    public static void restartDriver() {

@@ -5,8 +5,10 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 public class Application {
 
 
-    public static final String appPath = System.getProperty("user.dir") + "\\src\\test\\resources\\tempApp";
-    public static final String iconPath = System.getProperty("user.dir") + "\\src\\test\\resources\\app-store-icon.png";
+    public static final String appPath = java.nio.file.Paths.get(System.getProperty("user.dir"),
+            "src", "test", "resources", "tempApp").toString();
+    public static final String iconPath = java.nio.file.Paths.get(System.getProperty("user.dir"),
+            "src", "test", "resources", "app-store-icon.png").toString();
     private String appName;
     private String id;
     private String version;
@@ -23,7 +25,7 @@ public class Application {
     }
 
 
-    public Application(){
+    public Application() {
         this.appName = randomAlphabetic(5);
         this.id = "";
         this.version = "1.1.0";

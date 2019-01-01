@@ -13,6 +13,7 @@ import com.verifone.utils.apiClient.dc.SsoApi;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
 import com.verifone.utils.appUtils.Application;
 import com.verifone.utils.appUtils.ApplicationUtils;
+import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
 import java.io.IOException;
@@ -54,14 +55,15 @@ public class Steps {
 
 
     public static String getVersions() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
+        WebDriver driver = new DevHomePage().getDriver();
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
         loginPage.loginPageCp(BaseTest.envConfig.getCredentials().getDevAdmin());
 //        System.out.println("CP_SESSIONID=" + BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         HashMap<String, String> headers = new HashMap<>();
-        headers.put("Cookie", "CP_SESSIONID=" + BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
+        headers.put("Cookie", "CP_SESSIONID=" + driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         headers.put("X-Requested-With", "XMLHttpRequest");
-        System.out.println(BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
+        System.out.println(driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         JsonObject response = getRequestWithHeaders("https://qa.dashboard.verifonecp.com/v2/info", "get", "", headers, 200);
         System.out.println(response.toString());
         return response.toString();

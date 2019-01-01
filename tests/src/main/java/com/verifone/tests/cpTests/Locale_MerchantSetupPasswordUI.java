@@ -3,8 +3,10 @@ package com.verifone.tests.cpTests;
 import java.util.ArrayList;
 
 import com.verifone.pages.cpPages.*;
+import com.verifone.pages.eoPages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.verifone.pages.PageFactory;
@@ -81,6 +83,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     		String PasswordSetupFinalTitle, String PasswordSetupFinalText) throws Exception {
 
 //        starTestLog("Merchant Setup Password Test", "Merchant Setup Password Test");
+		WebDriver driver = new HomePage().getDriver();
 		String tText;
 		TestPassFlag = true;
         rowNumber = rowNumber+1;
@@ -148,40 +151,40 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
         System.out.println("MID: " + mId);
 
 //      Navigate to Getnada
-//    	BasePage.driver = SeleniumUtils.getDriver("CHROME");
+//    	driver = SeleniumUtils.getDriver("CHROME");
 		Thread.sleep(timeOut + 2000);
         testLog.pass( "-------------------------------------------------Getnada service-------------------------------------------------");
-    	BasePage.driver.navigate().to("https://getnada.com/#");
+    	driver.navigate().to("https://getnada.com/#");
 
     	// Click Add Inbox
 
-    	BasePage.driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
+    	driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
 
     	// Put email
-		WebElement a = BasePage.driver.findElement(By.xpath("//input[contains(@class, 'user_name')]"));
+		WebElement a = driver.findElement(By.xpath("//input[contains(@class, 'user_name')]"));
 		a.clear();
 //    	Thread.sleep(timeOut);
     	a.sendKeys(mId);
 
-    	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
-    	BasePage.driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
+    	driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
+    	driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
 
     	//  Accept
-    	BasePage.driver.findElement(By.linkText("ACCEPT")).click();
+    	driver.findElement(By.linkText("ACCEPT")).click();
     	testLog.pass( "Create email inbox: " + mId + "getnada.com: Succesfull");
 
     	//  Open Email
     	Thread.sleep(timeOut);
-    	BasePage.driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
+    	driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
     	testLog.pass( "Found Invitation mail: Succesfull");
 
     	//   Get email text
 
     	Thread.sleep(timeOut);
 
-    	WebElement iFrame = BasePage.driver.findElement(By.id("idIframe"));
-    	BasePage.driver.switchTo().frame(iFrame);
-    	String mailText = BasePage.driver.getPageSource();
+    	WebElement iFrame = driver.findElement(By.id("idIframe"));
+    	driver.switchTo().frame(iFrame);
+    	String mailText = driver.getPageSource();
 
     	Boolean currentResult = mailText.contains(mailInvText);
     	if (currentResult == true) {
@@ -192,7 +195,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	}
     	System.out.println("Mail text: " + currentResult);
 
-    	String btnText = BasePage.driver.findElement(By.xpath(mailActivateButton)).getText();
+    	String btnText = driver.findElement(By.xpath(mailActivateButton)).getText();
     	currentResult = btnText.contains(actAccountBtnLabel);
     	if (currentResult == true) {
     		testLog.pass( "Invitation mail Activate button text: " + actAccountBtnLabel + "...: Succesfull");
@@ -200,7 +203,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     		TestPassFlag = false;
     		testLog.error( "Invitation mail Activate button text: " + btnText + ". Expected: " + actAccountBtnLabel);
     	}
-    	BasePage.driver.findElement(By.xpath(mailActivateButton)).click();
+    	driver.findElement(By.xpath(mailActivateButton)).click();
 
 		testLog.pass("Click on: " + btnText + " button: Succesfull");
 
@@ -209,8 +212,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	testLog.pass( "-----------------------------------------------Setup Password page-----------------------------------------------");
 
     	Thread.sleep(timeOut + 2000);
-    	ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-    	BasePage.driver.switchTo().window(availableWindows.get(1));
+    	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+    	driver.switchTo().window(availableWindows.get(1));
 
     	SetupPasswordPage SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");
 
@@ -222,7 +225,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Setup page title: " + pgText + ". Expected: " + setupTitle);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -235,7 +238,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Setup page text: " + pgText + ". Expected: " + setupText);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -248,7 +251,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Setup page Password Hint: " + pgText + ". Expected: " + setupPasswordHint);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -261,7 +264,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Setup page Confirm Password Hint: " + pgText + ". Expected: " + setupConfirmPasswordHint);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -274,7 +277,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Setup page check box label: " + pgText + ". Expected: " + setupCheckBox);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -287,7 +290,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Found Setup page check box label: " + pgText + ". Expected: " + setupCheckBoxAgr);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -300,7 +303,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Setup page Submit btn label: " + pgText + ". Expected: " + setupSubmitBtn);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -318,7 +321,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Format Error: " + errText + ". Expected: " + setupErrorFormat);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -336,7 +339,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Accept TOS Error: " + errText + ". Expected: " + setupErrorAccept);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -349,7 +352,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Found Accept TOS Error: " + errText + ". Expected: " + setupErrorAcceptAgr);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -369,7 +372,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	} else {
     		TestPassFlag = false;
     		testLog.error( "Found Match Error: " + errText + ". Expected: " + setupErrorMatch);
-    		capScreenShootPath = SeleniumUtils.getScreenshot();
+    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
     		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
     		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
     	}
@@ -396,7 +399,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    		if (Lang != "KR") {
 //				TestPassFlag = false;
 //				testLog.error("TOS doc: Found TOS text: " + tText.substring(1, 30) + ".... Expected: " + textTOS1);
-//				capScreenShootPath = SeleniumUtils.getScreenshot();
+//				capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //				testLog.pass("Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //				testLog.pass("Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //			}
@@ -408,7 +411,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS2);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -419,7 +422,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS3);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -430,7 +433,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS4);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -441,7 +444,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found TOS text: " + "<see previous step>" + ". Expected: " + textTOS5);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -454,7 +457,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found link text: " + tText + ". Expected: " + TOSLnk);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -467,7 +470,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found Decline button label: " + tText + ". Expected: " + TOSDeclineBtn);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -480,7 +483,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "TOS doc: Found Agree button label: " + tText + ". Expected: " + TOSAgreeBtn);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -500,8 +503,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 			testLog.pass("-----------------------------------------------Agreement document------------------------------------------------");
 
 			Thread.sleep(timeOut);
-			availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-			BasePage.driver.switchTo().window(availableWindows.get(2));
+			availableWindows = new ArrayList<String>(driver.getWindowHandles());
+			driver.switchTo().window(availableWindows.get(2));
 
 			AgreementPage AgreementPage = (AgreementPage) PageFactory.getPage("AgreementPage");
 //    	Verify Agreement page text
@@ -512,7 +515,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Agreement text: " + tText.substring(0, 30) + ".... Expected: " + textAgreement1);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -523,7 +526,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement2);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -534,7 +537,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement3);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -545,7 +548,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement4);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -556,7 +559,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Agreement text: " + "<see previous step>" + ". Expected: " + textAgreement5);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -569,7 +572,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found link text: " + tText + ". Expected: " + AgreementLnk);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -582,7 +585,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Decline button label: " + tText + ". Expected: " + AgreementDeclineBtn);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -595,7 +598,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement doc: Found Agree button label: " + tText + ". Expected: " + AgreementAgreeBtn);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -603,8 +606,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 		}
 
 //		Agree with Agreement
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(1));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(1));
 
 		SetupPasswordPage = (SetupPasswordPage) PageFactory.getPage("SetupPasswordPage");
     	testLog.pass( "Accept Agreement");
@@ -618,8 +621,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 	testLog.pass( "---------------------------------------Password Setup Final page------------------------------------------");
 
 	Thread.sleep(timeOut + 2000);
-	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-	BasePage.driver.switchTo().window(availableWindows.get(1));
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(1));
 
 	PasswordSetupPage PasswordSetupPage = (PasswordSetupPage) PageFactory.getPage("PasswordSetupPage");
 
@@ -631,7 +634,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 	} else {
 		TestPassFlag = false;
 		testLog.error( "Password Setup Final page: Found title: " + tText + ". Expected: " + PasswordSetupFinalTitle);
-		capScreenShootPath = SeleniumUtils.getScreenshot();
+		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 	}
@@ -644,7 +647,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 	} else {
 		TestPassFlag = false;
 		testLog.error( "Password Setup Final pag: Found text: " + tText + ". Expected: " + PasswordSetupFinalText);
-		capScreenShootPath = SeleniumUtils.getScreenshot();
+		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 	}
@@ -655,8 +658,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	testLog.pass( "-------------------------------------------------Welcome page----------------------------------------------------");
 //
 //    	Thread.sleep(timeOut + 2000);
-//    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-//    	BasePage.driver.switchTo().window(availableWindows.get(1));
+//    	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//    	driver.switchTo().window(availableWindows.get(1));
 //
 //    	WelcomePage WelcomePage = (WelcomePage) PageFactory.getPage("WelcomePage");
 //
@@ -668,7 +671,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Welcome page: Found title: " + tText + ". Expected: " + welcomeTitle);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -681,7 +684,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Welcome page: Found text: " + tText + ". Expected: " + welcomeText1);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -694,7 +697,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Welcome page: Found text: " + tText + ". Expected: " + welcomeText2);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -707,7 +710,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Welcome page: Found LogIn button label: " + tText + ". Expected: " + welcomeLoginBtn);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -720,8 +723,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	testLog.pass( "---------------------------------------------------Login page----------------------------------------------------");
 //
 //    	Thread.sleep(timeOut + 2000);
-//    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-//    	BasePage.driver.switchTo().window(availableWindows.get(1));
+//    	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//    	driver.switchTo().window(availableWindows.get(1));
 //
 ////    	Compare loginAndCheck Title text with expected
 //    	tText = SetupPasswordPage.loginTitle();
@@ -731,7 +734,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found title: " + tText + ". Expected: " + loginTitle);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -744,7 +747,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Email field hint: " + tText + ". Expected: " + loginEmail);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -757,7 +760,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Password field hint: " + tText + ". Expected: " + loginPassword);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -770,7 +773,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Password field hint: " + tText + ". Expected: " + loginForgotLink);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -783,7 +786,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Login button label: " + tText + ". Expected: " + loginBtnLabel);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -799,7 +802,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Mandatory error: " + tText + ". Expected: " + loginErrorMandatoryField);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -815,7 +818,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Mandatory error: " + tText + ". Expected: " + loginErrorMandatoryField);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -832,7 +835,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Invalid email error: " + tText + ". Expected: " + loginErrorValidationMail);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -852,7 +855,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Login page: Found Match data error: " + tText + ". Expected: " + loginErrorMatch);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -871,8 +874,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //
 ////    	Get Title, Text, button label from Agreement page. Compare with Expected.
 //    	Thread.sleep(timeOut - 1000);
-//    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-//    	BasePage.driver.switchTo().window(availableWindows.get(1));
+//    	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//    	driver.switchTo().window(availableWindows.get(1));
 //    	AcceptMerchantAgreementPage AcceptMerchantAgreementPage = (AcceptMerchantAgreementPage) PageFactory.getPage("AcceptMerchantAgreementPage");
 //    	tText = AcceptMerchantAgreementPage.pageTitle();
 //    	currentResult = tText.contains(pageAgreementTitle);
@@ -881,7 +884,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement page: Found title: " + tText + ". Expected: " + pageAgreementTitle);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -893,7 +896,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement page: Found text: " + tText + ". Expected: " + pageAgreementText);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -905,7 +908,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement page: Found Accept button label: " + tText + ". Expected: " + pageAgreementBtnText);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -925,7 +928,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement document: Found document Header: " + tText + ". Expected: " + docHeader);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -937,7 +940,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement document: Found document Header2: " + tText + ". Expected: " + docHeader2);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -949,7 +952,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement document: Found document Header3: " + tText + ". Expected: " + docHeader3);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -961,7 +964,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement document: Found document Text: " + tText + ". Expected: " + docText);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -973,7 +976,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement document: Found Decline button label: " + tText + ". Expected: " + docDeclineBtnText);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -985,7 +988,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Agreement document: Found Accept button label: " + tText + ". Expected: " + docAgreeBtnText);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -996,8 +999,8 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //
 ////		Get Merchant View Title and Text
 //    	Thread.sleep(timeOut - 1000);
-//    	availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-//    	BasePage.driver.switchTo().window(availableWindows.get(1));
+//    	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//    	driver.switchTo().window(availableWindows.get(1));
 //    	MerchantViewPage MerchantViewPage = (MerchantViewPage) PageFactory.getPage("MerchantViewPage");
 //    	tText = MerchantViewPage.pageTitle();
 //    	currentResult = tText.contains(merchantPageTitle);
@@ -1006,7 +1009,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Merchant page: Found page Title: " + tText + ". Expected: " + merchantPageTitle);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -1018,7 +1021,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Merchant page: Found page Text: " + tText + ". Expected: " + merchantPageText1);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
@@ -1030,7 +1033,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
 //    	} else {
 //    		TestPassFlag = false;
 //    		testLog.error( "Merchant page: Found page Text: " + tText + ". Expected: " + merchantPageText2);
-//    		capScreenShootPath = SeleniumUtils.getScreenshot();
+//    		capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 //    		testLog.pass( "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 //    		testLog.pass( "Test Failed !!! - Snapshot below: " + testLog.addScreenCaptureFromPath(capScreenShootPath));
 //    	}
