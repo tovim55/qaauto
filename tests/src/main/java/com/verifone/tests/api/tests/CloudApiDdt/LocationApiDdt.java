@@ -35,7 +35,7 @@ public class LocationApiDdt extends BaseTest {
                             String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
 
-        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),false);
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
