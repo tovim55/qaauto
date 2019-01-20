@@ -55,7 +55,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getEmail() throws InterruptedException {
-        return BasePage.driver.findElement(mailLoc).getAttribute("value");
+        return driver.findElement(mailLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -75,7 +75,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getName() throws InterruptedException {
-        return BasePage.driver.findElement(nameLoc).getAttribute("value");
+        return driver.findElement(nameLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -85,7 +85,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getIndCode() throws InterruptedException {
-        return BasePage.driver.findElement(indCodeLoc).getAttribute("value");
+        return driver.findElement(indCodeLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -115,7 +115,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getStreet() throws InterruptedException {
-        return BasePage.driver.findElement(streetLoc).getAttribute("value");
+        return driver.findElement(streetLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -125,7 +125,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getCity() throws InterruptedException {
-        return BasePage.driver.findElement(cityLoc).getAttribute("value");
+        return driver.findElement(cityLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -135,7 +135,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getState() throws InterruptedException {
-        return BasePage.driver.findElement(stateLoc).getAttribute("value");
+        return driver.findElement(stateLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -145,7 +145,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getZipCode() throws InterruptedException {
-        return BasePage.driver.findElement(zipCodeLoc).getAttribute("value");
+        return driver.findElement(zipCodeLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -155,7 +155,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getPhoneCode() throws InterruptedException {
-        return BasePage.driver.findElement(phoneCodeLoc).getAttribute("value");
+        return driver.findElement(phoneCodeLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -165,7 +165,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getPhoneNumber() throws InterruptedException {
-        return BasePage.driver.findElement(phoneNumberLoc).getAttribute("value");
+        return driver.findElement(phoneNumberLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**
@@ -175,7 +175,7 @@ public class EditBusinessPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String getWebSite() throws InterruptedException {
-        return BasePage.driver.findElement(webSiteLoc).getAttribute("value");
+        return driver.findElement(webSiteLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**

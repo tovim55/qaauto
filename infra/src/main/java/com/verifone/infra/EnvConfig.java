@@ -16,14 +16,15 @@ public class EnvConfig {
 //    private User user;
 
 
-
-
     public EnvConfig(String env, String portal) throws IOException {
         this.env = env;
         this.portal = portal;
-        FileInputStream ip = new FileInputStream(new File(System.getProperty("user.dir")).getParent()
-                + "\\infra\\src\\main\\java\\com\\verifone\\infra\\config.properties");
+        FileInputStream ip = new FileInputStream(java.nio.file.Paths.get(
+                new File(System.getProperty("user.dir")).getParent(),
+                "infra", "src", "main", "java", "com", "verifone", "infra",
+                "config.properties").toString());
         prop.load(ip);
+
 
         setEnv();
     }

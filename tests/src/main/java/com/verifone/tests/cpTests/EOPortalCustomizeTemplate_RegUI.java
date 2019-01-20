@@ -7,6 +7,7 @@ import com.verifone.pages.PageFactory;
 import com.verifone.pages.eoPages.*;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
@@ -45,13 +46,13 @@ public class EOPortalCustomizeTemplate_RegUI extends BaseTest {
 
 	public void EOAdmin_EmailTemplateValidationUI() throws Exception {
 
-
+		WebDriver driver = new HomePage().getDriver();
 		Env = "https://" + envConfig.getEnv() + EnvPort;
 		Boolean TestPassFlag = true;
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
@@ -65,8 +66,8 @@ public class EOPortalCustomizeTemplate_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Email Template page -------------------------------------------------");
@@ -75,26 +76,26 @@ public class EOPortalCustomizeTemplate_RegUI extends BaseTest {
 		HomePage.clickCustomizeMenu();
 
 		Thread.sleep(5000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EmailTemplatePage EmailTemplatePage = (EmailTemplatePage) PageFactory.getPage("EmailTemplatePage");
 		AssertJUnit.assertEquals("Email Template", EmailTemplatePage.getTitle());
 
 		testLog.info("------------------------------------------------- Search for SubTitle -------------------------------------------------");
 
-		if (!Assertions.compareValue("Current Email Subject: Congrats on your Verifone Carbon purchase!", EmailTemplatePage.getSubTitle(), "SubTitle: ", testLog)) {
+		if (!Assertions.compareValue("Current Email Subject: Congrats on your Verifone Carbon purchase!", EmailTemplatePage.getSubTitle(), "SubTitle: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		testLog.info("------------------------------------------------- Search for link Customize Template -------------------------------------------------");
 
-		if (!Assertions.compareValue("Customize Template", EmailTemplatePage.getCustomizeLnk(), "Customize Template link: ", testLog)) {
+		if (!Assertions.compareValue("Customize Template", EmailTemplatePage.getCustomizeLnk(), "Customize Template link: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
 		testLog.info("------------------------------------------------- Search for Mailer preview -------------------------------------------------");
 
-		if (!Assertions.compareBoolean(true, EmailTemplatePage.elementPreviewMailerExists(), "Mailer preview exists: ", testLog)) {
+		if (!Assertions.compareBoolean(true, EmailTemplatePage.elementPreviewMailerExists(), "Mailer preview exists: ", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -105,13 +106,13 @@ public class EOPortalCustomizeTemplate_RegUI extends BaseTest {
 
 	public void EOAdmin_UpdateEmailTemplateUI() throws Exception {
 
-
+		WebDriver driver = new HomePage().getDriver();
 		Env = "https://" + envConfig.getEnv() + EnvPort;
 		Boolean TestPassFlag = true;
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
@@ -125,8 +126,8 @@ public class EOPortalCustomizeTemplate_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Email Template page -------------------------------------------------");
@@ -135,8 +136,8 @@ public class EOPortalCustomizeTemplate_RegUI extends BaseTest {
 		HomePage.clickCustomizeMenu();
 
 		Thread.sleep(5000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EmailTemplatePage EmailTemplatePage = (EmailTemplatePage) PageFactory.getPage("EmailTemplatePage");
 		AssertJUnit.assertEquals("Email Template", EmailTemplatePage.getTitle());
 

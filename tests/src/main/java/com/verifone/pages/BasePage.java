@@ -1,6 +1,7 @@
 package com.verifone.pages;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.verifone.tests.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,7 +25,7 @@ import java.util.List;
 
 public abstract class BasePage {
 
-    public static WebDriver driver;
+    public WebDriver driver = BaseTest.webDrivers.get(Thread.currentThread().getId());
     private String url;
     private String title;
     public static ExtentTest testLog;
@@ -32,6 +35,11 @@ public abstract class BasePage {
     public BasePage(String url, String title) {
         this.url = url;
         this.title = title;
+    }
+
+
+    public WebDriver getDriver(){
+        return driver;
     }
 
 
@@ -173,7 +181,7 @@ public abstract class BasePage {
     }
 
     //    TODO complete method implementation
-    protected void uploadFile(String filePath, WebElement dropZoneClass) throws IOException {
+    protected void uploadFile(String filePath, WebElement dropZoneClass, String fileType) throws IOException {
 
         String id = dropZoneClass.getAttribute("id");
         String[] path = filePath.split("\\\\");
@@ -204,7 +212,7 @@ public abstract class BasePage {
                 "    var blob = new Blob(byteArrays, {type: contentType});\n" +
                 "    return blob;\n" +
                 "}" +
-                "var blob = base64toBlob(base64Image, 'image / png');" +
+                "var blob = base64toBlob(base64Image, '" + fileType + "');" +
                 "blob.name = '" + fileName + "';" +
                 "myZone.addFile(blob);  "
         );
@@ -238,9 +246,6 @@ public abstract class BasePage {
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
     }
-
-
-
 
 
     /**

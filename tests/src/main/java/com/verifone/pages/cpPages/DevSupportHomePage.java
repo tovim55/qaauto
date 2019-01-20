@@ -17,6 +17,7 @@ public class DevSupportHomePage extends BasePage {
     private By getAppsNum = By.className("counter");
     private By usernameBtn = By.className("username");
     private By userBtn = By.id("users");
+    private By appsBtn = By.id("apps");
     private By appTable = By.xpath("//*[@class=\"section-item col-xs-12 col-md-12\"][0]");
 
 
@@ -35,6 +36,14 @@ public class DevSupportHomePage extends BasePage {
         click(userBtn);
 
     }
+
+    public void goToAppsPage(){
+        waitSimple(5000);
+        hoverAndClickOnElement(usernameBtn);
+
+    }
+
+
 
     private void waitSimple(int time) {
         try {

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import com.verifone.pages.eoPages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -46,7 +47,7 @@ public class LoginDataDriven{
 		// starting testLog
 		test.log(LogStatus.INFO, "setBrowser with " + browserType + " browser in " + env + " environment");
 		try {
-			driver = SeleniumUtils.setBrowser(browserType);
+			driver = new HomePage().getDriver();;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,7 +100,7 @@ public class LoginDataDriven{
 			test.log(LogStatus.PASS, "Test is successul");			
 			break;
 		case ITestResult.FAILURE:
-			String capScreenShootPath = SeleniumUtils.getScreenshot();
+			String capScreenShootPath = SeleniumUtils.getScreenshot(driver);
 			test.log(LogStatus.FAIL, "Test Failed !!! - Did not found text: " + prop.getProperty("pageTitleToFind") + " in title page");
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot path: " + (capScreenShootPath));
 			test.log(LogStatus.INFO, "Test Failed !!! - Snapshot below: " + test.addBase64ScreenShot(capScreenShootPath));

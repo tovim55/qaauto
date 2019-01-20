@@ -1,6 +1,7 @@
 package com.verifone.infra;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
@@ -12,12 +13,16 @@ public class User {
     private String securityAnswer;
     private String firstName;
     private String lastName;
+    private String vhqCustomerId;
+    private String internalId;
+
 
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
         this.firstName = generateNames();
         this.lastName = generateNames();
+        this.vhqCustomerId = getNUmAsStr(10);
     }
 
     public User(String userName, String name, String password, String securityAnswer) {
@@ -27,6 +32,7 @@ public class User {
         this.password = password;
         this.firstName = generateNames();
         this.lastName = generateNames();
+        this.vhqCustomerId = getNUmAsStr(10);
     }
 
     public User() {
@@ -34,6 +40,7 @@ public class User {
         this.password = generatePassword();
         this.firstName = generateNames();
         this.lastName = generateNames();
+        this.vhqCustomerId = getNUmAsStr(10);
     }
 
     public User(boolean gmailUser) {
@@ -41,6 +48,12 @@ public class User {
         this.password = generatePassword();
         this.firstName = generateNames();
         this.lastName = generateNames();
+        this.vhqCustomerId = getNUmAsStr(10);
+    }
+
+
+    public String getVhqCustomerId() {
+        return vhqCustomerId;
     }
 
     public String getUserName() {
@@ -83,6 +96,13 @@ public class User {
         this.password = password;
     }
 
+    public String getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(String internalId) {
+        this.internalId = internalId;
+    }
 
     private String generateUserName() {
         return randomAlphabetic(8).toLowerCase() + "@getnada.com";
@@ -100,5 +120,10 @@ public class User {
     protected int getRandomNumber() {
         Random rand = new Random();
         return rand.nextInt(100000);
+    }
+
+    private String getNUmAsStr(int digits){
+        long min = (long) Math.pow(10, digits - 1);
+        return String.valueOf(ThreadLocalRandom.current().nextLong(min, min * 10));
     }
 }

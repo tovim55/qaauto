@@ -11,12 +11,14 @@ import com.verifone.pages.BasePage;
 import com.verifone.utils.apiClient.BaseApi;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import static com.verifone.tests.steps.Steps.getVersions;
 
@@ -30,8 +32,11 @@ public abstract class BaseTest {
     protected static ThreadLocal test = new ThreadLocal();
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-    public String reportDirectory = "C:\\reportTestNgResults\\" + dateFormat.format(date) + "\\";
+    public String reportDirectory = java.nio.file.Paths.get(
+            System.getProperty("user.dir"), "reports", dateFormat.format(date)).toString() + File.separator;
     public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
+    protected SeleniumUtils seleniumUtils;
+    public static HashMap<Long, WebDriver> webDrivers = new HashMap<>();
 
 
     @Parameters({"env", "portal", "getVersions"})
@@ -47,9 +52,11 @@ public abstract class BaseTest {
             parentTest.set(parent);
             starTestLog("Get Versions", "");
             SeleniumUtils.reportDirectory = reportDirectory;
-            BasePage.driver = SeleniumUtils.getDriver("CHROME");
+            SeleniumUtils.isLinuxMachine = "FALSE";
+            seleniumUtils = new SeleniumUtils();
+            webDrivers.put(Thread.currentThread().getId(), seleniumUtils.getDriver("CHROME"));
             parent.info("Versions: " + getVersions());
-            SeleniumUtils.closeRuntimeBrowserInstance();
+            seleniumUtils.closeRuntimeBrowserInstance();
         }
 
     }
@@ -61,34 +68,28 @@ public abstract class BaseTest {
     }
 
     @BeforeClass
-    public synchronized void beforeClass() throws Exception {
+    public synchronized void beforeClass() {
         ExtentTest parent = extent.createTest(getClass().getName());
         parentTest.set(parent);
-        parent.info("The Automation tests runs on : " + envConfig.getWebUrl() + " " + envConfig.getEnv() + " environment");
-//        starTestLog("Get Versions", "");
-//        SeleniumUtils.reportDirectory = reportDirectory;
-//        BasePage.driver = SeleniumUtils.getDriver("CHROME");
-//        parent.info("Versions: " + getVersions());
-//        SeleniumUtils.closeRuntimeBrowserInstance();
-
+        parent.info("The Automation tests runs on : " + envConfig.getWebUrl() + " " + envConfig.getEnv()
+                + " environment");
     }
 
 
-    @Parameters({"browserType"})
+    @Parameters({"browserType", "isLinuxMachine"})
     @BeforeMethod
-    public void startBrowser(Method method, String browserType) throws Exception {
-//        SeleniumUtils.reportDirectory = reportDirectory;
-        if (method.getName().contains("DDT") && method.getName().contains("UI")) {
-            BasePage.driver = SeleniumUtils.getDriver(browserType);
+    public void startBrowser(Method method, String browserType, String isLinuxMachine) throws Exception {
+        SeleniumUtils.reportDirectory = reportDirectory;
+        SeleniumUtils.isLinuxMachine = isLinuxMachine;
+        if (method.getName().contains("UI")) {
+            seleniumUtils = new SeleniumUtils();
+            webDrivers.put(Thread.currentThread().getId(), seleniumUtils.getDriver(browserType));
+        }
+        if (method.getName().contains("DDT")) {
             return;
-        } else if (method.getName().contains("DDT"))
-            return;
+        }
         Test test = method.getAnnotation(Test.class);
         starTestLog(test.testName(), test.description());
-        if (method.getName().contains("UI")) {
-            BasePage.driver = SeleniumUtils.getDriver(browserType);
-
-        }
 
     }
 
@@ -113,7 +114,7 @@ public abstract class BaseTest {
                 break;
             case ITestResult.FAILURE:
                 if (method.getName().contains("UI")) {
-                    String capScreenShootPath = SeleniumUtils.getScreenshot();
+                    String capScreenShootPath = seleniumUtils.getScreenshot();
                     child.info("Snapshot path: " + (capScreenShootPath));
                     child.info("Snapshot below: " + child.addScreenCaptureFromPath(capScreenShootPath));
                 }
@@ -123,13 +124,10 @@ public abstract class BaseTest {
 
         if (method.getName().contains("UI") & !method.getName().contains("UI_Cont")) {
             child.info("Closing Web Page");
-            SeleniumUtils.closeRuntimeBrowserInstance();
+            seleniumUtils.closeRuntimeBrowserInstance();
         }
         extent.flush();
     }
-
-
-
 
 
 }

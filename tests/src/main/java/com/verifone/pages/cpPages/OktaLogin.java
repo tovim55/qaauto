@@ -32,6 +32,7 @@ public class OktaLogin extends BasePage {
     private By verifyBtnLoc = By.xpath("//*[@class='button button-primary']");
     private By btnOktaAccount = By.xpath("//*[@class='link-button link-button-icon option-selected center notranslate h-nav-href']");
     private By clickSignOut = By.xpath("//*[@class='option-title' and @data-se = 'logout-link']");
+    private By clickSignOutOktaVerify = By.xpath("//*[@class='link goto']");
 
     private By lerrorMandatoryField = By.xpath("//*[@class='help-block']");
     private By loginSetupBtn = By.id("btnPrimaryLogin");
@@ -170,6 +171,11 @@ public class OktaLogin extends BasePage {
     public void SignOut() throws Exception {
         click(btnOktaAccount);
         click(clickSignOut);
+    }
+    //--------------------------------------------------------------------------
+
+    public void SignOutOktaVerify() throws Exception {
+        click(clickSignOutOktaVerify);
     }
     //--------------------------------------------------------------------------
 

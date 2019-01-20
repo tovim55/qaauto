@@ -7,7 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <!--<parameter name="env" value="QA"/>-->
-    <parameter name="env" value="QA" />
+    <parameter name="env" value="DEV" />
     <parameter name="getVersions" value="false"/>
 
     <!--Set Portal Variable: -->
@@ -26,12 +26,12 @@
 
         <classes>
             <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.MerchantApiDdt"/>
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.ShiftApiDdt"/>
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.EmployeeApiDdt"/>
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.CustomerApiDdt"/>
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.CustomerAttributeApiDdt"/>
-            <class name="com.verifone.tests.api.tests.CloudApiDdt.LocationApiDdt"/>
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddtdt.ShiftApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddtdt.EmployeeApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddtdt.CustomerApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddtdt.CustomerAttributeApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddtdt.LocationApiDdt"/>-->
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow2UI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow3UI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow4UI"/>-->

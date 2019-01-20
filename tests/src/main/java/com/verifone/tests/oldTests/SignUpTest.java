@@ -1,4 +1,5 @@
 package com.verifone.tests.oldTests;
+import com.verifone.pages.eoPages.HomePage;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import java.awt.Robot;
@@ -85,7 +86,7 @@ public void startBrowser(String env,String urlDev, String urlTest,
 	// starting testLog
 	
 	try {
-		driver = SeleniumUtils.setBrowser(browserType);
+		driver = new HomePage().getDriver();;
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

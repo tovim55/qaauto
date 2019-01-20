@@ -20,7 +20,7 @@
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="CPPortal"/>
+    <parameter name="portal" value="DevPortal"/>
 
     <test name="Automation Tests">
         <!--Set Browser Variable:-->

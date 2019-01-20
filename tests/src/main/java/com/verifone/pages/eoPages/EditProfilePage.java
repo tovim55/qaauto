@@ -55,15 +55,15 @@ public class EditProfilePage extends BasePage {
 //--------------------------------------------------------------------------
     public String getfirstName() throws InterruptedException {
         int t = 0;
-        while (BasePage.driver.findElement(firstNameLoc).getAttribute("value").length()<1 & t < 5000){
+        while (driver.findElement(firstNameLoc).getAttribute("value").length()<1 & t < 5000){
             Thread.sleep(500);
             t = t + 500;
         }
-        return BasePage.driver.findElement(firstNameLoc).getAttribute("value");
+        return driver.findElement(firstNameLoc).getAttribute("value");
     }
 
     public String getlastName() throws InterruptedException {
-        return BasePage.driver.findElement(lastNameLoc).getAttribute("value");
+        return driver.findElement(lastNameLoc).getAttribute("value");
     }
 //--------------------------------------------------------------------------
     /**

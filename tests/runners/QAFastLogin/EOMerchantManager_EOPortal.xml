@@ -9,9 +9,10 @@
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
     <parameter name="env" value="QA" />
-    <parameter name="mail" value="User20180806T161625.721MerchMan@getnada.com" />
+    <!--<parameter name="mail" value="User20180806T161625.721MerchMan@getnada.com" />-->
     <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
     <!--<parameter name="mail" value="MManager@getnada.com" />-->
+    <parameter name="mail" value="MM@getnada.com" />
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />

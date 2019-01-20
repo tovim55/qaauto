@@ -4,13 +4,25 @@ import com.aventstack.extentreports.ExtentTest;
 import com.google.gson.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.testng.Assert;
@@ -18,6 +30,7 @@ import org.testng.Assert;
 
 import java.io.*;
 import java.security.KeyManagementException;
+import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -39,31 +52,55 @@ public abstract class BaseApi {
     protected String origin = "Origin";
     protected String referer = "Referer";
     private HttpClient client = HttpClientBuilder.create().build();
-    protected String baseApiPath = System.getProperty("user.dir") +
-            "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\";
+    //    protected String baseApiPath = System.getProperty("user.dir") +
+//            "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\";
+    protected String baseApiPath = java.nio.file.Paths.get(
+            System.getProperty("user.dir"),
+            "src", "main", "java", "com", "verifone", "utils", "apiClient").toString() + File.separator;
     protected Properties prop = new Properties();
 
 
     public BaseApi() throws IOException {
-        FileInputStream ip = new FileInputStream(System.getProperty("user.dir") +
-                "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\headers.properties");
+//        FileInputStream ip = new FileInputStream(System.getProperty("user.dir") +
+//                "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\headers.properties");
+        FileInputStream ip = new FileInputStream(baseApiPath + "headers.properties");
         prop.load(ip);
     }
 
 
+    public static HttpClient getNewHttpClient() {
+        try {
+            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            trustStore.load(null, null);
+
+            MySSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+            sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
+            HttpParams params = new BasicHttpParams();
+            HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+            HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+
+            SchemeRegistry registry = new SchemeRegistry();
+            registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+            registry.register(new Scheme("https", sf, 443));
+
+            ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
+
+            return new DefaultHttpClient(ccm, params);
+        } catch (Exception e) {
+            return new DefaultHttpClient();
+        }
+    }
+
+
     public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        HttpClient client = HttpClients.custom()
-                .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
-                                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                                .build()
-                        )
-                ).build();
+        HttpClient client = getNewHttpClient();
         HttpRequestBase request = getRequest(url, method, body);
         headers.forEach(request::addHeader);
         Gson gson = new GsonBuilder().create();
         long startTime = System.currentTimeMillis();
         HttpResponse response = client.execute(request);
-        reportReqestData(url, method, headers, startTime);
+        reportReqestData(url, method, headers, startTime, body);
         int responseCode = response.getStatusLine().getStatusCode();
         if (response.getEntity() == null) {
             Assert.assertEquals(responseCode, expectedCode);
@@ -81,11 +118,12 @@ public abstract class BaseApi {
     }
 
 
-    private static void reportReqestData(String url, String method, HashMap<String, String> headers, long startTime) {
+    private static void reportReqestData(String url, String method, HashMap<String, String> headers, long startTime, String requestData) {
         System.out.println("Sending request to URL : " + url);
         testLog.info("Sending request to URL : " + url);
         testLog.info("Method: " + method);
         testLog.info("Headers: " + headers.toString());
+        testLog.info("request data: " + requestData);
         testLog.info("Response Time: " + (System.currentTimeMillis() - startTime));
 
     }
@@ -139,33 +177,45 @@ public abstract class BaseApi {
     }
 
 
-    protected JsonObject getPost(JsonObject requestData, int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        HttpClient client = HttpClients.custom()
-                .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
-                                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                                .build()
-                        )
-                ).build();
+    protected JsonObject getPost(JsonObject requestData, int expectedCode) throws IOException {
+        HttpClient client = null;
+        try {
+            client = HttpClients.custom()
+                    .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
+                                    .loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                                    .build()
+                            )
+                    ).build();
+        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
+            e.printStackTrace();
+        }
         HttpPost post = new HttpPost(url);
         baseHeaders.forEach(post::addHeader);
         Gson gson = new GsonBuilder().create();
         post.setEntity(new StringEntity(gson.toJson(requestData), "UTF-8"));
+        long startTime = System.currentTimeMillis();
         HttpResponse response = client.execute(post);
-        System.out.println("Sending request to URL : " + url);
-        testLog.info("Sending request to URL : " + url);
+//        System.out.println("Sending request to URL : " + url);
+//        testLog.info("Sending request to URL : " + url);
+        reportReqestData(url, "post", baseHeaders, startTime, requestData.toString());
         String entity = EntityUtils.toString(response.getEntity());
         validateStatusCode(expectedCode, response, entity);
         return gson.fromJson(entity, JsonObject.class);
     }
 
 
-    protected JsonObject getPost(String requestData, int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        HttpClient client = HttpClients.custom()
-                .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
-                                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                                .build()
-                        )
-                ).build();
+    protected JsonObject getPost(String requestData, int expectedCode) throws IOException {
+        HttpClient client = null;
+        try {
+            client = HttpClients.custom()
+                    .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
+                                    .loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                                    .build()
+                            )
+                    ).build();
+        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
+            e.printStackTrace();
+        }
         HttpPost post = new HttpPost(url);
         baseHeaders.forEach(post::addHeader);
         Gson gson = new GsonBuilder().create();

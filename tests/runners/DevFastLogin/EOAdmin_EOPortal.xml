@@ -9,7 +9,8 @@
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
     <parameter name="env" value="Dev" />
-    <parameter name="mail" value="cuteeo@getnada.com" />
+    <!--<parameter name="mail" value="cuteeo@getnada.com" />-->
+    <parameter name="mail" value="TestOrg2_EO_Dev@getnada.com" />
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />

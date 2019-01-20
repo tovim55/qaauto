@@ -7,6 +7,7 @@ import com.verifone.pages.PageFactory;
 import com.verifone.pages.eoPages.*;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
@@ -40,7 +41,7 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 	@Test(enabled = true, priority=27, testName = "EOAdmin Update My Profile - User Info", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUpdateMyProfile_UserInfoUI() throws Exception {
-
+		WebDriver driver = new HomePage().getDriver();
 		String firstName = "";
 		String lastName = "";
 		String Name = "";
@@ -52,7 +53,7 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -65,8 +66,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -77,8 +78,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 		Name = MyProfilePage.getName();
@@ -88,8 +89,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------- Edit Profile page. Update User data. Cancel -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -98,37 +99,37 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditProfilePage.updateFirstName("12345");
 		EditProfilePage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputFirstName("");
 		EditProfilePage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name must not be empty", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field First Name must not be empty", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputFirstName(" ");
 		EditProfilePage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name must not be empty", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field First Name must not be empty", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputFirstName("~!@#$%^&*()");
 		EditProfilePage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputFirstName(".string");
 		EditProfilePage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field First Name should contain only letters, space, period, hyphen (-) and apostrophe ('). First Name should begin with a letter.", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputFirstName("qwertyuiopqwertyuiopqwertyuiop.-.-.-");
 		EditProfilePage.clickLastNameFld();
-		if (!Assertions.compareValue("Field First Name must be at least 1 characters long, but not more than 35 characters", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field First Name must be at least 1 characters long, but not more than 35 characters", EditProfilePage.errorFirstName(), "First Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -141,37 +142,37 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		//		Validation check
 		EditProfilePage.updateLastName("12345");
 		EditProfilePage.clickFirstNameFld();
-		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputLastName("");
 		EditProfilePage.clickFirstNameFld();
-		if (!Assertions.compareValue("Field Last Name must not be empty", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Last Name must not be empty", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputLastName(" ");
 		EditProfilePage.clickFirstNameFld();
-		if (!Assertions.compareValue("Field Last Name must not be empty", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Last Name must not be empty", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputLastName("~!@#$%^&*()");
 		EditProfilePage.clickFirstNameFld();
-		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputLastName(".string");
 		EditProfilePage.clickFirstNameFld();
-		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Last Name should contain only letters, space, period, hyphen (-) and apostrophe ('). Last Name should begin with a letter.", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditProfilePage.inputLastName("qwertyuiopqwertyuiopqwertyuiop.-.-.-");
 		EditProfilePage.clickFirstNameFld();
-		if (!Assertions.compareValue("Field Last Name must be at least 1 characters long, but not more than 35 characters", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Last Name must be at least 1 characters long, but not more than 35 characters", EditProfilePage.errorLastName(), "Last Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -184,13 +185,13 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify no changes saved -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		System.out.println(Name);
 //		Verify User Name not changed
 
-		if (!Assertions.compareValue(Name, MyProfilePage.getName(), "Name: ", testLog)){
+		if (!Assertions.compareValue(Name, MyProfilePage.getName(), "Name: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -198,8 +199,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		MyProfilePage.clickLnkEditUserInf();
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -218,16 +219,16 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify data updated -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 //		System.out.println(userName);
 
 //		Verify  Name updated
-		if (!Assertions.compareBoolean(true,MyProfilePage.getName().contains(update), "Name updated: ", testLog)){
+		if (!Assertions.compareBoolean(true,MyProfilePage.getName().contains(update), "Name updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareNumber(updateLength*2,MyProfilePage.getName().length() - NameLength, "UserName updated: ", testLog)){
+		if (!Assertions.compareNumber(updateLength*2,MyProfilePage.getName().length() - NameLength, "UserName updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -237,8 +238,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		MyProfilePage.clickLnkEditUserInf();
 
 //		Edit User page
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -262,15 +263,15 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- User Details page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		Assert.assertTrue(TestPassFlag);
 	}
 
 	@Test(enabled = true, priority=28, testName = "EOAdmin Update My Profile - Business Information", groups = { "Sanity" }, alwaysRun = true)
 
 	public void EOAdminUpdateMyProfile_BusinessInfoUI() throws Exception {
-
+		WebDriver driver = new HomePage().getDriver();
 		int a = 0;
 		String Name = "";
 		String update = " updated";
@@ -298,7 +299,7 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
@@ -311,8 +312,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -323,8 +324,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 		Name = MyProfilePage.getName();
@@ -335,8 +336,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------- Edit Business page. Update Business data. Cancel -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditBusinessPage EditBusinessPage = (EditBusinessPage) PageFactory.getPage("EditBusinessPage");
 
 //		Update Name
@@ -345,25 +346,25 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputName("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Name must not be empty", EditBusinessPage.errorName(), "Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Name must not be empty", EditBusinessPage.errorName(), "Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputName(" ");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Name must not be empty", EditBusinessPage.errorName(), "Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Name must not be empty", EditBusinessPage.errorName(), "Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputName("~!@#$%^&*()");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Name should contain only letters, numbers, commas, space, period, underscore, hyphen, apostrophe (') and the ampersand key (&). Name should begin with a letter or number", EditBusinessPage.errorName(), "Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Name should contain only letters, numbers, commas, space, period, underscore, hyphen, apostrophe (') and the ampersand key (&). Name should begin with a letter or number", EditBusinessPage.errorName(), "Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputName("qwertyuiopqwertyuiopqwertyuiop.-.-.-123456789012345");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Name must be at least 1 characters long, but not more than 50 characters", EditBusinessPage.errorName(), "Name validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Name must be at least 1 characters long, but not more than 50 characters", EditBusinessPage.errorName(), "Name validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -382,19 +383,19 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputStreet("");
 		EditBusinessPage.clickFldName();
-		if (!Assertions.compareValue("Field Street 1 must not be empty", EditBusinessPage.errorStreet(), "Street validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Street 1 must not be empty", EditBusinessPage.errorStreet(), "Street validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputStreet(" ");
 		EditBusinessPage.clickFldName();
-		if (!Assertions.compareValue("Field Street 1 must not be empty", EditBusinessPage.errorStreet(), "Street validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Street 1 must not be empty", EditBusinessPage.errorStreet(), "Street validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputStreet("qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 123456789 @");
 		EditBusinessPage.clickFldName();
-		if (!Assertions.compareValue("Field Street 1 must be at least 1 characters long, but not more than 100 characters", EditBusinessPage.errorStreet(), "Street validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Street 1 must be at least 1 characters long, but not more than 100 characters", EditBusinessPage.errorStreet(), "Street validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -406,19 +407,19 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputCity("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Town/City must not be empty", EditBusinessPage.errorCity(), "City validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Town/City must not be empty", EditBusinessPage.errorCity(), "City validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputCity(" ");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Town/City must not be empty", EditBusinessPage.errorCity(), "City validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Town/City must not be empty", EditBusinessPage.errorCity(), "City validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputCity("qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 123456789 @");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Town/City must be at least 1 characters long, but not more than 100 characters", EditBusinessPage.errorCity(), "City validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Town/City must be at least 1 characters long, but not more than 100 characters", EditBusinessPage.errorCity(), "City validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -430,19 +431,19 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputState("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field State/Province/County must not be empty", EditBusinessPage.errorState(), "State validation error: ", testLog)){
+		if (!Assertions.compareValue("Field State/Province/County must not be empty", EditBusinessPage.errorState(), "State validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputState(" ");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field State/Province/County must not be empty", EditBusinessPage.errorState(), "State validation error: ", testLog)){
+		if (!Assertions.compareValue("Field State/Province/County must not be empty", EditBusinessPage.errorState(), "State validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputState("qwertyuiop 123456789qwertyuiop 123456789qwertyuiop 1");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field State/Province/County must be at least 1 characters long, but not more than 50 characters", EditBusinessPage.errorState(), "State validation error: ", testLog)){
+		if (!Assertions.compareValue("Field State/Province/County must be at least 1 characters long, but not more than 50 characters", EditBusinessPage.errorState(), "State validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -454,31 +455,31 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputPostalCode("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field ZIP/Postal Code must not be empty", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog)){
+		if (!Assertions.compareValue("Field ZIP/Postal Code must not be empty", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPostalCode("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field ZIP/Postal Code must not be empty", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog)){
+		if (!Assertions.compareValue("Field ZIP/Postal Code must not be empty", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPostalCode("!@#$%^&*()");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field ZIP/Postal Code should contain only letters, numbers, space and hyphen (-), and must begin with a letter or number", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog)){
+		if (!Assertions.compareValue("Field ZIP/Postal Code should contain only letters, numbers, space and hyphen (-), and must begin with a letter or number", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPostalCode("1");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field ZIP/Postal Code must be at least 2 characters long, but not more than 50 characters", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog)){
+		if (!Assertions.compareValue("Field ZIP/Postal Code must be at least 2 characters long, but not more than 50 characters", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPostalCode("123456789012345678901234567890123456789012345678901");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field ZIP/Postal Code must be at least 2 characters long, but not more than 50 characters", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog)){
+		if (!Assertions.compareValue("Field ZIP/Postal Code must be at least 2 characters long, but not more than 50 characters", EditBusinessPage.errorZIPCode(), "ZIP Code validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -496,37 +497,37 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputPhoneNumber("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Contact Number must not be empty", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Contact Number must not be empty", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPhoneNumber(" ");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Contact Number must not be empty", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Contact Number must not be empty", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPhoneNumber("strng!@#$%^&*()");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Contact Number should contain only numbers", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Contact Number should contain only numbers", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPhoneNumber("24234 34534543");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Contact Number should contain only numbers", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Contact Number should contain only numbers", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPhoneNumber("242");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Contact Number must be at least 4 characters long, but not more than 20 characters", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Contact Number must be at least 4 characters long, but not more than 20 characters", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputPhoneNumber("123456789012345678901");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Contact Number must be at least 4 characters long, but not more than 20 characters", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Contact Number must be at least 4 characters long, but not more than 20 characters", EditBusinessPage.errorPhoneNumber(), "Phone number validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -538,19 +539,19 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputWebSite("string");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Website should be a valid URL", EditBusinessPage.errorWebSite(), "WebSite validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Website should be a valid URL", EditBusinessPage.errorWebSite(), "WebSite validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputWebSite("string.x");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Website should be a valid URL", EditBusinessPage.errorWebSite(), "WebSite validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Website should be a valid URL", EditBusinessPage.errorWebSite(), "WebSite validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputWebSite("!@#$%^&*().com");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Website should be a valid URL", EditBusinessPage.errorWebSite(), "WebSite validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Website should be a valid URL", EditBusinessPage.errorWebSite(), "WebSite validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 		UpdatedWebSite = WebSite.replace(".",update + ".");
@@ -563,25 +564,25 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Validation check
 		EditBusinessPage.inputMail("");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Email must not be empty", EditBusinessPage.errorMail(), "Mail validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Email must not be empty", EditBusinessPage.errorMail(), "Mail validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputMail(" ");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Email must not be empty", EditBusinessPage.errorMail(), "Mail validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Email must not be empty", EditBusinessPage.errorMail(), "Mail validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputMail("strng!@#$%^&*()");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Email should be a valid email", EditBusinessPage.errorMail(), "Mail validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Email should be a valid email", EditBusinessPage.errorMail(), "Mail validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
 		EditBusinessPage.inputMail("czxvbnmqwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890qwertyuiop1234567890@mail.com");
 		EditBusinessPage.clickFldStreet();
-		if (!Assertions.compareValue("Field Email must be at least 1 characters long, but not more than 255 characters", EditBusinessPage.errorMail(), "Mail validation error: ", testLog)){
+		if (!Assertions.compareValue("Field Email must be at least 1 characters long, but not more than 255 characters", EditBusinessPage.errorMail(), "Mail validation error: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -597,27 +598,27 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------ My Profile page. Verify no changes saved -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 
 //		Verify No changes saved
-		if (!Assertions.compareValue(BusName, MyProfilePage.getBusName(), "Business Name not changed: ", testLog)){
+		if (!Assertions.compareValue(BusName, MyProfilePage.getBusName(), "Business Name not changed: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareValue(BusCountry, MyProfilePage.getBusCountry(), "Country not changed: ", testLog)){
+		if (!Assertions.compareValue(BusCountry, MyProfilePage.getBusCountry(), "Country not changed: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareValue(BusAddress, MyProfilePage.getBusAddress(), "Address not changed: ", testLog)){
+		if (!Assertions.compareValue(BusAddress, MyProfilePage.getBusAddress(), "Address not changed: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareValue(BusContNumber, MyProfilePage.getBusPhoneNumber(), "Contact Number not changed: ", testLog)){
+		if (!Assertions.compareValue(BusContNumber, MyProfilePage.getBusPhoneNumber(), "Contact Number not changed: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareValue(BusEmail, MyProfilePage.getBusEmail(), "Email not changed: ", testLog)){
+		if (!Assertions.compareValue(BusEmail, MyProfilePage.getBusEmail(), "Email not changed: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareValue(BusWebSite, MyProfilePage.getBusWebSite(), "WebSite not changed: ", testLog)){
+		if (!Assertions.compareValue(BusWebSite, MyProfilePage.getBusWebSite(), "WebSite not changed: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -626,8 +627,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------- Edit Business page. Update Business data. Save -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditBusinessPage = (EditBusinessPage) PageFactory.getPage("EditBusinessPage");
 
 //		Update Name
@@ -685,40 +686,40 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify Business data updated -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 
 //		Verify changes saved
-		if (!Assertions.compareBoolean(false, BusName.contains(MyProfilePage.getBusName()), "Business Name stay with no changes: ", testLog)){
+		if (!Assertions.compareBoolean(false, BusName.contains(MyProfilePage.getBusName()), "Business Name stay with no changes: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(false, BusAddress.contains(MyProfilePage.getBusAddress()), "Address stay with no changes: ", testLog)){
+		if (!Assertions.compareBoolean(false, BusAddress.contains(MyProfilePage.getBusAddress()), "Address stay with no changes: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(false, BusContNumber.contains(MyProfilePage.getBusPhoneNumber()), "Contact Number stay with no changes: ", testLog)){
+		if (!Assertions.compareBoolean(false, BusContNumber.contains(MyProfilePage.getBusPhoneNumber()), "Contact Number stay with no changes: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(false, BusEmail.contains(MyProfilePage.getBusEmail()), "Email stay with no changes: ", testLog)){
+		if (!Assertions.compareBoolean(false, BusEmail.contains(MyProfilePage.getBusEmail()), "Email stay with no changes: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(false, BusWebSite.contains(MyProfilePage.getBusWebSite()), "WebSite stay with no changes: ", testLog)){
+		if (!Assertions.compareBoolean(false, BusWebSite.contains(MyProfilePage.getBusWebSite()), "WebSite stay with no changes: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
-		if (!Assertions.compareBoolean(true, MyProfilePage.getBusName().contains(update), "Business Name updated: ", testLog)){
+		if (!Assertions.compareBoolean(true, MyProfilePage.getBusName().contains(update), "Business Name updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(true, MyProfilePage.getBusAddress().contains(update), "Address updated: ", testLog)){
+		if (!Assertions.compareBoolean(true, MyProfilePage.getBusAddress().contains(update), "Address updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(true, MyProfilePage.getBusPhoneNumber().contains(updateNum), "Contact Number updated: ", testLog)){
+		if (!Assertions.compareBoolean(true, MyProfilePage.getBusPhoneNumber().contains(updateNum), "Contact Number updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(true, MyProfilePage.getBusEmail().contains(update.replace(" ","")), "Email updated: ", testLog)){
+		if (!Assertions.compareBoolean(true, MyProfilePage.getBusEmail().contains(update.replace(" ","")), "Email updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareBoolean(true, MyProfilePage.getBusWebSite().contains(update.replace(" ","")), "WebSite updated: ", testLog)){
+		if (!Assertions.compareBoolean(true, MyProfilePage.getBusWebSite().contains(update.replace(" ","")), "WebSite updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -728,8 +729,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 //		Remove changes
 //		Edit Business page again
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditBusinessPage = (EditBusinessPage) PageFactory.getPage("EditBusinessPage");
 
 //		Update Name
@@ -774,15 +775,15 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- Merchant Details page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		Assert.assertTrue(TestPassFlag);
 	}
 
 	@Test(enabled = true, priority=29, testName = "Merchant Manager Update My Profile - User Info", groups = { "Sanity" }, alwaysRun = true)
 
 	public void MerchantManUpdateMyProfile_UserInfoUI() throws Exception {
-
+		WebDriver driver = new HomePage().getDriver();
 		String firstName = "";
 		String lastName = "";
 		String Name = "";
@@ -794,7 +795,7 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EOMerchantMan = EntitiesFactory.getEntity("EOMerchantManager");
@@ -808,8 +809,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -820,8 +821,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 		Name = MyProfilePage.getName();
@@ -831,8 +832,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------- Edit Profile page. Update User data. Cancel -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -851,13 +852,13 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify no changes saved -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		System.out.println(Name);
 //		Verify User Name not changed
 
-		if (!Assertions.compareValue(Name, MyProfilePage.getName(), "Name: ", testLog)){
+		if (!Assertions.compareValue(Name, MyProfilePage.getName(), "Name: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -865,8 +866,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		MyProfilePage.clickLnkEditUserInf();
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -885,16 +886,16 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify data updated -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 //		System.out.println(userName);
 
 //		Verify  Name updated
-		if (!Assertions.compareBoolean(true,MyProfilePage.getName().contains(update), "Name updated: ", testLog)){
+		if (!Assertions.compareBoolean(true,MyProfilePage.getName().contains(update), "Name updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareNumber(updateLength*2,MyProfilePage.getName().length() - NameLength, "UserName updated: ", testLog)){
+		if (!Assertions.compareNumber(updateLength*2,MyProfilePage.getName().length() - NameLength, "UserName updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -904,8 +905,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		MyProfilePage.clickLnkEditUserInf();
 
 //		Edit User page
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -929,21 +930,21 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- User Details page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		Assert.assertTrue(TestPassFlag);
 	}
 	@Test(enabled = true, priority=30, testName = "Merchant Manager verify no Business Information link exists", groups = { "Sanity" }, alwaysRun = true)
 
 	public void MerchantManUpdateMyProfile_NoBusinessInfoUI() throws Exception {
 
-
+		WebDriver driver = new HomePage().getDriver();
 		Env = "https://" + envConfig.getEnv() + EnvPort;
 		Boolean TestPassFlag = true;
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EOMerchantMan = EntitiesFactory.getEntity("EOMerchantManager");
@@ -957,8 +958,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -969,14 +970,14 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 
 		testLog.info("------------------------------------------- Verify NO Business page link exists. -------------------------------------------------");
 
-		if (!Assertions.compareBoolean(false,MyProfilePage.elementBusInfoEditClickable(), "Link Business Info exists: ", testLog)){
+		if (!Assertions.compareBoolean(false,MyProfilePage.elementBusInfoEditClickable(), "Link Business Info exists: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 		Assert.assertTrue(TestPassFlag);
@@ -985,7 +986,7 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 	@Test(enabled = true, priority=31, testName = "Device and Application Manager Update My Profile - User Info", groups = { "Sanity" }, alwaysRun = true)
 
 	public void DevAppManUpdateMyProfile_UserInfoUI() throws Exception {
-
+		WebDriver driver = new HomePage().getDriver();
 		String firstName = "";
 		String lastName = "";
 		String Name = "";
@@ -997,7 +998,7 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EODevAppMan = EntitiesFactory.getEntity("EODevAppManager");
@@ -1011,8 +1012,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -1023,8 +1024,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 		Name = MyProfilePage.getName();
@@ -1034,8 +1035,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------- Edit Profile page. Update User data. Cancel -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -1054,13 +1055,13 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify no changes saved -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		System.out.println(Name);
 //		Verify User Name not changed
 
-		if (!Assertions.compareValue(Name, MyProfilePage.getName(), "Name: ", testLog)){
+		if (!Assertions.compareValue(Name, MyProfilePage.getName(), "Name: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -1068,8 +1069,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 
 		MyProfilePage.clickLnkEditUserInf();
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -1088,16 +1089,16 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page. Verify data updated -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 //		System.out.println(userName);
 
 //		Verify  Name updated
-		if (!Assertions.compareBoolean(true,MyProfilePage.getName().contains(update), "Name updated: ", testLog)){
+		if (!Assertions.compareBoolean(true,MyProfilePage.getName().contains(update), "Name updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
-		if (!Assertions.compareNumber(updateLength*2,MyProfilePage.getName().length() - NameLength, "UserName updated: ", testLog)){
+		if (!Assertions.compareNumber(updateLength*2,MyProfilePage.getName().length() - NameLength, "UserName updated: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 
@@ -1107,8 +1108,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		MyProfilePage.clickLnkEditUserInf();
 
 //		Edit User page
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		EditProfilePage = (EditProfilePage) PageFactory.getPage("EditProfilePage");
 
 //		Update first name
@@ -1132,21 +1133,21 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- User Details page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		Assert.assertTrue(TestPassFlag);
 	}
 	@Test(enabled = true, priority=32, testName = "Device and Application Manager verify no Business Information link exists", groups = { "Sanity" }, alwaysRun = true)
 
 	public void DevAppManUpdateMyProfile_NoBusinessInfoUI() throws Exception {
 
-
+		WebDriver driver = new HomePage().getDriver();
 		Env = "https://" + envConfig.getEnv() + EnvPort;
 		Boolean TestPassFlag = true;
 
 		testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
 
-		BasePage.driver.navigate().to(Env);
+		driver.navigate().to(Env);
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
 		User EODevAppMan = EntitiesFactory.getEntity("EODevAppManager");
@@ -1160,8 +1161,8 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		LoginEOPortal.clickLoginBtn();
 
 
-		ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to My Profile page -------------------------------------------------");
@@ -1172,14 +1173,14 @@ public class EOPortalUpdateMyProfile_RegUI extends BaseTest {
 		testLog.info("------------------------------------------------- My Profile page -------------------------------------------------");
 
 		Thread.sleep(TimeOut + 1000);
-		availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-		BasePage.driver.switchTo().window(availableWindows.get(0));
+		availableWindows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(availableWindows.get(0));
 		MyProfilePage MyProfilePage = (MyProfilePage) PageFactory.getPage("MyProfilePage");
 		AssertJUnit.assertEquals("My Profile", MyProfilePage.getTitle());
 
 		testLog.info("------------------------------------------- Verify NO Business page link exists. -------------------------------------------------");
 
-		if (!Assertions.compareBoolean(false,MyProfilePage.elementBusInfoEditClickable(), "Link Business Info exists: ", testLog)){
+		if (!Assertions.compareBoolean(false,MyProfilePage.elementBusInfoEditClickable(), "Link Business Info exists: ", testLog, driver)){
 			TestPassFlag = false;
 		}
 		Assert.assertTrue(TestPassFlag);

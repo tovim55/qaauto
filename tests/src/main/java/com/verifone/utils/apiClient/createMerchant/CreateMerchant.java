@@ -23,9 +23,8 @@ public class CreateMerchant extends BaseApi {
     }
 
 
-    public String createMerchant(String eoAdminId) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-//        Date date = new Date();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+    public String createMerchant(String eoAdminId) throws IOException {
+
         String id = UUID.randomUUID().toString();
         url = url + "?b2bMode=false";
         JsonObject requestObj = readJsonFile(baseApiPath + "createMerchant\\create_merchant.json");
@@ -39,12 +38,11 @@ public class CreateMerchant extends BaseApi {
         System.out.println(a.toString());
         return id;
 
-//        testLog.log(LogStatus.INFO, "access token was generated:  " + accessResponse.getAccess_token());
 
     }
 
 
-    public String createMerchantWithConfirmation(String eoAdminId, String id) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    public String createMerchantWithConfirmation(String eoAdminId, String id) throws IOException {
 
         url += "?b2bMode=true";
         JsonObject requestObj = readJsonFile(baseApiPath + "createMerchant\\create_merchant.json");

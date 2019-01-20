@@ -15,6 +15,7 @@ import static com.verifone.utils.DataDrivenUtils.getListFrromString;
 import static com.verifone.utils.DataDrivenUtils.getMapFromStr;
 import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
 
+
 public class DataDrivenApi {
 
     private HashMap headersMap;
@@ -23,7 +24,7 @@ public class DataDrivenApi {
     private ExtentTest testLog;
     private String confirmationCode;
     private String user;
-    private boolean isBearer = true;
+    private boolean isBearer = true; //flag to define getToken type (with 'Bearer' or not)
 
 
 //    public DataDrivenApi(ExtentTest testLog) {
@@ -74,9 +75,11 @@ public class DataDrivenApi {
         }
     }
 
+
     private String getToken(String accessToken, String accGrantType, String accSSOURL, String headersForGetToken) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         if (accessToken.equals("true")) {
             response = getRequestWithHeaders(accSSOURL, "post", accGrantType, getMapFromStr(headersForGetToken), 200);
+
             if (isBearer)
                 headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());
             else

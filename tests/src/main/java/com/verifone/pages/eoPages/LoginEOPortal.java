@@ -63,9 +63,9 @@ public class LoginEOPortal extends BasePage {
     //--------------------------------------------------------------------------
     public void loginInputPassword(String ulPassword)  throws Exception {
 //        sendKeys(lPassword1, ulPassword);
-        WebElement iFrame = BasePage.driver.findElement(By.id("veriPassFrame"));
-        BasePage.driver.switchTo().frame(iFrame);
-        BasePage.driver.findElement(lPassword).sendKeys(ulPassword);
+        WebElement iFrame = driver.findElement(By.id("veriPassFrame"));
+        driver.switchTo().frame(iFrame);
+        driver.findElement(lPassword).sendKeys(ulPassword);
         driver.switchTo().defaultContent();
         click(lEmail);
     }
@@ -107,8 +107,8 @@ public class LoginEOPortal extends BasePage {
      */
     //--------------------------------------------------------------------------
     public String loginPassword() {
-        WebElement iFrame = BasePage.driver.findElement(By.id("veriPassFrame"));
-        BasePage.driver.switchTo().frame(iFrame);
+        WebElement iFrame = driver.findElement(By.id("veriPassFrame"));
+        driver.switchTo().frame(iFrame);
         String a = getText(loginPassword);
         driver.switchTo().defaultContent();
         return a;

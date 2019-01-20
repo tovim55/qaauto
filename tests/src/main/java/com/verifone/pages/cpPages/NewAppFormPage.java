@@ -48,9 +48,10 @@ public class NewAppFormPage extends BasePage {
     }
 
     public String fillGetStartedForm(Application app) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(10000);
+        waitForLoader(loader);
         sendKeys(this.appName, app.getAppName());
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         click(version);
         Thread.sleep(1000);
         click(generateIdBtn);
@@ -59,28 +60,40 @@ public class NewAppFormPage extends BasePage {
         sendKeys(this.description5Words, app.getDescription5Words());
         sendKeys(this.description, app.getDescription());
         select(category, "b44ae8fc-5163-11e7-a459-12a5177fe69f");
+        Thread.sleep(10000);
         String generatedId = getElementsByClassJs(id, 1).getText();
         click(nextBtn);
         return generatedId.split("\n")[0];
 
     }
 
-    public void fillUploadPackageForm(String appPath) throws AWTException, InterruptedException, IOException {
+    public void fillUploadPackageForm(String appPath) throws IOException {
         waitForLoader(loader);
         uploadFile(appPath, getWebElement(dropZonePackage, 10,
-                ExpectedConditions.visibilityOfElementLocated(dropZonePackage)));
+                ExpectedConditions.visibilityOfElementLocated(dropZonePackage)), "zip");
         waitForLoader(loader);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         click(nextBtn);
     }
 
-    public void fillAppIconScreenshots(String path) throws AWTException, InterruptedException, IOException {
+    public void fillAppIconScreenshots(String path) throws  IOException {
         waitForLoader(loader);
         List<WebElement> imagesList = getWebElements(dropZoneImages, 10,
                 ExpectedConditions.visibilityOfElementLocated(dropZoneImages));
-        uploadFile(path, imagesList.get(0));
+        uploadFile(path, imagesList.get(0), "jpg / png");
         waitForLoader(loader);
-        uploadFile(path, imagesList.get(1));
+        uploadFile(path, imagesList.get(1), "jpg / png");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         waitForLoader(loader);
+        click(nextBtn);
         click(nextBtn);
     }
 

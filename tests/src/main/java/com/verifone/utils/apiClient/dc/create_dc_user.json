@@ -1,0 +1,52 @@
+{
+  "data": {
+    "active": true,
+    "addresses": [
+      {
+        "addressLineOne": "aaa",
+        "addressLineTwo": "bbb",
+        "city": "cccc",
+        "countryCode": "US",
+        "primary": true,
+        "state": "CA",
+        "zipCode": "12345"
+      }
+    ],
+    "emails": [
+      {
+        "email": "muky_dcson2@getnada.com",
+        "primary": true
+      }
+    ],
+    "firstName": "Ed",
+    "lastName": "Troj",
+    "middleName": "",
+    "personStatus": "APPROVED",
+    "phones": [
+      {
+        "countryCode": "123",
+        "extensionNumber": "111",
+        "phoneNumber": "4132222",
+        "phoneType": "SUPPORT",
+        "primary": true
+      }
+    ],
+    "pictureUrl": "a.com/pic",
+    "pin": 0,
+    "roles": [
+      {
+        "name": "DISTRIBUTION_CENTER_ADMIN",
+        "description": "DISTRIBUTION_CENTER_ADMIN",
+        "id": "3c491eb3-a386-11e8-976f-129e8b3454e2",
+        "roleStatus": "APPROVED"
+      }
+    ],
+    "venues": [ ],
+    "websites": [
+      {
+        "primary": true,
+        "website": "a.com"
+      }
+    ]
+  }
+}

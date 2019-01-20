@@ -4,8 +4,10 @@ import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.OktaLogin;
+import com.verifone.pages.eoPages.HomePage;
 import com.verifone.pages.eoPages.LoginEOPortal;
 import com.verifone.tests.BaseTest;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -27,6 +29,7 @@ import static com.verifone.pages.BasePage.testLog;
     @Test(enabled = true, priority = 1, testName = "CG Portal", groups = {"FastLogin"}, alwaysRun = true)
 
     public void Login_User_CGPortalUI_Cont(String param1, String param2, String param3, String param4, String param5, String param6) throws Exception {
+        WebDriver driver = new HomePage().getDriver();
         String url = "";
         switch(param1) {
             case "Test":
@@ -45,22 +48,22 @@ import static com.verifone.pages.BasePage.testLog;
                 }
                 break;
         }
-        BasePage.driver.navigate().to(url);
+        driver.navigate().to(url);
         CGLoginPage CGLoginPage = (CGLoginPage) PageFactory.getPage("CGLoginPage");
         CGLoginPage.clickLoginLink();
         CGLoginPage.inputUserName(param2);
         if (param2.contains("@verifone.com")){
             Thread.sleep(2000);
-            ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-            BasePage.driver.switchTo().window(availableWindows.get(0));
+            ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(availableWindows.get(0));
 
             OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
             OktaLogin.loginInputName(param5);
             OktaLogin.loginInputPassword(param3);
             OktaLogin.clickSignInBtn();
 
-            availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
-            BasePage.driver.switchTo().window(availableWindows.get(0));
+            availableWindows = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(availableWindows.get(0));
             OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
             OktaLogin.loginInputAnswer(param6);
             testLog.info("Security answer: " + "");
