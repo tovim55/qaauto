@@ -35,6 +35,10 @@ public class DataDrivenApi {
         this.testLog = child;
     }
 
+    /**
+     * @param child
+     * @param isBearer
+     */
     public DataDrivenApi(ExtentTest child, boolean isBearer) {
         this.testLog = child;
         this.isBearer = isBearer;
