@@ -55,7 +55,7 @@ public class CustomerAttributeApiDdt extends BaseTest {
             else
                 headers = "{RequestID:" + uuid + "}"; //verify post with unique requestID
         }
-        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get());
+        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(), false); // 'isBearer' is a flag to define a getToken type(with 'Bearer' or not)
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }

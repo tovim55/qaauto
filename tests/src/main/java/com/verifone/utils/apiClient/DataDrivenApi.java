@@ -15,6 +15,7 @@ import static com.verifone.utils.DataDrivenUtils.getListFrromString;
 import static com.verifone.utils.DataDrivenUtils.getMapFromStr;
 import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
 
+
 public class DataDrivenApi {
 
     private HashMap headersMap;
@@ -23,6 +24,7 @@ public class DataDrivenApi {
     private ExtentTest testLog;
     private String confirmationCode;
     private String user;
+    private boolean isBearer = true; //flag to define getToken type (with 'Bearer' or not)
 
 
 //    public DataDrivenApi(ExtentTest testLog) {
@@ -31,6 +33,15 @@ public class DataDrivenApi {
 
     public DataDrivenApi(ExtentTest child) {
         this.testLog = child;
+    }
+
+    /**
+     * @param child
+     * @param isBearer
+     */
+    public DataDrivenApi(ExtentTest child, boolean isBearer) {
+        this.testLog = child;
+        this.isBearer = isBearer;
     }
 
     public void startProsess(String accessToken, String accGrantType, String accSSOURL, String uri,
@@ -68,10 +79,16 @@ public class DataDrivenApi {
         }
     }
 
+
     private String getToken(String accessToken, String accGrantType, String accSSOURL, String headersForGetToken) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         if (accessToken.equals("true")) {
             response = getRequestWithHeaders(accSSOURL, "post", accGrantType, getMapFromStr(headersForGetToken), 200);
-            headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());
+
+            if (isBearer)
+                headersMap.put("Authorization", "Bearer " + response.get("access_token").getAsString());
+            else
+                headersMap.put("Authorization", response.get("access_token").getAsString());
+
             testLog.info("Access Token: " + response.get("access_token").getAsString());
 
         }
@@ -81,12 +98,13 @@ public class DataDrivenApi {
     private String addConfirmationCode(String body) {
         if (body.contains("\"username\":"))
             return body;
-        body = body.substring(0,body.length()-2);
+        body = body.substring(0, body.length() - 2);
         body = body + "\"code\":\"" + confirmationCode + "\",\"username\":\"" + user + "\"}";
         testLog.info("Confirmation Code: " + confirmationCode);
         System.out.println(body);
         return body;
     }
+
     public void setConfirmationCode(String confirmationCode) {
         this.confirmationCode = confirmationCode;
     }
@@ -98,18 +116,17 @@ public class DataDrivenApi {
     private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
 
     /**
-     *
      * @param fileQA
      * @param fileDev
      * @return full dataFilePath String (according to Environment)
      */
     public static String setFilePath(String fileQA, String fileDev) {
 
-       String env = BaseTest.envConfig.getEnv();
+        String env = BaseTest.envConfig.getEnv();
 
         if (env.equals("QA"))
-            return dataFile += fileQA;
-         else
-            return dataFile += fileDev;
+            return dataFile + fileQA;
+        else
+            return dataFile + fileDev;
     }
 }
