@@ -8,10 +8,11 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <parameter name="env" value="QA" />
     <parameter name="mail" value="QA.Test@verifone.com" />
     <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
-    <parameter name="pwd" value='SpT5rRvq' />
+    <parameter name="pwd" value='WRNNNNJ3jE' />
     <parameter name="name" value="QA.Test" />
     <parameter name="answer" value="Elephant" />
 
