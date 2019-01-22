@@ -8,6 +8,7 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <parameter name="env" value="QA" />
     <parameter name="mail" value="vfiusdev@getnada.com" />
     <!--<parameter name="mail" value="demo003@getnada.com" />-->

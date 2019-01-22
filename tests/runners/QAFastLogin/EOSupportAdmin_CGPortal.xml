@@ -13,6 +13,7 @@
     <parameter name="pwd" value='SpT5rRvq' />
     <parameter name="name" value="QA.Test" />
     <parameter name="answer" value="Elephant" />
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->

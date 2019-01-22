@@ -10,6 +10,7 @@
     <parameter name="getVersions" value="false"/>
     <parameter name="env" value="QA" />
     <parameter name="mail" value="qa_app_manager@yopmail.com" />
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
     <!--<parameter name="mail" value="gemerchantfour@getnada.com" />-->
     <parameter name="pwd" value="Veri1234" />
