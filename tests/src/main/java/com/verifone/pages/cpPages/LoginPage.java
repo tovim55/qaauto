@@ -59,7 +59,7 @@ public class LoginPage extends BasePage {
 
     public void clickOmLoginBtn() {
         hoverAndClickOnElement(toLoginPageBtn);
-        click(continueToLoginBtn);
+//        click(continueToLoginBtn);
     }
 
     public void supportLogin(User user) throws Exception {

@@ -153,7 +153,7 @@ public class Steps {
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
-        Application app = new Application("ppppoooo", "", "1.0.0 ", "this test", "this is auto test!!");
+        Application app = new Application("autotest", "", "1.0.0 ", "this test", "this is auto test!!");
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + "\\" + id + ".zip");

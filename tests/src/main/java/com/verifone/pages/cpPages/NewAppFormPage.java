@@ -84,9 +84,9 @@ public class NewAppFormPage extends BasePage {
         waitForLoader(loader);
         List<WebElement> imagesList = getWebElements(dropZoneImages, 10,
                 ExpectedConditions.visibilityOfElementLocated(dropZoneImages));
-        uploadFile(path, imagesList.get(0), "jpg / png");
+        uploadFile(path, imagesList.get(0), "image / png");
         waitForLoader(loader);
-        uploadFile(path, imagesList.get(1), "jpg / png");
+        uploadFile(path, imagesList.get(1), "image / png");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -98,7 +98,7 @@ public class NewAppFormPage extends BasePage {
     }
 
     public void fillPriceForm() throws InterruptedException {
-         Thread.sleep(4000);
+         Thread.sleep(6000);
          hoverAndClickOnElement(selectAllCountriesBtn);
          click(nextBtn);
     }

@@ -30,7 +30,7 @@
 
         <classes>
             <!--<class name="com.verifone.tests.api.tests.PubSubDdtTest"/>-->
-            <class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>
+            <class name="com.verifone.tests.cpTests.DevUploadApp"/>
 
 
 
