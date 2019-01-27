@@ -26,7 +26,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--&lt;!&ndash;<class name="com.verifone.tests.cpTests.LoginTest"/>&ndash;&gt;-->
+            <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
             <class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>
             <class name="com.verifone.tests.api.tests.cloud_api_ddt.EmployeeApiDdt"/>
             <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>

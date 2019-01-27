@@ -25,7 +25,6 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
             <class name="com.verifone.tests.cpTests.DCTests"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
