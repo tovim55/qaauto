@@ -40,6 +40,7 @@ public class SeleniumUtils {
     public WebDriver getDriver(String browserType) throws Exception {
         driver = setBrowser(browserType);
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         return driver;
     }
 
