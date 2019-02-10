@@ -12,7 +12,7 @@
     <parameter name="env" value="QA" />
     <parameter name="mail" value="qa.cptest@verifone.com" />
     <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
-    <parameter name="pwd" value="amKwD5Cd" />
+    <parameter name="pwd" value="JAVRRN5ie" />
     <parameter name="name" value="qa.cptest" />
     <parameter name="answer" value="BigTiger" />
 

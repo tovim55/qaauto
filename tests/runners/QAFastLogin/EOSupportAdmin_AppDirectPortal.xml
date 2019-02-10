@@ -10,7 +10,7 @@
     <parameter name="getVersions" value="false"/>
     <parameter name="env" value="Prod" />
     <parameter name="mail" value="QA.Test@verifone.com" />
-    <parameter name="pwd" value='SpT5rRvq' />
+    <parameter name="pwd" value='197766Lg2' />
     <parameter name="name" value="QA.Test" />
     <parameter name="answer" value="Elephant" />
     <parameter name="isLinuxMachine" value="${isLinux}"/>
