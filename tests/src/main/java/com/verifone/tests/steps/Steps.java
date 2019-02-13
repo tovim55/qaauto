@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 //import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 import static com.verifone.utils.Assertions.assertTextContains;
-import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
+import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
 
 //import static com.verifone.infra.SeleniumUtils.restartDriver;
 

@@ -6,10 +6,7 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 
 import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
+
 
 public class SsoApi extends BaseApi {
 
@@ -29,7 +26,6 @@ public class SsoApi extends BaseApi {
                 .getAsJsonObject("email").addProperty("email", user.getUserName());
         JsonObject result = getPost(requestObj, 201);
         user.setInternalId(result.getAsJsonArray("data").get(0).getAsJsonObject().get("id").getAsString());
-        testLog.info("Response data: " + result.toString());
         testLog.info("SsoApi org ID : " + user.getInternalId());
 
     }
@@ -42,7 +38,6 @@ public class SsoApi extends BaseApi {
         requestObj.getAsJsonObject("data").getAsJsonArray("emails").get(0).getAsJsonObject()
                 .addProperty("email", dcUser.getUserName());
         JsonObject result = getPost(requestObj, 201);
-        testLog.info("Response data: " + result.toString());
         dcUser.setInternalId(
                 result.getAsJsonArray("data").get(0).getAsJsonObject().get("id").getAsString());
 

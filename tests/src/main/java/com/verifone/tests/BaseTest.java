@@ -9,6 +9,7 @@ import com.verifone.infra.EnvConfig;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.pages.BasePage;
 import com.verifone.utils.apiClient.BaseApi;
+import com.verifone.utils.apiClient.BaseDDTApi;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
@@ -97,7 +98,7 @@ public abstract class BaseTest {
     protected void starTestLog(String testName, String description) {
         ExtentTest p = (ExtentTest) parentTest.get();
         test.set(p.createNode(testName, description));
-        BaseApi.testLog = BasePage.testLog = (ExtentTest) test.get();
+        BaseApi.testLog = BaseDDTApi.testLog = BasePage.testLog = (ExtentTest) test.get();
     }
 
 

@@ -13,7 +13,7 @@ import java.io.File;
 import java.util.UUID;
 
 import static com.verifone.utils.DataDrivenUtils.getMapFromStr;
-import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
+import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
 
 
 public class PubSubDdtTest extends BaseTest {

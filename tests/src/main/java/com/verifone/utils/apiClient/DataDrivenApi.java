@@ -13,7 +13,7 @@ import java.util.HashMap;
 import static com.verifone.utils.Assertions.assertTextContains;
 import static com.verifone.utils.DataDrivenUtils.getListFrromString;
 import static com.verifone.utils.DataDrivenUtils.getMapFromStr;
-import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
+import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
 
 
 public class DataDrivenApi {
