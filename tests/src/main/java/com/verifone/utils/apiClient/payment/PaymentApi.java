@@ -29,8 +29,6 @@ public class PaymentApi extends BaseApi {
 
     public String createTransactionRequest() throws IOException, JSONException, ParserConfigurationException, SAXException, TransformerException {
         url = "http://stgvpay.verifone.co.il/ws/vpayposproxy.asmx";
-//        File req_xml = new File(baseApiPath + "payment" + File.separator + "create_transaction_request");
-//        JSONObject result = postSOAPXML(new InputStreamEntity(new FileInputStream(req_xml), req_xml.length()), 200);
         String requestData = convertDocToStr(readXMLFile(
                 baseApiPath + "payment" + File.separator + "create_transaction_request"));
         JSONObject result = postSOAPXML(requestData, 200);
