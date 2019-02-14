@@ -35,15 +35,8 @@ public abstract class BaseApi {
 
 
     protected String url;
-    protected JsonObject response;
     public static ExtentTest testLog;
     protected HashMap<String, String> baseHeaders = new HashMap<>();
-    protected String contentType = "Content-Type";
-    protected String authorization = "Authorization";
-    protected String correlationId = "X-VFI-CORRELATION-ID";
-    protected String accept = "Accept";
-    protected String origin = "Origin";
-    protected String referer = "Referer";
     protected String baseApiPath = java.nio.file.Paths.get(
             System.getProperty("user.dir"),
             "src", "main", "java", "com", "verifone", "utils", "apiClient").toString() + File.separator;
@@ -60,7 +53,7 @@ public abstract class BaseApi {
         HttpPost post = new HttpPost(url);
         post.setEntity(new StringEntity(requestData, "UTF-8"));
         baseHeaders.forEach(post::addHeader);
-        String entity = executeRequest(requestData, expectedCode, post);
+        String entity = executeRequest("<textarea>" + requestData + "</textarea>", expectedCode, post);
         return XML.toJSONObject(entity);
 
     }

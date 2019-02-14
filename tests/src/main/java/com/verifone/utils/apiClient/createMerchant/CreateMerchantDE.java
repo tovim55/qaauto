@@ -3,6 +3,7 @@ package com.verifone.utils.apiClient.createMerchant;
 import com.google.gson.JsonObject;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
+import com.verifone.utils.apiClient.Headers;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
@@ -16,11 +17,11 @@ public class CreateMerchantDE extends BaseApi {
         super();
         url = BaseTest.envConfig.getApiUrls().getCreateMerchant();
         url = url + "?b2bMode=false";
-        baseHeaders.put(this.contentType, prop.getProperty("createMerchant.contentType"));
-        baseHeaders.put(this.authorization, prop.getProperty("createMerchant.authorization") + accessToken);
-        baseHeaders.put(this.correlationId, correlationId);
-        baseHeaders.put(this.origin, prop.getProperty("createMerchant.origin"));
-        baseHeaders.put(this.referer, prop.getProperty("createMerchant.referer"));
+        baseHeaders.put(Headers.CONTENT_TYPE.get(), prop.getProperty("createMerchant.contentType"));
+        baseHeaders.put(Headers.AUTHORIZATION.get(), prop.getProperty("createMerchant.authorization") + accessToken);
+        baseHeaders.put(Headers.CORRELATION_ID.get(), correlationId);
+        baseHeaders.put(Headers.ORIGIN.get(), prop.getProperty("createMerchant.origin"));
+        baseHeaders.put(Headers.REFERER.get(), prop.getProperty("createMerchant.referer"));
     }
 
 

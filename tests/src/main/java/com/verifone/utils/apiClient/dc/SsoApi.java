@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.verifone.infra.User;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
+import com.verifone.utils.apiClient.Headers;
 
 import java.io.IOException;
 
@@ -12,8 +13,8 @@ public class SsoApi extends BaseApi {
 
     public SsoApi(String accessToken) throws IOException {
         super();
-        baseHeaders.put(this.contentType, prop.getProperty("dc.contentType"));
-        baseHeaders.put(this.authorization, prop.getProperty("dc.authorization") + accessToken);
+        baseHeaders.put(Headers.CONTENT_TYPE.get(), prop.getProperty("dc.contentType"));
+        baseHeaders.put(Headers.AUTHORIZATION.get(), prop.getProperty("dc.authorization") + accessToken);
     }
 
 

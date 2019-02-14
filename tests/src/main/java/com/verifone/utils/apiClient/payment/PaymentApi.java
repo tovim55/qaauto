@@ -1,29 +1,23 @@
 package com.verifone.utils.apiClient.payment;
 
+import com.verifone.utils.apiClient.Headers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.verifone.utils.apiClient.BaseApi;
-import org.apache.http.entity.InputStreamEntity;
-import org.json.XML;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
+
 import java.io.*;
-import java.nio.charset.Charset;
 
 
 public class PaymentApi extends BaseApi {
 
     public PaymentApi() throws IOException {
         super();
-        baseHeaders.put(this.contentType, "text/xml; charset=UTF-8");
+        baseHeaders.put(Headers.CONTENT_TYPE.get(), "text/xml; charset=UTF-8");
     }
 
 
@@ -33,11 +27,13 @@ public class PaymentApi extends BaseApi {
                 baseApiPath + "payment" + File.separator + "create_transaction_request"));
         JSONObject result = postSOAPXML(requestData, 200);
 
-        return result.getJSONObject("soap:Envelope")
+        String identifier  = result.getJSONObject("soap:Envelope")
                 .getJSONObject("soap:Body")
                 .getJSONObject("CreateTransactionResponse")
                 .getJSONObject("CreateTransactionResult")
                 .getJSONObject("Body").getString("Identifier");
+        testLog.info("Identifier: " + identifier);
+        return identifier;
 
     }
 
