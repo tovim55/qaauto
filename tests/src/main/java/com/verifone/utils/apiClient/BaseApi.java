@@ -36,6 +36,7 @@ public abstract class BaseApi {
 
     protected String url;
     public static ExtentTest testLog;
+    private Gson gson = new GsonBuilder().create();
     protected HashMap<String, String> baseHeaders = new HashMap<>();
     protected String baseApiPath = java.nio.file.Paths.get(
             System.getProperty("user.dir"),
@@ -63,7 +64,6 @@ public abstract class BaseApi {
         HttpGet get = new HttpGet(url);
         baseHeaders.forEach(get::addHeader);
         String entity = executeRequest("", expectedCode, get);
-        Gson gson = new GsonBuilder().create();
         return gson.fromJson(entity, JsonObject.class);
     }
 
@@ -71,7 +71,6 @@ public abstract class BaseApi {
     protected JsonObject getPost(JsonObject requestData, int expectedCode) throws IOException {
         HttpPost post = new HttpPost(url);
         baseHeaders.forEach(post::addHeader);
-        Gson gson = new GsonBuilder().create();
         post.setEntity(new StringEntity(gson.toJson(requestData), "UTF-8"));
         String entity = executeRequest(requestData.toString(), expectedCode, post);
         return gson.fromJson(entity, JsonObject.class);
@@ -81,7 +80,6 @@ public abstract class BaseApi {
     protected JsonObject getPost(String requestData, int expectedCode) throws IOException {
         HttpPost post = new HttpPost(url);
         baseHeaders.forEach(post::addHeader);
-        Gson gson = new GsonBuilder().create();
         post.setEntity(new StringEntity(requestData, "UTF-8"));
         String entity = executeRequest(requestData, expectedCode, post);
         return gson.fromJson(entity, JsonObject.class);
