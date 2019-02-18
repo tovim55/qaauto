@@ -7,10 +7,15 @@ import com.verifone.utils.apiClient.DataDrivenApi;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 public class CloudApiDdt extends BaseTest {
 
 
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\cloudApi.xls";
+//    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\cloudApi.xls";
+    private static String dataFile = java.nio.file.Paths.get(
+        System.getProperty("user.dir"),
+        "src", "test", "resources").toString() + File.separator + "cloudApi.xls";
 
 
     @DataProvider(name = "cloudApi")
