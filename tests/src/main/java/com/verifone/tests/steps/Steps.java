@@ -16,6 +16,7 @@ import com.verifone.utils.appUtils.ApplicationUtils;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -134,7 +135,6 @@ public class Steps {
     }
 
 
-
     public static void checkAcceptCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.acceptCompany(dev);//dev
@@ -156,7 +156,7 @@ public class Steps {
         Application app = new Application("autotest", "", "1.0.0 ", "this test", "this is auto test!!");
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
-        newAppFormPage.fillUploadPackageForm(app.appPath + "\\" + id + ".zip");
+        newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
         newAppFormPage.fillPriceForm();

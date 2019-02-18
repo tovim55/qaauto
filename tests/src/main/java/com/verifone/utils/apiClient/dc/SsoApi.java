@@ -6,6 +6,7 @@ import com.verifone.tests.BaseTest;
 import com.verifone.utils.apiClient.BaseApi;
 import com.verifone.utils.apiClient.Headers;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -20,7 +21,7 @@ public class SsoApi extends BaseApi {
 
     public void createDcOrg(User user) throws IOException {
         url = BaseTest.envConfig.getApiUrls().getCreateDcOrg();
-        JsonObject requestObj = readJsonFile(baseApiPath + "dc\\create_dc_org.json");
+        JsonObject requestObj = readJsonFile(baseApiPath + "dc" + File.separator + "create_dc_org.json");
         requestObj.getAsJsonObject("data").addProperty("vhqCustomerId", user.getVhqCustomerId());
         requestObj.getAsJsonObject("data").addProperty("name", user.getFirstName());
         requestObj.getAsJsonObject("data").getAsJsonObject("contact")
@@ -35,7 +36,7 @@ public class SsoApi extends BaseApi {
     public void createDcUser(User dcUser, User dcOrg) throws IOException {
         url = BaseTest.envConfig.getApiUrls().getCreateDcOrg() +
                 "/" + dcOrg.getInternalId() + "/persons?createInIS=true";
-        JsonObject requestObj = readJsonFile(baseApiPath + "dc\\create_dc_user.json");
+        JsonObject requestObj = readJsonFile(baseApiPath + "dc" + File.separator + "create_dc_user.json");
         requestObj.getAsJsonObject("data").getAsJsonArray("emails").get(0).getAsJsonObject()
                 .addProperty("email", dcUser.getUserName());
         JsonObject result = getPost(requestObj, 201);
