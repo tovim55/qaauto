@@ -39,12 +39,13 @@ public class SeleniumUtils {
      */
     public WebDriver getDriver(String browserType) throws Exception {
         driver = setBrowser(browserType);
-        driver.manage().window().maximize();
+        if (isLinuxMachine.equals("FALSE"))
+            driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         return driver;
     }
 
-    public  void closeRuntimeBrowserInstance() {
+    public void closeRuntimeBrowserInstance() {
         if (driver != null) {
 //            driver.close();
             driver.quit();
@@ -92,6 +93,10 @@ public class SeleniumUtils {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("test-type");
                 options.addArguments("--incognito");
+                if (!isLinuxMachine.equals("FALSE")) {
+                    options.addArguments("headless");
+                    options.addArguments("window-size=1743x600");
+                }
                 driver = new ChromeDriver(options);
                 System.out.println("CHROME web driver started successfully");
                 break;
@@ -143,7 +148,6 @@ public class SeleniumUtils {
     }
 
 
-
     public static String getScreenshot(WebDriver driver) throws Exception {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
@@ -169,10 +173,9 @@ public class SeleniumUtils {
     }
 
 
-
-    private static String pathToDrivers(String fileName){
-        return  java.nio.file.Paths.get(
-             new File(System.getProperty("user.dir")).getParent(),"infra", "drivers", fileName).toString();
+    private static String pathToDrivers(String fileName) {
+        return java.nio.file.Paths.get(
+                new File(System.getProperty("user.dir")).getParent(), "infra", "drivers", fileName).toString();
     }
 
 //    public static void restartDriver() {
