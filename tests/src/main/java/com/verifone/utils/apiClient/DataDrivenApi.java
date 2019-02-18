@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.aventstack.extentreports.ExtentTest;
 import com.verifone.tests.BaseTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -113,7 +114,10 @@ public class DataDrivenApi {
         this.user = user;
     }
 
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+//    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+    private static String dataFile =  java.nio.file.Paths.get(
+        System.getProperty("user.dir"),
+        "src", "test", "resources").toString() + File.separator;
 
     /**
      * @param fileQA
