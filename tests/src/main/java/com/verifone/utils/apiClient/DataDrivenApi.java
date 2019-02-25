@@ -36,6 +36,11 @@ public class DataDrivenApi {
         this.testLog = child;
     }
 
+    public DataDrivenApi(ExtentTest child, String fileName) {
+        this.testLog = child;
+        testLog.info("Data Driven File Name: " + fileName);
+    }
+
     /**
      * @param child
      * @param isBearer
@@ -114,10 +119,10 @@ public class DataDrivenApi {
         this.user = user;
     }
 
-//    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
-    private static String dataFile =  java.nio.file.Paths.get(
-        System.getProperty("user.dir"),
-        "src", "test", "resources").toString() + File.separator;
+    //    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+    private static String dataFile = java.nio.file.Paths.get(
+            System.getProperty("user.dir"),
+            "src", "test", "resources").toString() + File.separator;
 
     /**
      * @param fileQA

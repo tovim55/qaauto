@@ -32,6 +32,7 @@
             <class name="com.verifone.tests.oldTests.Payment"/>
             <class name="com.verifone.tests.cpTests.DevUploadApp"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
+            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
 
 
         </classes>
