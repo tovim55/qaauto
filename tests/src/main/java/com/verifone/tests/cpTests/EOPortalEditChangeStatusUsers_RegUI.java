@@ -92,9 +92,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -227,9 +227,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -364,9 +364,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -501,9 +501,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -645,9 +645,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -790,9 +790,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -931,9 +931,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
@@ -1077,9 +1077,9 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 //		Verify:
 //		Mail disabled and not empty
-		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
-			TestPassFlag = false;
-		}
+//		if (!Assertions.compareBoolean(false, UserDetailsPage.elementEmailClickable(), "Email can be updated", testLog, driver)){
+//			TestPassFlag = false;
+//		}
 		boolean fl = false;
 		if (UserDetailsPage.getUserEmail().length() > 0) {
 			fl = true;
