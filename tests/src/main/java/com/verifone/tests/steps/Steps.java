@@ -24,6 +24,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 //import static com.verifone.pages.cpPages.LoginPage.restartDriver;
+import static com.verifone.tests.BaseTest.envConfig;
 import static com.verifone.utils.Assertions.assertTextContains;
 import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
 
@@ -55,17 +56,17 @@ public class Steps {
     }
 
 
-    public static String getVersions() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
+    public static String getVersions() throws  IOException {
         WebDriver driver = new DevHomePage().getDriver();
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
-        loginPage.loginPageCp(BaseTest.envConfig.getCredentials().getDevAdmin());
+        loginPage.loginPageCp(envConfig.getCredentials().getDevAdmin());
 //        System.out.println("CP_SESSIONID=" + BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         HashMap<String, String> headers = new HashMap<>();
         headers.put("Cookie", "CP_SESSIONID=" + driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         headers.put("X-Requested-With", "XMLHttpRequest");
         System.out.println(driver.manage().getCookieNamed("CP_SESSIONID").getValue());
-        JsonObject response = getRequestWithHeaders("https://qa.dashboard.verifonecp.com/v2/info", "get", "", headers, 200);
+        JsonObject response = getRequestWithHeaders(envConfig.getApiUrls().getGetVersions(), "get", "", headers, 200);
         System.out.println(response.toString());
         return response.toString();
     }
