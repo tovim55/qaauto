@@ -1,0 +1,53 @@
+package com.verifone.pages.marketPlacePages;
+
+import com.verifone.pages.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+
+public class CBAMyApps extends BasePage
+{
+    private final static String url = "https://testverifone.appdirect.com/myapps";
+    private final static String title = "MyApps | Verifone";
+
+    //private By helloWorld  = By.xpath("//*[@id=\"mainRegion\"]/div/div[3]/div/div[1]/div/div[11]/div[2]/p/span");
+    //private By divList = By.cssSelector("div[class='adb-tile adb-myapp']");
+
+    private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
+
+    private List<WebElement> appList;
+    private List<String>names;
+    private WebElement myApp;
+
+    public CBAMyApps()
+    {
+        super(url, title);
+        validateTitle();
+    }
+
+    public void verifyAppSubcribed(String appName) {
+
+       appList = getWebElements(titleList, 500, ExpectedConditions.presenceOfElementLocated(titleList));
+       int appsNumber = appList.size();
+
+       for(int i= 0;i<appsNumber; i++) {
+
+           testLog.info(appList.get(i).getText() + " app is subscribed");
+
+       }
+
+       for (WebElement name: appList)
+       {
+           if(name.getText().equals(appName))
+
+               testLog.info(name.getText() + " App exists in the subscribed list");
+       }
+
+    }
+
+
+
+
+}

@@ -67,7 +67,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		boolean UserMenu = HomePage.menuUserExists();
@@ -271,7 +271,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -312,7 +312,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		HomePage.clickHeaderMenu();
 
@@ -348,7 +348,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		HomePage.clickHeaderMenu();
 
@@ -397,7 +397,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -452,7 +452,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -499,7 +499,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -546,7 +546,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -609,7 +609,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -672,7 +672,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -735,7 +735,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -800,7 +800,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -865,7 +865,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -929,7 +929,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -995,7 +995,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();
@@ -1059,7 +1059,7 @@ public class EOPortalSanityUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		HomePage.clickUserMenu();

@@ -6,6 +6,10 @@ import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.*;
+import com.verifone.pages.marketPlacePages.CBAHomePage;
+import com.verifone.pages.marketPlacePages.CBALoginPage;
+import com.verifone.pages.marketPlacePages.CBAMarketplace;
+import com.verifone.pages.marketPlacePages.CBAMyApps;
 import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
@@ -66,8 +70,6 @@ public class PageFactory {
                 return new PasswordSetupPage();
             case "ChangePasswordPage":
                 return new ChangePasswordPage();
-            case "HomePage":
-                return new HomePage();
             case "UsersPage":
                 return new UsersPage();
             case "AddUserPage":
@@ -112,6 +114,14 @@ public class PageFactory {
                 return new ActionRequiredPage();
             case "AgreementPage":
                 return new AgreementPage();
+            case "CBAHomePage":
+                return new CBAHomePage();
+            case "CBALoginPage":
+                return new CBALoginPage();
+            case "CBAMyApps":
+                return new CBAMyApps();
+            case "CBAMarketplace":
+                return new CBAMarketplace();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);
