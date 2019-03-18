@@ -32,7 +32,7 @@ public class Assertions {
 
 
 
-    public static boolean compareValue(String ExpectedRes, String ActualRes, String Desc, ExtentTest testLog, WebDriver driver) throws AWTException, InterruptedException, IOException, Exception {
+    public static boolean compareValue(String ExpectedRes, String ActualRes, String Desc, ExtentTest testLog, WebDriver driver) throws Exception {
         boolean TestPassFlag;
         String capScreenShootPath;
         boolean currentResult = ActualRes.contains(ExpectedRes);
@@ -48,7 +48,7 @@ public class Assertions {
         }
         return TestPassFlag;
     }
-    public static boolean compareNumber(int ExpectedRes, int ActualRes, String Desc, ExtentTest testLog, WebDriver driver) throws AWTException, InterruptedException, IOException, Exception {
+    public static boolean compareNumber(int ExpectedRes, int ActualRes, String Desc, ExtentTest testLog, WebDriver driver) throws  Exception {
         boolean TestPassFlag;
         String capScreenShootPath;
 
@@ -64,7 +64,7 @@ public class Assertions {
         }
         return TestPassFlag;
     }
-    public static boolean compareBoolean(Boolean ExpectedRes, Boolean ActualRes, String Desc, ExtentTest testLog, WebDriver driver) throws AWTException, InterruptedException, IOException, Exception {
+    public static boolean compareBoolean(Boolean ExpectedRes, Boolean ActualRes, String Desc, ExtentTest testLog, WebDriver driver) throws Exception {
         boolean TestPassFlag;
         String capScreenShootPath;
         if (ActualRes == ExpectedRes) {

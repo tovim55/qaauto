@@ -16,6 +16,7 @@ import com.verifone.utils.appUtils.ApplicationUtils;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -23,8 +24,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 //import static com.verifone.pages.cpPages.LoginPage.restartDriver;
+import static com.verifone.tests.BaseTest.envConfig;
 import static com.verifone.utils.Assertions.assertTextContains;
-import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
+import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
 
 //import static com.verifone.infra.SeleniumUtils.restartDriver;
 
@@ -54,17 +56,17 @@ public class Steps {
     }
 
 
-    public static String getVersions() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
+    public static String getVersions() throws  IOException {
         WebDriver driver = new DevHomePage().getDriver();
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
-        loginPage.loginPageCp(BaseTest.envConfig.getCredentials().getDevAdmin());
+        loginPage.loginPageCp(envConfig.getCredentials().getDevAdmin());
 //        System.out.println("CP_SESSIONID=" + BasePage.driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         HashMap<String, String> headers = new HashMap<>();
         headers.put("Cookie", "CP_SESSIONID=" + driver.manage().getCookieNamed("CP_SESSIONID").getValue());
         headers.put("X-Requested-With", "XMLHttpRequest");
         System.out.println(driver.manage().getCookieNamed("CP_SESSIONID").getValue());
-        JsonObject response = getRequestWithHeaders("https://qa.dashboard.verifonecp.com/v2/info", "get", "", headers, 200);
+        JsonObject response = getRequestWithHeaders(envConfig.getApiUrls().getGetVersions(), "get", "", headers, 200);
         System.out.println(response.toString());
         return response.toString();
     }
@@ -134,7 +136,6 @@ public class Steps {
     }
 
 
-
     public static void checkAcceptCompany(Company dev) throws Exception {//Company dev
         LoginPage loginPage = devSupportAdminLogin();
         loginPage.acceptCompany(dev);//dev
@@ -156,7 +157,7 @@ public class Steps {
         Application app = new Application("autotest", "", "1.0.0 ", "this test", "this is auto test!!");
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
-        newAppFormPage.fillUploadPackageForm(app.appPath + "\\" + id + ".zip");
+        newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
         newAppFormPage.fillPriceForm();

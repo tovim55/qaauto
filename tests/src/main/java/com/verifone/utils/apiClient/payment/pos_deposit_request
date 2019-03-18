@@ -1,0 +1,34 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <tem:Deposit>
+            <!--Optional:-->
+            <tem:request>
+                <!--Optional:-->
+                <tem:CardNumber>8010045863788184</tem:CardNumber>
+                <tem:AccountDefinitionId>2345</tem:AccountDefinitionId>
+                <!--Optional:-->
+                <tem:TerminalUniqueIdentifier>NCR00101</tem:TerminalUniqueIdentifier>
+                <tem:Amount>0.05</tem:Amount>
+                <tem:CurrencyCode>376</tem:CurrencyCode>
+                <!--Optional:-->
+                <tem:POSDate>2019-01-02T10:49:43.316Z</tem:POSDate>
+                <!--Optional:-->
+                <tem:InvoiceNumber>1003735992</tem:InvoiceNumber>
+                <tem:Swiped>false</tem:Swiped>
+                <tem:TransactionIdentifier>1003735992</tem:TransactionIdentifier>
+                <tem:CommitProtocol>SinglePhaseCommit</tem:CommitProtocol>
+                <tem:ClientProviderID>3216</tem:ClientProviderID>
+                <!--Optional:-->
+                <tem:ExtraData>
+                    <!--Zero or more repetitions:-->
+                    <tem:KeyValuePairOfStringObject/>
+                </tem:ExtraData>
+                <tem:TotalAmount>0.05</tem:TotalAmount>
+                <tem:BusinessDate>2019-01-02T10:49:43.316Z</tem:BusinessDate>
+                <tem:TrainingMode>false</tem:TrainingMode>
+            </tem:request>
+        </tem:Deposit>
+    </soapenv:Body>
+</soapenv:Envelope>
+

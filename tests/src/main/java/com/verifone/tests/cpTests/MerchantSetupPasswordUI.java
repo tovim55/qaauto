@@ -4,6 +4,7 @@ import com.mongodb.assertions.Assertions;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.entities.EntitiesFactory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -66,7 +67,10 @@ public class MerchantSetupPasswordUI extends BaseTest {
 	private static String mId = "";
 	private static Integer rowNumber=0;
 	private static Integer getRowNumFromFile = 0;
-	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\merchantSetupPassword.xls";
+//	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\merchantSetupPassword.xls";
+	final String xlsxFile = java.nio.file.Paths.get(
+		System.getProperty("user.dir"),
+		"src", "test", "resources").toString() + File.separator + "merchantSetupPassword.xls";
 	private static Boolean TestPassFlag = true;
 	private static String capScreenShootPath;
 

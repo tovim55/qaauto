@@ -4,6 +4,7 @@ import com.mongodb.assertions.Assertions;
 import com.relevantcodes.extentreports.LogStatus;
 import com.verifone.entities.EntitiesFactory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -55,7 +56,10 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
     private static String mId = "";
     private static Integer rowNumber = 0;
     private static Integer getRowNumFromFile = 0;
-    final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\SSOBasic.xls";
+//    final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\SSOBasic.xls";
+    final String xlsxFile = java.nio.file.Paths.get(
+        System.getProperty("user.dir"),
+        "src", "test", "resources").toString() + File.separator + "SSOBasic.xls";
     private static Boolean TestPassFlag = true;
     private static String capScreenShootPath;
     private static String DeveloperPortalURI = "";

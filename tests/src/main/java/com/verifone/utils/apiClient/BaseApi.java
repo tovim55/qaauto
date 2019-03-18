@@ -1,59 +1,43 @@
 package com.verifone.utils.apiClient;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.google.gson.*;
-import org.apache.commons.lang.StringUtils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.testng.Assert;
+import org.json.JSONObject;
+import org.json.XML;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
-
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Properties;
 
-import static org.apache.http.impl.client.HttpClients.custom;
+import static com.verifone.utils.apiClient.MySSLSocketFactory.getNewHttpClient;
 
 public abstract class BaseApi {
 
 
     protected String url;
-    private int responseCode;
-    protected JsonObject response;
     public static ExtentTest testLog;
-    protected HashMap<String, String> baseHeaders = new HashMap<String, String>();
-    protected String contentType = "Content-Type";
-    protected String authorization = "Authorization";
-    protected String correlationId = "X-VFI-CORRELATION-ID";
-    protected String accept = "Accept";
-    protected String origin = "Origin";
-    protected String referer = "Referer";
-    private HttpClient client = HttpClientBuilder.create().build();
-    //    protected String baseApiPath = System.getProperty("user.dir") +
-//            "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\";
+    private Gson gson = new GsonBuilder().create();
+    protected HashMap<String, String> baseHeaders = new HashMap<>();
     protected String baseApiPath = java.nio.file.Paths.get(
             System.getProperty("user.dir"),
             "src", "main", "java", "com", "verifone", "utils", "apiClient").toString() + File.separator;
@@ -61,174 +45,67 @@ public abstract class BaseApi {
 
 
     public BaseApi() throws IOException {
-//        FileInputStream ip = new FileInputStream(System.getProperty("user.dir") +
-//                "\\src\\main\\java\\com\\verifone\\utils\\apiClient\\headers.properties");
         FileInputStream ip = new FileInputStream(baseApiPath + "headers.properties");
         prop.load(ip);
     }
 
 
-    public static HttpClient getNewHttpClient() {
-        try {
-            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            trustStore.load(null, null);
+    protected JSONObject postSOAPXML(String requestData, int expectedCode) throws IOException, JSONException {
+        HttpPost post = new HttpPost(url);
+        post.setEntity(new StringEntity(requestData, "UTF-8"));
+        baseHeaders.forEach(post::addHeader);
+        String entity = executeRequest("<textarea>" + requestData + "</textarea>", expectedCode, post);
+        return XML.toJSONObject(entity);
 
-            MySSLSocketFactory sf = new MySSLSocketFactory(trustStore);
-            sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-
-            HttpParams params = new BasicHttpParams();
-            HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-            HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-
-            SchemeRegistry registry = new SchemeRegistry();
-            registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-            registry.register(new Scheme("https", sf, 443));
-
-            ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
-
-            return new DefaultHttpClient(ccm, params);
-        } catch (Exception e) {
-            return new DefaultHttpClient();
-        }
     }
 
 
-    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        HttpClient client = getNewHttpClient();
-        HttpRequestBase request = getRequest(url, method, body);
-        headers.forEach(request::addHeader);
-        Gson gson = new GsonBuilder().create();
-        long startTime = System.currentTimeMillis();
-        HttpResponse response = client.execute(request);
-        reportReqestData(url, method, headers, startTime, body);
-        int responseCode = response.getStatusLine().getStatusCode();
-        if (response.getEntity() == null) {
-            Assert.assertEquals(responseCode, expectedCode);
-            return null;
-        }
-        String entity = EntityUtils.toString(response.getEntity());
-        if (responseCode != expectedCode) {
-            testLog.error("request failed:  " + entity);
-            System.out.println("request failed:  " + entity);
-            Assert.assertEquals(responseCode, expectedCode);
-        }
-        if (entity.startsWith("\""))
-            entity = convertFromPrimitive(entity);
+    protected JsonObject getRequest(int expectedCode) throws IOException {
+        HttpGet get = new HttpGet(url);
+        baseHeaders.forEach(get::addHeader);
+        String entity = executeRequest("", expectedCode, get);
         return gson.fromJson(entity, JsonObject.class);
     }
 
 
-    private static void reportReqestData(String url, String method, HashMap<String, String> headers, long startTime, String requestData) {
+    protected JsonObject getPost(JsonObject requestData, int expectedCode) throws IOException {
+        HttpPost post = new HttpPost(url);
+        baseHeaders.forEach(post::addHeader);
+        post.setEntity(new StringEntity(gson.toJson(requestData), "UTF-8"));
+        String entity = executeRequest(requestData.toString(), expectedCode, post);
+        return gson.fromJson(entity, JsonObject.class);
+    }
+
+
+    protected JsonObject getPost(String requestData, int expectedCode) throws IOException {
+        HttpPost post = new HttpPost(url);
+        baseHeaders.forEach(post::addHeader);
+        post.setEntity(new StringEntity(requestData, "UTF-8"));
+        String entity = executeRequest(requestData, expectedCode, post);
+        return gson.fromJson(entity, JsonObject.class);
+    }
+
+
+    private String executeRequest(String requestData, int expectedCode, HttpRequestBase request) throws IOException {
+        HttpClient client = getNewHttpClient();
+        long startTime = System.currentTimeMillis();
+        HttpResponse response = client.execute(request);
+        String entity = EntityUtils.toString(response.getEntity());
+        reportRequestData(url, request.getMethod(), baseHeaders, startTime, requestData, entity);
+        validateStatusCode(expectedCode, response, entity);
+        return entity;
+    }
+
+
+    public static void reportRequestData(String url, String method, HashMap<String, String> headers, long startTime, String requestData, String entity) {
         System.out.println("Sending request to URL : " + url);
         testLog.info("Sending request to URL : " + url);
         testLog.info("Method: " + method);
         testLog.info("Headers: " + headers.toString());
         testLog.info("request data: " + requestData);
         testLog.info("Response Time: " + (System.currentTimeMillis() - startTime));
+        testLog.info("Response Data: " + entity);
 
-    }
-
-    private static HttpRequestBase getRequest(String url, String method, String body) {
-        if (body == null)
-            body = "";
-        switch (method) {
-            case "delete":
-                return new HttpDelete(url);
-            case "get":
-                return new HttpGet(url);
-            case "head":
-                return new HttpHead(url);
-            case "options":
-                return new HttpOptions(url);
-            case "patch":
-                HttpPatch patch = new HttpPatch(url);
-                patch.setEntity(new StringEntity(body, "UTF-8"));
-                return patch;
-            case "post":
-                HttpPost post = new HttpPost(url);
-                post.setEntity(new StringEntity(body, "UTF-8"));
-                return post;
-            case "put":
-                HttpPut put = new HttpPut(url);
-                put.setEntity(new StringEntity(body, "UTF-8"));
-                return put;
-            default:
-                throw new IllegalArgumentException("Invalid or null HttpMethod: " + method);
-        }
-    }
-
-
-    protected JsonObject getRequest(int expectedCode) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        HttpClient client = HttpClients.custom()
-                .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
-                                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                                .build()
-                        )
-                ).build();
-        HttpGet request = new HttpGet(url);
-        baseHeaders.forEach(request::addHeader);
-        HttpResponse response = client.execute(request);
-        System.out.println("Sending request to URL : " + url);
-        testLog.info("Sending request to URL : " + url);
-        String entity = EntityUtils.toString(response.getEntity());
-        validateStatusCode(expectedCode, response, entity);
-        Gson gson = new GsonBuilder().create();
-        return gson.fromJson(entity, JsonObject.class);
-    }
-
-
-    protected JsonObject getPost(JsonObject requestData, int expectedCode) throws IOException {
-        HttpClient client = null;
-        try {
-            client = HttpClients.custom()
-                    .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
-                                    .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                                    .build()
-                            )
-                    ).build();
-        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
-            e.printStackTrace();
-        }
-        HttpPost post = new HttpPost(url);
-        baseHeaders.forEach(post::addHeader);
-        Gson gson = new GsonBuilder().create();
-        post.setEntity(new StringEntity(gson.toJson(requestData), "UTF-8"));
-        long startTime = System.currentTimeMillis();
-        HttpResponse response = client.execute(post);
-//        System.out.println("Sending request to URL : " + url);
-//        testLog.info("Sending request to URL : " + url);
-        reportReqestData(url, "post", baseHeaders, startTime, requestData.toString());
-        String entity = EntityUtils.toString(response.getEntity());
-        validateStatusCode(expectedCode, response, entity);
-        return gson.fromJson(entity, JsonObject.class);
-    }
-
-
-    protected JsonObject getPost(String requestData, int expectedCode) throws IOException {
-        HttpClient client = null;
-        try {
-            client = HttpClients.custom()
-                    .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom()
-                                    .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                                    .build()
-                            )
-                    ).build();
-        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
-            e.printStackTrace();
-        }
-        HttpPost post = new HttpPost(url);
-        baseHeaders.forEach(post::addHeader);
-        Gson gson = new GsonBuilder().create();
-        post.setEntity(new StringEntity(requestData, "UTF-8"));
-        HttpResponse response = client.execute(post);
-        System.out.println("Sending request to URL : " + url);
-        testLog.info("Sending request to URL : " + url);
-        String entity = EntityUtils.toString(response.getEntity());
-        validateStatusCode(expectedCode, response, entity);
-        return gson.fromJson(entity, JsonObject.class);
-//        try (Writer writer = new FileWriter(jsonPath)) {
-//            gson.toJson(EntityUtils.toString(response.getEntity()), writer);
-//        }
     }
 
 
@@ -253,34 +130,32 @@ public abstract class BaseApi {
             e1.printStackTrace();
         }
         Gson gson = new Gson();
+        assert br != null;
         return gson.fromJson(br, JsonObject.class);
+    }
+
+    protected static Document readXMLFile(String filePath) throws IOException, ParserConfigurationException, SAXException {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        return docBuilder.parse(filePath);
+    }
+
+    protected String convertDocToStr(Document xmlFile) throws TransformerException {
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer trans = tf.newTransformer();
+        StringWriter sw = new StringWriter();
+        trans.transform(new DOMSource(xmlFile), new StreamResult(sw));
+        return sw.toString();
     }
 
 
     private void validateStatusCode(int expectedCode, HttpResponse response, String entity) {
-        responseCode = response.getStatusLine().getStatusCode();
+        int responseCode = response.getStatusLine().getStatusCode();
         if (responseCode != expectedCode) {
             testLog.error(entity);
             System.out.println("request failed:  " + entity);
             Assert.assertEquals(responseCode, expectedCode);
         }
-    }
-
-
-    private static String convertFromPrimitive(String entity) {
-        System.out.println(entity);
-        String[] tempEntity = StringUtils.substringBetween(entity, "{", "}").split(" ,");
-        entity = "{";
-        for (String s : tempEntity) {
-            entity += "\"";
-            String[] tmp = s.split(":");
-            if (tmp[0].startsWith(" "))
-                tmp[0] = tmp[0].substring(1);
-            entity += tmp[0] + "\"" + ":\"" + tmp[1] + "\",";
-        }
-        entity = entity.substring(0, entity.length() - 1);
-        entity += "}";
-        return entity;
     }
 
 

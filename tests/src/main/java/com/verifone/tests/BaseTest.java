@@ -9,6 +9,7 @@ import com.verifone.infra.EnvConfig;
 import com.verifone.infra.SeleniumUtils;
 import com.verifone.pages.BasePage;
 import com.verifone.utils.apiClient.BaseApi;
+import com.verifone.utils.apiClient.BaseDDTApi;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
@@ -32,9 +33,12 @@ public abstract class BaseTest {
     protected static ThreadLocal test = new ThreadLocal();
     public Date date = new Date();
     public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+    //    public String reportDirectory = java.nio.file.Paths.get(
+//            System.getProperty("user.dir"), "reports", dateFormat.format(date)).toString() + File.separator;
+//    public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
     public String reportDirectory = java.nio.file.Paths.get(
-            System.getProperty("user.dir"), "reports", dateFormat.format(date)).toString() + File.separator;
-    public String reportLocation = reportDirectory + dateFormat.format(date) + ".html";
+            System.getProperty("user.dir"), "reports").toString() + File.separator;
+    public String reportLocation = reportDirectory + "index.html";
     protected SeleniumUtils seleniumUtils;
     public static HashMap<Long, WebDriver> webDrivers = new HashMap<>();
 
@@ -42,7 +46,7 @@ public abstract class BaseTest {
     @Parameters({"env", "portal", "getVersions"})
     @BeforeSuite
     public void beforeSuite(String env, String portal, String getVersions) throws Exception {
-        new File(reportDirectory).mkdir();
+//        new File(reportDirectory).mkdir();
         extent = ExtentManager.createInstance(reportLocation);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
@@ -97,7 +101,7 @@ public abstract class BaseTest {
     protected void starTestLog(String testName, String description) {
         ExtentTest p = (ExtentTest) parentTest.get();
         test.set(p.createNode(testName, description));
-        BaseApi.testLog = BasePage.testLog = (ExtentTest) test.get();
+        BaseApi.testLog = BaseDDTApi.testLog = BasePage.testLog = (ExtentTest) test.get();
     }
 
 

@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -30,7 +31,10 @@ import static com.verifone.pages.BasePage.testLog;
 //--------------------------------------------------------------------------
 public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
-	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\eoAddUser.xls";
+//	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\eoAddUser.xls";
+	final String xlsxFile = java.nio.file.Paths.get(
+		System.getProperty("user.dir"),
+		"src", "test", "resources").toString() + File.separator + "eoAddUser.xls";
 	private static Integer rowNumber = 0;
 	private static Integer getRowNumFromFile = 0;
 	private static String UserEmail = "";

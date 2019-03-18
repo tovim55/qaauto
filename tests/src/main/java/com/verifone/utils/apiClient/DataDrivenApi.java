@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.aventstack.extentreports.ExtentTest;
 import com.verifone.tests.BaseTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import static com.verifone.utils.Assertions.assertTextContains;
 import static com.verifone.utils.DataDrivenUtils.getListFrromString;
 import static com.verifone.utils.DataDrivenUtils.getMapFromStr;
-import static com.verifone.utils.apiClient.BaseApi.getRequestWithHeaders;
+import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
 
 
 public class DataDrivenApi {
@@ -33,6 +34,11 @@ public class DataDrivenApi {
 
     public DataDrivenApi(ExtentTest child) {
         this.testLog = child;
+    }
+
+    public DataDrivenApi(ExtentTest child, String fileName) {
+        this.testLog = child;
+        testLog.info("Data Driven File Name: " + fileName);
     }
 
     /**
@@ -113,7 +119,10 @@ public class DataDrivenApi {
         this.user = user;
     }
 
-    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+    //    private static String dataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\";
+    private static String dataFile = java.nio.file.Paths.get(
+            System.getProperty("user.dir"),
+            "src", "test", "resources").toString() + File.separator;
 
     /**
      * @param fileQA

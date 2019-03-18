@@ -6,8 +6,8 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="${environment}"/>
-    <parameter name="getVersions" value="false"/>
+    <parameter name="env" value="PROD"/>
+    <parameter name="getVersions" value="true"/>
 
 
     <parameter name="isLinuxMachine" value="${isLinux}"/>
@@ -28,11 +28,8 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.DCTests"/>
-            <class name="com.verifone.tests.cpTests.DevUploadApp"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
-            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
-
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI "/>
 
         </classes>
 

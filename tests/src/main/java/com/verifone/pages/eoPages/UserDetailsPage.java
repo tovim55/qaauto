@@ -18,7 +18,7 @@ public class UserDetailsPage extends BasePage {
 
     private By titleLoc = By.xpath("//*[@class='top-container']");
     private By userNameLoc = By.xpath("(//*[@class='control-value'])[1]");
-    private By userEmaulLoc = By.xpath("//*[@class='control-value text-overfolw-fix']");
+    private By userEmaulLoc = By.xpath("//*[@class='control-value dont-break-out']");
 //    private By userEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[1]");
     private By userEditLoc = By.xpath("//*[@class='pull-right edit-user']");
 //    private By roleEditLoc = By.xpath("(//*[@class='pull-right text-muted'])[2]");
@@ -29,7 +29,7 @@ public class UserDetailsPage extends BasePage {
     private By userActiveStatusLoc = By.xpath("//*[@class='label label-success']");
     private By userDisabledStatusLoc = By.xpath("//*[@class='label label-default']");
     private By userActionLoc = By.xpath("//*[@class='action']");
-    private By roleLoc = By.xpath("(//*[@class='control-value'])[4]");
+    private By roleLoc = By.xpath("(//*[@class='control-value'])[3]");
     private By lnkResendLoc = By.xpath("//*[@class='resend-invitation']");
     private By lnkDisableLoc = By.xpath("//*[@class='disable-user']");
     private By lnkEnableLoc = By.xpath("//*[@class='enable-user']");

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -27,7 +28,10 @@ import com.verifone.utils.DataDrivenUtils;
 
 public class EOPortalSanityUI extends BaseTest {
 
-	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\eoAddUser.xls";
+//	final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\eoAddUser.xls";
+	final String xlsxFile = java.nio.file.Paths.get(
+		System.getProperty("user.dir"),
+		"src", "test", "resources").toString() + File.separator + "eoAddUser.xls";
 	private static Integer getRowNumFromFile = 0;
 	private static String UserEmail = "UserEOAdmin@getnada.com";
 	private static String UserEOAdminEmail = "";

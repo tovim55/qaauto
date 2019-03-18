@@ -18,6 +18,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static com.verifone.pages.BasePage.testLog;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class SSOBasicFlow3UI extends BaseTest {
@@ -38,7 +39,10 @@ public class SSOBasicFlow3UI extends BaseTest {
     private static String EnableUserPwd = "Veri1234";
     private static String EnableMerchantEmail = "";
     private static String EnableMerchantPwd = "Veri1234";
-    final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\oktaLogin.xls";
+//    final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\oktaLogin.xls";
+    final String xlsxFile = java.nio.file.Paths.get(
+        System.getProperty("user.dir"),
+        "src", "test", "resources").toString() + File.separator + "oktaLogin.xls";
     private static Integer getRowNumFromFile = 0;
     private static String env = "";
 

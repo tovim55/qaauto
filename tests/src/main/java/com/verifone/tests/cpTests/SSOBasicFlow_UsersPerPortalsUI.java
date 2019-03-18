@@ -21,6 +21,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static com.verifone.pages.BasePage.testLog;
 
+import java.io.File;
 import java.util.ArrayList;
 //--------------------------------------------------------------------------
 /**
@@ -36,7 +37,10 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
     private final static int timeOut = 2000;
     private static Integer rowNumber = 0;
     private static Integer getRowNumFromFile = 0;
-    final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\SSOBasic.xls";
+//    final String xlsxFile = System.getProperty("user.dir") + "\\src\\test\\resources\\SSOBasic.xls";
+    final String xlsxFile = java.nio.file.Paths.get(
+		System.getProperty("user.dir"),
+		"src", "test", "resources").toString() + File.separator + "SSOBasic.xls";
     private static Boolean TestPassFlag = true;
     private static String capScreenShootPath;
 //	private static String env = "qa";
