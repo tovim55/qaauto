@@ -81,7 +81,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 		HomePage.clickHeaderMenu();
 
 		testLog.info("------------------------------------------------- Verify User menu exists -------------------------------------------------");
@@ -364,7 +364,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 	HomePage.clickHeaderMenu();
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
@@ -427,7 +427,7 @@ public void EOAdminViewUsersUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
 
@@ -484,7 +484,7 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 	
 	HomePage.clickHeaderMenu();
 
@@ -567,7 +567,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -653,7 +653,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -722,7 +722,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 

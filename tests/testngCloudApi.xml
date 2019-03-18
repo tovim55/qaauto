@@ -32,8 +32,11 @@
             <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.LocationApiDdt"/>-->
             <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>-->
             <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>-->
-            <class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Shift"/>
+            <!--<class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Shift"/>-->
             <!--<class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Customer"/>-->
+            <class name="com.verifone.tests.marketPlaceTests.DownloadAppTest"/>
+
+
 
         </classes>
 

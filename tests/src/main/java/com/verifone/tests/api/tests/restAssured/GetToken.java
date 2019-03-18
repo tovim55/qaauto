@@ -23,7 +23,7 @@ public class GetToken {
         request = RestAssured.given();
         request.header("Authorization","Basic SThKMmVJTEpqQnIxUGxZTDU1NW5JOXdDMFIwYTpNNWs0YXBxbDdwem9QUjdIVVRmMk0zUTZJREFh");
         request.header("Content-Type","application/x-www-form-urlencoded");
-        
+
         response = request.post("?scope="+ scope + "&grant_type=" + grant_type + "&username=" + username +"&password="+password);
 
         System.out.println(response.getBody().asString());

@@ -3,7 +3,7 @@
 //import com.verifone.pages.BasePage;
 //import com.verifone.pages.PageFactory;
 //import com.verifone.pages.eoPages.AddUserPage;
-//import com.verifone.pages.eoPages.HomePage;
+//import com.verifone.pages.eoPages.CBAHomePage;
 //import com.verifone.pages.eoPages.LoginEOPortal;
 //import com.verifone.pages.eoPages.UsersPage;
 //import org.testng.AssertJUnit;
@@ -22,10 +22,10 @@
 //
 //        ArrayList<String> availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());
 //        BasePage.driver.switchTo().window(availableWindows.get(0));
-//        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
-//        HomePage.clickHeaderMenu();
+//        CBAHomePage CBAHomePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
+//        CBAHomePage.clickHeaderMenu();
 //
-//        HomePage.clickUserMenu();
+//        CBAHomePage.clickUserMenu();
 //
 //        Thread.sleep(5000);
 //        availableWindows = new ArrayList<String>(BasePage.driver.getWindowHandles());

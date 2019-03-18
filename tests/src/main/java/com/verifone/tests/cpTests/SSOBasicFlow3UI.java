@@ -107,7 +107,7 @@ public class SSOBasicFlow3UI extends BaseTest {
 
         availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
         String tText = HomePage.sectionTitle();
         if (!Assertions.compareValue(sectionTitle, tText, "Home page: Found section title:", testLog, driver)){

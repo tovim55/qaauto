@@ -60,7 +60,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -196,7 +196,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -333,7 +333,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -470,7 +470,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 		
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -614,7 +614,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 		
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -759,7 +759,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 		
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -900,7 +900,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -1046,7 +1046,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 		
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -1188,7 +1188,7 @@ public class EOPortalEditChangeStatusUsers_RegUI extends BaseTest {
 		
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
