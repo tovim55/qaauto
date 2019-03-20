@@ -26,9 +26,9 @@ public class Application {
 
 
     public Application() {
-        this.appName = randomAlphabetic(5);
+        this.appName = "AutoTestAndroid" + randomAlphabetic(4);
         this.id = "";
-        this.version = "1.1.0";
+        this.version = "1.0.0";
         this.description5Words = randomAlphabetic(5);
         this.description = randomAlphabetic(10);
     }
