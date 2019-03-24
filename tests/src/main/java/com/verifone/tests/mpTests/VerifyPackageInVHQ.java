@@ -1,9 +1,9 @@
-package com.verifone.tests.marketPlaceTests;
+package com.verifone.tests.mpTests;
 
 import com.verifone.pages.PageFactory;
-import com.verifone.pages.marketPlacePages.*;
+import com.verifone.pages.vhqPages.*;
 import com.verifone.tests.BaseTest;
-import com.verifone.tests.steps.Steps;
+import com.verifone.tests.steps.mpPortal.Steps;
 import org.testng.annotations.Test;
 
 public class VerifyPackageInVHQ extends BaseTest {
