@@ -5,6 +5,9 @@ import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
+import com.verifone.pages.marketPlacePages.CBAHomePage;
+import com.verifone.pages.marketPlacePages.CBALoginPage;
+import com.verifone.pages.marketPlacePages.CBAMyApps;
 
 public class Steps {
 
@@ -61,4 +64,5 @@ public class Steps {
         CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
         page.searchConnect(newHost);
     }
+
 }

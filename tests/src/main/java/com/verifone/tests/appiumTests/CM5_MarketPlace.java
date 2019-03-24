@@ -30,10 +30,11 @@ public class CM5_MarketPlace {
         dc.setCapability("reportFormat", reportFormat);
         dc.setCapability("testName", testName);
         dc.setCapability("noreset", true);
-        dc.setCapability(MobileCapabilityType.UDID, "58d0d076");
+        dc.setCapability(MobileCapabilityType.UDID, "401-666-420");
         dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.verifone.marketplace.stage");
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "com.wmode.appdirect.mobileapp.activities.MainActivity");
         driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
+
     }
 
     @Test

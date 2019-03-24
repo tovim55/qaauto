@@ -34,7 +34,12 @@
             <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>-->
             <!--<class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Shift"/>-->
             <!--<class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Customer"/>-->
-            <class name="com.verifone.tests.marketPlaceTests.DownloadAppTest"/>
+            <!--<class name="com.verifone.tests.appiumTests.CM5_CloudAPI"/>-->
+            <!--<class name="com.verifone.tests.marketPlaceTests.verifyMyAppsTest"/>-->
+            <!--<class name="com.verifone.tests.marketPlaceTests.subscribeAppTest"/>-->
+            <!--<class name="com.verifone.tests.marketPlaceTests.unsubscribeAppTest"/>-->
+            <class name="com.verifone.tests.marketPlaceTests.VerifyPackageInVHQ"/>
+
 
 
 

@@ -7,6 +7,10 @@ import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.*;
+import com.verifone.pages.marketPlacePages.CBAHomePage;
+import com.verifone.pages.marketPlacePages.CBALoginPage;
+import com.verifone.pages.marketPlacePages.CBAMyApps;
+import com.verifone.pages.marketPlacePages.VHQTestLogin;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Mail.InboxGetnada;
 import com.verifone.utils.apiClient.dc.SsoApi;
@@ -166,6 +170,26 @@ public class Steps {
 
     }
 
+    public static void loginCBA ()
+    {
+        CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
+        homePage.clickOnLogInLink();
+
+        CBALoginPage loginPage = (CBALoginPage) PageFactory.getPage("CBALoginPage");
+        loginPage.LogInToCBAAccount();
+    }
+
+    public static void verifyMyAppsCBA (String appName)
+    {
+        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        myApps.verifyAppSubcribed(appName);
+    }
+
+    public static void loginVHQ ()
+    {
+        VHQTestLogin vhqLogin = (VHQTestLogin) PageFactory.getPage("VHQTestLogin");
+        vhqLogin.LoginInVhq();
+    }
 
 }
 
