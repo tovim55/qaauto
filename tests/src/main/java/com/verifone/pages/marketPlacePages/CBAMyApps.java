@@ -12,10 +12,8 @@ public class CBAMyApps extends BasePage
     private final static String url = "https://testverifone.appdirect.com/myapps";
     private final static String title = "MyApps | Verifone";
 
-    //private By helloWorld  = By.xpath("//*[@id=\"mainRegion\"]/div/div[3]/div/div[1]/div/div[11]/div[2]/p/span");
-    //private By divList = By.cssSelector("div[class='adb-tile adb-myapp']");
-
     private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
+    private By success =  By.xpath("//*[contains(text(),'successfully')]");
 
     private List<WebElement> appList;
     private List<String>names;
@@ -29,25 +27,26 @@ public class CBAMyApps extends BasePage
 
     public void verifyAppSubcribed(String appName) {
 
-       appList = getWebElements(titleList, 500, ExpectedConditions.presenceOfElementLocated(titleList));
-       int appsNumber = appList.size();
+        appList = getWebElements(titleList, 500, ExpectedConditions.presenceOfElementLocated(titleList));
+        int appsNumber = appList.size();
 
-       for(int i= 0;i<appsNumber; i++) {
+        for (int i = 0; i < appsNumber; i++) {
 
-           testLog.info(appList.get(i).getText() + " app is subscribed");
+            testLog.info(appList.get(i).getText() + " app is subscribed");
+        }
 
-       }
-
-       for (WebElement name: appList)
-       {
-           if(name.getText().equals(appName))
-
-               testLog.info(name.getText() + " App exists in the subscribed list");
-       }
-
+        for (WebElement name : appList) {
+            if (appList.contains(name.getText().equals(appName))) {
+                testLog.info(appName + " exists in the MyApps list");
+                break;
+            }
+        }
     }
 
-
-
+    public void verifyMessage() throws InterruptedException {
+        ExpectedConditions.presenceOfElementLocated(success);
+        Thread.sleep(5000);
+        testLog.info(getText(success));
+    }
 
 }
