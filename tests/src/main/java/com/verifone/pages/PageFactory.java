@@ -7,6 +7,10 @@ import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.*;
 import com.verifone.pages.mpPages.*;
+import com.verifone.pages.marketPlacePages.CBAHomePage;
+import com.verifone.pages.marketPlacePages.CBALoginPage;
+import com.verifone.pages.marketPlacePages.CBAMarketplace;
+import com.verifone.pages.marketPlacePages.CBAMyApps;
 import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
@@ -22,8 +26,6 @@ public class PageFactory {
                 return new OktaLogin();
             case "LoginSSOPage":
                 return new LoginSSOPage();
-            case "LoginMPPortal":
-                return new LoginMPPortal();
 
             case "CreateMerchantPage":
                 return new CreateMerchantPage();
@@ -117,6 +119,14 @@ public class PageFactory {
                 return new ActionRequiredPage();
             case "AgreementPage":
                 return new AgreementPage();
+            case "CBAHomePage":
+                return new CBAHomePage();
+            case "CBALoginPage":
+                return new CBALoginPage();
+            case "CBAMyApps":
+                return new CBAMyApps();
+            case "CBAMarketplace":
+                return new CBAMarketplace();
             case "ManageMarketplacePage":
                 return new ManageMarketplacePage();
             case "ProductsTab":

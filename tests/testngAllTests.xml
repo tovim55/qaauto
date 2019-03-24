@@ -30,7 +30,7 @@
             <class name="com.verifone.tests.cpTests.DevUploadApp"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
-            <class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>-->
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>
         </classes>

@@ -339,7 +339,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
         HomePage.clickHeaderMenu();
 
@@ -374,7 +374,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
@@ -424,7 +424,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
         testLog.info( "-------------------------------------------------Merchants list-------------------------------------------------");
 
@@ -454,7 +454,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
@@ -505,7 +505,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
         HomePage.clickHeaderMenu();
 
@@ -539,7 +539,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
@@ -563,7 +563,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
         AssertJUnit.assertEquals(true, HomePage.headerExists());
 
         Assert.assertTrue(TestPassFlag);
@@ -594,7 +594,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 
         testLog.info( "-----------------------------------------------------Merchants list-------------------------------------------------");
 
@@ -623,7 +623,7 @@ public class SSOBasicFlow2UI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("HomePage");
+        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
