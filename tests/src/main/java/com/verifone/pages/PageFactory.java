@@ -6,6 +6,7 @@ import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.*;
+import com.verifone.pages.mpPages.*;
 import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
@@ -21,6 +22,8 @@ public class PageFactory {
                 return new OktaLogin();
             case "LoginSSOPage":
                 return new LoginSSOPage();
+            case "LoginMPPortal":
+                return new LoginMPPortal();
 
             case "CreateMerchantPage":
                 return new CreateMerchantPage();
@@ -68,6 +71,8 @@ public class PageFactory {
                 return new ChangePasswordPage();
             case "HomePage":
                 return new HomePage();
+            case "MPHomePage":
+                return new MPHomePage();
             case "UsersPage":
                 return new UsersPage();
             case "AddUserPage":
@@ -112,6 +117,24 @@ public class PageFactory {
                 return new ActionRequiredPage();
             case "AgreementPage":
                 return new AgreementPage();
+            case "ManageMarketplacePage":
+                return new ManageMarketplacePage();
+            case "ProductsTab":
+                return new ProductsTab();
+            case "CreateSegmentGroupPage":
+                return new CreateSegmentGroupPage();
+            case "EditSegmentGroupPage":
+                return new EditSegmentGroupPage();
+            case "CreateSegmentPage":
+                return new CreateSegmentPage();
+            case "EditSegmentPage":
+                return new EditSegmentPage();
+            case "ProductsTabProductCatalogPage":
+                return new ProductsTabProductCatalogPage();
+            case "ProductSettingsProductsTab":
+                return new ProductSettingsProductsTab();
+            case "MarketplacePage":
+                return new MarketplacePage();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);

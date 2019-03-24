@@ -14,7 +14,7 @@ public class Credentials {
     }
 
     public User getEOAdminSupport() {
-        return new User(prop.getProperty(env + "EOAdminSupport"), prop.getProperty(env + "EOAdminSupportPass"));
+        return new User(prop.getProperty(env + "EOAdminSupport"), prop.getProperty(env + "EOAdminSupportName"), prop.getProperty(env + "EOAdminSupportPass"), prop.getProperty(env + "EOAdminSupportSecurityAnswer"));
     }
 
     public User getEOAdmin() {
