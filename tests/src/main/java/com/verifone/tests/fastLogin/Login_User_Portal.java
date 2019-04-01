@@ -68,26 +68,27 @@ import static com.verifone.pages.BasePage.testLog;
         }
         if (param2.contains("@verifone.com")){
             Thread.sleep(2000);
-            driver.navigate().to(OktaHome_url);
-            LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-            OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
-            if (!OktaLogin.loginOktaTitleExists()) {
-                OktaLogin.SignOut();
-            }
+//            driver.navigate().to(OktaHome_url);
+//            LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+//            OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+//            if (!OktaLogin.loginOktaTitleExists()) {
+//                OktaLogin.SignOut();
+//            }
 
             Thread.sleep(2000);
             driver.navigate().to(url);
-            LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+            LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
             LoginEOPortal.loginInputEmail(param2);
             ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(availableWindows.get(0));
 
             Thread.sleep(2000);
-            OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+            OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
 
             if (OktaLogin.loginOktaTitle().contains("Okta Verify")){
                 OktaLogin.SignOutOktaVerify();
             }
+            
             Thread.sleep(2000);
             OktaLogin.loginInputName(param5);
             OktaLogin.loginInputPassword(param3);
@@ -100,23 +101,23 @@ import static com.verifone.pages.BasePage.testLog;
             testLog.info("Security answer: " + "");
             OktaLogin.clickVerifyBtn();
 
-            Thread.sleep(2000);
-            if (!OktaLogin.loginOktaTitleExists()) {
-                driver.navigate().to(url);
-                LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-                LoginEOPortal.loginInputEmail(param2);
-                availableWindows = new ArrayList<String>(driver.getWindowHandles());
-                driver.switchTo().window(availableWindows.get(0));
-
-                Thread.sleep(2000);
-                if (OktaLogin.loginOktaTitleExists()){
-                    if (OktaLogin.loginOktaTitle().contains("Sign In")) {
-                        OktaLogin.loginInputName(param5);
-                        OktaLogin.loginInputPassword(param3);
-                        OktaLogin.clickSignInBtn();
-                    }
-                }
-            }
+//            Thread.sleep(2000);
+//            if (!OktaLogin.loginOktaTitleExists()) {
+//                driver.navigate().to(url);
+//                LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+//                LoginEOPortal.loginInputEmail(param2);
+//                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//                driver.switchTo().window(availableWindows.get(0));
+//
+//                Thread.sleep(2000);
+//                if (OktaLogin.loginOktaTitleExists()){
+//                    if (OktaLogin.loginOktaTitle().contains("Sign In")) {
+//                        OktaLogin.loginInputName(param5);
+//                        OktaLogin.loginInputPassword(param3);
+//                        OktaLogin.clickSignInBtn();
+//                    }
+//                }
+//            }
 
 
 
