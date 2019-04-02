@@ -2,6 +2,7 @@ package com.verifone.pages.vhqPages;
 
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class VHQTestLogin extends BasePage {
@@ -22,10 +23,10 @@ public class VHQTestLogin extends BasePage {
 
     public void LoginInVhq ()
     {
+
+        waitForLoader(email);
         sendKeys(email, "vfiappdirect@getnada.com");
-        ExpectedConditions.elementToBeClickable(LoginVhqBtn);
-        hoverAndClickOnElement(LoginVhqBtn);
-        //click(LoginVhqBtn);
+        click(LoginVhqBtn);
         ExpectedConditions.titleIs(title);
         ExpectedConditions.frameToBeAvailableAndSwitchToIt(veriIframe);
         switchToIframe(veriIframe);

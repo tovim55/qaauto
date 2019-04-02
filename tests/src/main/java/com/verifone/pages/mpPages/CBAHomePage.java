@@ -13,6 +13,7 @@ public class CBAHomePage extends BasePage
 
     private By LogIn = By.xpath("//*[@id=\"primaryNav\"]/div/nav/ul/li[3]/ul/li/a");
 
+
     public CBAHomePage()
     {
         super(url, title);

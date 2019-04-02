@@ -148,6 +148,10 @@ public class PageFactory {
                 return new VHQTestLogin();
             case "VHQHomePage":
                 return new VHQHomePage();
+            case "VHQDownloadLibrary":
+                return new VHQDownloadLibrary();
+            case "LoginMPPortal":
+                return new LoginMPPortal();
 
             default:
                 System.out.println("Can not create a Page, missing implementation of class " + page);

@@ -181,6 +181,14 @@ public abstract class BasePage {
         builder.moveToElement(element).click().perform();
     }
 
+    protected void dragAndDrop(By draggable,By droppable){
+        WebElement sourse = driver.findElement(draggable);
+        WebElement target = driver.findElement(droppable);
+        Actions builder = new Actions(driver);
+        builder.dragAndDrop(sourse, target).build().perform();
+
+    }
+
     protected void hoverAndClickOnElement(WebElement element) {
         try {
             Thread.sleep(5000);
@@ -523,6 +531,8 @@ public abstract class BasePage {
         typeText.perform();
         driver.switchTo().defaultContent();
     }
+
+
 
 
     /**

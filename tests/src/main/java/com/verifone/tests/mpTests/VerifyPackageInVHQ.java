@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 
 public class VerifyPackageInVHQ extends BaseTest {
 
+    private String appName = "TestDevport4839";
+
     @Test(testName = "LogIn & verify app package ", description = "log in to VHQ and verify app package added to Download Library")
 
     public void VHQVerifyPackageTestUI() throws InterruptedException {
@@ -19,5 +21,9 @@ public class VerifyPackageInVHQ extends BaseTest {
             vhq.verifyCustomer();
         }
 
+        vhq.verifyDownloadLibrary();
+
+        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getPage("VHQDownloadLibrary");
+        downLab.verifyPackageExist(appName);
     }
 }

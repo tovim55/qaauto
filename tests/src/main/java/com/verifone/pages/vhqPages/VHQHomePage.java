@@ -19,20 +19,31 @@ public class VHQHomePage extends BasePage
     }
 
     private By customer =  By.xpath("//p[contains(text(),'AppDirect2')]");
-    private By mainMenu = By.xpath("//*[@id=\"mainMenuUl\"]");
+    private By devManag = By.xpath("//*[@id=\"device\"]");
+    private By managDownl= By.xpath("//*[@id=\"downloads\"]");
+    private By downlLib = By.xpath("//*[@id=\"downloadLibrarysublink\"]");
+    private By ShowHide = By.id("btnShowHide");
 
 
-    private List<WebElement> menu;
+    WebElement packageName1;
+    WebElement packageName2;
 
     public void verifyCustomer()
     {
         String customerName = "AppDirect2";
         ExpectedConditions.textToBe(customer, customerName);
-        testLog.info(getText(customer));
+        testLog.info("Customer name is " + getText(customer));
     }
 
-    public void verifyDownloadLibrary()
-    {
-
+    public void verifyDownloadLibrary() throws InterruptedException {
+        ExpectedConditions.elementToBeClickable(devManag);
+        click(devManag);
+        ExpectedConditions.elementToBeClickable(managDownl);
+        hoverAndClickOnElement(managDownl);
+        ExpectedConditions.elementToBeClickable(downlLib);
+        click(downlLib);
+        waitForLoader(ShowHide);
     }
+
+
 }
