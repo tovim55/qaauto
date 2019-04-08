@@ -4,10 +4,12 @@ import com.google.gson.JsonObject;
 import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.Company;
 import com.verifone.infra.User;
-import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.*;
-import com.verifone.tests.BaseTest;
+import com.verifone.pages.mpPages.CBAHomePage;
+import com.verifone.pages.mpPages.CBALoginPage;
+import com.verifone.pages.mpPages.CBAMyApps;
+import com.verifone.pages.vhqPages.VHQTestLogin;
 import com.verifone.utils.Mail.InboxGetnada;
 import com.verifone.utils.apiClient.dc.SsoApi;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
@@ -18,9 +20,6 @@ import org.openqa.selenium.WebDriver;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 //import static com.verifone.pages.cpPages.LoginPage.restartDriver;
@@ -165,6 +164,7 @@ public class Steps {
         newAppFormPage.clickOnSubmitBtn();
 
     }
+
 
 
 }

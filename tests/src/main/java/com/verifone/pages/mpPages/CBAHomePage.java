@@ -1,4 +1,4 @@
-package com.verifone.pages.marketPlacePages;
+package com.verifone.pages.mpPages;
 
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
@@ -12,6 +12,7 @@ public class CBAHomePage extends BasePage
     private final static String title = "Test Verifone US  | Verifone" ;
 
     private By LogIn = By.xpath("//*[@id=\"primaryNav\"]/div/nav/ul/li[3]/ul/li/a");
+
 
     public CBAHomePage()
     {
