@@ -61,4 +61,5 @@ public class Steps {
         CGApplicationPage page = (CGApplicationPage) PageFactory.getPage("CGApplicationPage");
         page.searchConnect(newHost);
     }
+
 }

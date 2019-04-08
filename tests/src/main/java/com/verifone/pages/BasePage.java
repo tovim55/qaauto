@@ -98,6 +98,13 @@ public abstract class BasePage {
         return text;
     }
 
+    protected String getValue(By loc) {
+        WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
+        String text = element.getAttribute("Value");
+        testLog.info("User get text: " + text + " from this locator: " + loc.toString());
+        return text;
+    }
+
     protected String getTextFromTable(By loc) throws InterruptedException {
         Thread.sleep(6000);
         WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
@@ -107,6 +114,21 @@ public abstract class BasePage {
             text += w.getText();
         }
         return text;
+    }
+
+    protected int getRowNumberFromTable(By loc, String name) throws InterruptedException {
+        Thread.sleep(2000);
+        int i = 0;
+        WebElement element = getWebElement(loc, 30, ExpectedConditions.presenceOfElementLocated(loc));
+        String text = "";
+        List<WebElement> tr = element.findElements(By.tagName("tr"));
+        for (WebElement w : tr) {
+            if(w.getText().contains(name)){
+                return i;
+            }
+            i++;
+        }
+        return 0;
     }
 
     protected void switchToIframe(By loc) {
@@ -157,6 +179,14 @@ public abstract class BasePage {
         Actions builder = new Actions(driver);
         WebElement element = driver.findElement(loc);
         builder.moveToElement(element).click().perform();
+    }
+
+    protected void dragAndDrop(By draggable,By droppable){
+        WebElement sourse = driver.findElement(draggable);
+        WebElement target = driver.findElement(droppable);
+        Actions builder = new Actions(driver);
+        builder.dragAndDrop(sourse, target).build().perform();
+
     }
 
     protected void hoverAndClickOnElement(WebElement element) {
@@ -501,6 +531,8 @@ public abstract class BasePage {
         typeText.perform();
         driver.switchTo().defaultContent();
     }
+
+
 
 
     /**

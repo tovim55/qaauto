@@ -178,7 +178,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				availableWindows = new ArrayList<String>(driver.getWindowHandles());
 				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-				HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+				HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
 				Assert.assertTrue(HomePage.headerExists());
 				HomePage.clickHeaderMenu();
 				Thread.sleep(timeOut);
@@ -193,7 +193,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				availableWindows = new ArrayList<String>(driver.getWindowHandles());
 				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-				HomePage HomePage1 = (HomePage) PageFactory.getPage("HomePage");
+				HomePage HomePage1 = (HomePage) PageFactory.getPage("CBAHomePage");
 				Assert.assertTrue(HomePage1.headerExists());
 				HomePage1.clickHeaderMenu();
 				Thread.sleep(timeOut);
@@ -208,7 +208,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				availableWindows = new ArrayList<String>(driver.getWindowHandles());
 				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-				HomePage HomePage2 = (HomePage) PageFactory.getPage("HomePage");
+				HomePage HomePage2 = (HomePage) PageFactory.getPage("CBAHomePage");
 				Assert.assertTrue(HomePage2.headerExists());
 				HomePage2.clickHeaderMenu();
 				Thread.sleep(timeOut);
@@ -225,7 +225,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				driver.switchTo().window(availableWindows.get(0));
 
 //    	Search for Header
-				HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
+				HomePage HomePage3 = (HomePage) PageFactory.getPage("CBAHomePage");
 				Assert.assertTrue(HomePage3.headerExists());
 //				Assert.assertFalse(HomePage3.menuAccountExists());
 
@@ -546,7 +546,7 @@ public class SSOBasicFlowUI extends BaseTest {
 				availableWindows = new ArrayList<String>(driver.getWindowHandles());
 				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-				HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
+				HomePage HomePage3 = (HomePage) PageFactory.getPage("CBAHomePage");
 				Assert.assertTrue(HomePage3.headerExists());
 				HomePage3.clickHeaderMenu();
 				Thread.sleep(timeOut);
