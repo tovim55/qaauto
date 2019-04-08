@@ -28,6 +28,7 @@
         <classes>
             <class name="com.verifone.tests.mpTests.SegmentsUI"/>
             <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
+
         </classes>
 
     </test>
