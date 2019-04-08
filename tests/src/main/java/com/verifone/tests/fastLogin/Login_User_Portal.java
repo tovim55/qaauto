@@ -88,7 +88,7 @@ import static com.verifone.pages.BasePage.testLog;
             if (OktaLogin.loginOktaTitle().contains("Okta Verify")){
                 OktaLogin.SignOutOktaVerify();
             }
-            
+
             Thread.sleep(2000);
             OktaLogin.loginInputName(param5);
             OktaLogin.loginInputPassword(param3);
