@@ -1,4 +1,4 @@
-package com.verifone.pages.marketPlacePages;
+package com.verifone.pages.mpPages;
 
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.Alert;

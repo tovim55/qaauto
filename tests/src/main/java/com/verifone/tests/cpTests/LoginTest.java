@@ -21,5 +21,4 @@ public class LoginTest extends BaseTest {
         loginPage.loginPageCp(dev);
 
     }
-
 }

@@ -26,18 +26,15 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>-->
-            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>-->
-            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.EmployeeApiDdt"/>-->
-            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.LocationApiDdt"/>-->
-            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>-->
-            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>-->
-            <!--<class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Shift"/>-->
-            <!--<class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Customer"/>-->
-            <class name="com.verifone.tests.marketPlaceTests.DownloadAppTest"/>
-
-
-
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.EmployeeApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.LocationApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>
+            <class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Shift"/>
+            <class name="com.verifone.tests.api.tests.restAssured.POST_JSON_Customer"/>
+            <class name="com.verifone.tests.appiumTests.CM5_CloudAPI"/>
         </classes>
 
     </test>

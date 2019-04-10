@@ -6,11 +6,8 @@ import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.*;
 import com.verifone.pages.eoPages.*;
+import com.verifone.pages.vhqPages.*;
 import com.verifone.pages.mpPages.*;
-import com.verifone.pages.marketPlacePages.CBAHomePage;
-import com.verifone.pages.marketPlacePages.CBALoginPage;
-import com.verifone.pages.marketPlacePages.CBAMarketplace;
-import com.verifone.pages.marketPlacePages.CBAMyApps;
 import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
@@ -145,6 +142,14 @@ public class PageFactory {
                 return new ProductSettingsProductsTab();
             case "MarketplacePage":
                 return new MarketplacePage();
+            case "CBAAccount":
+                return new CBAAccount();
+            case "VHQTestLogin":
+                return new VHQTestLogin();
+            case "VHQHomePage":
+                return new VHQHomePage();
+            case "VHQDownloadLibrary":
+                return new VHQDownloadLibrary();
             case "LoginMPPortal":
                 return new LoginMPPortal();
 

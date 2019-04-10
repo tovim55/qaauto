@@ -7,8 +7,8 @@ import com.verifone.pages.cgPages.CGApplicationPage;
 import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.LoginPage;
 import com.verifone.pages.cpPages.OktaLogin;
-import com.verifone.pages.mpPages.LoginMPPortal;
-import com.verifone.pages.mpPages.MPHomePage;
+import com.verifone.pages.mpPages.*;
+import com.verifone.pages.vhqPages.VHQTestLogin;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -66,6 +66,27 @@ public class Steps {
             LoginMPPortal.loginInputPassword(Password);
             LoginMPPortal.clickLoginBtn();
         }
+    }
+
+    public static void loginCBA ()
+    {
+        CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
+        homePage.clickOnLogInLink();
+
+        CBALoginPage loginPage = (CBALoginPage) PageFactory.getPage("CBALoginPage");
+        loginPage.LogInToCBAAccount();
+    }
+
+    public static void verifyMyAppsCBA (String appName)
+    {
+        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        myApps.verifyAppSubcribed(appName);
+    }
+
+    public static void loginVHQ ()
+    {
+        VHQTestLogin vhqLogin = (VHQTestLogin) PageFactory.getPage("VHQTestLogin");
+        vhqLogin.LoginInVhq();
     }
 
 }
