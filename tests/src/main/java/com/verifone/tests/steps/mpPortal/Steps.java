@@ -68,6 +68,15 @@ public class Steps {
         }
     }
 
+    public static void  loginCBA (User user)
+    {
+        CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
+        homePage.clickOnLogInLink();
+
+        CBALoginPage loginPage = (CBALoginPage) PageFactory.getPage("CBALoginPage");
+        loginPage.LogInToCBAAccount(user);
+    }
+
     public static void loginCBA ()
     {
         CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");

@@ -1,5 +1,7 @@
 package com.verifone.tests.mpTests;
 
+import com.verifone.entities.EntitiesFactory;
+import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.mpPages.CBAMarketplace;
 import com.verifone.pages.mpPages.CBAMyApps;
@@ -14,7 +16,8 @@ public class subscribeAppTest extends BaseTest {
     @Test(testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
 
-        Steps.loginCBA();
+        User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
+        Steps.loginCBA(merchant);
 
         CBAMarketplace market = (CBAMarketplace) PageFactory.getPage("CBAMarketplace");
         market.searchForApp(appName);
