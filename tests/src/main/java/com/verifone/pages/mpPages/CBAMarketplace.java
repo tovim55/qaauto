@@ -1,6 +1,7 @@
 package com.verifone.pages.mpPages;
 
 import com.verifone.pages.BasePage;
+import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class CBAMarketplace extends BasePage
 {
-    private final static String url = "https://testverifone.appdirect.com/home";
+    private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Test Verifone US  | Verifone";
 
     private By marketPlace = By.xpath("//*[@id=\"header\"]/header/div/nav/ul/li[3]");

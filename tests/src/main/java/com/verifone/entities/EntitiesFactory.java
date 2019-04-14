@@ -15,6 +15,10 @@ public class EntitiesFactory {
             case "EOAdminSupport":
                 user = BaseTest.envConfig.getCredentials().getEOAdminSupport();
                 break;
+
+            case "MPMerchantAdmin":
+                user = BaseTest.envConfig.getCredentials().getMPMerchantAdmin();
+                break;
             case "getEOMerchant":
                 user = BaseTest.envConfig.getCredentials().getEOMerchant();
                 break;
@@ -59,6 +63,7 @@ public class EntitiesFactory {
                 user = new User(true);
                 break;
         }
+
         System.out.println("User is: " + user.getUserName());
         BasePage.testLog.info("User is: " + user.getUserName());
         return user;
