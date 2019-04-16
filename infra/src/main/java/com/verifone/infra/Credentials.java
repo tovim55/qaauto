@@ -17,6 +17,10 @@ public class Credentials {
         return new User(prop.getProperty(env + "EOAdminSupport"), prop.getProperty(env + "EOAdminSupportName"), prop.getProperty(env + "EOAdminSupportPass"), prop.getProperty(env + "EOAdminSupportSecurityAnswer"));
     }
 
+    public User getMPMerchantAdmin() {
+        return new User(prop.getProperty(env + "MPMerchantAdmin"), prop.getProperty(env + "MPMerchantAdminPass"));
+    }
+
     public User getEOAdmin() {
         return new User(prop.getProperty(env + "EOAdmin"), prop.getProperty(env + "EOAdminPass"));
     }

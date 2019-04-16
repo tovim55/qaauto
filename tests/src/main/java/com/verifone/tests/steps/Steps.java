@@ -6,10 +6,6 @@ import com.verifone.infra.Company;
 import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.cpPages.*;
-import com.verifone.pages.mpPages.CBAHomePage;
-import com.verifone.pages.mpPages.CBALoginPage;
-import com.verifone.pages.mpPages.CBAMyApps;
-import com.verifone.pages.vhqPages.VHQTestLogin;
 import com.verifone.utils.Mail.InboxGetnada;
 import com.verifone.utils.apiClient.dc.SsoApi;
 import com.verifone.utils.apiClient.getToken.GetTokenApi;
@@ -22,10 +18,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-//import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 import static com.verifone.tests.BaseTest.envConfig;
 import static com.verifone.utils.Assertions.assertTextContains;
 import static com.verifone.utils.apiClient.BaseDDTApi.getRequestWithHeaders;
+
+//import static com.verifone.pages.cpPages.LoginPage.restartDriver;
 
 //import static com.verifone.infra.SeleniumUtils.restartDriver;
 
@@ -47,6 +44,12 @@ public class Steps {
         loginPage.loginPageCp(dev);
     }
 
+    public static void devLogin(User dev) {
+        LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
+        loginPage.clickOmLoginBtn();
+        loginPage.loginPageCp(dev);
+    }
+
     public static void devLogin() {
         Company developer = (Company) EntitiesFactory.getEntity("Company");
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
@@ -55,7 +58,7 @@ public class Steps {
     }
 
 
-    public static String getVersions() throws  IOException {
+    public static String getVersions() throws IOException {
         WebDriver driver = new DevHomePage().getDriver();
         LoginPage loginPage = (com.verifone.pages.cpPages.LoginPage) PageFactory.getPage("LoginPage");
         loginPage.clickOmLoginBtn();
@@ -149,11 +152,11 @@ public class Steps {
         new DevHomePage().logout();
     }
 
-    public static void createApp() throws InterruptedException, IOException, AWTException {
+    public static void createEngageApp() throws InterruptedException, IOException, AWTException {
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
-        Application app = new Application("autotest", "", "1.0.0 ", "this test", "this is auto test!!");
+        Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
@@ -165,6 +168,21 @@ public class Steps {
 
     }
 
+    public static void createAndroidApp() throws InterruptedException, IOException, AWTException {
+        DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
+        NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
+        homePage.createAppBtn();
+        Application app = new Application();
+        String id = newAppFormPage.fillGetStartedForm(app);
+        ApplicationUtils.createZipAppAndroid(id, app.getAppName());
+        newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
+        newAppFormPage.fillAppIconScreenshots(app.iconPath);
+        ApplicationUtils.deleteDirectory();
+        newAppFormPage.fillPriceForm();
+        newAppFormPage.fillLegalAndSupportForm();
+        newAppFormPage.clickOnSubmitBtn();
+
+    }
 
 
 }

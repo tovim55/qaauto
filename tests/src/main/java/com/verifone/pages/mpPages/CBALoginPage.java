@@ -1,5 +1,6 @@
 package com.verifone.pages.mpPages;
 
+import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
 
@@ -19,6 +20,16 @@ public class CBALoginPage extends BasePage
         super(url, title);
     }
 
+    public void LogInToCBAAccount (User user)
+    {
+        sendKeys(emailField, user.getUserName());
+        switchToIframe(veriIframe);
+        System.out.println(user.getPassword());
+        sendKeys(passwordField, user.getPassword());
+        driver.switchTo().defaultContent();
+        click(LoginBtn);
+    }
+
     public void LogInToCBAAccount ()
     {
         sendKeys(emailField, "verif563@gmail.com");
@@ -28,3 +39,4 @@ public class CBALoginPage extends BasePage
         click(LoginBtn);
     }
 }
+
