@@ -18,14 +18,11 @@ public class VerifyPackageInVHQ extends BaseTest {
 
         loginVHQ(createVHQUser());
 
-        VHQHomePage vhq = (VHQHomePage) PageFactory.getVHQHomePage();
-        if (vhq != null) {
-            vhq.verifyCustomer();
-        }
+        VHQHomePage vhq = PageFactory.getVHQHomePage();
 
         vhq.verifyDownloadLibrary();
 
-        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getVHQDownloadLibrary();
+        VHQDownloadLibrary downLab = PageFactory.getVHQDownloadLibrary();
         downLab.verifyPackageExist(appName);
     }
 }

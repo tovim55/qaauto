@@ -82,22 +82,22 @@ public class Steps {
 
     public static void  loginCBA (User user)
     {
-        CBAHomePage homePage = (CBAHomePage) PageFactory.getCBAHomePage();
+        CBAHomePage homePage = PageFactory.getCBAHomePage();
         homePage.clickOnLogInLink();
 
-        CBALoginPage loginPage = (CBALoginPage) PageFactory.getCBALoginPage();
+        CBALoginPage loginPage = PageFactory.getCBALoginPage();
         loginPage.LogInToCBAAccount(user);
     }
 
     public static void verifyMyAppsCBA (String appName)
     {
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getCBAMyApps();
+        CBAMyApps myApps = PageFactory.getCBAMyApps();
         myApps.verifyAppSubcribed(appName);
     }
 
     public static void loginVHQ (User user)
     {
-        VHQTestLogin vhqLogin = (VHQTestLogin) PageFactory.getVHQTestLogin();
+        VHQTestLogin vhqLogin = PageFactory.getVHQTestLogin();
         vhqLogin.LoginInVhq(user);
 
     }

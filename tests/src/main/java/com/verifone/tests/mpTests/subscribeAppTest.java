@@ -20,12 +20,12 @@ public class subscribeAppTest extends BaseTest {
 
         loginCBA(createMerchantUser());
 
-        CBAMarketplace market = (CBAMarketplace) PageFactory.getCBAMarketplace();
+        CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyApp();
 
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getCBAMyApps();
+        CBAMyApps myApps = PageFactory.getCBAMyApps();
         myApps.verifyMessage();
 
     }

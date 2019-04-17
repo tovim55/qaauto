@@ -20,7 +20,7 @@ public class unsubscribeAppTest extends BaseTest {
 
         loginCBA(createMerchantUser());
 
-        CBAAccount account = (CBAAccount) PageFactory.getCBAAccount();
+        CBAAccount account = PageFactory.getCBAAccount();
         account.manageApps (appName);
         account.unsubscribeApp(appName);
 

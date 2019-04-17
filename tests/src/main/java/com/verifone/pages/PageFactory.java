@@ -12,14 +12,14 @@ import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
 
-    public static BasePage getCBAHomePage() {return new CBAHomePage();}
-    public static BasePage getCBALoginPage() {return new CBALoginPage();}
-    public static BasePage getCBAMyApps() {return new CBAMyApps();}
-    public static BasePage getCBAMarketplace() {return new CBAMarketplace();}
-    public static BasePage getCBAAccount() {return new CBAAccount();}
-    public static BasePage getVHQTestLogin() {return new VHQTestLogin();}
-    public static BasePage getVHQHomePage() {return new VHQHomePage();}
-    public static BasePage getVHQDownloadLibrary() {return new VHQDownloadLibrary();}
+    public static CBAHomePage getCBAHomePage() {return new CBAHomePage();}
+    public static CBALoginPage getCBALoginPage() {return new CBALoginPage();}
+    public static CBAMyApps getCBAMyApps() {return new CBAMyApps();}
+    public static CBAMarketplace getCBAMarketplace() {return new CBAMarketplace();}
+    public static CBAAccount getCBAAccount() {return new CBAAccount();}
+    public static VHQTestLogin getVHQTestLogin() {return new VHQTestLogin();}
+    public static VHQHomePage getVHQHomePage() {return new VHQHomePage();}
+    public static VHQDownloadLibrary getVHQDownloadLibrary() {return new VHQDownloadLibrary();}
 
     public static BasePage getPage(String page) {
         switch (page) {

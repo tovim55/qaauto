@@ -29,13 +29,12 @@ public class PurchaseAppUI extends BaseTest
     public void CBASubscribeAppTestUI() throws InterruptedException {
 
         loginCBA(createMerchantUser());
-
-        CBAMarketplace market = (CBAMarketplace) PageFactory.getCBAMarketplace();
+        CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyApp();
 
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getCBAMyApps();
+        CBAMyApps myApps = PageFactory.getCBAMyApps();
         myApps.verifyMessage();
 
     }
@@ -46,11 +45,11 @@ public class PurchaseAppUI extends BaseTest
 
         loginVHQ(createVHQUser());
 
-        VHQHomePage vhq = (VHQHomePage) PageFactory.getVHQHomePage();
+        VHQHomePage vhq = PageFactory.getVHQHomePage();
         vhq.verifyCustomer();
         vhq.verifyDownloadLibrary();
 
-        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getVHQDownloadLibrary();
+        VHQDownloadLibrary downLab = PageFactory.getVHQDownloadLibrary();
         downLab.verifyPackageExist(appName);
     }
 
@@ -60,7 +59,7 @@ public class PurchaseAppUI extends BaseTest
 
         loginCBA(createMerchantUser());
 
-        CBAAccount account = (CBAAccount) PageFactory.getCBAAccount();
+        CBAAccount account = PageFactory.getCBAAccount();
         account.manageApps (appName);
         account.unsubscribeApp(appName);
     }
