@@ -17,7 +17,8 @@
     <!--EOAdmin-->
     <parameter name="portal" value="MPPortal"/>
 
-    <test name="Automation Tests" parallel="classes" thread-count="2">
+    <!--<test name="Automation Tests" parallel="classes" thread-count="2">-->
+    <test name="Automation Tests" >
         <!--Set Browser Variable:-->
         <!--CHROME-->
         <!--FF-->
@@ -26,7 +27,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.mpTests.SegmentsUI"/>
+            <!--<class name="com.verifone.tests.mpTests.SegmentsUI"/>-->
             <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
 
         </classes>

@@ -68,6 +68,20 @@ public class Steps {
         }
     }
 
+    public static User createMerchantUser ()
+    {
+        User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
+
+        return merchant;
+    }
+
+    public static User createVHQUser ()
+    {
+        User vhqAdmin = EntitiesFactory.getEntity("VHQUserAdmin");
+
+        return vhqAdmin;
+    }
+
     public static void  loginCBA (User user)
     {
         CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
@@ -77,25 +91,17 @@ public class Steps {
         loginPage.LogInToCBAAccount(user);
     }
 
-    public static void loginCBA ()
-    {
-        CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
-        homePage.clickOnLogInLink();
-
-        CBALoginPage loginPage = (CBALoginPage) PageFactory.getPage("CBALoginPage");
-        loginPage.LogInToCBAAccount();
-    }
-
     public static void verifyMyAppsCBA (String appName)
     {
         CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
         myApps.verifyAppSubcribed(appName);
     }
 
-    public static void loginVHQ ()
+    public static void loginVHQ (User user)
     {
         VHQTestLogin vhqLogin = (VHQTestLogin) PageFactory.getPage("VHQTestLogin");
-        vhqLogin.LoginInVhq();
+        vhqLogin.LoginInVhq(user);
+
     }
 
 }

@@ -126,7 +126,7 @@ public class Columns{
 //		Type password = Veri1234 and ENTER
 //		private By iframe = By.id("veriPassFrame");
 //        driver.switchTo().defaultContent();
-		driver.switchTo().frame(driver.findElement(By.id("veriPassFrame")));
+		//driver.switchTo().frame(driver.findElement(By.id("veriPassFrame")));
 		WebElement userpw = driver.findElement(By.id("ipassword"));
 		userpw.click();
 //		Thread.sleep(2000);
