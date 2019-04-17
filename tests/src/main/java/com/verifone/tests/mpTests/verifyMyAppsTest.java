@@ -15,9 +15,7 @@ public class verifyMyAppsTest extends BaseTest
     @Test(testName = "LogIn & verify MyApps", description = "log in to CBA MyApps and verify myApps list")
     public void CBAMyAppsTestUI()
     {
-
-        User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
-        loginCBA(merchant);
+        loginCBA(createMerchantUser());
         verifyMyAppsCBA(appName);
     }
 

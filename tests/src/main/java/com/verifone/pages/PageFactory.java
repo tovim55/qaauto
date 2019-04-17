@@ -12,6 +12,14 @@ import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
 
+    public static BasePage getCBAHomePage() {return new CBAHomePage();}
+    public static BasePage getCBALoginPage() {return new CBALoginPage();}
+    public static BasePage getCBAMyApps() {return new CBAMyApps();}
+    public static BasePage getCBAMarketplace() {return new CBAMarketplace();}
+    public static BasePage getCBAAccount() {return new CBAAccount();}
+    public static BasePage getVHQTestLogin() {return new VHQTestLogin();}
+    public static BasePage getVHQHomePage() {return new VHQHomePage();}
+    public static BasePage getVHQDownloadLibrary() {return new VHQDownloadLibrary();}
 
     public static BasePage getPage(String page) {
         switch (page) {
@@ -116,14 +124,6 @@ public class PageFactory {
                 return new ActionRequiredPage();
             case "AgreementPage":
                 return new AgreementPage();
-            case "CBAHomePage":
-                return new CBAHomePage();
-            case "CBALoginPage":
-                return new CBALoginPage();
-            case "CBAMyApps":
-                return new CBAMyApps();
-            case "CBAMarketplace":
-                return new CBAMarketplace();
             case "ManageMarketplacePage":
                 return new ManageMarketplacePage();
             case "ProductsTab":
@@ -142,14 +142,6 @@ public class PageFactory {
                 return new ProductSettingsProductsTab();
             case "MarketplacePage":
                 return new MarketplacePage();
-            case "CBAAccount":
-                return new CBAAccount();
-            case "VHQTestLogin":
-                return new VHQTestLogin();
-            case "VHQHomePage":
-                return new VHQHomePage();
-            case "VHQDownloadLibrary":
-                return new VHQDownloadLibrary();
             case "LoginMPPortal":
                 return new LoginMPPortal();
 

@@ -19,7 +19,8 @@
 
     <!--TODO add optional parameter 'additional portal' for executing suite with 2 or more portals-->
 
-    <test name="Automation Tests" parallel="classes" thread-count="2">
+    <test name="Automation Tests">
+    <!--<test name="Automation Tests" parallel="classes" thread-count="2">-->
         <!--Set Browser Variable:-->
         <!--CHROME-->
         <!--FF-->
@@ -28,7 +29,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.mpTests.SegmentsUI"/>
+            <!--<class name="com.verifone.tests.mpTests.SegmentsUI"/>-->
             <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
 
         </classes>

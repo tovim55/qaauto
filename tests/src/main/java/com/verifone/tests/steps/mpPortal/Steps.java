@@ -71,35 +71,33 @@ public class Steps {
     public static User createMerchantUser ()
     {
         User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
-
         return merchant;
     }
 
     public static User createVHQUser ()
     {
         User vhqAdmin = EntitiesFactory.getEntity("VHQUserAdmin");
-
         return vhqAdmin;
     }
 
     public static void  loginCBA (User user)
     {
-        CBAHomePage homePage = (CBAHomePage) PageFactory.getPage("CBAHomePage");
+        CBAHomePage homePage = (CBAHomePage) PageFactory.getCBAHomePage();
         homePage.clickOnLogInLink();
 
-        CBALoginPage loginPage = (CBALoginPage) PageFactory.getPage("CBALoginPage");
+        CBALoginPage loginPage = (CBALoginPage) PageFactory.getCBALoginPage();
         loginPage.LogInToCBAAccount(user);
     }
 
     public static void verifyMyAppsCBA (String appName)
     {
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        CBAMyApps myApps = (CBAMyApps) PageFactory.getCBAMyApps();
         myApps.verifyAppSubcribed(appName);
     }
 
     public static void loginVHQ (User user)
     {
-        VHQTestLogin vhqLogin = (VHQTestLogin) PageFactory.getPage("VHQTestLogin");
+        VHQTestLogin vhqLogin = (VHQTestLogin) PageFactory.getVHQTestLogin();
         vhqLogin.LoginInVhq(user);
 
     }

@@ -18,15 +18,14 @@ public class subscribeAppTest extends BaseTest {
     @Test(testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
 
-        User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
-        loginCBA(merchant);
+        loginCBA(createMerchantUser());
 
-        CBAMarketplace market = (CBAMarketplace) PageFactory.getPage("CBAMarketplace");
+        CBAMarketplace market = (CBAMarketplace) PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyApp();
 
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        CBAMyApps myApps = (CBAMyApps) PageFactory.getCBAMyApps();
         myApps.verifyMessage();
 
     }

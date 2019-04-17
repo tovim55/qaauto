@@ -30,12 +30,12 @@ public class PurchaseAppUI extends BaseTest
 
         loginCBA(createMerchantUser());
 
-        CBAMarketplace market = (CBAMarketplace) PageFactory.getPage("CBAMarketplace");
+        CBAMarketplace market = (CBAMarketplace) PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyApp();
 
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        CBAMyApps myApps = (CBAMyApps) PageFactory.getCBAMyApps();
         myApps.verifyMessage();
 
     }
@@ -46,11 +46,11 @@ public class PurchaseAppUI extends BaseTest
 
         loginVHQ(createVHQUser());
 
-        VHQHomePage vhq = (VHQHomePage) PageFactory.getPage("VHQHomePage");
+        VHQHomePage vhq = (VHQHomePage) PageFactory.getVHQHomePage();
         vhq.verifyCustomer();
         vhq.verifyDownloadLibrary();
 
-        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getPage("VHQDownloadLibrary");
+        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getVHQDownloadLibrary();
         downLab.verifyPackageExist(appName);
     }
 
@@ -60,7 +60,7 @@ public class PurchaseAppUI extends BaseTest
 
         loginCBA(createMerchantUser());
 
-        CBAAccount account = (CBAAccount) PageFactory.getPage("CBAAccount");
+        CBAAccount account = (CBAAccount) PageFactory.getCBAAccount();
         account.manageApps (appName);
         account.unsubscribeApp(appName);
     }

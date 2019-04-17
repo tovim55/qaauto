@@ -18,10 +18,9 @@ public class unsubscribeAppTest extends BaseTest {
 
     public void CBAUnsubscribeAppTestUI() throws InterruptedException {
 
-        User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
-        loginCBA(merchant);
+        loginCBA(createMerchantUser());
 
-        CBAAccount account = (CBAAccount) PageFactory.getPage("CBAAccount");
+        CBAAccount account = (CBAAccount) PageFactory.getCBAAccount();
         account.manageApps (appName);
         account.unsubscribeApp(appName);
 
