@@ -19,6 +19,11 @@ public class EntitiesFactory {
             case "MPMerchantAdmin":
                 user = BaseTest.envConfig.getCredentials().getMPMerchantAdmin();
                 break;
+
+            case "VHQUserAdmin":
+                user = BaseTest.envConfig.getCredentials().getVHQUserAdmin();
+                break;
+
             case "getEOMerchant":
                 user = BaseTest.envConfig.getCredentials().getEOMerchant();
                 break;

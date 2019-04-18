@@ -1,8 +1,12 @@
 package com.verifone.tests.mpTests;
 
+import com.verifone.entities.EntitiesFactory;
+import com.verifone.infra.User;
 import com.verifone.tests.BaseTest;
 import com.verifone.tests.steps.mpPortal.Steps;
 import org.testng.annotations.Test;
+
+import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class verifyMyAppsTest extends BaseTest
 {
@@ -11,9 +15,8 @@ public class verifyMyAppsTest extends BaseTest
     @Test(testName = "LogIn & verify MyApps", description = "log in to CBA MyApps and verify myApps list")
     public void CBAMyAppsTestUI()
     {
-
-        Steps.loginCBA();
-        Steps.verifyMyAppsCBA(appName);
+        loginCBA(createMerchantUser());
+        verifyMyAppsCBA(appName);
     }
 
 }

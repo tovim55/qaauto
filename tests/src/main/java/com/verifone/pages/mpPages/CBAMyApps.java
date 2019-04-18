@@ -1,6 +1,7 @@
 package com.verifone.pages.mpPages;
 
 import com.verifone.pages.BasePage;
+import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class CBAMyApps extends BasePage
 {
-    private final static String url = "https://testverifone.appdirect.com/myapps";
+    private final static String url = BaseTest.envConfig.getWebUrl() + "myapps";
     private final static String title = "MyApps | Verifone";
 
     private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
