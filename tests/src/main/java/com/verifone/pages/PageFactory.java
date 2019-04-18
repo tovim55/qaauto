@@ -12,11 +12,14 @@ import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
 
+    ///////////////////MarketPlace Pages/////////////////////////
     public static CBAHomePage getCBAHomePage() {return new CBAHomePage();}
     public static CBALoginPage getCBALoginPage() {return new CBALoginPage();}
     public static CBAMyApps getCBAMyApps() {return new CBAMyApps();}
     public static CBAMarketplace getCBAMarketplace() {return new CBAMarketplace();}
     public static CBAAccount getCBAAccount() {return new CBAAccount();}
+
+    ///////////////////VHQ Pages///////////////////////////////
     public static VHQTestLogin getVHQTestLogin() {return new VHQTestLogin();}
     public static VHQHomePage getVHQHomePage() {return new VHQHomePage();}
     public static VHQDownloadLibrary getVHQDownloadLibrary() {return new VHQDownloadLibrary();}
