@@ -1,0 +1,18 @@
+{
+  "schema_version" : "1.0",
+  "imports_trigger" : [ ],
+  "application" : {
+    "is_companion_app" : false,
+    "name" : "test200319_02",
+    "package_name" : "com.example.gavrielc2.test200319_02",
+    "id" : "test20031-282146004",
+    "type" : "CP_ANDROID",
+    "version" : "1.0.0"
+  },
+  "imports_sdk" : {
+    "cpruntime_min_version" : "2.0.0",
+    "triggers_min_version" : "4.2.0"
+  },
+  "imports_hardware" : {
+  }
+}

@@ -17,7 +17,7 @@ import static com.verifone.tests.steps.Steps.devLogin;
 public class DevUploadApp extends BaseTest {
 
 
-    @Test(testName = "Dev admin upload an app", description = "Dev admin upload an app")
+    @Test(testName = "Dev admin upload an Engage app", description = "Engage app for CP")
     public void devUploadAppUI() throws IOException, InterruptedException, AWTException {
         Company dev = new Company();
         dev.setUserName("doba@cmail.club");
@@ -27,7 +27,7 @@ public class DevUploadApp extends BaseTest {
     }
 
 
-    @Test(testName = "Dev admin upload an app", description = "Dev admin upload an app")
+    @Test(testName = "Dev admin upload an Android app", description = "Android app for CP")
     public void devUploadAppAndroidUI() throws IOException, InterruptedException, AWTException {
         User dev = EntitiesFactory.getEntity("DevAdmin");
         devLogin(dev);
