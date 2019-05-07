@@ -55,7 +55,7 @@ public class POST_JSON_Shift extends BaseTest {
     public void POST_Shift_JSONFile() throws IOException {
         request.header("Content-Type", "application/x-www-form-urlencoded");
 
-        //JSONObject requestParams = new JSONObject();
+        JSONObject requestParams = new JSONObject();
 
         String jsonBody = generateStringFromResource("/Users/yegorp1/Desktop/CloudAPI/Shift/shifts.json");
 

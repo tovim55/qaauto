@@ -210,6 +210,11 @@ public abstract class BasePage {
         return driver.findElements(loc);
     }
 
+    protected WebElement getNestedWebElement(WebElement elem, By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+        waitForElement(loc, timeOut, expectedCon);
+        return elem.findElement(loc);
+    }
+
     //    TODO complete method implementation
     protected void uploadFile(String filePath, WebElement dropZoneClass, String fileType) throws IOException {
 
@@ -276,7 +281,6 @@ public abstract class BasePage {
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
     }
-
 
     /**
      * Method selects option if exists from the dropdown

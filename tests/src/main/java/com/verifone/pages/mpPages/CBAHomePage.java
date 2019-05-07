@@ -10,7 +10,7 @@ public class CBAHomePage extends BasePage
 
 {
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
-    private final static String title = "Test Verifone US  | Verifone" ;
+    private final static String title = "" ;
 
     private By LogIn = By.xpath("//*[@id=\"primaryNav\"]/div/nav/ul/li[3]/ul/li/a");
 

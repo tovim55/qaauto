@@ -19,6 +19,9 @@ public class PageFactory {
     public static CBAMarketplace getCBAMarketplace() {return new CBAMarketplace();}
     public static CBAAccount getCBAAccount() {return new CBAAccount();}
 
+    public static CBAMainMenu getCBAMainMenu() {return new CBAMainMenu();}
+    public static LoginMPPortal getLoginMPPortal() {return new LoginMPPortal();}
+
     ///////////////////VHQ Pages///////////////////////////////
     public static VHQTestLogin getVHQTestLogin() {return new VHQTestLogin();}
     public static VHQHomePage getVHQHomePage() {return new VHQHomePage();}
