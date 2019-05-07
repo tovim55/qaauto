@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Merchant Configuration",
+  "description": "A schema for a sample CP Application Configuration in JSON format",
+  "type": "object",
+  "properties": {
+    "cp_priority": {
+      "label": "Application Priority",
+      "type": "integer"
+    },
+    "cp_inactivityTimeoutPeriod": {
+      "label": "Inactivity Timeout",
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 10,
+      "default": 3
+    },
+    "cp_applicationSilencePeriods": {
+      "label": "Silence Periods",
+      "description": "The periods when the application should not be started. Each period is expressed as a string following the Cron grammar",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "cp_priority",
+    "cp_inactivityTimeoutPeriod",
+    "cp_applicationSilencePeriods"
+  ]
+}
