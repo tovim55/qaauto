@@ -7,8 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <!--<parameter name="env" value="QA"/>-->
-    <parameter name="env" value="TEST"/>
-    <!--<parameter name="env" value="${environment}"/>-->
+    <parameter name="env" value="${environment}"/>
     <parameter name="getVersions" value="false"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
@@ -18,6 +17,9 @@
     <!--EOAdmin-->
     <parameter name="portal" value="MPPortal"/>
 
+    <!--TODO add optional parameter 'additional portal' for executing suite with 2 or more portals-->
+
+    <!--<test name="Automation Tests">-->
     <test name="Automation Tests" parallel="classes" thread-count="2">
         <!--Set Browser Variable:-->
         <!--CHROME-->
@@ -27,10 +29,8 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.mpTests.SegmentsUI"/>-->
-            <!--<class name="com.verifone.tests.mpTests.PurchaseAppUI"/>-->
-            <class name="com.verifone.tests.mpTests.subscribeAppTest"/>
-
+            <class name="com.verifone.tests.mpTests.SegmentsUI"/>
+            <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
         </classes>
 
     </test>

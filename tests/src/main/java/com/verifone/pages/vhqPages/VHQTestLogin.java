@@ -1,5 +1,6 @@
 package com.verifone.pages.vhqPages;
 
+import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,16 +22,16 @@ public class VHQTestLogin extends BasePage {
     private By passwordField = By.id("ipassword");
     private By LoginBtn = By.id("btnPrimaryLogin");
 
-    public void LoginInVhq ()
+    public void LoginInVhq (User user)
     {
 
         waitForLoader(email);
-        sendKeys(email, "vfiappdirect@getnada.com");
+        sendKeys(email, user.getUserName());
         click(LoginVhqBtn);
         ExpectedConditions.titleIs(title);
         ExpectedConditions.frameToBeAvailableAndSwitchToIt(veriIframe);
         switchToIframe(veriIframe);
-        sendKeys(passwordField, "Veri1234");
+        sendKeys(passwordField, user.getPassword());
         driver.switchTo().defaultContent();
         click(LoginBtn);
     }

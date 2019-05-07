@@ -1,5 +1,7 @@
 package com.verifone.tests.mpTests;
 
+import com.verifone.entities.EntitiesFactory;
+import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.mpPages.CBAAccount;
 import com.verifone.pages.mpPages.CBAMarketplace;
@@ -10,6 +12,8 @@ import com.verifone.tests.BaseTest;
 import com.verifone.tests.steps.mpPortal.Steps;
 import org.testng.annotations.Test;
 
+import static com.verifone.tests.steps.mpPortal.Steps.*;
+
 public class PurchaseAppUI extends BaseTest
 {
     private static String appName = "TestDevport4839";
@@ -17,21 +21,20 @@ public class PurchaseAppUI extends BaseTest
     @Test(priority=1, testName = "LogIn & verify MyApps", description = "log in to CBA MyApps and verify myApps list")
     public void CBAMyAppsTestUI()
     {
-        Steps.loginCBA();
-        Steps.verifyMyAppsCBA(appName);
+        loginCBA(createMerchantUser());
+        verifyMyAppsCBA(appName);
     }
 
     @Test(priority=2, testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
 
-        Steps.loginCBA();
-
-        CBAMarketplace market = (CBAMarketplace) PageFactory.getPage("CBAMarketplace");
+        loginCBA(createMerchantUser());
+        CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyApp();
 
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        CBAMyApps myApps = PageFactory.getCBAMyApps();
         myApps.verifyMessage();
 
     }
@@ -40,13 +43,13 @@ public class PurchaseAppUI extends BaseTest
 
     public void VHQ_PackageIsDownloadedUI() throws InterruptedException {
 
-        Steps.loginVHQ();
+        loginVHQ(createVHQUser());
 
-        VHQHomePage vhq = (VHQHomePage) PageFactory.getPage("VHQHomePage");
+        VHQHomePage vhq = PageFactory.getVHQHomePage();
         vhq.verifyCustomer();
         vhq.verifyDownloadLibrary();
 
-        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getPage("VHQDownloadLibrary");
+        VHQDownloadLibrary downLab = PageFactory.getVHQDownloadLibrary();
         downLab.verifyPackageExist(appName);
     }
 
@@ -54,9 +57,9 @@ public class PurchaseAppUI extends BaseTest
 
     public void CBAUnsubscribeAppTestUI() throws InterruptedException {
 
-        Steps.loginCBA();
+        loginCBA(createMerchantUser());
 
-        CBAAccount account = (CBAAccount) PageFactory.getPage("CBAAccount");
+        CBAAccount account = PageFactory.getCBAAccount();
         account.manageApps (appName);
         account.unsubscribeApp(appName);
     }

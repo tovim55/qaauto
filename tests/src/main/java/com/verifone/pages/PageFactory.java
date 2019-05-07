@@ -12,6 +12,17 @@ import com.verifone.utils.Mail.InboxGetnada;
 
 public class PageFactory {
 
+    ///////////////////MarketPlace Pages/////////////////////////
+    public static CBAHomePage getCBAHomePage() {return new CBAHomePage();}
+    public static CBALoginPage getCBALoginPage() {return new CBALoginPage();}
+    public static CBAMyApps getCBAMyApps() {return new CBAMyApps();}
+    public static CBAMarketplace getCBAMarketplace() {return new CBAMarketplace();}
+    public static CBAAccount getCBAAccount() {return new CBAAccount();}
+
+    ///////////////////VHQ Pages///////////////////////////////
+    public static VHQTestLogin getVHQTestLogin() {return new VHQTestLogin();}
+    public static VHQHomePage getVHQHomePage() {return new VHQHomePage();}
+    public static VHQDownloadLibrary getVHQDownloadLibrary() {return new VHQDownloadLibrary();}
 
     public static BasePage getPage(String page) {
         switch (page) {
@@ -116,14 +127,6 @@ public class PageFactory {
                 return new ActionRequiredPage();
             case "AgreementPage":
                 return new AgreementPage();
-            case "CBAHomePage":
-                return new CBAHomePage();
-            case "CBALoginPage":
-                return new CBALoginPage();
-            case "CBAMyApps":
-                return new CBAMyApps();
-            case "CBAMarketplace":
-                return new CBAMarketplace();
             case "ManageMarketplacePage":
                 return new ManageMarketplacePage();
             case "ProductsTab":
@@ -142,14 +145,6 @@ public class PageFactory {
                 return new ProductSettingsProductsTab();
             case "MarketplacePage":
                 return new MarketplacePage();
-            case "CBAAccount":
-                return new CBAAccount();
-            case "VHQTestLogin":
-                return new VHQTestLogin();
-            case "VHQHomePage":
-                return new VHQHomePage();
-            case "VHQDownloadLibrary":
-                return new VHQDownloadLibrary();
             case "LoginMPPortal":
                 return new LoginMPPortal();
 

@@ -1,10 +1,14 @@
 package com.verifone.tests.mpTests;
 
+import com.verifone.entities.EntitiesFactory;
+import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.mpPages.CBAAccount;
 import com.verifone.tests.BaseTest;
 import com.verifone.tests.steps.mpPortal.Steps;
 import org.testng.annotations.Test;
+
+import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class unsubscribeAppTest extends BaseTest {
 
@@ -14,9 +18,9 @@ public class unsubscribeAppTest extends BaseTest {
 
     public void CBAUnsubscribeAppTestUI() throws InterruptedException {
 
-        Steps.loginCBA();
+        loginCBA(createMerchantUser());
 
-        CBAAccount account = (CBAAccount) PageFactory.getPage("CBAAccount");
+        CBAAccount account = PageFactory.getCBAAccount();
         account.manageApps (appName);
         account.unsubscribeApp(appName);
 

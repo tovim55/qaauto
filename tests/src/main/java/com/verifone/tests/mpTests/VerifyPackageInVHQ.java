@@ -6,6 +6,8 @@ import com.verifone.tests.BaseTest;
 import com.verifone.tests.steps.mpPortal.Steps;
 import org.testng.annotations.Test;
 
+import static com.verifone.tests.steps.mpPortal.Steps.*;
+
 public class VerifyPackageInVHQ extends BaseTest {
 
     private String appName = "TestDevport4839";
@@ -14,16 +16,13 @@ public class VerifyPackageInVHQ extends BaseTest {
 
     public void VHQVerifyPackageTestUI() throws InterruptedException {
 
-        Steps.loginVHQ();
+        loginVHQ(createVHQUser());
 
-        VHQHomePage vhq = (VHQHomePage) PageFactory.getPage("VHQHomePage");
-        if (vhq != null) {
-            vhq.verifyCustomer();
-        }
+        VHQHomePage vhq = PageFactory.getVHQHomePage();
 
         vhq.verifyDownloadLibrary();
 
-        VHQDownloadLibrary downLab = (VHQDownloadLibrary) PageFactory.getPage("VHQDownloadLibrary");
+        VHQDownloadLibrary downLab = PageFactory.getVHQDownloadLibrary();
         downLab.verifyPackageExist(appName);
     }
 }

@@ -30,13 +30,5 @@ public class CBALoginPage extends BasePage
         click(LoginBtn);
     }
 
-    public void LogInToCBAAccount ()
-    {
-        sendKeys(emailField, "verif563@gmail.com");
-        switchToIframe(veriIframe);
-        sendKeys(passwordField, "Veri1234");
-        driver.switchTo().defaultContent();
-        click(LoginBtn);
-    }
 }
 

@@ -9,6 +9,8 @@ import com.verifone.tests.BaseTest;
 import com.verifone.tests.steps.mpPortal.Steps;
 import org.testng.annotations.Test;
 
+import static com.verifone.tests.steps.mpPortal.Steps.*;
+
 public class subscribeAppTest extends BaseTest {
 
     private static String appName = "TestDevport4839";
@@ -16,18 +18,15 @@ public class subscribeAppTest extends BaseTest {
     @Test(testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
 
-        User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
-        Steps.loginCBA(merchant);
+        loginCBA(createMerchantUser());
 
-        CBAMarketplace market = (CBAMarketplace) PageFactory.getPage("CBAMarketplace");
+        CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyApp();
 
-        CBAMyApps myApps = (CBAMyApps) PageFactory.getPage("CBAMyApps");
+        CBAMyApps myApps = PageFactory.getCBAMyApps();
         myApps.verifyMessage();
-
-
 
     }
 }
