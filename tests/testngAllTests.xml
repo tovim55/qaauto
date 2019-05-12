@@ -7,7 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <parameter name="env" value="${environment}"/>
-    <parameter name="getVersions" value="false"/>
+    <parameter name="getVersions" value="true"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
     <!--Set Portal Variable: -->

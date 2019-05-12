@@ -44,6 +44,9 @@ public class PageFactory {
             case "CGLoginPage":
                 return new CGLoginPage();
 
+            case "CBAHomePage":
+                return new CBAHomePage();
+
             case "CGApplicationPage":
                 return new CGApplicationPage();
 

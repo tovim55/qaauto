@@ -66,6 +66,8 @@ public class ApplicationUtils {
 
         ZipUtil.pack(destFolder, new File(tmpAppPath + File.separator + appID + ".apk"));
 
+//        ZipUtil.closeQuietly();
+
     }
 
 
