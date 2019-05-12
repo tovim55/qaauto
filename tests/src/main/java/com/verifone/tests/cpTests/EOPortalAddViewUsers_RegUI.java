@@ -5,6 +5,7 @@ import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.eoPages.*;
+import com.verifone.pages.mpPages.CBAHomePage;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
 import com.verifone.utils.DataDrivenUtils;
@@ -85,7 +86,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 		HomePage.clickHeaderMenu();
 
 		testLog.info("------------------------------------------------- Verify User menu exists -------------------------------------------------");
@@ -368,7 +369,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 	HomePage.clickHeaderMenu();
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
@@ -431,7 +432,7 @@ public void EOAdminViewUsersUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
 
@@ -488,7 +489,7 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 	
 	HomePage.clickHeaderMenu();
 
@@ -571,7 +572,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -657,7 +658,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
