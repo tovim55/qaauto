@@ -33,6 +33,7 @@ public class LoginPage extends BasePage {
     private By loginBtn = By.id("btnPrimaryLogin");
     private By supportLoginBtn = By.id("signIn");
     private By companiesBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\" and @id=\"companies\"])");
+
     private By newCompany = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[1]");
     private By tableRows2 = By.xpath("(//*[@class=\"vui-datagrid-body-row \"])[2]");
     private By acceptBtn = By.xpath("(//*[@class=\"btn btn-default btn-primary btn-raised approve\"])");
@@ -159,6 +160,24 @@ public class LoginPage extends BasePage {
     private void clickNewCompany() {
         clickCompaniesBtn();
         click(newCompany);
+    }
+
+    public void appApproval(String appName){
+        By appsBtn = By.xpath("(//*[@class=\"header-menu__link js-header-menu__link\" and @id=\"apps\"])");
+        By firstApp = By.xpath("//*[@id=\"mCSB_18_container\"]/div/div[1]/div[1]");
+        By startReview = By.xpath("//*[@id=\"startReviewBtn\"]");
+        By approveBtn = By.xpath("//*[@id=\"approveBtn\"]");
+        By okBtn = By.xpath("//*[@id=\"okBtn\"]");
+        click(appsBtn);
+        waitForLoader(loader);
+        click(firstApp);
+        waitForLoader(loader);
+        click(startReview);
+        waitForLoader(loader);
+        click(approveBtn);
+        waitForLoader(loader);
+        click(okBtn);
+
 
     }
 }
