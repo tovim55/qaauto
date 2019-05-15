@@ -167,6 +167,11 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
+        try {
+            ApplicationUtils.deleteDirectory();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
         ApplicationUtils.deleteDirectory();
@@ -184,6 +189,11 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
+        try {
+            ApplicationUtils.deleteDirectory();
+            }catch (Exception e){
+        e.printStackTrace();
+        }
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
         ApplicationUtils.deleteDirectory();
