@@ -167,10 +167,15 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
+        try {
+            ApplicationUtils.deleteDirectory();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
-        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
+        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
@@ -184,10 +189,15 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
+        try {
+            ApplicationUtils.deleteDirectory();
+            }catch (Exception e){
+        e.printStackTrace();
+        }
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
-        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
+        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();

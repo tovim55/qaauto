@@ -17,8 +17,11 @@ public class ApplicationUtils {
             System.getProperty("user.dir"), "src", "test", "resources").toString();
 
     private static String tmpAppPath = basePath + File.separator + "tempApp";
+    private static String ZipTmpAppPath = basePath + File.separator + "zipTempApp";
+    private static boolean zipTmpApp = new File(basePath + File.separator + "zipTempApp").mkdirs();
     private static File engageSrcFolder = new File(basePath + File.separator + "app");
     private static File destFolder = new File(tmpAppPath);
+    private static File compressFolder = new File(ZipTmpAppPath);
 
     private static final String engageAppNameFinal = File.separator + "ronrontes-582168017";
 
@@ -49,7 +52,9 @@ public class ApplicationUtils {
 //        }
 
         // create zip file
-        ZipUtil.pack(destFolder, new File(tmpAppPath + File.separator + appID + ".zip"));
+        if (zipTmpApp) {
+            ZipUtil.pack(destFolder, new File(ZipTmpAppPath + File.separator + appID + ".zip"));
+        }
     }
 
     public static void createZipAppAndroid(String appID, String appName) throws IOException, InterruptedException {
@@ -64,7 +69,9 @@ public class ApplicationUtils {
         newFile.flush();
         newFile.close();
 
-        ZipUtil.pack(destFolder, new File(tmpAppPath + File.separator + appID + ".apk"));
+        if (zipTmpApp) {
+            ZipUtil.pack(destFolder, new File(ZipTmpAppPath + File.separator + appID + ".apk"));
+        }
 
     }
 
@@ -75,14 +82,22 @@ public class ApplicationUtils {
         }
     }
 
-    public static void deleteDirectory() {
+    public static void deleteDirectory() throws IOException, InterruptedException {
+//        try {
+        Thread.sleep(3000);
         try {
-            Thread.sleep(3000);
-            FileUtils.deleteDirectory(destFolder);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        FileUtils.cleanDirectory(new File(destFolder + File.separator + "cp-conf"));
+                    } catch (Exception e) {
             e.printStackTrace();
         }
+        FileUtils.cleanDirectory(destFolder);
+        FileUtils.deleteDirectory(destFolder);
+        FileUtils.cleanDirectory(compressFolder);
+        FileUtils.deleteDirectory(compressFolder);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }

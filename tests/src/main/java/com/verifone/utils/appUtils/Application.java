@@ -6,7 +6,7 @@ public class Application {
 
 
     public static final String appPath = java.nio.file.Paths.get(System.getProperty("user.dir"),
-            "src", "test", "resources", "tempApp").toString();
+            "src", "test", "resources", "zipTempApp").toString();
     public static final String iconPath = java.nio.file.Paths.get(System.getProperty("user.dir"),
             "src", "test", "resources", "app-store-icon.png").toString();
     private String appName;

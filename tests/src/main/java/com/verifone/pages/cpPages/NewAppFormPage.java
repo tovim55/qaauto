@@ -98,7 +98,7 @@ public class NewAppFormPage extends BasePage {
     }
 
     public void fillPriceForm() throws InterruptedException {
-         Thread.sleep(6000);
+         Thread.sleep(7000);
          hoverAndClickOnElement(selectAllCountriesBtn);
          click(nextBtn);
     }
@@ -118,7 +118,7 @@ public class NewAppFormPage extends BasePage {
 
     public void clickOnSubmitBtn() throws InterruptedException {
         waitForLoader(loader);
-        Thread.sleep(4000);
+        Thread.sleep(6000);
         click(submitBtn);
         waitForLoader(loader);
         click(okBtn);
