@@ -169,8 +169,8 @@ public class Steps {
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
-        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
+        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
@@ -186,8 +186,8 @@ public class Steps {
         String id = newAppFormPage.fillGetStartedForm(app);
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
-        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         ApplicationUtils.deleteDirectory();
+        newAppFormPage.fillAppIconScreenshots(app.iconPath);
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
