@@ -11,10 +11,11 @@ import java.util.List;
 public class CBAMyApps extends BasePage
 {
     private final static String url = BaseTest.envConfig.getWebUrl() + "myapps";
-    private final static String title = "MyApps | Verifone";
+    private final static String title = "MyApps | Verifone Australia";
 
     private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
     private By success =  By.xpath("//*[contains(text(),'successfully')]");
+    private By moreInfo =  By.xpath("//a[contains(text(),'More Info')]");
 
     private List<WebElement> appList;
     private List<String>names;
@@ -49,5 +50,13 @@ public class CBAMyApps extends BasePage
         Thread.sleep(5000);
         testLog.info(getText(success));
     }
+
+    public void verifyColor()
+    {
+        WebElement moreInfoBtn = getWebElement(moreInfo, 500, ExpectedConditions.visibilityOfElementLocated(moreInfo));
+        String backgroundColor = moreInfoBtn.getCssValue("background-color");
+        testLog.info(backgroundColor);
+    }
+
 
 }
