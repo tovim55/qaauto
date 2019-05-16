@@ -1,0 +1,73 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Verifone">
+
+    <!--Set Env Variable: -->
+    <!--QA-->
+    <!--DEV-->
+    <parameter name="env" value="${environment}"/>
+    <parameter name="getVersions" value="true"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
+
+    <!--Set Portal Variable: -->
+    <!--CPPortal-->
+    <!--CGPortal-->
+    <!--EOAdmin-->
+    <parameter name="portal" value="CPPortal"/>
+
+    <test name="Automation Tests">
+        <!--Set Browser Variable:-->
+        <!--CHROME-->
+        <!--FF-->
+        <!--EDGE-->
+        <!--IE-->
+        <parameter name="browserType" value="${browser}"/>
+
+        <classes>
+            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
+            <class name="com.verifone.tests.cpTests.DCTests"/>
+            <class name="com.verifone.tests.cpTests.DevUploadApp"/>
+            <class name="com.verifone.tests.cpTests.LoginTest"/>
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>-->
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>
+        </classes>
+
+    </test>
+
+    <test name="CloudAPI Tests">
+        <!--Set Browser Variable:-->
+        <!--CHROME-->
+        <!--FF-->
+        <!--EDGE-->
+        <!--IE-->
+        <parameter name="browserType" value="${browser}"/>
+
+        <classes>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.EmployeeApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>
+            <class name="com.verifone.tests.api.tests.cloud_api_ddt.LocationApiDdt"/>
+
+        </classes>
+
+    </test>
+
+    <test name="Eo Portal">
+        <parameter name="browserType" value="${browser}"/>
+
+        <classes>
+            <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>
+            <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
+        </classes>
+
+    </test>
+
+</suite>
