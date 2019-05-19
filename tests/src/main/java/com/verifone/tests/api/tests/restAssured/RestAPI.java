@@ -43,7 +43,7 @@ public class RestAPI {
         requestParams.put("cashTips", 111111);
         requestParams.put("locationId","6dcbd7d3-a76e-477b-b515-1e7ec5c84946");
 
-        request.body(requestParams.toString());
+        request.body(requestParams);
 
         source="/employee/" + employeeID;
 

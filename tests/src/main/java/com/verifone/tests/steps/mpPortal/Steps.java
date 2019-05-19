@@ -3,12 +3,9 @@ package com.verifone.tests.steps.mpPortal;
 import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
-import com.verifone.pages.cgPages.CGApplicationPage;
-import com.verifone.pages.cgPages.CGLoginPage;
-import com.verifone.pages.cpPages.LoginPage;
 import com.verifone.pages.cpPages.OktaLogin;
 import com.verifone.pages.mpPages.*;
-import com.verifone.pages.vhqPages.VHQTestLogin;
+import com.verifone.pages.vhqPages.VHQLogin;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -118,10 +115,16 @@ public class Steps {
         return merchant;
     }
 
-    public static User createVHQUser ()
+    public static User createVHQTestUser ()
     {
-        User vhqAdmin = EntitiesFactory.getEntity("VHQUserAdmin");
-        return vhqAdmin;
+        User vhqTestAdmin = EntitiesFactory.getEntity("VHQTestUserAdmin");
+        return vhqTestAdmin;
+    }
+
+    public static User createVHQMumbaiUser ()
+    {
+        User vhqMumbaiAdmin = EntitiesFactory.getEntity("VHQMumbaiUserAdmin");
+        return vhqMumbaiAdmin;
     }
 
     public static void  loginCBA (User user)
@@ -146,7 +149,7 @@ public class Steps {
 
     public static void loginVHQ (User user)
     {
-        VHQTestLogin vhqLogin = PageFactory.getVHQTestLogin();
+        VHQLogin vhqLogin = PageFactory.getVHQLogin();
         vhqLogin.LoginInVhq(user);
 
     }

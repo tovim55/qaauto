@@ -19,12 +19,15 @@ import java.util.UUID;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class POST_JSON_Shift extends BaseTest {
+public class POST_JSON_Shift {
 
     public static String url = "https://t8d0j8mnug.execute-api.us-east-1.amazonaws.com/V1/shift/upload";
 
     private static String appId = "cloudAPI-1294609943";
     private static String merchantId = "d74c2645-2529-462b-80e6-f61bc2b467d0";
+
+    private static String workingDir = System.getProperty("user.dir");
+    private static String jsonPath = workingDir + "\\src\\test\\resources\\shifts.json";
 
     public static RequestSpecification request;
     public static Response response;
@@ -57,7 +60,7 @@ public class POST_JSON_Shift extends BaseTest {
 
         JSONObject requestParams = new JSONObject();
 
-        String jsonBody = generateStringFromResource("/Users/yegorp1/Desktop/CloudAPI/Shift/shifts.json");
+        String jsonBody = generateStringFromResource(jsonPath);
 
         request.body(jsonBody);
 

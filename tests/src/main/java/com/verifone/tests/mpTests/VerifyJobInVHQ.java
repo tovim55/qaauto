@@ -13,7 +13,7 @@ import static com.verifone.tests.steps.mpPortal.Steps.loginVHQ;
 
 public class VerifyJobInVHQ extends BaseTest
 {
-    private static String appName = "Tab - Free - MultiUser - Hello World";
+    private String appName = "cp_Connect";
 
     @Test(testName = "LogIn & verify job in VHQ ", description = "log in to VHQ and verify job is created ")
 
@@ -26,7 +26,7 @@ public class VerifyJobInVHQ extends BaseTest
         vhq.deviceSearch();
 
         VHQDeviceSearch deviceSearch = PageFactory.getVHQDeviceSearch();
-        deviceSearch.deviceProfile();
+        deviceSearch.deviceProfile(appName);
 
     }
 

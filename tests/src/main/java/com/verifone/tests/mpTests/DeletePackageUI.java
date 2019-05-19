@@ -13,6 +13,7 @@ import static com.verifone.tests.steps.mpPortal.Steps.navigateCBAHome;
 
 public class DeletePackageUI extends BaseTest
 {
+
     @Test(priority = 1, testName = "LogIn & delete package", description = "log in to MarketPlace and delete package from Staging Catalog")
     public void CBADeletePackageTestUI() throws Exception
     {
