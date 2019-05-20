@@ -10,16 +10,13 @@
     <parameter name="getVersions" value="${getVersions}"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
-    <!--<parameter name="env" value="${environment}" />-->
-
     <!--Set Portal Variable: -->
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="CGPortal"/>
-    <!--<parameter name="portal" value="EOAdmin"/>-->
+    <parameter name="portal" value="CPPortal"/>
 
-    <test name="Automation Tests">
+    <test name="Automation Tests - PubSub">
         <!--Set Browser Variable:-->
         <!--CHROME-->
         <!--FF-->
@@ -28,11 +25,11 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cgTests.LoginTest"/>
-            <class name="com.verifone.tests.cgTests.ApplicationsPageTest"/>
-            <!--<class name="com.verifone.tests.cgTests.ConnectionsAppTest"/>-->
+            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
+
         </classes>
 
     </test>
+
 
 </suite>
