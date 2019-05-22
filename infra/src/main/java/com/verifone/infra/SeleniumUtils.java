@@ -39,7 +39,7 @@ public class SeleniumUtils {
      */
     public WebDriver getDriver(String browserType) throws Exception {
         driver = setBrowser(browserType);
-        if (isLinuxMachine.equals("FALSE"))
+        if (isLinuxMachine.equalsIgnoreCase("FALSE"))
             driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         return driver;
@@ -93,7 +93,7 @@ public class SeleniumUtils {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("test-type");
                 options.addArguments("--incognito");
-                if (!isLinuxMachine.equals("FALSE")) {
+                if (!isLinuxMachine.equalsIgnoreCase("FALSE")) {
                     options.addArguments("headless");
                     options.addArguments("window-size=1743x600");
                 }

@@ -83,21 +83,16 @@ public class ApplicationUtils {
     }
 
     public static void deleteDirectory() throws IOException, InterruptedException {
-//        try {
-        Thread.sleep(3000);
         try {
-        FileUtils.cleanDirectory(new File(destFolder + File.separator + "cp-conf"));
-                    } catch (Exception e) {
+            Thread.sleep(3000);
+            FileUtils.cleanDirectory(destFolder);
+            FileUtils.deleteDirectory(destFolder);
+            FileUtils.cleanDirectory(compressFolder);
+            FileUtils.deleteDirectory(compressFolder);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        FileUtils.cleanDirectory(destFolder);
-        FileUtils.deleteDirectory(destFolder);
-        FileUtils.cleanDirectory(compressFolder);
-        FileUtils.deleteDirectory(compressFolder);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
+
     }
 }

@@ -24,10 +24,13 @@ public class PubSubDdtTest extends BaseTest {
 
     @BeforeSuite
     private void setFile() {
-        if (BaseTest.envConfig.getEnv().equals("QA"))
+        if (BaseTest.envConfig.getEnv().equalsIgnoreCase("QA")) {
             dataFile += File.separator + "apiDataQA.xls";
-        else
-            dataFile += File.separator + "apiData.xls";
+            System.out.println("THE PATH FOR PUB-SUB IS: " + dataFile);
+        }else{
+        dataFile += File.separator + "apiData.xls";
+        System.out.println(dataFile);
+        }
     }
 
 
