@@ -23,13 +23,18 @@ public class CBADashboard extends BasePage {
     private By addStagingProduct = By.xpath("//*[contains(text(),'Add Staging Product')]");
 
 
-    public void manageMarketpace() throws InterruptedException {
+    public void manageMarketpace()  {
         click(manage);
         click(marketPlace);
         ExpectedConditions.presenceOfElementLocated(products);
         click(products);
+
+    }
+
+    public void stagingCatalog() throws InterruptedException {
         waitForLoader(addStagingProduct);
         hoverAndClickOnElement(addStagingProduct);
         Thread.sleep(2000);
     }
+
 }

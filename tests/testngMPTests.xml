@@ -31,9 +31,10 @@
         <classes>
             <!--<class name="com.verifone.tests.mpTests.SegmentsUI"/>-->
             <!--<class name="com.verifone.tests.mpTests.PurchaseAppUI"/>-->
-            <class name="com.verifone.tests.mpTests.UploadPackageUI"/>
+            <!--<class name="com.verifone.tests.mpTests.UploadPackageUI"/>-->
             <!--<class name="com.verifone.tests.mpTests.DeletePackageUI"/>-->
             <!--<class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>-->
+            <class name="com.verifone.tests.mpTests.UnpublishProdPackageUI"/>
 
         </classes>
 

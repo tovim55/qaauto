@@ -11,11 +11,10 @@ import org.testng.annotations.Test;
 import static com.verifone.tests.steps.mpPortal.Steps.loginMPPortal;
 import static com.verifone.tests.steps.mpPortal.Steps.navigateCBAHome;
 
-public class DeletePackageUI extends BaseTest
-{
+public class UnpublishProdPackageUI extends BaseTest {
 
-    @Test(priority = 1, testName = "LogIn & delete package", description = "log in to MarketPlace and delete package from Staging Catalog")
-    public void CBADeletePackageTestUI() throws Exception
+    @Test(priority = 1, testName = "LogIn & remove package", description = "log in to MarketPlace and unpublish package from Production Catalog")
+    public void CBAUnpublishPackageTestUI() throws Exception
     {
         User EOAdminSupport = EntitiesFactory.getEntity("EOAdminSupport");
 
@@ -28,9 +27,10 @@ public class DeletePackageUI extends BaseTest
         loginMPPortal(EOAdminSupportMail, EOAdminSupportPwd, EOAdminSupportAnsw);
         CBADashboard cbaDashboard = PageFactory.getCBADashboard();
         cbaDashboard.manageMarketpace();
-        cbaDashboard.stagingCatalog();
 
         CBAProducts cbaProducts = PageFactory.getCBAProducts();
+        cbaProducts.removeProduct();
+        cbaProducts.unpublishProduct();
         cbaProducts.deleteSatgingProduct();
     }
 }

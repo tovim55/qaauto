@@ -110,15 +110,34 @@ public class CBAProducts extends BasePage
 
     //////Publish Product///////
     private By publishButton = By.cssSelector("button[type='button'][class ='adb-button__primary adb-button__small js-publish_button']");
+    private By addToMarket = By.xpath("//button[@class ='adb-button__primary buttonResponse']");
+    private By saveMarket = By.xpath("//button[@class ='sc-fUKxqW bKnBhH sc-bAtgIc bePPjr']");
+    private By addedFeedbackInfo = By.xpath("//*[contains(text(),'You have successfully added')]");
+
+    //////Remove Product///////
+    private By searchInput = By.xpath("//input[@class='js-search-input adb-input_row--item_content adb-search_field--input adb-text__small']");
+    private By searchIcon = By.xpath("//button[@class='adb-input_row--item_content adb-search_field--button adb-button__small']");
+    private By productLink = By.xpath("//td[@class='product-name']");
+    private By triggerMenu = By.xpath("//menu[@class='adb-js-context_menu adb-context_menu']//button[@class='adb-button adb-button__small adb-button__secret adb-context_menu--trigger adb-js-context_menu--trigger']");
+    private By remove = By.xpath("//a[@class='adb-link__option adb-stack--item_content']//span[contains(text(),'Remove')]");
+    private By removeProduct = By.xpath("//button[@class='adb-button__primary buttonResponse'][@id='posLabel']");
+    private By removedFeedbackInfo = By.xpath("//*[contains(text(),'You successfully removed application')]");
+    private By stagingCatalogLink = By.xpath("//a[@class='adb-link__nav adb-stack--item_content'][@href='#staging-products']");
+
+    //////Unpublish Product///////
+    private By unpublish = By.xpath("//button[@class='adb-button adb-button__neutral adb-button__small button-unpublish'][1]");
+    private By confirmUnpublish = By.xpath("//button[@class='adb-button adb-toolbar--item adb-button__primary']");
+    private By unpublishedFeedbackInfo = By.xpath("//*[contains(text(),'You have successfully unpublished')]");
 
     //////Delete Staging Product///////
-    private By stagingProductLink = By.xpath("//a[@data-truncate='line'][1]");
+    private By stagingProductLink = By.xpath("//a[@data-truncate='line']");
     private By deleteButton = By.xpath("//button[@class ='adb-button__danger adb-button__small'][contains(@name,'wrapper:contentPanel:productTable:tbody')]");
     private By confirmDelete = By.cssSelector("button[type='button'][class ='adb-button adb-toolbar--item adb-button__primary']");
     private By deleteFeedbackInfo = By.xpath("//*[contains(text(),'You have successfully deleted')]");
 
     ////Data/////
-    String productName = "CBATestingApp";
+    //String productName = "CBATestingApp";
+    String productName = "test1510519";
     String productDescription = "CBA Test App short description";
     String privacyPolicy = "https://www.commbank.com.au/security-privacy/general-security/privacy.html";
     String termsAndConditions = "https://www.samplestore.com/legal/terms_of_use_mobile";
@@ -134,6 +153,9 @@ public class CBAProducts extends BasePage
     String productVersionName = "1.0.0";
     String validationInfo = "Successfully validated package. ";
     String authenticationInfo = "The authentication configuration was saved successfully.";
+    String addedInfo = "You have successfully added " + productName + " to your Production Catalog.";
+    String removedInfo = "You successfully removed application "+ productName +" from the Production Catalog. It is not visible in the marketplace, but it is still present in the Staging Catalog.";
+    String unpublishedInfo = "You have successfully unpublished "+productName+".";
 
     /////Files/////
     String workingDir = System.getProperty("user.dir");
@@ -162,6 +184,7 @@ public class CBAProducts extends BasePage
         sendKeys(profileLogo, imagepath);
         click(saveBtn);
         ExpectedConditions.textToBe(feedBackPanel, feedBack);
+        testLog.info(driver.findElement(feedBackPanel).getText());
         click(savePreviewBtn);
         click(addFeatureswBtn);
     }
@@ -201,6 +224,8 @@ public class CBAProducts extends BasePage
         sendKeys(landingURL, notificationURL);
         click(saveBut);
         ExpectedConditions.textToBe(authenticationFeedbackInfo, authenticationInfo);
+        testLog.info(driver.findElement(authenticationFeedbackInfo).getText());
+
     }
 
     public void runPingTests() throws InterruptedException {
@@ -219,7 +244,6 @@ public class CBAProducts extends BasePage
         for(WebElement elem: verifyAPI) {
             elem.click();
         }
-
     }
 
     public void addPlatform()  {
@@ -236,7 +260,6 @@ public class CBAProducts extends BasePage
         sendKeys(versionTitle, productVersionTitle);
         sendKeys(versionCode, productVersionCode);
         sendKeys(versionName, productVersionName);
-
         hoverAndClickOnElement(chooseAsset);
         fileUpload(packagepath);
         hoverAndClickOnElement(chooseIcon);
@@ -263,22 +286,56 @@ public class CBAProducts extends BasePage
 
     public void publishProduct()
     {
-         click(publishButton);
+        click(publishButton);
+        waitForLoader(addToMarket);
+        click(addToMarket);
+        waitForLoader(saveMarket);
+        click(saveMarket);
+        ExpectedConditions.textToBe(addedFeedbackInfo, addedInfo);
+        testLog.info(driver.findElement(addedFeedbackInfo).getText());
+    }
+
+    public void removeProduct()
+    {
+        sendKeys(searchInput, productName);
+        click(searchIcon);
+        hoverAndClickOnElement(triggerMenu);
+
+        hoverAndClickOnElement(remove);
+        waitForLoader(removeProduct);
+        click(removeProduct);
+        waitForLoader(removedFeedbackInfo);
+        ExpectedConditions.textToBe(removedFeedbackInfo, removedInfo);
+        testLog.info(driver.findElement(removedFeedbackInfo).getText());
+        hoverAndClickOnElement(stagingCatalogLink);
+
+    }
+
+    public void unpublishProduct()
+    {
+        waitForLoader(searchInput);
+        sendKeys(searchInput, productName);
+        click(searchIcon);
+        hoverAndClickOnElement(unpublish);
+
+        waitForLoader(confirmUnpublish);
+        click(confirmUnpublish);
+        waitForLoader(unpublishedFeedbackInfo);
+        ExpectedConditions.textToBe(unpublishedFeedbackInfo, unpublishedInfo);
+        testLog.info(driver.findElement(unpublishedFeedbackInfo).getText());
     }
 
     public void deleteSatgingProduct()
     {
-      WebElement stagingProduct = getWebElement(stagingProductLink, 500, ExpectedConditions.visibilityOfElementLocated(stagingProductLink));
+        waitForLoader(searchInput);
+        sendKeys(searchInput, productName);
+        click(searchIcon);
+        hoverAndClickOnElement(deleteButton);
 
-      if(stagingProduct.getText().equals(productName)) {
-          hoverAndClickOnElement(deleteButton);
-      }
       waitForLoader(confirmDelete);
-        hoverAndClickOnElement(confirmDelete);
+      hoverAndClickOnElement(confirmDelete);
       waitForLoader(deleteFeedbackInfo);
       testLog.info(driver.findElement(deleteFeedbackInfo).getText());
     }
-
-
 
 }
