@@ -33,9 +33,11 @@ public class UploadPackageUI extends BaseTest {
         //cbaProducts.listingInfoProduct();
         //cbaProducts.profileProduct();
         cbaProducts.editIntegration();
+        cbaProducts.editAuthentication();
         cbaProducts.runPingTests();
-        cbaProducts.addPlatform();
-        cbaProducts.productVersion();
+        cbaProducts.integrationReport();
+        //cbaProducts.addPlatform();
+        //cbaProducts.productVersion();
 
     }
 }

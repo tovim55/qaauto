@@ -16,7 +16,6 @@ public class VHQDownloadLibrary extends BasePage
     public VHQDownloadLibrary()
     {
         super(url, title);
-
     }
 
     private By ShowHide = By.id("btnShowHide");

@@ -53,7 +53,7 @@ public class CBAProducts extends BasePage
     private By overviewImg = By.cssSelector("input[type='file'][name='uploaderOverviewImageContainer:fileUploadOverviewLogo']");
     private By demoUrl = By.cssSelector("input[type='url'][name='demoUrl']");
     private By docLink = By.cssSelector("input[type='url'][name='helpLinkField']");
-    /////Integration/////
+    /////Edit Integration/////
     private By integtation = By.linkText("Edit Integration");
     private By subscrCreate = By.cssSelector("input[type='url'][name='subscriptionConfig:createUrlBorder:createUrlBorder_body:createUrl']");
     private By subscrChange = By.cssSelector("input[type='url'][name='subscriptionConfig:upgradeUrlBorder:upgradeUrlBorder_body:upgradeUrl']");
@@ -65,12 +65,22 @@ public class CBAProducts extends BasePage
     private By confirmSaveBtn = By.cssSelector("button[class ='adb-button__primary buttonResponse'][id='posLabel']");
     private By feedBackPanelInfo = By.xpath("//*[contains(text(),'The integration')]");
 
+    /////Edit Authentication/////
+    private By authentication = By.linkText("Edit Authentication");
+    private By integrationSelect = By.xpath("//select[@aria-label='select'][@name='authenticationMethod'][@class='adb-js-dropdown-select ']");
+    private By landingURL = By.xpath("//input[@name='landingUrl'][@type='text']");
+    private By saveBut = By.xpath("//button[@class='adb-button adb-toolbar--item adb-button__primary'][@aria-label='save']");
+    private By authenticationFeedbackInfo = By.xpath("//*[contains(text(),'The authentication configuration was saved successfully')]");
+
     /////Run Ping Tests/////
     private By pingTests = By.linkText("Run Ping Tests");
     private By runAllTets = By.xpath("//button[@class='adb-button__primary']");
 
     /////Integration Report/////
     private By integrationReport = By.xpath("//a[contains(text(),'Integration Report')]");
+    private By markComplete = By.xpath("//a[@class='adb-button adb-button__medium adb-button__neutral toggle-button'][1]");
+    private By subscribeRun = By.xpath("//a[@class='adb-button adb-button__medium adb-button__neutral'][1]");
+    private By createSubscription = By.xpath("//button[@class='createSubscription buttonResponse adb-button__primary continue-to-next']");
 
     /////Platforms/////
     private By platforms = By.xpath("//a[contains(text(),'Platforms')]");
@@ -123,6 +133,7 @@ public class CBAProducts extends BasePage
     String productVersionCode = "199245635";
     String productVersionName = "1.0.0";
     String validationInfo = "Successfully validated package. ";
+    String authenticationInfo = "The authentication configuration was saved successfully.";
 
     /////Files/////
     String workingDir = System.getProperty("user.dir");
@@ -130,11 +141,9 @@ public class CBAProducts extends BasePage
     //String packagepath = workingDir + "\\src\\test\\resources\\apps\\AndroidOn-199245635-2.1.1.zip";
     String packagepath = workingDir + "\\src\\test\\resources\\apps\\Connectio-529464582-1.0.0.zip";
 
-
-
     public void createStagingProduct() throws Exception {
         waitForLoader(createProduct);
-        hoverAndClickOnElement(createProduct);
+        click(createProduct);
         waitForLoader(appName);
         sendKeys(appName, productName);
         click(modelFree);
@@ -180,8 +189,18 @@ public class CBAProducts extends BasePage
         sendKeys(userAssign, notificationURL);
         sendKeys(userUnassign, notificationURL);
         click(saveBtn);
-        click(confirmSaveBtn);
+        //click(confirmSaveBtn);
         ExpectedConditions.textToBe(feedBackPanelInfo, feedBackInfo);
+    }
+
+    public void editAuthentication()
+    {
+        click(authentication);
+        ExpectedConditions.elementToBeClickable(integrationSelect);
+        select(integrationSelect, "BOOKMARK");
+        sendKeys(landingURL, notificationURL);
+        click(saveBut);
+        ExpectedConditions.textToBe(authenticationFeedbackInfo, authenticationInfo);
     }
 
     public void runPingTests() throws InterruptedException {
@@ -190,6 +209,17 @@ public class CBAProducts extends BasePage
         waitForLoader(runAllTets);
         click(runAllTets);
         Thread.sleep(7000);
+    }
+
+    public void integrationReport()
+    {
+        click(integrationReport);
+
+        List<WebElement>verifyAPI = getWebElements(markComplete, 500, ExpectedConditions.presenceOfElementLocated(markComplete));
+        for(WebElement elem: verifyAPI) {
+            elem.click();
+        }
+
     }
 
     public void addPlatform()  {
@@ -235,6 +265,7 @@ public class CBAProducts extends BasePage
     {
          click(publishButton);
     }
+
     public void deleteSatgingProduct()
     {
       WebElement stagingProduct = getWebElement(stagingProductLink, 500, ExpectedConditions.visibilityOfElementLocated(stagingProductLink));

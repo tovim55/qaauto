@@ -62,6 +62,4 @@ public class PurchaseAppUI extends BaseTest
         account.cancelSubscribsion(appName);
     }
 
-
-
 }
