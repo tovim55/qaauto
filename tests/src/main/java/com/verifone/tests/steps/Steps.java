@@ -91,11 +91,11 @@ public class Steps {
         return loginPage;
     }
 
-    public static void appsApproval (String appName, Integer approvalNumber) throws Exception {
-        if(approvalNumber != 2){
+    public static void appsApproval(String appName, Integer approvalNumber) throws Exception {
+        if (approvalNumber != 2) {
             LoginPage page = devSupportAdminLogin();
             page.appApproval(appName);
-            }
+        }
         LoginPage page = devSupportAdminLogin();
         page.appApproval(appName);
     }
@@ -167,11 +167,7 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-        try {
-            ApplicationUtils.deleteDirectory();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
         ApplicationUtils.deleteDirectory();
@@ -180,6 +176,7 @@ public class Steps {
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
         return app.getAppName();
+//        return "";
 
     }
 
@@ -189,11 +186,7 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-        try {
-            ApplicationUtils.deleteDirectory();
-            }catch (Exception e){
-        e.printStackTrace();
-        }
+        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
         ApplicationUtils.deleteDirectory();
