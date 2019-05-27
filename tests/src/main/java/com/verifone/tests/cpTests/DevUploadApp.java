@@ -17,14 +17,14 @@ import static com.verifone.tests.steps.Steps.devLogin;
 public class DevUploadApp extends BaseTest {
 
 
-    @Test(testName = "Dev admin upload an Engage app", description = "Engage app for CP")
-    public void devUploadAppUI() throws IOException, InterruptedException, AWTException {
-        Company dev = new Company();
-        dev.setUserName("doba@cmail.club");
-        dev.setPassword("Welcome3#");
-        devLogin(dev);
-        createEngageApp();
-    }
+//    @Test(testName = "Dev admin upload an Engage app", description = "Engage app for CP")
+//    public void devUploadAppUI() throws IOException, InterruptedException, AWTException {
+//        Company dev = new Company();
+//        dev.setUserName("doba@cmail.club");
+//        dev.setPassword("Welcome3#");
+//        devLogin(dev);
+//        createEngageApp();
+//    }
 
 
     @Test(testName = "Dev admin upload an Android app", description = "Android app for CP")

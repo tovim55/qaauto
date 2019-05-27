@@ -32,8 +32,6 @@ public class CBAAccount extends BasePage
     private By feedBack = By.xpath("//*[contains(text(),'successfully')]");
 
 
-
-
     public CBAAccount()
     {
         super(url, title);

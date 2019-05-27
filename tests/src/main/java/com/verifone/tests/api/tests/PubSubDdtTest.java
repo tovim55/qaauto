@@ -68,48 +68,58 @@ public class PubSubDdtTest extends BaseTest {
                                   String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
         DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
+
+        String uuid = UUID.randomUUID().toString();
+        String muid = uuid.replace("-", "").substring(21);
+        String email = muid + "@getnada.com";
+
+        if(body!= null) {
+            body = body.replace("1doba@cmail.club", email);
+            body = body.replace("1234533",muid );
+        }
+
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
 
-    @Test(dataProvider = "getTOS")
-    public void getTOSDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
-                          String headers, String headersForGetToken, String body, String expectedStatusCode,
-                          String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
-        starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
-        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
-                expectedStatusCode, expectedResult, verifyList);
-    }
-
-    @Test(dataProvider = "EOAdminData")
-    public void EOAdminDataDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
-                               String headers, String headersForGetToken, String body, String expectedStatusCode,
-                               String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
-        starTestLog(rowNum + ". " + comments, comments);
-        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
-        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
-                expectedStatusCode, expectedResult, verifyList);
-    }
-
-
-    @Test(dataProvider = "UpdatePass")
-    public void updatePassDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
-                              String headers, String headersForGetToken, String body, String expectedStatusCode,
-                              String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
-        starTestLog(rowNum + ". " + comments, comments);
-
-        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
-        JsonObject response = getRequestWithHeaders(accSSOURL, "post",
-                accGrantType, getMapFromStr(headersForGetToken), 200);
-        String id = UUID.randomUUID().toString();
-        String confirmationCode = new CreateMerchant(response.get("access_token").getAsString(), "test")
-                .createMerchantWithConfirmation("a840885f-0017-49ef-acb3-fdebf74bbd9c", id);
-        api.setConfirmationCode(confirmationCode);
-        api.setUser(id.replace("-", "") + "@getnada.com");
-        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
-                expectedStatusCode, expectedResult, verifyList);
-    }
+//    @Test(dataProvider = "getTOS")
+//    public void getTOSDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+//                          String headers, String headersForGetToken, String body, String expectedStatusCode,
+//                          String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
+//        starTestLog(rowNum + ". " + comments, comments);
+//        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
+//        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
+//                expectedStatusCode, expectedResult, verifyList);
+//    }
+//
+//    @Test(dataProvider = "EOAdminData")
+//    public void EOAdminDataDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+//                               String headers, String headersForGetToken, String body, String expectedStatusCode,
+//                               String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
+//        starTestLog(rowNum + ". " + comments, comments);
+//        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
+//        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
+//                expectedStatusCode, expectedResult, verifyList);
+//    }
+//
+//
+//    @Test(dataProvider = "UpdatePass")
+//    public void updatePassDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
+//                              String headers, String headersForGetToken, String body, String expectedStatusCode,
+//                              String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
+//        starTestLog(rowNum + ". " + comments, comments);
+//
+//        DataDrivenApi api = new DataDrivenApi((ExtentTest) test.get(),dataFile);
+//        JsonObject response = getRequestWithHeaders(accSSOURL, "post",
+//                accGrantType, getMapFromStr(headersForGetToken), 200);
+//        String id = UUID.randomUUID().toString();
+//        String confirmationCode = new CreateMerchant(response.get("access_token").getAsString(), "test")
+//                .createMerchantWithConfirmation("a840885f-0017-49ef-acb3-fdebf74bbd9c", id);
+//        api.setConfirmationCode(confirmationCode);
+//        api.setUser(id.replace("-", "") + "@getnada.com");
+//        api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
+//                expectedStatusCode, expectedResult, verifyList);
+//    }
 
 
 //

@@ -136,8 +136,7 @@ public class CBAProducts extends BasePage
     private By deleteFeedbackInfo = By.xpath("//*[contains(text(),'You have successfully deleted')]");
 
     ////Data/////
-    //String productName = "CBATestingApp";
-    String productName = "test1510519";
+    String productName = "CBATestingApp";
     String productDescription = "CBA Test App short description";
     String privacyPolicy = "https://www.commbank.com.au/security-privacy/general-security/privacy.html";
     String termsAndConditions = "https://www.samplestore.com/legal/terms_of_use_mobile";
