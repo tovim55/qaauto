@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Verifone">
+
+    <!--Set Env Variable: -->
+    <!--QA-->
+    <!--DEV-->
+    <parameter name="env" value="${environment}"/>
+    <parameter name="getVersions" value="${getVersions}"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
+
+    <!--Set Portal Variable: -->
+    <!--CPPortal-->
+    <!--CGPortal-->
+    <!--EOAdmin-->
+    <parameter name="portal" value="MPPortal"/>
+
+    <test name="Automation Tests">
+        <!--Set Browser Variable:-->
+        <!--CHROME-->
+        <!--FF-->
+        <!--EDGE-->
+        <!--IE-->
+        <parameter name="browserType" value="${browser}"/>
+
+        <classes>
+            <class name="com.verifone.tests.mpTests.SegmentsUI"/>
+            <class name="com.verifone.tests.mpTests.UploadPackageUI"/>
+            <class name="com.verifone.tests.mpTests.UnsubscribeAppTest"/>
+            <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
+            <class name="com.verifone.tests.mpTests.VerifyPackageInVHQ"/>
+            <class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>
+        </classes>
+
+    </test>
+
+</suite>
