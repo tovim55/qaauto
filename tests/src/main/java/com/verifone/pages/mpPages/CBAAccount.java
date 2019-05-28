@@ -15,11 +15,13 @@ public class CBAAccount extends BasePage
 {
 
         private final static String url = BaseTest.envConfig.getWebUrl() + "home";
-        private final static String title = "Test Verifone US  | Verifone";
+        private final static String title = "Dashboard | Verifone Australia";
 
     private By account = By.xpath("//*[@id=\"header\"]/header/div/nav/ul/li[4]/ul/li[1]");
     private By myApps = By.xpath("//*[@id=\"myapps\"]");
     private By manageApps = By.xpath("//*[@id=\"mainRegion\"]/div/section/div[1]/div[1]/div/ul/li[2]");
+    private By manage = By.cssSelector("button[class='adb-button adb-button__neutral adb-js-context_menu--trigger adb-context_menu--trigger']");
+    private By cancelSubscr = By.cssSelector("a[class='cancelSubscriptionLink adb-link__option adb-stack--item_content']");
 
     private By search = By.cssSelector("input[class='js-search-input adb-input_row--item_content adb-search_field--input adb-text__small']");
     private By searchBtn = By.xpath("//*[@id=\"appsTable\"]/div/div[1]/div[1]/menu/div[2]/div/div[2]/button");
@@ -43,7 +45,19 @@ public class CBAAccount extends BasePage
         click(manageApps);
     }
 
-    public void unsubscribeApp(String appName) throws InterruptedException {
+    public void cancelSubscribsion (String appName) throws InterruptedException {
+        ExpectedConditions.elementToBeClickable(manage);
+        click(manage);
+        click(cancelSubscr);
+        ExpectedConditions.elementToBeClickable(yesBtn);
+        click(yesBtn);
+        ExpectedConditions.presenceOfElementLocated(feedBack);
+        Thread.sleep(7000);
+        testLog.info(getText(feedBack));
+    }
+
+    public void unsubscribeApp(String appName) throws InterruptedException
+    {
         purchasedApps = getWebElements(itemLink, 500, ExpectedConditions.presenceOfElementLocated(itemLink));
         String textSuccess = appName + " was successfully removed.";
 
@@ -62,7 +76,6 @@ public class CBAAccount extends BasePage
         ExpectedConditions.presenceOfElementLocated(feedBack);
         Thread.sleep(7000);
         testLog.info(getText(feedBack));
-
 
     }
 

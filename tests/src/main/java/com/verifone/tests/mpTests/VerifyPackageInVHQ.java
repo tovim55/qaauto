@@ -10,13 +10,13 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class VerifyPackageInVHQ extends BaseTest {
 
-    private String appName = "TestDevport4839";
+    private String appName = "cp_Connect";
 
     @Test(testName = "LogIn & verify app package ", description = "log in to VHQ and verify app package added to Download Library")
 
     public void VHQVerifyPackageTestUI() throws InterruptedException {
 
-        loginVHQ(createVHQUser());
+        loginVHQ(createVHQMumbaiUser());
 
         VHQHomePage vhq = PageFactory.getVHQHomePage();
 

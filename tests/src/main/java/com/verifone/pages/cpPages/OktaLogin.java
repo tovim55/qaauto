@@ -26,7 +26,7 @@ public class OktaLogin extends BasePage {
     private By loginNameLoc = By.id("okta-signin-username");
     private By loginOktaTitle = By.xpath("//*[@class='okta-form-title o-form-head']");
     private By loginPwdLoc = By.id("okta-signin-password");
-    private By loginAnswerLoc = By.id("input67");
+    private By loginAnswerLoc = By.id("input64"); //id was changed
     private By loginForgotLink = By.xpath("//*[@id=\"loginForm\"]/div[3]/a");
     private By loginBtnLabel = By.id("btnPrimaryLogin");
     private By verifyBtnLoc = By.xpath("//*[@class='button button-primary']");

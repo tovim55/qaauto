@@ -3,7 +3,6 @@ package com.verifone.tests.api.tests.restAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -12,8 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class POST_JSON_Customer {
 
@@ -21,6 +19,9 @@ public class POST_JSON_Customer {
 
     private static String appId = "cloudAPI-1294609943";
     private static String merchantId = "d74c2645-2529-462b-80e6-f61bc2b467d0";
+
+    private static String workingDir = System.getProperty("user.dir");
+    private String jsonPath = workingDir + "\\src\\test\\resources\\customers.json";
 
     public static RequestSpecification request;
     public static Response response;
@@ -49,7 +50,7 @@ public class POST_JSON_Customer {
     public void POST_Shift_JSONFile() throws IOException {
         request.header("Content-Type", "application/x-www-form-urlencoded");
 
-        String jsonBody = generateStringFromResource("/Users/yegorp1/Desktop/CloudAPI/Customers/customers.json");
+        String jsonBody = generateStringFromResource(jsonPath);
 
         request.body(jsonBody);
 

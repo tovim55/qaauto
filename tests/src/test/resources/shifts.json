@@ -1,0 +1,14 @@
+{
+"merchantId":"d74c2645-2529-462b-80e6-f61bc2b467d0",
+"employeeId":"fdd75e2e-5dc9-4e95-a15a-a9c4a80ea1cb",
+"appId":"cloudAPI-1294609943",
+"data": [ 
+		  {
+		        "clockIn": "2019-08-12T08:45:26.371Z",
+			"clockOut": "2021-09-12T17:45:50.371Z",
+			"cashTips": 5000,
+			"locationId": "6dcbd7d3-a76e-477b-b515-1e7ec5c84946"
+		  }
+
+		]
+}

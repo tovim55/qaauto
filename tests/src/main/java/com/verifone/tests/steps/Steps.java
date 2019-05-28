@@ -91,15 +91,6 @@ public class Steps {
         return loginPage;
     }
 
-    public static void appsApproval(String appName, Integer approvalNumber) throws Exception {
-        if (approvalNumber != 2) {
-            LoginPage page = devSupportAdminLogin();
-            page.appApproval(appName);
-        }
-        LoginPage page = devSupportAdminLogin();
-        page.appApproval(appName);
-    }
-
 //    public static LoginPage devSupportAdminLogin(Company dev) {
 ////        User dev = EntitiesFactory.getEntity("DevSupportAdmin");
 //        LoginPage loginPage = (LoginPage) PageFactory.getPage("LoginPage");
@@ -161,22 +152,19 @@ public class Steps {
         new DevHomePage().logout();
     }
 
-    public static String createEngageApp() throws InterruptedException, IOException, AWTException {
+    public static void createEngageApp() throws InterruptedException, IOException, AWTException {
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
-        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
+        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
-        return app.getAppName();
-//        return "";
 
     }
 
@@ -186,11 +174,10 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
-        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
+        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();

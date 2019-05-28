@@ -1,14 +1,13 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Verifone" >
+<suite name="Verifone">
 
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <!--<parameter name="env" value="QA"/>-->
     <parameter name="env" value="${environment}"/>
-    <parameter name="getVersions" value="false"/>
+    <parameter name="getVersions" value="${getVersions}"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
     <!--Set Portal Variable: -->
@@ -17,10 +16,7 @@
     <!--EOAdmin-->
     <parameter name="portal" value="MPPortal"/>
 
-    <!--TODO add optional parameter 'additional portal' for executing suite with 2 or more portals-->
-
     <test name="Automation Tests">
-    <!--<test name="Automation Tests" parallel="classes" thread-count="2">-->
         <!--Set Browser Variable:-->
         <!--CHROME-->
         <!--FF-->
@@ -29,12 +25,12 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.mpTests.SegmentsUI"/>-->
-            <!--<class name="com.verifone.tests.mpTests.PurchaseAppUI"/>-->
-            <!--<class name="com.verifone.tests.mpTests.VerifyPackageInVHQ"/>-->
-            <!--<class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>-->
+            <class name="com.verifone.tests.mpTests.SegmentsUI"/>
             <class name="com.verifone.tests.mpTests.UploadPackageUI"/>
-            <!--<class name="com.verifone.tests.mpTests.UnpublishProdPackageUI"/>-->
+            <class name="com.verifone.tests.mpTests.UnsubscribeAppTest"/>
+            <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
+            <class name="com.verifone.tests.mpTests.VerifyPackageInVHQ"/>
+            <class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>
         </classes>
 
     </test>

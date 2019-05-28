@@ -169,7 +169,37 @@ public abstract class BasePage {
 //        driver.manage().window().maximize();
 //
 //    }
+     protected void fileUpload (String path) throws AWTException {
 
+        Robot robot = new Robot();
+         robot.setAutoDelay(2000);
+         StringSelection stringSelection = new StringSelection(path);
+         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+
+         robot.setAutoDelay(2000);
+
+         robot.keyPress(KeyEvent.VK_CONTROL);
+         robot.keyPress(KeyEvent.VK_V);
+
+         robot.keyRelease(KeyEvent.VK_CONTROL);
+         robot.keyRelease(KeyEvent.VK_V);
+
+         robot.setAutoDelay(2000);
+         robot.keyPress(KeyEvent.VK_ENTER);
+         robot.keyRelease(KeyEvent.VK_ENTER);
+     }
+
+    protected void hoverOnElement(By loc) {
+    try {
+        Thread.sleep(5000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    Actions builder = new Actions(driver);
+    WebElement element = driver.findElement(loc);
+    builder.moveToElement(element).perform();
+
+}
     protected void hoverAndClickOnElement(By loc) {
         try {
             Thread.sleep(5000);
@@ -208,6 +238,11 @@ public abstract class BasePage {
     protected List<WebElement> getWebElements(By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
         waitForElement(loc, timeOut, expectedCon);
         return driver.findElements(loc);
+    }
+
+    protected WebElement getNestedWebElement(WebElement elem, By loc, int timeOut, ExpectedCondition<WebElement> expectedCon) {
+        waitForElement(loc, timeOut, expectedCon);
+        return elem.findElement(loc);
     }
 
     //    TODO complete method implementation
@@ -276,7 +311,6 @@ public abstract class BasePage {
             Assert.fail("Element Not Found For Locator: " + loc.toString(), e);
         }
     }
-
 
     /**
      * Method selects option if exists from the dropdown
