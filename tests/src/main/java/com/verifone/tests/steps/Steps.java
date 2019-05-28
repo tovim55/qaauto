@@ -177,7 +177,7 @@ public class Steps {
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
-        //ApplicationUtils.deleteDirectory();
+        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();

@@ -5,6 +5,7 @@ import com.verifone.infra.User;
 import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.eoPages.*;
+import com.verifone.pages.mpPages.CBAHomePage;
 import com.verifone.tests.BaseTest;
 import com.verifone.utils.Assertions;
 import com.verifone.utils.DataDrivenUtils;
@@ -85,7 +86,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 		HomePage.clickHeaderMenu();
 
 		testLog.info("------------------------------------------------- Verify User menu exists -------------------------------------------------");
@@ -343,68 +344,68 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
 
 
 
-@Test(enabled = true, priority=2, testName = "EOAdmin Add EOAdmin and Submit action", groups = { "Sanity" }, alwaysRun = true)
-
-public void EOAdminAddUserSubmitUI() throws Exception {
-	WebDriver driver = new HomePage().getDriver();
-	Env = "https://" + envConfig.getEnv() + EnvPort;
-	Boolean TestPassFlag = true;
-
-	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
-
-	driver.navigate().to(Env);
-	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-
-	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
-
-	User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
-	EOAdminMail = EOAdmin.getUserName();
-	EOAdminPwd = EOAdmin.getPassword();
-	LoginEOPortal.loginInputEmail(EOAdminMail);
-	LoginEOPortal.loginInputPassword(EOAdminPwd);
-	LoginEOPortal.clickLoginBtn();
-
-	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
-
-	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
-	HomePage.clickHeaderMenu();
-
-	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
-	HomePage.clickUserMenu();
-	
-	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
-	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
-
-	testLog.info("------------------------------------------------- Add New User - EO Admin -------------------------------------------------");
-
-	UsersPage.clickAddUserBtn();
-
-	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
-
-	AddUserPage.inputFirstName("UserEOAdmin");
-	AddUserPage.inputLastName("UserLastEOAdmin");
-	// Make email uniq and input
-	UserEmail = UserEmail.replace("@", (LocalDateTime.now() + "@").replace(":",""));
-	AddUserPage.inputEmail(UserEmail);
-	AddUserPage.clickDropDn();
-	AddUserPage.clickDropDnItem("EO Admin");
-
-	testLog.info("------------------------------------------------- Submit changes -------------------------------------------------");
-
-	AddUserPage.clickSubmitBtn();
-	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
-	}
+//@Test(enabled = true, priority=2, testName = "EOAdmin Add EOAdmin and Submit action", groups = { "Sanity" }, alwaysRun = true)
+//
+//public void EOAdminAddUserSubmitUI() throws Exception {
+//	WebDriver driver = new HomePage().getDriver();
+//	Env = "https://" + envConfig.getEnv() + EnvPort;
+//	Boolean TestPassFlag = true;
+//
+//	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+//
+//	driver.navigate().to(Env);
+//	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+//
+//	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
+//
+//	User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+//	EOAdminMail = EOAdmin.getUserName();
+//	EOAdminPwd = EOAdmin.getPassword();
+//	LoginEOPortal.loginInputEmail(EOAdminMail);
+//	LoginEOPortal.loginInputPassword(EOAdminPwd);
+//	LoginEOPortal.clickLoginBtn();
+//
+//	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
+//
+//	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+//	HomePage.clickHeaderMenu();
+//
+//	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
+//	HomePage.clickUserMenu();
+//
+//	Thread.sleep(TimeOut + 3000);
+//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+//	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+//
+//	testLog.info("------------------------------------------------- Add New User - EO Admin -------------------------------------------------");
+//
+//	UsersPage.clickAddUserBtn();
+//
+//	Thread.sleep(TimeOut + 3000);
+//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
+//
+//	AddUserPage.inputFirstName("UserEOAdmin");
+//	AddUserPage.inputLastName("UserLastEOAdmin");
+//	// Make email uniq and input
+//	UserEmail = UserEmail.replace("@", (LocalDateTime.now() + "@").replace(":",""));
+//	AddUserPage.inputEmail(UserEmail);
+//	AddUserPage.clickDropDn();
+//	AddUserPage.clickDropDnItem("EO Admin");
+//
+//	testLog.info("------------------------------------------------- Submit changes -------------------------------------------------");
+//
+//	AddUserPage.clickSubmitBtn();
+//	Thread.sleep(TimeOut + 3000);
+//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+//	}
 
 
 @Test(enabled = true, priority=3, testName = "EOAdmin View Users", groups = { "Sanity" }, alwaysRun = true)
@@ -431,7 +432,7 @@ public void EOAdminViewUsersUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
 
@@ -488,7 +489,7 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 	
 	HomePage.clickHeaderMenu();
 
@@ -547,91 +548,91 @@ public void EOAdminViewAddUserPageUI() throws Exception {
 	Assert.assertTrue(TestPassFlag);
 }
 
-@Test(enabled = true, priority=5, testName = "EOAdmin Add EOAdmin Exist Email", groups = { "Sanity" }, alwaysRun = true)
+//@Test(enabled = true, priority=5, testName = "EOAdmin Add EOAdmin Exist Email", groups = { "Sanity" }, alwaysRun = true)
 
-public void EOAdminAddUserExistEmailUI() throws Exception {
-	WebDriver driver = new HomePage().getDriver();
-		Env = "https://" + envConfig.getEnv() + EnvPort;
-	Boolean TestPassFlag = true;
-
-	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
-
-	driver.navigate().to(Env);
-	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-
-	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
-
-	User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
-	EOAdminMail = EOAdmin.getUserName();
-	EOAdminPwd = EOAdmin.getPassword();
-	LoginEOPortal.loginInputEmail(EOAdminMail);
-	LoginEOPortal.loginInputPassword(EOAdminPwd);
-	LoginEOPortal.clickLoginBtn();
-	
-
-	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
-
-	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
-
-	HomePage.clickHeaderMenu();
-	HomePage.clickUserMenu();
-	
-	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
-	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
-	UserEmail = UsersPage.EOAdminEmail();
-
-	testLog.info("------------------------------------------------- Navigate to Add User page -------------------------------------------------");
-
-	UsersPage.clickAddUserBtn();
-
-	Thread.sleep(TimeOut + 3000);
-	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
-
-	testLog.info("------------------------------------------------- Fill new user data and exists email -------------------------------------------------");
-
-	AddUserPage.inputFirstName("UserEOAdmin two");
-	AddUserPage.inputLastName("UserLastEOAdmin two");
-	AddUserPage.inputEmail(UserEmail);
-	AddUserPage.clickDropDn();
-	AddUserPage.clickDropDnItem("EO Admin");
-	AddUserPage.clickSubmitBtn();
-	Thread.sleep(TimeOut + 1000);
-	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail(), "Verify error", testLog, driver)){
-		TestPassFlag = false;
-	}
-//	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail());
-	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText(), "Verify message error", testLog, driver)){
-		TestPassFlag = false;
-	}
-//	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText());
-
-//	Input not exists email
-	UserEOAdminEmail = "User" + LocalDateTime.now() + "EOAdmin@getnada.com";
-	UserEOAdminEmail = UserEOAdminEmail.replace("-", "");
-	UserEOAdminEmail = UserEOAdminEmail.replace(":", "");
-	AddUserPage.inputEmail(UserEOAdminEmail);
-	AddUserPage.clickDropDn();
-	AddUserPage.clickDropDnItem("EO Admin");
-	AddUserPage.clickSubmitBtn();
-	
-	Thread.sleep(TimeOut - 1000);
-	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(availableWindows.get(0));
-	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
-	
-//	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail);
-	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail), "Verify User added", testLog, driver)){
-		TestPassFlag = false;
-	}
-	Assert.assertTrue(TestPassFlag);
-	}
+//public void EOAdminAddUserExistEmailUI() throws Exception {
+//	WebDriver driver = new HomePage().getDriver();
+//		Env = "https://" + envConfig.getEnv() + EnvPort;
+//	Boolean TestPassFlag = true;
+//
+//	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+//
+//	driver.navigate().to(Env);
+//	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+//
+//	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
+//
+//	User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+//	EOAdminMail = EOAdmin.getUserName();
+//	EOAdminPwd = EOAdmin.getPassword();
+//	LoginEOPortal.loginInputEmail(EOAdminMail);
+//	LoginEOPortal.loginInputPassword(EOAdminPwd);
+//	LoginEOPortal.clickLoginBtn();
+//
+//
+//	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+//
+//	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
+//
+//	HomePage.clickHeaderMenu();
+//	HomePage.clickUserMenu();
+//
+//	Thread.sleep(TimeOut + 3000);
+//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+//	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+//	UserEmail = UsersPage.EOAdminEmail();
+//
+//	testLog.info("------------------------------------------------- Navigate to Add User page -------------------------------------------------");
+//
+//	UsersPage.clickAddUserBtn();
+//
+//	Thread.sleep(TimeOut + 3000);
+//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
+//
+//	testLog.info("------------------------------------------------- Fill new user data and exists email -------------------------------------------------");
+//
+//	AddUserPage.inputFirstName("UserEOAdmin two");
+//	AddUserPage.inputLastName("UserLastEOAdmin two");
+//	AddUserPage.inputEmail(UserEmail);
+//	AddUserPage.clickDropDn();
+//	AddUserPage.clickDropDnItem("EO Admin");
+//	AddUserPage.clickSubmitBtn();
+//	Thread.sleep(TimeOut + 1000);
+//	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail(), "Verify error", testLog, driver)){
+//		TestPassFlag = false;
+//	}
+////	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.errorEmail());
+//	if (!Assertions.compareValue("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText(), "Verify message error", testLog, driver)){
+//		TestPassFlag = false;
+//	}
+////	AssertJUnit.assertEquals("User, " + UserEmail + ", is already associated with an existing organization and cannot be added.", AddUserPage.msgErrorText());
+//
+////	Input not exists email
+//	UserEOAdminEmail = "User" + LocalDateTime.now() + "EOAdmin@getnada.com";
+//	UserEOAdminEmail = UserEOAdminEmail.replace("-", "");
+//	UserEOAdminEmail = UserEOAdminEmail.replace(":", "");
+//	AddUserPage.inputEmail(UserEOAdminEmail);
+//	AddUserPage.clickDropDn();
+//	AddUserPage.clickDropDnItem("EO Admin");
+//	AddUserPage.clickSubmitBtn();
+//
+//	Thread.sleep(TimeOut - 1000);
+//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+//	driver.switchTo().window(availableWindows.get(0));
+//	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+//
+////	boolean fl = UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail);
+//	if (!Assertions.compareBoolean(true,UsersPage.tblUsersFirstLineEmailText().contains(UserEOAdminEmail), "Verify User added", testLog, driver)){
+//		TestPassFlag = false;
+//	}
+//	Assert.assertTrue(TestPassFlag);
+//	}
 
 @Test(enabled = true, priority=6, testName = "EOAdmin Add Merchant Manager", groups = { "Sanity" }, alwaysRun = true)
 
@@ -657,7 +658,7 @@ public void EOAdminAddUserExistEmailUI() throws Exception {
 	
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -726,7 +727,7 @@ public void EOAdminAddDevAppManagerUI() throws Exception {
 
 	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 	driver.switchTo().window(availableWindows.get(0));
-	HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 

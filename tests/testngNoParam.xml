@@ -2,9 +2,9 @@
     <!-- Set Env Variable:  -->
     <!-- QA -->
     <!-- DEV -->
-    <parameter name="env" value="${environment}"/>
+    <parameter name="env" value="QA"/>
     <parameter name="getVersions" value="false"/>
-    <parameter name="isLinuxMachine" value="${isLinux}"/>
+    <parameter name="isLinuxMachine" value="TRUE"/>
     <!-- Set Portal Variable:  -->
     <!-- CPPortal -->
     <!-- CGPortal -->
