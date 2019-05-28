@@ -28,9 +28,9 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.cpTests.DCTests"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevUploadApp"/>-->
-            <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
+            <class name="com.verifone.tests.cpTests.DCTests"/>
+            <class name="com.verifone.tests.cpTests.DevUploadApp"/>
+            <class name="com.verifone.tests.cpTests.LoginTest"/>
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
 
 
