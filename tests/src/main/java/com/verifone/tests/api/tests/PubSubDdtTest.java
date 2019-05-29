@@ -117,7 +117,7 @@ public class PubSubDdtTest extends BaseTest {
                 accGrantType, getMapFromStr(headersForGetToken), 200);
         String id = UUID.randomUUID().toString();
         String confirmationCode = new CreateMerchant(response.get("access_token").getAsString(), "test")
-                .createMerchantWithConfirmation("a840885f-0017-49ef-acb3-fdebf74bbd9c", id);
+                .createMerchantWithConfirmation("67238a85-67e9-4989-8da1-341bcdd48418", id);
         api.setConfirmationCode(confirmationCode);
         api.setUser(id.replace("-", "") + "@getnada.com");
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
