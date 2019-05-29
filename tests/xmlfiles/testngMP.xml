@@ -7,7 +7,7 @@
     <!--QA-->
     <!--DEV-->
     <parameter name="env" value="${environment}"/>
-    <parameter name="getVersions" value="${getVersions}"/>
+    <parameter name="getVersions" value="false"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
     <!--Set Portal Variable: -->
@@ -15,8 +15,10 @@
     <!--CGPortal-->
     <!--EOAdmin-->
     <parameter name="portal" value="MPPortal"/>
+    <!--TODO add optional parameter 'additional portal' for executing suite with 2 or more portals-->
 
     <test name="Automation Tests">
+        <!--<test name="Automation Tests" parallel="classes" thread-count="2">-->
         <!--Set Browser Variable:-->
         <!--CHROME-->
         <!--FF-->

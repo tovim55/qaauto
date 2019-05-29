@@ -15,12 +15,9 @@
     <!--CPPortal-->
     <!--CGPortal-->
     <!--EOAdmin-->
-    <parameter name="portal" value="MPPortal"/>
-
-    <!--TODO add optional parameter 'additional portal' for executing suite with 2 or more portals-->
+    <parameter name="portal" value="CPPortal"/>
 
     <test name="Automation Tests">
-    <!--<test name="Automation Tests" parallel="classes" thread-count="2">-->
         <!--Set Browser Variable:-->
         <!--CHROME-->
         <!--FF-->
@@ -29,12 +26,7 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <!--<class name="com.verifone.tests.mpTests.SegmentsUI"/>-->
-            <!--<class name="com.verifone.tests.mpTests.PurchaseAppUI"/>-->
-            <!--<class name="com.verifone.tests.mpTests.VerifyPackageInVHQ"/>-->
-            <!--<class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>-->
-            <class name="com.verifone.tests.mpTests.UploadPackageUI"/>
-            <!--<class name="com.verifone.tests.mpTests.UnpublishProdPackageUI"/>-->
+            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
         </classes>
 
     </test>
