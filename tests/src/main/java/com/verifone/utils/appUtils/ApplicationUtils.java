@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -84,12 +85,16 @@ public class ApplicationUtils {
 
     public static void deleteDirectory() throws IOException, InterruptedException {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
             FileUtils.cleanDirectory(destFolder);
-            FileUtils.deleteDirectory(destFolder);
+            System.out.println("Clean dir: " + destFolder);
+            FileUtils.forceDelete(destFolder);
+            System.out.println("Delete dir: " + destFolder);
             FileUtils.cleanDirectory(compressFolder);
-            FileUtils.deleteDirectory(compressFolder);
-        } catch (Exception e) {
+            System.out.println("Clean dir compress: " + compressFolder);
+            FileUtils.forceDelete(compressFolder);
+            System.out.println("Delete dir compress: " + compressFolder);
+        } catch (IllegalArgumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
 

@@ -167,14 +167,14 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-        ApplicationUtils.deleteDirectory();
+//        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
-        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
+        ApplicationUtils.deleteDirectory();
         return app.getAppName();
 //        return "";
 
@@ -186,14 +186,14 @@ public class Steps {
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-        ApplicationUtils.deleteDirectory();
+//        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
-        ApplicationUtils.deleteDirectory();
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
         newAppFormPage.fillPriceForm();
         newAppFormPage.fillLegalAndSupportForm();
         newAppFormPage.clickOnSubmitBtn();
+        ApplicationUtils.deleteDirectory();
 
     }
 
