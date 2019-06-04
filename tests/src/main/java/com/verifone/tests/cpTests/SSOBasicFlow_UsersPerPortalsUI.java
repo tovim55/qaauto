@@ -106,7 +106,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 //    	Compare login Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
     	String tText = LoginEOPortal.loginTitle();
-    	if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog, driver)) {
+    	if (!Assertions.compareValue("Login to your\nVerifone Account", tText, "Login page: Found title:", testLog, driver)) {
 			TestPassFlag = false;
 		}
 
@@ -326,7 +326,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 //    	Compare login Title text with expected
 		LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 		String tText = LoginEOPortal.loginTitle();
-		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog, driver)){
+		if (!Assertions.compareValue("Login to your\nVerifone Account", tText, "Login page: Found title:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Email text with expected
@@ -501,7 +501,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 //    	Compare login Title text with expected
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
         String tText = LoginEOPortal.loginTitle();
-		if (!Assertions.compareValue("Login to your Verifone Account", tText, "Login page: Found title:", testLog, driver)){
+		if (!Assertions.compareValue("Login to your\nVerifone Account", tText, "Login page: Found title:", testLog, driver)){
 			TestPassFlag = false;
 		}
 //    	Compare login Email text with expected

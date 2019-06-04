@@ -14,7 +14,7 @@ import static com.verifone.tests.steps.Steps.createEngageApp;
 import static com.verifone.tests.steps.Steps.devLogin;
 
 
-public class DevUploadApp extends BaseTest {
+public class DevUploadAppEngage extends BaseTest {
 
 
     @Test(testName = "Dev admin upload an Engage app", description = "Engage app for CP")
@@ -24,14 +24,6 @@ public class DevUploadApp extends BaseTest {
         dev.setPassword("Welcome3#");
         devLogin(dev);
         createEngageApp();
-    }
-
-
-    @Test(testName = "Dev admin upload an Android app", description = "Android app for CP")
-    public void devUploadAppAndroidUI() throws IOException, InterruptedException, AWTException {
-        User dev = EntitiesFactory.getEntity("DevAdmin");
-        devLogin(dev);
-        createAndroidApp();
     }
 
 //    @Test(testName = "Dev support admin reject app", description = "After Dev admin upload an app",
