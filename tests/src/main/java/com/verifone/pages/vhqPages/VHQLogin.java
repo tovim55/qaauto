@@ -6,11 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class VHQTestLogin extends BasePage {
-    private final static String url = "https://vhqtest.verifone.com/";
+public class VHQLogin extends BasePage {
+    //private final static String url = "https://vhqtest.verifone.com/";
+    private final static String url = "https://qa.mumbai.verifonehq.net";
     private final static String title = "Login with Verifone Identity Server" ;
 
-    public VHQTestLogin()
+    public VHQLogin()
     {
         super(url, title);
         navigate();
@@ -24,7 +25,6 @@ public class VHQTestLogin extends BasePage {
 
     public void LoginInVhq (User user)
     {
-
         waitForLoader(email);
         sendKeys(email, user.getUserName());
         click(LoginVhqBtn);

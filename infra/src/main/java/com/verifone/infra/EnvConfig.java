@@ -24,8 +24,6 @@ public class EnvConfig {
                 "infra", "src", "main", "java", "com", "verifone", "infra",
                 "config.properties").toString());
         prop.load(ip);
-
-
         setEnv();
     }
 

@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 import static com.verifone.tests.steps.mpPortal.Steps.*;
 
-public class unsubscribeAppTest extends BaseTest {
+public class UnsubscribeAppTest extends BaseTest {
 
-    private static String appName = "TestDevport4839";
+    private static String appName = "Tab - Free - MultiUser - Hello World";
 
     @Test(testName = "LogIn & unsubscribe an app", description = "log in to CBA account and remove app from apps list")
 
@@ -22,7 +22,7 @@ public class unsubscribeAppTest extends BaseTest {
 
         CBAAccount account = PageFactory.getCBAAccount();
         account.manageApps (appName);
-        account.unsubscribeApp(appName);
+        account.cancelSubscribsion(appName);
 
     }
 }

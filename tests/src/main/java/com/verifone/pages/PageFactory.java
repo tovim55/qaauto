@@ -19,10 +19,15 @@ public class PageFactory {
     public static CBAMarketplace getCBAMarketplace() {return new CBAMarketplace();}
     public static CBAAccount getCBAAccount() {return new CBAAccount();}
 
+    public static CBAProducts getCBAProducts() {return new CBAProducts();}
+    public static CBADashboard getCBADashboard () {return new CBADashboard ();}
+    public static LoginMPPortal getLoginMPPortal() {return new LoginMPPortal();}
+
     ///////////////////VHQ Pages///////////////////////////////
-    public static VHQTestLogin getVHQTestLogin() {return new VHQTestLogin();}
+    public static VHQLogin getVHQLogin() {return new VHQLogin();}
     public static VHQHomePage getVHQHomePage() {return new VHQHomePage();}
     public static VHQDownloadLibrary getVHQDownloadLibrary() {return new VHQDownloadLibrary();}
+    public static VHQDeviceSearch getVHQDeviceSearch() {return new VHQDeviceSearch();}
 
     public static BasePage getPage(String page) {
         switch (page) {

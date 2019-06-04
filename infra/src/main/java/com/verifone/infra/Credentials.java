@@ -21,8 +21,12 @@ public class Credentials {
         return new User(prop.getProperty(env + "MPMerchantAdmin"), prop.getProperty(env + "MPMerchantAdminPass"));
     }
 
-    public User getVHQUserAdmin() {
-        return new User(prop.getProperty(env + "VHQUserAdmin"), prop.getProperty(env + "VHQUserAdminPass"));
+    public User getVHQTestUserAdmin() {
+        return new User(prop.getProperty(env + "VHQTestUserAdmin"), prop.getProperty(env + "VHQTestUserAdminPass"));
+    }
+
+    public User getVHQMumbaiUserAdmin() {
+        return new User(prop.getProperty(env + "VHQMumbaiUserAdmin"), prop.getProperty(env + "VHQMumbaiUserAdminPass"));
     }
 
     public User getEOAdmin() {
