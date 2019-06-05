@@ -162,12 +162,12 @@ public class Steps {
     }
 
     public static String createEngageApp() throws InterruptedException, IOException, AWTException {
+        ApplicationUtils.deleteDirectory();
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-//        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipApp(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".zip");
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
@@ -181,12 +181,12 @@ public class Steps {
     }
 
     public static void createAndroidApp() throws InterruptedException, IOException, AWTException {
+        ApplicationUtils.deleteDirectory();
         DevHomePage homePage = (DevHomePage) PageFactory.getPage("DevHomePage");
         NewAppFormPage newAppFormPage = (NewAppFormPage) PageFactory.getPage("NewAppFormPage");
         homePage.createAppBtn();
         Application app = new Application();
         String id = newAppFormPage.fillGetStartedForm(app);
-//        ApplicationUtils.deleteDirectory();
         ApplicationUtils.createZipAppAndroid(id, app.getAppName());
         newAppFormPage.fillUploadPackageForm(app.appPath + File.separator + id + ".apk");
         newAppFormPage.fillAppIconScreenshots(app.iconPath);
