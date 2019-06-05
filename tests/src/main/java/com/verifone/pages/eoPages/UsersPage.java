@@ -66,10 +66,12 @@ public class UsersPage extends BasePage {
 				break;
 			}
 		}
-		i = D.indexOf("\n");
-		D = D.substring(i+1);
-		i = D.indexOf("\n");
-		D = D.substring(0,i);
+		if (D != "") {
+			i = D.indexOf("\n");
+			D = D.substring(i + 1);
+			i = D.indexOf("\n");
+			D = D.substring(0, i);
+		}
 		return D;
 	}
 //--------------------------------------------------------------------------

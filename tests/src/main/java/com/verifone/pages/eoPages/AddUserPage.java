@@ -241,6 +241,15 @@ public class AddUserPage extends BasePage {
     }
 //--------------------------------------------------------------------------
     /**
+     * Method: Click on Title field.
+     * @authors Yana Fridman
+     */
+//--------------------------------------------------------------------------
+    public void clickTitleFld () throws InterruptedException {
+        click(titleLoc);
+    }
+//--------------------------------------------------------------------------
+    /**
      * Method: Click on Last Name field.
      * @authors Yana Fridman
      */
