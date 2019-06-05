@@ -18,7 +18,7 @@ public class DevUploadAppEngage extends BaseTest {
 
 
     @Test(testName = "Dev admin upload an Engage app", description = "Engage app for CP")
-    public void devUploadAppUI() throws IOException, InterruptedException, AWTException {
+    public void devUploadEngageAppUI() throws IOException, InterruptedException, AWTException {
         Company dev = new Company();
         dev.setUserName("doba@cmail.club");
         dev.setPassword("Welcome3#");
@@ -27,7 +27,7 @@ public class DevUploadAppEngage extends BaseTest {
     }
 
 //    @Test(testName = "Dev support admin reject app", description = "After Dev admin upload an app",
-//            dependsOnMethods = {"devUploadAppUI"})
+//            dependsOnMethods = {"devUploadEngageAppUI"})
 //    public void devSupportRejectAppUI() throws Exception {
 //        devSupportAdminLogin();
 //        System.out.println("sdfsdf");
