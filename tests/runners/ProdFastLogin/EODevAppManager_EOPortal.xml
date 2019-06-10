@@ -8,6 +8,7 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <parameter name="env" value="Prod" />
     <!--<parameter name="mail" value="TestUserEODAM@getnada.com" />-->
     <!--<parameter name="mail" value="donottouchdam1@getnada.com" />-->
