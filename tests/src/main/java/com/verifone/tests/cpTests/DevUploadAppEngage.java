@@ -19,9 +19,10 @@ public class DevUploadAppEngage extends BaseTest {
 
     @Test(testName = "Dev admin upload an Engage app", description = "Engage app for CP")
     public void devUploadEngageAppUI() throws IOException, InterruptedException, AWTException {
-        Company dev = new Company();
-        dev.setUserName("doba@cmail.club");
-        dev.setPassword("Welcome3#");
+//        Company dev = new Company();
+//        dev.setUserName("doba@cmail.club");
+//        dev.setPassword("Welcome3#");
+        User dev = EntitiesFactory.getEntity("DevAdmin");
         devLogin(dev);
         createEngageApp();
     }

@@ -6,7 +6,7 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="${environment}"/>
+    <parameter name="env" value="QA"/>
     <parameter name="getVersions" value="${getVersions}"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
