@@ -2,9 +2,9 @@
     <!-- Set Env Variable:  -->
     <!-- QA -->
     <!-- DEV -->
-    <parameter name="env" value="QA"/>
+    <parameter name="env" value="${environment}"/>
     <parameter name="getVersions" value="false"/>
-    <parameter name="isLinuxMachine" value="TRUE"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <!-- Set Portal Variable:  -->
     <!-- CPPortal -->
     <!-- CGPortal -->
@@ -18,11 +18,7 @@
         <!-- IE -->
         <parameter name="browserType" value="${browser}"/>
         <classes>
-            <class name="com.verifone.tests.cpTests.DCTests"/>
             <class name="com.verifone.tests.cpTests.DevUploadAppEngage"/>
-            <class name="com.verifone.tests.cpTests.LoginTest"/>
-            <class name="com.verifone.tests.cpTests.DevUploadAppAndroid"/>
-            <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
         </classes>
     </test>
 </suite>

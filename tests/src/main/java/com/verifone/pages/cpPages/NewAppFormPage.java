@@ -69,7 +69,7 @@ public class NewAppFormPage extends BasePage {
 
     public void fillUploadPackageForm(String appPath) throws IOException {
         waitForLoader(loader);
-        uploadFile(appPath, getWebElement(dropZonePackage, 10,
+        uploadFile(appPath, getWebElement(dropZonePackage, 20,
                 ExpectedConditions.visibilityOfElementLocated(dropZonePackage)), "zip");
         waitForLoader(loader);
         try {

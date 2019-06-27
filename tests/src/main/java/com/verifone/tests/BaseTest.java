@@ -51,6 +51,7 @@ public abstract class BaseTest {
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
         setEnv(env, portal);
+
         if (getVersions.equalsIgnoreCase("true")) {
             ExtentTest parent = extent.createTest("Get Versions");
             parentTest.set(parent);
@@ -70,13 +71,15 @@ public abstract class BaseTest {
         System.out.println("The Automation tests runs on : " + env + " environment");
 
     }
-
+    @Parameters({"env", "portal", "getVersions", "isLinuxMachine"})
     @BeforeClass
-    public synchronized void beforeClass() {
+    public synchronized void beforeClass(String env, String portal, String getVersions, String isLinuxMachine) {
         ExtentTest parent = extent.createTest(getClass().getName());
         parentTest.set(parent);
-        parent.info("The Automation tests runs on : " + envConfig.getWebUrl() + " " + envConfig.getEnv()
-                + " environment");
+        parent.info("PARAMETERS: Env: " + env + ", Portal: " + portal + ", Get Version: " + getVersions +
+                ", Is Linux: " + isLinuxMachine);
+        parent.info("The Automation tests runs on : " + envConfig.getWebUrl()
+                + " " + envConfig.getEnv() + " environment");
     }
 
 
@@ -94,7 +97,6 @@ public abstract class BaseTest {
         }
         Test test = method.getAnnotation(Test.class);
         starTestLog(test.testName(), test.description());
-
     }
 
 

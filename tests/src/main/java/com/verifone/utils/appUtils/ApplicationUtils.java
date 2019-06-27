@@ -1,12 +1,16 @@
 package com.verifone.utils.appUtils;
 
 import com.google.gson.JsonObject;
+import com.verifone.pages.BasePage;
 import org.apache.commons.io.FileUtils;
 import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static com.verifone.utils.apiClient.BaseApi.readJsonFile;
 
@@ -17,11 +21,10 @@ public class ApplicationUtils {
             System.getProperty("user.dir"), "src", "test", "resources").toString();
 
     private static String tmpAppPath = basePath + File.separator + "tempApp";
-    private static String ZipTmpAppPath = basePath + File.separator + "zipTempApp";
-    private static boolean zipTmpApp = new File(basePath + File.separator + "zipTempApp").mkdirs();
     private static File engageSrcFolder = new File(basePath + File.separator + "app");
     private static File destFolder = new File(tmpAppPath);
-    private static File compressFolder = new File(ZipTmpAppPath);
+    private static String ZipTmpAppPath = basePath + File.separator + "zipTempApp";
+//    private static File compressFolder = new File(ZipTmpAppPath);
 
     private static final String engageAppNameFinal = File.separator + "ronrontes-582168017";
 
@@ -52,8 +55,20 @@ public class ApplicationUtils {
 //        }
 
         // create zip file
-        if (zipTmpApp) {
-            ZipUtil.pack(destFolder, new File(ZipTmpAppPath + File.separator + appID + ".zip"));
+        createZipFile(appID, ".zip");
+    }
+
+    private static void createZipFile(String appID, String compressType) throws InterruptedException {
+        boolean isCreate = new File(basePath + File.separator + "zipTempApp").mkdirs();
+        Thread.sleep(3000);
+        File dir = new File(ZipTmpAppPath);
+        if (dir.exists() && dir.isDirectory()) {
+            BasePage.testLog.info("New directory created in: " + isCreate);
+            ZipUtil.pack(destFolder, new File(ZipTmpAppPath + File.separator + appID + compressType));
+            BasePage.testLog.info("New " + compressType + "file created in: " + isCreate);
+            Thread.sleep(10000);
+        } else {
+            BasePage.testLog.info("Create directory failed: " + isCreate);
         }
     }
 
@@ -69,9 +84,7 @@ public class ApplicationUtils {
         newFile.flush();
         newFile.close();
 
-        if (zipTmpApp) {
-            ZipUtil.pack(destFolder, new File(ZipTmpAppPath + File.separator + appID + ".apk"));
-        }
+        createZipFile(appID, ".apk");
 
     }
 
@@ -82,14 +95,41 @@ public class ApplicationUtils {
         }
     }
 
-    public static void deleteDirectory() throws IOException, InterruptedException {
+    public static void deleteDirectory() throws InterruptedException {
+        File compressFolder = new File(ZipTmpAppPath);
+            try {
+                Thread.sleep(4000);
+                FileUtils.cleanDirectory(destFolder);
+                BasePage.testLog.info("Clean dir: " + destFolder);
+            } catch (IllegalArgumentException | FileNotFoundException e) {
+                BasePage.testLog.info("Failed to clean dir: " + destFolder);
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         try {
-            Thread.sleep(3000);
-            FileUtils.cleanDirectory(destFolder);
-            FileUtils.deleteDirectory(destFolder);
-            FileUtils.cleanDirectory(compressFolder);
-            FileUtils.deleteDirectory(compressFolder);
-        } catch (Exception e) {
+                FileUtils.forceDelete(destFolder);
+                BasePage.testLog.info("Delete dir: " + destFolder);
+            } catch (IllegalArgumentException | FileNotFoundException e) {
+                BasePage.testLog.info("Failed to delete dir: " + destFolder);
+                e.printStackTrace();
+            } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+                FileUtils.cleanDirectory(compressFolder);
+                BasePage.testLog.info("Clean compress dir: " + compressFolder);
+            } catch (IllegalArgumentException | FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+                FileUtils.forceDelete(compressFolder);
+                BasePage.testLog.info("Delete compress dir: " + compressFolder);
+            } catch (IllegalArgumentException | FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
             e.printStackTrace();
         }
 

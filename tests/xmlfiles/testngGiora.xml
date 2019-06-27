@@ -30,7 +30,7 @@
         <classes>
             <!--<class name="com.verifone.tests.cpTests.DCTests"/>-->
             <!--<class name="com.verifone.tests.oldTests.Payment"/>-->
-            <!--<class name="com.verifone.tests.cpTests.DevUploadApp"/>-->
+            <!--<class name="com.verifone.tests.cpTests.DevUploadAppEngageEngage"/>-->
             <!--<class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>-->
             <!--<class name="com.verifone.tests.api.tests.openWeatherMap"/>-->
             <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>-->
@@ -42,7 +42,7 @@
             <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
 
             <!--Upload app Good -->
-            <!--<class name="com.verifone.tests.cpTests.DevUploadApp"/>-->
+            <!--<class name="com.verifone.tests.cpTests.DevUploadAppEngageEngage"/>-->
 
             <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>-->
@@ -50,7 +50,7 @@
             <!--<class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>-->
 
             <!--Upload app Good -->
-            <!--<class name="com.verifone.tests.cpTests.DevUploadApp"/>-->
+            <!--<class name="com.verifone.tests.cpTests.DevUploadAppEngageEngage"/>-->
 
         </classes>
 
