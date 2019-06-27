@@ -28,7 +28,6 @@ public class DeletePackageUI extends BaseTest
         loginMPPortal(EOAdminSupportMail, EOAdminSupportPwd, EOAdminSupportAnsw);
         CBADashboard cbaDashboard = PageFactory.getCBADashboard();
         cbaDashboard.manageMarketpace();
-        cbaDashboard.stagingCatalog();
 
         CBAProducts cbaProducts = PageFactory.getCBAProducts();
         cbaProducts.deleteSatgingProduct();
