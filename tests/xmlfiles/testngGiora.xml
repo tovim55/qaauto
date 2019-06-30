@@ -7,7 +7,9 @@
     <!--QA-->
     <!--DEV-->
     <parameter name="env" value="${environment}"/>
-    <parameter name="getVersions" value="${getVersions}"/>
+    <parameter name="getVersions" value="false"/>
+
+
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
 
