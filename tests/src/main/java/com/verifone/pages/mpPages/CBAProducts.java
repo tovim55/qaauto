@@ -22,9 +22,6 @@ public class CBAProducts extends BasePage
         super(url, title);
     }
 
-    ////Manage MarketPlace//////
-    private By manage = By.cssSelector("a[class ='ad-component--link ad-component_dropdown--trigger manage-link']");
-    private By marketPlace = By.cssSelector(".ad-component_list-item.ad-component_list-item--channel>.ad-component--link ");
 
     /////Staging Products/////
     private By createProduct = By.cssSelector(".adb-styled.menu.attached.addProductMenuLink button:first-child");
@@ -33,6 +30,7 @@ public class CBAProducts extends BasePage
     private By appName = By.id("appNameField");
     private By modelFree = By.cssSelector("input[id='free'][type='radio']");
     private By createProductBtn = By.cssSelector("button[name='createButton'][type='submit']");
+
     /////Listing Info/////
     private By listingInfo = By.linkText("Listing Info");
     private By wordDescription = By.cssSelector("input[name='blurbBorder:blurbBorder_body:blurbField'][type='text']");
@@ -43,8 +41,9 @@ public class CBAProducts extends BasePage
     private By profileLogo = By.cssSelector("input[type='file'][name='uploadProfileLogoContainer:fileUploadProfileLogo']");
     private By selectCategory = By.cssSelector("select[class ='adb-js-dropdown-select ']");
     private By saveBtn = By.cssSelector("button[class ='adb-button__primary adb-toolbar--item'][name='save']");
-    private By feedBackPanel = By.xpath("//*[contains(text(),'Your listing')]");
+    private By feedBackPanel = By.xpath("//*[contains(text(),'Your listing')][@class ='feedbackPanelINFO']");
     private By savePreviewBtn = By.cssSelector("button[class ='adb-button__neutral adb-toolbar--item'][id='savePreview']");
+
     /////Profile/////
     private By addFeatureswBtn = By.xpath("//*[@id=\"main\"]/div/div[2]/section/div/div[1]/div/section[2]/div/div[2]/div/div/div[2]/button");
     private By profile = By.linkText("Profile");
@@ -53,6 +52,14 @@ public class CBAProducts extends BasePage
     private By overviewImg = By.cssSelector("input[type='file'][name='uploaderOverviewImageContainer:fileUploadOverviewLogo']");
     private By demoUrl = By.cssSelector("input[type='url'][name='demoUrl']");
     private By docLink = By.cssSelector("input[type='url'][name='helpLinkField']");
+
+    /////Credentials/////
+    private By credentials = By.linkText("Credentials");
+    private By autorizationType = By.xpath("//*[@class='sc-hgRTRy jFQzJN'][@name='authorizationType']");
+    private By generateKey = By.xpath("//button[@class='sc-gldTML eVenQv'][@type='submit']");
+    private By doneBtn = By.xpath("//button[@class='sc-gldTML dSzJck'][@type='button']");
+    private By oathFeedbackInfo = By.xpath("//*[contains(text(),'A new OAuth 1.0 consumer was successfully created')]");
+
     /////Edit Integration/////
     private By integtation = By.linkText("Edit Integration");
     private By subscrCreate = By.cssSelector("input[type='url'][name='subscriptionConfig:createUrlBorder:createUrlBorder_body:createUrl']");
@@ -144,7 +151,7 @@ public class CBAProducts extends BasePage
     String splash = "A Test App for CBA";
     String videoURL = "https://www.youtube.com/watch?v=jWFcGoGgnu4";
     String documentLink = "https://help.appdirect.com/appmarket/Default.htm#GettingStarted/gsg-intro.htm%3FTocPath%3DGetting%2520Started%7C_____0/?location%20=%20appmarket";
-    String notificationURL = "https://marketplace.verifone.com/api/integration/v1/dummy/success?token={token}";
+    String notificationURL = "https://verifoneausandbox.byappdirect.com/api/integration/v1/dummy/success";
     String feedBackInfo = "The integration configuration was saved successfully.";
     String headerInfo = "Manage Platform";
     String productVersionTitle = "AndroidOn";
@@ -155,6 +162,7 @@ public class CBAProducts extends BasePage
     String addedInfo = "You have successfully added " + productName + " to your Production Catalog.";
     String removedInfo = "You successfully removed application "+ productName +" from the Production Catalog. It is not visible in the marketplace, but it is still present in the Staging Catalog.";
     String unpublishedInfo = "You have successfully unpublished "+productName+".";
+    String oathKeyInfo = "A new OAuth 1.0 consumer was successfully created for your product.";
 
     /////Files/////
     String workingDir = System.getProperty("user.dir");
@@ -163,8 +171,7 @@ public class CBAProducts extends BasePage
     String packagepath = workingDir + "\\src\\test\\resources\\apps\\Connectio-529464582-1.0.0.zip";
 
     public void createStagingProduct() throws Exception {
-        waitForLoader(createProduct);
-        click(createProduct);
+
         waitForLoader(appName);
         sendKeys(appName, productName);
         click(modelFree);
@@ -178,7 +185,7 @@ public class CBAProducts extends BasePage
         sendKeys(wordDescription, productDescription);
         sendKeys(description, productDescription);
         sendKeys(linkPP, privacyPolicy);
-        sendKeys(linkTC,termsAndConditions );
+        sendKeys(linkTC,termsAndConditions);
         sendKeys(listingLogo, imagepath);
         sendKeys(profileLogo, imagepath);
         click(saveBtn);
@@ -198,6 +205,22 @@ public class CBAProducts extends BasePage
         sendKeys(docLink, documentLink);
         click(savePreviewBtn);
         click(addFeatureswBtn);
+    }
+
+    public void credentialsOath()
+    {
+        waitForLoader(credentials);
+        click(credentials);
+        ExpectedConditions.presenceOfElementLocated(autorizationType);
+        select(autorizationType, "shared");
+        ExpectedConditions.elementToBeClickable(generateKey);
+        click(generateKey);
+        ExpectedConditions.elementToBeClickable(doneBtn);
+        click(doneBtn);
+        ExpectedConditions.textToBe(oathFeedbackInfo, oathKeyInfo);
+        click(listingInfo);
+        click(saveBtn);
+
     }
 
     public void editIntegration()
@@ -222,8 +245,8 @@ public class CBAProducts extends BasePage
         select(integrationSelect, "BOOKMARK");
         sendKeys(landingURL, notificationURL);
         click(saveBut);
-        ExpectedConditions.textToBe(authenticationFeedbackInfo, authenticationInfo);
-        testLog.info(driver.findElement(authenticationFeedbackInfo).getText());
+//        ExpectedConditions.textToBe(authenticationFeedbackInfo, authenticationInfo);
+//        testLog.info(driver.findElement(authenticationFeedbackInfo).getText());
 
     }
 

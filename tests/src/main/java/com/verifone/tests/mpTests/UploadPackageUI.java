@@ -27,16 +27,17 @@ public class UploadPackageUI extends BaseTest {
         loginMPPortal(EOAdminSupportMail, EOAdminSupportPwd, EOAdminSupportAnsw);
         CBADashboard cbaDashboard = PageFactory.getCBADashboard();
         cbaDashboard.manageMarketpace();
-        cbaDashboard.stagingCatalog();
+
 
         CBAProducts cbaProducts = PageFactory.getCBAProducts();
         cbaProducts.createStagingProduct();
-        cbaProducts.listingInfoProduct();
-        cbaProducts.profileProduct();
-        cbaProducts.editIntegration();
-        cbaProducts.editAuthentication();
-        cbaProducts.runPingTests();
-        cbaProducts.integrationReport();
+        //cbaProducts.listingInfoProduct();
+        //cbaProducts.profileProduct();
+        cbaProducts.credentialsOath();
+//        cbaProducts.editIntegration();
+//        cbaProducts.editAuthentication();
+//        cbaProducts.runPingTests();
+//        cbaProducts.integrationReport();
         //cbaProducts.addPlatform();
         //cbaProducts.productVersion();
 
