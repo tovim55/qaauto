@@ -43,9 +43,9 @@
 
         <classes>
             <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
-            <class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>-->
             <class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>
-            <class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>-->
             <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
         </classes>
 
