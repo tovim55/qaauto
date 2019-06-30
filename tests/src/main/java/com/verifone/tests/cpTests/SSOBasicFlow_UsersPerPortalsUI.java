@@ -591,7 +591,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 				availableWindows = new ArrayList<String>(driver.getWindowHandles());
 				driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-				HomePage HomePage3 = (HomePage) PageFactory.getPage("CBAHomePage");
+				HomePage HomePage3 = (HomePage) PageFactory.getPage("HomePage");
 				Assert.assertTrue(HomePage3.headerExists());
 				HomePage3.clickHeaderMenu();
 				Thread.sleep(timeOut);
@@ -610,7 +610,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
                 availableWindows = new ArrayList<String>(driver.getWindowHandles());
                 driver.switchTo().window(availableWindows.get(0));
 //    	Search for Header
-                HomePage3 = (HomePage) PageFactory.getPage("CBAHomePage");
+                HomePage3 = (HomePage) PageFactory.getPage("HomePage");
                 Assert.assertTrue(HomePage3.headerExists());
                 HomePage3.clickHeaderMenu();
                 Thread.sleep(timeOut);
