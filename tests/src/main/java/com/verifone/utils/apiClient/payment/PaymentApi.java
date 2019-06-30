@@ -16,6 +16,8 @@ import javax.xml.transform.TransformerException;
 
 import java.io.*;
 
+import static org.mortbay.jetty.servlet.Dispatcher.type;
+
 
 public class PaymentApi extends BaseApi {
 
@@ -26,7 +28,7 @@ public class PaymentApi extends BaseApi {
 
 
     public String createTransactionRequest() throws IOException, JSONException, ParserConfigurationException, SAXException, TransformerException {
-        url = "http://stgvpay.verifone.co.il/ws/vpayposproxy.asmx";
+        url = "http://gpp-qa-frontback-nlb-29611a29579fcea5.elb.eu-west-1.amazonaws.com/ws/vpayposProxy.asmx";
         String requestData = convertDocToStr(readXMLFile(
                 baseApiPath + "payment" + File.separator + "create_transaction_request"));
         System.out.println("requestData: " + requestData);
@@ -61,7 +63,7 @@ public class PaymentApi extends BaseApi {
 
     public void posDepositRequest(String identifier) throws IOException, ParserConfigurationException, SAXException, TransformerException, JSONException {
         url = "http://stgvpay.verifone.co.il/ws/vpayposproxy.asmx";
-
+//        String urlQA = "http://gpp-qa-frontback-nlb-29611a29579fcea5.elb.eu-west-1.amazonaws.com/ws/vpayposProxy.asmx";
         Document xmlFile = readXMLFile(baseApiPath + "payment" + File.separator + "pos_deposit_request");
         xmlFile.getElementsByTagName("tem:InvoiceNumber").item(0).setTextContent(identifier);
         String requestData = convertDocToStr(xmlFile);
@@ -85,3 +87,5 @@ public class PaymentApi extends BaseApi {
 //        Document xmlFile = readXMLFile(baseApiPath + "payment" + File.separator + "pos_deposit_request");
     }
 }
+// a = [1,2,3,4,5,6,7]
+// for(y)
