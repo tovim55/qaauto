@@ -319,7 +319,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -465,7 +465,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -632,7 +632,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -773,7 +773,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -941,7 +941,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
 
@@ -1099,7 +1099,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Merchants page -------------------------------------------------");
 
@@ -1661,7 +1661,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Merchants page -------------------------------------------------");
 
@@ -2006,7 +2006,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Merchants page -------------------------------------------------");
 
@@ -2329,7 +2329,7 @@ public class EOPortalUpdateUserMerchant_RegUI extends BaseTest {
 
 		ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(availableWindows.get(0));
-		HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+		HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
 		testLog.info("------------------------------------------------- Navigate to Merchants page -------------------------------------------------");
 

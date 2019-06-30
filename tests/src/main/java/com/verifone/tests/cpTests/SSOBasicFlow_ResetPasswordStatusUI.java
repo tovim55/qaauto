@@ -395,7 +395,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
@@ -449,7 +449,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         testLog.info( "-------------------------------------------------Merchants list-------------------------------------------------");
         Thread.sleep(timeOut);
@@ -480,7 +480,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
@@ -535,7 +535,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
@@ -571,7 +571,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
@@ -595,7 +595,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
         AssertJUnit.assertEquals(true, HomePage.headerExists());
 
         Assert.assertTrue(TestPassFlag);
@@ -630,7 +630,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(0));
-        HomePage HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
 
         testLog.info( "-----------------------------------------------------Merchants list-------------------------------------------------");
 
@@ -661,7 +661,7 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
 
         testLog.info( "------------------------------------------------Log out as EO Admin-------------------------------------------------");
 
-        HomePage = (HomePage) PageFactory.getPage("CBAHomePage");
+        HomePage = (HomePage) PageFactory.getPage("HomePage");
         Thread.sleep(timeOut);
         HomePage.clickHeaderMenu();
         Thread.sleep(timeOut);
