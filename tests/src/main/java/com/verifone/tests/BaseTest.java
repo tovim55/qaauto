@@ -51,7 +51,6 @@ public abstract class BaseTest {
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportLocation);
         extent.attachReporter(htmlReporter);
         setEnv(env, portal);
-
         if (getVersions.equalsIgnoreCase("true")) {
             ExtentTest parent = extent.createTest("Get Versions");
             parentTest.set(parent);
@@ -60,7 +59,7 @@ public abstract class BaseTest {
             SeleniumUtils.isLinuxMachine = "FALSE";
             seleniumUtils = new SeleniumUtils();
             webDrivers.put(Thread.currentThread().getId(), seleniumUtils.getDriver("CHROME"));
-            parent.info("Versions: " + getVersions());
+            parent.info("Version information: " + getVersions());
             seleniumUtils.closeRuntimeBrowserInstance();
         }
 
