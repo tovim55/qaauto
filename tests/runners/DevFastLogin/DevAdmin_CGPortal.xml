@@ -13,8 +13,6 @@
     <parameter name="pwd" value="Veri1234" />
     <parameter name="name" value="" />
     <parameter name="answer" value="" />
-    <parameter name="isLinuxMachine" value="${isLinux}"/>
-
 
     <!--Set Portal Variable: -->
     <!--CPPortal-->

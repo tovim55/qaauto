@@ -59,11 +59,7 @@ public class NewAppFormPage extends BasePage {
         sendKeys(version, app.getVersion());
         sendKeys(this.description5Words, app.getDescription5Words());
         sendKeys(this.description, app.getDescription());
-        if(BaseTest.envConfig.getEnv().equals("DEV")){
-            select(category, "825a7975-de58-11e6-a459-12a5177fe69f");
-        }else if (BaseTest.envConfig.getEnv().equals("QA")){
         select(category, "b44ae8fc-5163-11e7-a459-12a5177fe69f");
-        }
         Thread.sleep(10000);
         String generatedId = getElementsByClassJs(id, 1).getText();
         click(nextBtn);
