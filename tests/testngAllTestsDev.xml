@@ -26,14 +26,14 @@
 
         <classes>
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
-            <class name="com.verifone.tests.cpTests.DCTests"/>
+            <!--<class name="com.verifone.tests.cpTests.DCTests"/>-->
             <!--<class name="com.verifone.tests.cpTests.DevUploadAppEngage"/>-->
-            <class name="com.verifone.tests.cpTests.LoginTest"/>
+            <!--<class name="com.verifone.tests.cpTests.LoginTest"/>-->
             <!--<class name="com.verifone.tests.cpTests.DevUploadAppAndroid"/>-->
-            <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>-->
-            <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>
+            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>-->
         </classes>
 
     </test>
@@ -42,11 +42,11 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>-->
-            <class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateMyProfile_RegUI"/>-->
-            <class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>
+            <!--<class name="com.verifone.tests.cpTests.EOPortalEditChangeStatusUsers_RegUI"/>-->
         </classes>
 
     </test>
