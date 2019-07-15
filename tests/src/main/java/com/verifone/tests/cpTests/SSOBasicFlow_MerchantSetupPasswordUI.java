@@ -132,12 +132,12 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 
         //  Accept
         driver.findElement(By.linkText("ACCEPT")).click();
-        testLog.pass("Create email inbox: " + mId + "getnada.com: Succesfull");
+        testLog.pass("Create email inbox: " + mId + "getnada.com: Successful");
 
         //  Open Email
         Thread.sleep(timeOut);
         driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
-        testLog.pass("Found Invitation mail: Succesfull");
+        testLog.pass("Found Invitation mail: Successful");
 
         //   Get email text
 
@@ -157,7 +157,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         }
         driver.findElement(By.xpath(mailActivateButton)).click();
 
-        testLog.pass("Click on: " + btnText + " button: Succesfull");
+        testLog.pass("Click on: " + btnText + " button: Successful");
 
 
 //		Setup Password
@@ -351,7 +351,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 
         testLog.pass("---------------------------------------Password Setup Final page------------------------------------------");
 
-        Thread.sleep(timeOut + 2000);
+        Thread.sleep(timeOut + 12000);
         availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(1));
 
