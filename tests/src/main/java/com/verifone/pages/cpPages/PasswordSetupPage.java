@@ -35,12 +35,17 @@ public class PasswordSetupPage extends BasePage {
     * @authors Yana Fridman
     */
     //--------------------------------------------------------------------------
-    public String pageTitle() {
+ 	public String pageTitle() throws Exception {
         
-    	String a = getText(titleLoc);
-//    	System.out.println(a);
-    	return getText(titleLoc);
+       String a = getText(titleLoc);
+        if (isExists(titleLoc,5)) {
+            return getText(titleLoc);
+        } else {
+            return "Not found!";
+        }
+//     System.out.println(a);
     }
+	
     //--------------------------------------------------------------------------
     /**
     * Method: Get Page text.
