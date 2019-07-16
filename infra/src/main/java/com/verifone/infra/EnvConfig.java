@@ -13,6 +13,9 @@ public class EnvConfig {
     private String webUrl;
     private Credentials credentials;
     private Properties prop = new Properties();
+
+    private String appName;
+
 //    private User user;
 
 
@@ -45,6 +48,10 @@ public class EnvConfig {
 
     public String getEnv(){
         return env;
+    }
+
+    public String getAppName() {
+        return prop.getProperty(env + "." + "MPGetAppName");
     }
 
     public Credentials getCredentials(){return credentials;}

@@ -127,6 +127,15 @@ public class Steps {
         return vhqMumbaiAdmin;
     }
 
+    /**
+     *
+     * This method described to create new assign user.
+     */
+    public static User createAssignUser(){
+        User assignUser = EntitiesFactory.getEntity("MPAssignUser");
+        return assignUser;
+    }
+
     public static void  loginCBA (User user)
     {
         navigateCBAHome();

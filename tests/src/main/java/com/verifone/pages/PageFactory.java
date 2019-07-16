@@ -23,6 +23,8 @@ public class PageFactory {
     public static CBADashboard getCBADashboard () {return new CBADashboard ();}
     public static LoginMPPortal getLoginMPPortal() {return new LoginMPPortal();}
 
+    public static CBAAssignPage getAssignAppPage() {return new CBAAssignPage();}
+
     ///////////////////VHQ Pages///////////////////////////////
     public static VHQLogin getVHQLogin() {return new VHQLogin();}
     public static VHQHomePage getVHQHomePage() {return new VHQHomePage();}
