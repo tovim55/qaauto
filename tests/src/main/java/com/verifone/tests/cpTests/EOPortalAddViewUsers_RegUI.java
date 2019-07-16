@@ -78,7 +78,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         return arrayObject;
     }
 
-    @Test(enabled = true, priority = 1, testName = "EOAdmin, Merchant Man and Dev App Manager add Users and Cancel action", dataProvider = "eoAddUser", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = false, priority = 1, testName = "EOAdmin, Merchant Man and Dev App Manager add Users and Cancel action", dataProvider = "eoAddUser", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddUsersCancelUI(String eoRole, String eoMail, String eoPassword, String userName, String userLast, String userMail) throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -92,7 +92,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
 
         testLog.info("-------------------------------------------------Login as: " + eoMail + " " + eoPassword + "-------------------------------------------------");
-
+        Thread.sleep(4000);
         LoginEOPortal.loginInputEmail(eoMail);
         LoginEOPortal.loginInputPassword(eoPassword);
         LoginEOPortal.clickLoginBtn();
@@ -358,71 +358,74 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
     }
 
 
-//@Test(enabled = true, priority=2, testName = "EOAdmin Add EOAdmin and Submit action", groups = { "Sanity" }, alwaysRun = true)
-//
-//public void EOAdminAddUserSubmitUI() throws Exception {
-//	WebDriver driver = new HomePage().getDriver();
-//	Env = "https://" + envConfig.getEnv() + EnvPort;
-//	Boolean TestPassFlag = true;
-//
-//	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
-//
-//	driver.navigate().to(Env);
-//	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-//
-//	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
-//
-//	User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
-//	EOAdminMail = EOAdmin.getUserName();
-//	EOAdminPwd = EOAdmin.getPassword();
-//	LoginEOPortal.loginInputEmail(EOAdminMail);
-//	LoginEOPortal.loginInputPassword(EOAdminPwd);
-//	LoginEOPortal.clickLoginBtn();
-//
-//	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
-//
-//	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//	driver.switchTo().window(availableWindows.get(0));
-//	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
-//	HomePage.clickHeaderMenu();
-//
-//	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
-//	HomePage.clickUserMenu();
-//
-//	Thread.sleep(TimeOut + 3000);
-//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//	driver.switchTo().window(availableWindows.get(0));
-//	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
-//	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
-//
-//	testLog.info("------------------------------------------------- Add New User - EO Admin -------------------------------------------------");
-//
-//	UsersPage.clickAddUserBtn();
-//
-//	Thread.sleep(TimeOut + 3000);
-//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//	driver.switchTo().window(availableWindows.get(0));
-//	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
-//
-//	AddUserPage.inputFirstName("UserEOAdmin");
-//	AddUserPage.inputLastName("UserLastEOAdmin");
-//	// Make email uniq and input
-//	UserEmail = UserEmail.replace("@", (LocalDateTime.now() + "@").replace(":",""));
-//	AddUserPage.inputEmail(UserEmail);
-//	AddUserPage.clickDropDn();
-//	AddUserPage.clickDropDnItem("EO Admin");
-//
-//	testLog.info("------------------------------------------------- Submit changes -------------------------------------------------");
-//
-//	AddUserPage.clickSubmitBtn();
-//	Thread.sleep(TimeOut + 3000);
-//	availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//	driver.switchTo().window(availableWindows.get(0));
-//	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
-//	}
+@Test(enabled = true, priority=2, testName = "EOAdmin Add EOAdmin and Submit action", groups = { "Sanity" }, alwaysRun = true)
+
+public void EOAdminAddUserSubmitUI() throws Exception {
+	WebDriver driver = new HomePage().getDriver();
+	Env = "https://" + envConfig.getEnv() + EnvPort;
+	Boolean TestPassFlag = true;
+
+	testLog.info("-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+
+	driver.navigate().to(Env);
+	LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+
+	testLog.info("-------------------------------------------------Login as: " + EOAdminMail + " " + EOAdminPwd + "-------------------------------------------------");
+
+	User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+	EOAdminMail = EOAdmin.getUserName();
+	EOAdminPwd = EOAdmin.getPassword();
+	LoginEOPortal.loginInputEmail(EOAdminMail);
+	LoginEOPortal.loginInputPassword(EOAdminPwd);
+	LoginEOPortal.clickLoginBtn();
+
+	testLog.info("------------------------------------------------- Open Account menu -------------------------------------------------");
+
+	ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
+	HomePage HomePage = (HomePage) PageFactory.getPage("HomePage");
+	HomePage.clickHeaderMenu();
+
+	testLog.info("------------------------------------------------- Navigate to Users page -------------------------------------------------");
+	HomePage.clickUserMenu();
+
+	Thread.sleep(TimeOut + 3000);
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
+	UsersPage UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+	AssertJUnit.assertEquals("Users", UsersPage.titleUsers());
+
+	testLog.info("------------------------------------------------- Add New User - EO Admin -------------------------------------------------");
+
+	UsersPage.clickAddUserBtn();
+
+	Thread.sleep(TimeOut + 3000);
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
+	AddUserPage AddUserPage = (AddUserPage) PageFactory.getPage("AddUserPage");
+
+	AddUserPage.inputFirstName("UserEOAdmin");
+	AddUserPage.inputLastName("UserLastEOAdmin");
+	// Make email uniq and input
+	//UserEmail = UserEmail.replace("@", (LocalDateTime.now() + "@").replace(":",""));
+    UserEmail = "UserEOAdmin" + LocalDateTime.now() + "@getnada.com";
+    UserEmail = UserEmail.replace(":","");
+    UserEmail = UserEmail.replace("-","");
+    AddUserPage.inputEmail(UserEmail);
+	AddUserPage.clickDropDn();
+	AddUserPage.clickDropDnItem("EO Admin");
+
+	testLog.info("------------------------------------------------- Submit changes -------------------------------------------------");
+
+	AddUserPage.clickSubmitBtn();
+	Thread.sleep(TimeOut + 3000);
+	availableWindows = new ArrayList<String>(driver.getWindowHandles());
+	driver.switchTo().window(availableWindows.get(0));
+	UsersPage = (UsersPage) PageFactory.getPage("UsersPage");
+	}
 
 
-    @Test(enabled = true, priority = 3, testName = "EOAdmin View Users", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = false, priority = 3, testName = "EOAdmin View Users", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminViewUsersUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -479,7 +482,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = true, priority = 4, testName = "EOAdmin View Add User page", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = false, priority = 4, testName = "EOAdmin View Add User page", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminViewAddUserPageUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -564,7 +567,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = true, priority = 5, testName = "EOAdmin Add EOAdmin Exist Email", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = false, priority = 5, testName = "EOAdmin Add EOAdmin Exist Email", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddUserExistEmailUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -653,7 +656,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = true, priority = 6, testName = "EOAdmin Add Merchant Manager", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = false, priority = 6, testName = "EOAdmin Add Merchant Manager", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddMerchantManagerUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -723,7 +726,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = true, priority = 7, testName = "EOAdmin Add Dev App Manager", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = false, priority = 7, testName = "EOAdmin Add Dev App Manager", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddDevAppManagerUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
