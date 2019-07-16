@@ -8,6 +8,7 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <parameter name="env" value="Dev" />
     <!--<parameter name="mail" value="cuteeo@getnada.com" />-->
     <parameter name="mail" value="TestOrg2_EO_Dev@getnada.com" />

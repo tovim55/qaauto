@@ -132,12 +132,12 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 
         //  Accept
         driver.findElement(By.linkText("ACCEPT")).click();
-        testLog.pass("Create email inbox: " + mId + "getnada.com: Succesfull");
+        testLog.pass("Create email inbox: " + mId + "getnada.com: Successful");
 
         //  Open Email
         Thread.sleep(timeOut);
         driver.findElement(By.xpath("//div[contains(@class, 'subject ')]")).click();
-        testLog.pass("Found Invitation mail: Succesfull");
+        testLog.pass("Found Invitation mail: Successful");
 
         //   Get email text
 
@@ -157,7 +157,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         }
         driver.findElement(By.xpath(mailActivateButton)).click();
 
-        testLog.pass("Click on: " + btnText + " button: Succesfull");
+        testLog.pass("Click on: " + btnText + " button: Successful");
 
 
 //		Setup Password
@@ -343,7 +343,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 ////		Agree with Agreement
 //        testLog.pass("Accept Agreement");
 //        SetupPasswordPage.clickOnAcceptAgrBtn();
-//        Thread.sleep(timeOut - 1000);
+        Thread.sleep(10000);
         testLog.pass("Submit Setup");
         SetupPasswordPage.clickOnSubmitBtn();
 
@@ -354,11 +354,12 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         Thread.sleep(timeOut + 2000);
         availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(1));
-
+        Thread.sleep(120000);
         PasswordSetupPage PasswordSetupPage = (PasswordSetupPage) PageFactory.getPage("PasswordSetupPage");
 
 //	Compare Password Setup Page Title with expected
         String tText = PasswordSetupPage.pageTitle();
+//        assertTextContains()
         if (!com.verifone.utils.Assertions.compareValue(PasswordSetupFinalTitle, tText, "Password Setup Final page: Found title:", testLog, driver)){
             TestPassFlag = false;
         }
