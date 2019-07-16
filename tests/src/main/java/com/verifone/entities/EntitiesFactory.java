@@ -60,6 +60,10 @@ public class EntitiesFactory {
                 user = BaseTest.envConfig.getCredentials().getDevSupportAdmin();
                 break;
 
+            case "MPAssignUser":
+                user = BaseTest.envConfig.getCredentials().getMPAssignUser();
+                break;
+
             case "NewUser":
                 user = new User();
                 break;
