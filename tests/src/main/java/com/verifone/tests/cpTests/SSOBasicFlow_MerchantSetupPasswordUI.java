@@ -343,7 +343,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 ////		Agree with Agreement
 //        testLog.pass("Accept Agreement");
 //        SetupPasswordPage.clickOnAcceptAgrBtn();
-//        Thread.sleep(timeOut - 1000);
+        Thread.sleep(10000);
         testLog.pass("Submit Setup");
         SetupPasswordPage.clickOnSubmitBtn();
 
@@ -351,14 +351,15 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
 
         testLog.pass("---------------------------------------Password Setup Final page------------------------------------------");
 
-        Thread.sleep(timeOut + 12000);
+        Thread.sleep(timeOut + 2000);
         availableWindows = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(availableWindows.get(1));
-
+        Thread.sleep(120000);
         PasswordSetupPage PasswordSetupPage = (PasswordSetupPage) PageFactory.getPage("PasswordSetupPage");
 
 //	Compare Password Setup Page Title with expected
         String tText = PasswordSetupPage.pageTitle();
+//        assertTextContains()
         if (!com.verifone.utils.Assertions.compareValue(PasswordSetupFinalTitle, tText, "Password Setup Final page: Found title:", testLog, driver)){
             TestPassFlag = false;
         }
