@@ -8,6 +8,7 @@
     <!--DEV-->
     <!--parameter name="env" value="QA"/-->
     <parameter name="getVersions" value="false"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
     <parameter name="env" value="Dev" />
     <parameter name="mail" value="QA.Test@verifone.com" />
     <parameter name="pwd" value='GGi5g@#NA3yf' />
