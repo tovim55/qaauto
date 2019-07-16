@@ -60,272 +60,272 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
     }
 
 
-//    @Test(enabled = true, priority=1, testName = "User Forgot/Reset Password", description = "User Merchant Manager forgot password, reset password login EO Admin portal", groups = {"SSOBasic"}, alwaysRun = true)
-//    public void userForgotResetPasswordUI() throws Exception {
-//        WebDriver driver = new HomePage().getDriver();
-//        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
-//        EOAdminEmail = EOAdmin.getUserName();
-//        EOAdminPwd = EOAdmin.getPassword();
-//        User EOMerchantForgotPassword = EntitiesFactory.getEntity("EOMerchantForgotPassword");
-//        ForgotEmail = EOMerchantForgotPassword.getUserName();
-////        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
-//        testLog.info( "This test verify that User Merchant Manager can Reset Password, setup New and Log In using New Password");
-//        testLog.info("User mail: " + EOAdminEmail);
-//        testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+    @Test(enabled = true, priority=1, testName = "User Forgot/Reset Password", description = "User Merchant Manager forgot password, reset password login EO Admin portal", groups = {"SSOBasic"}, alwaysRun = true)
+    public void userForgotResetPasswordUI() throws Exception {
+        WebDriver driver = new HomePage().getDriver();
+        User EOAdmin = EntitiesFactory.getEntity("EOAdmin");
+        EOAdminEmail = EOAdmin.getUserName();
+        EOAdminPwd = EOAdmin.getPassword();
+        User EOMerchantForgotPassword = EntitiesFactory.getEntity("EOMerchantForgotPassword");
+        ForgotEmail = EOMerchantForgotPassword.getUserName();
+//        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
+        testLog.info( "This test verify that User Merchant Manager can Reset Password, setup New and Log In using New Password");
+        testLog.info("User mail: " + EOAdminEmail);
+        testLog.info( "-------------------------------------------------Navigate to EO Portal-------------------------------------------------");
+
+        driver.navigate().to(portalEOURI);
+
+//		Test Login
+//    	Setup Login button
+        testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
+
+        //    	Click on Forgot Password link
+        Thread.sleep(timeOut + 1000);
+        ArrayList<String>
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
+        testLog.info( "Navigate to Forgot Password page");
+        LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+        LoginEOPortal.loginForgotLinkClick();
+
+        testLog.info( "----------------------------------------------Forgot Password page-----------------------------------------------");
+        //    	Compare Title, Text, Email text, Send button label, Login link label with expected on Forgot Password page
+        Thread.sleep(timeOut + 3000);
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
+        ForgotPasswordPage ForgotPasswordPage = (ForgotPasswordPage) PageFactory.getPage("ForgotPasswordPage");
+
+//    	Compare Forgot page title with expected
+        String tText = ForgotPasswordPage.pageTitle();
+        if (!Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Compare Forgot page text with expected
+        tText = ForgotPasswordPage.pageText();
+        if (!Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Compare Forgot page Mail label with expected
+        tText = ForgotPasswordPage.mailLabelText();
+        if (!Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Compare Forgot page Login link text with expected
+        tText = ForgotPasswordPage.btnSendText();
+        if (!Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Compare Forgot page Login link text with expected
+        tText = ForgotPasswordPage.lnkLoginText();
+        if (!Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog, driver)){
+            TestPassFlag = false;
+        }
+        //    	Forgot Password Page: Email empty. Get error and compare with expected
+        Thread.sleep(timeOut - 1000);
+        testLog.info( "Forgot Password page: Input mail: " + "<empty>" + " and Send");
+        ForgotPasswordPage.InputEmail("");
+        ForgotPasswordPage.clickBtnSend();
+
+        Thread.sleep(timeOut - 1000);
+        tText = ForgotPasswordPage.errorEmptyText();
+        if (!Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Forgot Password Page: Email Invalid. Get error and compare with expected
+        Thread.sleep(timeOut - 1000);
+        testLog.info( "Forgot Password page: Input mail: " + "InvalidMail" + " and Send");
+        ForgotPasswordPage.InputEmail("InvalidMail");
+        ForgotPasswordPage.clickBtnSend();
+        Thread.sleep(1000);
+
+        tText = ForgotPasswordPage.errorEmptyText();
+        if (!Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Forgot Password Page: Email Not Match. Get error and compare with expected
+
+        Thread.sleep(timeOut - 1000);
+        testLog.info( "Forgot Password page: Input mail: " + ForgotEmail + " and Send");
+        ForgotPasswordPage.InputEmail(ForgotEmail);
+        ForgotPasswordPage.clickBtnSend();
+
+        testLog.info( "-------------------------------------------------Getnada service-------------------------------------------------");
+
+//    	Goto Getnada mail and Open received email
+        Thread.sleep(timeOut + 3000);
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(0));
+        driver.navigate().to("https://getnada.com/#");
+
+// 		Click Add Inbox
+        driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
+
+        // Put email
+        driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
+        driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(ForgotEmail.replace("@getnada.com",""));
+
+        driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
+        driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
+
+        //  Accept
+        driver.findElement(By.linkText("ACCEPT")).click();
+
+        //  Open Email
+
+        Thread.sleep(timeOut);
+        testLog.info( "Open received email");
+        driver.findElement(By.xpath("//div[contains(@class, 'subject bold')]")).click();
+
+        //   Get email text
+
+        Thread.sleep(timeOut);
+
+        WebElement iFrame = driver.findElement(By.id("idIframe"));
+        driver.switchTo().frame(iFrame);
+        String mailText = driver.getPageSource();
+
+//    	Compare Mail text with expected
+        if (!Assertions.compareValue("You recently requested a password change for", mailText, "Reset Password mail include text:", testLog, driver)){
+            TestPassFlag = false;
+        }
+        if (!Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", mailText, "Reset Password mail include text:", testLog, driver)){
+            TestPassFlag = false;
+        }
+        if (!Assertions.compareValue("Thank you,", mailText, "Reset Password mail include text:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Compare Reset Password button label with expected
+        mailText = driver.findElement(By.xpath(mailResetButton)).getText();
+        if (!Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog, driver)){
+            TestPassFlag = false;
+        }
+        driver.findElement(By.xpath(mailResetButton)).click();
+
+        testLog.info( "Click on: " + mailResetButton + " button: Succesfull");
+
+//    	Reset Password Page
+        testLog.info( "-----------------------------------------------Reset Password page-----------------------------------------------");
+
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(1));
+        ResetPasswordPage ResetPasswordPage = (ResetPasswordPage) PageFactory.getPage("ResetPasswordPage");
+
+//    	Reset Password Page: Compare title with expected
+        tText = ResetPasswordPage.pageTitle();
+        if (!Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Reset Password Page: Compare Password label with expected
+        tText = ResetPasswordPage.passwordLabelText();
+        if (!Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Reset Password Page: Compare Confirm Password label with expected
+        tText = ResetPasswordPage.confirmPasswordLabelText();
+        if (!Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Reset Password Page: Compare Proceed button label with expected
+        tText = ResetPasswordPage.btnProceedText();
+        if (!Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Reset Password Page: Input empty password, get error and compare with expected
+        testLog.info( "Reset Password page: Input password = ' '. Proceed");
+        ResetPasswordPage.InputPassword("");
+        ResetPasswordPage.clickBtnProceed();
+        Thread.sleep(timeOut - 1000);
+        tText = ResetPasswordPage.errorEmptyText();
+        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Reset Password Page: Input empty Confirm password, get error and compare with expected
+        testLog.info( "Reset Password page: Input Confirm password = ' '. Proceed");
+        ResetPasswordPage.InputConfirmPassword("");
+        ResetPasswordPage.clickBtnProceed();
+        Thread.sleep(timeOut - 1000);
+        tText = ResetPasswordPage.errorConfirmEmptyText();
+        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog, driver)){
+            TestPassFlag = false;
+        }
+
+//    	Reset Password Page: Input Password and Confirmation Password not match, get error and compare with expected
+        testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri4321'. Proceed");
+        ResetPasswordPage.InputPassword(NewPwd);
+        ResetPasswordPage.InputConfirmPassword(NewPwd + "4321");
+        ResetPasswordPage.clickBtnProceed();
+        Thread.sleep(timeOut - 1000);
+        tText = ResetPasswordPage.errorConfirmEmptyText();
+        if (!Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Reset Password Page: Input Same Password and Confirmation Password, click on Proceed button
+        testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri1234'. Proceed");
+        System.out.println(NewPwd);
+        ResetPasswordPage.InputPassword(NewPwd);
+        ResetPasswordPage.InputConfirmPassword(NewPwd);
+        ResetPasswordPage.clickBtnProceed();
+
+//    	Thank you page
+        testLog.info( "-------------------------------------------------Thank You page--------------------------------------------------");
+        Thread.sleep(timeOut + 2000);
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(1));
+        ResetThankYou ResetThankYou = (ResetThankYou) PageFactory.getPage("ResetThankYou");
+
+//    	Thank you page: Compare title with expected
+        tText = ResetThankYou.pageTitle();
+        if (!Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog, driver)){
+            TestPassFlag = false;
+        }
+
+//    	Thank you page: Compare page text with expected
+        tText = ResetThankYou.pageText();
+        if (!Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog, driver)){
+            TestPassFlag = false;
+        }
+//    	Thank you page: Click on LogIn link
+        ResetThankYou.clickLoginLnk();
+
+        testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
+
+        Thread.sleep(timeOut + 2000);
+        availableWindows = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(availableWindows.get(1));
+
+//    	Compare loginAndCheck Title text with expected
+        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
+
+        Thread.sleep(timeOut);
+
+        //    	Input Valid Email and Password. Login
+
+        testLog.info( "Login page: Input Email = " + ForgotEmail + ". Input Password = " + NewPwd);
+        LoginEOPortal.loginInputEmail(ForgotEmail);
+        LoginEOPortal.loginInputPassword(NewPwd);
+        Thread.sleep(timeOut - 1000);
+        LoginEOPortal.clickLoginBtn();
+        testLog.info( "Click Login button");
+
+//		Home Page
+        testLog.info( "---------------------------------------------------Home page----------------------------------------------------");
+        Thread.sleep(timeOut+3000);
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
 //
-//        driver.navigate().to(portalEOURI);
-//
-////		Test Login
-////    	Setup Login button
-//        testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
-//
-//        //    	Click on Forgot Password link
-//        Thread.sleep(timeOut + 1000);
-//        ArrayList<String>
-//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(availableWindows.get(0));
-//        testLog.info( "Navigate to Forgot Password page");
-//        LoginEOPortal LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-//        LoginEOPortal.loginForgotLinkClick();
-//
-//        testLog.info( "----------------------------------------------Forgot Password page-----------------------------------------------");
-//        //    	Compare Title, Text, Email text, Send button label, Login link label with expected on Forgot Password page
-//        Thread.sleep(timeOut + 3000);
-//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(availableWindows.get(0));
-//        ForgotPasswordPage ForgotPasswordPage = (ForgotPasswordPage) PageFactory.getPage("ForgotPasswordPage");
-//
-////    	Compare Forgot page title with expected
-//        String tText = ForgotPasswordPage.pageTitle();
-//        if (!Assertions.compareValue("Forgot your password?", tText, "Forgot Password page: Found title:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Compare Forgot page text with expected
-//        tText = ForgotPasswordPage.pageText();
-//        if (!Assertions.compareValue("Enter the email address associated with your account and we'll send you an email with password reset instructions.", tText, "Forgot Password page: Found text:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Compare Forgot page Mail label with expected
-//        tText = ForgotPasswordPage.mailLabelText();
-//        if (!Assertions.compareValue("Email", tText, "Forgot Password page: Found mail field hint:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Compare Forgot page Login link text with expected
-//        tText = ForgotPasswordPage.btnSendText();
-//        if (!Assertions.compareValue("Send", tText, "Forgot Password page: Found Send button label:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Compare Forgot page Login link text with expected
-//        tText = ForgotPasswordPage.lnkLoginText();
-//        if (!Assertions.compareValue("Login", tText, "Forgot Password page: Found Login link Text:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//        //    	Forgot Password Page: Email empty. Get error and compare with expected
-//        Thread.sleep(timeOut - 1000);
-//        testLog.info( "Forgot Password page: Input mail: " + "<empty>" + " and Send");
-//        ForgotPasswordPage.InputEmail("");
-//        ForgotPasswordPage.clickBtnSend();
-//
-//        Thread.sleep(timeOut - 1000);
-//        tText = ForgotPasswordPage.errorEmptyText();
-//        if (!Assertions.compareValue("This field is required.", tText, "Forgot Password page: Found Mandatory error:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Forgot Password Page: Email Invalid. Get error and compare with expected
-//        Thread.sleep(timeOut - 1000);
-//        testLog.info( "Forgot Password page: Input mail: " + "InvalidMail" + " and Send");
-//        ForgotPasswordPage.InputEmail("InvalidMail");
-//        ForgotPasswordPage.clickBtnSend();
-//        Thread.sleep(1000);
-//
-//        tText = ForgotPasswordPage.errorEmptyText();
-//        if (!Assertions.compareValue("Field Email should have valid format!", tText, "Forgot Password page: Found Format error:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Forgot Password Page: Email Not Match. Get error and compare with expected
-//
-//        Thread.sleep(timeOut - 1000);
-//        testLog.info( "Forgot Password page: Input mail: " + ForgotEmail + " and Send");
-//        ForgotPasswordPage.InputEmail(ForgotEmail);
-//        ForgotPasswordPage.clickBtnSend();
-//
-//        testLog.info( "-------------------------------------------------Getnada service-------------------------------------------------");
-//
-////    	Goto Getnada mail and Open received email
-//        Thread.sleep(timeOut + 3000);
-//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(availableWindows.get(0));
-//        driver.navigate().to("https://getnada.com/#");
-//
-//// 		Click Add Inbox
-//        driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
-//
-//        // Put email
-//        driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).clear();
-//        driver.findElement(By.xpath("//input[contains(@class, 'user_name')]")).sendKeys(ForgotEmail.replace("@getnada.com",""));
-//
-//        driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).click();
-//        driver.findElement(By.xpath("//select[contains(@id, 'domain')]")).sendKeys("getnada.com" + Keys.ENTER);
-//
-//        //  Accept
-//        driver.findElement(By.linkText("ACCEPT")).click();
-//
-//        //  Open Email
-//
-//        Thread.sleep(timeOut);
-//        testLog.info( "Open received email");
-//        driver.findElement(By.xpath("//div[contains(@class, 'subject bold')]")).click();
-//
-//        //   Get email text
-//
-//        Thread.sleep(timeOut);
-//
-//        WebElement iFrame = driver.findElement(By.id("idIframe"));
-//        driver.switchTo().frame(iFrame);
-//        String mailText = driver.getPageSource();
-//
-////    	Compare Mail text with expected
-//        if (!Assertions.compareValue("You recently requested a password change for", mailText, "Reset Password mail include text:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//        if (!Assertions.compareValue("If you didn't make this request, please ignore this email. For any questions, please get in touch with us", mailText, "Reset Password mail include text:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//        if (!Assertions.compareValue("Thank you,", mailText, "Reset Password mail include text:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Compare Reset Password button label with expected
-//        mailText = driver.findElement(By.xpath(mailResetButton)).getText();
-//        if (!Assertions.compareValue("Reset Password", mailText, "Found Reset Password button label:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//        driver.findElement(By.xpath(mailResetButton)).click();
-//
-//        testLog.info( "Click on: " + mailResetButton + " button: Succesfull");
-//
-////    	Reset Password Page
-//        testLog.info( "-----------------------------------------------Reset Password page-----------------------------------------------");
-//
-//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(availableWindows.get(1));
-//        ResetPasswordPage ResetPasswordPage = (ResetPasswordPage) PageFactory.getPage("ResetPasswordPage");
-//
-////    	Reset Password Page: Compare title with expected
-//        tText = ResetPasswordPage.pageTitle();
-//        if (!Assertions.compareValue("Reset Password", tText, "Reset Password page: Found title:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Reset Password Page: Compare Password label with expected
-//        tText = ResetPasswordPage.passwordLabelText();
-//        if (!Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Reset Password Page: Compare Confirm Password label with expected
-//        tText = ResetPasswordPage.confirmPasswordLabelText();
-//        if (!Assertions.compareValue("Confirm Password", tText, "Reset Password page: Confirm Password field hint:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Reset Password Page: Compare Proceed button label with expected
-//        tText = ResetPasswordPage.btnProceedText();
-//        if (!Assertions.compareValue("PROCEED", tText, "Reset Password page: Proceed button label:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Reset Password Page: Input empty password, get error and compare with expected
-//        testLog.info( "Reset Password page: Input password = ' '. Proceed");
-//        ResetPasswordPage.InputPassword("");
-//        ResetPasswordPage.clickBtnProceed();
-//        Thread.sleep(timeOut - 1000);
-//        tText = ResetPasswordPage.errorEmptyText();
-//        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Reset Password Page: Input empty Confirm password, get error and compare with expected
-//        testLog.info( "Reset Password page: Input Confirm password = ' '. Proceed");
-//        ResetPasswordPage.InputConfirmPassword("");
-//        ResetPasswordPage.clickBtnProceed();
-//        Thread.sleep(timeOut - 1000);
-//        tText = ResetPasswordPage.errorConfirmEmptyText();
-//        if (!Assertions.compareValue("Use at least eight characters, one number or special character, one UPPER case, and one lower case character. Must not have more than 30 characters.", tText, "Reset Password page: Found Mandatory error:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//
-////    	Reset Password Page: Input Password and Confirmation Password not match, get error and compare with expected
-//        testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri4321'. Proceed");
-//        ResetPasswordPage.InputPassword(NewPwd);
-//        ResetPasswordPage.InputConfirmPassword(NewPwd + "4321");
-//        ResetPasswordPage.clickBtnProceed();
-//        Thread.sleep(timeOut - 1000);
-//        tText = ResetPasswordPage.errorConfirmEmptyText();
-//        if (!Assertions.compareValue("Password and Confirmation Password must match.", tText, "Reset Password page: Found Match error:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Reset Password Page: Input Same Password and Confirmation Password, click on Proceed button
-//        testLog.info( "Reset Password page: Input Password = 'Veri1234', Confirm password = 'Veri1234'. Proceed");
-//        System.out.println(NewPwd);
-//        ResetPasswordPage.InputPassword(NewPwd);
-//        ResetPasswordPage.InputConfirmPassword(NewPwd);
-//        ResetPasswordPage.clickBtnProceed();
-//
-////    	Thank you page
-//        testLog.info( "-------------------------------------------------Thank You page--------------------------------------------------");
-//        Thread.sleep(timeOut + 2000);
-//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(availableWindows.get(1));
-//        ResetThankYou ResetThankYou = (ResetThankYou) PageFactory.getPage("ResetThankYou");
-//
-////    	Thank you page: Compare title with expected
-//        tText = ResetThankYou.pageTitle();
-//        if (!Assertions.compareValue("Thank you!", tText, "Thank You page: Found page Title", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//
-////    	Thank you page: Compare page text with expected
-//        tText = ResetThankYou.pageText();
-//        if (!Assertions.compareValue("We've reset the password for your Verifone account. You can now log in using your new password.", tText, "Thank You page: Found page Text:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-////    	Thank you page: Click on LogIn link
-//        ResetThankYou.clickLoginLnk();
-//
-//        testLog.info( "---------------------------------------------------Login page----------------------------------------------------");
-//
-//        Thread.sleep(timeOut + 2000);
-//        availableWindows = new ArrayList<String>(driver.getWindowHandles());
-//        driver.switchTo().window(availableWindows.get(1));
-//
-////    	Compare loginAndCheck Title text with expected
-//        LoginEOPortal = (LoginEOPortal) PageFactory.getPage("LoginEOPortal");
-//
-//        Thread.sleep(timeOut);
-//
-//        //    	Input Valid Email and Password. Login
-//
-//        testLog.info( "Login page: Input Email = " + ForgotEmail + ". Input Password = " + NewPwd);
-//        LoginEOPortal.loginInputEmail(ForgotEmail);
-//        LoginEOPortal.loginInputPassword(NewPwd);
-//        Thread.sleep(timeOut - 1000);
-//        LoginEOPortal.clickLoginBtn();
-//        testLog.info( "Click Login button");
-//
-////		Home Page
-//        testLog.info( "---------------------------------------------------Home page----------------------------------------------------");
-//        Thread.sleep(timeOut+3000);
-////        WebDriverWait wait = new WebDriverWait(driver, 30);
-////
-////        wait.until(new ExpectedCondition<Boolean>() {
-////            public Boolean apply(WebDriver wdriver) {
-////                return ((JavascriptExecutor) driver).executeScript(
-////                        "return document.readyState"
-////                ).equals("complete");
-////            }
-////        });
-//        String url = driver.getCurrentUrl();
-//        if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog, driver)){
-//            TestPassFlag = false;
-//        }
-//        Assert.assertTrue(TestPassFlag);
-//        //driver.quit();
-//    }
+//        wait.until(new ExpectedCondition<Boolean>() {
+//            public Boolean apply(WebDriver wdriver) {
+//                return ((JavascriptExecutor) driver).executeScript(
+//                        "return document.readyState"
+//                ).equals("complete");
+//            }
+//        });
+        String url = driver.getCurrentUrl();
+        if (!Assertions.compareValue("verifonecp.com/#home", url, "User redirected to:", testLog, driver)){
+            TestPassFlag = false;
+        }
+        Assert.assertTrue(TestPassFlag);
+        //driver.quit();
+    }
 
     @BeforeTest
     public void startDD1Test() throws Exception {
