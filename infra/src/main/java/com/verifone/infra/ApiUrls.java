@@ -32,9 +32,7 @@ public class ApiUrls {
         acceptAgreement = prop.getProperty(env + "acceptAgreement");
         resendInvitation = prop.getProperty(env + "resendInvitation");
         createDcOrg = prop.getProperty(env + "createDcOrg");
-
     }
-
 
     public String getGetVersions() {
         return getVersions;
