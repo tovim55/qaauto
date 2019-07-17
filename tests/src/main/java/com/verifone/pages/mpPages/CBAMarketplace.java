@@ -13,17 +13,14 @@ public class CBAMarketplace extends BasePage
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Verifone Australia Sandbox | Verifone Australia";
 
-    //private By marketPlace = By.xpath("//*[@id=\"header\"]/header/div/nav/ul/li[3]");
-    private By marketPlace = By.xpath("//*[@id=\"shop\"]");
-    private By findApp = By.xpath("//*[@id=\"secondaryNav\"]/nav/ul/li[3]/div/div[1]/input");
-    private By searchBtn = By.xpath("//*[@id=\"secondaryNav\"]/nav/ul/li[3]/div/div[2]/button");
+    private By marketPlace = By.xpath("//*[@id='shop']");
+    private By findApp = By.xpath("//input[@class='adb-input_row--item_content adb-search_field--input adb-text__small'][@placeholder='Find Applications']");
+    private By searchBtn = By.xpath("//*[@class='adb-input_row--item_content adb-search_field--button adb-button adb-button__neutral adb-button__small'][@type='button']");
 
     private By listing = By.cssSelector("a[class='listing-row-content-title js-title--link']");
 
-    private By buyNowBtn = By.xpath("//*[@id=\"main\"]/div/div[2]/section[1]/div/div[1]/div/div/menu/button"); //*[@id="main"]/div/div[2]/section/div/div[1]/div/div/menu/button[1]
-    private By continueBtn = By.cssSelector("button[class='adb-button__primary continue buttonResponse continue-to-next']");
-    private By placeOrderBtn = By.cssSelector("button[id='placeOrder']");
-    private By goToMyAppsBtn = By.cssSelector("button[class='adb-button__emphasis adb-button__large buttonResponse']");
+    private By tryFree = By.xpath("//button[@class='adb-button adb-toolbar--item adb-button__emphasis adb-button__large'][1]");
+    private By goToMyAppsBtn = By.xpath("//button[@class='adb-button adb-toolbar--item adb-button__primary']");
 
     private List<WebElement> listingApps;
 
@@ -46,20 +43,15 @@ public class CBAMarketplace extends BasePage
         testLog.info(appsNumber + " apps in listing");
 
         for (WebElement listingApp : listingApps) {
-
             testLog.info(listingApp.getText() + " in listing");
         }
     }
 
-    public void buyApp ()
+    public void buyFreeApp ()
     {
         click(listing);
-        //waitForLoader(buyNowBtn);
-        click(buyNowBtn);
-        click(continueBtn);
-        click(placeOrderBtn);
+        click(tryFree);
         click(goToMyAppsBtn);
-
     }
 
 

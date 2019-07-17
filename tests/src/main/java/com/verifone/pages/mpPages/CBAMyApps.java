@@ -51,11 +51,12 @@ public class CBAMyApps extends BasePage
         testLog.info(getText(success));
     }
 
-    public void verifyColor()
+    public void whiteLabelingMyApps()
     {
-        WebElement moreInfoBtn = getWebElement(moreInfo, 500, ExpectedConditions.visibilityOfElementLocated(moreInfo));
-        String backgroundColor = moreInfoBtn.getCssValue("background-color");
-        testLog.info(backgroundColor);
+        testLog.info(getCSSValue(moreInfo, "color")) ;
+        testLog.info(getCSSValue(moreInfo, "background-color"));
+        testLog.info(getCSSValue(moreInfo, "font-family"));
+        testLog.info(getCSSValue(moreInfo, "font-size"));
     }
 
 

@@ -23,7 +23,7 @@ public class SubscribeAppTest extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
-        market.buyApp();
+        market.buyFreeApp();
 
 //        CBAMyApps myApps = PageFactory.getCBAMyApps();
 //        myApps.verifyMessage();
