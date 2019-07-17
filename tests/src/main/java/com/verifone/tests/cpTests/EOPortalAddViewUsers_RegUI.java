@@ -78,7 +78,7 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         return arrayObject;
     }
 
-    @Test(enabled = false, priority = 1, testName = "EOAdmin, Merchant Man and Dev App Manager add Users and Cancel action", dataProvider = "eoAddUser", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = true, priority = 1, testName = "EOAdmin, Merchant Man and Dev App Manager add Users and Cancel action", dataProvider = "eoAddUser", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddUsersCancelUI(String eoRole, String eoMail, String eoPassword, String userName, String userLast, String userMail) throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -425,7 +425,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
 	}
 
 
-    @Test(enabled = false, priority = 3, testName = "EOAdmin View Users", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = true, priority = 3, testName = "EOAdmin View Users", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminViewUsersUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -482,7 +482,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = false, priority = 4, testName = "EOAdmin View Add User page", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = true, priority = 4, testName = "EOAdmin View Add User page", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminViewAddUserPageUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -567,7 +567,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = false, priority = 5, testName = "EOAdmin Add EOAdmin Exist Email", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = true, priority = 5, testName = "EOAdmin Add EOAdmin Exist Email", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddUserExistEmailUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -656,7 +656,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = false, priority = 6, testName = "EOAdmin Add Merchant Manager", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = true, priority = 6, testName = "EOAdmin Add Merchant Manager", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddMerchantManagerUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
@@ -726,7 +726,7 @@ public void EOAdminAddUserSubmitUI() throws Exception {
         Assert.assertTrue(TestPassFlag);
     }
 
-    @Test(enabled = false, priority = 7, testName = "EOAdmin Add Dev App Manager", groups = {"Sanity"}, alwaysRun = true)
+    @Test(enabled = true, priority = 7, testName = "EOAdmin Add Dev App Manager", groups = {"Sanity"}, alwaysRun = true)
 
     public void EOAdminAddDevAppManagerUI() throws Exception {
         WebDriver driver = new HomePage().getDriver();
