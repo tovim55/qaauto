@@ -22,7 +22,7 @@ public class AssignAppToUser extends BaseTest  {
         assignApp.btnSelectAssignAppsToUser();
         assignApp.assignAppToUser();
         assignApp.userAssignment();
-       // assignApp.isAssignUpdated();
+//        assignApp.isAssignUpdated();
     }
 
 }
