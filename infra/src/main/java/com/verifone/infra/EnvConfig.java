@@ -15,6 +15,7 @@ public class EnvConfig {
     private Properties prop = new Properties();
 
     private String appName;
+    private String oneTimeAppName;
 
 //    private User user;
 
@@ -55,4 +56,8 @@ public class EnvConfig {
     }
 
     public Credentials getCredentials(){return credentials;}
+
+    public String getOneTimeAppName() {
+        return prop.getProperty(env + "." + "MPPurchaseOneTimeApp");
+    }
 }

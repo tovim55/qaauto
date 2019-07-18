@@ -26,7 +26,7 @@ public class PurchaseAppUI extends BaseTest
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(appName);
         market.veryfyListingApps();
-        market.buyApp();
+        market.buyFreeApp();
 
     }
 
@@ -61,5 +61,4 @@ public class PurchaseAppUI extends BaseTest
         account.manageApps (appName);
         account.cancelSubscribsion(appName);
     }
-
 }

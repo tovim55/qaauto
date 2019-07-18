@@ -12,8 +12,9 @@ public class CBAHomePage extends BasePage
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Verifone Australia Sandbox | Verifone Australia" ;
 
-    private By LogIn = By.xpath("//*[@id=\"primaryNav\"]/div/nav/ul/li[3]/ul/li/a");
+    //private By LogIn = By.xpath("//*[@id=\"primaryNav\"]/div/nav/ul/li[3]/ul/li/a");
 
+    private By LogIn = By.xpath("//*[@class='ad-component--link '][@href='/login']");
 
     public CBAHomePage()
     {
