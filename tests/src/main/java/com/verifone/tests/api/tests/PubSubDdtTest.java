@@ -108,7 +108,7 @@ public class PubSubDdtTest extends BaseTest {
 
     @Test(dataProvider = "UpdatePass")
     public void updatePassDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
-                              String headers, String headersForGetToken, String body, String expectedStatusCode,
+                              String headers, String headersForGetToken, String body, String parentOrgID, String expectedStatusCode,
                               String expectedResult, String verifyList, String comments, String rowNum) throws Exception {
         starTestLog(rowNum + ". " + comments, comments);
 
@@ -117,7 +117,7 @@ public class PubSubDdtTest extends BaseTest {
                 accGrantType, getMapFromStr(headersForGetToken), 200);
         String id = UUID.randomUUID().toString();
         String confirmationCode = new CreateMerchant(response.get("access_token").getAsString(), "test")
-                .createMerchantWithConfirmation("67238a85-67e9-4989-8da1-341bcdd48418", id);
+                .createMerchantWithConfirmation(parentOrgID, id);
         api.setConfirmationCode(confirmationCode);
         api.setUser(id.replace("-", "") + "@getnada.com");
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
