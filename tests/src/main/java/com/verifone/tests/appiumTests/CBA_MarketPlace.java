@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class CM5_MarketPlace {
+public class CBA_MarketPlace {
 
     private String reportDirectory = "C:\\Test\\AppiumReports";
     private String reportFormat = "xml";
@@ -30,8 +30,8 @@ public class CM5_MarketPlace {
         dc.setCapability("reportFormat", reportFormat);
         dc.setCapability("testName", testName);
         dc.setCapability("noreset", true);
-        dc.setCapability(MobileCapabilityType.UDID, "401-666-420");
-        dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.verifone.marketplace.stage");
+        dc.setCapability(MobileCapabilityType.UDID, "401-686-717");
+        dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.verifone.marketplace.cba.stage");
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "com.wmode.appdirect.mobileapp.activities.MainActivity");
         driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
 
@@ -40,31 +40,25 @@ public class CM5_MarketPlace {
     @Test
     public void Login_Test() throws InterruptedException
     {
-
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
         driver.findElement(By.xpath("//*[@text='SIGN IN']")).click();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='loginForm']")));
 
-        driver.findElement(By.xpath("//*[@id='username']")).sendKeys("yegorp1@getnada.com");
+        driver.findElement(By.xpath("//*[@id='username']")).sendKeys("testorg1.vhq5Merchant@gmail.com");
 
         driver.context("WEBVIEW_1");
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='loginForm' and @text]")));
-
-        driver.findElement(By.xpath("//*[@id='veriPassFrame']")).click();
-
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='loginForm']")));
 
         driver.findElement(By.xpath("//*[@id='ipassword']")).sendKeys("Veri1234");
-        driver.findElement(By.xpath("//*[@id='ipassword']")).click();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='btnPrimaryLogin']")));
 
         driver.findElement(By.id("btnPrimaryLogin")).submit();
 
-        Thread.sleep(5000);
-
+        Thread.sleep(7000);
 
     }
 
@@ -73,6 +67,4 @@ public class CM5_MarketPlace {
     {
         driver.quit();
     }
-
-
 }

@@ -8,10 +8,10 @@ import org.testng.annotations.Test;
 
 import static com.verifone.tests.steps.mpPortal.Steps.*;
 
-public class AssignAppToUser extends BaseTest  {
+public class AssignAppToUser extends BaseTest {
 
-    @Test(priority = 0,testName = "Login & Assign App to user",description = "Login in to CBA MarketPlace and assign application to the user")
-    public void CBAAssignToUserAppUI()throws InterruptedException{
+    @Test(priority = 0, testName = "Login & Assign App to user", description = "Login in to CBA MarketPlace and assign application to the user")
+    public void CBAAssignToUserAppUI() throws InterruptedException {
 
         /* Login to CBAMarket Place */
         loginCBA(createAssignUser());

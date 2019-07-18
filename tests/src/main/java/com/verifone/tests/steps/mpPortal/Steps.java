@@ -27,53 +27,8 @@ public class Steps {
         LoginMPPortal LoginMPPortal = (LoginMPPortal) PageFactory.getPage("LoginMPPortal");
 
         String Name;
-        Name = Email.substring(0,Email.indexOf("@"));
-        String Domain = Email.substring(Email.indexOf("@")+1);
-
-        if (Domain.contains("verifone")) {
-                testLog.info("-------------------------------------------------Login as: " + Email + " " + Password + "-------------------------------------------------");
-                Thread.sleep(2000);
-                LoginMPPortal.loginInputEmail(Email);
-
-                ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
-                driver.switchTo().window(availableWindows.get(0));
-                OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
-                Thread.sleep(2000);
-
-                if (OktaLogin.loginOktaTitleExists()) {
-                    if (OktaLogin.loginOktaTitle().contains("Sign In")) {
-                        OktaLogin.loginInputName(Name);
-                        OktaLogin.loginInputPassword(Password);
-                        OktaLogin.clickSignInBtn();
-                    }
-                    availableWindows = new ArrayList<String>(driver.getWindowHandles());
-                    driver.switchTo().window(availableWindows.get(0));
-                    OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
-                    OktaLogin.loginInputAnswer(SecAnswer);
-                    testLog.info("Security answer: " + "");
-                    OktaLogin.clickVerifyBtn();
-
-                    Thread.sleep(2000);
-                }
-        }
-        else{
-            testLog.info("-------------------------------------------------Login as: " + Email + " " + Password + "-------------------------------------------------");
-            Thread.sleep(2000);
-            LoginMPPortal.loginInputEmail(Email);
-            LoginMPPortal.loginInputPassword(Password);
-            LoginMPPortal.clickLoginBtn();
-        }
-    }
-
-    public static void loginMPPortal(String Email, String Password, String SecAnswer) throws Exception
-    {
-
-        WebDriver driver = new MPHomePage().getDriver();
-
-        LoginMPPortal LoginMPPortal = PageFactory.getLoginMPPortal();
-
-        String Name = Email.substring(0,Email.indexOf("@"));
-        String Domain = Email.substring(Email.indexOf("@")+1);
+        Name = Email.substring(0, Email.indexOf("@"));
+        String Domain = Email.substring(Email.indexOf("@") + 1);
 
         if (Domain.contains("verifone")) {
             testLog.info("-------------------------------------------------Login as: " + Email + " " + Password + "-------------------------------------------------");
@@ -100,8 +55,7 @@ public class Steps {
 
                 Thread.sleep(2000);
             }
-        }
-        else{
+        } else {
             testLog.info("-------------------------------------------------Login as: " + Email + " " + Password + "-------------------------------------------------");
             Thread.sleep(2000);
             LoginMPPortal.loginInputEmail(Email);
@@ -109,55 +63,96 @@ public class Steps {
             LoginMPPortal.clickLoginBtn();
         }
     }
-    public static User createMerchantUser ()
-    {
+
+    public static void loginMPPortal(String Email, String Password, String SecAnswer) throws Exception {
+
+        WebDriver driver = new MPHomePage().getDriver();
+
+        LoginMPPortal LoginMPPortal = PageFactory.getLoginMPPortal();
+
+        String Name = Email.substring(0, Email.indexOf("@"));
+        String Domain = Email.substring(Email.indexOf("@") + 1);
+
+        if (Domain.contains("verifone")) {
+            testLog.info("-------------------------------------------------Login as: " + Email + " " + Password + "-------------------------------------------------");
+            Thread.sleep(2000);
+            LoginMPPortal.loginInputEmail(Email);
+
+            ArrayList<String> availableWindows = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(availableWindows.get(0));
+            OktaLogin OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+            Thread.sleep(2000);
+
+            if (OktaLogin.loginOktaTitleExists()) {
+                if (OktaLogin.loginOktaTitle().contains("Sign In")) {
+                    OktaLogin.loginInputName(Name);
+                    OktaLogin.loginInputPassword(Password);
+                    OktaLogin.clickSignInBtn();
+                }
+                availableWindows = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(availableWindows.get(0));
+                OktaLogin = (OktaLogin) PageFactory.getPage("OktaLogin");
+                OktaLogin.loginInputAnswer(SecAnswer);
+                testLog.info("Security answer: " + "");
+                OktaLogin.clickVerifyBtn();
+
+                Thread.sleep(2000);
+            }
+        } else {
+            testLog.info("-------------------------------------------------Login as: " + Email + " " + Password + "-------------------------------------------------");
+            Thread.sleep(2000);
+            LoginMPPortal.loginInputEmail(Email);
+            LoginMPPortal.loginInputPassword(Password);
+            LoginMPPortal.clickLoginBtn();
+        }
+    }
+
+    public static User createMerchantUser() {
         User merchant = EntitiesFactory.getEntity("MPMerchantAdmin");
         return merchant;
     }
 
-    public static User createVHQTestUser ()
-    {
+    public static User createVHQTestUser() {
         User vhqTestAdmin = EntitiesFactory.getEntity("VHQTestUserAdmin");
         return vhqTestAdmin;
     }
 
-    public static User createVHQMumbaiUser ()
-    {
+    public static User createVHQMumbaiUser() {
         User vhqMumbaiAdmin = EntitiesFactory.getEntity("VHQMumbaiUserAdmin");
         return vhqMumbaiAdmin;
     }
 
     /**
-     *
      * This method described to create new assign user.
      */
-    public static User createAssignUser(){
+    public static User createAssignUser() {
         User assignUser = EntitiesFactory.getEntity("MPAssignUser");
         return assignUser;
     }
 
-    public static void  loginCBA (User user)
-    {
+    public static User createAssignUser(String userName) {
+        User assignUser = EntitiesFactory.getEntity(userName);
+        return assignUser;
+    }
+
+    public static void loginCBA(User user) {
         navigateCBAHome();
 
         CBALoginPage loginPage = PageFactory.getCBALoginPage();
         loginPage.LogInToCBAAccount(user);
     }
 
-    public static void  navigateCBAHome ()
-    {
+    public static void navigateCBAHome() {
         CBAHomePage homePage = PageFactory.getCBAHomePage();
         homePage.clickOnLogInLink();
     }
 
-    public static void verifyMyAppsCBA (String appName)
-    {
+    public static void verifyMyAppsCBA() {
         CBAMyApps myApps = PageFactory.getCBAMyApps();
-        myApps.verifyAppSubcribed(appName);
+        myApps.verifyAppSubcribed();
     }
 
-    public static void loginVHQ (User user)
-    {
+    public static void loginVHQ(User user) {
         VHQLogin vhqLogin = PageFactory.getVHQLogin();
         vhqLogin.LoginInVhq(user);
 

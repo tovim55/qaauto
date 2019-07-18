@@ -31,10 +31,10 @@ public class UploadPackageUI extends BaseTest {
 
         CBAProducts cbaProducts = PageFactory.getCBAProducts();
         cbaProducts.createStagingProduct();
-        //cbaProducts.listingInfoProduct();
-        //cbaProducts.profileProduct();
+        cbaProducts.listingInfoProduct();
+        cbaProducts.profileProduct();
         cbaProducts.credentialsOath();
-//        cbaProducts.editIntegration();
+        cbaProducts.editIntegration();
 //        cbaProducts.editAuthentication();
 //        cbaProducts.runPingTests();
 //        cbaProducts.integrationReport();
