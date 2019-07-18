@@ -8,8 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class CBAMarketplace extends BasePage
-{
+public class CBAMarketplace extends BasePage{
+
+    private static String appName = BaseTest.envConfig.getAppName();
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Verifone Australia Sandbox | Verifone Australia";
 
@@ -29,7 +30,7 @@ public class CBAMarketplace extends BasePage
         super(url, title);
     }
 
-    public void searchForApp (String appName)
+    public void searchForApp ()
     {
         click(marketPlace);
         sendKeys(findApp, appName);

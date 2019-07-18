@@ -13,7 +13,6 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class SubscribeAppTest extends BaseTest {
 
-    private static String appName = "Tab - Free - MultiUser - Hello World";
 
     @Test(testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
@@ -21,12 +20,9 @@ public class SubscribeAppTest extends BaseTest {
         loginCBA(createMerchantUser());
 
         CBAMarketplace market = PageFactory.getCBAMarketplace();
-        market.searchForApp(appName);
+        market.searchForApp();
         market.veryfyListingApps();
         market.buyFreeApp();
-
-//        CBAMyApps myApps = PageFactory.getCBAMyApps();
-//        myApps.verifyMessage();
 
     }
 }
