@@ -30,5 +30,13 @@ public class CBALoginPage extends BasePage
         click(LoginBtn);
     }
 
+    public void whiteLabelingLogin()
+    {
+        testLog.info(getCSSValue(LoginBtn, "color")) ;
+        testLog.info(getCSSValue(LoginBtn, "background-color"));
+        testLog.info(getCSSValue(LoginBtn, "font-family"));
+        testLog.info(getCSSValue(LoginBtn, "font-size"));
+    }
+
 }
 

@@ -13,6 +13,7 @@ public class CBAMyApps extends BasePage
     private final static String url = BaseTest.envConfig.getWebUrl() + "myapps";
     private final static String title = "MyApps | Verifone Australia";
 
+    private static String appName = BaseTest.envConfig.getAppName();
     private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
     private By success =  By.xpath("//*[contains(text(),'successfully')]");
     private By moreInfo =  By.xpath("//a[contains(text(),'More Info')]");
@@ -27,7 +28,7 @@ public class CBAMyApps extends BasePage
         validateTitle();
     }
 
-    public void verifyAppSubcribed(String appName) {
+    public void verifyAppSubcribed() {
 
         appList = getWebElements(titleList, 500, ExpectedConditions.presenceOfElementLocated(titleList));
         int appsNumber = appList.size();
@@ -51,11 +52,12 @@ public class CBAMyApps extends BasePage
         testLog.info(getText(success));
     }
 
-    public void verifyColor()
+    public void whiteLabelingMyApps()
     {
-        WebElement moreInfoBtn = getWebElement(moreInfo, 500, ExpectedConditions.visibilityOfElementLocated(moreInfo));
-        String backgroundColor = moreInfoBtn.getCssValue("background-color");
-        testLog.info(backgroundColor);
+        testLog.info(getCSSValue(moreInfo, "color")) ;
+        testLog.info(getCSSValue(moreInfo, "background-color"));
+        testLog.info(getCSSValue(moreInfo, "font-family"));
+        testLog.info(getCSSValue(moreInfo, "font-size"));
     }
 
 

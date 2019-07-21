@@ -12,13 +12,12 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class VerifyMyAppsTest extends BaseTest
 {
-    private static String appName = "Tab - Free - MultiUser - Hello World";
 
     @Test(testName = "LogIn & verify MyApps", description = "log in to CBA MyApps and verify myApps list")
     public void CBAMyAppsTestUI()
     {
         loginCBA(createMerchantUser());
-        verifyMyAppsCBA(appName);
+        verifyMyAppsCBA();
 
     }
 

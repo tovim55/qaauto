@@ -54,7 +54,6 @@ public abstract class BasePage {
         } catch (TimeoutException e) {
             testLog.error(String.format("Title should be %s, Browser on %S", title, driver.getTitle()));
             Assert.fail(String.format("Title should be %s, Browser on %S", title, driver.getTitle()), e);
-
         }
     }
 
@@ -103,6 +102,13 @@ public abstract class BasePage {
         String text = element.getAttribute("Value");
         testLog.info("User get text: " + text + " from this locator: " + loc.toString());
         return text;
+    }
+
+    protected String getCSSValue(By loc, String value) {
+        WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
+        String cssValue = element.getCssValue(value);
+        testLog.info("User get : "+ value + " " + cssValue + " from this locator: " + loc.toString());
+        return cssValue;
     }
 
     protected String getTextFromTable(By loc) throws InterruptedException {

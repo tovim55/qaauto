@@ -6,7 +6,7 @@
     <!--Set Env Variable: -->
     <!--QA-->
     <!--DEV-->
-    <parameter name="env" value="${environment}"/>
+    <parameter name="env" value="QA"/>
     <parameter name="getVersions" value="${getVersions}"/>
     <parameter name="isLinuxMachine" value="${isLinux}"/>
 
@@ -27,11 +27,11 @@
         <classes>
             <class name="com.verifone.tests.api.tests.PubSubDdtTest"/>
             <class name="com.verifone.tests.cpTests.DCTests"/>
-            <!--<class name="com.verifone.tests.cpTests.DevUploadAppEngage"/>-->
+            <class name="com.verifone.tests.cpTests.DevUploadAppEngage"/>
             <class name="com.verifone.tests.cpTests.LoginTest"/>
-            <!--<class name="com.verifone.tests.cpTests.DevUploadAppAndroid"/>-->
+            <class name="com.verifone.tests.cpTests.DevUploadAppAndroid"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_MerchantSetupPasswordUI"/>
-            <!--<class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>-->
+            <class name="com.verifone.tests.cpTests.SSOBasicFlow_OktaLoginUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_ResetPasswordStatusUI"/>
             <class name="com.verifone.tests.cpTests.SSOBasicFlow_UsersPerPortalsUI"/>
         </classes>
