@@ -41,7 +41,7 @@ public class CBAAccount extends BasePage {
     private List<WebElement> purchasedApps;
 
 
-    public void cancelSubscribsion() throws InterruptedException {
+    public void cancelSubscribsion(String appName) throws InterruptedException {
         click(account);
         click(manageApps);
         sendKeys(mySearch, appName);

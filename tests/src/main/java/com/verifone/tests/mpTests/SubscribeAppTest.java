@@ -13,14 +13,14 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class SubscribeAppTest extends BaseTest {
 
-
+    private static String getAppName;
     @Test(testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
 
         loginCBA(createMerchantUser());
-
+        getAppName = BaseTest.envConfig.getAppName();
         CBAMarketplace market = PageFactory.getCBAMarketplace();
-        market.searchForApp();
+        market.searchForApp(getAppName);
         market.veryfyListingApps();
         market.buyFreeApp();
 

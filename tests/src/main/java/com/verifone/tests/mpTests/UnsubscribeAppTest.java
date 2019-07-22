@@ -12,15 +12,15 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class UnsubscribeAppTest extends BaseTest {
 
-
+    private static String getAppName;
     @Test(testName = "LogIn & unsubscribe an app", description = "log in to CBA account and remove app from apps list")
 
     public void CBAUnsubscribeAppTestUI() throws InterruptedException {
 
         loginCBA(createMerchantUser());
-
+        getAppName = BaseTest.envConfig.getAppName();
         CBAAccount account = PageFactory.getCBAAccount();
-        account.cancelSubscribsion();
+        account.cancelSubscribsion(getAppName);
 
     }
 }
