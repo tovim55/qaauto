@@ -72,7 +72,12 @@ public class ResetPasswordPage extends BasePage {
     public String passwordLabelText() {
 //    	String a = getText(mailLabelLoc);
 //    	System.out.println(a);
-    	return getText(mailLabelLoc);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return getText(mailLabelLoc);
     }
     //--------------------------------------------------------------------------
     /**
