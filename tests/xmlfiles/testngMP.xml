@@ -33,8 +33,9 @@
             <!--<class name="com.verifone.tests.mpTests.PurchaseAppUI"/>-->
             <!--<class name="com.verifone.tests.mpTests.VerifyPackageInVHQ"/>-->
             <!--<class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>-->
-           <!-- <class name="com.verifone.tests.mpTests.AssignAppToUser"/>-->
-            <class name="com.verifone.tests.mpTests.PurchaseOneTimeAppUI"/>
+            <class name="com.verifone.tests.mpTests.AssignAppToUser"/>
+           <!-- <class name="com.verifone.tests.mpTests.PurchaseOneTimeAppUI"/>-->
+            <!--<class name="com.verifone.tests.mpTests.PurchaseFreeAppUI"/>-->
             <!--<class name="com.verifone.tests.mpTests.SubscribeAppTest"/>-->
         </classes>
 

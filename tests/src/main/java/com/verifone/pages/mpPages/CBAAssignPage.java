@@ -24,7 +24,7 @@ public class CBAAssignPage extends BasePage {
     private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
     private By searchAppLoc = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@placeholder='Search']");
     private By btnAppSearch = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@class='adb-icon__search']");
-    private By findAppLoc = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[text()='New Danube']");
+    private By findAppLoc = By.xpath("//*[@class='adb-table adb-table__actionable']//tbody//tr[1]//td[1]//div[2]//h4");
     private By searchUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[@placeholder='Search']");
     private By btnUserSearch = By.xpath("//*[@class='adb-drawers--panel right-col']//*[@class='adb-icon__search']");
     private By findUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[text()='Merchant Automation']");
@@ -88,7 +88,7 @@ public class CBAAssignPage extends BasePage {
         click(findUserLoc);
     }
 
-    public void assignUsersToApps(){
+    public void assignUsersToApps(String getAppName){
 
         ExpectedConditions.presenceOfElementLocated(btnAccount);
         click(btnAccount);

@@ -68,10 +68,6 @@ public class CBAMarketplace extends BasePage {
         click(listing);
         click(tryFree);
         click(goToMyAppsBtn);
-        //waitForLoader(buyNowBtn);
-        //click(buyNowBtn);
-        //click(continueBtn);
-        //click(placeOrderBtn);
     }
 
     /**
@@ -108,15 +104,11 @@ public class CBAMarketplace extends BasePage {
         click(btnManageApp);
 
         /* Assign App to User */
+        ExpectedConditions.visibilityOfElementLocated(btnAssignApp);
         click(btnAssignApp);
 
         ExpectedConditions.visibilityOfElementLocated(appToUsers);
         scrollToElement(appToUsers);
-
-        /* Removed Purchased App */
-       /* click(btnRemoveApp);
-        click(btnYes);*/
-
         Thread.sleep(5000);
     }
 }

@@ -11,11 +11,14 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class PurchaseAppUI extends BaseTest {
 
+    private static String appName = BaseTest.envConfig.getAppName();
+
+
     @Test(priority = 1, testName = "LogIn & subscribe Free app", description = "log in to CBA marketPlace and purchase Free application")
     public void CBASubscribeAppTestUI() throws InterruptedException {
         loginCBA(createMerchantUser());
         CBAMarketplace market = PageFactory.getCBAMarketplace();
-        market.searchForApp();
+        market.searchForApp(appName);
         market.veryfyListingApps();
         market.buyFreeApp();
     }
@@ -25,7 +28,7 @@ public class PurchaseAppUI extends BaseTest {
         loginCBA(createMerchantUser());
 
         CBAAssignPage assignApp = PageFactory.getAssignAppPage();
-        assignApp.assignUsersToApps();
+        assignApp.assignUsersToApps(appName);
         assignApp.userAssignment();
     }
 
@@ -41,7 +44,7 @@ public class PurchaseAppUI extends BaseTest {
         loginCBA(createMerchantUser());
 
         CBAAccount account = PageFactory.getCBAAccount();
-        account.cancelSubscribsion();
+        account.cancelSubscribsion(appName);
     }
 
 

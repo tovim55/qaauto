@@ -12,6 +12,8 @@ import static com.verifone.tests.steps.mpPortal.Steps.*;
 
 public class UnsubscribeAppTest extends BaseTest {
 
+    private static String appName = BaseTest.envConfig.getAppName();
+
 
     @Test(testName = "LogIn & unsubscribe an app", description = "log in to CBA account and remove app from apps list")
 
@@ -20,7 +22,7 @@ public class UnsubscribeAppTest extends BaseTest {
         loginCBA(createMerchantUser());
 
         CBAAccount account = PageFactory.getCBAAccount();
-        account.cancelSubscribsion();
+        account.cancelSubscribsion(appName);
 
     }
 }
