@@ -32,6 +32,9 @@ public class CBAAssignPage extends BasePage {
     private By btnSubmit = By.xpath("//*[@class='js-pager-next adb-pager--item']//*[text()='Submit']");
     private By txtAssignSuccess = By.xpath("//*[text()='1 assignment successfully updated or is in queue.']");
 
+    private By user = By.xpath("//*[@class='sortable renderable']");
+    private By appCheck = By.xpath("//td[@class='checkbox-cell renderable']/input[@type='checkbox']");
+
     public CBAAssignPage()
     {
         super(url, title);
@@ -83,6 +86,17 @@ public class CBAAssignPage extends BasePage {
         click(btnUserSearch);
 
         click(findUserLoc);
+    }
+
+    public void assignUsersToApps(){
+
+        ExpectedConditions.presenceOfElementLocated(btnAccount);
+        click(btnAccount);
+        click(linkAssignApp);
+        click(user);
+        sendKeys(searchUserLoc,getAppName);
+        click(btnUserSearch);
+        click(appCheck);
     }
 
     /**
