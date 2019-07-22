@@ -217,7 +217,8 @@ public class SSOBasicFlow_ResetPasswordStatusUI extends BaseTest {
         }
 //    	Reset Password Page: Compare Password label with expected
         tText = ResetPasswordPage.passwordLabelText();
-        if (!Assertions.compareValue("New password", tText, "Reset Password page: Password field hint:", testLog, driver)){
+        System.out.println("tText: " + tText);
+        if (!Assertions.compareValue("New Password", tText, "Reset Password page: Password field hint:", testLog, driver)){
             TestPassFlag = false;
         }
 //    	Reset Password Page: Compare Confirm Password label with expected

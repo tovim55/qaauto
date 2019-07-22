@@ -25,7 +25,6 @@ public class CBADashboard extends BasePage {
     private By stagingCatalog = By.xpath("//a[@class='adb-link__nav adb-stack--item_content'][@href='#staging-products']");
     private By createProductBtn = By.xpath("//button[contains(text(),'Create Product')][@class='go-to-import-link adb-button__small']");
 
-
     public void manageMarketpace()  {
         click(manage);
         click(marketPlace);

@@ -19,7 +19,7 @@ public class VHQDeviceSearch extends BasePage
         super(url, title);
     }
 
-    private By serialNum = By.linkText("401-686-717");
+    private By serialNum = By.linkText("401-686-709");
     private By download = By.id("Download_HistroytabLi");
     private By divFirstRow = By.id("row0jqxgridDownloadJobProfil");
 

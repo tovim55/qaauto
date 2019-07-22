@@ -14,7 +14,7 @@ public class VHQHomePage extends BasePage
     private final static String title = "" ;
     //private final static String customerName = "AppDirect2";
     private final static String customerName = "TestOrg1_VHQ5";
-    private final static String deviceSN = "401-686-717";
+    private final static String deviceSN = "401-686-709";
 
     public VHQHomePage()
     {
