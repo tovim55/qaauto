@@ -1,16 +1,13 @@
 package com.verifone.pages.mpPages;
 
-import com.verifone.infra.User;
+
 import com.verifone.pages.BasePage;
 import com.verifone.tests.BaseTest;
-import com.verifone.tests.steps.mpPortal.Steps;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static com.verifone.tests.BaseTest.envConfig;
 import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
-import static com.verifone.tests.steps.mpPortal.Steps.createMerchantUser;
+import static com.verifone.utils.Assertions.assertTextContains;
 
 /**
  * This class described all elements and actions can be executed on Account & Assign Apps option.
@@ -27,7 +24,7 @@ public class CBAAssignPage extends BasePage {
     private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
     private By searchAppLoc = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@placeholder='Search']");
     private By btnAppSearch = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@class='adb-icon__search']");
-    private By findAppLoc = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[text()='New Danube']");
+    private By findAppLoc = By.xpath("//*[@class='adb-table adb-table__actionable']//tbody//tr[1]//td[1]//div[2]//h4");
     private By searchUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[@placeholder='Search']");
     private By btnUserSearch = By.xpath("//*[@class='adb-drawers--panel right-col']//*[@class='adb-icon__search']");
     private By findUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[text()='Merchant Automation']");
@@ -48,14 +45,8 @@ public class CBAAssignPage extends BasePage {
      */
 
     public void moveToAssignApps(){
-
-        ExpectedConditions.elementToBeClickable(linkManage);
         click(linkManage);
-
-        ExpectedConditions.elementToBeClickable(btnAccount);
         click(btnAccount);
-
-        ExpectedConditions.elementToBeClickable(linkAssignApp);
         click(linkAssignApp);
     }
 
@@ -67,45 +58,43 @@ public class CBAAssignPage extends BasePage {
 
         /* scroll vertically till the element find and click on Assign App To User button */
         scrollToElement(appToUsers);
-
-        ExpectedConditions.elementToBeClickable(appToUsers);
         click(appToUsers);
-
         scrollToElement(appToUsers);
     }
 
     /**
-     * This method described all actions and elements can be executed on Assign App to Users section.
+     * This method described all actions and elements can be executed to search the app.
      */
 
-    public void assignAppToUser(String appName){
+    public void searchAppToAssign(String getAppName){
 
-        ExpectedConditions.elementToBeClickable(searchAppLoc);
         click(searchAppLoc);
-        sendKeys(searchAppLoc,appName); /* get application name from the properties */
+        sendKeys(searchAppLoc,getAppName); /* get application name from the properties */
         click(btnAppSearch);
 
-
-        ExpectedConditions.presenceOfElementLocated(findAppLoc);
         click(findAppLoc);
+    }
 
-        ExpectedConditions.elementToBeClickable(searchAppLoc);
+    /**
+     * This method described all actions and elements can be executed to search the User.
+     */
+
+    public void searchUserToAssign(){
+
         click(searchUserLoc);
         sendKeys(searchUserLoc,createAssignUser().getUserName()); /* get user from the properties */
         click(btnUserSearch);
 
-        ExpectedConditions.presenceOfElementLocated(findUserLoc);
         click(findUserLoc);
-
     }
 
-    public void assignUsersToApps(String appName){
+    public void assignUsersToApps(String getAppName){
 
         ExpectedConditions.presenceOfElementLocated(btnAccount);
         click(btnAccount);
         click(linkAssignApp);
         click(user);
-        sendKeys(searchUserLoc,appName);
+        sendKeys(searchUserLoc,getAppName);
         click(btnUserSearch);
         click(appCheck);
     }
@@ -115,18 +104,18 @@ public class CBAAssignPage extends BasePage {
      */
 
     public void userAssignment() throws InterruptedException{
-
-        ExpectedConditions.elementToBeClickable(searchAppLoc);
         click(btnNext);
-
-        ExpectedConditions.presenceOfElementLocated(btnSubmit);
         click(btnSubmit);
     }
 
-   /* public void isAssignUpdated(){
+    /**
+     * This method verifies the assignment of app is successfully done or not.
+     */
+    public void isAssignUpdated(){
         String txtResult = getText(txtAssignSuccess);
-        System.out.println("result is :" + txtResult);
-        Assert.assertTrue("Text not found!", txtResult.contains(text));
-    }*/
+        assertTextContains("1 assignment successfully updated or is in queue" , txtResult);
+        testLog.info(txtResult);
+    }
+
 
 }

@@ -5,6 +5,7 @@ import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -42,6 +43,34 @@ public class CBAMyApps extends BasePage
                 testLog.info(appName + " exists in the MyApps list");
                 break;
             }
+        }
+    }
+
+
+    public void verifyPurchasedApp(String oneTimeAppName) {
+
+        appList = getWebElements(titleList, 500, ExpectedConditions.presenceOfElementLocated(titleList));
+        int appsNumber = appList.size();
+
+        for (int i = 0; i < appsNumber; i++) {
+
+            testLog.info(appList.get(i).getText() + " app is subscribed");
+        }
+
+        int isAppExistsFlag = 0; /* this flag check whether the application present in the MyApp list */
+
+        for (WebElement name : appList) {
+            String getText = name.getText();
+            if (getText.equals(oneTimeAppName)) {
+                testLog.info(oneTimeAppName + "exists in the MyApps list");
+                isAppExistsFlag = 1;
+                break;
+            }
+        }
+
+        if(isAppExistsFlag == 0){
+            testLog.error(String.format(oneTimeAppName + "doesn't exists in the MyApp list"));
+            Assert.fail(String.format(oneTimeAppName + "doesn't exists in the MyApp list"));
         }
     }
 

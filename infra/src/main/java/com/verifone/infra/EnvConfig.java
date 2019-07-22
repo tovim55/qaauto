@@ -15,6 +15,8 @@ public class EnvConfig {
     private Properties prop = new Properties();
 
     private String appName;
+    private String oneTimeAppName;
+    private String freeEditionApp;
 
 //    private User user;
 
@@ -55,4 +57,12 @@ public class EnvConfig {
     }
 
     public Credentials getCredentials(){return credentials;}
+
+    public String getOneTimeAppName() {
+        return prop.getProperty(env + "." + "MPPurchaseOneTimeApp");
+    }
+
+    public String getFreeEditionApp() {
+        return prop.getProperty(env + "." + "MPPurchaseFreeEditionApp");
+    }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
 
 import java.util.List;
 
@@ -30,8 +31,10 @@ public class CBAAccount extends BasePage {
     private By search = By.cssSelector("input[class='js-search-input adb-input_row--item_content adb-search_field--input adb-text__small']");
     private By searchBtn = By.xpath("//*[@id=\"appsTable\"]/div/div[1]/div[1]/menu/div[2]/div/div[2]/button");
     private By yesBtn = By.xpath("//button[@class='adb-button__primary buttonResponse']");
+    private By linkManage = By.xpath("//*[text()='Manage']");
 
-    String textSuccess = "Your subscription to " + appName + " was successfully removed.";
+    //String textSuccess = "Your subscription to " + appName + " was successfully removed.";
+    String textSuccess = "Your subscription to was successfully removed.";
 
 
     public CBAAccount() {
@@ -42,6 +45,14 @@ public class CBAAccount extends BasePage {
 
 
     public void cancelSubscribsion(String appName) throws InterruptedException {
+
+        /* Click on Manage menu option only when the user is merchantforautomation@getnada.com */
+        String getUser = createAssignUser().getUserName();
+        if (getUser.equals("merchantforautomation@getnada.com")){
+            System.out.println("click on manage");
+            click(linkManage);
+        }
+
         click(account);
         click(manageApps);
         sendKeys(mySearch, appName);
@@ -54,9 +65,6 @@ public class CBAAccount extends BasePage {
         ExpectedConditions.textToBe(feedBack, textSuccess);
         Thread.sleep(7000);
         testLog.info(getText(feedBack));
-
     }
 
-    }
-
-
+}
