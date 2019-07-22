@@ -147,9 +147,9 @@ public class Steps {
         homePage.clickOnLogInLink();
     }
 
-    public static void verifyMyAppsCBA() {
+    public static void verifyMyAppsCBA(String appName) {
         CBAMyApps myApps = PageFactory.getCBAMyApps();
-        myApps.verifyAppSubcribed();
+        myApps.verifyAppSubcribed(appName);
     }
 
     public static void loginVHQ(User user) {

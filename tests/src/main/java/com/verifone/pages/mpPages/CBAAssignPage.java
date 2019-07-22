@@ -21,8 +21,6 @@ public class CBAAssignPage extends BasePage {
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Dashboard | Verifone Australia";
 
-    private final static String getAppName = BaseTest.envConfig.getAppName();
-
     private By linkManage = By.xpath("//*[text()='Manage']");
     private By btnAccount = By.xpath("//*[@id=\"account\"]");
     private By linkAssignApp = By.xpath("//*[text()='Assign Apps']");
@@ -80,11 +78,11 @@ public class CBAAssignPage extends BasePage {
      * This method described all actions and elements can be executed on Assign App to Users section.
      */
 
-    public void assignAppToUser(){
+    public void assignAppToUser(String appName){
 
         ExpectedConditions.elementToBeClickable(searchAppLoc);
         click(searchAppLoc);
-        sendKeys(searchAppLoc,getAppName); /* get application name from the properties */
+        sendKeys(searchAppLoc,appName); /* get application name from the properties */
         click(btnAppSearch);
 
 
@@ -101,13 +99,13 @@ public class CBAAssignPage extends BasePage {
 
     }
 
-    public void assignUsersToApps(){
+    public void assignUsersToApps(String appName){
 
         ExpectedConditions.presenceOfElementLocated(btnAccount);
         click(btnAccount);
         click(linkAssignApp);
         click(user);
-        sendKeys(searchUserLoc,getAppName);
+        sendKeys(searchUserLoc,appName);
         click(btnUserSearch);
         click(appCheck);
     }

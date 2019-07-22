@@ -13,7 +13,7 @@ import static com.verifone.tests.steps.mpPortal.Steps.loginVHQ;
 
 public class VerifyJobInVHQ extends BaseTest
 {
-    private String appName = "cp_Connect";
+    private String appName = "CM5 OneTime Pay Apps SeaJellyF";
 
     @Test(testName = "LogIn & verify job in VHQ ", description = "log in to VHQ and verify job is created ")
 
