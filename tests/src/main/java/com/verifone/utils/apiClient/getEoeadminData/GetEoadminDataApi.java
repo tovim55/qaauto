@@ -29,6 +29,5 @@ public class GetEoadminDataApi extends BaseApi {
         System.out.println("Eo admin ID  "  + eoAdminId);
         return eoAdminId;
 
-
     }
 }

@@ -61,6 +61,9 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         if (env.contains("DEV")) {
             getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "eoAddUserDev");
         }
+        if (env.contains("STAGING1")) {
+            getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "eoAddUserSTAGING1");
+        }
         Env = "https://" + envConfig.getEnv() + EnvPort;
     }
 
@@ -74,6 +77,9 @@ public class EOPortalAddViewUsers_RegUI extends BaseTest {
         }
         if (env.contains("DEV")) {
             arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "eoAddUserDev");
+        }
+        if (env.contains("STAGING1")) {
+            arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "eoAddUserSTAGING1");
         }
         return arrayObject;
     }
