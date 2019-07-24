@@ -17,9 +17,10 @@ public class EnvConfig {
     private String appName;
     private String oneTimeAppName;
     private String freeEditionApp;
+    private String monthlyRecurringApp;
+    private String yearlyRecurringFreeTrialApp;
 
 //    private User user;
-
 
     public EnvConfig(String env, String portal) throws IOException {
         this.env = env;
@@ -64,5 +65,13 @@ public class EnvConfig {
 
     public String getFreeEditionApp() {
         return prop.getProperty(env + "." + "MPPurchaseFreeEditionApp");
+    }
+
+    public String getMonthlyRecurringApp() {
+        return prop.getProperty(env + "." + "MPMonthlyRecurringApp");
+    }
+
+    public String getYearlyRecurringFreeTrialApp() {
+        return prop.getProperty(env + "." + "MPYearlyRecurringFreeTrialApp");
     }
 }

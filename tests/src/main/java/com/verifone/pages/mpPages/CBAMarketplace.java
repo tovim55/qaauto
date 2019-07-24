@@ -37,6 +37,8 @@ public class CBAMarketplace extends BasePage {
     private By btnAssignApp = By.xpath("//*[@class = 'adb-button adb-button__primary adb-toolbar--item']");
     private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
     private By feedBack = By.xpath("//*[@id='orderReceipt']/child::div/child::p");
+    private By agreeToTermsCheckbox = By.xpath("//*[@id='agreeToTermsCheckbox']");
+
 
 
     private List<WebElement> listingApps;
@@ -93,6 +95,12 @@ public class CBAMarketplace extends BasePage {
         /* Locate the Place Order button and click on it. */
         element.until(ExpectedConditions.visibilityOfElementLocated(placeOrderBtn));
         scrollToElement(placeOrderBtn);
+
+        /* Select checkbox if present to accept the terms */
+        listingApps = driver.findElements(agreeToTermsCheckbox);
+        if(listingApps.size() != 0)
+            click(agreeToTermsCheckbox);
+
         click(placeOrderBtn);
 
         //ExpectedConditions.visibilityOfElementLocated(feedBack);
@@ -107,6 +115,7 @@ public class CBAMarketplace extends BasePage {
         ExpectedConditions.visibilityOfElementLocated(btnAssignApp);
         click(btnAssignApp);
 
+        Thread.sleep(1000);
         ExpectedConditions.visibilityOfElementLocated(appToUsers);
         scrollToElement(appToUsers);
         Thread.sleep(5000);

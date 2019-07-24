@@ -15,6 +15,7 @@ public class CBAMyApps extends BasePage
     private final static String title = "MyApps | Verifone Australia";
 
     private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
+    private By isUpgrade = By.xpath("//*[@class='js-name-region adb-myapp--content']/child::span/child::i");
     private By success =  By.xpath("//*[contains(text(),'successfully')]");
     private By moreInfo =  By.xpath("//a[contains(text(),'More Info')]");
 
@@ -47,7 +48,7 @@ public class CBAMyApps extends BasePage
     }
 
 
-    public void verifyPurchasedApp(String oneTimeAppName) {
+    public void verifyPurchasedApp(String purchasedAppName) {
 
         appList = getWebElements(titleList, 500, ExpectedConditions.presenceOfElementLocated(titleList));
         int appsNumber = appList.size();
@@ -61,16 +62,17 @@ public class CBAMyApps extends BasePage
 
         for (WebElement name : appList) {
             String getText = name.getText();
-            if (getText.equals(oneTimeAppName)) {
-                testLog.info(oneTimeAppName + "exists in the MyApps list");
+
+             if (getText.contains(purchasedAppName)) {
+                testLog.info(purchasedAppName + "exists in the MyApps list");
                 isAppExistsFlag = 1;
                 break;
             }
         }
 
         if(isAppExistsFlag == 0){
-            testLog.error(String.format(oneTimeAppName + "doesn't exists in the MyApp list"));
-            Assert.fail(String.format(oneTimeAppName + "doesn't exists in the MyApp list"));
+            testLog.error(String.format(purchasedAppName + "doesn't exists in the MyApp list"));
+            Assert.fail(String.format(purchasedAppName + "doesn't exists in the MyApp list"));
         }
     }
 

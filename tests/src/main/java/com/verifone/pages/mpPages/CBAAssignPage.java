@@ -57,6 +57,7 @@ public class CBAAssignPage extends BasePage {
     public void btnSelectAssignAppsToUser()throws InterruptedException{
 
         /* scroll vertically till the element find and click on Assign App To User button */
+        ExpectedConditions.visibilityOfElementLocated(appToUsers);
         scrollToElement(appToUsers);
         click(appToUsers);
         scrollToElement(appToUsers);
