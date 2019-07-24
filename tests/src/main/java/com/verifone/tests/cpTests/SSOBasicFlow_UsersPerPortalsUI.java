@@ -63,6 +63,9 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		if (env.contains("DEV")) {
 			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesDEV");
 		}
+		if (env.contains("STAGING1")) {
+			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesSTAGING1");
+		}
     }
 
 //  Data Provider
@@ -75,6 +78,9 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		}
 		if (env.contains("DEV")) {
 			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesDEV");
+		}
+		if (env.contains("STAGING1")) {
+			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesSTAGING1");
 		}
 		return arrayObject;
     }
@@ -284,6 +290,10 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		if (env.contains("DEV")) {
 			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesDEV");
 		}
+//		if (env.contains("STAGING1")) {
+//			return;
+//
+//		}
 	}
 
 //  Data Provider
@@ -297,11 +307,13 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		if (env.contains("DEV")) {
 			arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "loginRolesDEV");
 		}
+
 		return arrayObject;
 	}
 
-	@Test(enabled = true, priority = 2, testName = "EO Support Portal Login", description = "EO Support Portal Login with different roles",dataProvider = "loginSupportRoles", groups = {"SSOBasic"}, alwaysRun = true)
+	@Test(enabled = false, priority = 2, testName = "EO Support Portal Login", description = "EO Support Portal Login with different roles",dataProvider = "loginSupportRoles", groups = {"SSOBasic"}, alwaysRun = true)
 	public void loginEOSupportPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
+
 		WebDriver driver = new HomePage().getDriver();
     	TestPassFlag = true;
 //        starTestLog("Merchant Reset Password Test", "Merchant Reset Password Test");
@@ -459,6 +471,11 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		if (env.contains("DEV")) {
 			getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "loginRolesDEV");
 		}
+//		env = envConfig.getEnv();
+//		if (env.contains("STAGING1")) {
+//			return;
+//
+//		}
     }
 
 //  Data Provider
@@ -475,7 +492,7 @@ public class SSOBasicFlow_UsersPerPortalsUI extends BaseTest {
 		return arrayObject;
     }
 
-    @Test(enabled = true, priority = 3, testName = "Developer Portal Login", description = "Developer Portal Login with different roles", dataProvider = "loginDeveloperRoles", groups = {"SSOBasic"}, alwaysRun = true)
+    @Test(enabled = false, priority = 3, testName = "Developer Portal Login", description = "Developer Portal Login with different roles", dataProvider = "loginDeveloperRoles", groups = {"SSOBasic"}, alwaysRun = true)
     public void loginDeveloperPortalUI(String Role, String Mail, String Pwd, String Descript) throws Exception {
 		WebDriver driver = new HomePage().getDriver();
     	TestPassFlag = true;

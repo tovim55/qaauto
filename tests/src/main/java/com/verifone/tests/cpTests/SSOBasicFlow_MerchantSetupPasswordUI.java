@@ -74,6 +74,9 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         if (env.contains("DEV")) {
             getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "merchantSetupPasswordDEV");
         }
+        if (env.contains("STAGING1")) {
+            getRowNumFromFile = DataDrivenUtils.getRowNumberExcelData(xlsxFile, "merchantSetupPasswordSTAGING1");
+        }
     }
 
 //	      Data Provider
@@ -86,6 +89,9 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         }
         if (env.contains("DEV")) {
             arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "merchantSetupPasswordDEV");
+        }
+        if (env.contains("STAGING1")) {
+            arrayObject = DataDrivenUtils.getExcelData(xlsxFile, "merchantSetupPasswordSTAGING1");
         }
         return arrayObject;
     }
@@ -111,6 +117,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         String accessToken = getTokenApi.getToken(user);
         GetEoadminDataApi getEoadminDataApi = new GetEoadminDataApi(accessToken, "testId");
         mId = new CreateMerchant(accessToken, "testId").createMerchant(getEoadminDataApi.getData());
+//        mId = new CreateMerchant(accessToken, "testId12").createMerchant("7e77011e-b31b-47ee-8607-aa0f8db3d125");
         System.out.println("MID: " + mId);
 
 //      Navigate to Getnada
