@@ -37,8 +37,9 @@
             <!--<class name="com.verifone.tests.mpTests.AssignAppToUser"/>-->
             <!--<class name="com.verifone.tests.mpTests.PurchaseOneTimeAppUI"/>-->
             <!--<class name="com.verifone.tests.mpTests.PurchaseFreeAppUI"/>-->
-            <class name="com.verifone.tests.mpTests.PurchaseMonthlyRecurringAppUI"/>
-           <!--<class name="com.verifone.tests.mpTests.PurchaseYearlyRecurringFreeTrialAppUI"/>-->
+            <!--<class name="com.verifone.tests.mpTests.PurchaseMonthlyRecurringAppUI"/>-->
+           <class name="com.verifone.tests.mpTests.PurchaseYearlyRecurringAppUI"/>
+            <!--<class name="com.verifone.tests.mpTests.PurchaseOneTimeFreeTrialAppUI"/>-->
         </classes>
 
     </test>
