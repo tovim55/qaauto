@@ -20,6 +20,7 @@ public class EnvConfig {
     private String monthlyRecurringApp;
     private String yearlyRecurringApp;
     private String oneTimePayFreeTrialApp;
+    private String monthlyRecurringFreeTrialApp;
 
 //    private User user;
 
@@ -78,5 +79,9 @@ public class EnvConfig {
 
     public String getOneTimePayFreeTrialApp() {
         return prop.getProperty(env + "." + "MPPurchaseOneTimePayFreeTrialApp");
+    }
+
+    public String getMonthlyRecurringFreeTrialApp() {
+        return prop.getProperty(env + "." + "MPMonthlyRecurringFreeTrialApp");
     }
 }

@@ -31,8 +31,8 @@ public class PurchaseMonthlyRecurringAppUI extends BaseTest {
         market.veryfyListingApps();
     }
 
-    @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) Merchant Recurring Pay App")
-    public void CBAPurchaseOneTimePayAppUI() throws Exception {
+    @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) Monthly Recurring Pay App")
+    public void CBAPurchaseMonthlyRecurringAppTestUI() throws Exception {
         loginCBA(createAssignUser());
 
         /*Search & Purchase app from the marketplace*/
@@ -48,7 +48,7 @@ public class PurchaseMonthlyRecurringAppUI extends BaseTest {
     }
 
     @Test(priority = 3, testName = "LogIn & Verify purchased (subscribed) app", description = "Log in to CBA Marketplace and verify purchased Monthly Recurring Pay App in the My Apps")
-    public void CBAVerifyOneTimePayAppTestUI() {
+    public void CBAVerifyMonthlyRecurringAppTestUI() {
         loginCBA(createAssignUser());
 
         /*Verify the purchased app is present in the My App*/
@@ -57,7 +57,7 @@ public class PurchaseMonthlyRecurringAppUI extends BaseTest {
     }
 
     @Test(priority = 4, testName = "LogIn & Unsubscribe an App", description = "Log in to CBA account and remove Monthly Recurring Pay app from apps list")
-    public void CBAUnsubscribeAppTestUI() throws InterruptedException {
+    public void CBAUnsubscribeMonthlyRecurringAppTestUI() throws InterruptedException {
 
         loginCBA(createAssignUser());
 
