@@ -105,7 +105,6 @@ public class CBAMarketplace extends BasePage {
 
         //ExpectedConditions.visibilityOfElementLocated(feedBack);
         testLog.info(getText(feedBack));
-
         /* Locate the Manage App button and click on it. */
         element.until(ExpectedConditions.visibilityOfElementLocated(btnManageApp));
         scrollToElement(btnManageApp);
@@ -115,8 +114,7 @@ public class CBAMarketplace extends BasePage {
         ExpectedConditions.visibilityOfElementLocated(btnAssignApp);
         click(btnAssignApp);
 
-        Thread.sleep(1000);
-        ExpectedConditions.visibilityOfElementLocated(appToUsers);
+        element.until(ExpectedConditions.visibilityOfElementLocated(appToUsers));
         scrollToElement(appToUsers);
         Thread.sleep(5000);
     }
