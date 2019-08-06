@@ -21,7 +21,7 @@ public class PurchaseOneTimeFreeTrialAppUI extends BaseTest {
     private static String getOneTimePayFreeTrialApp;
 
     @Test(priority = 1,testName = "Log In & Search One Time Pay Free Trial App", description = "Login in to CBA Marketplace & search One Time Pay Free Trial App.")
-    public void CBASearchOneTimePayFreeTrialAppTestUI(){
+    public void CBASearchOneTimePayFreeTrialAppTestUI() throws InterruptedException{
 
         /*Login in to CBA Marketplace*/
         loginCBA(createAssignUser());
@@ -32,6 +32,7 @@ public class PurchaseOneTimeFreeTrialAppUI extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(getOneTimePayFreeTrialApp);
         market.veryfyListingApps();
+        market.isAppPurchased(getOneTimePayFreeTrialApp);
     }
 
     @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) One Time Pay Free Trial App")

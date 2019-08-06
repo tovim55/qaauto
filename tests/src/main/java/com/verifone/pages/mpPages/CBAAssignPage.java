@@ -2,9 +2,14 @@ package com.verifone.pages.mpPages;
 
 
 import com.verifone.pages.BasePage;
+import com.verifone.pages.PageFactory;
 import com.verifone.tests.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
+import java.util.List;
 
 import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
 import static com.verifone.utils.Assertions.assertTextContains;
@@ -31,12 +36,16 @@ public class CBAAssignPage extends BasePage {
     private By btnNext = By.xpath("//*[@type='button']//*[@class='adb-icon__arrow_right']");
     private By btnSubmit = By.xpath("//*[@class='js-pager-next adb-pager--item']//*[text()='Submit']");
     private By txtAssignSuccess = By.xpath("//*[text()='1 assignment successfully updated or is in queue.']");
+    private By linkMyApps = By.xpath("//a[@id = 'myapps']]");
+    private By titleList = By.xpath("//h4[@class='adb-summary--title']");
 
     private By user = By.xpath("//*[@class='sortable renderable']");
     private By appCheck = By.xpath("//td[@class='checkbox-cell renderable']/input[@type='checkbox']");
+    private By selectApp = By.xpath("//*[@class='adb-summary--title']");
+    private By linkApplication = By.xpath("//ul[@class='adb-secondary_nav--items']//li[3]//a");
+    private By browseMarketPlace = By.xpath("//a[@class='adb-button adb-button__primary']");
 
-    public CBAAssignPage()
-    {
+    public CBAAssignPage() {
         super(url, title);
     }
 
@@ -44,7 +53,7 @@ public class CBAAssignPage extends BasePage {
      * This method described all actions can be executed on Account Page.
      */
 
-    public void moveToAssignApps(){
+    public void moveToAssignApps() {
         click(linkManage);
         click(btnAccount);
         click(linkAssignApp);
@@ -54,9 +63,10 @@ public class CBAAssignPage extends BasePage {
      * This method described all actions to select Assign App to Users option.
      */
 
-    public void btnSelectAssignAppsToUser()throws InterruptedException{
+    public void btnSelectAssignAppsToUser() throws InterruptedException {
 
         /* scroll vertically till the element find and click on Assign App To User button */
+        waitForLoader(appToUsers);
         ExpectedConditions.visibilityOfElementLocated(appToUsers);
         scrollToElement(appToUsers);
         click(appToUsers);
@@ -67,10 +77,10 @@ public class CBAAssignPage extends BasePage {
      * This method described all actions and elements can be executed to search the app.
      */
 
-    public void searchAppToAssign(String getAppName){
+    public void searchAppToAssign(String getAppName) {
 
         click(searchAppLoc);
-        sendKeys(searchAppLoc,getAppName); /* get application name from the properties */
+        sendKeys(searchAppLoc, getAppName); /* get application name from the properties */
         click(btnAppSearch);
 
         click(findAppLoc);
@@ -80,22 +90,22 @@ public class CBAAssignPage extends BasePage {
      * This method described all actions and elements can be executed to search the User.
      */
 
-    public void searchUserToAssign(){
+    public void searchUserToAssign() {
 
         click(searchUserLoc);
-        sendKeys(searchUserLoc,createAssignUser().getUserName()); /* get user from the properties */
+        sendKeys(searchUserLoc, createAssignUser().getUserName()); /* get user from the properties */
         click(btnUserSearch);
 
         click(findUserLoc);
     }
 
-    public void assignUsersToApps(String getAppName){
+    public void assignUsersToApps(String getAppName) {
 
         ExpectedConditions.presenceOfElementLocated(btnAccount);
         click(btnAccount);
         click(linkAssignApp);
         click(user);
-        sendKeys(searchUserLoc,getAppName);
+        sendKeys(searchUserLoc, getAppName);
         click(btnUserSearch);
         click(appCheck);
     }
@@ -104,7 +114,7 @@ public class CBAAssignPage extends BasePage {
      * This method described user assignments, confirmation & submission.
      */
 
-    public void userAssignment() throws InterruptedException{
+    public void userAssignment() throws InterruptedException {
         click(btnNext);
         click(btnSubmit);
     }
@@ -112,11 +122,43 @@ public class CBAAssignPage extends BasePage {
     /**
      * This method verifies the assignment of app is successfully done or not.
      */
-    public void isAssignUpdated(){
+    public void isAssignUpdated() {
         String txtResult = getText(txtAssignSuccess);
-        assertTextContains("1 assignment successfully updated or is in queue" , txtResult);
+        assertTextContains("1 assignment successfully updated or is in queue", txtResult);
         testLog.info(txtResult);
     }
 
+    /**
+     * @Method : This method verifies whether the application is purchased or not. If the
+     * application is not purchased then it will goes to market place and buy it.
+     */
+
+    public void getAppToAssignUser(String appName) throws Exception {
+
+        moveToAssignApps();
+        btnSelectAssignAppsToUser();
+        click(searchAppLoc);
+        sendKeys(searchAppLoc, appName);
+        click(btnAppSearch);
+
+        Thread.sleep(2000);
+
+        List<WebElement> appList ;
+        appList = driver.findElements(titleList);
+        System.out.println("list of app :" + appList.size());
+
+        if(appList.size() != 0){
+            testLog.info(appName + " exists in the MyApps list");
+        }else {
+
+            testLog.info(String.format(appName + " doesn't exists in the MyApp list"));
+            click(browseMarketPlace);
+
+            CBAMarketplace market = PageFactory.getCBAMarketplace();
+            market.searchForApp(appName);
+            market.buyFreeApp();
+        }
+
+    }
 
 }

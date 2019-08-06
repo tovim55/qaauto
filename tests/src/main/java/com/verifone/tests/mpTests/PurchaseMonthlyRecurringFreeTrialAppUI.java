@@ -20,7 +20,7 @@ public class PurchaseMonthlyRecurringFreeTrialAppUI extends BaseTest {
     private static String getMonthlyRecurringFreeTrialApp;
 
     @Test(priority = 1,testName = "LogIn & Search Monthly Recurring Free Trial App",description = "Login in to CBA Marketplace & search Monthly Recurring Free Trial App.")
-    public void CBASearchMonthlyRecurringFreeTrialAppTestUI(){
+    public void CBASearchMonthlyRecurringFreeTrialAppTestUI() throws InterruptedException{
         /* Login into CBA MarketPlace*/
         loginCBA(createAssignUser());
 
@@ -30,6 +30,7 @@ public class PurchaseMonthlyRecurringFreeTrialAppUI extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(getMonthlyRecurringFreeTrialApp);
         market.veryfyListingApps();
+        market.isAppPurchased(getMonthlyRecurringFreeTrialApp);
     }
 
     @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) Monthly Recurring Free Trial App.")
