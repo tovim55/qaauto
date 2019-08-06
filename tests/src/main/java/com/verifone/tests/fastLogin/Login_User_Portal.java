@@ -61,7 +61,7 @@ import static com.verifone.pages.BasePage.testLog;
                         url = "https://developer.verifone.com/home";
                         break;
                     case "AppDirectPortal":
-                        url = "https://testverifone.appdirect.com/login";
+                        url = "https://verifoneausandbox.byappdirect.com/login";
                         break;
                 }
                 break;
