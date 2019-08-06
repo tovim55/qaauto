@@ -31,6 +31,7 @@ public class PurchaseOneTimeAppUI extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(oneTimeAppName);
         market.veryfyListingApps();
+        market.isAppPurchased(oneTimeAppName);
     }
 
     @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) One Time Pay App")

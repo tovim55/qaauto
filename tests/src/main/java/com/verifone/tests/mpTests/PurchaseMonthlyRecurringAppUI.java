@@ -18,7 +18,7 @@ public class PurchaseMonthlyRecurringAppUI extends BaseTest {
     private static String mothlyRecurringApp;
 
     @Test(priority = 1,testName = "Log In & Search Merchant Recurring App",description = "Login in to CBA Marketplace & search Monthly Recurring App.")
-    public void CBASearchMonthlyRecurringAppTestUI(){
+    public void CBASearchMonthlyRecurringAppTestUI() throws InterruptedException{
 
         /* Login in to CBA Marketplace*/
         loginCBA(createAssignUser());
@@ -29,6 +29,7 @@ public class PurchaseMonthlyRecurringAppUI extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(mothlyRecurringApp);
         market.veryfyListingApps();
+        market.isAppPurchased(mothlyRecurringApp);
     }
 
     @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) Monthly Recurring Pay App")

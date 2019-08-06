@@ -13,7 +13,8 @@ import java.util.List;
 public class CBAMyApps extends BasePage
 {
     private final static String url = BaseTest.envConfig.getWebUrl() + "myapps";
-    private final static String title = "MyApps | Verifone Australia";
+    //private final static String title = "MyApps | Verifone Australia";
+    private final static String title = "MyApps | CBA";
 
     private By titleList = By.cssSelector("p[class='js-name-region adb-myapp--content']");
     private By isUpgrade = By.xpath("//*[@class='js-name-region adb-myapp--content']/child::span/child::i");

@@ -33,6 +33,7 @@ public class PurchaseFreeAppUI extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(freeEditionApp);
         market.veryfyListingApps();
+        market.isAppPurchased(freeEditionApp);
     }
 
     @Test(priority = 2, testName = "LogIn & Purchase (subscribe) an app", description = "Log in to CBA Marketplace and Purchase (subscribe) Free Edition App")
