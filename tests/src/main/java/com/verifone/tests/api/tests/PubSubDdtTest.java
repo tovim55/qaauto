@@ -21,7 +21,6 @@ public class PubSubDdtTest extends BaseTest {
     private static String dataFile = java.nio.file.Paths.get(System.getProperty("user.dir"),
             "src", "test", "resources").toString();
 
-
     @BeforeSuite
     private void setFile() {
         if (BaseTest.envConfig.getEnv().equalsIgnoreCase("QA")) {
@@ -32,7 +31,6 @@ public class PubSubDdtTest extends BaseTest {
         System.out.println(dataFile);
         }
     }
-
 
     @DataProvider(name = "CreateMerchant")
     public Object[][] CreateMerchant() throws Exception {
@@ -57,7 +55,6 @@ public class PubSubDdtTest extends BaseTest {
         Object[][] arrayObject = DataDrivenUtils.getExcelData(dataFile, "EOAdminData");
         return arrayObject;
     }
-
 
     @DataProvider(name = "getAgreement")
     public Object[][] getAgreementData() throws Exception {
@@ -105,7 +102,6 @@ public class PubSubDdtTest extends BaseTest {
                 expectedStatusCode, expectedResult, verifyList);
     }
 
-
     @Test(dataProvider = "UpdatePass")
     public void updatePassDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
                               String headers, String headersForGetToken, String body, String parentOrgID, String expectedStatusCode,
@@ -123,8 +119,6 @@ public class PubSubDdtTest extends BaseTest {
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
-
-
 
 //    @Test(dataProvider = "getAgreement")
 //    public void getAgreementDDT(String accessToken, String accGrantType, String accSSOURL, String uri, String requestMethod,
