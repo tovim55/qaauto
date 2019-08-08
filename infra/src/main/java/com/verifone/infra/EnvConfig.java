@@ -22,6 +22,7 @@ public class EnvConfig {
     private String oneTimePayFreeTrialApp;
     private String monthlyRecurringFreeTrialApp;
     private String yearlyRecurringFreeTrialApp;
+    private String cmFiveDeviceSerialNo01;
 
 //    private User user;
 
@@ -88,5 +89,9 @@ public class EnvConfig {
 
     public String getYearlyRecurringFreeTrialApp() {
         return prop.getProperty(env + "." + "MPYearlyRecurringFreeTrialApp");
+    }
+
+    public String getCmFiveDeviceSerialNo01() {
+        return prop.getProperty(env + "." + "CMFiveDeviceSerialNo01");
     }
 }
