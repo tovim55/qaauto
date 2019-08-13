@@ -1,4 +1,4 @@
-package com.verifone.tests.api.tests.MOM_API;
+package com.verifone.tests.api.tests.restAssured;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;

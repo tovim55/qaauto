@@ -29,7 +29,6 @@ public class GetToken {
         System.out.println(response.getBody().asString());
 
         JsonPath jp = response.jsonPath();
-
         return jp.get("access_token");
     }
 }

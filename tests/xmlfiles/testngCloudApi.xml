@@ -26,12 +26,13 @@
         <parameter name="browserType" value="${browser}"/>
 
         <classes>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.EmployeeApiDdt"/>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.LocationApiDdt"/>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>
-            <class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>
+            <class name="com.verifone.tests.api.tests.CBAApiDdt"/>
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.ShiftApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.EmployeeApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.LocationApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerApiDdt"/>-->
+            <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.CustomerAttributeApiDdt"/>-->
         </classes>
 
     </test>

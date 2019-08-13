@@ -23,8 +23,7 @@ public class BaseDDTApi {
     public static ExtentTest testLog;
 
 
-    public static JsonObject getRequestWithHeaders(String url, String method, String body,
-                                                   HashMap<String, String> headers, int expectedCode) throws IOException {
+    public static JsonObject getRequestWithHeaders(String url, String method, String body, HashMap<String, String> headers, int expectedCode) throws IOException {
         HttpClient client = getNewHttpClient();
         HttpRequestBase request = getRequest(url, method, body);
         headers.forEach(request::addHeader);
