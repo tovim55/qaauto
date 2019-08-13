@@ -43,5 +43,4 @@ public class ShiftApiDdt extends BaseTest {
         api.startProsess(accessToken, accGrantType, accSSOURL, uri, requestMethod, headers, headersForGetToken, body,
                 expectedStatusCode, expectedResult, verifyList);
     }
-
 }
