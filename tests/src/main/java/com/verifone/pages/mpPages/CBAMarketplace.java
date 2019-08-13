@@ -29,14 +29,16 @@ public class CBAMarketplace extends BasePage {
     //private By btnPlaceOrder = By.xpath("//*[@id='placeOrder']//*[text()='Place Order']");
     //private By btnBuyNow = By.xpath("//*[@type='button'] //*[text()='Buy Now']");
     //private By txtAppAlreadyPurchase = By.xpath("//*[@class = 'adb-caption adb-profile_header--caption js-header-caption js-scroll-hide']");
-    //private By btnManage = By.xpath("//*[text()='Manage App']");
-    //private By btnRemoveApp = By.xpath("//*[@id = 'cancel']");
-    //private By btnYes = By.xpath("//*[@id = 'posLabel']");
+    private By btnManage = By.xpath("//button[@class='adb-button adb-toolbar--item adb-button__neutral adb-button__large'][1]");
+    private By btnRemoveApp = By.xpath("//*[@id = 'cancel']");
+    private By btnYes = By.xpath("//*[@id = 'posLabel']");
+    private By txtManageApp = By.xpath("//p[@class='adb-caption adb-profile_header--caption js-header-caption js-scroll-hide']");
 
     private By btnManageApp = By.xpath("//*[@id='return']");
     private By btnAssignApp = By.xpath("//*[@class = 'adb-button adb-button__primary adb-toolbar--item']");
     private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
     private By feedBack = By.xpath("//*[@id='orderReceipt']/child::div/child::p");
+    private By agreeToTermsCheckbox = By.xpath("//*[@id='agreeToTermsCheckbox']");
 
 
     private List<WebElement> listingApps;
@@ -71,7 +73,35 @@ public class CBAMarketplace extends BasePage {
     }
 
     /**
+     * Method : This method described the application is already purchased or not
+     *
+     * @author: Prashant Lokhande
+     */
+
+    public void isAppPurchased(String appName) throws InterruptedException {
+        click(listing);
+        Thread.sleep(2000);
+
+        ExpectedConditions.elementToBeClickable(btnManage);
+        listingApps = driver.findElements(btnManage);
+        System.out.println("size of apps :" + listingApps);
+        if (listingApps.size() != 0) {
+            testLog.info(appName + " : " + getText(txtManageApp));
+            click(btnManage);
+
+            ExpectedConditions.visibilityOfElementLocated(btnManage);
+            click(btnRemoveApp);
+
+            ExpectedConditions.visibilityOfElementLocated(btnManage);
+            click(btnYes);
+        } else {
+            testLog.info(appName + " : " + "Your company doesn't purchase this application yet.");
+        }
+    }
+
+    /**
      * Method : This method described all the actions and elements to buy the One Time Pay App
+     *
      * @author: Prashant Lokhande
      */
 
@@ -93,11 +123,16 @@ public class CBAMarketplace extends BasePage {
         /* Locate the Place Order button and click on it. */
         element.until(ExpectedConditions.visibilityOfElementLocated(placeOrderBtn));
         scrollToElement(placeOrderBtn);
+
+        /* Select checkbox if present to accept the terms */
+        listingApps = driver.findElements(agreeToTermsCheckbox);
+        if (listingApps.size() != 0)
+            click(agreeToTermsCheckbox);
+
         click(placeOrderBtn);
 
         //ExpectedConditions.visibilityOfElementLocated(feedBack);
         testLog.info(getText(feedBack));
-
         /* Locate the Manage App button and click on it. */
         element.until(ExpectedConditions.visibilityOfElementLocated(btnManageApp));
         scrollToElement(btnManageApp);
@@ -107,7 +142,7 @@ public class CBAMarketplace extends BasePage {
         ExpectedConditions.visibilityOfElementLocated(btnAssignApp);
         click(btnAssignApp);
 
-        ExpectedConditions.visibilityOfElementLocated(appToUsers);
+        element.until(ExpectedConditions.visibilityOfElementLocated(appToUsers));
         scrollToElement(appToUsers);
         Thread.sleep(5000);
     }
