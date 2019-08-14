@@ -1,31 +1,35 @@
 package com.verifone.pages.vhqPages;
 
 import com.verifone.pages.BasePage;
+import org.apache.bcel.generic.I2F;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-public class VHQHomePage extends BasePage
-{
+import static com.verifone.utils.Assertions.assertTextContains;
+
+public class VHQHomePage extends BasePage {
     //private final static String url = "https://vhqtest.verifone.com/";
     private final static String url = "https://qa.mumbai.verifonehq.net";
-    private final static String title = "" ;
+    private final static String title = "";
     //private final static String customerName = "AppDirect2";
     private final static String customerName = "TestOrg1_VHQ5";
-    private final static String deviceSN = "401-686-709";
+    //private final static String deviceSN = "401-686-709";
 
-    public VHQHomePage()
-    {
+    public VHQHomePage() {
         super(url, title);
         navigate();
     }
 
     /////Device Management/////
-    private By customer =  By.xpath("//p[@data-blind='text:customerFullName']");
+    private By customer = By.xpath("//p[@data-blind='text:customerFullName']");
     private By devManag = By.xpath("//*[@id='device']");
-    private By managDownl= By.xpath("//*[@id=\"downloads\"]");
+    private By managDownl = By.xpath("//*[@id=\"downloads\"]");
     private By downlLib = By.xpath("//*[@id=\"downloadLibrarysublink\"]");
     private By ShowHide = By.id("btnShowHide");
 
@@ -38,8 +42,17 @@ public class VHQHomePage extends BasePage
     private By btnAdd = By.xpath("//a[@id='btnAddAttr']");
     private By btnApplyFilter = By.xpath("//button[@id='btnApplyFilter']");
 
-    public void verifyCustomer()
-    {
+    private By linkSerialNumber = By.xpath("//*[@id='row0Devicejqxgrid']/child::div[2]//div[1]");
+    private By btnDownload = By.xpath("//li[@id='Download_HistroytabLi']");
+    private By txtPackages = By.xpath("//div[@id='row0jqxgridDownloadJobProfil']");
+    private By btnRefresh = By.xpath("//*[@id='btnRefresh']");
+    private By btnReset = By.xpath("//a[@id='btnRestFilter']");
+    private By loadingDiv = By.xpath("//div[@id='loadingDiv']");
+
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy ");
+    private String currentDate = dateFormat.format(new Date());
+
+    public void verifyCustomer() {
         ExpectedConditions.textToBe(customer, customerName);
         testLog.info("Customer name is " + getText(customer));
     }
@@ -54,21 +67,36 @@ public class VHQHomePage extends BasePage
         waitForLoader(ShowHide);
     }
 
-    public void deviceSearch() throws InterruptedException {
+    public void deviceSearch(String deviceSN) throws InterruptedException {
+        //Thread.sleep(10000);
+        waitForLoader(devSearch);
         ExpectedConditions.elementToBeClickable(devSearch);
         click(devSearch);
         //hoverAndClickOnElement(selectAttributes);
         select(selectDeviceAttribute, "SerialNumber");
+
+        ExpectedConditions.visibilityOfElementLocated(selectAttributeName);
         select(selectAttributeName, "27");
+
+        ExpectedConditions.visibilityOfElementLocated(contralValue);
         sendKeys(contralValue, deviceSN);
         click(btnAdd);
         ExpectedConditions.elementToBeClickable(btnApplyFilter);
         click(btnApplyFilter);
-
-
     }
 
+    public void deviceProfile(String packageName,String appStatus) throws InterruptedException {
+        ExpectedConditions.elementToBeClickable(linkSerialNumber);
+        click(linkSerialNumber);
 
+        ExpectedConditions.elementToBeClickable(btnDownload);
+        click(btnDownload);
+        Thread.sleep(2000);
 
-
+        WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
+        testLog.info(firstRow.getText());
+        assertTextContains(packageName, firstRow.getText());
+        assertTextContains(currentDate, firstRow.getText());
+        assertTextContains(appStatus,firstRow.getText());
+    }
 }

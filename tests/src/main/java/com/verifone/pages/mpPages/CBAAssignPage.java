@@ -22,6 +22,7 @@ public class CBAAssignPage extends BasePage {
 
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Dashboard | Verifone Australia";
+    private static String deviceUserName =BaseTest.envConfig.getDeviceUserName();
 
     private By linkManage = By.xpath("//*[text()='Manage']");
     private By btnAccount = By.xpath("//*[@id=\"account\"]");
@@ -32,7 +33,8 @@ public class CBAAssignPage extends BasePage {
     private By findAppLoc = By.xpath("//*[@class='adb-table adb-table__actionable']//tbody//tr[1]//td[1]//div[2]//h4");
     private By searchUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[@placeholder='Search']");
     private By btnUserSearch = By.xpath("//*[@class='adb-drawers--panel right-col']//*[@class='adb-icon__search']");
-    private By findUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[text()='Merchant Automation']");
+    //private By findUserLoc = By.xpath("//*[@class='adb-drawers--panel right-col']//*[text()='Merchant Automation']");
+    private By findUserLoc = By.xpath("//div[@class='js-right-panel']//table//tbody//tr[1]");
     private By btnNext = By.xpath("//*[@type='button']//*[@class='adb-icon__arrow_right']");
     private By btnSubmit = By.xpath("//*[@class='js-pager-next adb-pager--item']//*[text()='Submit']");
     private By txtAssignSuccess = By.xpath("//*[text()='1 assignment successfully updated or is in queue.']");
@@ -93,7 +95,8 @@ public class CBAAssignPage extends BasePage {
     public void searchUserToAssign() {
 
         click(searchUserLoc);
-        sendKeys(searchUserLoc, createAssignUser().getUserName()); /* get user from the properties */
+        //sendKeys(searchUserLoc, createAssignUser().getUserName()); /* get user from the properties */
+        sendKeys(searchUserLoc, deviceUserName); //To Test on VHQ DeviceID
         click(btnUserSearch);
 
         click(findUserLoc);
