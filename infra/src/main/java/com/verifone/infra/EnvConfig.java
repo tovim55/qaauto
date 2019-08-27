@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
 //import com.verifone.entities.*;
 public class EnvConfig {
 
@@ -23,6 +24,7 @@ public class EnvConfig {
     private String monthlyRecurringFreeTrialApp;
     private String yearlyRecurringFreeTrialApp;
     private String cmFiveDeviceSerialNo01;
+    private String deviceUserName;
 
 //    private User user;
 
@@ -53,7 +55,7 @@ public class EnvConfig {
         return webUrl;
     }
 
-    public String getEnv(){
+    public String getEnv() {
         return env;
     }
 
@@ -61,7 +63,9 @@ public class EnvConfig {
         return prop.getProperty(env + "." + "MPGetAppName");
     }
 
-    public Credentials getCredentials(){return credentials;}
+    public Credentials getCredentials() {
+        return credentials;
+    }
 
     public String getOneTimeAppName() {
         return prop.getProperty(env + "." + "MPPurchaseOneTimeApp");
@@ -93,5 +97,9 @@ public class EnvConfig {
 
     public String getCmFiveDeviceSerialNo01() {
         return prop.getProperty(env + "." + "CMFiveDeviceSerialNo01");
+    }
+
+    public String getDeviceUserName() {
+        return prop.getProperty(env + "." + "MPDeviceUserName");
     }
 }
