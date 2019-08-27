@@ -126,7 +126,7 @@ public class SSOBasicFlow_MerchantSetupPasswordUI extends BaseTest {
         driver.navigate().to("https://getnada.com/#");
 
         // Click Add Inbox
-
+        Thread.sleep(5000); // Giora adding timeout for Microland GVCCA-1745
         driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
 
         // Put email
