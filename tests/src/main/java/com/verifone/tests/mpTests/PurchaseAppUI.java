@@ -20,12 +20,18 @@ public class PurchaseAppUI extends BaseTest {
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(getAppName);
         market.veryfyListingApps();
-        market.buyFreeApp();
+        market.isAppPurchased(getAppName);
+        //market.buyFreeApp();
     }
 
     @Test(priority = 2, testName = "Assign User to app", description = "assign user to subscribed application")
     public void CBAAssignToUserAppUI() throws InterruptedException {
         loginCBA(createMerchantUser());
+
+        CBAMarketplace market = PageFactory.getCBAMarketplace();
+        market.searchForApp(getAppName);
+        market.buyFreeApp();
+
         CBAAssignPage assignApp = PageFactory.getAssignAppPage();
         assignApp.assignUsersToApps(getAppName);
         assignApp.userAssignment();
