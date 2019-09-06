@@ -27,7 +27,8 @@ public class CBAAssignPage extends BasePage {
     private By linkManage = By.xpath("//*[text()='Manage']");
     private By btnAccount = By.xpath("//*[@id=\"account\"]");
     private By linkAssignApp = By.xpath("//*[text()='Assign Apps']");
-    private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
+    //private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
+    private By appToUsers = By.xpath("//*[@id=\"main\"]/div/section/div/div[6]/div[2]/menu/menu/button[1]");
     private By searchAppLoc = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@placeholder='Search']");
     private By btnAppSearch = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@class='adb-icon__search']");
     private By findAppLoc = By.xpath("//*[@class='adb-table adb-table__actionable']//tbody//tr[1]//td[1]//div[2]//h4");
