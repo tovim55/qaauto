@@ -1,0 +1,106 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Verifone">
+
+    <!--Set Env Variable: -->
+    <!--QA-->
+    <!--DEV-->
+    <parameter name="env" value="${environment}"/>
+    <parameter name="getVersions" value="false"/>
+    <parameter name="isLinuxMachine" value="${isLinux}"/>
+
+    <!--Set Portal Variable: -->
+    <!--CPPortal-->
+    <!--CGPortal-->
+    <!--EOAdmin-->
+    <parameter name="portal" value="MPPortal"/>
+    <!--TODO add optional parameter 'additional portal' for executing suite with 2 or more portals-->
+
+    <parameter name="browserType" value="${browser}"/>
+    <!--<test name="Automation Tests" parallel="classes" thread-count="2">-->
+    <!--Set Browser Variable:-->
+    <!--CHROME-->
+    <!--FF-->
+    <!--EDGE-->
+    <!--IE-->
+
+     <test name="WhiteLabelingUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.WhiteLabelingUI"/>
+         </classes>
+     </test>
+
+     <test name="SubscribeAppTest">
+         <classes>
+             <class name="com.verifone.tests.mpTests.SubscribeAppTest"/>
+         </classes>
+     </test>
+
+     <test name="UnsubscribeAppTest">
+         <classes>
+             <class name="com.verifone.tests.mpTests.UnsubscribeAppTest"/>
+         </classes>
+     </test>
+
+     <test name="AssignAppToUser">
+         <classes>
+             <class name="com.verifone.tests.mpTests.AssignAppToUser"/>
+         </classes>
+     </test>
+
+     <test name="PurchaseAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
+         </classes>
+     </test>
+
+     <test name="PurchaseFreeAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseFreeAppUI"/>
+         </classes>
+     </test>
+
+     <test name="PurchaseOneTimeAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseOneTimeAppUI"/>
+         </classes>
+     </test>
+
+     <test name="PurchaseOneTimeFreeTrialAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseOneTimeFreeTrialAppUI"/>
+         </classes>
+     </test>
+
+     <test name="PurchaseMonthlyRecurringAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseMonthlyRecurringAppUI"/>
+         </classes>
+     </test>
+
+    <test name="PurchaseMonthlyRecurringFreeTrialAppUI">
+        <classes>
+            <class name="com.verifone.tests.mpTests.PurchaseMonthlyRecurringFreeTrialAppUI"/>
+        </classes>
+    </test>
+
+     <test name="PurchaseYearlyRecurringAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseYearlyRecurringAppUI"/>
+         </classes>
+     </test>
+
+     <test name="PurchaseYearlyRecurringFreeTrialAppUI">
+         <classes>
+             <class name="com.verifone.tests.mpTests.PurchaseYearlyRecurringFreeTrialAppUI"/>
+         </classes>
+     </test>
+
+    <test name="VerifyMyAppsTest">
+         <classes>
+             <class name="com.verifone.tests.mpTests.VerifyMyAppsTest"/>
+         </classes>
+     </test>
+
+</suite>
