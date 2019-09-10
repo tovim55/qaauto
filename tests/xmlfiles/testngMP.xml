@@ -24,6 +24,7 @@
     <!--FF-->
     <!--EDGE-->
     <!--IE-->
+    <!--test-->
 
      <test name="WhiteLabelingUI">
          <classes>
@@ -102,5 +103,11 @@
              <class name="com.verifone.tests.mpTests.VerifyMyAppsTest"/>
          </classes>
      </test>
+
+    <test name="VerifyJobInVHQ">
+        <classes>
+            <class name="com.verifone.tests.mpTests.VerifyJobInVHQ"/>
+        </classes>
+    </test>
 
 </suite>
