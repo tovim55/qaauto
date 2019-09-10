@@ -22,12 +22,13 @@ public class CBAAssignPage extends BasePage {
 
     private final static String url = BaseTest.envConfig.getWebUrl() + "home";
     private final static String title = "Dashboard | Verifone Australia";
-    private static String deviceUserName =BaseTest.envConfig.getDeviceUserName();
+    //private static String deviceUserName =BaseTest.envConfig.getDeviceUserName();
 
     private By linkManage = By.xpath("//*[text()='Manage']");
     private By btnAccount = By.xpath("//*[@id=\"account\"]");
     private By linkAssignApp = By.xpath("//*[text()='Assign Apps']");
-    private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
+    //private By appToUsers = By.xpath("//*[contains(@aria-label,'appToUsers')]");
+    private By appToUsers = By.xpath("//*[@id=\"main\"]/div/section/div/div[6]/div[2]/menu/menu/button[1]");
     private By searchAppLoc = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@placeholder='Search']");
     private By btnAppSearch = By.xpath("//*[@class='adb-drawers--panel adb-layout-column__first left-col']//*[@class='adb-icon__search']");
     private By findAppLoc = By.xpath("//*[@class='adb-table adb-table__actionable']//tbody//tr[1]//td[1]//div[2]//h4");
@@ -41,7 +42,7 @@ public class CBAAssignPage extends BasePage {
     private By linkMyApps = By.xpath("//a[@id = 'myapps']]");
     private By titleList = By.xpath("//h4[@class='adb-summary--title']");
 
-    private By user = By.xpath("//*[@class='sortable renderable']");
+    private By user = By.xpath("//*[@class='sortable renderable']//P[@class='adb-summary--details']");
     private By appCheck = By.xpath("//td[@class='checkbox-cell renderable']/input[@type='checkbox']");
     private By selectApp = By.xpath("//*[@class='adb-summary--title']");
     private By linkApplication = By.xpath("//ul[@class='adb-secondary_nav--items']//li[3]//a");
@@ -92,11 +93,11 @@ public class CBAAssignPage extends BasePage {
      * This method described all actions and elements can be executed to search the User.
      */
 
-    public void searchUserToAssign() {
+    public void searchUserToAssign(String assignUserName) {
 
         click(searchUserLoc);
         //sendKeys(searchUserLoc, createAssignUser().getUserName()); /* get user from the properties */
-        sendKeys(searchUserLoc, deviceUserName); //To Test on VHQ DeviceID
+        sendKeys(searchUserLoc, assignUserName); //To Test on VHQ DeviceID
         click(btnUserSearch);
 
         click(findUserLoc);
@@ -107,6 +108,8 @@ public class CBAAssignPage extends BasePage {
         ExpectedConditions.presenceOfElementLocated(btnAccount);
         click(btnAccount);
         click(linkAssignApp);
+        waitForLoader(user);
+        scrollToElement(user);
         click(user);
         sendKeys(searchUserLoc, getAppName);
         click(btnUserSearch);

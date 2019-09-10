@@ -43,7 +43,7 @@ public class PurchaseMonthlyRecurringAppUI extends BaseTest {
 
         /*Assign purchased app to user*/
         CBAAssignPage assignApp = PageFactory.getAssignAppPage();
-        assignApp.searchUserToAssign();
+        assignApp.searchUserToAssign(createAssignUser().getUserName());
         assignApp.userAssignment();
         assignApp.isAssignUpdated();
     }

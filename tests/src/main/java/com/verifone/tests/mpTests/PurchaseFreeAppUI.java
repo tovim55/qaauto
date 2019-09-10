@@ -50,7 +50,7 @@ public class PurchaseFreeAppUI extends BaseTest {
         assignApp.moveToAssignApps();
         assignApp.btnSelectAssignAppsToUser();
         assignApp.searchAppToAssign(freeEditionApp);
-        assignApp.searchUserToAssign();
+        assignApp.searchUserToAssign(createAssignUser().getUserName());
         assignApp.userAssignment();
         assignApp.isAssignUpdated();
     }
