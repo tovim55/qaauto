@@ -109,7 +109,7 @@ public class VHQHomePage extends BasePage {
             testLog.info(" ---- Device serial no: " + deviceSerialNo + "with IPAddress: " + deviceIPAddress + " is reachable. ----");
         } else {
             testLog.info(" ---- Sorry ! Device serial no: " + deviceSerialNo + "with IPAddress: " + deviceIPAddress + " is not reachable. ----");
-            throw new SkipException("Skipping this exception");
+           // throw new SkipException("Skipping this exception");
         }
     }
 
