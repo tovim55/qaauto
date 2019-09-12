@@ -157,7 +157,7 @@ public class Locale_MerchantSetupPasswordUI extends BaseTest {
     	driver.navigate().to("https://getnada.com/#");
 
     	// Click Add Inbox
-
+		Thread.sleep(5000);
     	driver.findElement(By.xpath("//*[contains(@class, 'icon-plus')]")).click();   //getText();
 
     	// Put email
