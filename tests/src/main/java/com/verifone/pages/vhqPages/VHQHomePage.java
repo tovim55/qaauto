@@ -5,7 +5,9 @@ import org.apache.bcel.generic.I2F;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.SkipException;
 
+import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -85,7 +87,7 @@ public class VHQHomePage extends BasePage {
         click(btnApplyFilter);
     }
 
-    public void deviceProfile(String packageName,String appStatus) throws InterruptedException {
+    public void deviceProfile(String packageName, String appStatus) throws InterruptedException {
         ExpectedConditions.elementToBeClickable(linkSerialNumber);
         click(linkSerialNumber);
 
@@ -97,6 +99,19 @@ public class VHQHomePage extends BasePage {
         testLog.info(firstRow.getText());
         assertTextContains(packageName, firstRow.getText());
         assertTextContains(currentDate, firstRow.getText());
-        assertTextContains(appStatus,firstRow.getText());
+        assertTextContains(appStatus, firstRow.getText());
     }
+
+    public void getDeviceStatus(String deviceIPAddress, String deviceSerialNo) throws Exception {
+        InetAddress geek = InetAddress.getByName(deviceIPAddress);
+        System.out.println("Sending Ping Request to " + deviceIPAddress);
+        if (geek.isReachable(5000)) {
+            testLog.info(" ---- Device serial no: " + deviceSerialNo + "with IPAddress: " + deviceIPAddress + " is reachable. ----");
+        } else {
+            testLog.info(" ---- Sorry ! Device serial no: " + deviceSerialNo + "with IPAddress: " + deviceIPAddress + " is not reachable. ----");
+            throw new SkipException("Skipping this exception");
+        }
+    }
+
 }
+
