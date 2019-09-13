@@ -27,12 +27,32 @@ public class VHQDeviceSearch extends BasePage {
     private By download = By.id("Download_HistroytabLi");
     private By divFirstRow = By.id("row0jqxgridDownloadJobProfil");
     private By divSecondRow = By.id("row1jqxgridDownloadJobProfil");
+    private By deviceMode = By.id("btncomputedStatus");
+    private By btnRefresh = By.id("btnRefresh");
+    private By setDeviceStateActive = By.xpath("//*[text()='Active']");
+    private By btnConfirmState = By.id("btnChangStatusYes");
+    private By btnInfo = By.id("infoBtnOk");
 
     public void deviceProfile() {
         hoverAndClickOnElement(linkSerialNumber);
         testLog.info(driver.getCurrentUrl());
         waitForLoader(download);
         click(download);
+
+       waitForLoader(deviceMode);
+        System.out.println("text of the button :" + getText(deviceMode));
+        if (getText(deviceMode).equals("Active")) {
+            click(btnRefresh);
+        } else {
+            click(deviceMode);
+            click(setDeviceStateActive);
+            waitForLoader(btnInfo);
+            click(btnConfirmState);
+            waitForLoader(btnInfo);
+            click(btnInfo);
+            click(btnRefresh);
+        }
+        waitForLoader(deviceMode);
     }
 
     public void searchJobStatus(String packageName, String appStatus) {
