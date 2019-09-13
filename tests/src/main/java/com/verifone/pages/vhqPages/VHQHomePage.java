@@ -92,7 +92,7 @@ public class VHQHomePage extends BasePage {
     }
 
     public void deviceProfile(String packageName, String appStatus) throws InterruptedException {
-        ExpectedConditions.elementToBeClickable(linkSerialNumber);
+        waitForLoader(linkSerialNumber);
         click(linkSerialNumber);
 
         ExpectedConditions.elementToBeClickable(btnDownload);
