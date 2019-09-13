@@ -50,6 +50,10 @@ public class VHQHomePage extends BasePage {
     private By btnRefresh = By.xpath("//*[@id='btnRefresh']");
     private By btnReset = By.xpath("//a[@id='btnRestFilter']");
     private By loadingDiv = By.xpath("//div[@id='loadingDiv']");
+    private By deviceMode = By.id("btncomputedStatus");
+    private By setDeviceStateActive = By.xpath("//*[text()='Active']");
+    private By btnConfirmState = By.id("btnChangStatusYes");
+    private By btnInfo = By.id("infoBtnOk");
 
     private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy ");
     private String currentDate = dateFormat.format(new Date());
@@ -93,7 +97,24 @@ public class VHQHomePage extends BasePage {
 
         ExpectedConditions.elementToBeClickable(btnDownload);
         click(btnDownload);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+
+        waitForLoader(deviceMode);
+        System.out.println("text of the button :" + getText(deviceMode));
+        if (getText(deviceMode).equals("Active")) {
+            System.out.println("Active");
+            click(btnRefresh);
+        } else {
+            System.out.println("Not Active");
+            click(deviceMode);
+            click(setDeviceStateActive);
+            waitForLoader(btnInfo);
+            click(btnConfirmState);
+            waitForLoader(btnInfo);
+            click(btnInfo);
+            click(btnRefresh);
+        }
+        waitForLoader(deviceMode);
 
         WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
         testLog.info(firstRow.getText());
@@ -106,9 +127,9 @@ public class VHQHomePage extends BasePage {
         InetAddress geek = InetAddress.getByName(deviceIPAddress);
         System.out.println("Sending Ping Request to " + deviceIPAddress);
         if (geek.isReachable(5000)) {
-            testLog.info(" ---- Device serial no: " + deviceSerialNo + "with IPAddress: " + deviceIPAddress + " is reachable. ----");
+            testLog.info(" ---- Device serial no: " + deviceSerialNo + " with IPAddress: " + deviceIPAddress + " is reachable. ----");
         } else {
-            testLog.info(" ---- Sorry ! Device serial no: " + deviceSerialNo + "with IPAddress: " + deviceIPAddress + " is not reachable. ----");
+            testLog.info(" ---- Sorry ! Device serial no: " + deviceSerialNo + " with IPAddress: " + deviceIPAddress + " is not reachable. ----");
            // throw new SkipException("Skipping this exception");
         }
     }

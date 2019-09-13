@@ -68,6 +68,7 @@ public class CBAMarketplace extends BasePage {
 
     public void buyFreeApp() {
         click(listing);
+        ExpectedConditions.visibilityOfElementLocated(tryFree);
         click(tryFree);
         click(goToMyAppsBtn);
     }

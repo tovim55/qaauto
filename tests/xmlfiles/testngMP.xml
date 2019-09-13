@@ -51,12 +51,6 @@
         </classes>
     </test>
 
-    <test name="AssignAppToUser">
-        <classes>
-            <class name="com.verifone.tests.mpTests.AssignAppToUser"/>
-        </classes>
-    </test>
-
     <test name="PurchaseAppUI">
         <classes>
             <class name="com.verifone.tests.mpTests.PurchaseAppUI"/>
@@ -111,4 +105,9 @@
         </classes>
     </test>
 
+    <test name="AssignAppToUser">
+        <classes>
+            <class name="com.verifone.tests.mpTests.AssignAppToUser"/>
+        </classes>
+    </test>
 </suite>

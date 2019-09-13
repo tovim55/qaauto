@@ -16,17 +16,22 @@ public class SubscribeAppTest extends BaseTest {
 
     private static String getAppName;
     private static String deviceUserName;
+    public static String freeEditionApp;
+
     @Test(testName = "LogIn & subscribe an app", description = "log in to CBA marketPlace and purchase an application")
-    public void CBASubscribeAppTestUI() {
+    public void CBASubscribeAppTestUI() throws Exception {
 
         //loginCBA(createMerchantUser());
 
         loginCBA(createAssignUser());
+
+        freeEditionApp = BaseTest.envConfig.getFreeEditionApp();
         getAppName = BaseTest.envConfig.getAppName();
+
         CBAMarketplace market = PageFactory.getCBAMarketplace();
         market.searchForApp(getAppName);
         market.veryfyListingApps();
-        market.buyFreeApp();
+        market.isAppPurchased(freeEditionApp);
     }
 
     @Test(priority = 2, testName = "Login & Assign App to user", description = "Login in to CBA MarketPlace and assign application to the user")
@@ -39,6 +44,11 @@ public class SubscribeAppTest extends BaseTest {
         deviceUserName = BaseTest.envConfig.getDeviceUserName();
 
         System.out.println("get App name :" + getAppName);
+
+        CBAMarketplace market = PageFactory.getCBAMarketplace();
+        market.searchForApp(getAppName);
+        market.veryfyListingApps();
+        market.buyFreeApp();
 
         /* Move to Assign Apps to User */
         CBAAssignPage assignApp = PageFactory.getAssignAppPage();
