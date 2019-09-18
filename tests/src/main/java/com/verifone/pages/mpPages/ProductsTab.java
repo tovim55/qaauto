@@ -24,7 +24,7 @@ public class ProductsTab extends BasePage {
     private By btnCreateSegmentGroupLoc = By.xpath("//span[text()='Create Segment Group']");
     private By tblSegmentGroupsLoc = By.xpath("//*[@style='border-collapse: collapse; border-spacing: 0px; width: 100%;']");
 //    private By menuContextEditSegmentLoc = By.xpath("(//a[text()='Edit'])[5]");
-
+    private By menuStagingCatalog = By.xpath("//a[text()='Staging Catalog']");
     private By dlgDeleteSegmentGroupLoc = By.xpath("//*[@role='dialog']");
     private By dlgDeleteSegmentGroupBtnYesLoc = By.xpath("//span[text()='Yes']");
 
@@ -192,5 +192,17 @@ public class ProductsTab extends BasePage {
         click(dlgDeleteSegmentGroupBtnYesLoc);
     }
 //--------------------------------------------------------------------------
-}
 
+
+// --------------------------------------------------------------------------
+    /**
+     * Method: Click on Staging Catalog menu.
+     * @authors Sergey Vinickiy
+     */
+//--------------------------------------------------------------------------
+    public void clickMenuStagingCatalog () throws InterruptedException {
+        waitForLoader(menuStagingCatalog);
+        click(menuStagingCatalog);
+    }
+//--------------------------------------------------------------------------
+}

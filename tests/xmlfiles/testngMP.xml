@@ -110,4 +110,10 @@
             <class name="com.verifone.tests.mpTests.AssignAppToUser"/>
         </classes>
     </test>
+
+    <test name="CarbonFamilyVarificationUI">
+        <classes>
+            <class name="com.verifone.tests.mpTests.CarbonFamilyVerificationUI"/>
+        </classes>
+    </test>
 </suite>

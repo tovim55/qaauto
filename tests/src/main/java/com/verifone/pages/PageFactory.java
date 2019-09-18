@@ -24,6 +24,9 @@ public class PageFactory {
     public static LoginMPPortal getLoginMPPortal() {return new LoginMPPortal();}
 
     public static CBAAssignPage getAssignAppPage() {return new CBAAssignPage();}
+    public static ProdTabCreateProductPage getCreateProduct() {return new ProdTabCreateProductPage();}
+    public static ProductsTabStagingCatalogPage getStagingCatalog() {return new ProductsTabStagingCatalogPage();}
+
 
     ///////////////////VHQ Pages///////////////////////////////
     public static VHQLogin getVHQLogin() {return new VHQLogin();}
