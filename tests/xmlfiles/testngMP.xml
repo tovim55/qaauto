@@ -27,7 +27,7 @@
     <!--IE-->
     <!--test-->
 
-    <test name="WhiteLabelingUI">
+<!--    <test name="WhiteLabelingUI">
         <classes>
             <class name="com.verifone.tests.mpTests.WhiteLabelingUI"/>
         </classes>
@@ -108,6 +108,12 @@
     <test name="AssignAppToUser">
         <classes>
             <class name="com.verifone.tests.mpTests.AssignAppToUser"/>
+        </classes>
+    </test>-->
+
+    <test name="CarbonFamilyVarificationUI">
+        <classes>
+            <class name="com.verifone.tests.mpTests.CarbonFamilyVerificationUI"/>
         </classes>
     </test>
 </suite>
