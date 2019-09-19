@@ -25,6 +25,13 @@ public class EnvConfig {
     private String yearlyRecurringFreeTrialApp;
     private String cmFiveDeviceSerialNo01;
     private String deviceUserName;
+    private String sponsorID;
+    private String applicationID;
+    private String applicationName;
+    private String applicationVersion;
+    private String deviceIPAddress;
+    private String groupName;
+    private String groupDescription;
 
 //    private User user;
 
@@ -101,5 +108,33 @@ public class EnvConfig {
 
     public String getDeviceUserName() {
         return prop.getProperty(env + "." + "MPDeviceUserName");
+    }
+
+    public String getSponsorID() {
+        return prop.getProperty(env + "." + "SponsorID");
+    }
+
+    public String getApplicationID() {
+        return prop.getProperty(env + "." + "ApplicationID");
+    }
+
+    public String getApplicationName() {
+        return prop.getProperty(env + "." + "ApplicationName");
+    }
+
+    public String getApplicationVersion() {
+        return prop.getProperty(env + "." + "ApplicationVersion");
+    }
+
+    public String getDeviceIPAddress() {
+        return prop.getProperty(env + "." + "CMFiveDeviceIPAddress");
+    }
+
+    public String getGroupName() {
+        return prop.getProperty(env + "." + "MPGroupName");
+    }
+
+    public String getGroupDescription() {
+        return prop.getProperty(env + "." + "MPGroupDescription");
     }
 }

@@ -68,7 +68,7 @@ public class AssignAppToUser extends BaseTest {
         vhqDashboard.deviceProfile(getAppName, "INSTALL");
     }
 
-    @Test(priority = 4, testName = "LogIn & Unsubscribe an App", description = "Log in to CBA account and remove Yearly Recurring Free Trial app from apps list")
+    @Test(priority = 4, testName = "LogIn & Unsubscribe an App", description = "Log in to CBA account and Unsubscribe the app.")
     public void CBAUnsubscribeYearlyRecurringAppTestUI() throws InterruptedException {
 
         loginCBA(createAssignUser());
@@ -78,7 +78,7 @@ public class AssignAppToUser extends BaseTest {
         account.cancelSubscribsion(getAppName);
     }
 
-    @Test(priority = 5, testName = "LogIn & Verify Unsubscribed App Job Status", description = "Log into VHQ portal and verify whether the job is created after Unsubscribing the application.")
+    @Test(priority = 5, testName = "LogIn & Verify Unsubscribed App Job Status", description = "Log into VHQ portal and verify whether the job is created after Unsubscribe the application.")
     public void VHQVerifyUninstallAppTestUI() throws Exception {
         /*LogIn into VHQ Portal*/
         loginVHQ(createVHQMumbaiUser());

@@ -21,12 +21,12 @@ public class VerifyJobInVHQ extends BaseTest {
 
         loginVHQ(createVHQMumbaiUser());
 
-        deviceIPAddress = BaseTest.envConfig.getApiUrls().getDeviceIPAddress();
+        deviceIPAddress = BaseTest.envConfig.getDeviceIPAddress();
         getCmFiveDeviceSerialNo01 = BaseTest.envConfig.getCmFiveDeviceSerialNo01();
         getAppName = BaseTest.envConfig.getAppName();
 
         VHQHomePage vhq = PageFactory.getVHQHomePage();
-        vhq.getDeviceStatus(deviceIPAddress , getCmFiveDeviceSerialNo01);
+        vhq.getDeviceStatus(deviceIPAddress, getCmFiveDeviceSerialNo01);
         vhq.deviceSearch(getCmFiveDeviceSerialNo01);
 
         VHQDeviceSearch deviceSearch = PageFactory.getVHQDeviceSearch();

@@ -612,4 +612,9 @@ public abstract class BasePage {
         }
         return (By) we;
     }
+
+    protected void waitUntilPageLoad(By loc) {
+        WebDriverWait element = new WebDriverWait(driver, 20);
+        element.until(ExpectedConditions.visibilityOfElementLocated(loc));
+    }
 }
