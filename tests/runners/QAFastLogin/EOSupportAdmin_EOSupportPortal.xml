@@ -12,7 +12,7 @@
     <parameter name="env" value="QA" />
     <parameter name="mail" value="QA.Test@verifone.com" />
     <!--<parameter name="mail" value="DISTRIBUTIONCENTERADMIN@getnada.com" />-->
-    <parameter name="pwd" value='GGi5g@#NA3yf' />
+    <parameter name="pwd" value='gbxxx7777S55' />
     <parameter name="name" value="QA.Test" />
     <parameter name="answer" value="Elephant" />
     <parameter name="isLinuxMachine" value="${isLinux}"/>

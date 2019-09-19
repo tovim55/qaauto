@@ -11,7 +11,7 @@
     <parameter name="isLinuxMachine" value="${isLinux}"/>
     <parameter name="env" value="Dev" />
     <parameter name="mail" value="QA.Test@verifone.com" />
-    <parameter name="pwd" value='GGi5g@#NA3yf' />
+    <parameter name="pwd" value='gbxxx7777S55' />
     <parameter name="name" value="QA.Test" />
     <parameter name="answer" value="Elephant" />
 
