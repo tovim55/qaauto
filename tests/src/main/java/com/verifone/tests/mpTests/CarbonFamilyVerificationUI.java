@@ -62,6 +62,11 @@ public class CarbonFamilyVerificationUI extends BaseTest {
 
         testLog.info(" 5. Carbon Mobile family validation");
         ModelFamiliesList = prodTabCreateProductPage.getModelFamiliesList();
+
+        for (int i = 0; i<ModelFamiliesList.size();i++) {
+                testLog.info("- "+ ModelFamiliesList.get(i).getText());
+        }
+
         for (WebElement name : ModelFamiliesList) {
             if (name.getText().equals("Carbon Mobile")) {
                 assertEquals("Carbon Mobile",name.getText());
