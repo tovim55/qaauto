@@ -18,13 +18,7 @@ public class ApiUrls {
     private String resendInvitation;
     private String createDcOrg;
     private String getVersions;
-    private String sponsorID;
-    private String applicationID;
-    private String applicationName;
-    private String applicationVersion;
-    private String deviceIPAddress;
-
-
+    
     public ApiUrls(String env, Properties prop) throws IOException {
         env = env + ".";
         getVersions = prop.getProperty(env + "getVersions");
@@ -37,31 +31,6 @@ public class ApiUrls {
         acceptAgreement = prop.getProperty(env + "acceptAgreement");
         resendInvitation = prop.getProperty(env + "resendInvitation");
         createDcOrg = prop.getProperty(env + "createDcOrg");
-        sponsorID = prop.getProperty(env + "SponsorID");
-        applicationID = prop.getProperty(env + "ApplicationID");
-        applicationName = prop.getProperty(env + "ApplicationName");
-        applicationVersion = prop.getProperty(env + "ApplicationVersion");
-        deviceIPAddress = prop.getProperty(env + "CMFiveDeviceIPAddress");
-    }
-
-    public String getDeviceIPAddress() {
-        return deviceIPAddress;
-    }
-
-    public String getApplicationName() {
-        return applicationName;
-    }
-
-    public String getApplicationVersion() {
-        return applicationVersion;
-    }
-
-    public String getSponsorID() {
-        return sponsorID;
-    }
-
-    public String getApplicationID() {
-        return applicationID;
     }
 
     public String getGetVersions() {

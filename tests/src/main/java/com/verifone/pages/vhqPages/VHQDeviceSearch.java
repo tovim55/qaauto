@@ -1,6 +1,10 @@
 package com.verifone.pages.vhqPages;
 
 import com.verifone.pages.BasePage;
+import com.verifone.pages.PageFactory;
+import com.verifone.pages.mpPages.CBAAccount;
+import com.verifone.pages.mpPages.CBAAssignGroupPage;
+import com.verifone.pages.mpPages.CBAAssignPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,8 +19,8 @@ import static com.verifone.utils.Assertions.assertTextContains;
 public class VHQDeviceSearch extends BasePage {
     private final static String url = "";
     private final static String title = "";
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy ");
-    private String currentDate = dateFormat.format(new Date());
+    // private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy ");
+    // private String currentDate = dateFormat.format(new Date());
 
     public VHQDeviceSearch() {
         super(url, title);
@@ -39,7 +43,7 @@ public class VHQDeviceSearch extends BasePage {
         waitForLoader(download);
         click(download);
 
-       waitForLoader(deviceMode);
+        waitForLoader(deviceMode);
         System.out.println("text of the button :" + getText(deviceMode));
         if (getText(deviceMode).equals("Active")) {
             click(btnRefresh);
@@ -58,18 +62,31 @@ public class VHQDeviceSearch extends BasePage {
     public void searchJobStatus(String packageName, String appStatus) {
         if (appStatus.equals("UNINSTALL")) {
             testLog.info("------ Unsubscribe(UNINSTALL) :" + packageName + " App ------");
+
             WebElement firstRow = getWebElement(divFirstRow, 500, ExpectedConditions.visibilityOfElementLocated(divFirstRow));
-            testLog.info(firstRow.getText());
+
+            testLog.info(" ----- packageName : " + packageName + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
             assertTextContains(packageName, firstRow.getText());
-            assertTextContains(currentDate, firstRow.getText());
+
+            testLog.info(" ----- Application Status : " + appStatus + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
             assertTextContains(appStatus, firstRow.getText());
+
+            testLog.info(" ----- Package Unassigned date : " + CBAAccount.jobCreatedOnUnsubscription + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
+            assertTextContains(CBAAccount.jobCreatedOnUnsubscription, firstRow.getText());
+
         } else {
             testLog.info("------ Subscribe(INSTALL) :" + packageName + " App ------");
+
             WebElement secondRow = getWebElement(divSecondRow, 500, ExpectedConditions.visibilityOfElementLocated(divSecondRow));
-            testLog.info(secondRow.getText());
+
+            testLog.info(" ----- packageName : " + packageName + " ---- Text Contains in : ---- " + secondRow.getText() + " -----");
             assertTextContains(packageName, secondRow.getText());
-            assertTextContains(currentDate, secondRow.getText());
+
+            testLog.info(" ----- Application Status : " + appStatus + "  ---- Text Contains in : ----  " + secondRow.getText() + " -----");
             assertTextContains(appStatus, secondRow.getText());
+
+            testLog.info(" ----- Package assigned date : " + CBAAssignPage.jobCreatedOnSubscription + "  ---- Text Contains in : ----  " + secondRow.getText() + " -----");
+            assertTextContains(CBAAssignPage.jobCreatedOnSubscription, secondRow.getText());
         }
 
     }
