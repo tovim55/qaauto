@@ -65,7 +65,7 @@ public class AssignAppToUser extends BaseTest {
         /* Get VHQ Home Page*/
         VHQHomePage vhqDashboard = PageFactory.getVHQHomePage();
         vhqDashboard.deviceSearch(getCmFiveDeviceSerialNo01);
-        vhqDashboard.deviceProfile(getAppName, "INSTALL");
+        vhqDashboard.deviceProfile(getAppName, "INSTALL", CBAAssignPage.jobCreatedOnSubscription);
     }
 
     @Test(priority = 4, testName = "LogIn & Unsubscribe an App", description = "Log in to CBA account and Unsubscribe the app.")
@@ -86,6 +86,6 @@ public class AssignAppToUser extends BaseTest {
         /* Get VHQ Home Page*/
         VHQHomePage vhqDashboard = PageFactory.getVHQHomePage();
         vhqDashboard.deviceSearch(getCmFiveDeviceSerialNo01);
-        vhqDashboard.deviceProfile(getAppName, "UNINSTALL_");
+        vhqDashboard.deviceProfile(getAppName, "UNINSTALL_", CBAAccount.jobCreatedOnUnsubscription);
     }
 }

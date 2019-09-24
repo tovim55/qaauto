@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -33,6 +36,9 @@ public class CBAAccount extends BasePage {
     private By yesBtn = By.xpath("//button[@class='adb-button__primary buttonResponse']");
     private By linkManage = By.xpath("//*[text()='Manage']");
     //private By linkManage = By.xpath("//*[@class='custom-primary__nav--items']//li[1]//a[1]");
+
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm a");
+    public static String jobCreatedOnUnsubscription;
 
     String textSuccess;
 
@@ -65,6 +71,8 @@ public class CBAAccount extends BasePage {
         ExpectedConditions.textToBe(feedBack, textSuccess);
         Thread.sleep(7000);
         testLog.info(getText(feedBack));
+        jobCreatedOnUnsubscription = dateFormat.format(new Date());
+        testLog.info("----- App UnSubscription created date & Time : "+ jobCreatedOnUnsubscription + " -----");
     }
 
 }

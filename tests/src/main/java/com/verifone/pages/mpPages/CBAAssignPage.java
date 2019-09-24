@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
@@ -47,6 +50,10 @@ public class CBAAssignPage extends BasePage {
     private By selectApp = By.xpath("//*[@class='adb-summary--title']");
     private By linkApplication = By.xpath("//ul[@class='adb-secondary_nav--items']//li[3]//a");
     private By browseMarketPlace = By.xpath("//a[@class='adb-button adb-button__primary']");
+
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm a");
+    public static String jobCreatedOnSubscription;
+
 
     public CBAAssignPage() {
         super(url, title);
@@ -133,6 +140,8 @@ public class CBAAssignPage extends BasePage {
         String txtResult = getText(txtAssignSuccess);
         assertTextContains("successfully updated", txtResult);
         testLog.info(txtResult);
+        jobCreatedOnSubscription = dateFormat.format(new Date());
+        testLog.info("----- App Subscription created date & Time : "+ jobCreatedOnSubscription + " -----");
     }
 
     /**

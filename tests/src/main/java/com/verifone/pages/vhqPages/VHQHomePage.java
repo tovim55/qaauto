@@ -1,6 +1,7 @@
 package com.verifone.pages.vhqPages;
 
 import com.verifone.pages.BasePage;
+import com.verifone.pages.mpPages.CBAAssignPage;
 import org.apache.bcel.generic.I2F;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -91,7 +92,7 @@ public class VHQHomePage extends BasePage {
         click(btnApplyFilter);
     }
 
-    public void deviceProfile(String packageName, String appStatus) throws InterruptedException {
+    public void deviceProfile(String packageName, String appStatus, String jobCreatedOn) throws InterruptedException {
         waitForLoader(linkSerialNumber);
         click(linkSerialNumber);
 
@@ -116,11 +117,22 @@ public class VHQHomePage extends BasePage {
         }
         waitForLoader(deviceMode);
 
-        WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
-        testLog.info(firstRow.getText());
+        // WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
+       /* testLog.info(firstRow.getText());
         assertTextContains(packageName, firstRow.getText());
         assertTextContains(currentDate, firstRow.getText());
+        assertTextContains(appStatus, firstRow.getText());*/
+
+        WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
+
+        testLog.info(" ----- packageName : " + packageName + " ---- Text Contains in : ---- " + firstRow.getText() + " -----");
+        assertTextContains(packageName, firstRow.getText());
+
+        testLog.info(" ----- Application Status : " + appStatus + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
         assertTextContains(appStatus, firstRow.getText());
+
+        testLog.info(" ----- jobCreatedOn : " + jobCreatedOn + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
+        assertTextContains(jobCreatedOn, firstRow.getText());
     }
 
     public void getDeviceStatus(String deviceIPAddress, String deviceSerialNo) throws Exception {
@@ -130,7 +142,7 @@ public class VHQHomePage extends BasePage {
             testLog.info(" ---- Device serial no: " + deviceSerialNo + " with IPAddress: " + deviceIPAddress + " is reachable. ----");
         } else {
             testLog.info(" ---- Sorry ! Device serial no: " + deviceSerialNo + " with IPAddress: " + deviceIPAddress + " is not reachable. ----");
-           // throw new SkipException("Skipping this exception");
+            // throw new SkipException("Skipping this exception");
         }
     }
 
