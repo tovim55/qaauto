@@ -29,7 +29,7 @@ public class CBADashboard extends BasePage {
         click(manage);
         click(marketPlace);
         //ExpectedConditions.presenceOfElementLocated(welcomeBack);
-        click(productTour);
+        //click(productTour);
         //click(welcomeBack);
         //click(welcomeBack);
         ExpectedConditions.presenceOfElementLocated(products);
