@@ -542,13 +542,13 @@ public class UsersPage extends BasePage {
             if (!Assertions.compareValue("Password Setup", getText(txtSetUpPassword), "Password Setup Page : Found Mandatory error:", testLog, driver)) {
                 TestPassFlag = false;
                 System.out.println("1. " + getText(txtSetUpPassword));
-                testLog.info("1. ---------- Password Setup ---------- :" + getText(txtSetUpPassword));
+                testLog.info("1. ---------- Password Setup compare to expected ---------- :" + getText(txtSetUpPassword));
             }
 
             if (!Assertions.compareValue("Your Verifone password has been set up successfully.", getText(txtGetInstruction), "Password Setup Page : Found Mandatory error:", testLog, driver)) {
                 TestPassFlag = false;
                 System.out.println("2. " + getText(txtGetInstruction));
-                testLog.info("2. ---------- Password Setup ---------- :" + getText(txtGetInstruction));
+                testLog.info("2. ---------- Password Setup: Your Verifone password has been set up successfully compare to expected. ---------- :" + getText(txtGetInstruction));
             }
 
             Assert.assertTrue(TestPassFlag);
