@@ -536,15 +536,19 @@ public class UsersPage extends BasePage {
             click(cboxAggrement);
             waitUntilPageLoad(btnSubmit);
             click(btnSubmit);
+
+            testLog.info("--------------------------- Password Setup ----------------------------");
             waitForLoader(txtSetUpPassword);
             if (!Assertions.compareValue("Password Setup", getText(txtSetUpPassword), "Password Setup Page : Found Mandatory error:", testLog, driver)) {
-                System.out.println("inside 1");
                 TestPassFlag = false;
+                System.out.println("1. " + getText(txtSetUpPassword));
+                testLog.info("1. ---------- Password Setup ---------- :" + getText(txtSetUpPassword));
             }
 
             if (!Assertions.compareValue("Your Verifone password has been set up successfully.", getText(txtGetInstruction), "Password Setup Page : Found Mandatory error:", testLog, driver)) {
-                System.out.println("inside 2");
                 TestPassFlag = false;
+                System.out.println("2. " + getText(txtGetInstruction));
+                testLog.info("2. ---------- Password Setup ---------- :" + getText(txtGetInstruction));
             }
 
             Assert.assertTrue(TestPassFlag);
