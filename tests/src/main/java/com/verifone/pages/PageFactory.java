@@ -35,8 +35,8 @@ public class PageFactory {
     public static VHQDeviceSearch getVHQDeviceSearch() {return new VHQDeviceSearch();}
 
     public static CGLoginPage getCGLoginPage(){return new CGLoginPage();}
-   // public static DLMLoginPage getDLMLoginPage(){return new DLMLoginPage();}
-  //  public static CBAAssignGroupPage getCBAAssignGroupPage(){return  new CBAAssignGroupPage();}
+    public static DLMLoginPage getDLMLoginPage(){return new DLMLoginPage();}
+    public static CBAAssignGroupPage getCBAAssignGroupPage(){return  new CBAAssignGroupPage();}
 
 
     public static BasePage getPage(String page) {

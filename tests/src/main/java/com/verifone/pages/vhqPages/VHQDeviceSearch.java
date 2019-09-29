@@ -3,7 +3,7 @@ package com.verifone.pages.vhqPages;
 import com.verifone.pages.BasePage;
 import com.verifone.pages.PageFactory;
 import com.verifone.pages.mpPages.CBAAccount;
-//import com.verifone.pages.mpPages.CBAAssignGroupPage;
+import com.verifone.pages.mpPages.CBAAssignGroupPage;
 import com.verifone.pages.mpPages.CBAAssignPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
