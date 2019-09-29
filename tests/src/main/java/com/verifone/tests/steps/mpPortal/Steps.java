@@ -25,7 +25,7 @@ public class Steps {
 
         driver.navigate().to(Env);
         LoginMPPortal LoginMPPortal = (LoginMPPortal) PageFactory.getPage("LoginMPPortal");
-
+        //LoginMPPortal.clickLoginBtn();
         String Name;
         Name = Email.substring(0, Email.indexOf("@"));
         String Domain = Email.substring(Email.indexOf("@") + 1);

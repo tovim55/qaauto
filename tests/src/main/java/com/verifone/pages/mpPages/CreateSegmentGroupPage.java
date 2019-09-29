@@ -15,7 +15,7 @@ public class CreateSegmentGroupPage extends BasePage {
     private final static String title = "Create Segment Groups";
 
     private By fldSegmentGroupNameLoc = By.name("name");
-    private By titleCreateSegmentGroupLoc = By.xpath("//div[text()='Create Segment Group']");
+    private By titleCreateSegmentGroupLoc = By.xpath("//div[text()='Create Segment Folder']");
     private By btnSaveLoc = By.xpath("//span[text()='Save']");
 
     private By msgConfirmationLoc = By.xpath("//*[@class='adb-local_alert--content']");

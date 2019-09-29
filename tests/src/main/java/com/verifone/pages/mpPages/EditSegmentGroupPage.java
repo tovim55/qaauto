@@ -2,6 +2,10 @@ package com.verifone.pages.mpPages;
 
 import com.verifone.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 //--------------------------------------------------------------------------
 
 /**
@@ -15,13 +19,19 @@ public class EditSegmentGroupPage extends BasePage {
     private final static String title = "Create Segment Groups";
 
     private By fldSegmentGroupNameLoc = By.name("name");
-    private By titleCreateSegmentGroupLoc = By.xpath("//div[text()='Create Segment Group']");
-    private By titleSegmentLoc = By.xpath("//div[text()='Segment']");
+    private By editSegmentFolderName = By.name("pencil");
+    private By titleCreateSegmentGroupLoc = By.xpath("//h1[text()='Segment Group 1']");
+    private By titleSegmentLoc = By.xpath("//div[text()='Segment folder']");
     private By btnSaveLoc = By.xpath("//span[text()='Save']");
+    private By titleFilters = By.xpath("//*[text()='Build with filters']");
+    private By titleManual = By.xpath("//*[text()='Build manually']");
     private By btnCreateSegmentLoc = By.xpath("//span[text()='Create segment']");
+    private By createButtonListLoc = By.xpath("//*[@class='sc-iIHSe cQEaAU sc-ileJJU bOLSpV']");
     private By tblSegmentsLoc = By.xpath("//*[@data-auto-container='company-groups-segment-list:table']");
-
     private By msgConfirmationLoc = By.xpath("//*[@class='adb-local_alert--content']");
+    private By editNameSaveButton = By.xpath("//span[text()='Save']");
+
+    private List<WebElement> createButtonList;
 
     public EditSegmentGroupPage() {
         super(url, title);
@@ -44,7 +54,7 @@ public class EditSegmentGroupPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public String GetSegmentGroupName()  throws Exception {
-        return getText(fldSegmentGroupNameLoc);
+        return getText(titleCreateSegmentGroupLoc);
     }
 //--------------------------------------------------------------------------
 //--------------------------------------------------------------------------
@@ -54,7 +64,9 @@ public class EditSegmentGroupPage extends BasePage {
      */
 //--------------------------------------------------------------------------
     public void UpdateSegmentGroupName(String SName)  throws Exception {
+        click(editSegmentFolderName);
         sendKeys(fldSegmentGroupNameLoc, SName);
+        click(editNameSaveButton);
     }
 //--------------------------------------------------------------------------
     /**
@@ -68,22 +80,12 @@ public class EditSegmentGroupPage extends BasePage {
 //--------------------------------------------------------------------------
 //--------------------------------------------------------------------------
     /**
-     * Method: Title 'Segment' exists.
+     * Method: Title 'Segment folder' exists.
      * @authors Yana Fridman
      */
 //--------------------------------------------------------------------------
     public boolean existsTitleSegment () throws Exception {
         return isExists(titleSegmentLoc, 20);
-    }
-//--------------------------------------------------------------------------
-//--------------------------------------------------------------------------
-    /**
-     * Method: Table 'Segments' exists.
-     * @authors Yana Fridman
-     */
-//--------------------------------------------------------------------------
-    public boolean existsTblSegments () throws Exception {
-        return isExists(tblSegmentsLoc, 20);
     }
 //--------------------------------------------------------------------------
 //--------------------------------------------------------------------------
@@ -123,8 +125,7 @@ public class EditSegmentGroupPage extends BasePage {
      * @authors Yana Fridman
      */
 //--------------------------------------------------------------------------
-    public void clickBtnCreateSegment () throws InterruptedException {
-
+    public void clickBtnCreateSegment () {
         click(btnCreateSegmentLoc);
     }
 //--------------------------------------------------------------------------
@@ -177,5 +178,33 @@ public class EditSegmentGroupPage extends BasePage {
         click(menuContextEditSegmentLoc);
     }
 //--------------------------------------------------------------------------
-}
+//--------------------------------------------------------------------------
+    /**
+     * Method: Get list of Create Buttons
+     * @authors Sergey Vinickiy
+     */
+//--------------------------------------------------------------------------
+    public List<WebElement> getCreateBtnList (){
+        createButtonList = getWebElements(btnCreateSegmentLoc, 500, ExpectedConditions.presenceOfElementLocated(btnCreateSegmentLoc));
+        return createButtonList;
+    }
+//--------------------------------------------------------------------------
+    public boolean existsFilterBuild () throws Exception {
+        return isExists(titleFilters, 20);
+    }
+//--------------------------------------------------------------------------
+    public boolean existsManualBuild () throws Exception {
+        return isExists(titleManual, 20);
+    }
+//--------------------------------------------------------------------------
+    public void createSegmentManual(){
+        List<WebElement> list = getCreateBtnList();
+        list.get(1).click();
+    }
+//--------------------------------------------------------------------------
+    public void clickOnManualSegment(){
+        click(titleManual);
+    }
 
+
+}

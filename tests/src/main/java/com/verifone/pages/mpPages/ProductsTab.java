@@ -17,11 +17,11 @@ public class ProductsTab extends BasePage {
     private final static String url = "";
     private final static String title = "Segment Groups";
 
-    private By menuSegmentGroupsLoc = By.xpath("//a[text()='Segment Groups']");
-    private By titleSegmentGroupsLoc = By.xpath("//div[text()='Segment Groups']");
+    private By menuSegmentGroupsLoc = By.xpath("//a[text()='Segments']");
+    private By titleSegmentGroupsLoc = By.xpath("//div[text()='Segment Folders']");
     private By btnCreateSegmentGroupsLoc = By.xpath("//*[@data-auto-action='redirect:create-company-group']");
     private By titleSegmentGroupLoc = By.xpath("//th[text()='Segment group']");
-    private By btnCreateSegmentGroupLoc = By.xpath("//span[text()='Create Segment Group']");
+    private By btnCreateSegmentGroupLoc = By.xpath("//span[text()='Create Segment Folder']");
     private By tblSegmentGroupsLoc = By.xpath("//*[@style='border-collapse: collapse; border-spacing: 0px; width: 100%;']");
 //    private By menuContextEditSegmentLoc = By.xpath("(//a[text()='Edit'])[5]");
     private By menuStagingCatalog = By.xpath("//a[text()='Staging Catalog']");
@@ -192,8 +192,6 @@ public class ProductsTab extends BasePage {
         click(dlgDeleteSegmentGroupBtnYesLoc);
     }
 //--------------------------------------------------------------------------
-
-
 // --------------------------------------------------------------------------
     /**
      * Method: Click on Staging Catalog menu.
