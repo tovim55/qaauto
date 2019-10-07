@@ -3,6 +3,7 @@ package com.verifone.tests.steps.mpPortal;
 import com.verifone.entities.EntitiesFactory;
 import com.verifone.infra.User;
 import com.verifone.pages.PageFactory;
+import com.verifone.pages.cgPages.CGLoginPage;
 import com.verifone.pages.cpPages.OktaLogin;
 import com.verifone.pages.mpPages.*;
 import com.verifone.pages.vhqPages.VHQLogin;
@@ -159,4 +160,24 @@ public class Steps {
 
     }
 
+    public static void loginCGPortal(User user) throws Exception {
+        CGLoginPage loginPage = PageFactory.getCGLoginPage();
+        loginPage.doLogin(user);
+        //loginPage.getV1SignedPackage();
+    }
+
+   /* public static void loginCGPortal() throws Exception{
+        CGLoginPage loginPage = PageFactory.getCGLoginPage();
+        loginPage.getV1SignedPackage();
+    }*/
+
+    public static void loginDLMPortal() throws Exception {
+        DLMLoginPage dlmLogin = PageFactory.getDLMLoginPage();
+        dlmLogin.getV2SignedPackage();
+    }
+
+    public static User createCGUser() {
+        User testCGUser = EntitiesFactory.getEntity("CGPortal");
+        return testCGUser;
+    }
 }

@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
 import static com.verifone.utils.Assertions.assertTextContains;
@@ -51,7 +52,7 @@ public class CBAAssignPage extends BasePage {
     private By linkApplication = By.xpath("//ul[@class='adb-secondary_nav--items']//li[3]//a");
     private By browseMarketPlace = By.xpath("//a[@class='adb-button adb-button__primary']");
 
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm a");
+    private final DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm");
     public static String jobCreatedOnSubscription;
 
 
@@ -140,8 +141,12 @@ public class CBAAssignPage extends BasePage {
         String txtResult = getText(txtAssignSuccess);
         assertTextContains("successfully updated", txtResult);
         testLog.info(txtResult);
+        // jobCreatedOnSubscription = dateFormat.format(new Date());
+
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
         jobCreatedOnSubscription = dateFormat.format(new Date());
-        testLog.info("----- App Subscription created date & Time : "+ jobCreatedOnSubscription + " -----");
+        System.out.println("GMT time UnSubscription : " + jobCreatedOnSubscription);
+        testLog.info("----- App Subscription created date & Time : " + jobCreatedOnSubscription + " -----");
     }
 
     /**

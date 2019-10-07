@@ -6,12 +6,14 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import static com.verifone.tests.steps.mpPortal.Steps.createAssignUser;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -37,7 +39,7 @@ public class CBAAccount extends BasePage {
     private By linkManage = By.xpath("//*[text()='Manage']");
     //private By linkManage = By.xpath("//*[@class='custom-primary__nav--items']//li[1]//a[1]");
 
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm a");
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm");
     public static String jobCreatedOnUnsubscription;
 
     String textSuccess;
@@ -50,13 +52,12 @@ public class CBAAccount extends BasePage {
 
 
     public void cancelSubscribsion(String appName) throws InterruptedException {
-
         textSuccess = "Your subscription to " + appName + " was successfully removed.";
 
         /* Click is only available when Manage option is visible in menu bar*/
         Thread.sleep(2000);
         purchasedApps = driver.findElements(linkManage);
-        if(purchasedApps.size() != 0)
+        if (purchasedApps.size() != 0)
             click(linkManage);
 
         click(account);
@@ -69,10 +70,16 @@ public class CBAAccount extends BasePage {
         ExpectedConditions.presenceOfElementLocated(yesBtn);
         click(yesBtn);
         ExpectedConditions.textToBe(feedBack, textSuccess);
+
+        //get the date as per GMT+03:00 time zone
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
+        jobCreatedOnUnsubscription = dateFormat.format(new Date());
+        System.out.println("GMT time UnSubscription : " + jobCreatedOnUnsubscription);
+        testLog.info("----- App UnSubscription created date & Time : " + jobCreatedOnUnsubscription + " -----");
+
         Thread.sleep(7000);
         testLog.info(getText(feedBack));
-        jobCreatedOnUnsubscription = dateFormat.format(new Date());
-        testLog.info("----- App UnSubscription created date & Time : "+ jobCreatedOnUnsubscription + " -----");
+        //jobCreatedOnUnsubscription = dateFormat.format(new Date());
     }
 
 }
