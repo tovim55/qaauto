@@ -92,7 +92,7 @@ public class VHQHomePage extends BasePage {
         click(btnApplyFilter);
     }
 
-    public void deviceProfile(String packageName, String appStatus, String jobCreatedOn) throws InterruptedException {
+    public void deviceProfile() throws InterruptedException {
         waitForLoader(linkSerialNumber);
         click(linkSerialNumber);
 
@@ -123,7 +123,7 @@ public class VHQHomePage extends BasePage {
         assertTextContains(currentDate, firstRow.getText());
         assertTextContains(appStatus, firstRow.getText());*/
 
-        WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
+       /* WebElement firstRow = getWebElement(txtPackages, 500, ExpectedConditions.visibilityOfElementLocated(txtPackages));
 
         testLog.info(" ----- packageName : " + packageName + " ---- Text Contains in : ---- " + firstRow.getText() + " -----");
         assertTextContains(packageName, firstRow.getText());
@@ -132,7 +132,7 @@ public class VHQHomePage extends BasePage {
         assertTextContains(appStatus, firstRow.getText());
 
         testLog.info(" ----- jobCreatedOn : " + jobCreatedOn + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
-        assertTextContains(jobCreatedOn, firstRow.getText());
+        assertTextContains(jobCreatedOn, firstRow.getText());*/
     }
 
     public void getDeviceStatus(String deviceIPAddress, String deviceSerialNo) throws Exception {

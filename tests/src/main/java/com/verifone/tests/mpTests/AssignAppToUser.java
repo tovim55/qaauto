@@ -4,6 +4,7 @@ import com.verifone.pages.PageFactory;
 import com.verifone.pages.mpPages.CBAAccount;
 import com.verifone.pages.mpPages.CBAAssignPage;
 import com.verifone.pages.mpPages.CBAMyApps;
+import com.verifone.pages.vhqPages.VHQDeviceSearch;
 import com.verifone.pages.vhqPages.VHQHomePage;
 import com.verifone.tests.BaseTest;
 import org.testng.annotations.Test;
@@ -65,7 +66,10 @@ public class AssignAppToUser extends BaseTest {
         /* Get VHQ Home Page*/
         VHQHomePage vhqDashboard = PageFactory.getVHQHomePage();
         vhqDashboard.deviceSearch(getCmFiveDeviceSerialNo01);
-        vhqDashboard.deviceProfile(getAppName, "INSTALL", CBAAssignPage.jobCreatedOnSubscription);
+        vhqDashboard.deviceProfile();
+
+        VHQDeviceSearch deviceSearch = PageFactory.getVHQDeviceSearch();
+        deviceSearch.validateJobInstall(getAppName, "INSTALL", CBAAssignPage.jobCreatedOnSubscription);
     }
 
     @Test(priority = 4, testName = "LogIn & Unsubscribe an App", description = "Log in to CBA account and Unsubscribe the app.")
@@ -86,6 +90,9 @@ public class AssignAppToUser extends BaseTest {
         /* Get VHQ Home Page*/
         VHQHomePage vhqDashboard = PageFactory.getVHQHomePage();
         vhqDashboard.deviceSearch(getCmFiveDeviceSerialNo01);
-        vhqDashboard.deviceProfile(getAppName, "UNINSTALL_", CBAAccount.jobCreatedOnUnsubscription);
+        vhqDashboard.deviceProfile();
+
+        VHQDeviceSearch deviceSearch = PageFactory.getVHQDeviceSearch();
+        deviceSearch.validateJobInstall(getAppName, "UNINSTALL", CBAAccount.jobCreatedOnUnsubscription);
     }
 }
