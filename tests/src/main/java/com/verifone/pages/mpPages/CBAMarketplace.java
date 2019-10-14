@@ -116,35 +116,45 @@ public class CBAMarketplace extends BasePage {
         /* Select Buy Now button. */
         click(tryFree);
 
-        /* Locate the Continue button and click on it. */
-        element.until(ExpectedConditions.visibilityOfElementLocated(continueBtn));
-        scrollToElement(continueBtn);
-        click(continueBtn);
+        /* verify the flow of app purchase */
+        List<WebElement> btnVal = driver.findElements(continueBtn);
+        System.out.println("continue btn" + btnVal.size());
+        if (btnVal.size() == 0) {
+            System.out.println("Go to My Apps...");
+            click(goToMyAppsBtn);
+        } else {
+            System.out.println(" continue button ...");
 
-        /* Locate the Place Order button and click on it. */
-        element.until(ExpectedConditions.visibilityOfElementLocated(placeOrderBtn));
-        scrollToElement(placeOrderBtn);
+            /* Locate the Continue button and click on it. */
+            element.until(ExpectedConditions.visibilityOfElementLocated(continueBtn));
+            scrollToElement(continueBtn);
+            click(continueBtn);
 
-        /* Select checkbox if present to accept the terms */
-        listingApps = driver.findElements(agreeToTermsCheckbox);
-        if (listingApps.size() != 0)
-            click(agreeToTermsCheckbox);
+            /* Locate the Place Order button and click on it. */
+            element.until(ExpectedConditions.visibilityOfElementLocated(placeOrderBtn));
+            scrollToElement(placeOrderBtn);
 
-        click(placeOrderBtn);
+            /* Select checkbox if present to accept the terms */
+            listingApps = driver.findElements(agreeToTermsCheckbox);
+            if (listingApps.size() != 0)
+                click(agreeToTermsCheckbox);
 
-        //ExpectedConditions.visibilityOfElementLocated(feedBack);
-        testLog.info(getText(feedBack));
-        /* Locate the Manage App button and click on it. */
-        element.until(ExpectedConditions.visibilityOfElementLocated(btnManageApp));
-        scrollToElement(btnManageApp);
-        click(btnManageApp);
+            click(placeOrderBtn);
 
-        /* Assign App to User */
-        ExpectedConditions.visibilityOfElementLocated(btnAssignApp);
-        click(btnAssignApp);
+            //ExpectedConditions.visibilityOfElementLocated(feedBack);
+            testLog.info(getText(feedBack));
+            /* Locate the Manage App button and click on it. */
+            element.until(ExpectedConditions.visibilityOfElementLocated(btnManageApp));
+            scrollToElement(btnManageApp);
+            click(btnManageApp);
 
-        element.until(ExpectedConditions.visibilityOfElementLocated(appToUsers));
-        scrollToElement(appToUsers);
-        Thread.sleep(5000);
+            /* Assign App to User */
+            ExpectedConditions.visibilityOfElementLocated(btnAssignApp);
+            click(btnAssignApp);
+
+            element.until(ExpectedConditions.visibilityOfElementLocated(appToUsers));
+            scrollToElement(appToUsers);
+            Thread.sleep(5000);
+        }
     }
 }

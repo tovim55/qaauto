@@ -55,6 +55,9 @@ public class VHQHomePage extends BasePage {
     private By setDeviceStateActive = By.xpath("//*[text()='Active']");
     private By btnConfirmState = By.id("btnChangStatusYes");
     private By btnInfo = By.id("infoBtnOk");
+    private By btnDeviceSearchReset = By.xpath("//*[@id='resetBtnForAdSearch']");
+    private By btnSearch = By.xpath("//*[@id='resultsection']//a[1]");
+
 
     private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy ");
     private String currentDate = dateFormat.format(new Date());
@@ -79,6 +82,16 @@ public class VHQHomePage extends BasePage {
         waitForLoader(devSearch);
         ExpectedConditions.elementToBeClickable(devSearch);
         click(devSearch);
+
+        //reset the search result and search new device
+        List<WebElement> btnReset = driver.findElements(btnDeviceSearchReset);
+        System.out.println("reset btn size : " + btnReset.size());
+        if (btnReset.size() != 0) {
+            click(btnDeviceSearchReset);
+            waitUntilPageLoad(btnSearch);
+            click(btnSearch);
+        }
+
         //hoverAndClickOnElement(selectAttributes);
         select(selectDeviceAttribute, "SerialNumber");
 

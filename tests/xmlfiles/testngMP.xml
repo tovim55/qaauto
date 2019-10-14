@@ -116,4 +116,11 @@
             <class name="com.verifone.tests.mpTests.CarbonFamilyVerificationUI"/>
         </classes>
     </test>
+
+    <test name="AssignGroupsToApps">
+        <classes>
+            <class name="com.verifone.tests.mpTests.AssignGroupsToApps"/>
+        </classes>
+    </test>
+
 </suite>

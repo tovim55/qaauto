@@ -17,10 +17,12 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Iterator;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public abstract class BasePage {
@@ -38,7 +40,7 @@ public abstract class BasePage {
     }
 
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         return driver;
     }
 
@@ -107,7 +109,7 @@ public abstract class BasePage {
     protected String getCSSValue(By loc, String value) {
         WebElement element = getWebElement(loc, 40, ExpectedConditions.presenceOfElementLocated(loc));
         String cssValue = element.getCssValue(value);
-        testLog.info("User get : "+ value + " " + cssValue + " from this locator: " + loc.toString());
+        testLog.info("User get : " + value + " " + cssValue + " from this locator: " + loc.toString());
         return cssValue;
     }
 
@@ -129,7 +131,7 @@ public abstract class BasePage {
         String text = "";
         List<WebElement> tr = element.findElements(By.tagName("tr"));
         for (WebElement w : tr) {
-            if(w.getText().contains(name)){
+            if (w.getText().contains(name)) {
                 return i;
             }
             i++;
@@ -167,7 +169,7 @@ public abstract class BasePage {
         }
     }
 
-//    public static void restartDriver() {
+    //    public static void restartDriver() {
 //        driver.manage().deleteAllCookies();         // Clear Cookies on the browser
 //        driver.quit();
 //        driver = null;
@@ -175,37 +177,38 @@ public abstract class BasePage {
 //        driver.manage().window().maximize();
 //
 //    }
-     protected void fileUpload (String path) throws AWTException {
+    protected void fileUpload(String path) throws AWTException {
 
         Robot robot = new Robot();
-         robot.setAutoDelay(2000);
-         StringSelection stringSelection = new StringSelection(path);
-         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        robot.setAutoDelay(2000);
+        StringSelection stringSelection = new StringSelection(path);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 
-         robot.setAutoDelay(2000);
+        robot.setAutoDelay(2000);
 
-         robot.keyPress(KeyEvent.VK_CONTROL);
-         robot.keyPress(KeyEvent.VK_V);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
 
-         robot.keyRelease(KeyEvent.VK_CONTROL);
-         robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
 
-         robot.setAutoDelay(2000);
-         robot.keyPress(KeyEvent.VK_ENTER);
-         robot.keyRelease(KeyEvent.VK_ENTER);
-     }
+        robot.setAutoDelay(2000);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
 
     protected void hoverOnElement(By loc) {
-    try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-    Actions builder = new Actions(driver);
-    WebElement element = driver.findElement(loc);
-    builder.moveToElement(element).perform();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Actions builder = new Actions(driver);
+        WebElement element = driver.findElement(loc);
+        builder.moveToElement(element).perform();
 
-}
+    }
+
     protected void hoverAndClickOnElement(By loc) {
         try {
             Thread.sleep(5000);
@@ -217,7 +220,7 @@ public abstract class BasePage {
         builder.moveToElement(element).click().perform();
     }
 
-    protected void dragAndDrop(By draggable,By droppable){
+    protected void dragAndDrop(By draggable, By droppable) {
         WebElement sourse = driver.findElement(draggable);
         WebElement target = driver.findElement(droppable);
         Actions builder = new Actions(driver);
@@ -573,8 +576,6 @@ public abstract class BasePage {
     }
 
 
-
-
     /**
      * Receives web element and returns its By type
      *
@@ -613,8 +614,71 @@ public abstract class BasePage {
         return (By) we;
     }
 
+    /**
+     * @method : Method describe wait for 20 sec to visible the element
+     */
     protected void waitUntilPageLoad(By loc) {
         WebDriverWait element = new WebDriverWait(driver, 20);
-        element.until(ExpectedConditions.visibilityOfElementLocated(loc));
+        try {
+            element.until(ExpectedConditions.visibilityOfElementLocated(loc));
+        } catch (Exception e) {
+            //ignore
+        }
+    }
+
+    /**
+     * @method : Method return date and time in GMT +03:00 Time zone.
+     * This helps to find the created jobs in VHQ
+     */
+    protected String getDownloadScheduleTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
+        return dateFormat.format(new Date());
+    }
+
+    /**
+     * @method : This Method delete the values from the text box by selecting all the elements
+     */
+    protected void clearTextBoxValue(By loc) {
+        WebElement element = driver.findElement(loc);
+        try {
+            element.sendKeys(Keys.CONTROL + "a");
+            element.sendKeys(Keys.DELETE);
+        } catch (Exception e) {
+            //ignore
+        }
+    }
+
+    /**
+     * @method : This method describe scroll to the bottom of the page
+     */
+    protected void scrollToHeight() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        try {
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        } catch (Exception e) {
+            //ignore error
+        }
+    }
+
+    /**
+     * @method : This method check the details and return false if it is not present
+     */
+    protected static boolean assertRowContains(String expectedResult, String actual) {
+        if (!actual.contains(expectedResult)) {
+            testLog.info(" ----- Text expected: " + expectedResult + " Was: " + actual + " -----");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @Method : This method verify the exact text from the list of details
+     */
+    protected static boolean isContain(String source, String subItem) {
+        String pattern = "\\b" + subItem + "\\b";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(source);
+        return m.find();
     }
 }

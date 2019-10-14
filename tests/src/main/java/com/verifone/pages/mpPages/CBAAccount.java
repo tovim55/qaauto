@@ -37,9 +37,8 @@ public class CBAAccount extends BasePage {
     private By searchBtn = By.xpath("//*[@id=\"appsTable\"]/div/div[1]/div[1]/menu/div[2]/div/div[2]/button");
     private By yesBtn = By.xpath("//button[@class='adb-button__primary buttonResponse']");
     private By linkManage = By.xpath("//*[text()='Manage']");
+    private By linkMyApps = By.xpath("//a[@id = 'myapps']");
     //private By linkManage = By.xpath("//*[@class='custom-primary__nav--items']//li[1]//a[1]");
-
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm");
     public static String jobCreatedOnUnsubscription;
 
     String textSuccess;
@@ -55,7 +54,7 @@ public class CBAAccount extends BasePage {
         textSuccess = "Your subscription to " + appName + " was successfully removed.";
 
         /* Click is only available when Manage option is visible in menu bar*/
-        Thread.sleep(2000);
+        waitUntilPageLoad(linkMyApps);
         purchasedApps = driver.findElements(linkManage);
         if (purchasedApps.size() != 0)
             click(linkManage);
@@ -72,8 +71,8 @@ public class CBAAccount extends BasePage {
         ExpectedConditions.textToBe(feedBack, textSuccess);
 
         //get the date as per GMT+03:00 time zone
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
-        jobCreatedOnUnsubscription = dateFormat.format(new Date());
+        jobCreatedOnUnsubscription = getDownloadScheduleTime();
+
         System.out.println("GMT time UnSubscription : " + jobCreatedOnUnsubscription);
         testLog.info("----- App UnSubscription created date & Time : " + jobCreatedOnUnsubscription + " -----");
 
