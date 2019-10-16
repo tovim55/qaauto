@@ -43,7 +43,7 @@ public class CBAAssignPage extends BasePage {
     private By btnSubmit = By.xpath("//*[@class='js-pager-next adb-pager--item']//*[text()='Submit']");
     //private By txtAssignSuccess = By.xpath("//*[text()='1 assignment successfully updated or is in queue.']");
     private By txtAssignSuccess = By.xpath("//div[@class='js-content']/p");
-    private By linkMyApps = By.xpath("//a[@id = 'myapps']]");
+    private By linkMyApps = By.xpath("//a[@id = 'myapps']");
     private By titleList = By.xpath("//h4[@class='adb-summary--title']");
 
     private By user = By.xpath("//*[@class='sortable renderable']//P[@class='adb-summary--details']");
@@ -52,8 +52,9 @@ public class CBAAssignPage extends BasePage {
     private By linkApplication = By.xpath("//ul[@class='adb-secondary_nav--items']//li[3]//a");
     private By browseMarketPlace = By.xpath("//a[@class='adb-button adb-button__primary']");
 
-    private final DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm");
+    //private final DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy hh:mm");
     public static String jobCreatedOnSubscription;
+    List<WebElement> elementManage;
 
 
     public CBAAssignPage() {
@@ -65,7 +66,13 @@ public class CBAAssignPage extends BasePage {
      */
 
     public void moveToAssignApps() {
-        click(linkManage);
+        //verify the visibility of Manage option and perform the operation if it is find
+        waitUntilPageLoad(linkMyApps);
+        elementManage = driver.findElements(linkManage);
+        System.out.println("link manage size : " + elementManage.size());
+        if (elementManage.size() != 0)
+            click(linkManage);
+
         click(btnAccount);
         click(linkAssignApp);
     }
@@ -143,8 +150,9 @@ public class CBAAssignPage extends BasePage {
         testLog.info(txtResult);
         // jobCreatedOnSubscription = dateFormat.format(new Date());
 
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
-        jobCreatedOnSubscription = dateFormat.format(new Date());
+        //dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
+        // jobCreatedOnSubscription = dateFormat.format(new Date());
+        jobCreatedOnSubscription = getDownloadScheduleTime();
         System.out.println("GMT time UnSubscription : " + jobCreatedOnSubscription);
         testLog.info("----- App Subscription created date & Time : " + jobCreatedOnSubscription + " -----");
     }

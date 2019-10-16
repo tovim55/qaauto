@@ -83,49 +83,10 @@ public class VHQDeviceSearch extends BasePage {
         waitForLoader(deviceMode);
     }
 
-   /* public void searchJobStatus(String packageName, String deviceStatus) throws Exception {
-        if (deviceStatus.equals("UNINSTALL")) {
-
-            testLog.info("------ Unsubscribe(UNINSTALL) :" + packageName + " App ------");
-
-            WebElement firstRow = getWebElement(divFirstRow, 500, ExpectedConditions.visibilityOfElementLocated(divFirstRow));
-
-            testLog.info(" ----- packageName : " + packageName + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
-            assertTextContains(packageName, firstRow.getText());
-
-            testLog.info(" ----- Application Status : " + appStatus + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
-            assertTextContains(appStatus, firstRow.getText());
-
-            testLog.info(" ----- Package Unassigned date : " + CBAAccount.jobCreatedOnUnsubscription + "  ---- Text Contains in : ----  " + firstRow.getText() + " -----");
-            assertTextContains(CBAAccount.jobCreatedOnUnsubscription, firstRow.getText());
-
-
-        } else {
-            testLog.info("------ Subscribe(INSTALL) :" + packageName + " App ------");
-
-             WebElement secondRow = getWebElement(divSecondRow, 500, ExpectedConditions.visibilityOfElementLocated(divSecondRow));
-
-            testLog.info(" ----- packageName : " + packageName + " ---- Text Contains in : ---- " + secondRow.getText() + " -----");
-            assertTextContains(packageName, secondRow.getText());
-
-            testLog.info(" ----- Application Status : " + appStatus + "  ---- Text Contains in : ----  " + secondRow.getText() + " -----");
-            assertTextContains(appStatus, secondRow.getText());
-
-            testLog.info(" ----- Package assigned date : " + CBAAssignPage.jobCreatedOnSubscription + "  ---- Text Contains in : ----  " + secondRow.getText() + " -----");
-            assertTextContains(CBAAssignPage.jobCreatedOnSubscription, secondRow.getText());
-        }
-
-    }*/
-
-
     public void validateJobInstall(String packageName, String deviceStatus, String jobCreatedOnSubscription) throws Exception {
         // scroll down the web page at the bottom of the page.
         scrollToHeight();
-
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
-        Date date = new Date();
-        System.out.println("Start Time : " + dateFormat.format(date));
-        testLog.info("-------- Start Time : " + dateFormat.format(date) + " -------");
+        testLog.info("-------- Start Time : " + getDownloadScheduleTime() + " -------");
 
         // following loop used to get the row value, verify against the date, job name, package name & scroll
         int i = 0;
@@ -160,6 +121,8 @@ public class VHQDeviceSearch extends BasePage {
                     System.out.println("Job created successfully!");
                     testLog.info(" -------- VHQ : Package (" + deviceStatus + ") Job created successfully! -------- ");
                     TestPassFlag = true;
+                    click(btnRefresh);
+                    waitForLoader(btnRefresh);
                     break;
                 }
             }
@@ -184,39 +147,10 @@ public class VHQDeviceSearch extends BasePage {
             }
         }
 
-        date = new Date();
-        System.out.println("End Time :" + dateFormat.format(date));
-        testLog.info("-------- End Time : " + dateFormat.format(date) + " -------");
+        testLog.info("-------- End Time : " + getDownloadScheduleTime() + " -------");
 
         //Fail the test if value of TestPassFlag is false
         Assert.assertTrue(TestPassFlag);
-    }
-
-    //scroll page to the bottom
-    protected void scrollToHeight() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        try {
-            js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        } catch (Exception e) {
-            //ignore error
-        }
-    }
-
-    //Verify the text from the list of details
-    public static boolean assertRowContains(String expectedResult, String actual) {
-        if (!actual.contains(expectedResult)) {
-            testLog.info(" ----- Text expected: " + expectedResult + " Was: " + actual + " -----");
-            return false;
-        }
-        return true;
-    }
-
-    //verify the exact text from the list of details
-    private static boolean isContain(String source, String subItem) {
-        String pattern = "\\b" + subItem + "\\b";
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(source);
-        return m.find();
     }
 
     // This method update the minute by 1 if the current time is not available in the list of rows.

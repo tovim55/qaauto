@@ -3,6 +3,7 @@ package com.verifone.infra;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 //import com.verifone.entities.*;
@@ -30,8 +31,9 @@ public class EnvConfig {
     private String applicationName;
     private String applicationVersion;
     private String deviceIPAddress;
-    private String groupName;
-    private String groupDescription;
+    private ArrayList<String> list;
+    private ArrayList<String> listOfAppName;
+    private ArrayList<String> listOfDevices;
 
 //    private User user;
 
@@ -130,11 +132,24 @@ public class EnvConfig {
         return prop.getProperty(env + "." + "CMFiveDeviceIPAddress");
     }
 
-    public String getGroupName() {
-        return prop.getProperty(env + "." + "MPGroupName");
+    public ArrayList<String> getList() {
+        list = new ArrayList<>();
+        list.add(prop.getProperty(env + "." + "MPFirstGroupName"));
+        list.add(prop.getProperty(env + "." + "MPFirstGroupDescription"));
+        return list;
     }
 
-    public String getGroupDescription() {
-        return prop.getProperty(env + "." + "MPGroupDescription");
+    public ArrayList<String> getListOfAppName() {
+        listOfAppName = new ArrayList<>();
+        listOfAppName.add(prop.getProperty(env + "." + "MPPurchaseFreeAppOne"));
+        listOfAppName.add(prop.getProperty(env + "." + "MPPurchaseFreeAppFour"));
+        return listOfAppName;
+    }
+
+    public ArrayList<String> getListOfDevices() {
+        listOfDevices = new ArrayList<>();
+        listOfDevices.add(prop.getProperty(env + "." + "CMFiveDeviceSerialNo01"));
+        listOfDevices.add(prop.getProperty(env + "." + "CMFiveDeviceSerialNo02"));
+        return listOfDevices;
     }
 }
