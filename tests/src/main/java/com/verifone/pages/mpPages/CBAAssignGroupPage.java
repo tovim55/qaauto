@@ -75,9 +75,21 @@ public class CBAAssignGroupPage extends BasePage {
     /**
      * This method described the creation of group
      */
-    public void createUsersGroup(String nameOfTheGroup, String groupDescription) {
-        testLog.info("---- (2). Create Group ----");
+    public void createUsersGroup(String nameOfTheGroup, String groupDescription, ArrayList<String> listOfApp, ArrayList<String> listOfGroup) throws Exception {
 
+        //Delete the group if it is present
+        waitUntilPageLoad(titleList);
+        List<WebElement> getList = getWebElements(titleList, 18, ExpectedConditions.presenceOfElementLocated(titleList));
+        for (WebElement ele : getList) {
+            if (ele.getText().equals(nameOfTheGroup)) {
+                testLog.info("----- Group (<b>" + ele.getText() + "</b>) is exists. -----");
+                verifyApplicationAssignment(listOfApp, listOfGroup);
+                break;
+            }
+        }
+
+        Thread.sleep(1000);
+        testLog.info("---- (2). Create Group ----");
         //Move to Users page and create group by providing details
         click(btnCreateGroup);
 
@@ -225,6 +237,7 @@ public class CBAAssignGroupPage extends BasePage {
         waitUntilPageLoad(titleList);
         isGroupDeleted(titleList, listOfGroup.get(0));
     }
+
 
     public void isGroupDeleted(By loc, String val) {
         boolean testPassFlag = true;
