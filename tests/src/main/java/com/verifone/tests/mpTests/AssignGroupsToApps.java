@@ -22,7 +22,7 @@ public class AssignGroupsToApps extends BaseTest {
     private static String deviceSerialNumber;
 
     @Test(priority = 1, testName = "LogIn & Create Group", description = "LogIn in to CBA Marketplace and create group with more than one user.")
-    public void CBACreateDeviceGroupTestUI() {
+    public void CBACreateDeviceGroupTestUI() throws Exception {
         //Login in to CBA Marketplace.
         loginCBA(createAssignUser());
 
@@ -36,7 +36,7 @@ public class AssignGroupsToApps extends BaseTest {
 
         //Create group
         System.out.println("listOfGroup 0 :" + listOfGroup.get(0) + " listOfGroup 1" + listOfGroup.get(1));
-        assignGroup.createUsersGroup(listOfGroup.get(0), listOfGroup.get(1));
+        assignGroup.createUsersGroup(listOfGroup.get(0), listOfGroup.get(1), listOfApp, listOfGroup);
     }
 
     @Test(priority = 2, testName = "LogIn & Verify App", description = "LogIn in to CBA MarketPlace & verify availability of the app to assign.")
