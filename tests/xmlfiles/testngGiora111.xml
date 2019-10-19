@@ -39,10 +39,10 @@
             <!--<class name="com.verifone.tests.api.tests.cloud_api_ddt.MerchantApiDdt"/>-->
 
             <!--add_user good-->
-            <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>
+<!--            <class name="com.verifone.tests.cpTests.EOPortalAddViewUsers_RegUI"/>-->
 
             <!--Upload app Good -->
-            <!--<class name="com.verifone.tests.cpTests.DevUploadAppEngageEngage"/>-->
+            <class name="com.verifone.tests.cpTests.DevUploadAppEngageEngage"/>
 
             <!--<class name="com.verifone.tests.cpTests.EOPortalUpdateUserMerchant_RegUI"/>-->
             <!--<class name="com.verifone.tests.cpTests.EOPortalCustomizeTemplate_RegUI"/>-->
